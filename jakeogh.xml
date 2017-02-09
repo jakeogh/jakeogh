@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+
+<repositories version="1.0">
+	<repo priority="50" quality="experimental" status="unofficial">
+		<name>jakeogh</name>
+		<description>jakeogh's overlay</description>
+		<homepage>https://github.com/jakeogh/jakeogh</homepage>
+		<owner>
+			<email>github.com@v6y.net</email>
+		</owner>
+		<source type="git">https://github.com/jakeogh/jakeogh.git</source>
+	</repo>
+</repositories>
