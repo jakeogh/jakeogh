@@ -28,6 +28,7 @@ DEPEND="
 	net-mail/notmuch
 	www-client/lynx
 	dev-python/pudb
+	mail-client/alot
 "
 
 RDEPEND="
