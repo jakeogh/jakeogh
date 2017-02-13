@@ -18,8 +18,21 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+DEPEND="
+	dev-python/cssselect
+	dev-python/yapsy
+	dev-python/sh
+	dev-python/werkzeug
+	dev-python/lxml
+	dev-python/colorama
+	dev-python/argh
+	dev-python/sqlalchemy
+"
+
+RDEPEND="
+	${DEPEND}
+	x11-misc/dmenu
+"
 
 python_install_all() {
     local DOCS=( README.md )
