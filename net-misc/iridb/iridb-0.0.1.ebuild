@@ -27,6 +27,7 @@ DEPEND="
 	dev-python/colorama
 	dev-python/argh
 	dev-python/sqlalchemy
+	dev-python/requests
 "
 
 RDEPEND="
