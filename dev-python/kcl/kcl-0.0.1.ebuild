@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-python/psutil"
+DEPEND="dev-python/psutil
+dev-python/requests
+"
+
 RDEPEND="${DEPEND}"
 
 python_install_all() {
