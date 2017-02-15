@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Block DNS requests"
 HOMEPAGE="https://github.com/jakeogh/dnsgate"
-EGIT_REPO_URI="/home/cfg/_myapps/dnsgate"
+EGIT_REPO_URI="https://github.com/jakeogh/dnsgate.git"
 
 LICENSE=""
 SLOT="0"
