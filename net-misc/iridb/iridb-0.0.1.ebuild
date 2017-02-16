@@ -29,6 +29,7 @@ DEPEND="
 	dev-python/sqlalchemy
 	dev-python/requests
 	dev-python/tldextract
+	dev-python/amara3-iri
 "
 
 RDEPEND="
