@@ -28,6 +28,7 @@ DEPEND="
 	dev-python/argh
 	dev-python/sqlalchemy
 	dev-python/requests
+	dev-python/tldextract
 "
 
 RDEPEND="
