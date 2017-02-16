@@ -24,7 +24,7 @@ RDEPEND="
 	>=dev-python/configobj-4.6.0[${PYTHON_USEDEP}]
 	dev-python/pygpgme[${PYTHON_USEDEP}]
 	dev-python/python-magic[${PYTHON_USEDEP}]
-	dev-python/twisted-core
+	dev-python/twisted
 	>=dev-python/urwid-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/urwidtrees-1.0[${PYTHON_USEDEP}]
 	net-mail/mailbase
