@@ -42,10 +42,10 @@ DEPEND="${RDEPEND}
 # tests connect to various remote sites
 RESTRICT="test"
 
-#PATCHES=(
-#	"${FILESDIR}"/${PN}-2.12.1-system-packages.patch
-#	"${FILESDIR}"/${PN}-2.5.0-system-cacerts.patch
-#)
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.12.1-system-packages.patch
+	"${FILESDIR}"/${PN}-2.5.0-system-cacerts.patch
+)
 
 python_prepare_all() {
 	# use system chardet & urllib3
