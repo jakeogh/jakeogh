@@ -16,9 +16,6 @@ EGIT_REPO_URI="https://github.com/kennethreitz/requests.git"
 #SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 
-
-
-
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
@@ -45,10 +42,10 @@ DEPEND="${RDEPEND}
 # tests connect to various remote sites
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.12.1-system-packages.patch
-	"${FILESDIR}"/${PN}-2.5.0-system-cacerts.patch
-)
+#PATCHES=(
+#	"${FILESDIR}"/${PN}-2.12.1-system-packages.patch
+#	"${FILESDIR}"/${PN}-2.5.0-system-cacerts.patch
+#)
 
 python_prepare_all() {
 	# use system chardet & urllib3
