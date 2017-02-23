@@ -3,8 +3,8 @@
 # $Id$
 
 EAPI=6
-#PYTHON_COMPAT=( python{3_4,3_5} )
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python{3_4,3_5} )
+#PYTHON_COMPAT=( python3_4 )
 
 inherit distutils-r1
 inherit git-r3
@@ -30,6 +30,7 @@ DEPEND="
 	dev-python/requests
 	dev-python/tldextract
 	dev-python/amara3-iri
+	dev-python/numpy
 "
 
 RDEPEND="
