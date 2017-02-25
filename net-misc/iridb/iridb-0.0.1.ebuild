@@ -31,6 +31,7 @@ DEPEND="
 	dev-python/tldextract
 	dev-python/amara3-iri
 	dev-python/numpy
+	media-gfx/pydot
 "
 
 RDEPEND="
