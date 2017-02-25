@@ -24,6 +24,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.0.23-setup.patch
-	"${FILESDIR}"/${P}-pyparsing2fix.patch )
+#PATCHES=(
+#	"${FILESDIR}"/${PN}-1.0.23-setup.patch
+#	"${FILESDIR}"/${P}-pyparsing2fix.patch )
