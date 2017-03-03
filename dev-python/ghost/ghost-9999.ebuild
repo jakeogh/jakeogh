@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Webkit based scriptable web browser for python."
 HOMEPAGE="https://github.com/jeanphix/Ghost.py"
-EGIT_REPO_URI="https://github.com/jeanphix/Ghost.py.git"
+EGIT_REPO_URI="https://github.com/jakeogh/Ghost.py.git"
 EGIT_SUBMODULES=()
 
 LICENSE=""
