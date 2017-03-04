@@ -32,8 +32,8 @@ DEPEND="
 	dev-python/amara3-iri
 	dev-python/numpy
 	media-gfx/pydot
-	dev-python/ghost
 "
+#	dev-python/ghost
 
 RDEPEND="
 	${DEPEND}
