@@ -17,7 +17,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 s390 sh sparc x86 ~amd64-l
 DEPEND="sys-libs/ncurses:="
 RDEPEND="${DEPEND}"
 
-S=${WORKDIR}/${PN}
+#S=${WORKDIR}/${PN}
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-1.2.13-tinfo.patch
