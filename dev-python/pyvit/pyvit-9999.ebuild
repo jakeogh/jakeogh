@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Python Vehicle Interface Toolkit"
 HOMEPAGE="https://github.com/linklayer/pyvit"
-EGIT_REPO_URI="https://github.com/jakeogh/pyvit.git"
+EGIT_REPO_URI="https://github.com/jakeogh/pyvit.git/gentoo_compat"
 
 LICENSE=""
 SLOT="0"
