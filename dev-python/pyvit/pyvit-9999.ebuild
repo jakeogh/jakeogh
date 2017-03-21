@@ -10,14 +10,14 @@ inherit git-r3
 
 DESCRIPTION="Python Vehicle Interface Toolkit"
 HOMEPAGE="https://github.com/linklayer/pyvit"
-EGIT_REPO_URI="https://github.com/linklayer/pyvit.git"
+EGIT_REPO_URI="https://github.com/jakeogh/pyvit.git"
 
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="dev-python/pyserial"
 
 RDEPEND="${DEPEND}"
 
