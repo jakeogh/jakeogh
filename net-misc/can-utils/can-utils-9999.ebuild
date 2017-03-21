@@ -23,6 +23,7 @@ SLOT="0"
 IUSE=""
 
 src_prepare() {
+	eapply_user
 	eautoreconf --force --install
 }
 
