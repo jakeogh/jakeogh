@@ -16,13 +16,11 @@ LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-
-DEPEND="
-"
-
+DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_install() {
+	default
 	newbin canplayer canplayer-py
 }
 
