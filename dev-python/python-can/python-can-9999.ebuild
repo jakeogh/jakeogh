@@ -22,6 +22,10 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
+src_install() {
+	newbin canplayer canplayer-py
+}
+
 python_install_all() {
         distutils-r1_python_install_all
 }
