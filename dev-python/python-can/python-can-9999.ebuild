@@ -22,7 +22,7 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	default
-	mv mv ${D}/usr/bin/canplayer ${D}/usr/bin/canplayer-py || die
+	mv ${D}/usr/bin/canplayer ${D}/usr/bin/canplayer-py || die
 }
 
 python_install_all() {
