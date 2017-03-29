@@ -20,13 +20,14 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 
-src_install() {
-	default
-	mv ${D}/usr/bin/canplayer ${D}/usr/bin/canplayer-py || die
-}
+#src_install() {
+#	default
+#	mv ${D}/usr/bin/canplayer ${D}/usr/bin/canplayer-py || die
+#}
 
 python_install_all() {
-        distutils-r1_python_install_all
+	mv ${D}/usr/bin/canplayer ${D}/usr/bin/canplayer-py || die
+	distutils-r1_python_install_all
 }
 
 #        local DOCS=( README.md )
