@@ -22,6 +22,7 @@ DEPEND="
 	media-sound/mido
 	dev-python/numpy
 	dev-python/bitstring
+	dev-python/pip
 "
 
 RDEPEND="${DEPEND}"
