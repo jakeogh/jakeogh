@@ -12,7 +12,7 @@ DESCRIPTION="Experimental terminal UI for net-mail/notmuch written in Python"
 HOMEPAGE="https://github.com/pazz/alot"
 EGIT_REPO_URI="https://github.com/pazz/alot.git"
 #EGIT_COMMIT="237499e631741dbb3837e5ef99cc66f842e8a92e" #bad
-EGIT_COMMIT="eb9fcf11b77b9a6bebb835cfd9235fcc2fe56423" #
+EGIT_COMMIT="eb9fcf11b77b9a6bebb835cfd9235fcc2fe56423" #good
 #EGIT_COMMIT="8b93e7e4389c28c5f6cda37df837411b8bb57eaf" #good
 #EGIT_COMMIT="840feadee7859257646d6d830420dc8b153725ad" #good
 
