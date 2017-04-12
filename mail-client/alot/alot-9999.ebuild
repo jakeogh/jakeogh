@@ -11,8 +11,9 @@ inherit distutils-r1 vcs-snapshot git-r3
 DESCRIPTION="Experimental terminal UI for net-mail/notmuch written in Python"
 HOMEPAGE="https://github.com/pazz/alot"
 EGIT_REPO_URI="https://github.com/pazz/alot.git"
-EGIT_COMMIT="237499e631741dbb3837e5ef99cc66f842e8a92e"
-#EGIT_COMMIT="840feadee7859257646d6d830420dc8b153725ad"
+#EGIT_COMMIT="237499e631741dbb3837e5ef99cc66f842e8a92e" #bad
+EGIT_COMMIT="8b93e7e4389c28c5f6cda37df837411b8bb57eaf"
+#EGIT_COMMIT="840feadee7859257646d6d830420dc8b153725ad" #good
 
 LICENSE="GPL-3"
 SLOT="0"
