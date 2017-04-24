@@ -17,7 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="
+	dev-python/requests-file
+	"
 RDEPEND="${DEPEND}"
 
 python_install_all() {
