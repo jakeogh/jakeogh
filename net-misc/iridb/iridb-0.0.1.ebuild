@@ -35,6 +35,7 @@ DEPEND="
 	dev-db/postgresql
 	dev-python/httplib2
 	dev-python/python-dmenu
+	dev-python/beautifulsoup
 "
 #	dev-python/ghost
 
