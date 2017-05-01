@@ -33,6 +33,7 @@ DEPEND="
 	dev-python/numpy
 	media-gfx/pydot
 	dev-db/postgresql
+	dev-python/httplib2
 "
 #	dev-python/ghost
 
