@@ -34,6 +34,7 @@ DEPEND="
 	media-gfx/pydot
 	dev-db/postgresql
 	dev-python/httplib2
+	dev-python/python-dmenu
 "
 #	dev-python/ghost
 
