@@ -11,7 +11,8 @@ inherit git-r3
 
 DESCRIPTION="Tag SQLAlchemy mapper classes."
 HOMEPAGE="https://github.com/jakeogh/anormbookmarker"
-EGIT_REPO_URI="/home/cfg/_myapps/anormbookmarker"
+EGIT_REPO_URI="https://github.com/jakeogh/anormbookmarker.git"
+#EGIT_REPO_URI="/home/cfg/_myapps/anormbookmarker"
 
 LICENSE="MIT"
 SLOT="0"
