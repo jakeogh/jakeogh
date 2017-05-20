@@ -27,7 +27,8 @@ DEPEND=""
 
 src_prepare() {
 	eapply_user
-	eautoreconf --force --install
+	#eautoreconf --force --install
+	eautoreconf
 }
 
 src_compile() {
