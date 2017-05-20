@@ -7,13 +7,13 @@
 # $Header: $
 
 EAPI="6"
+PYTHON_COMPAT=( python2_7 )
 
 #inherit distutils-r1
 inherit git-r3
 inherit autotools
 inherit python-single-r1
 
-PYTHON_COMPAT=( python2_7 )
 
 DESCRIPTION="libpsl"
 HOMEPAGE="https://github.com/rockdaboot/libpsl"
