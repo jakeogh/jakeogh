@@ -26,9 +26,6 @@ IUSE=""
 DEPEND=""
 
 src_prepare() {
-	#eapply_user
-	#eautoreconf --force --install
-	#eautoreconf
 	default
 	./autogen.sh || die
 }
@@ -37,8 +34,8 @@ src_compile() {
 	emake || die "Compile failed."
 }
 
-src_install() {
-	emake DESTDIR="${D}" PREFIX=/usr install || die "Install failed."
-	
-}
+#src_install() {
+#	emake DESTDIR="${D}" PREFIX=/usr install || die "Install failed."
+#	
+#}
 
