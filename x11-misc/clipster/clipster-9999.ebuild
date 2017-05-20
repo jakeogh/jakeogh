@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="clipster - python clipboard manager"
 HOMEPAGE="https://github.com/mrichar1/clipster"
-EGIT_REPO_URI="https://github.com/mrichar1/clipster.git"
+EGIT_REPO_URI="https://github.com/jakeogh/clipster.git" #has setup.py
 inherit git-r3
 
 LICENSE=""
