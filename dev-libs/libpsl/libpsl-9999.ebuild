@@ -26,9 +26,11 @@ IUSE=""
 DEPEND=""
 
 src_prepare() {
-	eapply_user
+	#eapply_user
 	#eautoreconf --force --install
-	eautoreconf
+	#eautoreconf
+	default
+	./autogen.sh || die
 }
 
 src_compile() {
