@@ -19,6 +19,7 @@ IUSE=""
 
 DEPEND="
 	dev-python/tldextract
+	dev-python/click
 "
 RDEPEND="${DEPEND}"
 
