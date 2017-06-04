@@ -58,7 +58,7 @@ src_configure() {
 		--disable-vnetbuild \
 		$(use_enable ipset update-ipsets) \
 		$(use_enable doc) \
-		$(use_enable doc) || echo "--disable-man" \
+		$(use_enable !doc && echo --disable-man) \
 		$(use_enable ipv6)
 }
 
