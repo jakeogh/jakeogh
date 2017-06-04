@@ -58,6 +58,7 @@ src_configure() {
 		$(use_enable ipset update-ipsets) \
 		$(use_enable doc) \
 		$(use doc || echo --disable-man) \
+		$(use doc && echo --enable-maintainer-mode) \
 		$(use_enable ipv6)
 }
 
