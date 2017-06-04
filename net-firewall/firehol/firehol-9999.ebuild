@@ -6,7 +6,7 @@ inherit linux-info
 
 DESCRIPTION="iptables firewall generator"
 HOMEPAGE="https://github.com/firehol/firehol"
-EGIT_REPO_URI="https://github.com/firehol/firehol.git"
+EGIT_REPO_URI="https://github.com/jakeogh/firehol.git"
 inherit git-r3
 
 LICENSE="GPL-2"
