@@ -48,6 +48,11 @@ pkg_setup() {
 	linux-info_pkg_setup
 }
 
+src_prepare() {
+        default
+        ./autogen.sh || die
+}
+
 src_configure() {
 	econf \
 		--disable-vnetbuild \
