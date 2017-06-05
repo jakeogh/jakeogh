@@ -13,7 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc ipv6 ipset"
 KEYWORDS="~amd64 ~arm ~ppc"
-MAKEOPTS+=" -j1"
+MAKEOPTS+=" -j1" #man pages fail to build in parallel
 
 RDEPEND="net-firewall/iptables
 	sys-apps/iproute2[-minimal,ipv6?]
