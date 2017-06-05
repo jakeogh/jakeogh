@@ -24,6 +24,9 @@ RDEPEND="net-firewall/iptables
 	app-arch/gzip
 	ipset? (
 		net-firewall/ipset
+	)
+	doc? (
+		app-text/pandoc
 	)"
 DEPEND="${RDEPEND}"
 
