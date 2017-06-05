@@ -6,13 +6,14 @@ inherit linux-info
 
 DESCRIPTION="iptables firewall generator"
 HOMEPAGE="https://github.com/firehol/firehol"
-EGIT_REPO_URI="https://github.com/jakeogh/firehol.git"
+EGIT_REPO_URI="https://github.com/firehol/firehol.git"
 inherit git-r3
 
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc ipv6 ipset"
 KEYWORDS="~amd64 ~arm ~ppc"
+MAKEOPTS+=" -j1"
 
 RDEPEND="net-firewall/iptables
 	sys-apps/iproute2[-minimal,ipv6?]
