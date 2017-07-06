@@ -4,7 +4,6 @@
 
 EAPI=6
 PYTHON_COMPAT=( python{3_4,3_5} )
-IUSE="doc"
 
 inherit distutils-r1
 inherit git-r3
@@ -14,6 +13,7 @@ HOMEPAGE="https://github.com/jeanphix/Ghost.py"
 #EGIT_REPO_URI="https://github.com/jeanphix/Ghost.py.git"
 EGIT_REPO_URI="https://github.com/jakeogh/Ghost.py.git"
 EGIT_BRANCH="dev"
+IUSE="doc"
 #EGIT_SUBMODULES=()
 
 LICENSE=""
