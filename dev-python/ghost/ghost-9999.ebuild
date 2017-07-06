@@ -4,6 +4,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python{3_4,3_5} )
+IUSE="doc"
 
 inherit distutils-r1
 inherit git-r3
