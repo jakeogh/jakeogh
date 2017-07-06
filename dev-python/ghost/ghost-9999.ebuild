@@ -13,13 +13,12 @@ HOMEPAGE="https://github.com/jeanphix/Ghost.py"
 #EGIT_REPO_URI="https://github.com/jeanphix/Ghost.py.git"
 EGIT_REPO_URI="https://github.com/jakeogh/Ghost.py.git"
 EGIT_BRANCH="dev"
-IUSE="doc"
 #EGIT_SUBMODULES=()
 
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="doc"
 
 DEPEND="dev-python/pyside"
 
