@@ -18,8 +18,8 @@ EGIT_SUBMODULES=()
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc"
-
+IUSE="doc test"
+RESTRICT="test"
 DEPEND="dev-python/pyside"
 
 RDEPEND="${DEPEND}"
