@@ -13,7 +13,8 @@ HOMEPAGE="https://github.com/jeanphix/Ghost.py"
 #EGIT_REPO_URI="https://github.com/jeanphix/Ghost.py.git"
 EGIT_REPO_URI="https://github.com/jakeogh/Ghost.py.git"
 #EGIT_BRANCH="dev"
-EGIT_SUBMODULES=("tests")
+#EGIT_SUBMODULES=("tests")
+EGIT_SUBMODULES=()
 
 LICENSE=""
 SLOT="0"
