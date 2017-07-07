@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}"
 
 python_prepare_all() {
 	rm -r ${WORKDIR}/ghost-9999/tests/
-
+	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
