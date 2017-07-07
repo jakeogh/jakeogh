@@ -19,14 +19,18 @@ EGIT_SUBMODULES=()
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
-RESTRICT="test"
+IUSE="doc"
+#RESTRICT="test"
 DEPEND="dev-python/pyside"
 
 RDEPEND="${DEPEND}"
 
+python_prepare_all() {
+	rm -r ${D}/lib/tests/
+
+}
+
 python_install_all() {
-	use tests || rm ${D}/lib/tests/
 	distutils-r1_python_install_all
 }
 
