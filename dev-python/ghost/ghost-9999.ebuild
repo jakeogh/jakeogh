@@ -26,7 +26,7 @@ DEPEND="dev-python/pyside"
 RDEPEND="${DEPEND}"
 
 python_prepare_all() {
-	rm -r ${D}/lib/tests/
+	rm -r ${WORKDIR}/lib/tests/
 
 }
 
