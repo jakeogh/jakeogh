@@ -26,7 +26,8 @@ DEPEND="dev-python/pyside"
 RDEPEND="${DEPEND}"
 
 python_install_all() {
-        distutils-r1_python_install_all
+	use tests || rm ${D}/lib/tests/
+	distutils-r1_python_install_all
 }
 
 #        local DOCS=( README.md )
