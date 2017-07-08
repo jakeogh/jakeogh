@@ -21,7 +21,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 #RESTRICT="test"
-DEPEND="dev-python/pyside:2"
+DEPEND="
+	dev-python/pyside:2
+	dev-python/xvfbwrapper
+"
 
 RDEPEND="${DEPEND}"
 
