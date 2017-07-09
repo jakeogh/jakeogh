@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Real-time plotting and logging while console controlling."
 HOMEPAGE="https://github.com/ceyzeriat/joystick/"
-EGIT_REPO_URI="https://github.com/ceyzeriat/joystick/.git"
+EGIT_REPO_URI="https://github.com/ceyzeriat/joystick.git"
 #EGIT_BRANCH="dev"
 #EGIT_SUBMODULES=("tests")
 #EGIT_SUBMODULES=()
