@@ -23,6 +23,7 @@ IUSE="doc"
 #RESTRICT="test"
 DEPEND="
 	dev-python/pyside:2
+	dev-python/pyside
 	dev-python/xvfbwrapper
 "
 
