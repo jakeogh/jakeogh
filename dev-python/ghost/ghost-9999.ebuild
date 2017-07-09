@@ -22,8 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 #RESTRICT="test"
 DEPEND="
-	dev-python/pyside:2
-	dev-python/pyside
+	dev-python/pyside:0
 	dev-python/xvfbwrapper
 "
 
