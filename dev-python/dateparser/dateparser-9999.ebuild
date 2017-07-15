@@ -20,7 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 #IUSE="doc"
 #RESTRICT="test"
-DEPEND=""
+DEPEND="dev-python/tzlocal"
 RDEPEND="${DEPEND}"
 
 python_install_all() {
