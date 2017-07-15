@@ -20,7 +20,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 #IUSE="doc"
 #RESTRICT="test"
-DEPEND="dev-python/tzlocal"
+DEPEND="
+	dev-python/tzlocal
+	dev-python/ruamel-yaml
+"
 RDEPEND="${DEPEND}"
 
 python_install_all() {
