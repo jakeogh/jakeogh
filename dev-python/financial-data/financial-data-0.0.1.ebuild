@@ -18,7 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="net-misc/iridb"
 
 RDEPEND="
 	${DEPEND}
