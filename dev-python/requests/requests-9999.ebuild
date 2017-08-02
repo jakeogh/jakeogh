@@ -43,7 +43,6 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.12.1-system-packages.patch
 	"${FILESDIR}"/${PN}-2.5.0-system-cacerts.patch
 )
 
