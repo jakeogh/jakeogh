@@ -49,7 +49,7 @@ PATCHES=(
 
 python_prepare_all() {
 	# use system chardet & urllib3
-	rm -r requests/packages/{chardet,urllib3} || die
+	#rm -r requests/packages/{chardet,urllib3} || die
 
 	distutils-r1_python_prepare_all
 }
