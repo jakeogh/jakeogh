@@ -17,7 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sci-libs/scipy
+DEPEND="
+	sci-libs/scipy
+	dev-python/pandas
 "
 
 RDEPEND="${DEPEND}"
