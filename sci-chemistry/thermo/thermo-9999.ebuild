@@ -20,6 +20,7 @@ IUSE=""
 DEPEND="
 	sci-libs/scipy
 	dev-python/pandas
+	sci-chemistry/fluids
 "
 
 RDEPEND="${DEPEND}"
