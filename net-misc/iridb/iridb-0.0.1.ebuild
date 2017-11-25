@@ -36,6 +36,7 @@ DEPEND="
 	dev-python/httplib2
 	dev-python/python-dmenu
 	dev-python/beautifulsoup
+	dev-python/requests-cache
 "
 #	dev-python/ghost
 
