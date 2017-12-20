@@ -27,6 +27,7 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
+	dev-python/pyside:2
 	x11-misc/dmenu
 "
 
