@@ -31,7 +31,7 @@ DEPEND="
 	dev-python/tldextract
 	dev-python/amara3-iri
 	dev-python/numpy
-	media-gfx/pydot
+	dev-python/pydot
 	dev-db/postgresql
 	dev-python/httplib2
 	dev-python/python-dmenu
