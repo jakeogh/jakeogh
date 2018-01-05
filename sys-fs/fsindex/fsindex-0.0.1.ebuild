@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="db backed filesystem hash index"
 HOMEPAGE="https://github.com/jakeogh/fsindex"
-EGIT_REPO_URI="https://github.com/jakeogh/fsindex.git"
+EGIT_REPO_URI="/home/cfg/_myapps/fsindex https://github.com/jakeogh/fsindex.git"
 
 LICENSE=""
 SLOT="0"
@@ -19,6 +19,7 @@ IUSE=""
 
 DEPEND="
 	dev-python/kcl
+	dev-python/sqlalchemy
 "
 
 RDEPEND="${DEPEND}"
