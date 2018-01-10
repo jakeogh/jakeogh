@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Keogh Common (function) library"
 HOMEPAGE="https://github.com/jakeogh/kcl"
-EGIT_REPO_URI="https://github.com/jakeogh/kcl.git"
+EGIT_REPO_URI="/home/cfg/_myapps/kcl https://github.com/jakeogh/kcl.git"
 inherit git-r3
 
 LICENSE=""
