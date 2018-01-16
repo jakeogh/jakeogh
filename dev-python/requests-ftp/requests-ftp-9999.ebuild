@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="An FTP transport adapter for use with the Python Requests library."
 HOMEPAGE="https://github.com/Lukasa/requests-ftp"
-EGIT_REPO_URI="https://github.com/Lukasa/requests-ftp"
+EGIT_REPO_URI="https://github.com/Lukasa/requests-ftp.git"
 #EGIT_BRANCH="dev"
 #EGIT_SUBMODULES=("tests")
 EGIT_SUBMODULES=()
