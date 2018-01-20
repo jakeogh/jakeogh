@@ -22,9 +22,11 @@ DEPEND="dev-python/six
 
 RDEPEND="${DEPEND}"
 
+python_prepare_all() {
+        rm -r ${WORKDIR}/monty-9999/tests/
+        distutils-r1_python_prepare_all
+}
+
 python_install_all() {
         distutils-r1_python_install_all
 }
-
-
-#        local DOCS=( README.md )
