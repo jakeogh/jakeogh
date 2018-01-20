@@ -23,9 +23,11 @@ DEPEND="dev-python/pyyaml
 
 RDEPEND="${DEPEND}"
 
+python_prepare_all() {
+        rm -r ${WORKDIR}/pybtex-9999/tests
+        distutils-r1_python_prepare_all
+}
+
 python_install_all() {
         distutils-r1_python_install_all
 }
-
-
-#        local DOCS=( README.md )
