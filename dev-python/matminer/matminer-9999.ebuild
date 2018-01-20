@@ -21,7 +21,7 @@ DEPEND="dev-python/pymatgen
 		dev-python/tqdm
 		dev-python/pandas
 		dev-python/pymongo
-		sci-BIOC/pint
+		dev-python/pint
 		dev-python/six
 		dev-python/citrination-client
 		dev-python/plotly
