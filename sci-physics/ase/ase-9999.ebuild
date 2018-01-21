@@ -24,6 +24,6 @@ DEPEND="dev-python/numpy
 
 RDEPEND="${DEPEND}"
 
-python_install_all() {
-	distutils-r1_python_install_all
-}
+#python_install_all() {
+#	distutils-r1_python_install_all
+#}
