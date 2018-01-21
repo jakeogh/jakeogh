@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{3_4,3_5} )
@@ -32,10 +31,10 @@ DEPEND="
 	dev-python/amara3-iri
 	dev-python/numpy
 	dev-python/pydot
-	dev-db/postgresql
+	dev-db/postgresql:*
 	dev-python/httplib2
 	dev-python/python-dmenu
-	dev-python/beautifulsoup
+	dev-python/beautifulsoup:*
 	dev-python/requests-cache
 "
 #	dev-python/ghost
@@ -46,6 +45,6 @@ RDEPEND="
 "
 
 python_install_all() {
-    local DOCS=( README.md )
-    distutils-r1_python_install_all
+	local DOCS=( README.md )
+	distutils-r1_python_install_all
 }
