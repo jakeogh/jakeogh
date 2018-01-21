@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -23,7 +22,3 @@ RDEPEND="
 	media-gfx/graphviz"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-#PATCHES=(
-#	"${FILESDIR}"/${PN}-1.0.23-setup.patch
-#	"${FILESDIR}"/${P}-pyparsing2fix.patch )

@@ -9,7 +9,7 @@ inherit distutils-r1 mercurial
 
 DESCRIPTION="SqlAlchemy schema display script"
 HOMEPAGE="https://bitbucket.org/estin/sadisplay/wiki/Home"
-COMMIT_ID="d67d12894ebd"
+#COMMIT_ID="d67d12894ebd"
 EHG_REPO_URI="https://bitbucket.org/estin/sadisplay"
 
 LICENSE="BSD"

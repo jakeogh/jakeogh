@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python{3_4,3_5} )
@@ -16,6 +15,7 @@ LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+LICENSE="BSD"
 
 DEPEND="dev-python/pymatgen
 		dev-python/tqdm
@@ -35,8 +35,5 @@ DEPEND="dev-python/pymatgen
 RDEPEND="${DEPEND}"
 
 python_install_all() {
-        distutils-r1_python_install_all
+	distutils-r1_python_install_all
 }
-
-
-#        local DOCS=( README.md )

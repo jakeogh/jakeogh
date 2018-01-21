@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
@@ -12,7 +11,7 @@ DESCRIPTION="A friendly car security exploration tool"
 HOMEPAGE="https://github.com/CaringCaribou/caringcaribou"
 EGIT_REPO_URI="https://github.com/CaringCaribou/caringcaribou.git"
 
-LICENSE=""
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
@@ -24,7 +23,5 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 python_install_all() {
-        distutils-r1_python_install_all
+	distutils-r1_python_install_all
 }
-
-#        local DOCS=( README.md )

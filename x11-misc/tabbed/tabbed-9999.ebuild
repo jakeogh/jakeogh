@@ -1,10 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit savedconfig toolchain-funcs git-r3
 
-DESCRIPTION="Simple generic tabbed fronted to xembed aware applications"
+DESCRIPTION="Simple generic tabbed fronted to xembed aware applications."
 HOMEPAGE="http://tools.suckless.org/tabbed"
 EGIT_REPO_URI="http://git.suckless.org/tabbed"
 

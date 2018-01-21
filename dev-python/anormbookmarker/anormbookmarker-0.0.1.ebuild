@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 #PYTHON_COMPAT=( pypy )
@@ -22,7 +21,7 @@ IUSE=""
 
 DEPEND="
 	dev-python/sqlalchemy
-	dev-db/postgresql
+	dev-db/postgresql:*
 "
 
 RDEPEND="
@@ -31,6 +30,6 @@ RDEPEND="
 "
 
 python_install_all() {
-    local DOCS=( README.md )
-    distutils-r1_python_install_all
+	local DOCS=( README.md )
+	distutils-r1_python_install_all
 }
