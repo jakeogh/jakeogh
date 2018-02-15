@@ -8,8 +8,8 @@ inherit distutils-r1
 inherit git-r3
 
 DESCRIPTION="Adjacency List Relationships helper (only using databases own implementations)"
-HOMEPAGE="https://github.com/ovgu-ttz/sqla_hierarchy" #orig from https://github.com/marplatense/sqla_hierarchy
-EGIT_REPO_URI="https://github.com/ovgu-ttz/sqla_hierarchy.git"
+HOMEPAGE="https://github.com/ovgu-ttz/sqla_hierarchy" # orig from https://github.com/marplatense/sqla_hierarchy
+EGIT_REPO_URI="/home/cfg/_myapps/sqla_hierarchy https://github.com/ovgu-ttz/sqla_hierarchy.git"
 
 LICENSE=""
 SLOT="0"
