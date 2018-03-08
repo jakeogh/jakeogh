@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
-inherit distutils-r1
+inherit distutils-r1 autotools
 
 DESCRIPTION="Future-aware personal finance application"
 HOMEPAGE="https://github.com/hsoft/moneyguru"
@@ -22,6 +22,6 @@ DEPEND="dev-python/polib
 
 RDEPEND="${DEPEND}"
 
-python_install_all() {
-	distutils-r1_python_install_all
-}
+#python_install_all() {
+#	distutils-r1_python_install_all
+#}
