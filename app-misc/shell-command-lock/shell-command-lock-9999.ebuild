@@ -10,18 +10,18 @@ DESCRIPTION="Prevent identical bash/sh command lines from executing concurrently
 HOMEPAGE="https://github.com/jakeogh/shell-command-lock"
 EGIT_REPO_URI="https://github.com/jakeogh/shell-command-lock.git"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 #IUSE="+minimal test"
 
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
-#DEPEND="test? ( ${COMMON_DEPS} )"
+DEPEND="sys-apps/coreutils"
 
 #src_compile() { :; }
 
 src_install() {
 #	dodoc README*
-	dobin ${PN}/${PN}
+	dobin ${PN}
 #	dobin shell-command-lock
 }
