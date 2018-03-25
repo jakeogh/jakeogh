@@ -4,8 +4,8 @@
 EAPI=6
 
 DESCRIPTION="Prevent identical bash/sh command lines from executing concurrently."
-HOMEPAGE="https://github.com/jakeogh/shell_command_lock"
-EGIT_REPO_URI="https://github.com/jakeogh/shell_command_lock.git"
+HOMEPAGE="https://github.com/jakeogh/shell-command-lock"
+EGIT_REPO_URI="https://github.com/jakeogh/shell-command-lock.git"
 
 LICENSE="BSD"
 SLOT="0"
