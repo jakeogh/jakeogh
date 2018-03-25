@@ -30,7 +30,7 @@ KEYWORDS="~amd64 ~x86"
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 #DEPEND="test? ( ${COMMON_DEPS} )"
 
-src_compile() { :; }
+#src_compile() { :; }
 
 src_install() {
 	dodoc README*
