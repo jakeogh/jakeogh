@@ -20,19 +20,8 @@ KEYWORDS="~amd64 ~x86"
 
 #src_compile() { :; }
 
-#src_install() {
+src_install() {
 #	dodoc README*
 #	dobin ${PN}
-#}
-
-#pkg_postinst() {
-#	if [[ -z ${REPLACING_VERSIONS} ]]; then
-#		echo
-#		elog "unfoo can handle far more than just .tar*, but it requires some"
-#		elog "optional packages to do so. For a list, either consult the source"
-#		elog "(less /usr/bin/unfoo), or see http://obsoleet.org/code/unfoo"
-#		elog "To get full support please use USE=-minimal"
-#	elif [[ ${REPLACING_VERSIONS} < 1.0.7 ]]; then
-#		elog "To get full support please use USE=-minimal"
-#	fi
-#}
+	dobin shell-command-lock
+}
