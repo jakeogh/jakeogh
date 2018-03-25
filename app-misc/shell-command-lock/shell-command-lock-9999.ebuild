@@ -20,10 +20,10 @@ KEYWORDS="~amd64 ~x86"
 
 #src_compile() { :; }
 
-src_install() {
-	dodoc README*
-	dobin ${PN}
-}
+#src_install() {
+#	dodoc README*
+#	dobin ${PN}
+#}
 
 #pkg_postinst() {
 #	if [[ -z ${REPLACING_VERSIONS} ]]; then
