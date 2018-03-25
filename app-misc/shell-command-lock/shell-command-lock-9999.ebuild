@@ -23,5 +23,6 @@ DEPEND="sys-apps/coreutils"
 src_install() {
 #	dodoc README*
 	dobin ${PN}
+	dobin ${PN}-test
 #	dobin shell-command-lock
 }
