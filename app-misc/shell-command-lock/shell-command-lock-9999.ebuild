@@ -22,6 +22,6 @@ KEYWORDS="~amd64 ~x86"
 
 src_install() {
 #	dodoc README*
-	dobin ${P}/${PN}
+	dobin ${PN}/${PN}
 #	dobin shell-command-lock
 }
