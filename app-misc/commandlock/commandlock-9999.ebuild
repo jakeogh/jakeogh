@@ -24,5 +24,6 @@ src_install() {
 #	dodoc README*
 	dobin ${PN}
 	dobin ${PN}_test
+	dobin lock
 #	dobin commandlock
 }
