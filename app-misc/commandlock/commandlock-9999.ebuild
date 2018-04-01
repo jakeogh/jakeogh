@@ -7,8 +7,8 @@ EAPI=6
 inherit git-r3
 
 DESCRIPTION="Prevent identical bash/sh command lines from executing concurrently."
-HOMEPAGE="https://github.com/jakeogh/shell-command-lock"
-EGIT_REPO_URI="https://github.com/jakeogh/shell-command-lock.git"
+HOMEPAGE="https://github.com/jakeogh/commandlock"
+EGIT_REPO_URI="https://github.com/jakeogh/commandlock.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -23,6 +23,6 @@ DEPEND="sys-apps/coreutils"
 src_install() {
 #	dodoc README*
 	dobin ${PN}
-	dobin ${PN}-test
-#	dobin shell-command-lock
+	dobin ${PN}_test
+#	dobin commandlock
 }
