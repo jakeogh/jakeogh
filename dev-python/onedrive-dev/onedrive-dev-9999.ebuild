@@ -18,6 +18,7 @@ IUSE=""
 LICENSE="MIT"
 
 DEPEND="
+dev-python/dbus-python
 "
 
 RDEPEND="${DEPEND}"
