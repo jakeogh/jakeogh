@@ -9,7 +9,8 @@ inherit bash-completion-r1 distutils-r1 git-r3
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://rg3.github.com/youtube-dl/"
 #EGIT_REPO_URI="/home/user/_repos/youtube-dl"
-EGIT_REPO_URI="https://github.com/Tatsh/youtube-dl/tree/force-ipv4-ipv6-fix"
+EGIT_REPO_URI="https://github.com/Tatsh/youtube-dl"
+EGIT_BRANCH="force-ipv4-ipv6-fix"
 
 LICENSE="public-domain"
 SLOT="0"
