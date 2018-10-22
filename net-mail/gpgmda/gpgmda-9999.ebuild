@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
-#PYTHON_COMPAT=( python{3_4,3_5} )
-PYTHON_COMPAT=( python3_4 )
+PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
+#PYTHON_COMPAT=( python3_4 )
 
 inherit distutils-r1
 inherit git-r3
@@ -36,6 +35,6 @@ RDEPEND="
 "
 
 python_install_all() {
-    local DOCS=( README.md )
-    distutils-r1_python_install_all
+local DOCS=( README.md )
+distutils-r1_python_install_all
 }
