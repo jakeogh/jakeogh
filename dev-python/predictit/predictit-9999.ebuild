@@ -25,9 +25,10 @@ DEPEND="
 
 RDEPEND="
 	${DEPEND}
-	dev-python/pyside:2
 	x11-misc/dmenu
 "
+
+#	dev-python/pyside:2
 
 python_install_all() {
 	local DOCS=( README.md )
