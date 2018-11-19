@@ -19,6 +19,7 @@ IUSE=""
 DEPEND="
 	dev-python/sh
 	net-misc/youtube-dl
+	dev-db/redis
 "
 
 RDEPEND="${DEPEND}"
