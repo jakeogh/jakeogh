@@ -20,6 +20,9 @@ LICENSE="MIT"
 DEPEND="dev-python/psutil
 dev-python/requests
 dev-python/pydot
+dev-db/sadisplay
+dev-python/pycallgraph
+dev-python/redis-py
 "
 
 RDEPEND="${DEPEND}"
