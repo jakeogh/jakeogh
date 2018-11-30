@@ -29,9 +29,9 @@ DEPEND="
 "
 RDEPEND="
 	!sci-chemistry/surf
+	x11-misc/dmenu-xyw
 	${COMMON_DEPEND}
 	!savedconfig? (
-		>=x11-misc/dmenu-4.7
 		net-misc/curl
 		x11-apps/xprop
 		x11-terms/st
