@@ -21,6 +21,7 @@ COMMON_DEPEND="
 	x11-libs/gtk+:3
 	x11-libs/libX11
 	dev-libs/uriparser
+	dev-libs/libpsl
 "
 DEPEND="
 	${COMMON_DEPEND}
