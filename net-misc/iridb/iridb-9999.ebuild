@@ -36,6 +36,7 @@ DEPEND="
 	dev-python/beautifulsoup:*
 	dev-python/requests-cache
 	dev-python/requests-file
+	dev-python/sqlalchemy-utils
 "
 #	dev-python/ghost
 
