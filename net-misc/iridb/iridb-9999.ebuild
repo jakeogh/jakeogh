@@ -38,6 +38,7 @@ DEPEND="
 	dev-python/requests-file
 	dev-python/sqlalchemy-utils
 	dev-db/redis
+	dev-python/anormbookmarker
 "
 #	dev-python/ghost
 
