@@ -37,6 +37,7 @@ DEPEND="
 	dev-python/requests-cache
 	dev-python/requests-file
 	dev-python/sqlalchemy-utils
+	dev-db/redis
 "
 #	dev-python/ghost
 
