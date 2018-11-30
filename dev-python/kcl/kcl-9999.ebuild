@@ -19,6 +19,7 @@ LICENSE="MIT"
 
 DEPEND="dev-python/psutil
 dev-python/requests
+dev-python/pydot
 "
 
 RDEPEND="${DEPEND}"
