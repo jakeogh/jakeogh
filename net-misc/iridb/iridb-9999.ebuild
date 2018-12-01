@@ -40,6 +40,7 @@ DEPEND="
 	dev-db/redis
 	dev-python/redis-py
 	dev-python/anormbookmarker
+	dev-db/sadisplay
 "
 #	dev-python/ghost
 
