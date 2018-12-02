@@ -7,7 +7,7 @@ inherit git-r3 savedconfig toolchain-funcs
 DESCRIPTION="fork of suckless.org surf/webkit2"
 HOMEPAGE="https://github.com/jakeogh/glide"
 #EGIT_REPO_URI="/home/cfg/_myapps/glide https://github.com/jakeogh/glide.git"
-EGIT_REPO_URI="/home/cfg/_myapps/glide"
+EGIT_REPO_URI="/home/cfg/_myapps/glide/glide"
 #EGIT_BRANCH="surf-webkit2"
 
 LICENSE="MIT"
