@@ -10,12 +10,14 @@ inherit git-r3
 DESCRIPTION="A highly efficient backup system based on the git packfile format"
 HOMEPAGE="https://bup.github.io/ https://github.com/bup/bup"
 #SRC_URI="https://github.com/bup/bup/archive/${PV}.tar.gz -> ${P}.tar.gz"
-EGIT_REPO_URI="https://github.com/bup/bup.git"
+#EGIT_REPO_URI="https://github.com/bup/bup.git"
+EGIT_REPO_URI="/home/user/_repos/bup"
 
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+doc test web"
+#IUSE="+doc test web"
+IUSE="+doc test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -23,7 +25,6 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/fuse-python[${PYTHON_USEDEP}]
 	dev-python/pylibacl[${PYTHON_USEDEP}]
 	dev-python/pyxattr[${PYTHON_USEDEP}]
-	web? ( www-servers/tornado[${PYTHON_USEDEP}] )
 	sys-libs/readline:0
 	dev-vcs/git"
 DEPEND="${RDEPEND}
@@ -33,6 +34,9 @@ DEPEND="${RDEPEND}
 	)
 	doc? ( app-text/pandoc )
 "
+
+#	web? ( www-servers/tornado[${PYTHON_USEDEP}] ) #from RDEPEND
+
 
 # unresolved sandbox issues
 RESTRICT="test"
