@@ -22,9 +22,8 @@ DEPEND="
 	dev-python/reportlab
 	dev-python/wxpython
 	dev-python/six
+	dev-python/objectlistview
 "
-
-#objectlistview
 
 RDEPEND="${DEPEND}"
 
