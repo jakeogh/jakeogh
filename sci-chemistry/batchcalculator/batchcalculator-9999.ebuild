@@ -8,8 +8,8 @@ inherit distutils-r1
 
 DESCRIPTION="Batch Calculator for Zeolite synthesis"
 HOMEPAGE="https://github.com/lmmentel/batchcalculator"
-EHG_REPO_URI="https://github.com/lmmentel/batchcalculator.git"
-inherit mercurial
+EGIT_REPO_URI="https://github.com/lmmentel/batchcalculator.git"
+inherit git-r3
 
 LICENSE="MIT"
 SLOT="0"

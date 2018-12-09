@@ -8,8 +8,8 @@ inherit distutils-r1
 
 DESCRIPTION="Wrapper around the wx.ListCtrl that makes it easier to use"
 HOMEPAGE="https://bitbucket.org/wbruhin/objectlistview"
-EGIT_REPO_URI="https://wbruhin@bitbucket.org/wbruhin/objectlistview"
-inherit git-r3
+EHG_REPO_URI="https://wbruhin@bitbucket.org/wbruhin/objectlistview"
+inherit mercurial
 
 LICENSE="MIT"
 SLOT="0"
