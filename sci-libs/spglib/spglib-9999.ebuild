@@ -14,11 +14,9 @@ EGIT_REPO_URI="https://github.com/atztogo/spglib.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="openmp"
+IUSE=""
 
-PATCHES=(
-	"${FILESDIR}/spglib-openmp.patch"
-)
+PATCHES=()
 
 src_prepare() {
 	default
