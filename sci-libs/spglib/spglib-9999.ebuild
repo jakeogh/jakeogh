@@ -9,7 +9,6 @@ MY_PV=$(get_version_component_range 1-2 ${PV})
 
 DESCRIPTION="Spglib is a C library for finding and handling crystal symmetries"
 HOMEPAGE="http://spglib.sourceforge.net/"
-#SRC_URI="http://downloads.sourceforge.net/project/${PN}/${PN}/${PN}-${MY_PV}/${P}.tar.gz"
 EGIT_REPO_URI="https://github.com/atztogo/spglib.git"
 
 LICENSE="BSD"
@@ -18,7 +17,7 @@ KEYWORDS="~amd64"
 IUSE="openmp"
 
 PATCHES=(
-	"${FILESDIR}/${P}-openmp.patch"
+	"${FILESDIR}/spglib-openmp.patch"
 )
 
 src_prepare() {
