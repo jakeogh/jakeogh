@@ -16,16 +16,13 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-PATCHES=()
-
 src_prepare() {
 	default
 	eautoreconf
 }
 
 src_configure() {
-	econf --disable-static \
-		$(use_enable openmp)
+	econf --disable-static
 }
 
 src_install() {
