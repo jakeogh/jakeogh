@@ -18,7 +18,7 @@ IUSE="debug doc ipoe postgres radius shaper snmp valgrind"
 RDEPEND="postgres? ( dev-db/postgresql:* )
 		snmp? ( net-analyzer/net-snmp )
 		dev-libs/libpcre
-		dev-libs/libressl:0"
+		dev-libs/libressl"
 DEPEND="${RDEPEND}
 		valgrind? ( dev-util/valgrind )"
 PDEPEND="net-dialup/ppp-scripts"
