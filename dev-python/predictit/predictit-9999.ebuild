@@ -19,8 +19,9 @@ IUSE=""
 DEPEND="
 	dev-python/matplotlib
 	dev-python/requests
-	dev-db/postgresql
+	dev-db/postgresql:*
 	dev-python/httplib2
+	dev-python/dateparser
 "
 
 RDEPEND="
