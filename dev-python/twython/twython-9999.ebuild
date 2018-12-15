@@ -10,7 +10,7 @@ inherit distutils-r1 git-r3
 DESCRIPTION="An easy (and up to date) way to access Twitter data with Python"
 HOMEPAGE="https://github.com/ryanmcgrath/twython"
 #SRC_URI="mirror://pypi/t/${PN}/${P}.tar.gz"
-EGIT_SRC_URI="https://github.com/ryanmcgrath/twython.git"
+EGIT_REPO_URI="https://github.com/ryanmcgrath/twython.git"
 
 SLOT="0"
 LICENSE="MIT"
