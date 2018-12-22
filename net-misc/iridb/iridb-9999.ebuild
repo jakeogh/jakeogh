@@ -41,6 +41,7 @@ DEPEND="
 	dev-python/redis-py
 	dev-python/anormbookmarker
 	dev-db/sadisplay
+	dev-python/python-magic
 "
 #	dev-python/ghost
 
