@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit distutils-r1
 inherit git-r3
@@ -10,7 +10,8 @@ inherit git-r3
 DESCRIPTION="Webkit based scriptable web browser for python."
 HOMEPAGE="https://github.com/jeanphix/Ghost.py"
 #EGIT_REPO_URI="https://github.com/jeanphix/Ghost.py.git"
-EGIT_REPO_URI="https://github.com/jakeogh/Ghost.py.git"
+#EGIT_REPO_URI="https://github.com/jakeogh/Ghost.py.git"
+EGIT_REPO_URI="https://github.com/EvaSDK/Ghost.py"
 #EGIT_BRANCH="dev"
 #EGIT_SUBMODULES=("tests")
 EGIT_SUBMODULES=()
@@ -20,15 +21,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 #RESTRICT="test"
+
 DEPEND="
-	dev-python/pyside:0
+	dev-python/PyQt5[${PYTHON_USEDEP}]
 	dev-python/xvfbwrapper
 "
 
 RDEPEND="${DEPEND}"
 
 python_prepare_all() {
-	rm -r ${WORKDIR}/ghost-9999/tests/
+	rm -r "${WORKDIR}/ghost-9999/tests/"
 	distutils-r1_python_prepare_all
 }
 
