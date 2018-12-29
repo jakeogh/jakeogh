@@ -23,9 +23,10 @@ IUSE="doc"
 #RESTRICT="test"
 
 DEPEND="
-	dev-python/PyQt5[gui,network,webkit,widgets,printsupport,${PYTHON_USEDEP}]
+	dev-python/PyQt5[gui,webkit,widgets,printsupport,${PYTHON_USEDEP}]
 	dev-python/xvfbwrapper
 "
+#	dev-python/PyQt5[gui,network,webkit,widgets,printsupport,${PYTHON_USEDEP}]
 
 RDEPEND="${DEPEND}"
 
