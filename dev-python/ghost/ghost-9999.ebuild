@@ -16,14 +16,14 @@ EGIT_REPO_URI="https://github.com/EvaSDK/Ghost.py"
 #EGIT_SUBMODULES=("tests")
 EGIT_SUBMODULES=()
 
-LICENSE=""
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="doc"
 #RESTRICT="test"
 
 DEPEND="
-	dev-python/PyQt5[${PYTHON_USEDEP}]
+	dev-python/PyQt5[gui,network,webkit,widgets,printsupport,${PYTHON_USEDEP}]
 	dev-python/xvfbwrapper
 "
 
