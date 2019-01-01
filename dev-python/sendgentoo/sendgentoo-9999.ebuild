@@ -18,6 +18,7 @@ IUSE=""
 LICENSE="MIT"
 
 DEPEND="dev-python/click
+dev-python/python-gnupg
 "
 
 RDEPEND="${DEPEND}"
