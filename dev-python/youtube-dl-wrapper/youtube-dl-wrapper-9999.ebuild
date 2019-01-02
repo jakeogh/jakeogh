@@ -20,6 +20,7 @@ DEPEND="
 	dev-python/sh
 	net-misc/youtube-dl
 	dev-db/redis
+	x11-misc/xclip
 "
 
 RDEPEND="${DEPEND}"

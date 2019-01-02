@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/kcl
+dev-python/click
 "
 
 RDEPEND="${DEPEND}"

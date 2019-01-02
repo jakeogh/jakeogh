@@ -22,6 +22,9 @@ DEPEND="
 	dev-db/postgresql:*
 	dev-python/httplib2
 	dev-python/dateparser
+	dev-python/pygobject
+	dev-python/pyinotify
+	net-misc/iridb
 "
 
 RDEPEND="

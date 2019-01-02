@@ -23,7 +23,11 @@ dev-python/pydot
 dev-db/sadisplay
 dev-python/pycallgraph
 dev-python/redis-py
+dev-python/sqlalchemy-utils
 "
+
+#dev-python/python-magic # file has a python flag. will that work instead?
+
 
 RDEPEND="${DEPEND}"
 

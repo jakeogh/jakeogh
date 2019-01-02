@@ -17,8 +17,13 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 LICENSE="MIT"
 
+# parted likes dmidecode, should send a patch for the ebuild
 DEPEND="dev-python/click
-dev-python/python-gnupg
+sys-fs/dosfstools
+sys-block/parted
+sys-apps/dmidecode
+sys-apps/pv
+dev-python/kcl
 "
 
 RDEPEND="${DEPEND}"
