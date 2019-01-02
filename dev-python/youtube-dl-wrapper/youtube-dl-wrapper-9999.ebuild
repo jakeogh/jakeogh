@@ -21,6 +21,7 @@ DEPEND="
 	net-misc/youtube-dl
 	dev-db/redis
 	x11-misc/xclip
+	dev-python/click
 "
 
 RDEPEND="${DEPEND}"
