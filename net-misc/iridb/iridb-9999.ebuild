@@ -44,6 +44,7 @@ DEPEND="
 	dev-python/python-magic
 	app-backup/bup
 	dev-python/psycopg
+	app-text/tree
 "
 #	dev-python/ghost
 
