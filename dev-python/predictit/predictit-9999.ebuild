@@ -25,6 +25,7 @@ DEPEND="
 	dev-python/pygobject
 	dev-python/pyinotify
 	net-misc/iridb
+	dev-python/twitter
 "
 
 RDEPEND="
