@@ -42,6 +42,7 @@ DEPEND="
 	dev-python/anormbookmarker
 	dev-db/sadisplay
 	dev-python/python-magic
+	app-backup/bup
 "
 #	dev-python/ghost
 
