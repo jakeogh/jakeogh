@@ -26,6 +26,7 @@ DEPEND="
 	dev-python/pyinotify
 	net-misc/iridb
 	dev-python/twitter
+	app-misc/beep
 "
 
 RDEPEND="
