@@ -24,6 +24,7 @@ sys-block/parted
 sys-apps/dmidecode
 sys-apps/pv
 dev-python/kcl
+dev-tcltk/expect
 "
 
 RDEPEND="${DEPEND}"
