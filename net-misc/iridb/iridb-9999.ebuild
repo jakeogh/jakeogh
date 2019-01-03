@@ -53,5 +53,6 @@ RDEPEND="
 
 python_install_all() {
 	local DOCS=( README.md )
+	mkdir /var/tmp/iridb || die
 	distutils-r1_python_install_all
 }
