@@ -43,6 +43,7 @@ DEPEND="
 	dev-db/sadisplay
 	dev-python/python-magic
 	app-backup/bup
+	dev-python/psycopg
 "
 #	dev-python/ghost
 
