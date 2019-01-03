@@ -22,6 +22,7 @@ DEPEND="
 	dev-db/redis
 	x11-misc/xclip
 	dev-python/click
+	dev-python/smartmove
 "
 
 RDEPEND="${DEPEND}"
