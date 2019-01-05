@@ -27,14 +27,13 @@ DEPEND="
 	net-misc/iridb
 	dev-python/twitter
 	app-misc/beep
+	dev-python/regex
 "
 
 RDEPEND="
 	${DEPEND}
 	x11-misc/dmenu
 "
-
-#	dev-python/pyside:2
 
 python_install_all() {
 	local DOCS=( README.md )
