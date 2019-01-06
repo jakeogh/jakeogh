@@ -46,6 +46,7 @@ DEPEND="
 	dev-python/psycopg
 	app-text/tree
 	dev-python/pudb
+	dev-python/pillow
 "
 #	dev-python/ghost
 
