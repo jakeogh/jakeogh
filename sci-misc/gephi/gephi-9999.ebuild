@@ -13,10 +13,10 @@ EGIT_REPO_URI="https://github.com/gephi/gephi.git"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="x86 amd64"
+KEYWORDS=""
 IUSE=""
 
-DEPEND=">=virtual/jdk-1.8"
+DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND="${DEPEND}"
 
 function src_unpack {
