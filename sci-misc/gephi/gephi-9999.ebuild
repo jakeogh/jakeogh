@@ -20,7 +20,7 @@ DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND="${DEPEND}"
 
 function src_unpack {
- if [ "${A}" != "" ]; then
+ if [ ${A} != "" ]; then
   unpack ${A}
  fi
 }
