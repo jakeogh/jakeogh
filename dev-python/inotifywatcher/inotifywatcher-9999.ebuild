@@ -8,8 +8,8 @@ inherit distutils-r1
 inherit git-r3
 
 DESCRIPTION="Report inotify events for a path."
-HOMEPAGE="https://github.com/jakeogh/inotifypublisher"
-EGIT_REPO_URI="/home/cfg/_myapps/inotifypublisher"
+HOMEPAGE="https://github.com/jakeogh/inotifywatcher"
+EGIT_REPO_URI="/home/cfg/_myapps/inotifywatcher"
 
 LICENSE="MIT"
 SLOT="0"
