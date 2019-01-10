@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
+	dev-python/click
 	dev-python/cssselect
 	dev-python/yapsy
 	dev-python/sh
