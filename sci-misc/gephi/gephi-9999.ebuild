@@ -19,19 +19,19 @@ IUSE=""
 DEPEND=">=virtual/jdk-1.8:*"
 RDEPEND="${DEPEND}"
 
-function src_unpack {
- if [ ${A} != "" ]; then
-  unpack ${A}
- fi
-}
+#function src_unpack {
+# if [ ${A} != "" ]; then
+#  unpack ${A}
+# fi
+#}
 
-function src_configure {
- return
-}
-
-function src_compile {
- return
-}
+#function src_configure {
+# return
+#}
+#
+#function src_compile {
+# return
+#}
 
 function src_install {
         local INSTDIR="/opt/${PN}"
@@ -48,11 +48,11 @@ function src_install {
 }
 
 pkg_postinst(){
-        fdo-mime_desktop_database_update
-        fdo-mime_mime_database_update
+    fdo-mime_desktop_database_update
+    fdo-mime_mime_database_update
 }
 
 pkg_postrm() {
-        fdo-mime_desktop_database_update
-        fdo-mime_mime_database_update
+    fdo-mime_desktop_database_update
+    fdo-mime_mime_database_update
 }
