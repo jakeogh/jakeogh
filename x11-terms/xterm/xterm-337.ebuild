@@ -94,5 +94,6 @@ src_install() {
 	fperms 0755 /usr/bin/xterm
 
 	# restore the navy blue
-	sed -i -e "s:blue2$:blue:" "${D}${DEFAULTS_DIR}"/usr/share/X11/app-defaults/XTerm-color || die
+	#sed -i -e "s:blue2$:blue:" "${D}${DEFAULTS_DIR}"/usr/share/X11/app-defaults/XTerm-color || die
+	sed -i -e "s:blue2$:blue:" "${D}${DEFAULTS_DIR}"/XTerm-color || die
 }
