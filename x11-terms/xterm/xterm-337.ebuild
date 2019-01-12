@@ -67,7 +67,7 @@ src_configure() {
 		--enable-wide-chars
 		--libdir="${EPREFIX}"/etc
 		--with-app-defaults="${DEFAULTS_DIR}"
-		$(use_with utempter)
+		--without-utempter
 		--with-x
 		$(use_enable openpty)
 		$(use_enable toolbar)
