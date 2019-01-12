@@ -8,12 +8,12 @@ inherit distutils-r1
 inherit git-r3
 
 DESCRIPTION="get financial data from iridb"
-HOMEPAGE="https://github.com/jakeogh/financial_data"
+HOMEPAGE="https://github.com/jakeogh"
 EGIT_REPO_URI="/home/cfg/_myapps/financial_data"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="net-misc/iridb"
