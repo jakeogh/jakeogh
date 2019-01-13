@@ -18,6 +18,7 @@ KEYWORDS="~amd64 ~x86"
 DEPEND="sys-apps/coreutils
 dev-util/splint
 dev-util/shellcheck
+dev-python/pylint
 "
 
 #src_compile() { :; }
