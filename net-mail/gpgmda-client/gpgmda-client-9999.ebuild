@@ -38,5 +38,6 @@ RDEPEND="
 python_install_all() {
 local DOCS=( README.md )
 dobin nottoomuch-addresses.sh
+dobin gpgmda-client-make-alot-config.sh
 distutils-r1_python_install_all
 }
