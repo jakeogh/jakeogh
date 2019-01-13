@@ -18,16 +18,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	app-crypt/gpgme
-	dev-python/pygpgme
-	dev-python/configobj
-	dev-python/python-magic
-	dev-python/twisted
-	dev-python/urwidtrees
-	net-mail/notmuch
-	www-client/lynx
-	dev-python/pudb
-	mail-client/alot
+	app-shells/bash
+	app-crypt/gnupg
+	virtual/ssh
+	app-arch/tar
+	sys-apps/coreutils
+	app-admin/sudo
 "
 
 RDEPEND="
