@@ -28,6 +28,7 @@ DEPEND="
 	www-client/lynx
 	dev-python/pudb
 	mail-client/alot
+	mail-filter/afew
 "
 
 RDEPEND="
