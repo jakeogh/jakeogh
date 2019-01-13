@@ -18,7 +18,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	app-shells/bash
+	app-shells/bash:*
 	app-crypt/gnupg
 	virtual/ssh
 	app-arch/tar
