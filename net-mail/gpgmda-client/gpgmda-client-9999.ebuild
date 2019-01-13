@@ -40,5 +40,6 @@ local DOCS=( README.md )
 dobin nottoomuch-addresses.sh
 dobin gpgmda-client-make-alot-config.sh
 dobin gpgmda-client-make-alot-theme.sh
+dobin gpgmda-client-send.sh
 distutils-r1_python_install_all
 }
