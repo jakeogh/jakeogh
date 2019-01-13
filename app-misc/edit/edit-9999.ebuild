@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 DEPEND="sys-apps/coreutils
 dev-util/splint
+dev-util/shellcheck
 "
 
 #src_compile() { :; }
