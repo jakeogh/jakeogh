@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1 virtualx
 
 if [[ ${PV} == 9999* ]] ; then
-	EGIT_REPO_URI="/home/cfg/_myapps/qtile https://github.com/qtile/qtile.git"
+	EGIT_REPO_URI="/home/user/_myapps/qtile https://github.com/qtile/qtile.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/qtile/qtile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -26,24 +26,33 @@ RDEPEND="
 	x11-libs/cairo[xcb]
 	x11-libs/pango
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pygobject[${PYTHON_USEDEP}]
 	>=dev-python/cairocffi-0.7[${PYTHON_USEDEP}]
 	>=dev-python/cffi-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
-	>=dev-python/xcffib-0.3.2[${PYTHON_USEDEP}]
+	>=dev-python/xcffib-0.5.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' 'python2*')
 "
 DEPEND="${RDEPEND}
 	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		x11-base/xorg-server[kdrive]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/pytest-cov[${PYTHON_USEDEP}]
+		dev-python/xvfbwrapper[${PYTHON_USEDEP}]
+		x11-base/xorg-server[xephyr]
+		x11-apps/xeyes
+		x11-apps/xcalc
+		x11-apps/xclock
 	)
 "
 
+# display retry backoff slowness and failures 
 RESTRICT="test"
 
+PATCHES=( "${FILESDIR}"/${PN}-0.12.0-tests.patch )
+
 python_test() {
-	VIRTUALX_COMMAND="nosetests" virtualmake
+	# force usage of built module
+	rm -rf "${S}"/libqtile || die
+	PYTHONPATH="${BUILD_DIR}/lib" py.test -v "${S}"/test || die "tests failed under ${EPYTHON}"
 }
 
 python_install_all() {
