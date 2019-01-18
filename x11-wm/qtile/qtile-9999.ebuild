@@ -7,7 +7,8 @@ PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
 inherit distutils-r1 virtualx
 
 if [[ ${PV} == 9999* ]] ; then
-	EGIT_REPO_URI="/home/user/_myapps/qtile https://github.com/qtile/qtile.git"
+	EGIT_REPO_URI="/home/user/_myapps/qtile"
+	#EGIT_REPO_URI="/home/user/_myapps/qtile https://github.com/qtile/qtile.git"
 	inherit git-r3
 else
 	SRC_URI="https://github.com/qtile/qtile/archive/v${PV}.tar.gz -> ${P}.tar.gz"
