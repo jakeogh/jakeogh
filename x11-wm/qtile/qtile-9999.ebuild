@@ -60,7 +60,7 @@ python_install() {
 	cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
 #	eapply_user
 	distutils-r1_python_install
-#}
+}
 
 python_install_all() {
 	local DOCS=( CHANGELOG README.rst )
