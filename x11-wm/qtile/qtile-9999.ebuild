@@ -61,6 +61,9 @@ python_test() {
 #}
 
 python_install_all() {
+	#ewarn BUG: cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${BUILDDIR}"/libqtile/scripts
+	ewarn BUG: cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
+	ewarn BUG: cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
 	local DOCS=( CHANGELOG README.rst )
 	distutils-r1_python_install_all
 
@@ -69,6 +72,4 @@ python_install_all() {
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
-	ewarn BUG: "${WORKDIR}"/"${P}"/scripts/ffibuild "${BUILDDIR}"/libqtile/scripts
-	cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${BUILDDIR}"/libqtile/scripts
 }
