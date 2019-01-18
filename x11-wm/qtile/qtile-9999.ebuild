@@ -66,4 +66,5 @@ python_install_all() {
 	newexe "${FILESDIR}"/${PN}-session ${PN}
 	dobin "${WORKDIR}"/scripts/ffibuild ${PN}/scripts/
 
+
 }
