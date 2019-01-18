@@ -58,8 +58,8 @@ python_test() {
 python_install() {
 	ewarn BUG: cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
 	ewarn "${D}"
+	/bin/ls -alh "${D}" > /home/user/ebuild_issue
 	cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
-#	eapply_user
 	distutils-r1_python_install
 }
 
