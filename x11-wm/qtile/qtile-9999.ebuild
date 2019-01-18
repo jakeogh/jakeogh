@@ -55,10 +55,10 @@ python_test() {
 	PYTHONPATH="${BUILD_DIR}/lib" py.test -v "${S}"/test || die "tests failed under ${EPYTHON}"
 }
 
-src_prepare() {
-	cp "${WORKDIR}"/scripts/ffibuild "${WORKDIR}"/libqtile/scripts/ffibuild
-	eapply_user
-}
+#src_prepare() {
+#	cp "${WORKDIR}"/scripts/ffibuild "${WORKDIR}"/libqtile/scripts/ffibuild
+#	eapply_user
+#}
 
 python_install_all() {
 	local DOCS=( CHANGELOG README.rst )
@@ -69,5 +69,5 @@ python_install_all() {
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
-#	dobin "${WORKDIR}"/"${P}"/scripts/ffibuild scripts/
+	cp "${WORKDIR}"/"${P}"/scripts/ffibuild /usr/lib64/python3.6/site-packages/libqtile/scripts
 }
