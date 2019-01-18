@@ -55,6 +55,10 @@ python_test() {
 	PYTHONPATH="${BUILD_DIR}/lib" py.test -v "${S}"/test || die "tests failed under ${EPYTHON}"
 }
 
+src_prepare() {
+	cp "${WORKDIR}"/scripts/ffibuild "${WORKDIR}"/libqtile/scripts/ffibuild
+}
+
 python_install_all() {
 	local DOCS=( CHANGELOG README.rst )
 	distutils-r1_python_install_all
@@ -64,7 +68,5 @@ python_install_all() {
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
-	dobin "${WORKDIR}"/"${P}"/scripts/ffibuild scripts/
-
-
+#	dobin "${WORKDIR}"/"${P}"/scripts/ffibuild scripts/
 }
