@@ -64,5 +64,5 @@ python_install_all() {
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
-	dobin "${FILESDIR}"/scripts/ffibuild ${PN}/scripts/
+	dobin "${BUILD_DIR}"/scripts/ffibuild ${PN}/scripts/
 }
