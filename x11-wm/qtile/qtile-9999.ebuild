@@ -69,5 +69,5 @@ python_install_all() {
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
-	cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild /usr/lib64/python3.6/site-packages/libqtile/scripts
+	cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${BUILDDIR}"/libqtile/scripts
 }
