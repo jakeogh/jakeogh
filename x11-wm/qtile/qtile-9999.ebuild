@@ -57,6 +57,7 @@ python_test() {
 
 src_prepare() {
 	cp "${WORKDIR}"/scripts/ffibuild "${WORKDIR}"/libqtile/scripts/ffibuild
+	eapply_user
 }
 
 python_install_all() {
