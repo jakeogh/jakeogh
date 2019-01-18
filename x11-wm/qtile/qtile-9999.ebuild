@@ -56,11 +56,9 @@ python_test() {
 }
 
 src_prepare() {
-	#ewarn BUG: cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${BUILDDIR}"/libqtile/scripts
+	eapply_user
 	ewarn BUG: cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
 	cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
-#	cp "${WORKDIR}"/scripts/ffibuild "${WORKDIR}"/libqtile/scripts/ffibuild
-#	eapply_user
 }
 
 python_install_all() {
