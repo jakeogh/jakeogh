@@ -19,7 +19,7 @@ LICENSE="MIT"
 
 DEPEND="dev-python/click
 dev-python/netifaces
-sys-apps/pick
+dev-python/pick
 "
 
 RDEPEND="${DEPEND}"
