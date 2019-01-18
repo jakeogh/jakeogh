@@ -55,13 +55,13 @@ python_test() {
 	PYTHONPATH="${BUILD_DIR}/lib" py.test -v "${S}"/test || die "tests failed under ${EPYTHON}"
 }
 
-python_install() {
-	ewarn BUG: cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
-	ewarn "${D}"
-	/bin/ls -alh "${D}"
-	cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
-	distutils-r1_python_install
-}
+#python_install() {
+#	ewarn BUG: cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
+#	ewarn "${D}"
+#	/bin/ls -alh "${D}"
+#	cp -v "${WORKDIR}"/"${P}"/scripts/ffibuild "${WORKDIR}"/"${P}"/libqtile/scripts/ffibuild
+#	distutils-r1_python_install
+#}
 
 python_install_all() {
 	local DOCS=( CHANGELOG README.rst )
