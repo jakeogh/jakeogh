@@ -8,7 +8,7 @@ inherit distutils-r1 virtualx
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="/home/user/_myapps/qtile"
-	EGIT_BRANCH="develop"
+	EGIT_BRANCH="develop-1239"
 	#EGIT_REPO_URI="/home/user/_myapps/qtile https://github.com/qtile/qtile.git"
 	inherit git-r3
 else
