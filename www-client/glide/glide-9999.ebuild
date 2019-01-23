@@ -37,9 +37,9 @@ RDEPEND="
 		x11-terms/st
 	)
 "
-#PATCHES=(
-#	"${FILESDIR}"/${PN}-9999-gentoo.patch
-#)
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-gentoo.patch
+)
 
 pkg_setup() {
 	if ! use savedconfig; then
