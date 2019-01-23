@@ -63,7 +63,7 @@ src_prepare() {
 		/X11LIB =/c\X11LIB = $(shell $(PKG_CONFIG) --libs x11)
 		/GTKINC =/c\GTKINC = $(shell $(PKG_CONFIG) --cflags gtk+-3.0 gcr-3 gthread-2.0 webkit2gtk-4.0)
 		/GTKLIB =/c\GTKLIB = $(shell $(PKG_CONFIG) --libs gtk+-3.0 gcr-3 gthread-2.0 webkit2gtk-4.0)
-		/^LIBS =/c\LIBS = ${X11LIB} ${GTKLIB}
+		/^LIBS =/c\LIBS = $(X11LIB) $(GTKLIB)
 	' config.mk
 }
 
