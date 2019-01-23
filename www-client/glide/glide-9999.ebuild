@@ -52,9 +52,7 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
 	restore_config config.h
-
 	tc-export CC PKG_CONFIG
 
 	sed -i '
