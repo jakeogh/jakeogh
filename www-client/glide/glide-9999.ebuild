@@ -8,7 +8,7 @@ DESCRIPTION="fork of suckless.org surf/webkit2"
 HOMEPAGE="https://github.com/jakeogh/glide"
 #EGIT_REPO_URI="/home/cfg/_myapps/glide https://github.com/jakeogh/glide.git"
 EGIT_REPO_URI="/home/cfg/_myapps/glide/glide"
-#EGIT_BRANCH="surf-webkit2"
+EGIT_BRANCH="glide"
 
 LICENSE="MIT"
 SLOT="0"
@@ -21,8 +21,8 @@ COMMON_DEPEND="
 	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
 	x11-libs/libX11
-	dev-libs/uriparser
-	dev-libs/libpsl
+#	dev-libs/uriparser
+#	dev-libs/libpsl
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -33,6 +33,7 @@ RDEPEND="
 	x11-misc/dmenu-xyw
 	${COMMON_DEPEND}
 	!savedconfig? (
+		>=x11-misc/dmenu-4.7
 		net-misc/curl
 		x11-apps/xprop
 		x11-terms/st
