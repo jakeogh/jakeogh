@@ -7,7 +7,7 @@
 -PREFIX = /usr/local
 +PREFIX = /usr
  MANPREFIX = $(PREFIX)/share/man
- LIBPREFIX = $(PREFIX)/lib/surf
+ LIBPREFIX = $(PREFIX)/lib/glide
  
 -X11INC = /usr/X11R6/include
 -X11LIB = /usr/X11R6/lib
@@ -51,7 +51,7 @@
 -	@cp config.def.h $@
 +	cp config.def.h $@
  
- surf: $(OBJ)
+ glide: $(OBJ)
 -	@echo CC -o $@
 -	@$(CC) $(SURF_CFLAGS) -o $@ $(OBJ) $(SURF_LDFLAGS)
 +	$(CC) $(SURF_CFLAGS) -o $@ $(OBJ) $(SURF_LDFLAGS)
@@ -63,18 +63,18 @@
  install: all
  	@echo installing executable file to $(DESTDIR)$(PREFIX)/bin
 -	@mkdir -p $(DESTDIR)$(PREFIX)/bin
--	@cp -f surf $(DESTDIR)$(PREFIX)/bin
--	@chmod 755 $(DESTDIR)$(PREFIX)/bin/surf
+-	@cp -f glide $(DESTDIR)$(PREFIX)/bin
+-	@chmod 755 $(DESTDIR)$(PREFIX)/bin/glide
 +	mkdir -p $(DESTDIR)$(PREFIX)/bin
-+	cp -f surf $(DESTDIR)$(PREFIX)/bin
-+	chmod 755 $(DESTDIR)$(PREFIX)/bin/surf
++	cp -f glide $(DESTDIR)$(PREFIX)/bin
++	chmod 755 $(DESTDIR)$(PREFIX)/bin/glide
  	@echo installing manual page to $(DESTDIR)$(MANPREFIX)/man1
 -	@mkdir -p $(DESTDIR)$(MANPREFIX)/man1
--	@sed "s/VERSION/$(VERSION)/g" < surf.1 > $(DESTDIR)$(MANPREFIX)/man1/surf.1
--	@chmod 644 $(DESTDIR)$(MANPREFIX)/man1/surf.1
+-	@sed "s/VERSION/$(VERSION)/g" < glide.1 > $(DESTDIR)$(MANPREFIX)/man1/glide.1
+-	@chmod 644 $(DESTDIR)$(MANPREFIX)/man1/glide.1
 +	mkdir -p $(DESTDIR)$(MANPREFIX)/man1
-+	sed "s/VERSION/$(VERSION)/g" < surf.1 > $(DESTDIR)$(MANPREFIX)/man1/surf.1
-+	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/surf.1
++	sed "s/VERSION/$(VERSION)/g" < glide.1 > $(DESTDIR)$(MANPREFIX)/man1/glide.1
++	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/glide.1
  
  uninstall:
  	@echo removing executable file from $(DESTDIR)$(PREFIX)/bin
