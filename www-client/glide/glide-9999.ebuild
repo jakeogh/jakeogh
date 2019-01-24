@@ -85,4 +85,14 @@ src_install() {
 	if use tabbed; then
 		dobin glide-open.sh
 	fi
+	local mime_types="text/html;text/xml;application/xhtml+xml;"
+	mime_types+="x-scheme-handler/http;x-scheme-handler/https;" # bug #360797
+	mime_types+="x-scheme-handler/ftp;" # bug #412185
+	mime_types+="x-scheme-handler/mailto;x-scheme-handler/webcal;" # bug #416393
+	make_desktop_entry \
+		glide \
+		"Glide" \
+		glide \
+		"Network;WebBrowser" \
+		"MimeType=${mime_types}\nStartupWMClass=glide"
 }
