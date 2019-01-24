@@ -73,6 +73,10 @@ src_prepare() {
 		/^WEBEXTSRC =/c\WEBEXTSRC = libglide-webext.c common.c
 		/^	$(CC) -shared -Wl,-soname,$@ $(LDFLAGS) -o $@ $< $(WEBEXTLIBS) -lc/c\	$(CC) -shared -Wl,-soname,$@ common.o $(LDFLAGS) -o $@ $< $(WEBEXTLIBS) -lc
 	' Makefile
+
+	sed -i '
+		/^	T>>>tabbed -dn tabbed-glide -r 2 glide/c\	tabbed -k -dn tabbed-glide -r 2 glide
+	' glide-open.sh
 }
 
 src_install() {
