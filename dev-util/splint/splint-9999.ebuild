@@ -16,6 +16,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-maco
 
 DEPEND="
 	sys-devel/flex
+	sys-devel/bison
 "
 
 src_prepare() {
