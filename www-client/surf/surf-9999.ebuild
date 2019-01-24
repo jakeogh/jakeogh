@@ -51,22 +51,24 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
 	restore_config config.h
-
 	tc-export CC PKG_CONFIG
 
 	sed -i '
 		s#/usr/local#/usr#
 		s# -I${X11INC}# ${X11INC}#
-		/X11INC =/c\X11INC = $(shell $(PKG_CONFIG) --cflags x11)
-		/X11LIB =/c\X11LIB = $(shell $(PKG_CONFIG) --libs x11)
-		/GTKINC =/c\GTKINC = $(shell $(PKG_CONFIG) --cflags gtk+-3.0 gcr-3 gthread-2.0 webkit2gtk-4.0)
-		/GTKLIB =/c\GTKLIB = $(shell $(PKG_CONFIG) --libs gtk+-3.0 gcr-3 gthread-2.0 webkit2gtk-4.0)
-		/WEBEXTINC =/c\WEBEXTINC = $(shell $(PKG_CONFIG) --cflags webkit2gtk-4.0 webkit2gtk-web-extension-4.0)
-		/WEBEXTLIBS =/c\WEBEXTLIBS = $(shell $(PKG_CONFIG) --libs webkit2gtk-4.0 webkit2gtk-web-extension-4.0)
+		/^X11INC =/c\X11INC = $(shell $(PKG_CONFIG) --cflags x11)
+		/^X11LIB =/c\X11LIB = $(shell $(PKG_CONFIG) --libs x11)
+		/^GTKINC =/c\GTKINC = $(shell $(PKG_CONFIG) --cflags gtk+-3.0 gcr-3 gthread-2.0 webkit2gtk-4.0)
+		/^GTKLIB =/c\GTKLIB = $(shell $(PKG_CONFIG) --libs gtk+-3.0 gcr-3 gthread-2.0 webkit2gtk-4.0)
+		/^WEBEXTINC =/c\WEBEXTINC = $(shell $(PKG_CONFIG) --cflags webkit2gtk-4.0 webkit2gtk-web-extension-4.0)
+		/^WEBEXTLIBS =/c\WEBEXTLIBS = $(shell $(PKG_CONFIG) --libs webkit2gtk-4.0 webkit2gtk-web-extension-4.0)
 		/^LIBS =/c\LIBS = $(X11LIB) $(GTKLIB)
 	' config.mk
+
+	sed -i '
+		/^WEBEXTSRC =/c\WEBEXTSRC = libsurf-webext.c common.c
+	' Makefile
 }
 
 src_install() {
