@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://git.suckless.org/surf"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="tabbed"
 
 COMMON_DEPEND="
 	dev-libs/glib:2
@@ -30,6 +30,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	x11-apps/xprop
 	>=x11-misc/dmenu-4.7
+	tabbed? >=x11-misc/tabbed-0.6
 	!savedconfig? (
 		net-misc/curl
 		x11-terms/st
