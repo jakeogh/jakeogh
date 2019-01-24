@@ -68,7 +68,7 @@ src_prepare() {
 	' config.mk
 
 	sed -i '
-		/^WEBEXTSRC =/c\WEBEXTSRC = libsurf-webext.c common.c
+		/^WEBEXTSRC =/c\WEBEXTSRC = libglide-webext.c common.c
 		/^	$(CC) -shared -Wl,-soname,$@ $(LDFLAGS) -o $@ $< $(WEBEXTLIBS) -lc/c\	$(CC) -shared -Wl,-soname,$@ common.o $(LDFLAGS) -o $@ $< $(WEBEXTLIBS) -lc
 	' Makefile
 }
