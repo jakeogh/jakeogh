@@ -10,7 +10,7 @@ EGIT_REPO_URI="https://git.suckless.org/surf"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="tabbed"
+KEYWORDS=""
 
 COMMON_DEPEND="
 	dev-libs/glib:2
