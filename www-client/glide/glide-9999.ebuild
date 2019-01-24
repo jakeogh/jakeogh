@@ -75,7 +75,7 @@ src_prepare() {
 	' Makefile
 
 	sed -i '
-		/^	tabbed -dn tabbed-glide -r 2 glide -e '' "$uri" >"$xidfile" \/c\	tabbed -k -dn tabbed-glide -r 2 glide -e '' "$uri" >"$xidfile" \
+		s#tabbed -dn tabbed-glide -r 2 glide#tabbed -k -dn tabbed-glide -r 2 glide#
 	' glide-open.sh
 }
 
