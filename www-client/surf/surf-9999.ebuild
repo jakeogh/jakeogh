@@ -77,5 +77,7 @@ src_prepare() {
 src_install() {
 	default
 	save_config config.h
-	tabbed? ( dobin surf-launch.sh )
+	if use tabbed; then
+		dobin surf-launch.sh
+	fi
 }
