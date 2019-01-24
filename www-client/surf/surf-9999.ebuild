@@ -78,6 +78,6 @@ src_install() {
 	default
 	save_config config.h
 	if use tabbed; then
-		dobin surf-launch.sh
+		dobin surf-open.sh
 	fi
 }
