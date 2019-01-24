@@ -77,4 +77,5 @@ src_prepare() {
 src_install() {
 	default
 	save_config config.h
+	tabbed? ( dobin surf-launch.sh )
 }
