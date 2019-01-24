@@ -12,6 +12,7 @@ EGIT_BRANCH="glide"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
+IUSE="tabbed"
 
 COMMON_DEPEND="
 	dev-libs/glib:2
@@ -31,6 +32,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	x11-apps/xprop
 	>=x11-misc/dmenu-4.7
+	tabbed? ( >=x11-misc/tabbed-0.6 )
 	!savedconfig? (
 		net-misc/curl
 		x11-terms/st
@@ -76,4 +78,7 @@ src_prepare() {
 src_install() {
 	default
 	save_config config.h
+	if use tabbed; then
+		dobin glide-open.sh
+	fi
 }
