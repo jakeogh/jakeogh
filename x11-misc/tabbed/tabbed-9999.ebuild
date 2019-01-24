@@ -15,7 +15,7 @@ IUSE=""
 
 RDEPEND="x11-libs/libX11"
 DEPEND="
-	x11-proto/xproto
+	x11-base/xorg-proto
 	${RDEPEND}
 "
 
