@@ -75,7 +75,7 @@ src_prepare() {
 	' Makefile
 
 	sed -i '
-		/^	T>>>tabbed -dn tabbed-glide -r 2 glide/c\	tabbed -k -dn tabbed-glide -r 2 glide
+		/^	tabbed -dn tabbed-glide -r 2 glide/c\	tabbed -k -dn tabbed-glide -r 2 glide
 	' glide-open.sh
 }
 
