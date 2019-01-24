@@ -19,7 +19,7 @@ DEPEND="
 "
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.1.2-musl.patch
+	elibc_musl? epatch "${FILESDIR}"/${PN}-3.1.2-musl.patch
 
 	# verbose compiler calls
 	sed -i -e '/Compiling/d' src/Makefile.am || die
