@@ -10,7 +10,7 @@ EGIT_REPO_URI="http://git.suckless.org/tabbed"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="x11-libs/libX11"
