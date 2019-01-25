@@ -93,7 +93,7 @@ src_install() {
 		make_desktop_entry \
 			glide \
 			"Glide" \
-			glide \
+			"" \
 			"Network;WebBrowser" \
 			"MimeType=${mime_types}\nStartupWMClass=glide" || die
 	fi
