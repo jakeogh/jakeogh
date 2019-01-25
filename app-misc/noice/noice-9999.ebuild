@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="small file browser"
 HOMEPAGE="http://git.2f30.org/noice/"
-EGIT_REPO_URI="http://git.2f30.org/noice/"
+EGIT_REPO_URI="git://git.2f30.org/noice/"
 
 LICENSE="BSD"
 SLOT="0"
