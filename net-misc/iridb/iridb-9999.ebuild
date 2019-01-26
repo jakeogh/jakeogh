@@ -48,6 +48,7 @@ DEPEND="
 	app-text/tree
 	dev-python/pudb
 	dev-python/pillow
+	dev-python/attrs
 "
 #	dev-python/ghost
 
