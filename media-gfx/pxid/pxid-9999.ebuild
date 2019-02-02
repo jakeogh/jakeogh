@@ -17,7 +17,7 @@ RDEPEND=""
 DEPEND="${RDEPEND}"
 
 
-#src_install() {
+src_install() {
 #	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr/" MANPREFIX="/usr/share/man" install
-#	dodoc README
-#}
+	dobin "${P}"
+}
