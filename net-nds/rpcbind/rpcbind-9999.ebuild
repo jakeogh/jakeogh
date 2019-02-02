@@ -9,6 +9,7 @@ if [[ ${PV} == "9999" ]] ; then
 	#EGIT_REPO_URI="git://linux-nfs.org/~steved/rpcbind.git"
 	EGIT_REPO_URI="/home/cfg/_myapps/erpcbind/rpcbind"
 	inherit autotools git-r3
+	EGIT_BRANCH="simple"
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
