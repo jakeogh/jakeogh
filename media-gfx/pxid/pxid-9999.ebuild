@@ -19,5 +19,5 @@ DEPEND="${RDEPEND}"
 
 src_install() {
 #	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr/" MANPREFIX="/usr/share/man" install
-	dobin "${P}"
+	dobin "${PN}"
 }
