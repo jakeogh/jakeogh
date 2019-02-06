@@ -16,7 +16,6 @@ KEYWORDS=""
 COMMON_DEPEND="
 	app-crypt/gcr[gtk]
 	dev-libs/glib:2
-	net-libs/libsoup
 	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
 	x11-libs/libX11
