@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/getnikola/nikola"
 
 LICENSE="MIT Apache-2.0 CC0-1.0 public-domain"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="assets charts ghpages hyphenation ipython jinja watchdog webmedia websocket"
 RESTRICT="test" # needs coveralls
 
