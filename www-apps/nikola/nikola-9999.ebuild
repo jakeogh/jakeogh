@@ -57,7 +57,7 @@ src_install() {
 	# hackish way to remove docs that ended up in the wrong place
 	rm -rv "${D}/usr/share/doc/${PN}" || die
 
-	dodoc AUTHORS.txt CHANGES.txt README.rst docs/*.txt
+	dodoc AUTHORS.txt CHANGES.txt README.rst
 	gunzip "docs/man/${PN}.1.gz" || die
 	doman "docs/man/${PN}.1"
 }
