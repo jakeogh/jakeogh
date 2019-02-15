@@ -6,8 +6,8 @@ PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit distutils-r1 git-r3
 
-MY_PN="nikola"
-MY_P="${MY_PN}-${PV}"
+#MY_PN="nikola"
+#MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A static website and blog generator"
 HOMEPAGE="https://getnikola.com/"
