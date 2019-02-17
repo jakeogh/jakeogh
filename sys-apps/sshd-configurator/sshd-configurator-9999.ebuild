@@ -18,7 +18,7 @@ IUSE=""
 
 RDEPEND="dev-python/netifaces
 dev-python/click
-dev-python/python-daemon
+dev-python/daemonize
 "
 
 python_install_all() {
