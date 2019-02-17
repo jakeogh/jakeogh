@@ -21,7 +21,6 @@ RDEPEND=""
 src_install() {
 	doexe ${PN}
 	#dodoc Changes readme.txt
-	#newinitd "${FILESDIR}/sshd-configurator.initd.1" ${PN} || die
 	newinitd "sshd-configurator.initd.1" ${PN} || die
 }
 
