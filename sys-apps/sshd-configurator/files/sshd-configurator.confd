@@ -1,4 +1,7 @@
 # Required configuration for ssh-configurator
-# Set to the interface sshd is expected to listen on
 
-#SSHD_INTERFACE=""
+# Uncomment both lines
+# Change eth0 to the interface sshd is expected to listen on
+
+#SSHD_INTERFACE="eth0"
+#rc_need="!net net.eth0"

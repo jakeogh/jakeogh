@@ -2,11 +2,10 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-command="/usr/bin/sshd_configurator"
+command="/usr/bin/sshd-configurator"
 command_args="${SSHD_INTERFACE}"
 
 depend() {
-	#need localmount
 	before sshd
 	use logger
 	provide sshd-configurator
