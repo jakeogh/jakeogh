@@ -30,4 +30,5 @@ pkg_postinst() {
 	elog "To start ${PN} at boot do rc-update add ${PN} default"
 	elog "To start ${PN} now do /etc/init.d/${PN} start"
 	elog "To check your sshd_config now, run ${PN}"
+	elog "IMPORTANT: You must edit /etc/conf.d/${PN} before starting."
 }
