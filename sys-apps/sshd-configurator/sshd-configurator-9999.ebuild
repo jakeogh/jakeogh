@@ -22,8 +22,8 @@ dev-python/click
 
 src_install() {
 	#doexe ${PN}
-	newinitd "${PN}/${PN}.initd" ${PN} || die
-	newconfd "${PN}/${PN}.confd" ${PN} || die
+	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die
+	newconfd "${FILESDIR}/${PN}.confd" ${PN} || die
 }
 
 pkg_postinst() {
