@@ -26,6 +26,11 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}.confd" ${PN} || die
 }
 
+python_install() {
+	distutils-r1_python_install"
+}
+
+
 pkg_postinst() {
 	elog "To start ${PN} at boot do rc-update add ${PN} default"
 	elog "To start ${PN} now do /etc/init.d/${PN} start"
