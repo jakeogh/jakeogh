@@ -16,11 +16,14 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND=""
+RDEPEND="dev-python/netifaces
+dev-python/click
+"
 
 src_install() {
 	doexe ${PN}
-	newinitd "sshd-configurator.initd.1" ${PN} || die
+	newinitd "${PN}.initd" ${PN} || die
+	newconfd "${PN}.confd" ${PN} || die
 }
 
 pkg_postinst() {
