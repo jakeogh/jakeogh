@@ -21,7 +21,7 @@ dev-python/click
 "
 
 src_install() {
-	doexe ${PN}
+	#doexe ${PN}
 	newinitd "${PN}.initd" ${PN} || die
 	newconfd "${PN}.confd" ${PN} || die
 }
