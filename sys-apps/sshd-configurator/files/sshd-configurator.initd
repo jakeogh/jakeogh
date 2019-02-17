@@ -4,6 +4,7 @@
 
 command="/usr/bin/sshd-configurator"
 command_args="${SSHD_INTERFACE} --daemon"
+pidfile="/run/${RC_SVCNAME}.pid"
 
 depend() {
 	before sshd
