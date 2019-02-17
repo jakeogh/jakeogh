@@ -3,7 +3,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 command="/usr/bin/sshd-configurator"
-command_args="${SSHD_INTERFACE}"
+command_args="${SSHD_INTERFACE} --daemon"
 
 depend() {
 	before sshd
