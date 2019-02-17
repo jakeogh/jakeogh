@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Manages sshd configuration prior to sshd starting."
 HOMEPAGE="https://github.com/jakeogh/sshd-configurator"
-SRC_URI="/home/user/_myapps/sshd-configurator"
+EGIT_REPO_URI="/home/user/_myapps/sshd-configurator"
 
 LICENSE="MIT"
 SLOT="0"
@@ -20,7 +20,6 @@ RDEPEND=""
 
 src_install() {
 	doexe ${PN}
-	#dodoc Changes readme.txt
 	newinitd "sshd-configurator.initd.1" ${PN} || die
 }
 
