@@ -20,16 +20,11 @@ RDEPEND="dev-python/netifaces
 dev-python/click
 "
 
-src_install() {
-	#doexe ${PN}
+python_install_all() {
+	distutils-r1_python_install_all
 	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die
 	newconfd "${FILESDIR}/${PN}.confd" ${PN} || die
 }
-
-python_install_all() {
-	distutils-r1_python_install_all
-}
-
 
 pkg_postinst() {
 	elog "To start ${PN} at boot do rc-update add ${PN} default"
