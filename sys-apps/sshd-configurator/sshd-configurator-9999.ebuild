@@ -27,7 +27,7 @@ src_install() {
 }
 
 python_install() {
-	distutils-r1_python_install"
+	distutils-r1_python_install
 }
 
 
