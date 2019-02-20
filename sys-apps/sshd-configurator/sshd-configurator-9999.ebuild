@@ -18,6 +18,7 @@ IUSE=""
 RDEPEND="dev-python/netifaces
 dev-python/click
 dev-python/daemonize
+net-misc/openssh
 "
 
 python_install_all() {
