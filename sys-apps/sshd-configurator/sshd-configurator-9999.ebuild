@@ -17,6 +17,7 @@ IUSE=""
 
 RDEPEND="dev-python/netifaces
 dev-python/click
+dev-python/attrs
 dev-python/daemonize
 net-misc/openssh
 "
