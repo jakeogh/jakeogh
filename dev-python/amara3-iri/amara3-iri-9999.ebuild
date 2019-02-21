@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/uogbuji/amara3-iri"
 EGIT_REPO_URI="https://github.com/uogbuji/amara3-iri.git"
 inherit git-r3
 
-LICENSE="Apache"
+LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
