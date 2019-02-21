@@ -11,10 +11,10 @@ HOMEPAGE="https://github.com/uogbuji/amara3-iri"
 EGIT_REPO_URI="https://github.com/uogbuji/amara3-iri.git"
 inherit git-r3
 
-LICENSE=""
+LICENSE="Apache"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="Apache"
+IUSE=""
 
 DEPEND="dev-python/setuptools"
 
