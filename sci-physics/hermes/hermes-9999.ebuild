@@ -33,12 +33,12 @@ s#/usr/local#/usr#
 ' "${WORKDIR}/${P}"/CMake.vars || die
 }
 
-#src_configure() {
-#	local CMAKE_BUILD_TYPE="Release"
-#	local mycmakeargs=(
-#			-DCMAKE_INSTALL_PREFIX=/usr
-#			)
-#	cmake-utils_src_configure
-#}
+src_configure() {
+	local CMAKE_BUILD_TYPE="Release"
+	local mycmakeargs=(
+			-DCMAKE_INSTALL_PREFIX=/usr
+			)
+	cmake-utils_src_configure
+}
 
 
