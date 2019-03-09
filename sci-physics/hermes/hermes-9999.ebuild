@@ -22,6 +22,9 @@ DEPEND="
 	dev-cpp/xsd
 	sci-libs/matio
 	dev-java/xsdlib
+	sci-libs/exodusii
+	sci-libs/clapack
+	 sci-libs/umfpack
 "
 
 src_prepare() {
