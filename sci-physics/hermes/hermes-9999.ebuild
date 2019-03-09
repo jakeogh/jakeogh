@@ -24,6 +24,14 @@ DEPEND="
 	dev-java/xsdlib
 "
 
+src_prepare() {
+	default
+	cp "${WORKDIR}/${P}"/CMake.vars.example.Linux "${WORKDIR}/${P}"/CMake.vars || die
+	sed -i '
+s#/usr/local#/usr#
+' "${WORKDIR}/${P}"/CMake.vars || die
+}
+
 src_configure() {
 	local CMAKE_BUILD_TYPE="Release"
 	local mycmakeargs=(
@@ -32,11 +40,4 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-src_prepare() {
-	default
-	cp "${WORKDIR}/${P}"/CMake.vars.example.Linux "${WORKDIR}/${P}"/CMake.vars || die
-	sed -i '
-s#/usr/local#/usr#
-' "${WORKDIR}/${P}"/CMake.vars || die
-}
 
