@@ -13,7 +13,7 @@ HOMEPAGE="http://www.hpfem.org/hermes/"
 LICENSE="LGPL"
 SLOT=0
 
-COMMON_DEPEND="
+DEPEND="
 	media-libs/freeglut
 	sci-libs/suitesparse
 	media-libs/glew
