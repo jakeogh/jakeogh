@@ -28,5 +28,8 @@ DEPEND="
 src_prepare() {
 	default
 	cp "${WORKDIR}/${P}"/CMake.vars.example.Linux "${WORKDIR}/${P}"/CMake.vars || die
+	sed -i '
+  s#/usr/local#/usr#
+ ' "${WORKDIR}/${P}"/CMake.vars || die
 }
 
