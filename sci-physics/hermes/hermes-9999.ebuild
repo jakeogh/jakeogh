@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Library for rapid development of adaptive hp-FEM / hp-DG solvers."
 HOMEPAGE="http://www.hpfem.org/hermes/"
