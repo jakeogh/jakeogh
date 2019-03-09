@@ -30,6 +30,7 @@ src_prepare() {
 	sed -i '
 s#/usr/local#/usr#
 ' "${WORKDIR}/${P}"/CMake.vars || die
+	cmake-utils_src_prepare
 }
 
 src_configure() {
