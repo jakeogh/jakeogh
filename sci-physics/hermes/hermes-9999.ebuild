@@ -20,6 +20,7 @@ COMMON_DEPEND="
 	dev-libs/xerces-c
 	dev-cpp/xsd
 	sci-libs/matio
+	dev-java/xsdlib
 "
 
 src_prepare() {
