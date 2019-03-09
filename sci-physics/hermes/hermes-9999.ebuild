@@ -27,6 +27,6 @@ DEPEND="
 
 src_prepare() {
 	default
-	cp "${S}"/CMake.vars.example.Linux "${S}"/CMake.vars || die
+	cp "${WORKDIR}/${P}"/CMake.vars.example.Linux "${WORKDIR}/${P}"/CMake.vars || die
 }
 
