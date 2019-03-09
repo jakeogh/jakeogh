@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit distutils-r1
@@ -13,7 +13,7 @@ inherit git-r3
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 LICENSE="MIT"
 
@@ -28,7 +28,6 @@ sys-apps/file
 "
 
 #dev-python/python-magic # file has a python flag. will that work instead?
-
 
 RDEPEND="${DEPEND}"
 
