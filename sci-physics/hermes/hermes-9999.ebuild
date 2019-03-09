@@ -26,7 +26,7 @@ DEPEND="
 
 src_prepare() {
 	default
-#	cmake-utils_src_prepare
+	cmake-utils_src_prepare
 	cp "${WORKDIR}/${P}"/CMake.vars.example.Linux "${WORKDIR}/${P}"/CMake.vars || die
 	sed -i '
 s#/usr/local#/usr#
