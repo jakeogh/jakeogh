@@ -26,19 +26,19 @@ DEPEND="
 
 src_prepare() {
 	default
-	cmake-utils_src_prepare
+#	cmake-utils_src_prepare
 	cp "${WORKDIR}/${P}"/CMake.vars.example.Linux "${WORKDIR}/${P}"/CMake.vars || die
 	sed -i '
 s#/usr/local#/usr#
 ' "${WORKDIR}/${P}"/CMake.vars || die
 }
 
-src_configure() {
-	local CMAKE_BUILD_TYPE="Release"
-	local mycmakeargs=(
-			-DCMAKE_INSTALL_PREFIX=/usr
-			)
-	cmake-utils_src_configure
-}
+#src_configure() {
+#	local CMAKE_BUILD_TYPE="Release"
+#	local mycmakeargs=(
+#			-DCMAKE_INSTALL_PREFIX=/usr
+#			)
+#	cmake-utils_src_configure
+#}
 
 
