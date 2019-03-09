@@ -23,6 +23,6 @@ COMMON_DEPEND="
 "
 
 src_prepare() {
-	cd "${PN}" && cp CMake.vars.example.Linux CMake.vars || die
+	cd "${WORKDIR}/${PN}" && cp CMake.vars.example.Linux CMake.vars || die
 }
 
