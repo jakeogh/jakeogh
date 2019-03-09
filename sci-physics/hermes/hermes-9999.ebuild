@@ -7,6 +7,8 @@ EGIT_REPO_URI="https://github.com/hpfem/hermes.git"
 inherit git-r3
 inherit cmake-utils
 
+S="${WORKDIR}/${P}/${P}"
+
 DESCRIPTION="Library for rapid development of adaptive hp-FEM / hp-DG solvers."
 HOMEPAGE="http://www.hpfem.org/hermes/"
 
