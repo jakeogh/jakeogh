@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit distutils-r1
 
-DESCRIPTION="Keogh Common (function) library"
+DESCRIPTION="Common function library"
 HOMEPAGE="https://github.com/jakeogh/kcl"
 EGIT_REPO_URI="/home/cfg/_myapps/kcl https://github.com/jakeogh/kcl.git"
 inherit git-r3
@@ -24,6 +24,7 @@ dev-db/sadisplay
 dev-python/pycallgraph
 dev-python/redis-py
 dev-python/sqlalchemy-utils
+sys-apps/file
 "
 
 #dev-python/python-magic # file has a python flag. will that work instead?
