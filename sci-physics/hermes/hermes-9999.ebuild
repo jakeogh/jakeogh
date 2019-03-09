@@ -24,7 +24,7 @@ DEPEND="
 "
 
 src_prepare() {
-	cd "${WORKDIR}/${P}" && cp CMake.vars.example.Linux CMake.vars || die
+	cp "${WORKDIR}/${P}"/CMake.vars.example.Linux "${WORKDIR}/${P}"/CMake.vars || die
 	eapply_user
 }
 
