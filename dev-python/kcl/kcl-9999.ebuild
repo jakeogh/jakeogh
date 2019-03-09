@@ -24,7 +24,7 @@ dev-db/sadisplay
 dev-python/pycallgraph
 dev-python/redis-py
 dev-python/sqlalchemy-utils
-sys-apps/file
+sys-apps/file (python)
 "
 
 #dev-python/python-magic # file has a python flag. will that work instead?
