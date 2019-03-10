@@ -19,6 +19,7 @@ DEPEND="sys-apps/coreutils
 dev-util/splint
 dev-util/shellcheck
 dev-python/pylint
+app-misc/commandlock
 "
 
 #src_compile() { :; }
