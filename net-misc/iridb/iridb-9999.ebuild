@@ -48,10 +48,10 @@ DEPEND="
 	dev-python/pudb
 	dev-python/pillow
 	dev-python/attrs
-	sys-apps/file[python]
+	dev-python/python-magic
 "
 #	dev-python/ghost
-#	dev-python/python-magic
+#	sys-apps/file[python]
 
 RDEPEND="
 	${DEPEND}
