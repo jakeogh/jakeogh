@@ -20,6 +20,7 @@ dev-util/splint
 dev-util/shellcheck
 dev-python/pylint
 app-misc/commandlock
+app-editors/neovim
 "
 
 #src_compile() { :; }
