@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
 
 inherit distutils-r1
 
 DESCRIPTION="wrapper for youtube-dl"
 HOMEPAGE="https://github.com/jakeogh/youtube-dl-wrapper"
-EGIT_REPO_URI="/home/user/_myapps/youtube-dl-wrapper https://github.com/jakeogh/youtube-dl-wrapper.git"
+EGIT_REPO_URI="/home/cfg/_myapps/youtube-dl-wrapper https://github.com/jakeogh/youtube-dl-wrapper.git"
 inherit git-r3
 
 LICENSE="MIT"
