@@ -18,6 +18,7 @@ IUSE=""
 
 DEPEND="
 	dev-python/requests-file
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	"
 
 RDEPEND="${DEPEND}"
