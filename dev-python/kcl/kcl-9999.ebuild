@@ -18,15 +18,16 @@ IUSE=""
 LICENSE="MIT"
 
 DEPEND="dev-python/psutil
-dev-python/requests
-dev-python/pydot
-dev-db/sadisplay
-dev-python/pycallgraph
-dev-python/redis-py
-dev-python/sqlalchemy-utils
-sys-apps/file[python]
+	dev-python/requests
+	dev-python/pydot
+	dev-db/sadisplay
+	dev-python/pycallgraph
+	dev-python/redis-py
+	dev-python/sqlalchemy-utils
+	dev-python/python-magic
 "
 
+#sys-apps/file[python]
 #dev-python/python-magic # file has a python flag. will that work instead?
 
 RDEPEND="${DEPEND}"
