@@ -20,7 +20,6 @@ IUSE=""
 DEPEND="
 	app-crypt/gpgme
 	dev-python/pygpgme
-	sys-apps/file[python]
 	dev-python/configobj
 	dev-python/twisted
 	dev-python/urwidtrees
@@ -30,7 +29,9 @@ DEPEND="
 	mail-client/alot
 	mail-filter/afew
 	sys-apps/moreutils
+	dev-python/python-magic
 "
+#	sys-apps/file[python]
 
 RDEPEND="
 	${DEPEND}
