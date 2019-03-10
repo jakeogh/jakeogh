@@ -42,15 +42,16 @@ DEPEND="
 	dev-python/redis-py
 	dev-python/anormbookmarker
 	dev-db/sadisplay
-	dev-python/python-magic
 	app-backup/bup
 	dev-python/psycopg
 	app-text/tree
 	dev-python/pudb
 	dev-python/pillow
 	dev-python/attrs
+	sys-apps/file[python]
 "
 #	dev-python/ghost
+#	dev-python/python-magic
 
 RDEPEND="
 	${DEPEND}
