@@ -32,8 +32,6 @@ DEPEND="
 	sys-apps/moreutils
 "
 
-#	dev-python/python-magic
-
 RDEPEND="
 	${DEPEND}
 "
