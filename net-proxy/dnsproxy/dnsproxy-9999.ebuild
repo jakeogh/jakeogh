@@ -7,7 +7,7 @@ inherit flag-o-matic git-r3
 DESCRIPTION="The dnsproxy daemon is a proxy for DNS queries"
 HOMEPAGE="https://www.wolfermann.org/dnsproxy.html"
 #SRC_URI="https://www.wolfermann.org/${P}.tar.gz"
-EGIT_REPO_URI="/home/user/_myapps/dnsproxy/dnsproxy"
+EGIT_REPO_URI="/home/user/_myapps/dnsproxy/"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
