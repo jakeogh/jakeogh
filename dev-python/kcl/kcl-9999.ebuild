@@ -25,6 +25,7 @@ DEPEND="dev-python/psutil
 	dev-python/redis-py
 	dev-python/sqlalchemy-utils
 	dev-python/python-magic
+	dev-python/beautifulsoup
 "
 
 #sys-apps/file[python]
