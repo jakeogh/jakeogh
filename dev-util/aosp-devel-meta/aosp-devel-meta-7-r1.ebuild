@@ -31,7 +31,7 @@ RDEPEND="
 	sys-devel/bison
 	sys-devel/flex
 	sys-devel/gcc[cxx]
-	sys-libs/ncurses:5[abi_x86_32]
+	sys-libs/ncurses
 	sys-libs/readline[abi_x86_32]
 	sys-libs/zlib[abi_x86_32]
 	sys-process/schedtool
