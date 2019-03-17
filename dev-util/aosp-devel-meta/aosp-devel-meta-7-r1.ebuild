@@ -32,8 +32,8 @@ RDEPEND="
 	sys-devel/flex
 	sys-devel/gcc[cxx]
 	sys-libs/ncurses
-	sys-libs/readline[abi_x86_32]
-	sys-libs/zlib[abi_x86_32]
+	sys-libs/readline
+	sys-libs/zlib
 	sys-process/schedtool
 	sys-fs/squashfs-tools
 	x11-base/xorg-proto
