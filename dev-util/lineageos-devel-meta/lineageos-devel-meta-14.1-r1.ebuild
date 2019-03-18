@@ -18,4 +18,5 @@ RDEPEND="
 	dev-util/aosp-devel-meta
 	media-gfx/imagemagick
 	media-gfx/pngcrush
+	dev-util/repo
 "
