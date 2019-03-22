@@ -20,7 +20,7 @@ RDEPEND="x11-libs/gtkdatabox
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-CONFIG_CHECK="~!SND_PCM_OSS"
+CONFIG_CHECK="~SND_PCM_OSS"
 ERROR_SND_PCM_OSS="CONFIG_SND_PCM_OSS is needed to support sound card input via /dev/dsp"
 
 #src_prepare() {
