@@ -25,6 +25,5 @@ ERROR_SND_PCM_OSS="CONFIG_SND_PCM_OSS is needed to support sound card input via 
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-man_no_-Tutf8.patch
-
 	eautoreconf
 }
