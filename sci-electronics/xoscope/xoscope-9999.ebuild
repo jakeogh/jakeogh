@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 CONFIG_CHECK="~!SND_PCM_OSS"
 ERROR_SND_PCM_OSS="CONFIG_SND_PCM_OSS is needed to support sound card input via /dev/dsp"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-man_no_-Tutf8.patch
-	eautoreconf
-}
+#src_prepare() {
+#	epatch "${FILESDIR}"/${P}-man_no_-Tutf8.patch
+#	eautoreconf
+#}
