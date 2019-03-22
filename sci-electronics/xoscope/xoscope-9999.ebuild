@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://git.code.sf.net/p/xoscope/code"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 RDEPEND="x11-libs/gtkdatabox
