@@ -30,7 +30,7 @@ REQUIRED_USE="pdf? ( doc )
 CONFIG_CHECK="COMEDI"
 
 src_prepare() {
-	default
+	eautoreconf
 }
 
 multilib_src_configure() {
