@@ -27,6 +27,10 @@ src_prepare() {
 	eautoreconf
 }
 
+src_configure() {
+	default
+}
+
 src_compile() {
 	default
 }
