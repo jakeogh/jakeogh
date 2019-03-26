@@ -30,6 +30,7 @@ REQUIRED_USE="pdf? ( doc )
 CONFIG_CHECK="COMEDI"
 
 src_prepare() {
+	eapply_user
 	eautoreconf
 }
 
