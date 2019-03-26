@@ -26,6 +26,10 @@ src_prepare() {
 	eapply_user
 }
 
+src_compile() {
+	default
+}
+
 src_install() {
 	default
 
