@@ -29,6 +29,10 @@ REQUIRED_USE="pdf? ( doc )
 
 CONFIG_CHECK="COMEDI"
 
+src_prepare() {
+	default
+}
+
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
 		$(use_enable static-libs static) \
