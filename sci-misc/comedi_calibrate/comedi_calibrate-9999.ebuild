@@ -22,13 +22,13 @@ RDEPEND="sci-libs/comedilib
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	#epatch_user
 	eapply_user
 	eautoreconf
 }
 
 src_configure() {
-	default
+	ECONF_SOURCE="${S}" econf
+	#default
 }
 
 src_compile() {
@@ -37,6 +37,5 @@ src_compile() {
 
 src_install() {
 	default
-
 	dodoc AUTHORS ChangeLog INSTALL NEWS README
 }
