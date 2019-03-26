@@ -22,7 +22,8 @@ RDEPEND="sci-libs/comedilib
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	epatch_user
+	#epatch_user
+	eapply_user
 }
 
 src_install() {
