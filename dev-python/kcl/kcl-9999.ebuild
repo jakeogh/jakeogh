@@ -11,11 +11,10 @@ HOMEPAGE="https://github.com/jakeogh/kcl"
 EGIT_REPO_URI="/home/cfg/_myapps/kcl https://github.com/jakeogh/kcl.git"
 inherit git-r3
 
-LICENSE=""
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-LICENSE="MIT"
 
 DEPEND="dev-python/psutil
 	dev-python/requests
