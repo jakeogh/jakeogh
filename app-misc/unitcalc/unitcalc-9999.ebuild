@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="convert units"
 HOMEPAGE="https://github.com/jakeogh/unitcalc"
-EGIT_REPO_URI="https://github.com/jakeogh/unticalc.git"
+EGIT_REPO_URI="https://github.com/jakeogh/unitcalc.git"
 
 LICENSE="MIT"
 SLOT="0"
