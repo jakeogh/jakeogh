@@ -17,7 +17,10 @@ IUSE=""
 KEYWORDS=""
 
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
-#DEPEND="sys-apps/coreutils
+DEPEND="
+	dev-python/replace-text
+"
+
 #dev-util/splint
 #dev-util/shellcheck
 #dev-python/pylint
