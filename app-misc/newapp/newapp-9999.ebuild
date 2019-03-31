@@ -25,10 +25,8 @@ KEYWORDS=""
 
 #src_compile() { :; }
 
-src_install() {
-#	dodoc README*
-	dobin ${PN}
-#	dobin ${PN}_test
-#	dobin lock
-#	dobin commandlock
+python_install_all() {
+    distutils-r1_python_install_all
 }
+
+
