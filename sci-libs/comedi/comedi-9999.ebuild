@@ -12,27 +12,28 @@ EGIT_REPO_URI="https://github.com/Linux-Comedi/comedi.git"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-
+BUILD_TARGETS="all"
 CONFIG_CHECK="COMEDI"
 
 pkg_setup() {
+	linux-info_pkg_setup
 	linux-mod_pkg_setup
 }
 
-
 src_prepare() {
-	unset ARCH
-	eapply_user
+#	unset ARCH
 	eautoreconf
+	default
 }
 
 src_configure() {
 	unset ARCH
-	ECONF_SOURCE="${S}" econf
+	ECONF_SOURCE="${S}" econf || die
 }
 
 src_compile() {
 	unset ARCH
+	default
 	linux-mod_src_compile || die
 }
 
