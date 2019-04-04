@@ -3,9 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit linux-info python-single-r1 multilib-minimal git-r3 autotools eutils linux-mod
+inherit linux-info multilib-minimal git-r3 autotools eutils linux-mod
 
 DESCRIPTION="Linux control and measurement device interface (kernel modules)"
 HOMEPAGE="http://www.comedi.org/"
@@ -37,6 +35,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	cd "${S}"
-	dodoc INSTALL AUTHORS ChangeLog NEWS README
+	default
+#	cd "${S}"
+#	dodoc INSTALL AUTHORS ChangeLog NEWS README
 }
