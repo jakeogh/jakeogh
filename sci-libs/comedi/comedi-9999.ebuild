@@ -18,27 +18,29 @@ CONFIG_CHECK="COMEDI"
 pkg_setup() {
 	linux-info_pkg_setup
 	linux-mod_pkg_setup
+	ARCH="$(tc-arch-kernel)"
+	ABI="${KERNEL_ABI}"
 }
 
 src_prepare() {
-#	unset ARCH
 	eautoreconf
 	default
 }
 
 src_configure() {
-	unset ARCH
-	ECONF_SOURCE="${S}" econf || die
+	#unset ARCH
+	#ECONF_SOURCE="${S}" econf || die
+	econf
 }
 
 src_compile() {
-	unset ARCH
+	#unset ARCH
 	default
 	linux-mod_src_compile || die
 }
 
 src_install() {
-	unset ARCH
+	#unset ARCH
 	linux-mod_src_install || die
 }
 
