@@ -14,18 +14,14 @@ EGIT_REPO_URI="https://github.com/Linux-Comedi/comedi.git"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-#IUSE="doc static-libs python udev firmware pdf scxi"
-
-#RDEPEND="udev? ( virtual/udev )
-#	python? ( ${PYTHON_DEPS} )
-#	firmware? ( !sys-kernel/linux-firmware[-savedconfig] )"
-#DEPEND="${RDEPEND}
-#	doc? ( app-text/xmlto )
-#	python? ( dev-lang/swig )"
-#REQUIRED_USE="pdf? ( doc )
-#	python? ( ${PYTHON_REQUIRED_USE} )"
 
 CONFIG_CHECK="COMEDI"
+
+
+src_configure() {
+	unset ARCH
+	default
+}
 
 src_prepare() {
 	eapply_user
