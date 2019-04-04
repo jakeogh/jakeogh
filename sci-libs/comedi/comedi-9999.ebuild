@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/Linux-Comedi/comedi.git"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-BUILD_TARGETS="all"
+#BUILD_TARGETS="all"
 CONFIG_CHECK="COMEDI"
 
 pkg_setup() {
