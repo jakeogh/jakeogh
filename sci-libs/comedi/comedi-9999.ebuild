@@ -26,16 +26,11 @@ src_prepare() {
 	eautoreconf
 }
 
-multilib_src_configure() {
+src_configure() {
 	ECONF_SOURCE="${S}" econf
 }
 
-multilib_src_install() {
-	linux-mod_src_install
+src_install() {
+	linux-mod_src_install || die
 }
 
-multilib_src_install_all() {
-	default
-#	cd "${S}"
-#	dodoc INSTALL AUTHORS ChangeLog NEWS README
-}
