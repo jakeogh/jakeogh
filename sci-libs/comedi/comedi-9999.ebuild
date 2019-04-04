@@ -22,15 +22,18 @@ src_configure() {
 }
 
 src_prepare() {
+	unset ARCH
 	eapply_user
 	eautoreconf
 }
 
 src_configure() {
+	unset ARCH
 	ECONF_SOURCE="${S}" econf
 }
 
 src_install() {
+	unset ARCH
 	linux-mod_src_install || die
 }
 
