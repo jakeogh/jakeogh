@@ -31,7 +31,7 @@ multilib_src_configure() {
 }
 
 multilib_src_install() {
-	default
+	linux-mod_src_install
 }
 
 multilib_src_install_all() {
