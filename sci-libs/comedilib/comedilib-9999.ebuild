@@ -10,7 +10,6 @@ inherit linux-info python-single-r1 multilib-minimal git-r3 autotools eutils
 
 DESCRIPTION="Linux control and measurement device interface (userspace libraries)"
 HOMEPAGE="http://www.comedi.org/"
-#SRC_URI="http://www.comedi.org/download/${P}.tar.gz"
 EGIT_REPO_URI="https://github.com/Linux-Comedi/comedilib.git"
 
 LICENSE="GPL-2+"
@@ -47,7 +46,6 @@ multilib_src_configure() {
 
 multilib_src_install() {
 	default
-
 	use python && python_optimize
 }
 
