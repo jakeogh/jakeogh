@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info multilib-minimal git-r3 autotools eutils linux-mod
+inherit linux-info git-r3 autotools eutils linux-mod toolchain-funcs
 
 DESCRIPTION="Linux control and measurement device interface (kernel modules)"
 HOMEPAGE="http://www.comedi.org/"
@@ -15,6 +15,9 @@ KEYWORDS=""
 
 CONFIG_CHECK="COMEDI"
 
+pkg_setup() {
+	linux-mod_pkg_setup
+}
 
 src_configure() {
 	unset ARCH
