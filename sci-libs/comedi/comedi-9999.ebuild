@@ -19,10 +19,6 @@ pkg_setup() {
 	linux-mod_pkg_setup
 }
 
-src_configure() {
-	unset ARCH
-	default
-}
 
 src_prepare() {
 	unset ARCH
@@ -33,6 +29,11 @@ src_prepare() {
 src_configure() {
 	unset ARCH
 	ECONF_SOURCE="${S}" econf
+}
+
+src_compile() {
+	unset ARCH
+	linux-mod_src_compile || die
 }
 
 src_install() {
