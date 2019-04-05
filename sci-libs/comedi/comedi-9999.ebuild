@@ -47,7 +47,7 @@ src_compile() {
 src_install() {
 	unset INSTALL_MOD_PATH
 	unset ARCH
-	make install || die
-	#linux-mod_src_install || die
+	#make install || die
+	linux-mod_src_install || die
 }
 
