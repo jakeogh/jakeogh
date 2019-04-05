@@ -16,6 +16,7 @@ KEYWORDS=""
 CONFIG_CHECK="COMEDI"
 
 pkg_setup() {
+	unset INSTALL_MOD_PATH
 	linux-info_pkg_setup
 	linux-mod_pkg_setup
 	set_arch_to_kernel
@@ -24,23 +25,27 @@ pkg_setup() {
 }
 
 src_prepare() {
+	unset INSTALL_MOD_PATH
 	eautoreconf
 	default
 }
 
 src_configure() {
+	unset INSTALL_MOD_PATH
 	#unset ARCH
 	#ECONF_SOURCE="${S}" econf || die
 	econf
 }
 
 src_compile() {
+	unset INSTALL_MOD_PATH
 	#unset ARCH
 	default
 	linux-mod_src_compile || die
 }
 
 src_install() {
+	unset INSTALL_MOD_PATH
 	unset ARCH
 	make install || die
 	#linux-mod_src_install || die
