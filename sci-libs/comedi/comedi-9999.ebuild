@@ -16,6 +16,7 @@ KEYWORDS=""
 CONFIG_CHECK="COMEDI"
 
 pkg_setup() {
+	BUILD_TARGETS="all"
 	unset INSTALL_MOD_PATH
 	linux-info_pkg_setup
 	linux-mod_pkg_setup
