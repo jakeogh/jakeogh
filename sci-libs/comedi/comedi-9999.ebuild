@@ -33,7 +33,7 @@ src_prepare() {
 	eautoreconf
 	default
 	sed -i '
-			/INSTALL_MOD_PATH=/c\            INSTALL_MOD_PATH="/lib" modules_install
+			/INSTALL_MOD_PATH=/c\        INSTALL_MOD_PATH="/lib" modules_install
 ' comedi/Makefile.am || die
 }
 
@@ -54,8 +54,7 @@ src_compile() {
 src_install() {
 	#unset INSTALL_MOD_PATH  # get sandbox violation: " * ACCESS DENIED:  mkdir:        /usr/lib64/modules" with or without this
 	unset ARCH
-	#INSTALL_MOD_PATH="/lib" emake install || die
-	emake install INSTALL_MOD_PATH="/lib" || die
-	linux-mod_src_install || die
+	#emake install INSTALL_MOD_PATH="/lib" || die
+	linux-mod_src_install INSTALL_MOD_PATH="/lib" || die
 }
 
