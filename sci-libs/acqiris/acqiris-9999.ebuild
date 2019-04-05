@@ -29,12 +29,12 @@ src_prepare() {
 	default
 }
 
-src_configure() {
-	econf --prefix=/
-}
+#src_configure() {
+#	econf --prefix=/
+#}
 
 src_compile() {
-	emake CFLAGS="${CFLAGS} -std=gnu99"
+	emake DESTDIR="${D}" CFLAGS="${CFLAGS} -std=gnu99"
 }
 
 
