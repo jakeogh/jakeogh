@@ -38,8 +38,8 @@ src_configure() {
 }
 
 src_compile() {
-	#default
-	linux-mod_src_compile || die
+	default
+	#linux-mod_src_compile || die
 }
 
 src_install() {
