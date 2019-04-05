@@ -16,13 +16,13 @@ KEYWORDS=""
 #CONFIG_CHECK="COMEDI"
 
 pkg_setup() {
+	linux-info_pkg_setup
+	linux-mod_pkg_setup
+	set_arch_to_kernel
 	require_configured_kernel || die
 	linux_chkconfig_present "COMEDI"
 	BUILD_TARGETS="all"
 	#unset INSTALL_MOD_PATH
-	linux-info_pkg_setup
-	linux-mod_pkg_setup
-	set_arch_to_kernel
 	#ARCH="$(tc-arch-kernel)"
 	#ABI="${KERNEL_ABI}"
 }
