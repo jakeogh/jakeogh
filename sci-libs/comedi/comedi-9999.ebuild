@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info git-r3 autotools autotools-utils eutils linux-mod toolchain-funcs
+inherit linux-info git-r3 autotools eutils linux-mod toolchain-funcs
 
 DESCRIPTION="Linux control and measurement device interface (kernel modules)"
 HOMEPAGE="http://www.comedi.org/"
@@ -52,7 +52,7 @@ src_install() {
 	#unset INSTALL_MOD_PATH  # get sandbox violation: " * ACCESS DENIED:  mkdir:        /usr/lib64/modules" with or without this
 	unset ARCH
 	#INSTALL_MOD_PATH="/lib" emake install || die
-	autotools-utils_src_install INSTALL_MOD_PATH="/lib" || die
+	emake install INSTALL_MOD_PATH="/lib" || die
 	linux-mod_src_install || die
 }
 
