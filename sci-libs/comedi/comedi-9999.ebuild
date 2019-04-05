@@ -38,7 +38,7 @@ src_configure() {
 }
 
 src_compile() {
-	default
+	#default
 	linux-mod_src_compile || die
 }
 
