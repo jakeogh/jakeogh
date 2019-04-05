@@ -18,8 +18,9 @@ CONFIG_CHECK="COMEDI"
 pkg_setup() {
 	linux-info_pkg_setup
 	linux-mod_pkg_setup
-	ARCH="$(tc-arch-kernel)"
-	ABI="${KERNEL_ABI}"
+	set_arch_to_kernel
+	#ARCH="$(tc-arch-kernel)"
+	#ABI="${KERNEL_ABI}"
 }
 
 src_prepare() {
