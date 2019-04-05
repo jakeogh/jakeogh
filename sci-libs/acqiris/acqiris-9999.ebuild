@@ -27,6 +27,9 @@ pkg_setup() {
 src_prepare() {
 	#eautoreconf
 	default
+	sed -i '
+	/KERNELBUILD=/lib/modules/$(KERNELVERSION)/build/c\KERNELBUILD=$(DESTDIR)/lib/modules/$(KERNELVERSION)/build
+' Makefile || die
 }
 
 #src_configure() {
