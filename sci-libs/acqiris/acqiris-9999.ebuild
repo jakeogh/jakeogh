@@ -17,7 +17,7 @@ KEYWORDS=""
 
 pkg_setup() {
 	linux-info_pkg_setup || die
-	linux-mod_pkg_setup || die
+	#linux-mod_pkg_setup || die
 	set_arch_to_kernel || die
 	require_configured_kernel || die
 	linux_chkconfig_present "COMEDI" || die
