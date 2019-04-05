@@ -16,9 +16,9 @@ KEYWORDS=""
 #MODULE_NAMES="pcl730(misc)"
 
 pkg_setup() {
-	#linux-info_pkg_setup || die
-	#linux-mod_pkg_setup || die
-	set_arch_to_kernel || die
+	linux-info_pkg_setup
+	linux-mod_pkg_setup
+	set_arch_to_kernel
 	require_configured_kernel || die
 	linux_chkconfig_present "COMEDI" || die
 	check_kernel_built || die
