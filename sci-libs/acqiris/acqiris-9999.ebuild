@@ -28,7 +28,7 @@ src_prepare() {
 	#eautoreconf
 	default
 	sed -i '
-	/KERNELBUILD=/lib/modules/$(KERNELVERSION)/build/c\KERNELBUILD=$(DESTDIR)/lib/modules/$(KERNELVERSION)/build
+	/KERNELBUILD=/c\KERNELBUILD=$(DESTDIR)/lib/modules/$(KERNELVERSION)/build
 ' Makefile || die
 }
 
