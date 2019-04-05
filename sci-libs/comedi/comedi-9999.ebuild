@@ -23,14 +23,9 @@ pkg_setup() {
 	require_configured_kernel || die
 	linux_chkconfig_present "COMEDI" || die
 	check_kernel_built || die
-	#BUILD_TARGETS="all"
-	#unset INSTALL_MOD_PATH
-	#ARCH="$(tc-arch-kernel)"
-	#ABI="${KERNEL_ABI}"
 }
 
 src_prepare() {
-	#unset INSTALL_MOD_PATH
 	eautoreconf
 	default
 	sed -i '
@@ -39,23 +34,18 @@ src_prepare() {
 }
 
 src_configure() {
-	#unset INSTALL_MOD_PATH
-	#unset ARCH
-	#ECONF_SOURCE="${S}" econf || die
 	econf
 }
 
 src_compile() {
-	#unset INSTALL_MOD_PATH
-	#unset ARCH
 	default
 	linux-mod_src_compile || die
 }
 
 src_install() {
-	#unset INSTALL_MOD_PATH  # get sandbox violation: " * ACCESS DENIED:  mkdir:        /usr/lib64/modules" with or without this
 	unset ARCH
 	#emake install INSTALL_MOD_PATH="/lib" || die
-	linux-mod_src_install INSTALL_MOD_PATH="/lib" || die
+	#linux-mod_src_install INSTALL_MOD_PATH="/lib" || die
+	linux-mod_src_install || die
 }
 
