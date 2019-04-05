@@ -34,8 +34,9 @@ src_prepare() {
 #}
 
 src_compile() {
-	default
+	emake CFLAGS="${CFLAGS} -std=gnu99"
 }
+
 
 src_install() {
 	#unset ARCH
