@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS=""
 #BUILD_TARGETS="all"
 CONFIG_CHECK="COMEDI"
+MODULE_NAMES="pcl730(misc)"
 
 pkg_setup() {
 	linux-info_pkg_setup || die
@@ -33,7 +34,7 @@ src_prepare() {
 	eautoreconf
 	default
 	sed -i '
-			/INSTALL_MOD_PATH=/c\        INSTALL_MOD_PATH="/lib" modules_install
+			/INSTALL_MOD_PATH=/c\      INSTALL_MOD_PATH="/lib" modules_install
 ' comedi/Makefile.am || die
 }
 
