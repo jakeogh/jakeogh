@@ -40,7 +40,7 @@ src_compile() {
 }
 
 src_install() {
-	#unset ARCH
+	unset ARCH
 	make install || die
 	#linux-mod_src_install || die
 }
