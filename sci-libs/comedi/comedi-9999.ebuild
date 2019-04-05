@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS=""
 #BUILD_TARGETS="all"
 CONFIG_CHECK="COMEDI"
-MODULE_NAMES="pcl730(misc)"
+#MODULE_NAMES="pcl730(misc)"
 
 pkg_setup() {
 	linux-info_pkg_setup || die
