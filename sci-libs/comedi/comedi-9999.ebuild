@@ -32,6 +32,9 @@ src_prepare() {
 	#unset INSTALL_MOD_PATH
 	eautoreconf
 	default
+	sed -i '
+			/INSTALL_MOD_PATH=/c\INSTALL_MOD_PATH="/usr"
+' comedi/Makefile.am || die
 }
 
 src_configure() {
