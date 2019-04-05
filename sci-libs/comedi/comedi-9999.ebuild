@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf
+	econf --prefix=/lib
 }
 
 src_compile() {
