@@ -12,7 +12,7 @@ EGIT_REPO_URI="/home/cfg/_myapps/acqiris_kernel26module"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-#BUILD_TARGETS="all"
+BUILD_TARGETS="modules"
 #MODULE_NAMES="acqiris(misc)"
 
 pkg_setup() {
