@@ -49,7 +49,7 @@ src_compile() {
 }
 
 src_install() {
-	#unset INSTALL_MOD_PATH
+	unset INSTALL_MOD_PATH
 	unset ARCH
 	emake install || die
 	linux-mod_src_install || die
