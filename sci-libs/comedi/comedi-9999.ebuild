@@ -13,7 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 #BUILD_TARGETS="all"
-#CONFIG_CHECK="COMEDI"
+CONFIG_CHECK="COMEDI"
 
 pkg_setup() {
 	linux-info_pkg_setup || die
