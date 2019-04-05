@@ -44,7 +44,8 @@ src_compile() {
 
 src_install() {
 	unset ARCH
-	default
+	emake DESTDIR="${D}" install
+	#default
 	#emake install INSTALL_MOD_PATH="/lib" || die
 	#linux-mod_src_install INSTALL_MOD_PATH="/lib" || die
 	#linux-mod_src_install || die
