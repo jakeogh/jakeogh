@@ -26,5 +26,5 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${P}
+	dobin ${PN}
 }
