@@ -21,3 +21,10 @@ DEPEND="
 	virtual/pkgconfig
 "
 
+src_compile() {
+	default
+}
+
+src_install() {
+	dobin ${P}
+}
