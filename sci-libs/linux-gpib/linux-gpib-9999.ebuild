@@ -22,7 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="pcmcia static guile perl php python tcl doc firmware"
 
-S="${WORKDIR}/${PN}-user-${PV}"
+S="${WORKDIR}/${PN}-${PV}"
 
 COMMONDEPEND="
 	sys-libs/readline:=
