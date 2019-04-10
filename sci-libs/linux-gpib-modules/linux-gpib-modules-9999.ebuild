@@ -27,7 +27,7 @@ DEPEND="${COMMONDEPEND}
 #	"${FILESDIR}"/${PN}-4.2.0_rc1-reallydie.patch
 #)
 
-S=${WORKDIR}/linux-gpib-kernel-${PV}
+S=${WORKDIR}/linux-gpib-modules-${PV}
 
 pkg_setup () {
 	linux-mod_pkg_setup
