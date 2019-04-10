@@ -7,7 +7,7 @@ inherit linux-info linux-mod autotools toolchain-funcs git-r3
 
 DESCRIPTION="Kernel modules for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
-SRC_URI="mirror://sourceforge/linux-gpib/linux-gpib-${PV}.tar.gz"
+#SRC_URI="mirror://sourceforge/linux-gpib/linux-gpib-${PV}.tar.gz"
 EGIT_REPO_URI="/home/cfg/_myapps/linux-gpib-kernel/linux-gpib-code/linux-gpib-kernel/"
 
 LICENSE="GPL-2"
@@ -22,9 +22,9 @@ RDEPEND="${COMMONDEPEND}
 DEPEND="${COMMONDEPEND}
 	virtual/pkgconfig"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-4.2.0_rc1-reallydie.patch
-)
+#PATCHES=(
+#	"${FILESDIR}"/${PN}-4.2.0_rc1-reallydie.patch
+#)
 
 S=${WORKDIR}/linux-gpib-kernel-${PV}
 
