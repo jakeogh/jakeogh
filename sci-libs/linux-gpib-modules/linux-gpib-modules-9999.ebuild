@@ -52,14 +52,14 @@ pkg_setup () {
 #	eautoreconf
 #}
 
-src_configure() {
-	set_arch_to_kernel
-	econf \
-		$(use_enable isa) \
-		$(use_enable pcmcia) \
-		$(use_enable debug driver-debug) \
-		--with-linux-srcdir=${KV_DIR}
-}
+#src_configure() {
+#	set_arch_to_kernel
+#	econf \
+#		$(use_enable isa) \
+#		$(use_enable pcmcia) \
+#		$(use_enable debug driver-debug) \
+#		--with-linux-srcdir=${KV_DIR}
+#}
 
 src_compile() {
 	set_arch_to_kernel
