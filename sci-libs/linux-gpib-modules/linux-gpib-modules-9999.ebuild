@@ -47,10 +47,10 @@ pkg_setup () {
 #	unpack "${WORKDIR}/linux-gpib-${PV}/linux-gpib-kernel-${PV}.tar.gz"
 #}
 
-src_prepare () {
-	default
-	eautoreconf
-}
+#src_prepare () {
+#	default
+#	eautoreconf
+#}
 
 src_configure() {
 	set_arch_to_kernel
