@@ -51,10 +51,10 @@ pkg_setup () {
 	use python && python_setup
 }
 
-src_unpack() {
-	default
-	unpack "${WORKDIR}/${P}/${PN}-user-${PV}.tar.gz"
-}
+#src_unpack() {
+#	default
+#	unpack "${WORKDIR}/${P}/${PN}-user-${PV}.tar.gz"
+#}
 
 src_prepare () {
 	default
