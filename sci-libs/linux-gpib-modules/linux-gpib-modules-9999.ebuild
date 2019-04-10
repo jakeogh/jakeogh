@@ -44,7 +44,7 @@ pkg_setup () {
 
 src_unpack() {
 	default
-	unpack "${WORKDIR}/linux-gpib-${PV}/linux-gpib-kernel-${PV}.tar.gz"
+#	unpack "${WORKDIR}/linux-gpib-${PV}/linux-gpib-kernel-${PV}.tar.gz"
 }
 
 src_prepare () {
