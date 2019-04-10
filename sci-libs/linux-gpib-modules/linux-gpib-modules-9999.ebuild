@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit linux-info linux-mod autotools toolchain-funcs git-r3
+inherit user linux-info linux-mod autotools toolchain-funcs git-r3
 
 DESCRIPTION="Kernel modules for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"
