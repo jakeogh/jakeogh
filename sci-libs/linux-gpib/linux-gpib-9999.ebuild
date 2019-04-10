@@ -19,7 +19,7 @@ EGIT_REPO_URI="/home/cfg/_myapps/linux-gpib-kernel/linux-gpib-code/linux-gpib-us
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS=""
 IUSE="pcmcia static guile perl php python tcl doc firmware"
 
 S="${WORKDIR}/${PN}-${PV}"
