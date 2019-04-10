@@ -13,7 +13,7 @@ EGIT_REPO_URI="/home/cfg/_myapps/linux-gpib-kernel/linux-gpib-code/linux-gpib-ke
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS=""
 IUSE="isa pcmcia debug"
 
 COMMONDEPEND=""
