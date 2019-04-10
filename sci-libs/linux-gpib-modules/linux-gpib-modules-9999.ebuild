@@ -10,6 +10,7 @@ HOMEPAGE="https://linux-gpib.sourceforge.io/"
 #SRC_URI="mirror://sourceforge/linux-gpib/linux-gpib-${PV}.tar.gz"
 EGIT_REPO_URI="/home/cfg/_myapps/linux-gpib-kernel/linux-gpib-code/linux-gpib-kernel/"
 
+
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
