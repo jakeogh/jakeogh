@@ -21,7 +21,8 @@ DEPEND="
 			dev-python/pytest
 			dev-python/tox
 			dev-python/twine
-			dev-python/wheel )
+			dev-python/wheel
+			dev-python/virtualenv )
 "
 
 #DEPEND="dev-python/psutil
