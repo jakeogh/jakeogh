@@ -14,7 +14,15 @@ EGIT_REPO_URI="/home/cfg/_myapps/uhashfs"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="doc test dev"
+
+DEPEND="
+	test? ( dev-python/pytest-cov
+			dev-python/pytest
+			dev-python/tox
+			dev-python/twine
+			dev-python/wheel )
+"
 
 #DEPEND="dev-python/psutil
 #	dev-python/requests
