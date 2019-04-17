@@ -10,7 +10,7 @@ DESCRIPTION="A content-addressable file management system for Python"
 HOMEPAGE="https://github.com/dgilland/hashfs"
 #EGIT_REPO_URI="https://github.com/dgilland/hashfs.git"
 EGIT_REPO_URI="/home/cfg/_myapps/uhashfs"
-EGIT_BRANCH="py3only"
+EGIT_BRANCH="python3.6+"
 
 LICENSE="MIT"
 SLOT="0"
