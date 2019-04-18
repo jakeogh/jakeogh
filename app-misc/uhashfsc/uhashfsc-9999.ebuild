@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 RDEPEND=""
-DEPEND="test? ( dev-lang/perl )"
+DEPEND=""
 
 src_prepare() {
 	default
