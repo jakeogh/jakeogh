@@ -43,7 +43,6 @@ llvm_check_deps() {
 pkg_setup () {
 	einfo $PATH
 	llvm_pkg_setup
-	einfo $PATH
 	python-single-r1_pkg_setup
 }
 
@@ -52,6 +51,7 @@ src_prepare() {
 }
 
 src_configure() {
+	einfo $PATH
 	waf-utils_src_configure
 }
 
