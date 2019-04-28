@@ -56,7 +56,7 @@ src_configure() {
 }
 
 src_compile() {
-	waf-utils_src_compile
+	waf-utils_src_compile build_cboehm
 }
 
 src_install () {
