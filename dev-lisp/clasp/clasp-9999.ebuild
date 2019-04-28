@@ -3,6 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE='threads(+)'
 
 inherit eutils multilib git-r3 waf-utils python-single-r1
 
