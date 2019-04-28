@@ -11,7 +11,6 @@ inherit eutils multilib git-r3 waf-utils python-single-r1
 
 #MY_P=ecl-${PV}
 
-
 DESCRIPTION="ECL is an embeddable Common Lisp implementation"
 HOMEPAGE="https://github.com/clasp-developers/clasp"
 EGIT_REPO_URI="https://github.com/clasp-developers/clasp"
