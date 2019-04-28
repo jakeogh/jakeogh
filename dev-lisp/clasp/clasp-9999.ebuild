@@ -10,6 +10,7 @@ inherit eutils multilib git-r3 waf-utils python-single-r1 llvm cmake-utils
 DESCRIPTION="clasp Common Lisp environment"
 HOMEPAGE="https://github.com/clasp-developers/clasp"
 EGIT_REPO_URI="https://github.com/clasp-developers/clasp"
+EGIT_BRANCH="dev"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/${PV}"
@@ -41,13 +42,7 @@ llvm_check_deps() {
 }
 
 pkg_setup () {
-	#local -x CC=${CHOST}-clang
-	#local -x CXX=${CHOST}-clang++
-	#CC=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang
-	#CXX=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang++
 	llvm_pkg_setup
-	#tc-export CC CXX
-	einfo $CXX
 	python-single-r1_pkg_setup
 }
 
@@ -56,10 +51,7 @@ src_prepare() {
 }
 
 src_configure() {
-	einfo $PATH
 	CC="clang" CXX="clang++" strip-unsupported-flags
-	#local -x CC=${CHOST}-clang \
-	#local -x CXX=${CHOST}-clang++ \
 	CC="clang" CXX="clang++" waf-utils_src_configure
 }
 
