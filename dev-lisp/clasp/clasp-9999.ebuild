@@ -41,7 +41,9 @@ llvm_check_deps() {
 }
 
 pkg_setup () {
+	einfo $PATH
 	llvm_pkg_setup
+	einfo $PATH
 	python-single-r1_pkg_setup
 }
 
