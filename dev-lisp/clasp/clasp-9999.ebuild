@@ -52,7 +52,7 @@ src_prepare() {
 
 src_configure() {
 	einfo $PATH
-	waf-utils_src_configure
+	waf-utils_src_configure -vvv
 }
 
 src_compile() {
