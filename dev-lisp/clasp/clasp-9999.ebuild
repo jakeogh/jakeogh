@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit eutils multilib git-r3 waf-utils python-single-r1
+inherit eutils multilib git-r3 waf-utils python-single-r1 llvm
 
 ## test phase only works if ecls already installed #516876
 #RESTRICT="test"
