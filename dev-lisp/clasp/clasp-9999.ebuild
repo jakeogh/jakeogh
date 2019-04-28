@@ -32,8 +32,8 @@ CDEPEND="dev-libs/gmp:0
 		sys-libs/libunwind
 		dev-libs/libbsd
 		dev-lisp/sbcl
-		=sys-devel/llvm-6.0.1-r2
-		=sys-devel/clang-6.0.1"
+		=sys-devel/llvm-6.0.1-r2:=
+		=sys-devel/clang-6.0.1:="
 DEPEND="${CDEPEND}"
 #		app-text/texi2html
 #		emacs? ( virtual/emacs >=app-eselect/eselect-emacs-1.12 )"
