@@ -36,6 +36,10 @@ RDEPEND="${CDEPEND}"
 
 LLVM_MAX_SLOT=6
 
+llvm_check_deps() {
+	has_version "sys-devel/clang:${LLVM_SLOT}"
+}
+
 pkg_setup () {
 	llvm_pkg_setup
 	python-single-r1_pkg_setup
