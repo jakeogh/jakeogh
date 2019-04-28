@@ -51,6 +51,7 @@ LLVM_MAX_SLOT=6
 #)
 
 pkg_setup () {
+	llvm_pkg_setup
 	python-single-r1_pkg_setup
 #	if use gengc || use precisegc ; then
 #		ewarn "You have enabled the generational garbage collector or"
