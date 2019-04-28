@@ -58,9 +58,9 @@ src_prepare() {
 src_configure() {
 	einfo $PATH
 	CC="clang" CXX="clang++" strip-unsupported-flags
-	local -x CC=${CHOST}-clang \
-	local -x CXX=${CHOST}-clang++ \
-	waf-utils_src_configure -vvv
+	#local -x CC=${CHOST}-clang \
+	#local -x CXX=${CHOST}-clang++ \
+	CC="clang" CXX="clang++" waf-utils_src_configure -vvv
 }
 
 src_compile() {
