@@ -41,9 +41,10 @@ llvm_check_deps() {
 }
 
 pkg_setup () {
-	einfo $PATH
+	local -x CC=${CHOST}-clang
+	local -x CXX=${CHOST}-clang++
 	llvm_pkg_setup
-	tc-export CC CXX
+	#tc-export CC CXX
 	einfo $CXX
 	python-single-r1_pkg_setup
 }
