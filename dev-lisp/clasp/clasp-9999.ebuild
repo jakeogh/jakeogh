@@ -50,14 +50,15 @@ LLVM_MAX_SLOT=6
 #	"${FILESDIR}/${P}-build.patch"
 #)
 
-#pkg_setup () {
+pkg_setup () {
+	python-single-r1_pkg_setup
 #	if use gengc || use precisegc ; then
 #		ewarn "You have enabled the generational garbage collector or"
 #		ewarn "the precise collection routines. These features are not very stable"
 #		ewarn "at the moment and may cause crashes."
 #		ewarn "Don't enable them unless you know what you're doing."
 #	fi
-#}
+}
 
 src_prepare() {
 	default
