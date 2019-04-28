@@ -63,6 +63,7 @@ pkg_setup () {
 
 src_prepare() {
 	default
+	cmake-utils_src_prepare
 #	cp "${EPREFIX}"/usr/share/common-lisp/source/asdf/build/asdf.lisp contrib/asdf/ || die
 }
 
