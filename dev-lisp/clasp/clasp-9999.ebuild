@@ -24,7 +24,7 @@ IUSE="threads"
 
 CDEPEND="dev-libs/gmp:0
 		virtual/libffi
-		sys-devel/gcc
+		sys-devel/gcc:*
 		dev-libs/boehm-gc[threads?]
 		sys-devel/binutils
 		sys-libs/zlib
