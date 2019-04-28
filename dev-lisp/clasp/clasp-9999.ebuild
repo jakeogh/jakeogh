@@ -43,6 +43,8 @@ llvm_check_deps() {
 pkg_setup () {
 	local -x CC=${CHOST}-clang
 	local -x CXX=${CHOST}-clang++
+	CC=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang
+	CXX=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang++
 	llvm_pkg_setup
 	#tc-export CC CXX
 	einfo $CXX
@@ -55,6 +57,7 @@ src_prepare() {
 
 src_configure() {
 	einfo $PATH
+	CC="clang" CXX="clang++" strip-unsupported-flags
 	waf-utils_src_configure -vvv
 }
 
