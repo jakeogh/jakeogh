@@ -41,8 +41,8 @@ llvm_check_deps() {
 }
 
 pkg_setup () {
-	local -x CC=${CHOST}-clang
-	local -x CXX=${CHOST}-clang++
+	#local -x CC=${CHOST}-clang
+	#local -x CXX=${CHOST}-clang++
 	#CC=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang
 	#CXX=${EPREFIX}/usr/lib/llvm/${CLANG_SLOT}/bin/clang++
 	llvm_pkg_setup
@@ -60,7 +60,7 @@ src_configure() {
 	CC="clang" CXX="clang++" strip-unsupported-flags
 	#local -x CC=${CHOST}-clang \
 	#local -x CXX=${CHOST}-clang++ \
-	CC="clang" CXX="clang++" waf-utils_src_configure -vvv
+	CC="clang" CXX="clang++" waf-utils_src_configure
 }
 
 src_compile() {
