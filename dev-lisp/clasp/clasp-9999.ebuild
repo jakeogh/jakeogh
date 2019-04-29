@@ -39,7 +39,7 @@ LLVM_MAX_SLOT=6
 
 src_test() {
     if has network-sandbox ${FEATURES}; then
-        die "FEATURES=-network-sandbox is required to build -9999"
+        die 'FEATURES="-network-sandbox" is required to build clasp-9999'
         return 0;
     fi
 }
