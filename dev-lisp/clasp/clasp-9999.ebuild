@@ -46,11 +46,12 @@ src_test() {
 }
 
 
-llvm_check_deps() {
-	has_version "sys-devel/clang:${LLVM_SLOT}"
-}
+#llvm_check_deps() {
+#	has_version "sys-devel/clang:${LLVM_SLOT}"
+#}
 
 pkg_setup () {
+	src_test
 	llvm_pkg_setup
 	python-single-r1_pkg_setup
 }
