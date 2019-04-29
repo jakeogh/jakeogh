@@ -42,7 +42,6 @@ src_test() {
         die "FEATURES=-network-sandbox is required to build -9999"
         return 0;
     fi
-    default
 }
 
 
