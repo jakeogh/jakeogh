@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit eutils multilib git-r3 waf-utils python-single-r1 llvm cmake-utils
+inherit eutils multilib git-r3 waf-utils python-single-r1 llvm
 
 DESCRIPTION="clasp Common Lisp environment"
 HOMEPAGE="https://github.com/clasp-developers/clasp"
@@ -44,11 +44,6 @@ src_test() {
     fi
 }
 
-
-#llvm_check_deps() {
-#	has_version "sys-devel/clang:${LLVM_SLOT}"
-#}
-
 pkg_setup () {
 	src_test
 	llvm_pkg_setup
@@ -60,13 +55,13 @@ src_prepare() {
 }
 
 src_configure() {
-	CC="clang" CXX="clang++" strip-unsupported-flags
+	#CC="clang" CXX="clang++" strip-unsupported-flags
 	CC="clang" CXX="clang++" waf-utils_src_configure
 }
 
 src_compile() {
 	#waf-utils_src_compile --jobs 1 build_cboehm
-	waf-utils_src_compile build_cboehm
+	waf-utils_src_compile --debug -v build_cboehm
 }
 
 src_install () {
