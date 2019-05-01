@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/jakeogh/pycallgraph.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 IUSE="doc examples test"
 
 CDEPEND="media-gfx/graphviz"
