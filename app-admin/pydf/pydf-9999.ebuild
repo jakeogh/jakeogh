@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python{2_7,3_5,3_6} )
 
 inherit python-r1 git-r3
 
-DESCRIPTION="Enhanced df with colors"
+DESCRIPTION="Enhanced df with colors (terminal flashing disabled)"
 HOMEPAGE="http://kassiopeia.juls.savba.sk/~garabik/software/pydf/"
-EGIT_REPO_URI="https://github.com/garabik/pydf.git"
+EGIT_REPO_URI="https://github.com/jakeogh/pydf.git"
 
 LICENSE="public-domain"
 SLOT="0"
