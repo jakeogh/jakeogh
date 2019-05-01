@@ -137,7 +137,9 @@ src_prepare() {
 }
 
 src_configure() {
-	python_setup  # for sphinx
+	if use doc; then
+		python_setup  # for sphinx
+	fi
 
 	local myeconfargs=(
 		--bashcompletiondir="$(get_bashcompdir)"
