@@ -7,7 +7,7 @@ PYTHON_REQ_USE='threads(+)'
 
 inherit eutils multilib git-r3 waf-utils python-single-r1 llvm toolchain
 
-GCC_CONFIG_VER=6.4.0
+#GCC_CONFIG_VER=6.4.0
 
 DESCRIPTION="clasp Common Lisp environment"
 HOMEPAGE="https://github.com/clasp-developers/clasp"
@@ -21,7 +21,6 @@ IUSE="threads"
 
 CDEPEND="dev-libs/gmp:0
 		virtual/libffi
-		~sys-devel/gcc-6.4.0:=
 		dev-libs/boehm-gc[threads?]
 		sys-devel/binutils:*
 		sys-libs/zlib
@@ -32,6 +31,8 @@ CDEPEND="dev-libs/gmp:0
 		dev-lisp/sbcl
 		=sys-devel/llvm-6.0.1-r2:=
 		~sys-devel/clang-6.0.1:="
+
+#		~sys-devel/gcc-6.4.0:=
 
 DEPEND="${CDEPEND}"
 
