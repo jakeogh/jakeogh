@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit eutils multilib git-r3 waf-utils python-single-r1 llvm toolchain
+inherit eutils multilib git-r3 waf-utils python-single-r1 llvm
 
 #GCC_CONFIG_VER=6.4.0
 
