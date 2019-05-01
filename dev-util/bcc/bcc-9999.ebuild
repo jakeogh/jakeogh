@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-util/cmake
 	virtual/pkgconfig"
 
-S=${WORKDIR}/${PN}-${EGIT_COMMIT#v}
+#S=${WORKDIR}/${PN}-${EGIT_COMMIT#v}
 
 PATCHES=(
 	"${FILESDIR}/bcc-0.9.0-system-libbpf.patch"
