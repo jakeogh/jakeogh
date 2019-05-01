@@ -19,7 +19,7 @@ LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y.  Bump of Y is
 # meant to be binary backward compatible.
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~x86 ~x64-solaris"
+KEYWORDS=""
 REQUIRED_USE="
 	nmbug? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -32,7 +32,6 @@ CDEPEND="
 	>=dev-libs/glib-2.22:2
 	>=dev-libs/gmime-3.0.3:3.0
 	>=dev-libs/xapian-1.4.8:=
-	doc? dev-python/sphinx[${PYTHON_USEDEP}]
 	sys-apps/texinfo
 	>=sys-libs/zlib-1.2.5.2
 	sys-libs/talloc
@@ -45,6 +44,7 @@ DEPEND="${CDEPEND}
 	doc? (
 		app-doc/doxygen
 		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
 	test? (
 		app-misc/dtach
