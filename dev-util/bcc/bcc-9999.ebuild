@@ -9,7 +9,7 @@ inherit cmake-utils linux-info python-single-r1 python-utils-r1 git-r3
 
 DESCRIPTION="Tools for BPF-based Linux IO analysis, networking, monitoring, and more"
 HOMEPAGE="https://iovisor.github.io/bcc/"
-EGIT_COMMIT="v${PV}"
+#EGIT_COMMIT="v${PV}"
 #SRC_URI="https://github.com/iovisor/bcc/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz
 #	mirror://gentoo/bcc-0.9.0-linux-5-bpf.patch.xz"
 EGIT_REPO_URI="https://github.com/iovisor/bcc.git"
