@@ -46,9 +46,9 @@ src_test() {
 		ewarn "You have enabled debug info (i.e. -g or -ggdb in your CFLAGS/CXXFLAGS)."
 		ewarn "This causes the build to hang"
 		ewarn
-		die "Please try removing -g{,gdb}."
+		die "Please remove -g{,gdb}."
+		return 0;
 	fi
-
 }
 
 pkg_setup () {
