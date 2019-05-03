@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/clasp-developers/clasp"
 EGIT_REPO_URI="https://github.com/clasp-developers/clasp"
 #EGIT_BRANCH="dev"
 
-LICENSE="LGPL-2.1+"
+LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="threads"
@@ -70,5 +70,5 @@ src_compile() {
 }
 
 src_install () {
-	waf-utils_src_install install_cboehm
+	"${WAF_BINARY}" --destdir="${D}" install_cboehm  || die "Make install failed"
 }
