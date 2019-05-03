@@ -37,10 +37,18 @@ RDEPEND="${CDEPEND}"
 LLVM_MAX_SLOT=6
 
 src_test() {
-    if has network-sandbox ${FEATURES}; then
-        die 'FEATURES="-network-sandbox" is required to build clasp-9999'
-        return 0;
-    fi
+	if has network-sandbox ${FEATURES}; then
+		die 'FEATURES="-network-sandbox" is required to build clasp-9999'
+		return 0;
+	fi
+	if ( shopt -s extglob; is-flagq '-g?(gdb)?([1-9])' ); then
+		ewarn
+		ewarn "You have enabled debug info (i.e. -g or -ggdb in your CFLAGS/CXXFLAGS)."
+		ewarn "This causes the build to hang"
+		ewarn
+		die "Please try removing -g{,gdb}."
+	fi
+
 }
 
 pkg_setup () {
