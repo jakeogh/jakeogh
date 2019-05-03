@@ -62,13 +62,10 @@ src_prepare() {
 }
 
 src_configure() {
-	#CC="clang" CXX="clang++" strip-unsupported-flags
 	CC="clang" CXX="clang++" waf-utils_src_configure
 }
 
 src_compile() {
-	#waf-utils_src_compile --jobs 1 build_cboehm
-	#waf-utils_src_compile --debug -v build_cboehm
 	waf-utils_src_compile build_cboehm
 }
 
