@@ -7,8 +7,6 @@ PYTHON_REQ_USE='threads(+)'
 
 inherit eutils multilib git-r3 waf-utils python-single-r1 llvm
 
-#GCC_CONFIG_VER=6.4.0
-
 DESCRIPTION="clasp Common Lisp environment"
 HOMEPAGE="https://github.com/clasp-developers/clasp"
 EGIT_REPO_URI="https://github.com/clasp-developers/clasp"
@@ -31,8 +29,6 @@ CDEPEND="dev-libs/gmp:0
 		dev-lisp/sbcl
 		=sys-devel/llvm-6.0.1-r2:=
 		~sys-devel/clang-6.0.1:="
-
-#		~sys-devel/gcc-6.4.0:=
 
 DEPEND="${CDEPEND}"
 
@@ -64,9 +60,10 @@ src_configure() {
 
 src_compile() {
 	#waf-utils_src_compile --jobs 1 build_cboehm
-	waf-utils_src_compile --debug -v build_cboehm
+	#waf-utils_src_compile --debug -v build_cboehm
+	waf-utils_src_compile build_cboehm
 }
 
 src_install () {
-	waf-utils_src_install
+	waf-utils_src_install install_cboehm
 }
