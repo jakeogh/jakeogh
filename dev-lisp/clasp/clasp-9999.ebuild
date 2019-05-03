@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit eutils multilib git-r3 waf-utils python-single-r1 llvm
+inherit eutils multilib git-r3 waf-utils python-single-r1 llvm flag-o-matic
 
 DESCRIPTION="clasp Common Lisp environment"
 HOMEPAGE="https://github.com/clasp-developers/clasp"
