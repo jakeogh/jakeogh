@@ -36,6 +36,9 @@ RDEPEND="${CDEPEND}"
 
 LLVM_MAX_SLOT=9
 
+#pkg_preinst() {
+#}
+
 src_test() {
 	if has network-sandbox ${FEATURES}; then
 		die 'FEATURES="-network-sandbox" is required to build clasp-9999'
