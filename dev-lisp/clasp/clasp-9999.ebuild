@@ -27,14 +27,14 @@ CDEPEND="dev-libs/gmp:0
 		sys-libs/libunwind
 		dev-libs/libbsd
 		dev-lisp/sbcl
-		=sys-devel/llvm-6.0.1-r2:=
-		~sys-devel/clang-6.0.1:="
+		sys-devel/clag:9=
+		"
 
 DEPEND="${CDEPEND}"
 
 RDEPEND="${CDEPEND}"
 
-LLVM_MAX_SLOT=6
+LLVM_MAX_SLOT=9
 
 src_test() {
 	if has network-sandbox ${FEATURES}; then
