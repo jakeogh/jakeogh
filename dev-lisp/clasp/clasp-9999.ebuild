@@ -27,7 +27,7 @@ CDEPEND="dev-libs/gmp:0
 		sys-libs/libunwind
 		dev-libs/libbsd
 		dev-lisp/sbcl
-		sys-devel/clag:9999
+		=sys-devel/clag-9999
 		"
 
 DEPEND="${CDEPEND}"
