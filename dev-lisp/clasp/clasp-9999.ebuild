@@ -10,7 +10,7 @@ inherit eutils multilib git-r3 waf-utils python-single-r1 llvm flag-o-matic
 DESCRIPTION="clasp Common Lisp environment"
 HOMEPAGE="https://github.com/clasp-developers/clasp"
 EGIT_REPO_URI="https://github.com/clasp-developers/clasp"
-#EGIT_BRANCH="dev"
+EGIT_BRANCH="dev"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
