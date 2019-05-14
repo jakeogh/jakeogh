@@ -19,19 +19,11 @@ DEPEND=""
 
 src_prepare() {
 	default
-#	sed -i -e "s|/tmp/|${T}/|g" \
-#		test/uhashfsc-test.sh || die
 }
 
 src_compile() {
-	tc-export CC
 	emake
 }
-
-#src_test() {
-#	cd test || die
-#	./uhashfsc-test.sh || die
-#}
 
 src_install() {
 	dobin ttyplot
