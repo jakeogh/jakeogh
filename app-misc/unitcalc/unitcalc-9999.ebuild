@@ -20,6 +20,7 @@ KEYWORDS=""
 DEPEND="
 	dev-python/click
 	dev-python/pint
+	dev-python/python-levenshtein
 "
 
 #dev-util/splint
