@@ -17,7 +17,7 @@ KEYWORDS=""
 IUSE="doc test dev"
 
 DEPEND="
-	dev-python/humanize,
+	dev-python/humanize
 	test? ( dev-python/pytest-cov
 			dev-python/pytest
 			dev-python/tox
