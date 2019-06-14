@@ -25,6 +25,7 @@ sys-apps/dmidecode
 sys-apps/pv
 dev-python/kcl
 dev-tcltk/expect
+dev-python/humanfriendly
 "
 
 RDEPEND="${DEPEND}"
