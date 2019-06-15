@@ -21,6 +21,9 @@ DEPEND="${RDEPEND}
 	dev-libs/elfutils
 	dev-libs/libdwarf
 	dev-python/click
+	dev-python/cffi
+	dev-python/pytest
+	dev-python/requests
 	dev-python/six
 	sys-libs/libunwind"
 
