@@ -30,5 +30,6 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 src_prepare() {
+	default
 	rm -rf tests
 }
