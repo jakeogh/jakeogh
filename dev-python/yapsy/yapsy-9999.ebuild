@@ -20,7 +20,7 @@ IUSE="doc"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
-S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_P}/package"
 
 #PATCHES=(
 #	"${FILESDIR}"/${P}-python36-tests.patch
