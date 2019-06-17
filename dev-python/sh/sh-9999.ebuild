@@ -20,9 +20,9 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-PATCHES=(
-	"${FILESDIR}/sh-1.12.9-python2-unicode-tests.patch"
-)
+#PATCHES=(
+#	"${FILESDIR}/sh-1.12.9-python2-unicode-tests.patch"
+#)
 
 python_test() {
 	${PYTHON} test.py || die
