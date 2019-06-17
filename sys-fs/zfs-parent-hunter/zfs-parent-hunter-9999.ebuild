@@ -11,7 +11,7 @@ DESCRIPTION="Search zfs ids for specific parents"
 HOMEPAGE="https://github.com/jakeogh/zfs-parent-hunter"
 EGIT_REPO_URI="/home/cfg/_myapps/zfs-parent-hunter https://github.com/jakeogh/zfs-parent-hunter.git"
 
-LICENSE="MIT"
+LICENSE="Unlicense"
 SLOT="0"
 IUSE=""
 KEYWORDS=""
