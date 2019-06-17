@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/tibonihoo/yapsy"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS=""
 IUSE="doc"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
