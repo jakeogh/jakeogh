@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-#MY_P="Yapsy-${PV}"
+MY_P="Yapsy-${PV}"
 PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1 git-r3
@@ -20,7 +20,7 @@ IUSE="doc"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
-#S="${WORKDIR}/${MY_P}"
+S="${WORKDIR}/${MY_P}"
 
 #PATCHES=(
 #	"${FILESDIR}"/${P}-python36-tests.patch
