@@ -23,6 +23,7 @@ DEPEND="
 	x11-misc/xclip
 	dev-python/click
 	dev-python/smartmove
+	dev-python/sh
 "
 
 RDEPEND="${DEPEND}"
