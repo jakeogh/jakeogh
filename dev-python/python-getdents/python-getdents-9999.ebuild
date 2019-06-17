@@ -17,6 +17,7 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
+	dev-python/pytest-runner
 "
 
 RDEPEND="${DEPEND}"
