@@ -3,14 +3,14 @@
 
 EAPI="6"
 
-MY_P="Yapsy-${PV}"
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+#MY_P="Yapsy-${PV}"
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="A fat-free DIY Python plugin management toolkit"
 HOMEPAGE="http://yapsy.sourceforge.net/"
-EGIT_REPO_URI="https://github.com/tibonihoo/yapsy"
+EGIT_REPO_URI="https://github.com/tibonihoo/yapsy.git"
 
 LICENSE="BSD"
 SLOT="0"
