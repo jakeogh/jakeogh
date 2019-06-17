@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-MY_P="Yapsy-${PV}"
+MY_P="yapsy-${PV}"
 PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1 git-r3
