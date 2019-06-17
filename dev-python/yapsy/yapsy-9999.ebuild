@@ -29,8 +29,8 @@ PATCHES=(
 
 python_prepare_all() {
 	# Disable erroneous test
-	sed -e 's:test_default_plugins_place_is_parent_dir:_&:' \
-		-i test/test_PluginFileLocator.py || die
+#	sed -e 's:test_default_plugins_place_is_parent_dir:_&:' \
+#		-i test/test_PluginFileLocator.py || die
 	distutils-r1_python_prepare_all
 }
 
