@@ -23,9 +23,9 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 #S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-python36-tests.patch
-)
+#PATCHES=(
+#	"${FILESDIR}"/${P}-python36-tests.patch
+#)
 
 python_prepare_all() {
 	# Disable erroneous test
