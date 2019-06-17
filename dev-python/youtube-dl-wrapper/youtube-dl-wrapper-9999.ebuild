@@ -24,6 +24,7 @@ DEPEND="
 	dev-python/click
 	dev-python/smartmove
 	dev-python/sh
+	dev-python/kcl
 "
 
 RDEPEND="${DEPEND}"
