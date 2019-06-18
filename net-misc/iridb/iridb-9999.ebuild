@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,6 @@ DEPEND="
 	dev-python/redis-py[${PYTHON_USEDEP}]
 	dev-python/anormbookmarker[${PYTHON_USEDEP}]
 	dev-db/sadisplay[${PYTHON_USEDEP}]
-	app-backup/bup[${PYTHON_USEDEP}]
 	dev-python/psycopg[${PYTHON_USEDEP}]
 	app-text/tree
 	dev-python/pudb[${PYTHON_USEDEP}]
