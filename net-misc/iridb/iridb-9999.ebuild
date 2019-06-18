@@ -13,42 +13,40 @@ EGIT_REPO_URI="/home/cfg/_myapps/iridb"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	dev-python/click
-	dev-python/cssselect
-	dev-python/yapsy
-	dev-python/sh
-	dev-python/werkzeug
-	dev-python/lxml
-	dev-python/colorama
-	dev-python/argh
-	dev-python/sqlalchemy
-	dev-python/requests
-	dev-python/tldextract
-	dev-python/amara3-iri
-	dev-python/numpy
-	dev-python/pydot
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/cssselect[${PYTHON_USEDEP}]
+	dev-python/yapsy[${PYTHON_USEDEP}]
+	dev-python/sh[${PYTHON_USEDEP}]
+	dev-python/werkzeug[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/sqlalchemy[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/tldextract[${PYTHON_USEDEP}]
+	dev-python/amara3-iri[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/pydot[${PYTHON_USEDEP}]
 	dev-db/postgresql:*
-	dev-python/httplib2
-	dev-python/python-dmenu
-	dev-python/beautifulsoup:*
-	dev-python/requests-cache
-	dev-python/requests-file
-	dev-python/sqlalchemy-utils
+	dev-python/httplib2[${PYTHON_USEDEP}]
+	dev-python/python-dmenu[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup:*[${PYTHON_USEDEP}]
+	dev-python/requests-cache[${PYTHON_USEDEP}]
+	dev-python/requests-file[${PYTHON_USEDEP}]
+	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
 	dev-db/redis
-	dev-python/redis-py
-	dev-python/anormbookmarker
-	dev-db/sadisplay
-	app-backup/bup
-	dev-python/psycopg
+	dev-python/redis-py[${PYTHON_USEDEP}]
+	dev-python/anormbookmarker[${PYTHON_USEDEP}]
+	dev-db/sadisplay[${PYTHON_USEDEP}]
+	app-backup/bup[${PYTHON_USEDEP}]
+	dev-python/psycopg[${PYTHON_USEDEP}]
 	app-text/tree
-	dev-python/pudb
-	dev-python/pillow
-	dev-python/attrs
-	dev-python/python-magic
+	dev-python/pudb[${PYTHON_USEDEP}]
+	dev-python/pillow[${PYTHON_USEDEP}]
+	dev-python/attrs[${PYTHON_USEDEP}]
 "
 #	dev-python/ghost
 #	sys-apps/file[python]
