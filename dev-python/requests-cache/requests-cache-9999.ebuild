@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 HOMEPAGE="https://pypi.org/project/requests-cache/"
 DESCRIPTION="Persistent cache for requests library"
