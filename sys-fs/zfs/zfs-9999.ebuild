@@ -13,7 +13,7 @@ HOMEPAGE="https://zfsonlinux.org/"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="/home/cfg/_myapps/zfs https://github.com/zfsonlinux/zfs.git"
+	EGIT_REPO_URI="/home/cfg/_myapps/zfs-zdbm https://github.com/zfsonlinux/zfs.git"
 	BRANCH="dump-file"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
