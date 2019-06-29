@@ -15,7 +15,8 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="/home/cfg/_myapps/zfs-zdbm https://github.com/zfsonlinux/zfs.git"
 	#BRANCH="dump-file-ng"
-	BRANCH="split-zdb-read-block"
+	#BRANCH="split-zdb-read-block"
+	BRANCH="dump-file-ng-all-changes"
 	#BRANCH="fix_zdb_decompress_R_flag"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
