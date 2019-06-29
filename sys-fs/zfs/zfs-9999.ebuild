@@ -18,6 +18,7 @@ if [[ ${PV} == "9999" ]] ; then
 	#BRANCH="split-zdb-read-block"
 	BRANCH="dump-file-ng-all-changes"
 	#BRANCH="fix_zdb_decompress_R_flag"
+	EGIT_OVERRIDE_REPO_ZFSONLINUX_ZFS_IMAGES="/home/cfg/_myapps/zfs-images/"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64"
