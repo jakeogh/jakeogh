@@ -14,7 +14,8 @@ HOMEPAGE="https://zfsonlinux.org/"
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="/home/cfg/_myapps/zfs-zdbm https://github.com/zfsonlinux/zfs.git"
-	BRANCH="fix_zdb_decompress_R_flag"
+	BRANCH="dump-file-ng"
+	#BRANCH="fix_zdb_decompress_R_flag"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
 	KEYWORDS="~amd64"
