@@ -91,9 +91,9 @@ src_install() {
 		mime_types+="x-scheme-handler/ftp;" # bug #412185
 		mime_types+="x-scheme-handler/mailto;x-scheme-handler/webcal;" # bug #416393
 		make_desktop_entry \
-			glide \
+			"glide -S" \
 			"Glide" \
-			glide -S \
+			glide \
 			"Network;WebBrowser" \
 			"MimeType=${mime_types}\nStartupWMClass=glide" || die
 	fi
