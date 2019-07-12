@@ -18,6 +18,7 @@ IUSE=""
 
 DEPEND="
 	dev-python/pytest-runner[${PYTHON_USEDEP}]
+	dev-python/fastentrypoints[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
