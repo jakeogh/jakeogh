@@ -9,6 +9,7 @@ inherit distutils-r1 git-r3
 DESCRIPTION="Python binding to linux syscall getdents64"
 HOMEPAGE="https://github.com/ZipFile/python-getdents"
 #EGIT_REPO_URI="https://github.com/ZipFile/python-getdents.git"
+
 EGIT_REPO_URI="/home/cfg/_myapps/python-getdents https://github.com/jakeogh/python-getdents"
 BRANCH="yield-objects"
 
