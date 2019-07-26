@@ -11,7 +11,8 @@ HOMEPAGE="https://github.com/ZipFile/python-getdents"
 #EGIT_REPO_URI="https://github.com/ZipFile/python-getdents.git"
 
 EGIT_REPO_URI="/home/cfg/_myapps/python-getdents https://github.com/jakeogh/python-getdents"
-BRANCH="yield-objects"
+#BRANCH="yield-objects"
+BRANCH="attrs"
 
 LICENSE="MIT"
 SLOT="0"
