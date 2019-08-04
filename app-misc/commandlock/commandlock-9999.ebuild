@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 #IUSE="+minimal test"
 
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
-DEPEND="sys-apps/coreutils"
+DEPEND=""
 
 #src_compile() { :; }
 

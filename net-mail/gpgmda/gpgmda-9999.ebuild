@@ -22,7 +22,6 @@ DEPEND="
 	app-crypt/gnupg
 	virtual/ssh
 	app-arch/tar
-	sys-apps/coreutils
 	sys-apps/moreutils
 	app-admin/sudo
 "

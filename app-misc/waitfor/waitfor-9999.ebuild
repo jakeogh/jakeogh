@@ -13,7 +13,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-DEPEND="sys-apps/coreutils"
+DEPEND=""
 
 src_install() {
 	dobin ${PN}

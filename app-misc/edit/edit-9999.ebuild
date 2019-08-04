@@ -15,8 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
-DEPEND="sys-apps/coreutils
-dev-util/splint
+DEPEND="dev-util/splint
 dev-util/shellcheck
 dev-python/pylint
 app-misc/commandlock
