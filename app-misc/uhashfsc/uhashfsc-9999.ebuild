@@ -21,7 +21,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 RDEPEND=""
-DEPEND="dev-python/python-getdents[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/python-getdents[${PYTHON_USEDEP}]
+"
 
 src_prepare() {
 	default
