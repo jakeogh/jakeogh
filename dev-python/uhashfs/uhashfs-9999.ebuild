@@ -17,13 +17,14 @@ KEYWORDS=""
 IUSE="doc test dev"
 
 DEPEND="
-	dev-python/humanize
-	test? ( dev-python/pytest-cov
-			dev-python/pytest
-			dev-python/tox
-			dev-python/twine
-			dev-python/wheel
-			dev-python/virtualenv )
+	dev-python/humanize[${PYTHON_USEDEP}]
+	dev-python/python-getdents[${PYTHON_USEDEP}]
+	test? ( dev-python/pytest-cov[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/tox[${PYTHON_USEDEP}]
+			dev-python/twine[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+			dev-python/virtualenv[${PYTHON_USEDEP}] )
 "
 
 python_install_all() {
