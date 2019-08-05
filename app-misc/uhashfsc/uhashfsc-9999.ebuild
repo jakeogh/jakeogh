@@ -9,7 +9,7 @@ EAPI=7
 
 inherit toolchain-funcs git-r3
 
-DESCRIPTION="Grep-like tool to search for binary strings"
+DESCRIPTION="Hash-based file manager."
 #HOMEPAGE="https://github.com/tmbinc/uhashfsc/"
 EGIT_REPO_URI="/home/user/_myapps/uhashfsc/"
 #SRC_URI="https://github.com/${GITHUB_USER}/${PN}/tarball/${GITHUB_HASH} -> ${MY_P}.tar.gz"
@@ -21,7 +21,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 RDEPEND=""
-DEPEND=""
+DEPEND="dev-python/python-getdents[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	default
