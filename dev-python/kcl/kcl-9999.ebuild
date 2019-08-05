@@ -18,6 +18,7 @@ IUSE=""
 
 DEPEND="dev-python/psutil
 	dev-python/requests
+	dev-python/attrs
 	dev-python/redis-py
 	dev-python/sqlalchemy-utils
 	dev-python/python-magic
