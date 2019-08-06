@@ -12,19 +12,20 @@ EGIT_REPO_URI="/home/cfg/_myapps/sendgentoo https://github.com/jakeogh/sendgento
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 LICENSE="MIT"
 
 # parted likes dmidecode, should send a patch for the ebuild
-DEPEND="dev-python/click
+DEPEND="dev-python/click[${PYTHON_USEDEP}]
+sys-fs/cryptsetup
 sys-fs/dosfstools
 sys-block/parted
 sys-apps/dmidecode
 sys-apps/pv
-dev-python/kcl
+dev-python/kcl[${PYTHON_USEDEP}]
 dev-tcltk/expect
-dev-python/humanfriendly
+dev-python/humanfriendly[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
