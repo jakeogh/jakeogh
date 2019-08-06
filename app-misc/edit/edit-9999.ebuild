@@ -16,6 +16,7 @@ KEYWORDS="~amd64 ~x86"
 
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 DEPEND="dev-util/splint
+app-portage/repoman
 dev-util/shellcheck
 dev-python/pylint
 app-misc/commandlock
