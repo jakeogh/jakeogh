@@ -10,8 +10,8 @@ inherit git-r3
 DESCRIPTION="A highly efficient backup system based on the git packfile format"
 HOMEPAGE="https://bup.github.io/ https://github.com/bup/bup"
 #SRC_URI="https://github.com/bup/bup/archive/${PV}.tar.gz -> ${P}.tar.gz"
-#EGIT_REPO_URI="https://github.com/bup/bup.git"
-EGIT_REPO_URI="/home/cfg/_repos/bup"
+EGIT_REPO_URI="https://github.com/bup/bup.git"
+#EGIT_REPO_URI="/home/cfg/_repos/bup"
 
 LICENSE="LGPL-2"
 SLOT="0"
