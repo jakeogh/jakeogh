@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/bup/bup.git"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE="+doc test web"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
