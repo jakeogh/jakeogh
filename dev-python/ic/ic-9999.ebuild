@@ -16,7 +16,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND=""
+DEPEND="
+	dev-python/pygments[${PYTHON_USEDEP}]
+	dev-python/untokenize[${PYTHON_USEDEP}]
+"
 
 RDEPEND="${DEPEND}"
 
