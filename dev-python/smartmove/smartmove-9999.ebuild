@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Move or delete files based on dest criteria."
 HOMEPAGE="https://github.com/jakeogh/smartmove"
-EGIT_REPO_URI="https://github.com/jakeogh/smartmove.git"
+EGIT_REPO_URI="/home/cfg/_myapps/smartmove https://github.com/jakeogh/smartmove.git"
 
 LICENSE="MIT"
 SLOT="0"
