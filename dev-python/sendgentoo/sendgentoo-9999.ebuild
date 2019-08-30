@@ -25,8 +25,10 @@ sys-apps/dmidecode
 sys-apps/pv
 dev-python/kcl[${PYTHON_USEDEP}]
 dev-tcltk/expect
-dev-python/humanfriendly[${PYTHON_USEDEP}]  # blocking py3.7
+dev-python/humanfriendly[${PYTHON_USEDEP}]
 "
+
+# humanfriendly is blocking py3.7
 
 RDEPEND="${DEPEND}"
 
