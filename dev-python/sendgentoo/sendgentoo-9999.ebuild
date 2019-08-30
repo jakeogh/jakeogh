@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 
 inherit distutils-r1 git-r3
 
@@ -25,7 +25,7 @@ sys-apps/dmidecode
 sys-apps/pv
 dev-python/kcl[${PYTHON_USEDEP}]
 dev-tcltk/expect
-dev-python/humanfriendly[${PYTHON_USEDEP}]
+dev-python/humanfriendly[${PYTHON_USEDEP}]  # blocking py3.7
 "
 
 RDEPEND="${DEPEND}"
