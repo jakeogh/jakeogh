@@ -17,8 +17,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	dev-python/kcl
-	dev-python/sqlalchemy
+	dev-python/kcl[${PYTHON_USEDEP}]
+	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
