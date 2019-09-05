@@ -16,21 +16,21 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-python/psutil
-	dev-python/requests
-	dev-python/attrs
-	dev-python/redis-py
-	dev-python/sqlalchemy-utils
-	dev-python/python-magic
-	dev-python/beautifulsoup
+DEPEND="dev-python/psutil[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/attrs[${PYTHON_USEDEP}]
+	dev-python/redis-py[${PYTHON_USEDEP}]
+	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
+	dev-python/python-magic[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup[${PYTHON_USEDEP}]
 	sys-fs/dd-rescue
 "
-#	dev-python/pydot
-#	dev-db/sadisplay
-#	dev-python/pycallgraph
+#	dev-python/pydot[${PYTHON_USEDEP}]
+#	dev-db/sadisplay[${PYTHON_USEDEP}]
+#	dev-python/pycallgraph[${PYTHON_USEDEP}]
 
 #sys-apps/file[python]
-#dev-python/python-magic # file has a python flag. will that work instead?
+#dev-python/python-magic[${PYTHON_USEDEP}] # file has a python flag. will that work instead?
 
 RDEPEND="${DEPEND}"
 
