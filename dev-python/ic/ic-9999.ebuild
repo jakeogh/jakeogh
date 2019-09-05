@@ -19,6 +19,7 @@ IUSE=""
 DEPEND="
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/untokenize[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
