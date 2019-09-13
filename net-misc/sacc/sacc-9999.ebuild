@@ -15,17 +15,23 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND=""
-DEPEND="${RDEPEND}"
+DEPEND="
+	sys-libs/ncurses:0=
+	${RDEPEND}"
+
 PATCHES=()
 
 src_prepare() {
 	default
 	restore_config config.h
-	tc-export CC PKG_CONFIG
+	eapply_user
+	#tc-export CC PKG_CONFIG
 }
 
 src_compile() {
-	emake
+	 emake \
+	CC=$(tc-getCC) \
+	LIBS="$(pkg-config --libs ncurses)"
 }
 
 src_install() {
