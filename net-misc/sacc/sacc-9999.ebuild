@@ -22,7 +22,19 @@ DEPEND="
 PATCHES=()
 
 src_prepare() {
-	default
+	 sed config.mk \
+  -e '/^CC/d' \
+  -e 's|/usr/local|/usr|g' \
+  -e 's|{|(|g;s|}|)|g' \
+  -i || die
+
+ sed Makefile \
+  -e 's|{|(|g;s|}|)|g' \
+  -e '/^[[:space:]]*@echo/d' \
+  -e 's|^ @| |g' \
+  -e 's|chmod 555|chmod 755|g' \
+  -i || die
+
 	restore_config config.h
 	eapply_user
 	#tc-export CC PKG_CONFIG
