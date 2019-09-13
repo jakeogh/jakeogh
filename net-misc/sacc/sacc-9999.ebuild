@@ -7,7 +7,7 @@ inherit git-r3 toolchain-funcs
 
 DESCRIPTION="simple gopher client"
 HOMEPAGE="https://git.fifth.space/sacc/files.html"
-EGIT_REPO_URI="https://git.fifth.space/sacc"
+EGIT_REPO_URI="https://git.fifth.space/sacc.git"
 
 LICENSE="MIT"
 SLOT="0"
