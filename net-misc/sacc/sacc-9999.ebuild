@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 toolchain-funcs
+inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="simple gopher client"
 HOMEPAGE="https://git.fifth.space/sacc/files.html"
@@ -20,6 +20,8 @@ PATCHES=()
 
 src_prepare() {
 	default
+	restore_config config.h
+	tc-export CC PKG_CONFIG
 }
 
 src_compile() {
@@ -27,6 +29,8 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	default
+	save_config config.h
+	#emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
 	#emake install
 }
