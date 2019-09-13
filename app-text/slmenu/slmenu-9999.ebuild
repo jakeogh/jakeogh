@@ -3,11 +3,11 @@
 
 EAPI=7
 
-inherit git-r3 toolchain-funcs
+inherit mercurial toolchain-funcs
 
 DESCRIPTION="dmenu spinoff for the console"
 HOMEPAGE="https://bitbucket.org/rafaelgg/slmenu"
-EGIT_REPO_URI="https://bitbucket.org/rafaelgg/slmenu.git"
+EHG_REPO_URI="https://bitbucket.org/rafaelgg/slmenu"
 
 LICENSE="MIT"
 SLOT="0"
