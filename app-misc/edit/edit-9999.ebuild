@@ -15,7 +15,6 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-#RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 DEPEND="dev-util/splint
 	app-portage/repoman
 	dev-util/shellcheck
@@ -24,6 +23,8 @@ DEPEND="dev-util/splint
 	app-editors/neovim
 	app-misc/newapp[${PYTHON_USEDEP}]
 "
+
+RDEPEND="${DEPEND}"
 
 #src_compile() { :; }
 
