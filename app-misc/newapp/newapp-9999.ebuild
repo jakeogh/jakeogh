@@ -19,6 +19,7 @@ KEYWORDS=""
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 DEPEND="
 	dev-python/replace-text
+	dev-python/fastentrypoints
 "
 
 #dev-util/splint
