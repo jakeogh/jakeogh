@@ -21,6 +21,7 @@ dev-util/shellcheck
 dev-python/pylint
 app-misc/commandlock
 app-editors/neovim
+app-misc/newapp
 "
 
 #src_compile() { :; }
