@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,16 +12,16 @@ EGIT_REPO_URI="/home/cfg/_myapps/edit"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 DEPEND="dev-util/splint
 app-portage/repoman
 dev-util/shellcheck
-dev-python/pylint
+dev-python/pylint[${PYTHON_USEDEP}]
 app-misc/commandlock
 app-editors/neovim
-app-misc/newapp
+app-misc/newapp[${PYTHON_USEDEP}]
 "
 
 #src_compile() { :; }
