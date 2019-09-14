@@ -26,7 +26,6 @@ DEPEND="dev-util/splint
 
 RDEPEND="${DEPEND}"
 
-#src_compile() { :; }
 
 src_install() {
 #	dodoc README*
