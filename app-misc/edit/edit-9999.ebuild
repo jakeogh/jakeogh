@@ -16,12 +16,12 @@ KEYWORDS=""
 
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 DEPEND="dev-util/splint
-app-portage/repoman
-dev-util/shellcheck
-dev-python/pylint[${PYTHON_USEDEP}]
-app-misc/commandlock
-app-editors/neovim
-app-misc/newapp[${PYTHON_USEDEP}]
+	app-portage/repoman
+	dev-util/shellcheck
+	dev-python/pylint[${PYTHON_USEDEP}]
+	app-misc/commandlock
+	app-editors/neovim
+	app-misc/newapp[${PYTHON_USEDEP}]
 "
 
 #src_compile() { :; }
