@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a simple web browser based on WebKit/GTK+"
@@ -63,4 +63,13 @@ src_install() {
 	default
 
 	save_config config.h
+
+	local mime_types="text/html;text/xml;application/xhtml+xml;"
+	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
+	make_desktop_entry \
+		"glide -S" \
+		"Glide" \
+		glide \
+		"Network;WebBrowser" \
+		"MimeType=${mime_types}\nStartupWMClass=glide" || die
 }
