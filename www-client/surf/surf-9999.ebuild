@@ -67,7 +67,7 @@ src_install() {
 	local mime_types="text/html;text/xml;application/xhtml+xml;"
 	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
 	make_desktop_entry \
-		"surf -S" \
+		"surf" \
 		"Surf" \
 		surf \
 		"Network;WebBrowser" \
@@ -76,4 +76,5 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
