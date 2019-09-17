@@ -7,5 +7,5 @@
 -  __pid_t pid = getpid ();
 +  pid_t pid = getpid ();
  # endif
- 
+
    return (int) pid;

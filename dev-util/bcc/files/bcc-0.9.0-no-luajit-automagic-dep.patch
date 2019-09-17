@@ -5,7 +5,7 @@ index 5a2bcf85..7f6e07e4 100644
 @@ -28,6 +28,7 @@
  # 2010 - modified for cronkite to find luajit instead of lua, as it was before.
  #
- 
+
 +if(WITH_LUAJIT)
  FIND_PATH(LUAJIT_INCLUDE_DIR lua.h
    HINTS
@@ -15,6 +15,6 @@ index 5a2bcf85..7f6e07e4 100644
    /opt
  )
 +endif()
- 
+
  IF(LUAJIT_LIBRARY)
    IF(UNIX AND NOT APPLE)

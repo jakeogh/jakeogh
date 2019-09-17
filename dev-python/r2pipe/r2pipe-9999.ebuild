@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # from https://raw.githubusercontent.com/soltysek/soltys-overlay/master/dev-python/r2pipe/r2pipe-9999.ebuild

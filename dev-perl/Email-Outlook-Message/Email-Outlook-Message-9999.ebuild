@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # from https://gitlab.com/madsl/fol4/raw/master/dev-perl/Email-Outlook-Message/Email-Outlook-Message-0.919.ebuild

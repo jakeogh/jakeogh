@@ -10,6 +10,6 @@ The '~' character doesn't expand to $HOME in all build envs.
 -    assert c.complete("~") != "~"
 +    #c.reset()
 +    #assert c.complete("~") != "~"
- 
+
      c.reset()
      s = "thisisatotallynonexistantpathforsure"

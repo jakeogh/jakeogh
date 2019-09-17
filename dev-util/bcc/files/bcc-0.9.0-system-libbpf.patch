@@ -5,7 +5,7 @@ index 94aac856..33492c27 100644
 @@ -61,6 +61,9 @@ FOREACH(DIR ${LLVM_INCLUDE_DIRS})
    include_directories("${DIR}/../tools/clang/include")
  ENDFOREACH()
- 
+
 +find_package(PkgConfig)
 +pkg_check_modules(LIBBPF REQUIRED libbpf)
 +
@@ -18,20 +18,20 @@ index 88df6e84..a4033c02 100644
 +++ b/introspection/CMakeLists.txt
 @@ -8,6 +8,6 @@ include_directories(${CMAKE_SOURCE_DIR}/src/cc/libbpf/include/uapi)
  option(INSTALL_INTROSPECTION "Install BPF introspection tools" ON)
- 
+
  add_executable(bps bps.c)
 -target_link_libraries(bps bpf-static)
 +target_link_libraries(bps bpf-static ${LIBBPF_LIBRARIES})
- 
+
  install (TARGETS bps DESTINATION share/bcc/introspection)
 diff --git a/src/cc/CMakeLists.txt b/src/cc/CMakeLists.txt
 index 59a59856..2af70525 100644
 --- a/src/cc/CMakeLists.txt
 +++ b/src/cc/CMakeLists.txt
 @@ -28,7 +28,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DLLVM_MAJOR_VERSION=${CMAKE_MATCH_1}")
- 
+
  include(static_libstdc++)
- 
+
 -file(GLOB libbpf_sources "libbpf/src/*.c")
 +#file(GLOB libbpf_sources "libbpf/src/*.c")
  add_library(bpf-static STATIC libbpf.c perf_reader.c ${libbpf_sources})
@@ -47,7 +47,7 @@ index 59a59856..2af70525 100644
  set(bcc_common_libs_for_lua b_frontend clang_frontend bpf-static
 -  ${clang_libs} ${llvm_libs} ${LIBELF_LIBRARIES})
 +	${clang_libs} ${llvm_libs} ${LIBELF_LIBRARIES} ${LIBBPF_LIBRARIES})
- 
+
  if(ENABLE_CPP_API)
    add_subdirectory(api)
 @@ -115,4 +115,3 @@ install(DIRECTORY libbpf/include/uapi/linux/ DESTINATION include/bcc/compat/linu
@@ -68,7 +68,7 @@ index 881959af..62f73f54 100644
 +#include <bpf/libbpf.h>
 +#include <bpf/btf.h>
  #include <vector>
- 
+
  #define BCC_MAX_ERRNO       4095
 diff --git a/src/cc/bpf_module.cc b/src/cc/bpf_module.cc
 index cf6ea8f3..1be7b788 100644
@@ -80,9 +80,9 @@ index cf6ea8f3..1be7b788 100644
  #include "bcc_btf.h"
 -#include "libbpf/src/bpf.h"
 +#include <bpf/bpf.h>
- 
+
  namespace ebpf {
- 
+
 diff --git a/src/cc/libbpf.c b/src/cc/libbpf.c
 index 9b0024dc..7b3eca4b 100644
 --- a/src/cc/libbpf.c
@@ -90,11 +90,11 @@ index 9b0024dc..7b3eca4b 100644
 @@ -51,8 +51,8 @@
  // TODO: Remove this when CentOS 6 support is not needed anymore
  #include "setns.h"
- 
+
 -#include "libbpf/src/bpf.h"
 -#include "libbpf/src/libbpf.h"
 +#include <bpf/bpf.h>
 +#include <bpf/libbpf.h>
- 
+
  // TODO: remove these defines when linux-libc-dev exports them properly
- 
+
