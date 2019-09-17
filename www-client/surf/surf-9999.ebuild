@@ -73,3 +73,7 @@ src_install() {
 		"Network;WebBrowser" \
 		"MimeType=${mime_types}\nStartupWMClass=surf" || die
 }
+
+pkg_postinst() {
+	xdg_desktop_database_update
+}
