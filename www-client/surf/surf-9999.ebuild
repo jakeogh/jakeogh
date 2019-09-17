@@ -67,9 +67,9 @@ src_install() {
 	local mime_types="text/html;text/xml;application/xhtml+xml;"
 	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
 	make_desktop_entry \
-		"glide -S" \
-		"Glide" \
-		glide \
+		"surf -S" \
+		"Surf" \
+		surf \
 		"Network;WebBrowser" \
-		"MimeType=${mime_types}\nStartupWMClass=glide" || die
+		"MimeType=${mime_types}\nStartupWMClass=surf" || die
 }
