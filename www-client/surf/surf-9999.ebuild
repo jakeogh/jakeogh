@@ -69,7 +69,7 @@ src_install() {
 	make_desktop_entry \
 		"surf" \
 		"Surf" \
-		surf \
+		"surf" \
 		"Network;WebBrowser" \
 		"MimeType=${mime_types}\nStartupWMClass=surf" || die
 }
