@@ -64,6 +64,8 @@ src_install() {
 
 	save_config config.h
 
+	newicon "${S}"/"${PN}".png "${PN}".png
+
 	local mime_types="text/html;text/xml;application/xhtml+xml;"
 	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
 	make_desktop_entry \
