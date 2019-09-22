@@ -15,9 +15,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-#DEPEND="
-#	dev-python/pytest-runner[${PYTHON_USEDEP}]
-#"
+DEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
+"
 
 RDEPEND="${DEPEND}"
 
