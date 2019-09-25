@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}"
 #S=${WORKDIR}/${PN}
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-1.2.13-tinfo.patch
+	#epatch "${FILESDIR}"/${PN}-1.2.13-tinfo.patch
 	mv configure.in configure.ac || die
 	eautoreconf
 }
