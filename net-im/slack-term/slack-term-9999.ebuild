@@ -24,7 +24,7 @@ DOCS=( README.md )
 QA_PRESTRIPPED="usr/bin/.*"
 
 G="${WORKDIR}/${P}"
-S="${G}/src/${EGO_PN}"
+#S="${G}/src/${EGO_PN}"
 
 src_compile() {
 	export GOPATH="${G}"
