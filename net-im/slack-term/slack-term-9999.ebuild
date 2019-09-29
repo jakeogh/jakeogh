@@ -5,7 +5,7 @@ EAPI=7
 
 EGO_PN="github.com/erroneousboat/${PN}"
 
-inherit golang-vcs-snapshot-r1
+inherit git-r3 golang-vcs-snapshot
 
 DESCRIPTION="A Slack client for your terminal"
 HOMEPAGE="https://github.com/erroneousboat/slack-term"
