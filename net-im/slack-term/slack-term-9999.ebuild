@@ -9,6 +9,7 @@ inherit git-r3 golang-vcs-snapshot
 
 DESCRIPTION="A Slack client for your terminal"
 HOMEPAGE="https://github.com/erroneousboat/slack-term"
+
 #SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 RESTRICT="mirror test" # No tests available yet
 EGIT_REPO_URI="https://github.com/erroneousboat/slack-term.git"
