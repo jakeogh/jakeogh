@@ -20,9 +20,9 @@ DEPEND="
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	dev-python/ic[${PYTHON_USEDEP}]
-	#dev-db/postgresql[${PYTHON_USEDEP}]
 "
 
+	#dev-db/postgresql[${PYTHON_USEDEP}]
 RDEPEND="${DEPEND}"
 
 python_install_all() {
