@@ -25,6 +25,7 @@ DEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup[${PYTHON_USEDEP}]
 	dev-python/python-getdents[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/ic[${PYTHON_USEDEP}]
 	sys-fs/dd-rescue
 "
 #	dev-python/pydot[${PYTHON_USEDEP}]
