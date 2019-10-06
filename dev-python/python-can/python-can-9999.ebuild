@@ -17,6 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
+RESTRICT="test"
 
 python_install_all() {
 	mv "${D}/usr/bin/canplayer" "${D}/usr/bin/canplayer-py" || die

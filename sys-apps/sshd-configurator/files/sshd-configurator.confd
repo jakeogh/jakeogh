@@ -3,5 +3,5 @@
 # Uncomment both lines
 # Change eth0 to the interface sshd is expected to listen on
 
-#SSHD_INTERFACE="eth0"
-#rc_need="!net net.eth0"
+SSHD_INTERFACE="eth0"
+rc_need="!net net.eth0"
