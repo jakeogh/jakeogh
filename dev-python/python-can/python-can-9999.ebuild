@@ -20,7 +20,7 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 python_install_all() {
-	mv "${D}/usr/bin/canplayer" "${D}/usr/bin/canplayer-py" || die
+	#mv "${D}/usr/bin/canplayer" "${D}/usr/bin/canplayer-py" || die
 	rm -rf "${S}/test" || die
 	distutils-r1_python_install_all
 }
