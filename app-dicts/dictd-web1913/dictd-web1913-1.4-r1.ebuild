@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=1
+EAPI=2
 
 MY_P=${P/td/t}-pre
 DESCRIPTION="Webster's Revised Unabridged Dictionary (1913) for dict"
@@ -14,6 +14,8 @@ IUSE=""
 KEYWORDS="amd64 ppc ppc64 sparc x86"
 
 DEPEND=">=app-text/dictd-1.5.5"
+
+RDEPEND="$DEPEND"
 
 S=${WORKDIR}
 
