@@ -18,7 +18,7 @@ IUSE=""
 LICENSE="MIT"
 
 DEPEND="
-	media-video/mpv
+	media-video/mpv[libmpv]
 "
 
 RDEPEND="${DEPEND}"
