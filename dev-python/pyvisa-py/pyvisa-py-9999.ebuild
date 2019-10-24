@@ -18,6 +18,7 @@ KEYWORDS=""
 RDEPEND="
 	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
 	"
+
 DEPEND="${RDEPEND}"
 
 python_test() {
