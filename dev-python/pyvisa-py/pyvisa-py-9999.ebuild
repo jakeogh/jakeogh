@@ -15,6 +15,6 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
-	=dev-python/pyvisa-9999[${PYTHON_USEDEP}]"
+	>=dev-python/pyvisa-9999[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}"
