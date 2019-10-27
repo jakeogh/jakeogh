@@ -22,6 +22,7 @@ DEPEND="dev-util/splint
 	app-misc/commandlock
 	app-editors/neovim
 	app-misc/newapp[${PYTHON_USEDEP}]
+	dev-python/icecream[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
