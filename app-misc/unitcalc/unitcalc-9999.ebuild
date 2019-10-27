@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 inherit distutils-r1
 inherit git-r3
 
-DESCRIPTION="convert units"
+DESCRIPTION="Convert units"
 HOMEPAGE="https://github.com/jakeogh/unitcalc"
 EGIT_REPO_URI="/home/cfg/_myapps/unitcalc https://github.com/jakeogh/unitcalc.git"
 
@@ -17,20 +17,12 @@ IUSE=""
 KEYWORDS=""
 
 #RDEPEND="!minimal? ( ${COMMON_DEPS} )"
+
 DEPEND="
 	dev-python/click
 	dev-python/pint
 	dev-python/python-levenshtein
 "
-
-#dev-util/splint
-#dev-util/shellcheck
-#dev-python/pylint
-#app-misc/commandlock
-#app-editors/neovim
-#"
-
-#src_compile() { :; }
 
 python_install_all() {
     distutils-r1_python_install_all
