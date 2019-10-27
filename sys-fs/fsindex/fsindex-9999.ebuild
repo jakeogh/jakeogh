@@ -19,7 +19,7 @@ IUSE=""
 DEPEND="
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
-	dev-python/ic[${PYTHON_USEDEP}]
+	dev-python/icecream[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
