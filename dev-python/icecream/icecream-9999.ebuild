@@ -21,6 +21,7 @@ DEPEND="
 	dev-python/untokenize[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/executing[${PYTHON_USEDEP}]
+	dev-python/asttokens[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
