@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
 inherit distutils-r1
 inherit git-r3
 
-DESCRIPTION="make new python app from template"
+DESCRIPTION="Create new python app from template"
 HOMEPAGE="https://github.com/jakeogh/newapp"
 EGIT_REPO_URI="/home/cfg/_myapps/newapp https://github.com/jakeogh/newapp.git"
 
