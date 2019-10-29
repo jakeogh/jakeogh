@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	)
 	"
 
-S="${WORKDIR}/${MY_P}"
+#S="${WORKDIR}/${MY_P}"
 
 python_test() {
 	pytest -v || die
