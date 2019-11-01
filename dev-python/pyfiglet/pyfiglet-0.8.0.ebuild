@@ -2,17 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Pure-python FIGlet implementation"
 HOMEPAGE="https://github.com/pwaller/pyfiglet"
-SRC_URI="https://github.com/pwaller/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_SRC_URI="https://github.com/pwaller/pyfiglet.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64"
+KEYWORDS=""
 IUSE="test"
 
 RDEPEND=""
