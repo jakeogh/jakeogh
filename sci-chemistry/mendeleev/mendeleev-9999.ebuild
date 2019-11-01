@@ -1,32 +1,31 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{3_6,3_7} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="properties of elements, ions and isotopes in the periodic table of elements"
-HOMEPAGE="https://bitbucket.org/lukaszmentel/mendeleev"
-EHG_REPO_URI="https://bitbucket.org/lukaszmentel/mendeleev"
-inherit mercurial
+HOMEPAGE="https://github.com/lmmentel/mendeleev"
+EGIT_REPO_URI="https://github.com/lmmentel/mendeleev.git"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="plot"
 
 DEPEND="
-	dev-python/pyfiglet
-	dev-python/colorama
-	dev-python/sqlalchemy
-	dev-python/pandas
-	dev-python/numpy
+	dev-python/pyfiglet[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/sqlalchemy[${PYTHON_USEDEP}]
+	dev-python/pandas[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
 "
 
 RDEPEND="
 	${DEPEND}
-	plot? ( dev-python/bokeh )
+	plot? ( dev-python/bokeh[${PYTHON_USEDEP}] )
 "
 
 python_install_all() {
