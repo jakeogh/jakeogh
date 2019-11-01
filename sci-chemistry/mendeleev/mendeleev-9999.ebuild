@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="properties of elements, ions and isotopes in the periodic table of elements"
+DESCRIPTION="Properties of elements, ions and isotopes in the periodic table of elements"
 HOMEPAGE="https://github.com/lmmentel/mendeleev"
 EGIT_REPO_URI="https://github.com/lmmentel/mendeleev.git"
 
