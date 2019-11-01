@@ -16,20 +16,13 @@ SLOT="0"
 IUSE=""
 KEYWORDS=""
 
-#RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 DEPEND="
 	dev-python/replace-text[${PYTHON_USEDEP}]
 	dev-python/fastentrypoints[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 "
 
-#dev-util/splint
-#dev-util/shellcheck
-#dev-python/pylint
-#app-editors/neovim
-#"
-
-#src_compile() { :; }
+RDEPEND="$DEPEND"
 
 python_install_all() {
     distutils-r1_python_install_all
