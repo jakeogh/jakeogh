@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	virtual/python-futures[${PYTHON_USEDEP}]
-	>=www-servers/tornado-4.3[${PYTHON_USEDEP}]
+	www-servers/tornado[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -34,10 +34,10 @@ DEPEND="
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	>=net-libs/nodejs-4.1
-	>=www-servers/tornado-4.3[${PYTHON_USEDEP}]
+	net-libs/nodejs
+	www-servers/tornado[${PYTHON_USEDEP}]
 	test? (
-		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup[${PYTHON_USEDEP}]
 		dev-python/boto[${PYTHON_USEDEP}]
 		dev-python/colorama[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
