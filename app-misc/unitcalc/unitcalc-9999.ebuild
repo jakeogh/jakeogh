@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 inherit git-r3
@@ -16,12 +16,11 @@ SLOT="0"
 IUSE=""
 KEYWORDS=""
 
-#RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 
 DEPEND="
-	dev-python/click
-	dev-python/pint
-	dev-python/python-levenshtein
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/pint[${PYTHON_USEDEP}]
+	dev-python/python-levenshtein[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
