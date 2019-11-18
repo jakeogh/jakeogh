@@ -11,6 +11,7 @@ inherit bash-completion-r1 flag-o-matic linux-info linux-mod distutils-r1 system
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://zfsonlinux.org/"
 
+
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="/home/cfg/_myapps/zfs-zdbm https://github.com/zfsonlinux/zfs.git"
