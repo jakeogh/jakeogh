@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 inherit autotools
 inherit eutils
 inherit flag-o-matic
-inherit gnome2
+#inherit gnome2
 inherit python-r1
 inherit virtualx
 inherit git-r3
