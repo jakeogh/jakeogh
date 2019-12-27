@@ -6,7 +6,12 @@ GCONF_DEBUG="no"
 #GNOME_TARBALL_SUFFIX="bz2"
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit autotools eutils flag-o-matic gnome2 python-r1 virtualx
+inherit autotools
+inherit eutils
+inherit flag-o-matic
+inherit gnome2
+inherit python-r1
+inherit virtualx
 inherit git-r3
 
 DESCRIPTION="GTK+2 bindings for Python"
