@@ -16,7 +16,6 @@ SLOT="0"
 IUSE=""
 KEYWORDS=""
 
-
 DEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/pint[${PYTHON_USEDEP}]
@@ -24,5 +23,5 @@ DEPEND="
 "
 
 python_install_all() {
-    distutils-r1_python_install_all
+	distutils-r1_python_install_all
 }
