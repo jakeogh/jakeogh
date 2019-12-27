@@ -1,11 +1,12 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python3_{6,7,8} pypy )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+inherit git-r3
 
 HOMEPAGE="https://pypi.org/project/requests-cache/"
 DESCRIPTION="Persistent cache for requests library"
