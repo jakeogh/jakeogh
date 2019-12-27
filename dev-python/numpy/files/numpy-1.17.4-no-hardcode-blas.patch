@@ -44,12 +44,4 @@ index ba2b1f46c..09db18e69 100644
  
      def library_extensions(self):
          c = customized_ccompiler()
-@@ -1842,7 +1818,7 @@ class blas_info(system_info):
-             lib = self.get_cblas_libs(info)
-             if lib is not None:
-                 info['language'] = 'c'
--                info['libraries'] = lib
-+                info['libraries'] = [lib]
-                 info['define_macros'] = [('HAVE_CBLAS', None)]
-         self.set_info(**info)
  
