@@ -3,28 +3,17 @@
 
 EAPI=7
 
-#GITHUB_USER="tmbinc"
-#GITHUB_HASH="49b098be9548d174023ad05c10f6af9d02b8e18e"
-#MY_P="${GITHUB_USER}-${PN}-${GITHUB_HASH:0:7}"
-
-inherit toolchain-funcs git-r3
+inherit toolchain-funcs
+inherit git-r3
 
 DESCRIPTION="Hash-based file manager."
-#HOMEPAGE="https://github.com/tmbinc/uhashfsc/"
 EGIT_REPO_URI="/home/user/_myapps/uhashfsc/"
-#SRC_URI="https://github.com/${GITHUB_USER}/${PN}/tarball/${GITHUB_HASH} -> ${MY_P}.tar.gz"
 
-#S="${WORKDIR}/${MY_P}"
 LICENSE="MIT"
 SLOT="0"
-
 KEYWORDS=""
 IUSE="test"
 RDEPEND=""
-
-#DEPEND="
-#	dev-python/python-getdents[${PYTHON_USEDEP}]
-#"
 
 src_prepare() {
 	default
