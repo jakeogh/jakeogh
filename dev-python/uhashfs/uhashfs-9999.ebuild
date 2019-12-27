@@ -4,7 +4,8 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+inherit git-r3
 
 DESCRIPTION="A content-addressable file management system for Python"
 HOMEPAGE="https://github.com/jakeogh/uhashfs"
