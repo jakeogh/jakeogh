@@ -37,7 +37,6 @@ DEPEND="
 	dev-python/requests-cache[${PYTHON_USEDEP}]
 	dev-python/requests-file[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
-	dev-db/redis
 	dev-python/redis-py[${PYTHON_USEDEP}]
 	dev-python/anormbookmarker[${PYTHON_USEDEP}]
 	dev-python/psycopg[${PYTHON_USEDEP}]
