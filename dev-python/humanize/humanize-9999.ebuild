@@ -10,6 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Common humanization utilities"
 HOMEPAGE="https://github.com/jmoiron/humanize/"
+
 # Tests are not included in PyPI tarballs
 # https://github.com/jmoiron/humanize/issues/33
 EGIT_REPO_URI="https://github.com/jmoiron/humanize.git"
