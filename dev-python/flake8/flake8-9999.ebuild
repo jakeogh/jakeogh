@@ -24,7 +24,6 @@ RDEPEND="
 	>=dev-python/pyflakes-2.1.0[${PYTHON_USEDEP}]
 	<dev-python/pyflakes-2.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pycodestyle-2.5.0[${PYTHON_USEDEP}]
-	<dev-python/pycodestyle-2.6.0[${PYTHON_USEDEP}]
 	virtual/python-enum34[${PYTHON_USEDEP}]
 	virtual/python-typing[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' -2)
