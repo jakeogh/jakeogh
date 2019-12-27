@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 inherit distutils-r1
 inherit git-r3
 
-MY_PN="redis"
+MY_PN="redis-py"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python client for Redis key-value store"
