@@ -1,12 +1,13 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 MY_P="yapsy-${PV}"
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+inherit git-r3
 
 DESCRIPTION="A fat-free DIY Python plugin management toolkit"
 HOMEPAGE="http://yapsy.sourceforge.net/"
@@ -21,10 +22,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}/package"
-
-#PATCHES=(
-#	"${FILESDIR}"/${P}-python36-tests.patch
-#)
 
 python_prepare_all() {
 	# Disable erroneous test
