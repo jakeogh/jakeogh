@@ -7,6 +7,7 @@ GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit autotools eutils flag-o-matic gnome2 python-r1 virtualx
+inherit git-r3
 
 DESCRIPTION="GTK+2 bindings for Python"
 HOMEPAGE="http://www.pygtk.org/"
