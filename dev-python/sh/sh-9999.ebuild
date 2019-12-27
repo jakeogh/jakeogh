@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit distutils-r1 git-r3
 
@@ -19,10 +19,6 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-#PATCHES=(
-#	"${FILESDIR}/sh-1.12.9-python2-unicode-tests.patch"
-#)
 
 python_test() {
 	${PYTHON} test.py || die
