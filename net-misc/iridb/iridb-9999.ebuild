@@ -28,7 +28,6 @@ DEPEND="
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/tldextract[${PYTHON_USEDEP}]
-	dev-python/amara3-iri[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/python-dmenu[${PYTHON_USEDEP}]
@@ -49,6 +48,7 @@ DEPEND="
 #	dev-python/psycopg[${PYTHON_USEDEP}]
 #	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
 #	dev-db/postgresql:*
+#	dev-python/amara3-iri[${PYTHON_USEDEP}]
 
 RDEPEND="
 	${DEPEND}
