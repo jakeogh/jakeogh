@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
+inherit git-r3
 
 DESCRIPTION="Common function library"
 HOMEPAGE="https://github.com/jakeogh/kcl"
 EGIT_REPO_URI="/home/cfg/_myapps/kcl https://github.com/jakeogh/kcl.git"
-inherit git-r3
 
 LICENSE="MIT"
 SLOT="0"
