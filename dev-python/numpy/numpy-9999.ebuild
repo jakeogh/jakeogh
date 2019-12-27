@@ -11,7 +11,7 @@ FORTRAN_NEEDED=lapack
 inherit distutils-r1 flag-o-matic fortran-2 multiprocessing toolchain-funcs
 inherit git-r3
 
-DOC_PV="1.16.4"
+#DOC_PV="1.16.4"
 DESCRIPTION="Fast array and numerical python library"
 HOMEPAGE="https://www.numpy.org"
 EGIT_REPO_URI="https://github.com/numpy/numpy.git"
@@ -39,12 +39,12 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.17.4-no-hardcode-blas.patch
 )
 
-src_unpack() {
-	default
-	if use doc; then
-		unzip -qo "${DISTDIR}"/numpy-html-${DOC_PV}.zip -d html || die
-	fi
-}
+#src_unpack() {
+#	default
+#	if use doc; then
+#		unzip -qo "${DISTDIR}"/numpy-html-${DOC_PV}.zip -d html || die
+#	fi
+#}
 
 pc_incdir() {
 	$(tc-getPKG_CONFIG) --cflags-only-I $@ | \
