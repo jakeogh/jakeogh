@@ -30,16 +30,11 @@ DEPEND="
 	dev-python/tldextract[${PYTHON_USEDEP}]
 	dev-python/amara3-iri[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-db/postgresql:*
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/python-dmenu[${PYTHON_USEDEP}]
 	dev-python/beautifulsoup:*[${PYTHON_USEDEP}]
 	dev-python/requests-cache[${PYTHON_USEDEP}]
 	dev-python/requests-file[${PYTHON_USEDEP}]
-	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
-	dev-python/redis-py[${PYTHON_USEDEP}]
-	dev-python/anormbookmarker[${PYTHON_USEDEP}]
-	dev-python/psycopg[${PYTHON_USEDEP}]
 	app-text/tree
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
@@ -49,6 +44,11 @@ DEPEND="
 #	sys-apps/file[python]
 #	dev-python/pydot[${PYTHON_USEDEP}]
 #	dev-db/sadisplay[${PYTHON_USEDEP}]
+#	dev-python/redis-py[${PYTHON_USEDEP}]
+#	dev-python/anormbookmarker[${PYTHON_USEDEP}]
+#	dev-python/psycopg[${PYTHON_USEDEP}]
+#	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
+#	dev-db/postgresql:*
 
 RDEPEND="
 	${DEPEND}
