@@ -28,9 +28,9 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.10.5-test-finalize.patch
-)
+#PATCHES=(
+#	"${FILESDIR}"/${PN}-2.10.5-test-finalize.patch
+#)
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
