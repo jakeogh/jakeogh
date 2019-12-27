@@ -25,9 +25,6 @@ BDEPEND="
 	test? ( ${RDEPEND} )
 "
 
-PATCHES=(
-)
-
 python_test() {
 	"${EPYTHON}" test/test.py -v || die "Tests fail with ${EPYTHON}"
 }
