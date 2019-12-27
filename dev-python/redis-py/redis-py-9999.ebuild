@@ -13,7 +13,7 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Python client for Redis key-value store"
 HOMEPAGE="https://github.com/andymccurdy/redis-py"
-EGIT_REPO_URI="https://github.com/andymccurdy/redis-py"
+EGIT_REPO_URI="https://github.com/andymccurdy/redis-py.git"
 
 LICENSE="MIT"
 SLOT="0"
