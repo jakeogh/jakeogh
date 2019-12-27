@@ -20,6 +20,7 @@ IUSE="doc test dev"
 DEPEND="
 	dev-python/humanize[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/python-getdents[${PYTHON_USEDEP}]
 	app-misc/unitcalc[${PYTHON_USEDEP}]
