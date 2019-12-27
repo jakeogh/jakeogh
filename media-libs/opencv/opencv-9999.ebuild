@@ -12,13 +12,13 @@ DESCRIPTION="A collection of algorithms and sample code for various computer vis
 HOMEPAGE="https://opencv.org"
 TINY_DNN_PV="1.0.0a3"
 EGIT_REPO_URI="https://github.com/opencv/opencv.git"
-SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
-	dnnsamples? ( https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-res10_300x300-caffeemodel.tar.gz )
-	contrib? (
-		https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
-		contribdnn? ( https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-face_landmark_model.tar.gz )
-		contribxfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-3.2.0.tar.gz )
-	)"
+#SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
+#	dnnsamples? ( https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-res10_300x300-caffeemodel.tar.gz )
+#	contrib? (
+#		https://github.com/${PN}/${PN}_contrib/archive/${PV}.tar.gz -> ${P}_contrib.tar.gz
+#		contribdnn? ( https://dev.gentoo.org/~amynka/snap/${PN}-3.4.0-face_landmark_model.tar.gz )
+#		contribxfeatures2d? ( https://dev.gentoo.org/~amynka/snap/vgg_boostdesc-3.2.0.tar.gz )
+#	)"
 
 LICENSE="BSD"
 SLOT="0/4.1.2" # subslot = libopencv* soname version
