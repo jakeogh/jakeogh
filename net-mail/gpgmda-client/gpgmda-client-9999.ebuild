@@ -1,9 +1,8 @@
 # Copyright 1999-2020 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
-#PYTHON_COMPAT=( python3_4 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 inherit git-r3
@@ -18,20 +17,20 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	app-crypt/gpgme
-	dev-python/pygpgme
-	dev-python/configobj
-	dev-python/twisted
-	dev-python/urwidtrees
-	net-mail/notmuch
+	app-crypt/gpgme[${PYTHON_USEDEP}]
+	dev-python/pygpgme[${PYTHON_USEDEP}]
+	dev-python/configobj[${PYTHON_USEDEP}]
+	dev-python/twisted[${PYTHON_USEDEP}]
+	dev-python/urwidtrees[${PYTHON_USEDEP}]
+	net-mail/notmuch[${PYTHON_USEDEP}]
 	www-client/lynx
-	dev-python/pudb
-	mail-client/alot
-	mail-filter/afew
+	dev-python/pudb[${PYTHON_USEDEP}]
+	mail-client/alot[${PYTHON_USEDEP}]
 	sys-apps/moreutils
-	dev-python/python-magic
+	dev-python/python-magic[${PYTHON_USEDEP}]
 "
 #	sys-apps/file[python]
+#	mail-filter/afew
 
 RDEPEND="
 	${DEPEND}
@@ -39,9 +38,9 @@ RDEPEND="
 
 python_install_all() {
 local DOCS=( README.md )
-dobin nottoomuch-addresses.sh
-dobin gpgmda-client-make-alot-config.sh
-dobin gpgmda-client-make-alot-theme.sh
-dobin gpgmda-client-send.sh
-distutils-r1_python_install_all
+	dobin nottoomuch-addresses.sh
+	dobin gpgmda-client-make-alot-config.sh
+	dobin gpgmda-client-make-alot-theme.sh
+	dobin gpgmda-client-send.sh
+	distutils-r1_python_install_all
 }
