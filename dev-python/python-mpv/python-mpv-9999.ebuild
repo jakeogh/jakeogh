@@ -1,15 +1,15 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
+inherit git-r3
 
 DESCRIPTION="Python interface to the awesome mpv media player"
 HOMEPAGE="https://github.com/jaseg/python-mpv"
 EGIT_REPO_URI="https://github.com/jaseg/python-mpv"
-inherit git-r3
 
 LICENSE=""
 SLOT="0"
