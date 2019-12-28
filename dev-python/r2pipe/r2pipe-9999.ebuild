@@ -3,11 +3,12 @@
 
 # from https://raw.githubusercontent.com/soltysek/soltys-overlay/master/dev-python/r2pipe/r2pipe-9999.ebuild
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+inherit git-r3
 
 DESCRIPTION="Enable scripting of radare2"
 HOMEPAGE="http://rada.re/r/"
