@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy )
 inherit distutils-r1 virtualx
 inherit git-r3
 
+
 DESCRIPTION="A drop in replacement for xpyb, an XCB python binding"
 HOMEPAGE="https://github.com/tych0/xcffib"
 EGIT_REPO_URI="https://github.com/tych0/xcffib.git"
