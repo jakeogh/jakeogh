@@ -62,6 +62,7 @@ python_configure_all() {
 
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
+	esetup.py docstrings
 	distutils-r1_python_compile
 }
 
