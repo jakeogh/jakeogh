@@ -5,7 +5,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 inherit git-r3
@@ -16,7 +16,7 @@ EGIT_REPO_URI="https://github.com/radare/radare2-r2pipe.git"
 
 LICENSE="MIT"
 SLOT="0"
-DEPEND="=dev-util/radare2-9999"
+DEPEND="dev-util/radare2"
 
 python_compile() {
 	cd "$WORKDIR/$P"/python
