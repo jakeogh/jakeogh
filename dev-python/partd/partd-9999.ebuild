@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit distutils-r1
-inheirt git-r3
+inherit git-r3
 
 DESCRIPTION="Appendable key-value storage"
 HOMEPAGE="https://github.com/dask/partd/"
