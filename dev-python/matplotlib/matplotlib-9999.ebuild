@@ -49,8 +49,8 @@ COMMON_DEPEND="
 	media-libs/libpng:0
 	>=media-libs/qhull-2013
 	>=dev-python/kiwisolver-1.0.0[${PYTHON_USEDEP}]
-	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )
-	wxwidgets? ( >=dev-python/wxpython-2.8:*[${PY2_USEDEP}] )"
+	cairo? ( dev-python/cairocffi[${PYTHON_USEDEP}] )"
+#	wxwidgets? ( >=dev-python/wxpython-2.8:*[${PY2_USEDEP}] )"
 
 # internal copy of pycxx highly patched
 #	dev-python/pycxx
@@ -64,7 +64,6 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/colorspacious[${PYTHON_USEDEP}]
 		dev-python/pillow[${PYTHON_USEDEP}]
 		dev-python/ipython[${PYTHON_USEDEP}]
-		dev-python/mock[${PY2_USEDEP}]
 		>=dev-python/numpydoc-0.8[${PYTHON_USEDEP}]
 		<dev-python/numpydoc-0.9
 		sci-libs/scipy[${PYTHON_USEDEP}]
@@ -81,6 +80,7 @@ DEPEND="${COMMON_DEPEND}
 		>=dev-python/nose-0.11.1[${PYTHON_USEDEP}]
 		)"
 #	${PY2_DEPEND}
+#		dev-python/mock[${PY2_USEDEP}]
 
 RDEPEND="${COMMON_DEPEND}
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
