@@ -3,9 +3,10 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
+inherit git-r3
 
 DESCRIPTION="Statistical and interactive HTML plots for Python"
 HOMEPAGE="https://github.com/bokeh/bokeh"
