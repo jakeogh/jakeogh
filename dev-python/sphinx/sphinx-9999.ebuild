@@ -9,6 +9,9 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 inherit git-r3
 
+MY_PN="sphinx"
+MY_P="${MY_PN}-${PV}"
+
 DESCRIPTION="Python documentation generator"
 HOMEPAGE="http://www.sphinx-doc.org/"
 EGIT_REPO_URI="https://github.com/sphinx-doc/sphinx.git"
@@ -55,7 +58,8 @@ DEPEND="${RDEPEND}
 		app-text/dvipng
 	)"
 
-S="${WORKDIR}/${P^}"
+#S="${WORKDIR}/${P^}"
+S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	# remove tests that fail due to network-sandbox
