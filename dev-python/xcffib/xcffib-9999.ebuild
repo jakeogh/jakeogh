@@ -38,8 +38,8 @@ PATCHES=( "${FILESDIR}"/${PN}-0.4.2-test-imports.patch )
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-	mkdir "${BUILD_DIR}"/xcffib
-	cp "${BUILD_DIR}"/module/* "${BUILD_DIR}"/xcffib
+	mkdir "${S}"/xcffib
+	cp "${S}"/module/* "${S}"/xcffib
 }
 
 python_test() {
