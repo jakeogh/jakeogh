@@ -40,7 +40,7 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.8.0-tests.patch
-	"${FILESDIR}"/${P}-test-deps.patch
+	"${FILESDIR}"/${PN}-1.0.2-test-deps.patch
 )
 
 S="${WORKDIR}/${MY_P}"
