@@ -24,20 +24,20 @@ KEYWORDS=""
 IUSE="cairo doc excel examples gtk3 latex qt5 test tk wxwidgets"
 RESTRICT="!test? ( test )"
 
-PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
+#PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
 REQUIRED_USE="
-	wxwidgets? ( ${PY2_FLAGS} )
 	test? (
 		cairo latex qt5 tk wxwidgets
 		|| ( gtk3 )
 		)"
+#	wxwidgets? ( ${PY2_FLAGS} )
 
 # #456704 -- a lot of py2-only deps
-PY2_USEDEP=$(python_gen_usedep python2_7)
-PY2_DEPEND="
-	$(python_gen_cond_dep 'dev-python/functools32[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/subprocess32[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' python2_7)"
+#PY2_USEDEP=$(python_gen_usedep python2_7)
+#PY2_DEPEND="
+#	$(python_gen_cond_dep 'dev-python/functools32[${PYTHON_USEDEP}]' python2_7)
+#	$(python_gen_cond_dep 'dev-python/subprocess32[${PYTHON_USEDEP}]' python2_7)
+#	$(python_gen_cond_dep 'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' python2_7)"
 COMMON_DEPEND="
 	dev-python/cycler[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]
@@ -56,7 +56,6 @@ COMMON_DEPEND="
 #	dev-python/pycxx
 
 DEPEND="${COMMON_DEPEND}
-	${PY2_DEPEND}
 	dev-python/versioneer[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	virtual/pkgconfig
@@ -81,9 +80,9 @@ DEPEND="${COMMON_DEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 		>=dev-python/nose-0.11.1[${PYTHON_USEDEP}]
 		)"
+#	${PY2_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
-	${PY2_DEPEND}
 	>=dev-python/pyparsing-1.5.6[${PYTHON_USEDEP}]
 	excel? ( dev-python/xlwt[${PYTHON_USEDEP}] )
 	gtk3? (
@@ -99,6 +98,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-texlive/texlive-xetex
 	)
 	qt5? ( dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}] )"
+#	${PY2_DEPEND}
 
 # A few C++ source files are written to srcdir.
 # Other than that, the ebuild shall be fit for out-of-source build.
