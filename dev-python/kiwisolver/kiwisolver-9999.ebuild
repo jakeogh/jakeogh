@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 inherit distutils-r1
-inherit git-g3
+inherit git-r3
 
 DESCRIPTION="An efficient C++ implementation of the Cassowary constraint solving algorithm"
 HOMEPAGE="https://github.com/nucleic/kiwi"
