@@ -11,7 +11,7 @@ inherit git-r3
 
 DESCRIPTION="Curses-based user interface library for Python"
 HOMEPAGE="http://urwid.org/ https://pypi.org/project/urwid/"
-EGIT_REPO_URI="https://github.com/urwid/urwid.g"
+EGIT_REPO_URI="https://github.com/urwid/urwid.git"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
