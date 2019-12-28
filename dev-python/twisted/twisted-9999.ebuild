@@ -16,6 +16,7 @@ TWISTED_RELEASE=$(ver_cut 1-2)
 
 DESCRIPTION="An asynchronous networking framework written in Python"
 HOMEPAGE="https://www.twistedmatrix.com/trac/"
+SRC_URI="https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
 EGIT_REPO_URI="https://github.com/twisted/twisted.git"
 
 KEYWORDS=""
@@ -80,6 +81,11 @@ DEPEND="
 "
 
 S=${WORKDIR}/${TWISTED_P}
+
+src_unpack() {
+	unpack ${A}
+	git-r3_src_unpack
+}
 
 python_prepare_all() {
 	# No allowed tests are garaunteed to work on py3.5 or py3.8
