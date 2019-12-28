@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
-inherit git-r1
+inherit git-r3
 
 DESCRIPTION="Extensions to the Python standard library unit testing framework"
 HOMEPAGE="https://github.com/testing-cabal/testtools"
