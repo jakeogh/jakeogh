@@ -7,7 +7,6 @@ PYTHON_COMPAT=( python3_{5,6,7,8} )
 PYTHON_REQ_USE="xml"
 
 inherit distutils-r1
-inherit git-r3
 
 DESCRIPTION="Searchable online file/package database for Gentoo"
 HOMEPAGE="http://www.portagefilelist.de"
