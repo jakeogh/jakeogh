@@ -9,7 +9,6 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 inherit git-r3
 
-
 DESCRIPTION="Python web framework and asynchronous networking library"
 HOMEPAGE="http://www.tornadoweb.org/"
 EGIT_REPO_URI="https://github.com/tornadoweb/tornado.git"
