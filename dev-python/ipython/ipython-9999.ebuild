@@ -9,7 +9,6 @@ PYTHON_REQ_USE='readline,sqlite,threads(+)'
 inherit distutils-r1 eutils virtualx
 inherit git-r3
 
-
 DESCRIPTION="Advanced interactive shell for Python"
 HOMEPAGE="http://ipython.org/"
 EGIT_REPO_URI="https://github.com/ipython/ipython.git"
