@@ -26,7 +26,6 @@ CDEPEND="
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	dev-python/pickleshare[${PYTHON_USEDEP}]
 	>=dev-python/prompt_toolkit-2[${PYTHON_USEDEP}]
-	<dev-python/prompt_toolkit-2.1[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/traitlets[${PYTHON_USEDEP}]
 	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
