@@ -6,6 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 PYTHON_REQ_USE='bzip2(+)'
 
+
 inherit distutils-r1
 
 if [[ ${PV} == *9999 ]]; then
