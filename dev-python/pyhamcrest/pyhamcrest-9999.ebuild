@@ -42,7 +42,7 @@ pkg_setup() {
 
 python_prepare_all() {
 	# enables coverage testing which we don't want
-	rm pytest.ini || die
+	rm pytest.ini
 
 	# Known test failures. Remove them for now.
 	rm tests/hamcrest_unit_test/base_description_test.py || die "removing test #1 failed"
