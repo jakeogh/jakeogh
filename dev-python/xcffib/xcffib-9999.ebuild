@@ -38,8 +38,8 @@ DEPEND="
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-	mkdir "${S}"/xcffib
-	cp "${S}"/module/* "${S}"/xcffib
+#	mkdir "${S}"/xcffib
+#	cp "${S}"/module/* "${S}"/xcffib
 }
 
 src_configure() {
