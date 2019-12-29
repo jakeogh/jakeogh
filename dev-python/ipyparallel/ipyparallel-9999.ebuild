@@ -9,6 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1 eutils
 inherit git-r3
 
+
 DESCRIPTION="Interactive Parallel Computing with IPython"
 HOMEPAGE="https://ipyparallel.readthedocs.io/"
 EGIT_REPO_URI="https://github.com/ipython/ipyparallel.git"
