@@ -13,4 +13,4 @@ LICENSE="Clear-BSD"
 SLOT="0"
 KEYWORDS=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-S="${WORKDIR}"/kiwi-${PV}
+#S="${WORKDIR}"/kiwi-${PV}
