@@ -26,7 +26,7 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	${COMMON_DEPEND}"
 DEPEND="
-	dev-haskell/cabal-install
+	>=dev-haskell/cabal-install-2.4.0.0-r2
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	${COMMON_DEPEND}
 	test? (
