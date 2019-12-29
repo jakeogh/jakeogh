@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python3_{6,7,8} pypy )
 inherit distutils-r1 virtualx toolchain-funcs
 inherit git-r3
 
-
 DESCRIPTION="A drop in replacement for xpyb, an XCB python binding"
 HOMEPAGE="https://github.com/tych0/xcffib"
 EGIT_REPO_URI="https://github.com/tych0/xcffib.git"
@@ -35,23 +34,14 @@ DEPEND="
 		x11-apps/xeyes
 	)"
 
-#PATCHES=( "${FILESDIR}"/${PN}-0.4.2-test-imports.patch )
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
-#	mkdir "${S}"/xcffib
-#	cp "${S}"/module/* "${S}"/xcffib
 }
-
-#src_configure() {
-#	python_foreach_impl run_in_build_dir configure
-#}
 
 src_compile() {
 	emake xcffib
-	#python_foreach_impl run_in_build_dir emake xcffib
 }
-
 
 python_test() {
 	virtx nosetests -d -v
