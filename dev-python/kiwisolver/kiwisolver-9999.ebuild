@@ -12,5 +12,7 @@ EGIT_REPO_URI="https://github.com/nucleic/kiwi.git"
 LICENSE="Clear-BSD"
 SLOT="0"
 KEYWORDS=""
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/cppy[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 #S="${WORKDIR}"/kiwi-${PV}
