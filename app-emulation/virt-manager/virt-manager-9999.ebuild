@@ -8,6 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 
 inherit gnome2 distutils-r1
 
+
 DESCRIPTION="A graphical tool for administering virtual machines"
 HOMEPAGE="http://virt-manager.org"
 
