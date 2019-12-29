@@ -9,7 +9,6 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 inherit git-r3
 
-#TWISTED_PN="Twisted"
 TWISTED_PN="twisted"
 TWISTED_P="${TWISTED_PN}-${PV}"
 TWISTED_RELEASE=$(ver_cut 1-2)
