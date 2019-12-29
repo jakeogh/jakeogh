@@ -42,12 +42,13 @@ python_prepare_all() {
 #	cp "${S}"/module/* "${S}"/xcffib
 }
 
-src_configure() {
-	python_foreach_impl run_in_build_dir configure
-}
+#src_configure() {
+#	python_foreach_impl run_in_build_dir configure
+#}
 
 src_compile() {
-	python_foreach_impl run_in_build_dir emake xcffib
+	emake xcffib
+	#python_foreach_impl run_in_build_dir emake xcffib
 }
 
 
