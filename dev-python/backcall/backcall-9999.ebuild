@@ -3,7 +3,7 @@
 
 EAPI=7
 
-DISTUTILS_USE_SETUPTOOLS=no
+#DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
@@ -20,6 +20,9 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="
-	dev-python/flit[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/pyproject2setuppy[${PYTHON_USEDEP}]"
 
-#	dev-python/setuptools[${PYTHON_USEDEP}]
+src_prepare() {
+	python -m pyproject2setuppy.main build
+}
