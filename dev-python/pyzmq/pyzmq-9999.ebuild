@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 		dev-python/numpydoc[${PYTHON_USEDEP}]
 	)"
 
+
 PATCHES=( "${FILESDIR}"/${P}-test_message.patch )
 
 python_prepare_all() {
