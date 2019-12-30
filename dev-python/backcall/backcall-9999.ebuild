@@ -12,6 +12,7 @@ inherit git-r3
 DESCRIPTION="Specifications for callback functions passed in to an API"
 HOMEPAGE="https://pypi.org/project/backcall/"
 EGIT_REPO_URI="https://github.com/takluyver/backcall.git"
+EGIT_COMMIT="8eb45a77a40edad74b33086d05fd4d99d43d80b0"
 
 LICENSE="BSD"
 SLOT="0"
@@ -20,10 +21,10 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pyproject2setuppy[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]"
+#	dev-python/pyproject2setuppy[${PYTHON_USEDEP}]"
 
-src_prepare() {
-	python -m pyproject2setuppy.main build
-	eapply_user
-}
+#src_prepare() {
+#	python -m pyproject2setuppy.main build
+#	eapply_user
+#}
