@@ -3,9 +3,10 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-r1 git-r3
+inherit python-r1
+inherit git-r3
 
 DESCRIPTION="Enhanced df with colors (terminal flashing disabled)"
 HOMEPAGE="http://kassiopeia.juls.savba.sk/~garabik/software/pydf/"
