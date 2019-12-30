@@ -35,9 +35,9 @@ BDEPEND="dev-util/cmake
 #S=${WORKDIR}/${PN}-${EGIT_COMMIT#v}
 
 PATCHES=(
-	"${FILESDIR}/bcc-0.9.0-system-libbpf.patch"
 	"${FILESDIR}/bcc-0.9.0-no-luajit-automagic-dep.patch"
 )
+#	"${FILESDIR}/bcc-0.9.0-system-libbpf.patch"
 
 pkg_pretend() {
 	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~NET_CLS_BPF ~NET_ACT_BPF
