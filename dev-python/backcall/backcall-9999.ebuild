@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+#inherit distutils-r1
 inherit git-r3
 
 DESCRIPTION="Specifications for callback functions passed in to an API"
