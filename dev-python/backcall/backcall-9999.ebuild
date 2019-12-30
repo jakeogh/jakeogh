@@ -19,4 +19,7 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND=""
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
+	dev-python/flit[${PYTHON_USEDEP}]"
+
+#	dev-python/setuptools[${PYTHON_USEDEP}]
