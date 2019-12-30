@@ -28,9 +28,9 @@ DEPEND="${RDEPEND}
 
 #S="${WORKDIR}"/${MY_P}
 
-PATCHES=(
-	"${FILESDIR}/${P}-fix-broken-tests-on-py2.patch"
-)
+#PATCHES=(
+#	"${FILESDIR}/${P}-fix-broken-tests-on-py2.patch"
+#)
 
 python_test() {
 	${EPYTHON} setup.py test
