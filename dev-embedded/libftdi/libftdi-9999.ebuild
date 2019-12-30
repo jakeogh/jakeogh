@@ -4,7 +4,6 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
-
 inherit cmake-utils python-single-r1
 
 MY_P="${PN}1-${PV}"
