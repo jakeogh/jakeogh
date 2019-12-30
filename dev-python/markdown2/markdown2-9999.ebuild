@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
-inherit git-r1
+inherit git-r3
 
 DESCRIPTION="Python Markdown language reimplementation"
 HOMEPAGE="https://github.com/trentm/python-markdown2"
