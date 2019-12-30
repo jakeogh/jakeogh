@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 inherit git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="List elements"
 HOMEPAGE="https://github.com/jakeogh/elements"
 #EGIT_REPO_URI="/home/cfg/_myapps/elements https://github.com/jakeogh/elements.git"
 EGIT_REPO_URI="/home/cfg/_myapps/elements"
