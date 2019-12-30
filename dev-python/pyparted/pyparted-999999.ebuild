@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit distutils-r1 git-r3
-inheirt git-r3
+inherit git-r3
 
 DESCRIPTION="Python bindings for sys-block/parted"
 HOMEPAGE="https://github.com/rhinstaller/pyparted/"
