@@ -134,9 +134,9 @@ python_prepare_all() {
 #	EOF
 
 	local PATCHES=(
-		"${FILESDIR}"/${PN}-2.2.4-doc-fix.patch
 		"${FILESDIR}"/${PN}-2.2.4-no-jqueryui-download.patch
 	)
+#		"${FILESDIR}"/${PN}-2.2.4-doc-fix.patch
 
 	sed \
 		-e 's/matplotlib.pyparsing_py[23]/pyparsing/g' \
