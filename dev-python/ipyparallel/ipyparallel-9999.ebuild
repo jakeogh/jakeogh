@@ -48,9 +48,9 @@ DEPEND="${RDEPEND}
 	)
 	"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-6.2.3-disable-broken-test.patch"
-)
+#PATCHES=(
+#	"${FILESDIR}/${PN}-6.2.3-disable-broken-test.patch"
+#)
 
 python_prepare_all() {
 	# Prevent un-needed download during build
