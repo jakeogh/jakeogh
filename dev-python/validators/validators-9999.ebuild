@@ -7,6 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 inherit git-r3
 
+
 DESCRIPTION="Python Data Validation for Humans"
 HOMEPAGE="https://github.com/kvesteri/validators"
 EGIT_REPO_URI="/home/cfg/_myapps/validators https://github.com/kvesteri/validators.git"
