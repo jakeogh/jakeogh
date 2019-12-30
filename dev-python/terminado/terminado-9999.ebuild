@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
@@ -22,7 +23,13 @@ RDEPEND="
 	dev-python/ptyprocess[${PYTHON_USEDEP}]
 	>=www-servers/tornado-0.4[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
+	dev-python/pyproject2setuppy[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+
+src_compile() {
+	python -m pyproject2setuppy.main build
+}
 
 python_test() {
 	py.test -v || die
