@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Generic Colouriser beautifies your logfiles or output of commands"
 HOMEPAGE="http://kassiopeia.juls.savba.sk/~garabik/software/grc.html"
-EGIt_REPO_URI="https://github.com/garabik/grc.git"
+EGIT_REPO_URI="https://github.com/garabik/grc.git"
 
 LICENSE="GPL-2"
 SLOT="0"
