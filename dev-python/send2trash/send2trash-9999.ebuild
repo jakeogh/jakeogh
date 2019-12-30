@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy )
 inherit distutils-r1
 inherit git-r3
 
-MY_PN="Send2Trash"
-MY_P="${MY_PN}-${PV}"
+#MY_PN="send2trash"
+#MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Sends files to the Trash (or Recycle Bin)"
 HOMEPAGE="
@@ -26,7 +26,7 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
-S="${WORKDIR}"/${MY_P}
+#S="${WORKDIR}"/${MY_P}
 
 PATCHES=(
 	"${FILESDIR}/${P}-fix-broken-tests-on-py2.patch"
