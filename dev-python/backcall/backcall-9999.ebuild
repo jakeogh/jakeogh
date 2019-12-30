@@ -25,4 +25,5 @@ DEPEND="
 
 src_prepare() {
 	python -m pyproject2setuppy.main build
+	eapply_user
 }
