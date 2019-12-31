@@ -20,6 +20,7 @@ RDEPEND="dev-python/colorful[${PYTHON_USEDEP}]"
 
 DEPEND="
 	${RDEPEND}
+	dev-python/pytest-runner[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_install() {
