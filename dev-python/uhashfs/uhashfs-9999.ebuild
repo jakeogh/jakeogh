@@ -23,6 +23,7 @@ DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/python-getdents[${PYTHON_USEDEP}]
+	dev-python/prettyprinter[${PYTHON_USEDEP}]
 	app-misc/unitcalc[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest-cov[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
