@@ -8,8 +8,8 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 inherit git-r3
 
-MY_PN="${PN/pyw/PyW}"
-MY_P="${MY_PN}-${PV}"
+#MY_PN="${PN/pyw/PyW}"
+#MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Discrete Wavelet Transforms in Python"
 HOMEPAGE="https://pywavelets.readthedocs.io/en/latest/"
