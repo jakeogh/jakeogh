@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 inherit git-r3
@@ -13,24 +13,24 @@ EGIT_REPO_URI="https://github.com/hackingmaterials/matminer.git"
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 LICENSE="BSD"
 
-DEPEND="dev-python/pymatgen
-		dev-python/tqdm
-		dev-python/pandas
-		dev-python/pymongo
-		dev-python/pint
-		dev-python/six
-		dev-python/citrination-client
-		dev-python/plotly
-		dev-python/matplotlib
-		dev-python/jmespath
-		dev-python/ujson
-		dev-python/httplib2
-		sci-physics/ase
-		dev-python/pycookiecheat"
+DEPEND="dev-python/pymatgen[${PYTHON_USEDEP}]
+	dev-python/tqdm[${PYTHON_USEDEP}]
+	dev-python/pandas[${PYTHON_USEDEP}]
+	dev-python/pymongo[${PYTHON_USEDEP}]
+	dev-python/pint[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/citrination-client[${PYTHON_USEDEP}]
+	dev-python/plotly[${PYTHON_USEDEP}]
+	dev-python/matplotlib[${PYTHON_USEDEP}]
+	dev-python/jmespath[${PYTHON_USEDEP}]
+	dev-python/ujson[${PYTHON_USEDEP}]
+	dev-python/httplib2[${PYTHON_USEDEP}]
+	sci-physics/ase[${PYTHON_USEDEP}]
+	dev-python/pycookiecheat[${PYTHON_USEDEP}]"
 
 RDEPEND="${DEPEND}"
 
