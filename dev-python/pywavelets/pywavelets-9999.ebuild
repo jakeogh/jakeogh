@@ -10,6 +10,7 @@ inherit git-r3
 
 #MY_PN="${PN/pyw/PyW}"
 #MY_P="${MY_PN}-${PV}"
+MY_P="${PN}-${PV}"
 
 DESCRIPTION="Discrete Wavelet Transforms in Python"
 HOMEPAGE="https://pywavelets.readthedocs.io/en/latest/"
