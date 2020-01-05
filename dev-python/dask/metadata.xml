@@ -19,5 +19,5 @@
   </upstream>
   <use>
     <flag name="distributed">Add support for distributed computing with <pkg>dev-python/distributed</pkg></flag>
-  </use>  
+  </use>
 </pkgmetadata>

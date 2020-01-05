@@ -5,7 +5,7 @@ index 191e3f37f..8a1d89197 100644
 @@ -1585,6 +1585,7 @@ c  10  11  12  13  14\
          with option_context('display.max_rows', 60, 'display.max_columns', 20):
              assert '...' in df._repr_html_()
- 
+
 +    @pytest.mark.skip("Fails in Gentoo")
      def test_info_repr(self):
          max_rows = 60
@@ -17,7 +17,7 @@ index 89acbfdc9..9c4b5c291 100644
 @@ -1097,6 +1097,7 @@ class TestNumpyJSONTests(object):
          outp = ujson.decode(ujson.encode(arr), numpy=True, dtype=np.float32)
          tm.assert_almost_equal(arr, outp)
- 
+
 +    @pytest.mark.skip("Fails on Gentoo")
      def test_OdArray(self):
          def will_raise():

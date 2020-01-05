@@ -6,9 +6,9 @@ index 73f2540..8d6f3c3 100644
  # -*- coding: utf-8 -*-
 -import textwrap
 +import os
- 
+
  from setuptools import setup
- 
+
 -setup(
 -    use_scm_version={
 -        "write_to": "src/tox/version.py",
@@ -19,7 +19,7 @@ index 73f2540..8d6f3c3 100644
 +VERSION = os.environ['PV']
 +with open('src/tox/version.py', 'wt') as fp:
 +    fp.write("__version__ = u'{}'".format(VERSION))
- 
+
 -             __version__ = {version!r}
 -             """
 -        ).lstrip(),

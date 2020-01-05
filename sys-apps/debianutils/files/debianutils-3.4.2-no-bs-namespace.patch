@@ -6,7 +6,7 @@ Re-sourced for 3.4.2
 @@ -25,9 +25,10 @@
  .IR directory .
  Other files and directories are silently ignored.
- 
+
 -If neither the \-\-lsbsysinit option nor the \-\-regex option is given
 -then the names must consist entirely of ASCII upper- and lower-case
 -letters, ASCII digits, ASCII underscores, and ASCII minus-hyphens.
@@ -14,7 +14,7 @@ Re-sourced for 3.4.2
 +names must consist entirely of ASCII upper- and lower-case letters, ASCII
 +digits, ASCII underscores, and ASCII minus-hyphens. However, the name must not
 +begin with a period.
- 
+
  If the \-\-lsbsysinit option is given, then the names must not end
  in .dpkg\-old  or .dpkg\-dist or .dpkg\-new or .dpkg\-tmp, and must
 --- a/run-parts.c
@@ -22,9 +22,9 @@ Re-sourced for 3.4.2
 @@ -501,7 +501,7 @@
                      != 0)
              pt_regex = &tradre;
- 
+
 -    } else if ( (err = regcomp(&classicalre, "^[a-zA-Z0-9_-]+$",
 +    } else if ( (err = regcomp(&classicalre, "^[a-zA-Z0-9_-][a-zA-Z0-9._-]+$",
                      REG_EXTENDED | REG_NOSUB)) != 0)
          pt_regex = &classicalre;
- 
+

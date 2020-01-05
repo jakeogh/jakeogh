@@ -20,7 +20,7 @@ index 6cd80af1..acd39252 100644
 @@ -32,15 +32,22 @@ class TestMatchesExceptionInstanceInterface(TestCase, TestMatchersInterface):
      matches_matches = [error_foo]
      matches_mismatches = [error_bar, error_base_foo]
- 
+
 +    if sys.version_info >= (3, 7):
 +        # exception's repr has changed
 +        _e = ''

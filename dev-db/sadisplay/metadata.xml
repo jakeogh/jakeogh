@@ -10,9 +10,9 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription lang="en">
-		Simple package for describing SQLAlchemy schema and display raw 
-		database tables by reflecting feature. Works with mapped classes 
-		and raw tables. Relation detecting by ForeignKey columns. 
+		Simple package for describing SQLAlchemy schema and display raw
+		database tables by reflecting feature. Works with mapped classes
+		and raw tables. Relation detecting by ForeignKey columns.
 		Supports mapped class inherit.
 	</longdescription>
 	<upstream>

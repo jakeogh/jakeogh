@@ -8,7 +8,7 @@ index 78e00ab..0487594 100644
          out = python(py.name, _env=env).strip()
 -        self.assertEqual(out, "DERP 1")
 +        self.assertEqual(out, u"DERP 12")
- 
+
          py = create_tmp_test("""
  import os, sys
 @@ -515,7 +515,7 @@ for key in osx_cruft:
@@ -17,6 +17,6 @@ index 78e00ab..0487594 100644
          out = python(py.name, _env=env, _cwd=THIS_DIR).strip()
 -        self.assertEqual(out, "DERP 1")
 +        self.assertEqual(out, u"DERP 12")
- 
- 
+
+
      def test_which(self):

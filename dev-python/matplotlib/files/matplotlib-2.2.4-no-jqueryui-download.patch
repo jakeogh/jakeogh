@@ -13,6 +13,6 @@ index 41037e95d..6a438fa99 100644
 +        # pypi's tarball. use this!
 +        name = "matplotlib/backends/web_backend/jquery-ui-1.12.1"
 +        os.rename(os.path.join('lib', name), os.path.join(self.install_dir, name))
- 
+
  class develop_with_jquery(DevelopCommand):
      def run(self):

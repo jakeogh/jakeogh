@@ -8,5 +8,5 @@ https://bugzilla.gnome.org/show_bug.cgi?id=663421
  datadir=@datadir@
 +libdir=@libdir@
  pyexecdir=@pyexecdir@
- 
+
  # you can use the --variable=pygtkincludedir argument to

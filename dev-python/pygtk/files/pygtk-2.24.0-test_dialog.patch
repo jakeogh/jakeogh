@@ -17,12 +17,12 @@ index a6a3ce5..6540be3 100644
 @@ -20,7 +20,7 @@ class MessageDialogTest(unittest.TestCase):
          print sub.__gtype__.name
          self.assertEqual(sub.__gtype__.name, 'GtkMessageDialog')
- 
+
 -        type('Sub', (gtk.MessageDialog,), {'__gtype_name__': 'SubDialog'})
 +        sub = type('Sub', (gtk.MessageDialog,), {'__gtype_name__': 'SubDialog'})
          self.assertEqual(sub.__gtype__.name, 'SubDialog')
- 
+
      def testDialogLeak(self):
--- 
+--
 1.8.3.2
 

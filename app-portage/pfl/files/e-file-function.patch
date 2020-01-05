@@ -6,7 +6,7 @@
  #thanks for portagefilelist.de and Daniel
 -VERSION=20110906
 +VERSION=20190713
- 
+
  coloropt=always
 -function usage () {
 +usage () {

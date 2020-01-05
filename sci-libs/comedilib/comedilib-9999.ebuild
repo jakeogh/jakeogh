@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # https://raw.githubusercontent.com/Jannis234/jm-overlay/master/sci-libs/comedilib/comedilib-0.10.2-r1.ebuild
 

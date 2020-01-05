@@ -4,7 +4,7 @@ diff -ruN linux-gpib-3.2.21.orig/drivers/Makefile.am linux-gpib-3.2.21/drivers/M
 @@ -28,39 +28,13 @@
  		CC="$(LINUX_CC) -I@abs_top_srcdir@ -I@abs_top_srcdir@/drivers/gpib/include -I@abs_top_srcdir@/include" \
  		SUBDIRS="$(GPIB_ABS_MODULE_SUBDIR)"
- 
+
 -install-data-hook: device-file-check /etc/gpib.conf
 +install-data-hook: /etc/gpib.conf
  	$(MAKE) -C $(LINUX_SRCDIR) V=1 modules_install\
@@ -35,10 +35,10 @@ diff -ruN linux-gpib-3.2.21.orig/drivers/Makefile.am linux-gpib-3.2.21/drivers/M
 -			"Delete your /dev/gpibX files and try again."; \
 -		exit 1; \
 -	fi
- 
+
  #should move this to util/templates Makefile.am when it exists
  /etc/gpib.conf:
 -	$(INSTALL_DATA) -D $(top_srcdir)/util/templates/gpib.conf /etc/gpib.conf
- 
+
  #make sure compiled files, etc don't make it into distribution tarballs
  dist-hook:

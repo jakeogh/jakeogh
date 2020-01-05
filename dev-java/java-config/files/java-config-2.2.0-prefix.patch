@@ -5,11 +5,11 @@ Bug: 591156
 @@ -87,8 +87,8 @@
  		elif arch in ['hpux']:
  			defaults = '*= hp-jdk-bin'
- 
+
 -		os.mkdir(self.root + '/usr/share/java-config-2/config/')
 -		with open(self.root + '/usr/share/java-config-2/config/jdk-defaults.conf', 'w') as f:
 +		os.mkdir(self.root + eprefix + '/usr/share/java-config-2/config/')
 +		with open(self.root + eprefix + '/usr/share/java-config-2/config/jdk-defaults.conf', 'w') as f:
  			f.write("# This files contain the default support jdk's\n")
  			f.write(defaults + "\n")
- 
+

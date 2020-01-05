@@ -22,9 +22,9 @@ index 3a9d337..4b0cf28 100644
          self.assertErrorWritten(raised=u"\u2022",
 -                                reported=b'1 RuntimeError: \\u2022')
 +                                reported=b'1 RuntimeError: ' + reported_str)
- 
- 
- 
+
+
+
 @@ -2003,9 +2007,15 @@ class DaemonizeTests(unittest.TestCase):
          unicode and too long, it's truncated by the child, even if
          this splits a unicode escape sequence.
@@ -40,8 +40,8 @@ index 3a9d337..4b0cf28 100644
 -            reported=b'1 RuntimeError: ' + b'\\u2022' * 14,
 +            reported=b'1 RuntimeError: ' + reported_str * length,
          )
- 
- 
+
+
 --
 libgit2 0.26.0
 

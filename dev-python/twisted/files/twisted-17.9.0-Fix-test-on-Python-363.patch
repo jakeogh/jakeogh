@@ -14,7 +14,7 @@ index aca56f5..3fdc480 100644
 @@ -3052,28 +3052,33 @@ class SelectVerifyImplementationTests(unittest.SynchronousTestCase):
              in self.flushWarnings()
              if warning["category"] == UserWarning)
- 
+
 -        if _PY3:
 -            importError = (
 -                "'import of 'service_identity' halted; None in sys.modules'")
@@ -38,7 +38,7 @@ index aca56f5..3fdc480 100644
 +            # Python 2
 +            "'No module named service_identity'"
 +        ]
- 
+
 -        self.assertEqual(
 -            (warning["message"], warning["filename"], warning["lineno"]),
 -

@@ -20,6 +20,6 @@ start() {
 
 stop() {
 	ebegin "Stopping twistd"
-	start-stop-daemon --stop --quiet --pidfile /var/run/twistd.pid 
+	start-stop-daemon --stop --quiet --pidfile /var/run/twistd.pid
 	eend $? "Failed to stop twistd"
 }

@@ -3,7 +3,7 @@
 @@ -4,6 +4,23 @@
  # installing the bash-completion package which sets this explicitly.
  shopt -s extglob
- 
+
 +_srpkgname()
 +{
 +	local pd

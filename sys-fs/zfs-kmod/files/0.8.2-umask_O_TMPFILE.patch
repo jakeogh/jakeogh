@@ -20,7 +20,7 @@ index 264c5d2b1cf..e1c6ce7b705 100644
 --- a/module/zfs/zpl_inode.c
 +++ b/module/zfs/zpl_inode.c
 @@ -218,6 +218,12 @@ zpl_tmpfile(struct inode *dir, struct dentry *dentry, umode_t mode)
- 
+
  	crhold(cr);
  	vap = kmem_zalloc(sizeof (vattr_t), KM_SLEEP);
 +	/*
@@ -30,5 +30,5 @@ index 264c5d2b1cf..e1c6ce7b705 100644
 +	if (!IS_POSIXACL(dir))
 +		mode &= ~current_umask();
  	zpl_vap_init(vap, dir, mode, cr);
- 
+
  	cookie = spl_fstrans_mark();

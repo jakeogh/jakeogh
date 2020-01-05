@@ -7,8 +7,8 @@ diff -up pydot-1.0.28/dot_parser.py.pyparsing2fix pydot-1.0.28/dot_parser.py
      restOfLine, cStyleComment, nums, alphanums, printables, empty, quotedString,
 -    ParseException, ParseResults, CharsNotIn, _noncomma, dblQuotedString, QuotedString, ParserElement )
 +    ParseException, ParseResults, CharsNotIn, dblQuotedString, QuotedString, ParserElement )
- 
+
 +_noncomma = "".join( [ c for c in printables if c != "," ] )
- 
+
  class P_AttrList:
- 
+

@@ -5,7 +5,7 @@ index c55fa2f..25db355 100644
 @@ -4,7 +4,7 @@ import os, pkginfo
  on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
  pkg_info = pkginfo.Develop(os.path.join(os.path.dirname(__file__), os.pardir))
- 
+
 -extensions = ['sphinx.ext.autodoc', 'sphinx.ext.intersphinx']
 +extensions = ['sphinx.ext.autodoc']
  source_suffix = '.rst'

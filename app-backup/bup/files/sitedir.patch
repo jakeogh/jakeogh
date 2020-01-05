@@ -3,18 +3,18 @@
 @@ -25,7 +25,7 @@
  os := $(shell ($(pf); uname | sed 's/[-_].*//') $(isok))
  os := $(call shout,$(os),Unable to determine OS)
- 
+
 -CFLAGS := -Wall -O2 -Werror -Wno-unknown-pragmas $(PYINCLUDE) $(CFLAGS)
 +CFLAGS := -Wall -Wno-unknown-pragmas $(PYINCLUDE) $(CFLAGS)
  CFLAGS := -D_FILE_OFFSET_BITS=64 $(CFLAGS)
  SOEXT:=.so
- 
+
 @@ -93,10 +93,11 @@
  dest_docdir := $(DESTDIR)$(DOCDIR)
  dest_bindir := $(DESTDIR)$(BINDIR)
  dest_libdir := $(DESTDIR)$(LIBDIR)
 +dest_sitedir := $(DESTDIR)$(SITEDIR)
- 
+
  install: all
 -	$(INSTALL) -d $(dest_bindir) \
 -		$(dest_libdir)/bup $(dest_libdir)/cmd \

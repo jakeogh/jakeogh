@@ -7,5 +7,5 @@
 -includedir_old=@includedir@/opencv
 +includedir_old=@includedir@/opencv2
  includedir_new=@includedir@
- 
+
  Name: OpenCV

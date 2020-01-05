@@ -4,8 +4,8 @@ index 06fde46..e685a88 100644
 +++ b/ipyparallel/tests/test_util.py
 @@ -3,7 +3,8 @@ from ipyparallel import util
  from jupyter_client.localinterfaces import localhost, public_ips
- 
- 
+
+
 -def test_disambiguate_ip():
 +# This test is broken in gentoo's testing environment
 +def xtest_disambiguate_ip():
@@ -18,7 +18,7 @@ index 45cb669..dd335b1 100644
 +++ b/ipyparallel/tests/test_view.py
 @@ -823,7 +823,8 @@ class TestView(ClusterTestCase):
          assert view.apply_sync(find_ipython)
- 
+
      @skip_without('cloudpickle')
 -    def test_use_cloudpickle(self):
 +    # Broken on Gentoo

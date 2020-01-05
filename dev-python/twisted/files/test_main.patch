@@ -18,7 +18,7 @@ index 572769018..b010a389e 100644
 --- a/src/twisted/test/test_main.py
 +++ b/src/twisted/test/test_main.py
 @@ -18,6 +18,10 @@ from twisted.trial.unittest import TestCase
- 
+
  class MainTests(TestCase):
      """Test that twisted scripts can be invoked as modules."""
 +    # this test just does not work correctly on Gentoo
@@ -29,13 +29,13 @@ index 572769018..b010a389e 100644
          """Invoking python -m twisted should execute twist."""
          cmd = sys.executable
 @@ -28,11 +32,37 @@ class MainTests(TestCase):
- 
+
          def processEnded(ign):
              f = p.outF
 -            output = f.getvalue().replace(b'\r\n', b'\n')
 +            # Some systems may return __main__.py instead of the command name expected
 +            output = f.getvalue().replace(b'\r\n', b'\n').replace(b"__main__.py", b"trial")
- 
+
              options = TwistOptions()
              message = '{}\n'.format(options).encode('utf-8')
 -            self.assertEqual(output, message)
@@ -66,8 +66,8 @@ index 572769018..b010a389e 100644
 +                    % '\n'.join(missing)
 +            )
          return d.addCallback(processEnded)
- 
+
      def test_twisted_import(self):
--- 
+--
 2.12.1
 

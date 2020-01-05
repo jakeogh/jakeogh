@@ -18,15 +18,15 @@ index 60fa17c..0831f7a 100644
 @@ -70,6 +70,7 @@
      ],
  )
- 
+
 +# require setuptools for these cases
  if 'develop' in sys.argv or any(a.startswith('bdist') for a in sys.argv):
      import setuptools
- 
+
 @@ -85,7 +86,12 @@
      'test': ['ipykernel', 'ipython', 'mock', 'pytest'],
  }
- 
+
 -if 'setuptools' in sys.modules:
 +# always try to use setuptools if available
 +try:

@@ -16,5 +16,5 @@ index b7ed12b..1d5abe4 100755
 -    'requests.packages.urllib3.util',
 -    'requests.packages.urllib3.packages.ssl_match_hostname',
  ]
- 
+
  requires = []

@@ -22,14 +22,14 @@ index 69c7e0c..faa45e1 100644
 +  (caller-owns-return #t)
    (return-type "PangoContext*")
  )
- 
+
  (define-method create_pango_layout
    (of-object "GtkPrintContext")
    (c-name "gtk_print_context_create_pango_layout")
 +  (caller-owns-return #t)
    (return-type "PangoLayout*")
  )
- 
+
 diff --git a/pangocairo.override b/pangocairo.override
 index bb923e6..5101107 100644
 --- a/pangocairo.override
@@ -41,7 +41,7 @@ index bb923e6..5101107 100644
 -    PangoLayout *ret;
 +    PangoLayout *layout;
 +    PyObject *ret;
- 
+
 -    ret = pango_cairo_create_layout(PycairoContext_GET(self));
 +    layout = pango_cairo_create_layout(PycairoContext_GET(self));
      /* pygobject_new handles NULL checking */
@@ -52,7 +52,7 @@ index bb923e6..5101107 100644
 +
 +    return ret;
  }
- 
+
  static PyObject *
 --
 cgit v0.9.2

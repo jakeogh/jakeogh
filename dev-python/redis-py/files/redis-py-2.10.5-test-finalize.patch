@@ -7,7 +7,7 @@ index ed8fd5f..ab648a3 100644
 +++ b/setup.py
 @@ -9,11 +9,6 @@ try:
      from setuptools.command.test import test as TestCommand
- 
+
      class PyTest(TestCommand):
 -        def finalize_options(self):
 -            TestCommand.finalize_options(self)

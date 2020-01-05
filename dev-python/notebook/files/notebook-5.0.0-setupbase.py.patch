@@ -6,7 +6,7 @@ Patch by Marius Brehler
 @@ -165,37 +165,6 @@ def find_package_data():
              if f.endswith(('.js', '.css')):
                  static_data.append(pjoin(parent, f))
- 
+
 -    # Trim mathjax
 -    mj = lambda *path: pjoin(components, 'MathJax', *path)
 -    static_data.extend([
@@ -14,10 +14,10 @@ Patch by Marius Brehler
 -        mj('config', 'TeX-AMS-MML_HTMLorMML-full.js'),
 -        mj('config', 'Safe.js'),
 -    ])
--    
+-
 -    trees = []
 -    mj_out = mj('jax', 'output')
--    
+-
 -    if os.path.exists(mj_out):
 -        for output in os.listdir(mj_out):
 -            path = pjoin(mj_out, output)
@@ -40,4 +40,4 @@ Patch by Marius Brehler
 -
      os.chdir(os.path.join('tests',))
      js_tests = glob('*.js') + glob('*/*.js')
- 
+

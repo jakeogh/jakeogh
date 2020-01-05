@@ -4,7 +4,7 @@ diff -ur subunit-1.0.0.orig/python/subunit/tests/test_run.py subunit-1.0.0/pytho
 @@ -77,21 +77,6 @@
          exc = self.assertRaises(SystemExit, runner.list, None, loader=loader)
          self.assertEqual((2,), exc.args)
- 
+
 -    class FailingTest(TestCase):
 -        def test_fail(self):
 -            1/0
