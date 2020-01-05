@@ -18,4 +18,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+BDEPEND="net-libs/nodejs[npm]"
+
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
