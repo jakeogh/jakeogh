@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} )
 
 inherit bash-completion-r1 flag-o-matic linux-info linux-mod distutils-r1 systemd toolchain-funcs udev usr-ldscript
 
+
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://zfsonlinux.org/"
 
