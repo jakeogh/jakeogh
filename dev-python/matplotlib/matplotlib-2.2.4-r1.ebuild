@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{7,8} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
