@@ -38,7 +38,7 @@ DEPEND="
 # Take out rogue & trivial failing tests that exit the suite before it even gets started
 # The removed class in fact works fine in py3 and fails with py2.7 & pupu
 # The setu to restrict this patch is just those 2 is not worth it.
-PATCHES=( "${FILESDIR}"/1.0.0-tests.patch )
+#PATCHES=( "${FILESDIR}"/1.0.0-tests.patch )
 
 src_prepare() {
 	sed -i -e 's/os.chdir(os.path.dirname(__file__))//' setup.py || die
