@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit distutils-r1 git-r3
+inherit git-r3
 
 DESCRIPTION="NoteBook FanControl"
 HOMEPAGE="https://github.com/hirschmann/nbfc"
