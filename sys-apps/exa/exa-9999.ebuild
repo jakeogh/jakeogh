@@ -76,7 +76,8 @@ inherit git-r3
 DESCRIPTION="A modern replacement for 'ls' written in Rust"
 HOMEPAGE="https://the.exa.website/"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
-EGIT_REPO_URI="https://github.com/ogham/exa.git"
+EGIT_REPO_URI="/home/cfg/_myapps/exa https://github.com/ogham/exa.git"
+EGIT_BRANCH="recurse_symlinks"
 
 LICENSE="MIT"
 SLOT="0"
