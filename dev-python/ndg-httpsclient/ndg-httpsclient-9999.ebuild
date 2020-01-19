@@ -17,7 +17,7 @@ EGIT_REPO_URI="https://github.com/cedadev/ndg_httpsclient.git"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS=""
 IUSE="test"
 RESTRICT="!test? ( test )"
 
