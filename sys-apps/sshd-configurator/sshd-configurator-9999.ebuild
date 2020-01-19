@@ -1,8 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
+EAPI=7
+PYTHON_COMPAT=( python3_{7,8} )
+
 inherit distutils-r1
 inherit git-r3
 
@@ -15,11 +16,11 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="dev-python/netifaces
-dev-python/click
-dev-python/attrs
-dev-python/daemonize
-net-misc/openssh
+RDEPEND="dev-python/netifaces[${PYTHON_USEDEP}]
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/attrs[${PYTHON_USEDEP}]
+	dev-python/daemonize[${PYTHON_USEDEP}]
+	net-misc/openssh
 "
 
 python_install_all() {
