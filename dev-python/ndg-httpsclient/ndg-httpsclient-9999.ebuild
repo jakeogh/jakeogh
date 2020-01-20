@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 		dev-libs/openssl:0
 	)"
 
-S="${WORKDIR}/${P/-/_}"
+#S="${WORKDIR}/${P/-/_}"
 
 # doc build by Makefile in folder documentation is broken
 
