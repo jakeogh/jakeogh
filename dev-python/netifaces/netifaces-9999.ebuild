@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://github.com/al45tair/netifaces
 "
 EGIT_REPO_URI="https://github.com/al45tair/netifaces.git"
-#SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
