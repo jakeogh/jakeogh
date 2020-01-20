@@ -6,5 +6,6 @@
 </maintainer>
 <use>
 <flag name="savedconfig">Without a saved config.h, this package depends on <pkg>net-misc/curl</pkg> and <pkg>x11-terms/st</pkg> for a default download mechanism</flag>
+<flag name="firejail">Use <pkg>sys-apps/firejail</pkg> profile for surf</flag>
 </use>
 </pkgmetadata>

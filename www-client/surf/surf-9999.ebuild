@@ -12,8 +12,12 @@ EGIT_BRANCH="surf-webkit2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
+IUSE="firejail"
 
 COMMON_DEPEND="
+	firejail? (
+		sys-apps/firejail
+	)
 	app-crypt/gcr[gtk]
 	dev-libs/glib:2
 	net-libs/webkit-gtk:4
