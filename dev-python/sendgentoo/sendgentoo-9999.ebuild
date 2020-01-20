@@ -18,15 +18,16 @@ LICENSE="MIT"
 
 # parted likes dmidecode, should send a patch for the ebuild
 DEPEND="dev-python/click[${PYTHON_USEDEP}]
-sys-fs/cryptsetup
-sys-fs/dosfstools
-sys-block/parted
-sys-apps/dmidecode
-sys-apps/pv
-dev-python/kcl[${PYTHON_USEDEP}]
-dev-tcltk/expect
-dev-python/humanfriendly[${PYTHON_USEDEP}]
-sys-apps/debianutils
+	dev-python/python-dmenu[${PYTHON_USEDEP}]
+	sys-fs/cryptsetup
+	sys-fs/dosfstools
+	sys-block/parted
+	sys-apps/dmidecode
+	sys-apps/pv
+	dev-python/kcl[${PYTHON_USEDEP}]
+	dev-tcltk/expect
+	dev-python/humanfriendly[${PYTHON_USEDEP}]
+	sys-apps/debianutils
 "
 
 RDEPEND="${DEPEND}"
