@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1
@@ -17,18 +17,18 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	dev-python/matplotlib
-	dev-python/requests
+	dev-python/matplotlib[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	dev-db/postgresql:*
-	dev-python/httplib2
-	dev-python/dateparser
-	dev-python/pygobject:*
-	dev-python/pyinotify
+	dev-python/httplib2[${PYTHON_USEDEP}]
+	dev-python/dateparser[${PYTHON_USEDEP}]
+	dev-python/pygobject:*[${PYTHON_USEDEP}]
+	dev-python/pyinotify[${PYTHON_USEDEP}]
 	net-misc/iridb
-	dev-python/twitter
+	dev-python/twitter[${PYTHON_USEDEP}]
 	app-misc/beep
-	dev-python/regex
-	dev-python/ghost
+	dev-python/regex[${PYTHON_USEDEP}]
+	dev-python/ghost[${PYTHON_USEDEP}]
 "
 
 RDEPEND="
