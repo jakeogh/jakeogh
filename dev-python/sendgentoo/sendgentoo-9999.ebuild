@@ -17,8 +17,10 @@ IUSE=""
 LICENSE="MIT"
 
 # parted likes dmidecode, should send a patch for the ebuild
+# debianutils should provide ischroot: https://bugs.gentoo.org/698812
 DEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-python/python-dmenu[${PYTHON_USEDEP}]
+	sys-apps/debianutils
 	sys-fs/cryptsetup
 	sys-fs/dosfstools
 	sys-block/parted
