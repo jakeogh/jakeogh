@@ -4,7 +4,7 @@
 EAPI=7
 GCONF_DEBUG="no"
 #GNOME_TARBALL_SUFFIX="bz2"
-PYTHON_COMPAT=( python2_7 python3_{7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit autotools
 inherit eutils

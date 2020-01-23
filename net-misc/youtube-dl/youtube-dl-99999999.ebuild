@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python2_7 python3_{7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 inherit bash-completion-r1 distutils-r1 git-r3 readme.gentoo-r1
 #EGIT_BRANCH="locked_file"
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"

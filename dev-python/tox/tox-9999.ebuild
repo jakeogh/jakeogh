@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
 inherit distutils-r1
 inherit git-r3
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep '
 		>=dev-python/importlib_metadata-1.1[${PYTHON_USEDEP}]
-	' python3_{7,8} pypy3)
+	' python3_{6,7,8} pypy3)
 	dev-python/packaging[${PYTHON_USEDEP}]
 	<dev-python/pluggy-1.0[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
