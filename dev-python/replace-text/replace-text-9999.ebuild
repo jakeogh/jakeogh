@@ -17,7 +17,9 @@ KEYWORDS=""
 IUSE=""
 LICENSE="MIT"
 
-DEPEND="dev-python/click[${PYTHON_USEDEP}]
+DEPEND="
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/kcl[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
