@@ -4,26 +4,27 @@
 EAPI="7"
 PYTHON_COMPAT=( python2_7 python3_{7,8} )
 inherit bash-completion-r1 distutils-r1 git-r3 readme.gentoo-r1
-
+#EGIT_BRANCH="locked_file"
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://rg3.github.com/youtube-dl/"
 EGIT_REPO_URI="/home/cfg/_myapps/youtube-dl"
-#EGIT_BRANCH="locked_file"
 EGIT_BRANCH="write_error"
-
 LICENSE="public-domain"
-
 KEYWORDS=""
-RESTRICT="test"
 SLOT="0"
-DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
+IUSE="test"
 RDEPEND="
-	${DEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	|| (
 		dev-python/pycryptodome[${PYTHON_USEDEP}]
 		dev-python/pycrypto[${PYTHON_USEDEP}]
+	)
+"
+DEPEND="
+	${RDEPEND}
+	test? (
+		dev-python/nose[${PYTHON_USEDEP}]
+		dev-python/flake8[${PYTHON_USEDEP}]
 	)
 "
 
@@ -31,6 +32,10 @@ src_compile() {
 	distutils-r1_src_compile
 
 	emake ${PN}.{bash-completion,fish,zsh}
+}
+
+python_test() {
+	emake offlinetest
 }
 
 python_install_all() {
