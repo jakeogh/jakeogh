@@ -19,7 +19,7 @@ LICENSE="MIT"
 
 DEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/kcl[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
