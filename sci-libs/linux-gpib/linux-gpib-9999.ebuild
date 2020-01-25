@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 python3_7 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit readme.gentoo-r1 autotools perl-functions python-single-r1 toolchain-funcs udev user git-r3
 
@@ -32,6 +32,7 @@ COMMONDEPEND="
 	php? ( dev-lang/php:= )
 	python? ( ${PYTHON_DEPS} )
 	firmware? ( sys-apps/fxload )"
+
 RDEPEND="${COMMONDEPEND}
 	~sci-libs/linux-gpib-modules-${PV}
 "
