@@ -23,7 +23,7 @@ IUSE="test"
 # docs require sphinxcontrib-blockdiag and sphinxcontrib-seqdiag
 
 RDEPEND="
-	x11-libs/cairo[xcb]
+	x11-libs/cairo[X,xcb(+)]
 	x11-libs/pango
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/cairocffi-0.9.0[${PYTHON_USEDEP}]
@@ -32,10 +32,9 @@ RDEPEND="
 	>=dev-python/xcffib-0.8.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' 'python2*')
 "
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/xvfbwrapper[${PYTHON_USEDEP}]
 		x11-base/xorg-server[xephyr]
 		x11-apps/xeyes
@@ -46,6 +45,8 @@ DEPEND="${RDEPEND}
 
 # display retry backoff slowness and failures
 RESTRICT="test"
+
+#PATCHES=( "${FILESDIR}"/${PN}-0.12.0-tests.patch )
 
 python_test() {
 	# force usage of built module
