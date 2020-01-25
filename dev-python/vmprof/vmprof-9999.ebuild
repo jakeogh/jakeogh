@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=7
+
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit distutils-r1 git-r3
@@ -20,12 +20,13 @@ RDEPEND=""
 DEPEND="${RDEPEND}
 	dev-libs/elfutils
 	dev-libs/libdwarf
-	dev-python/click
-	dev-python/cffi
-	dev-python/pytest
-	dev-python/requests
-	dev-python/six
-	sys-libs/libunwind"
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/cffi[${PYTHON_USEDEP}]
+	dev-python/pytest[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	sys-libs/libunwind
+	"
 
 RESTRICT="test"
 
