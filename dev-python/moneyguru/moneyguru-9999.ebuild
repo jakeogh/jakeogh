@@ -14,7 +14,6 @@ EGIT_REPO_URI="https://github.com/hsoft/moneyguru.git"
 LICENSE=""
 SLOT="0"
 KEYWORDS=""
-IUSE=""
 LICENSE="MIT"
 
 DEPEND="
