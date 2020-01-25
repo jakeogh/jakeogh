@@ -11,14 +11,11 @@ DESCRIPTION="Future-aware personal finance application"
 HOMEPAGE="https://github.com/hsoft/moneyguru"
 EGIT_REPO_URI="https://github.com/hsoft/moneyguru.git"
 
-LICENSE=""
 SLOT="0"
 KEYWORDS=""
 LICENSE="MIT"
 
-DEPEND="
-	dev-python/polib[${PYTHON_USEDEP}]
-"
+DEPEND="dev-python/polib[${PYTHON_USEDEP}]"
 
 RDEPEND="${DEPEND}"
 
