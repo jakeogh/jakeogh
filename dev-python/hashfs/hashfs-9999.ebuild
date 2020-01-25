@@ -18,19 +18,13 @@ KEYWORDS=""
 IUSE="doc test dev"
 
 DEPEND="
-	test? ( dev-python/pytest-cov
-			dev-python/pytest
-			dev-python/tox
-			dev-python/twine
-			dev-python/wheel
-			dev-python/virtualenv )
+	test? ( dev-python/pytest-cov[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/tox[${PYTHON_USEDEP}]
+			dev-python/twine[${PYTHON_USEDEP}]
+			dev-python/wheel[${PYTHON_USEDEP}]
+			dev-python/virtualenv[${PYTHON_USEDEP}] )
 "
-
-
-#sys-apps/file[python]
-#dev-python/python-magic # file has a python flag. will that work instead?
-
-#RDEPEND="${DEPEND}"
 
 python_install_all() {
 	distutils-r1_python_install_all
