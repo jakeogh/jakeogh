@@ -91,7 +91,6 @@ DEPEND="${RDEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/1.14-glib-2.60-tests-compat.patch
 	"${FILESDIR}"/make-fix.patch
 )
 
