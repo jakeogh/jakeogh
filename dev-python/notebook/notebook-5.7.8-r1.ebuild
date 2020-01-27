@@ -58,7 +58,7 @@ DEPEND="${RDEPEND}
 	)
 	"
 
-PATCHES=( "${FILESDIR}/${PN}"-5.7.0-no-mathjax.patch )
+#PATCHES=( "${FILESDIR}/${PN}"-5.7.0-no-mathjax.patch )
 
 # Opens a qtconsole
 restrict="doc"
