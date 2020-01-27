@@ -22,7 +22,7 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/astroid-2.2.0[${PYTHON_USEDEP}]
+	>=dev-python/astroid-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/isort-4.2.5[${PYTHON_USEDEP}]
 	dev-python/mccabe[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
