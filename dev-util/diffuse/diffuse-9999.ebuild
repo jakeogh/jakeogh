@@ -10,6 +10,7 @@ inherit fdo-mime python-single-r1 git-r3
 DESCRIPTION="A graphical tool to compare and merge text files"
 HOMEPAGE="https://github.com/MightyCreak/diffuse"
 EGIT_REPO_URI="/home/user/_myapps/diffuse"
+EGIT_BRANCH="python3_install"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -44,7 +45,7 @@ src_prepare() {
 }
 
 src_install() {
-	python2 install.py \
+	${PYTHON} install.py \
 		--prefix="${EPREFIX}"/usr \
 		--sysconfdir="${EPREFIX}"/etc \
 		--files-only \
