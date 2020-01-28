@@ -44,7 +44,7 @@ src_prepare() {
 }
 
 src_install() {
-	"${PYTHON}" install.py \
+	python2 install.py \
 		--prefix="${EPREFIX}"/usr \
 		--sysconfdir="${EPREFIX}"/etc \
 		--files-only \
