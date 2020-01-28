@@ -28,6 +28,7 @@ DEPEND="${DEPEND}
 	!sci-chemistry/tinker"
 
 src_prepare() {
+	eapply_user
 	local i p
 
 	# linguas handling wrt #406433
