@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 #inherit fdo-mime python-single-r1 git-r3
@@ -15,11 +15,13 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+#REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
+
 RDEPEND="${DEPEND}
 	dev-python/pygtk[${PYTHON_USEDEP}]"
+
 # file collision, bug #279018
 DEPEND="${DEPEND}
 	!sci-chemistry/tinker"
