@@ -4,8 +4,8 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-#inherit fdo-mime python-single-r1 git-r3
-inherit fdo-mime distutils-r1 git-r3
+inherit fdo-mime python-single-r1 git-r3
+#inherit fdo-mime distutils-r1 git-r3
 
 DESCRIPTION="A graphical tool to compare and merge text files"
 HOMEPAGE="https://github.com/MightyCreak/diffuse"
