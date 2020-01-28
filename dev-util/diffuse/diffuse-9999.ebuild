@@ -9,7 +9,7 @@ inherit fdo-mime distutils-r1 git-r3
 
 DESCRIPTION="A graphical tool to compare and merge text files"
 HOMEPAGE="https://github.com/MightyCreak/diffuse"
-EGIT_SRC_URI="/home/user/_myapps/diffuse"
+EGIT_REPO_URI="/home/user/_myapps/diffuse"
 
 LICENSE="GPL-2"
 SLOT="0"
