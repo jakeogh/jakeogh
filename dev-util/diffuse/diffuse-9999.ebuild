@@ -20,7 +20,8 @@ IUSE=""
 DEPEND="${PYTHON_DEPS}"
 
 RDEPEND="${DEPEND}
-	dev-python/pygtk[${PYTHON_USEDEP}]"
+"
+#	dev-python/pygtk[${PYTHON_USEDEP}]"
 
 # file collision, bug #279018
 DEPEND="${DEPEND}
