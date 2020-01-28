@@ -51,7 +51,7 @@ src_install() {
 		--files-only \
 		--destdir="${D}" \
 		|| die "Installation failed"
-	dodoc AUTHORS ChangeLog README
+	#dodoc AUTHORS ChangeLog README
 }
 
 pkg_postinst() {
