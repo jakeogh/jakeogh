@@ -18,7 +18,7 @@ IUSE="doc pam static-libs"
 RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib:2
-	=sys-auth/libfprint-1.0
+	=sys-auth/libfprint-1.0:~
 	sys-auth/polkit
 	pam? ( sys-libs/pam )
 "
