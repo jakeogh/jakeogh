@@ -5,7 +5,6 @@
 EAPI=6
 inherit rindeal
 
-
 ## EXPORT_FUNCTIONS: src_unpack
 inherit vcs-snapshot
 
