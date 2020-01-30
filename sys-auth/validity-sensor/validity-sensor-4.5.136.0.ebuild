@@ -93,7 +93,7 @@ src_unpack() {
 	default
 
 	rmkdir "${S}"
-	rpm_unpack SP*/Validity-Sensor-Setup-$(ver_cut 1-2)-$(ver_cut 3-4).x86_64.rpm "${S}"
+	rpm_unpack "${WORKDIR}"/SP*/Validity-Sensor-Setup-$(ver_cut 1-2)-$(ver_cut 3-4).x86_64.rpm "${S}"
 
 	rcp -r "${FILESDIR}/vcsFPService_preload" "${S}/"
 }
