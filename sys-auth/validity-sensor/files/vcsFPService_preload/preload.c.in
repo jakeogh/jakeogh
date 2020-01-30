@@ -1,0 +1,233 @@
+/**
+ * Hooks for some system calls, which force umask to be applied
+ * and some other nifty actions.
+ *
+ * Copyright 2016 by Jan Chren (rindeal) <dev.rindeal@gmail.com>
+ *
+ * This file is part of the validity-sensor package.
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ * @license GPL-2.0 <https://spdx.org/licenses/GPL-2.0>
+ */
+
+/*
+ * daemon creates:
+ *  - `/tmp/vcsSemKey_*` files (pipes, IPC)
+ *  - /tmp/CH_* (pipes)
+ *  - /var/run/ValidityService.pid
+ *  - /etc/ValidityPersistentData
+ *  - (null)_{00..09}{ir,raw}.bmp # raw + reconstructed scans
+ * daemon tries to access:
+ *  - /home/validity/Br_4_5_1xx/usdk/vcsFPService/../lib/linux/x64/Release/...
+ *  - /etc/localtime
+ *  - /usr/lib64/locale/locale-archive
+ *  - /etc/udev/udev.conf
+ *  - /run/udev/control
+ *  - /run/udev/data/...
+ *  - /sys/subsystem
+ *  - /dev/bus/usb/...
+ *  - / /sys /sys/bus/ /sys/bus/usb/ /sys/bus/usb/devices
+ *  - /sys/bus/usb/...
+ *  - /sys/class
+ *  - /sys/devices/...
+ * daemon tries to execute:
+ *  - /bin/rm
+ *  - /bin/sh
+ *  - /usr/bin/pidof
+ */
+
+ /**
+  * Description of certain files
+  * -----------------------------
+  *
+  * `/var/run/ValidityService.pid`
+  *
+  *     This file is empty and serves as a single instance lock.
+  *     Do not create this file as it serves no purpose when running under systemd.
+  *
+  * `/etc/ValidityPersistentData`
+  *
+  *     The daemon polls this file by open(), read(), close().
+  *     I haven't found yet however who/what writes into it.
+  *
+  * `(null)_{01..09}raw.bmp`
+  *
+  *     Raw scans.
+  *     Created/updated in the CWD upon scanning.
+  *
+  * `(null)_{01..09}ir.bmp`
+  *
+  *     Developed scans.
+  *     Created/updated in the CWD upon scanning.
+  */
+
+/* required for RTLD_NEXT in dlfcn.h */
+#define _GNU_SOURCE
+
+#include <stdlib.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <errno.h>
+#include <string.h>
+
+#include <dlfcn.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <libgen.h>
+
+
+static int (*real_chdir)(const char * path) = NULL;
+
+static FILE * (*real_fopen)(const char * path, const char * mode) = NULL;
+static int (*real_open)(const char * pathname, int flags, mode_t mode) = NULL;
+
+static int (*real_mkfifo)(const char * pathname, mode_t mode) = NULL;
+static int (*real___xmknod)(int ver, const char * pathname, mode_t mode, dev_t * dev) = NULL;
+
+
+static int umask_val__ = @VFS_UMASK@;
+static inline int
+get_umask(void) {
+    if ( umask_val__ < 0 )
+    	umask_val__ = umask(0);
+    return umask_val__;
+}
+
+#define LOG_(format, ...) { \
+    LOAD_REAL(fopen); \
+    FILE * log = CALL_REAL(fopen, "/tmp/preload.log", "a"); \
+    if (log) { \
+        fprintf(log, "%s: " format "%s", basename(__FILE__), __VA_ARGS__); \
+        fclose(log); \
+    } \
+}
+// #define LOG(...) LOG_(__VA_ARGS__, "")
+#define LOG(...) ((void)0)
+
+#define LOAD_REAL(func) \
+    if ( real_##func == NULL ) \
+        real_##func = dlsym(RTLD_NEXT, #func)
+#define CALL_REAL(func, ...) \
+        real_##func (__VA_ARGS__)
+
+#define APPLY_UMASK(var) \
+    mode &= ~get_umask(); \
+    LOG("%s after aplying umask (%04o) - %04o\n", #var, get_umask(), var&0777)
+
+int
+chdir (
+    const char * path
+) {
+    /* The daemon calls a single chdir - `chdir("/")`.
+     * To make `WorkingDirectory=` directive working, simply ignore it. */
+
+    LOG("chdir('%s')\n", path);
+    LOG("ignoring\n");
+    return 0;
+}
+
+
+FILE *
+fopen (
+    const char * path,
+    const char * mode
+) {
+    LOAD_REAL(fopen);
+    LOG("fopen('%s', '%s')\n", path, mode);
+
+    if ( path != NULL) {
+        /* Whitelist paths, others will receive `/dev/null` */
+        if (
+            strncmp(path, "/dev/", 5) != 0 &&
+            strncmp(path, "/run/udev/", 10) != 0 &&
+            strncmp(path, "/sys/devices/", 13) != 0 &&
+            strncmp(path, "/sys/bus/usb/", 13) != 0 &&
+            strncmp(path, "/etc/udev/udev.conf", 19) != 0
+        ) {
+            LOG("Redirecting to `/dev/null`\n");
+            return CALL_REAL(fopen, "/dev/null", mode);
+        }
+    }
+
+    /* no filtered fopen() should ever create a file so do not care about it */
+
+    return CALL_REAL(fopen, path, mode);
+}
+
+
+int
+open (
+    const char * pathname,
+    int flags,
+    ...
+) {
+    mode_t mode;
+    { /* initialize `mode` argument */
+        va_list ap;
+        va_start (ap, flags);
+        mode = va_arg (ap, mode_t);
+        va_end (ap);
+    }
+
+    LOAD_REAL(open);
+    LOG("open('%s', %i, %04o)\n", pathname, flags, mode&0777);
+
+    if ( pathname != NULL ) {
+        if(
+            strncmp(pathname, "/tmp/vcsSemKey_", 15) != 0 &&
+            strncmp(pathname, "/tmp/CH_", 8) != 0 &&
+            strncmp(pathname, "/sys/devices", 12) != 0 &&
+            strncmp(pathname, "/sys/bus/usb/", 13) != 0
+        ) {
+            LOG("Redirecting to `/dev/null`\n");
+            return CALL_REAL(open, "/dev/null", flags, mode);
+        }
+    }
+
+    APPLY_UMASK(mode);
+
+    return CALL_REAL(open, pathname, flags, mode);
+}
+
+int
+mkfifo (
+    const char * pathname,
+    mode_t mode
+) {
+    LOAD_REAL(mkfifo);
+    LOG("mkfifo('%s', %o)\n", pathname, mode);
+
+    APPLY_UMASK(mode);
+
+    return CALL_REAL(mkfifo, pathname, mode);
+}
+
+int
+__xmknod (
+    int ver,
+    const char * pathname,
+    mode_t mode,
+    dev_t * dev
+) {
+    LOAD_REAL(__xmknod);
+    LOG("__xmknod(%d, '%s', %i, %p)\n", ver, pathname, mode, dev);
+
+    APPLY_UMASK(mode);
+
+    return CALL_REAL(__xmknod, ver, pathname, mode, dev);
+}

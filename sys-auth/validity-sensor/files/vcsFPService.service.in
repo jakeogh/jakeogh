@@ -1,0 +1,56 @@
+## Copyright 2016,2018 Jan Chren (rindeal)
+## Distributed under the terms of the GNU General Public License v2
+
+## vcsFPService.service
+## The name vcsFPService was chosen based on vcsFPService.exe Windows service.
+
+## This file was ported from:
+##  - etc/init.d/vcsFPServiceDaemon
+
+[Unit]
+Description=Validity Fingerprint Service
+# load before bringing up console so that FP authentication works
+Before=multi-user.target
+
+[Service]
+# clean up `/tmp/vcsSemKey_*` junk
+ExecStartPre=/usr/bin/find /tmp -maxdepth 1 -type f -name "vcsSemKey_*" -delete
+# clean up `/tmp/CH_*` junk
+ExecStartPre=/usr/bin/find /tmp -maxdepth 1 -type p -name "CH_*" -delete
+
+# permissions applied to ExecStart only
+PermissionsStartOnly=true
+User=@VFS_USER@
+Group=@VFS_GROUP@
+# libvfsFprintWrapper.so will still be creating files in with explicit 0777/0666 perms.
+# To overcome this we're using LD_PRELOAD wrapper.
+UMask=@VFS_UMASK@
+
+# The daemon already requires public `/tmp` so let's put his CWD there as well.
+WorkingDirectory=/tmp
+# Because InaccessiblePaths restricts even resolved symlinks, it's not possible to put anything in here.
+#InaccessiblePaths=
+ReadOnlyPaths=/etc /run /var
+# `vcsFPService` communicates with `libvfsFprintWrapper.so` through tmp files
+#PrivateTmp=true
+# protect /boot and /usr
+ProtectSystem=true
+
+# access("/run/udev/control", F_OK) = 0
+# socket(AF_NETLINK, SOCK_RAW|SOCK_CLOEXEC|SOCK_NONBLOCK, NETLINK_KOBJECT_UEVENT) = 5
+RestrictAddressFamilies=AF_UNIX AF_NETLINK
+# deny realtime scheduling
+RestrictRealtime=true
+NoNewPrivileges=true
+SystemCallFilter=~ @clock @cpu-emulation @debug @keyring @module @mount @obsolete @privileged @raw-io
+
+Type=forking
+ExecStart=/usr/sbin/vcsFPService
+TimeoutSec=10s
+Restart=on-abort
+
+ExecReload=/bin/kill -HUP $MAINPID
+
+
+[Install]
+WantedBy=multi-user.target
