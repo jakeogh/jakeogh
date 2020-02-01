@@ -4,16 +4,16 @@ diff -Naur gstreamer-1.14.5.old/common/glib-gen.mak gstreamer-1.14.5/common/glib
 @@ -1,11 +1,13 @@
  # these are the variables your Makefile.am should set
  # the example is based on the colorbalance interface
- 
+
 +H := \#
 +
  #glib_enum_headers=$(colorbalance_headers)
  #glib_enum_define=GST_COLOR_BALANCE
  #glib_enum_prefix=gst_color_balance
- 
+
 -enum_headers=$(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
 +enum_headers=$(foreach h,$(glib_enum_headers),\n$(H)include \"$(h)\")
- 
+
  # these are all the rules generating the relevant files
  %-marshal.h: %-marshal.list
 diff -Naur gstreamer-1.14.5.old/common/gst-glib-gen.mak gstreamer-1.14.5/common/gst-glib-gen.mak
@@ -22,7 +22,7 @@ diff -Naur gstreamer-1.14.5.old/common/gst-glib-gen.mak gstreamer-1.14.5/common/
 @@ -1,14 +1,16 @@
  # these are the variables your Makefile.am should set
  # the example is based on the colorbalance interface
- 
+
 +H := \#
 +
  #glib_enum_headers=$(colorbalance_headers)
@@ -32,10 +32,10 @@ diff -Naur gstreamer-1.14.5.old/common/gst-glib-gen.mak gstreamer-1.14.5/common/
  #glib_gen_decl_banner=GST_EXPORT
 -#glib_gen_decl_include=\#include <gst/foo/foo-prelude.h>
 +#glib_gen_decl_include=$(H)include <gst/foo/foo-prelude.h>
- 
+
 -enum_headers=$(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
 +enum_headers=$(foreach h,$(glib_enum_headers),\n$(H)include \"$(h)\")
- 
+
  # these are all the rules generating the relevant files
  $(glib_gen_basename)-marshal.h: $(glib_gen_basename)-marshal.list
 diff -Naur gstreamer-1.14.5.old/libs/gst/controller/Makefile.am gstreamer-1.14.5/libs/gst/controller/Makefile.am
@@ -44,7 +44,7 @@ diff -Naur gstreamer-1.14.5.old/libs/gst/controller/Makefile.am gstreamer-1.14.5
 @@ -4,11 +4,13 @@
  	gstinterpolationcontrolsource.h \
  	gstlfocontrolsource.h
- 
+
 +H := \#
 +
  glib_enum_define = GST_CONTROLLER
@@ -53,6 +53,6 @@ diff -Naur gstreamer-1.14.5.old/libs/gst/controller/Makefile.am gstreamer-1.14.5
  glib_gen_decl_banner=GST_CONTROLLER_API
 -glib_gen_decl_include=\#include <gst/controller/controller-prelude.h>
 +glib_gen_decl_include=$(H)include <gst/controller/controller-prelude.h>
- 
+
  built_sources = controller-enumtypes.c
  built_headers = controller-enumtypes.h

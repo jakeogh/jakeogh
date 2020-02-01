@@ -13,9 +13,10 @@ HOMEPAGE="https://zfsonlinux.org/"
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
-	EGIT_REPO_URI="/home/cfg/_myapps/zfs-zdbm https://github.com/zfsonlinux/zfs.git"
+	EGIT_REPO_URI="/home/cfg/_myapps/zfs https://github.com/zfsonlinux/zfs.git"
+	#EGIT_REPO_URI="/home/cfg/_myapps/zfs-zdbm https://github.com/zfsonlinux/zfs.git"
 	#BRANCH="split-zdb-read-block"
-	BRANCH="print_symlink_target"
+	BRANCH="zdb_print_symlink_target"
 	# BRANCH="fix_zdb_decompress_R_flag"
 	EGIT_OVERRIDE_REPO_ZFSONLINUX_ZFS_IMAGES="/home/cfg/_myapps/zfs-images/"
 else

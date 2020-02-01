@@ -9,4 +9,4 @@ index a7b5e413..841a1c0d 100644
 -                 setup_requires=['pytest-runner'],
                   tests_require=['pytest'],
                   **kwargs)
- 
+
