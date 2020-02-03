@@ -17,7 +17,7 @@ if [[ ${PV} == "9999" ]] ; then
 	#EGIT_REPO_URI="/home/cfg/_myapps/zfs-zdbm https://github.com/zfsonlinux/zfs.git"
 	#BRANCH="split-zdb-read-block"
 	#BRANCH="zdb_print_symlink_target"
-	BRANCH="invalid_blkptr_offset"
+	EGIT_BRANCH="invalid_blkptr_offset"
 	# BRANCH="fix_zdb_decompress_R_flag"
 	EGIT_OVERRIDE_REPO_ZFSONLINUX_ZFS_IMAGES="/home/cfg/_myapps/zfs-images/"
 else
