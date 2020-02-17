@@ -12,7 +12,8 @@ if [[ ${PV} == "9999" ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="/home/user/_myapps/zfs https://github.com/zfsonlinux/zfs.git"
 	#EGIT_BRANCH="invalid_blkptr_offset"
-	EGIT_BRANCH="zfs_panic_recover_print_blkptr"
+	#EGIT_BRANCH="zfs_panic_recover_print_blkptr"
+	EGIT_BRANCH="master"
 else
 	SRC_URI="https://github.com/zfsonlinux/zfs/releases/download/zfs-${PV}/zfs-${PV}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
