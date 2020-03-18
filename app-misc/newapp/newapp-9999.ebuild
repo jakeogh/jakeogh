@@ -20,6 +20,7 @@ DEPEND="
 	dev-python/replace-text[${PYTHON_USEDEP}]
 	dev-python/fastentrypoints[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
+	dev-vcs/hub
 "
 
 RDEPEND="${DEPEND}"
