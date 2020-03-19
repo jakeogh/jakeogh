@@ -1,57 +1,37 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+PYTHON_COMPAT=( python3_{7,8} )
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy )
-PYTHON_REQ_USE="threads(+)"
+inherit distutils-r1 git-r3
 
-inherit distutils-r1
-inherit git-r3
+DESCRIPTION="Short explination of what it does _here_"
+HOMEPAGE="https://github.com/psf/requests"
+EGIT_REPO_URI="/home/cfg/_myapps/requests https://github.com/psf/requests.git"
 
-DESCRIPTION="HTTP library for human beings"
-HOMEPAGE="http://python-requests.org/ https://pypi.python.org/pypi/requests"
-EGIT_REPO_URI="https://github.com/kennethreitz/requests.git"
-
-#SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
-
-LICENSE="Apache-2.0"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+#IUSE="test"
 
 RDEPEND="
-	app-misc/ca-certificates
-	>=dev-python/chardet-2.2.1[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
-	>=dev-python/idna-2.0[${PYTHON_USEDEP}]
-	dev-python/ndg-httpsclient[${PYTHON_USEDEP}]
-	>=dev-python/py-1.4.30[${PYTHON_USEDEP}]
-	>=dev-python/pyopenssl-0.14[$(python_gen_usedep 'python*' pypy)]
-	>=dev-python/urllib3-1.13.1-r1[${PYTHON_USEDEP}]
-	"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? (
-		>=dev-python/pytest-2.8.1[${PYTHON_USEDEP}]
-	)
-	"
-#		>=dev-python/pytest-httpbin-0.0.7[${PYTHON_USEDEP}]
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/icecream[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
+"
 
-# tests connect to various remote sites
-RESTRICT="test"
+DEPEND="${RDEPEND}"
+#	test? ( dev-python/nose[${PYTHON_USEDEP}]
+#		>=dev-python/toolz-0.8[${PYTHON_USEDEP}] )"
 
-#PATCHES=(
-#	"${FILESDIR}"/${PN}-2.5.0-system-cacerts.patch
-#)
+#python_compile() {
+#	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
+#	distutils-r1_python_compile
+#}
 
-python_prepare_all() {
-	# use system chardet & urllib3
-	#rm -r requests/packages/{chardet,urllib3} || die
-
-	distutils-r1_python_prepare_all
-}
-
-python_test() {
-	py.test -v || die
-}
+#python_test() {
+#	pushd "${BUILD_DIR}"/lib/ > /dev/null || die
+#	PYTHONPATH=.:${PN} nosetests --with-doctest ${PN} || die "tests failed under ${EPYTHON}"
+#	popd > /dev/null || die
+#}
