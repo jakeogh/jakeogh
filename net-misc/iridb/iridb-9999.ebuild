@@ -39,7 +39,9 @@ DEPEND="
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
+	app-text/slmenu
 "
+
 #	dev-python/ghost
 #	sys-apps/file[python]
 #	dev-python/pydot[${PYTHON_USEDEP}]
