@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Sweet and creamy print debugging."
 HOMEPAGE="https://github.com/gruns/icecream"
-EGIT_REPO_URI="https://github.com/gruns/icecream.git"
+EGIT_REPO_URI="/home/user/_myapps/icecream https://github.com/gruns/icecream.git"
 
 LICENSE="MIT"
 SLOT="0"
