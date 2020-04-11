@@ -16,11 +16,13 @@ SLOT="0"
 IUSE=""
 KEYWORDS=""
 
+
+# astor: nice AST printing
 DEPEND="
 	dev-python/replace-text[${PYTHON_USEDEP}]
 	dev-python/fastentrypoints[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/astor[${PYTHON_USEDEP}]  # nice AST printing
+	dev-python/astor[${PYTHON_USEDEP}]
 	dev-vcs/hub
 "
 
