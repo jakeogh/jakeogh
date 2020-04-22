@@ -8,7 +8,6 @@ PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 eutils git-r3
 
-
 DESCRIPTION="Python code static checker"
 HOMEPAGE="https://www.logilab.org/project/pylint
 	https://pypi.org/project/pylint/
