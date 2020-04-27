@@ -19,6 +19,7 @@ IUSE=""
 DEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
+	dev-python/pint[${PYTHON_USEDEP}]
 	dev-python/redis-py[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
 	dev-python/python-magic[${PYTHON_USEDEP}]
