@@ -15,14 +15,13 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
+#	dev-python/schedule[${PYTHON_USEDEP}]
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/schedule[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/wxpython[${PYTHON_USEDEP}]
+	dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
