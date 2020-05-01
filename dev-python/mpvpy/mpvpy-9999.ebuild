@@ -19,6 +19,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
+	sys-process/schedtool
 "
 
 DEPEND="${RDEPEND}"

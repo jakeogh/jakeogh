@@ -23,6 +23,7 @@ DEPEND="
 	dev-python/fastentrypoints[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/astor[${PYTHON_USEDEP}]
+	dev-python/walkup_until_found[${PYTHON_USEDEP}]
 	dev-vcs/hub
 "
 
