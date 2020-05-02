@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Pure-python FIGlet implementation"
 HOMEPAGE="https://github.com/pwaller/pyfiglet"
-EGIT_SRC_URI="https://github.com/pwaller/pyfiglet.git"
+EGIT_REPO_URI="https://github.com/pwaller/pyfiglet.git"
 
 LICENSE="MIT"
 SLOT="0"
