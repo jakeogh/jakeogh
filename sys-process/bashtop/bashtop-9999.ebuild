@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION="Linux resource monitor"
 HOMEPAGE="https://github.com/aristocratos/bashtop"
-EGIT_REPO_URI="/home/cfg/_myapps/bashtop https://github.com/aristocratos/bashtop.git"
+EGIT_REPO_URI="https://github.com/aristocratos/bashtop.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
