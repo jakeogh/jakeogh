@@ -13,13 +13,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS=""
 
-
-RDEPEND="
-"
+RDEPEND=""
 
 DEPEND="${RDEPEND}"
 
 src_install() {
-    dobin ${PN}
+	dobin ${PN}
 }
-
