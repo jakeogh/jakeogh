@@ -29,6 +29,7 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	dev-lang/swig
 	>=dev-python/cython-0.23.4[${PYTHON_USEDEP}]
+	dev-python/pybind11[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	test? (	dev-python/nose[${PYTHON_USEDEP}] )
 	"
