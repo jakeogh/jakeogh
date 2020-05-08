@@ -32,6 +32,6 @@ RDEPEND="${DEPEND}"
 src_install() {
 #	dodoc README*
 	dobin ${PN}
-	dosym "/usr/bin/${PN}" "${PN}f"
+	dosym "/usr/bin/${PN}" "/usr/bin/${PN}f"
 #	dobin ${PN}_test
 }
