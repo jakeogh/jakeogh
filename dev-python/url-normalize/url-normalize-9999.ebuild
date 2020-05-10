@@ -6,6 +6,8 @@ PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 git-r3
 
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/niksite/url-normalize"
 EGIT_REPO_URI="/home/cfg/_myapps/url-normalize https://github.com/niksite/url-normalize.git"
