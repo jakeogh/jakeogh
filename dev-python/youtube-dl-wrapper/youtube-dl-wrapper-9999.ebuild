@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1
 
@@ -13,18 +13,19 @@ inherit git-r3
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	dev-python/sh
-	net-misc/youtube-dl
+	dev-python/sh[${PYTHON_USEDEP}]
+	net-misc/youtube-dl[${PYTHON_USEDEP}]
 	dev-db/redis
 	x11-misc/xclip
-	dev-python/click
-	dev-python/smartmove
-	dev-python/sh
-	dev-python/kcl
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/smartmove[${PYTHON_USEDEP}]
+	dev-python/sh[${PYTHON_USEDEP}]
+	dev-python/kcl[${PYTHON_USEDEP}]
+	net-misc/iridb[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
