@@ -39,6 +39,7 @@ DEPEND="
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
+	dev-python/tld[${PYTHON_USEDEP}]
 	app-text/slmenu
 "
 
