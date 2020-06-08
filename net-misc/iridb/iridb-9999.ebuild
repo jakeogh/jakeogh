@@ -43,7 +43,6 @@ DEPEND="
 	app-text/slmenu
 "
 
-#	dev-python/ghost
 #	sys-apps/file[python]
 #	dev-python/pydot[${PYTHON_USEDEP}]
 #	dev-db/sadisplay[${PYTHON_USEDEP}]
