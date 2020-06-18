@@ -19,7 +19,7 @@ RDEPEND="media-libs/libmtp
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-S="${WORKDIR}/${PN}-${P}"
+#S="${WORKDIR}/${PN}-${P}"
 
 src_prepare() {
 	default
@@ -28,4 +28,4 @@ src_prepare() {
 	# autogen.sh.
 	eautoreconf
 }
-#}
+
