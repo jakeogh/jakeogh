@@ -15,7 +15,7 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-lang/ruby
+	dev-lang/ruby:*
 	>=sci-visualization/gnuplot-4.0
 "
 
