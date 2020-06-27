@@ -9,10 +9,9 @@ DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/chriswolfvision/eplot"
 EGIT_REPO_URI="/home/cfg/_myapps/eplot https://github.com/chriswolfvision/eplot.git"
 
-LICENSE="GPL"
+LICENSE="GPL-1"
 SLOT="0"
 KEYWORDS=""
-
 
 RDEPEND="
 	dev-lang/ruby:*
