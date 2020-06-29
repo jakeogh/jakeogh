@@ -5,6 +5,8 @@ EAPI=7
 
 inherit autotools flag-o-matic gnome2-utils xdg-utils git-r3
 
+# from https://github.com/linxon/gentoo-overlay
+
 DESCRIPTION="A graphical hardware temperature monitor"
 HOMEPAGE="https://wpitchoune.net/psensor/"
 EGIT_REPO_URI="https://gitlab.com/jeanfi/psensor.git"
