@@ -38,7 +38,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-PATCHES=( "${FILESDIR}"/${P}_fix_errors.patch )
+#PATCHES=( "${FILESDIR}"/${P}_fix_errors.patch )
 
 src_prepare() {
 	default
