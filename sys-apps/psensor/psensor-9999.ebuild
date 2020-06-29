@@ -7,7 +7,7 @@ inherit autotools flag-o-matic gnome2-utils xdg-utils git-r3
 
 DESCRIPTION="A graphical hardware temperature monitor"
 HOMEPAGE="https://wpitchoune.net/psensor/"
-EGIT_SRC_URI="https://gitlab.com/jeanfi/psensor.git"
+EGIT_REPO_URI="https://gitlab.com/jeanfi/psensor.git"
 
 LICENSE="GPL-2"
 SLOT="0"
