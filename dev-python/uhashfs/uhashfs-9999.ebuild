@@ -15,7 +15,7 @@ EGIT_REPO_URI="/home/cfg/_myapps/uhashfs https://github.com/jakeogh/uhashfs.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc test dev"
+IUSE="doc test"
 
 DEPEND="
 	dev-python/humanize[${PYTHON_USEDEP}]
