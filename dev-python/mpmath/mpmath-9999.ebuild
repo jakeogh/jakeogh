@@ -25,10 +25,10 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-python_prepare_all() {
-	local PATCHES=(
-		"${FILESDIR}/${P}.patch"
-		)
+#python_prepare_all() {
+#	local PATCHES=(
+#		"${FILESDIR}/${P}.patch"
+#		)
 
 	# this test requires X
 	rm ${PN}/tests/test_visualization.py || die
