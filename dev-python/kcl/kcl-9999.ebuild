@@ -27,6 +27,7 @@ DEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/python-getdents[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
+	dev-python/pyperclip[${PYTHON_USEDEP}]
 	sys-fs/dd-rescue
 "
 
