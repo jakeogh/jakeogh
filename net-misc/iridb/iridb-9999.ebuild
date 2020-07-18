@@ -34,6 +34,7 @@ DEPEND="
 	dev-python/beautifulsoup:*[${PYTHON_USEDEP}]
 	dev-python/requests-cache[${PYTHON_USEDEP}]
 	dev-python/requests-file[${PYTHON_USEDEP}]
+	dev-python/requests-ftp[${PYTHON_USEDEP}]
 	dev-python/classify[${PYTHON_USEDEP}]
 	app-text/tree
 	dev-python/pudb[${PYTHON_USEDEP}]
