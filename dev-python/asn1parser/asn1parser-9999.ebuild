@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/asn1crypto[${PYTHON_USEDEP}]
 	dev-python/pyasn1[${PYTHON_USEDEP}]
+	dev-python/python-asn1[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
