@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Parse and extract data from ASN1"
 HOMEPAGE="https://github.com/jakeogh/asn1parser"
 EGIT_REPO_URI="/home/cfg/_myapps/asn1parser https://github.com/jakeogh/asn1parser.git"
 
@@ -19,19 +19,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/asn1crypto[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-#	test? ( dev-python/nose[${PYTHON_USEDEP}]
-#		>=dev-python/toolz-0.8[${PYTHON_USEDEP}] )"
-
-#python_compile() {
-#	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-#	distutils-r1_python_compile
-#}
-
-#python_test() {
-#	pushd "${BUILD_DIR}"/lib/ > /dev/null || die
-#	PYTHONPATH=.:${PN} nosetests --with-doctest ${PN} || die "tests failed under ${EPYTHON}"
-#	popd > /dev/null || die
-#}
