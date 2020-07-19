@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit git-r3 cmake-multilib eutils toolchain-funcs multilib
+inherit git-r3 cmake eutils toolchain-funcs multilib
+#inherit cmake-multilib
 
 DESCRIPTION="Parser for Schrodinger Maestro files"
 HOMEPAGE="https://github.com/schrodinger/maeparser"
@@ -18,12 +19,16 @@ RDEPEND=""
 DEPEND="${RDEPEND}"
 
 
-multilib_src_configure() {
-	local mycmakeargs=(
-		-DLIB_INSTALL_DIR="$(get_libdir)"
-	)
-	cmake_src_configure
+src_prepare() {
+	cmake_src_prepare
 }
+
+#multilib_src_configure() {
+#	local mycmakeargs=(
+#		-DLIB_INSTALL_DIR="$(get_libdir)"
+#	)
+#	cmake_src_configure
+#}
 
 
 
