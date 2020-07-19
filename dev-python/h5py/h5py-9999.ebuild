@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/h5py/h5py.git"
 
 # disable mpi until mpi4py gets python3_8
 #IUSE="examples mpi"
-IUSE="examples test"
+IUSE="examples"
 
 LICENSE="BSD"
 SLOT="0"
@@ -34,7 +34,7 @@ DEPEND="dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/cached-property[${PYTHON_USEDEP}] )"
 #	mpi? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
 
-#PATCHES="${FILESDIR}/${P}-tests.patch"
+PATCHES="${FILESDIR}/${P}-tests.patch"
 
 DOCS=( README.rst AUTHORS ANN.rst )
 
