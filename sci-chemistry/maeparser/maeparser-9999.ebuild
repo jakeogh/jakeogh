@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	eapply_user
-	cmake_src_prepare
+	#cmake_src_prepare
 }
 
 #multilib_src_configure() {
