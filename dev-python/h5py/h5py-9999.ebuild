@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/h5py/h5py.git"
 
 # disable mpi until mpi4py gets python3_8
 #IUSE="examples mpi"
-IUSE="examples"
+IUSE="examples test"
 
 LICENSE="BSD"
 SLOT="0"
