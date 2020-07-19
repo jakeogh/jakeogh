@@ -41,7 +41,6 @@ DOCS=( README.rst AUTHORS ANN.rst )
 distutils_enable_tests setup.py
 distutils_enable_sphinx docs --no-autodoc
 
-
 #pkg_setup() {
 #	use mpi && export CC=mpicc
 #}
