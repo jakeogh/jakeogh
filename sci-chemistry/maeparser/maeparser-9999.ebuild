@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	eapply_user
+	cmake-utils_src_prepare
 	#cmake_src_prepare
 }
 
