@@ -13,19 +13,14 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="
-"
+RDEPEND=""
 
 DEPEND="${RDEPEND}"
 
 src_configure() {
 	local libdir="$(get_libdir)"
+	mycmakeargs=(
+		-DLIBDIR=$(get_libdir)
+	)
 	cmake_src_configure
 }
-
-#src_configure() {
-#	mycmakeargs=(
-#		-DLIBDIR=$(get_libdir)
-#	)
-#	cmake_src_configure
-#}
