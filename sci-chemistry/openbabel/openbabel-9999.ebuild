@@ -18,6 +18,7 @@ IUSE="doc java openmp perl python ruby test wxwidgets"
 
 RDEPEND="
 	dev-cpp/eigen:3
+	sci-chemistry/maeparser
 	dev-libs/libxml2:2
 	sci-libs/inchi
 	sys-libs/zlib
@@ -27,10 +28,7 @@ DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.4.8
 	doc? ( app-doc/doxygen )"
 PDEPEND="
-	java? ( sci-chemistry/openbabel-java )
-	perl? ( sci-chemistry/openbabel-perl )
-	python? ( sci-chemistry/openbabel-python )
-	ruby? ( sci-chemistry/openbabel-ruby )"
+	python? ( sci-chemistry/openbabel-python )"
 
 DOCS=( AUTHORS NEWS.md README.md THANKS doc/dioxin.{inc,mol2} doc/README.{dioxin.pov,povray} )
 
@@ -84,6 +82,5 @@ src_test() {
 }
 
 pkg_postinst() {
-	optfeature "perl support" sci-chemistry/openbabel-perl
 	optfeature "python support" sci-chemistry/openbabel-python
 }
