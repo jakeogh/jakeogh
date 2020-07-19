@@ -40,5 +40,5 @@ src_configure() {
 		-DLIBDIR="$(get_libdir)"
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
-	cmake_src_configure
+	cmake_multilib_src_configure
 }
