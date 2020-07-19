@@ -3,8 +3,9 @@
 
 EAPI=7
 
-inherit git-r3 cmake eutils toolchain-funcs multilib
-#inherit cmake-multilib
+inherit git-r3 eutils toolchain-funcs
+#inherit cmake
+inherit cmake-multilib
 
 DESCRIPTION="Parser for Schrodinger Maestro files"
 HOMEPAGE="https://github.com/schrodinger/maeparser"
