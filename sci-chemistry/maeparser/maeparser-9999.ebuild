@@ -35,7 +35,8 @@ src_prepare() {
 src_configure() {
 	local libdir="$(get_libdir)"
 	mycmakeargs=(
-		-DLIBDIR=$(get_libdir)
+		-DLIBDIR="$(get_libdir)"
+		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
 	cmake_src_configure
 }
