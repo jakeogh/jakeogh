@@ -30,7 +30,7 @@ BDEPEND="dev-python/pkgconfig[${PYTHON_USEDEP}]"
 
 DEPEND="
 	dev-python/cython[${PYTHON_USEDEP}]
-	dev-python/cached-property[${PYTHON_USEDEP}] )
+	dev-python/cached-property[${PYTHON_USEDEP}]
 	doc? ( dev-python/alabaster[${PYTHON_USEDEP}] )
 	test? ( dev-python/QtPy[testlib,${PYTHON_USEDEP}] )"
 #	mpi? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
