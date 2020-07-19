@@ -37,7 +37,7 @@ DEPEND="
 
 PATCHES="${FILESDIR}/${P}-tests.patch"
 
-DOCS=( README.rst AUTHORS ANN.rst )
+DOCS=( README.rst AUTHORS )
 
 distutils_enable_tests setup.py
 distutils_enable_sphinx docs --no-autodoc
