@@ -16,3 +16,5 @@ KEYWORDS=""
 RDEPEND=""
 
 DEPEND="${RDEPEND}"
+
+WORKDIR="${WORKDIR}/sources"
