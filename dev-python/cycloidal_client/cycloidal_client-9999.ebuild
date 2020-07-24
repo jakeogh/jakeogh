@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	dev-python/schedule[${PYTHON_USEDEP}]
+	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 "
 
