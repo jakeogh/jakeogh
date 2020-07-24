@@ -17,4 +17,4 @@ RDEPEND=""
 
 DEPEND="${RDEPEND}"
 
-WORKDIR="${WORKDIR}/sources"
+S="${WORKDIR}/${P}/sources"
