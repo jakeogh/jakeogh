@@ -21,6 +21,6 @@ S="${WORKDIR}/${P}/source"
 
 src_install() {
 	mkdir "${S}/build"
-	cp "${WORKDIR}/RawscanConfigVersion.cmake" "${S}/build/"
+	cp "${BUILD_DIR}/RawscanConfigVersion.cmake" "${S}/build/"
 	cmake_src_install
 }
