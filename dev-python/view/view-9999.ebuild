@@ -20,7 +20,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/classify[${PYTHON_USEDEP}]
-	app-text/djview[${PYTHON_USEDEP}]
+	app-text/djview
 "
 
 DEPEND="${RDEPEND}"
