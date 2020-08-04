@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/classify[${PYTHON_USEDEP}]
 	app-text/djview
 	app-text/docx2txt
+	app-text/antiword
 	media-gfx/fbida
 "
 
