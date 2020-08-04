@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/classify[${PYTHON_USEDEP}]
 	app-text/djview
+	app-text/docx2txt
 	media-gfx/fbida
 "
 
