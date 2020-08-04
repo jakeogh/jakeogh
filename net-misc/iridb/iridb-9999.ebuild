@@ -36,6 +36,7 @@ DEPEND="
 	dev-python/requests-file[${PYTHON_USEDEP}]
 	dev-python/requests-ftp[${PYTHON_USEDEP}]
 	dev-python/classify[${PYTHON_USEDEP}]
+	dev-python/ordered-set[${PYTHON_USEDEP}]
 	app-text/tree
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
