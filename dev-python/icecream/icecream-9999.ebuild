@@ -22,6 +22,7 @@ DEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/executing[${PYTHON_USEDEP}]
 	dev-python/asttokens[${PYTHON_USEDEP}]
+	dev-python/shutil[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
