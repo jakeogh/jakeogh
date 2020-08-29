@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 PDEPEND="
 	python? ( sci-chemistry/openbabel-python )"
 
-DOCS=( AUTHORS NEWS.md README.md THANKS doc/dioxin.{inc,mol2} doc/README.{dioxin.pov,povray} )
+DOCS=( AUTHORS README.md THANKS doc/dioxin.{inc,mol2} doc/README.{dioxin.pov,povray} )
 
 pkg_setup() {
 	if use openmp; then
