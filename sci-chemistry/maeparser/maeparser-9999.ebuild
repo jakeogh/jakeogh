@@ -42,3 +42,7 @@ src_configure() {
 	)
 	cmake-multilib_src_configure
 }
+
+src_install() {
+	cmake-multilib_src_install()
+}
