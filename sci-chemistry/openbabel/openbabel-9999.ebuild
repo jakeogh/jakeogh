@@ -4,7 +4,9 @@
 EAPI=7
 WX_GTK_VER="3.0"
 
-inherit cmake-utils desktop eutils toolchain-funcs wxwidgets git-r3
+PYTHON_COMPAT=( python3_{6,7,8} )
+
+inherit cmake-utils desktop eutils toolchain-funcs wxwidgets git-r3 distutils-r1
 
 DESCRIPTION="Interconverts file formats used in molecular modeling"
 HOMEPAGE="http://openbabel.org/wiki/Main_Page"
@@ -28,9 +30,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	>=dev-util/cmake-2.4.8
-	doc? ( app-doc/doxygen )"
-PDEPEND="
-	python? ( sci-chemistry/openbabel-python )"
+	doc? ( app-doc/doxygen )
+	python? ( >=dev-lang/swig-2 )"
+PDEPEND=""
 
 DOCS=( AUTHORS README.md THANKS doc/dioxin.{inc,mol2} doc/README.{dioxin.pov,povray} )
 
@@ -50,6 +52,7 @@ src_configure() {
 		-DOPENBABEL_USE_SYSTEM_INCHI=ON
 		-DENABLE_OPENMP=$(usex openmp)
 		-DBUILD_GUI=$(usex wxwidgets)
+		-DPYTHON_BINDINGS=$(usex python)
 	)
 
 	cmake-utils_src_configure
