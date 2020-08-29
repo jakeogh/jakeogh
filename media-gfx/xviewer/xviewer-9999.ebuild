@@ -22,3 +22,7 @@ KEYWORDS=""
 #"
 
 DEPEND="${RDEPEND}"
+
+src_install() {
+	dobin xviewer
+}
