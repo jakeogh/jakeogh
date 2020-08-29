@@ -64,7 +64,7 @@ src_install() {
 	fi
 
 	make_desktop_entry obgui "Open Babel" "${PN}"
-	doicon "${DISTDIR}/${PN}.png"
+	#doicon "${DISTDIR}/${PN}.png"
 
 	cmake-utils_src_install
 }
