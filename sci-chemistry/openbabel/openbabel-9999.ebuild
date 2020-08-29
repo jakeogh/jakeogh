@@ -52,19 +52,18 @@ pkg_setup() {
 
 src_prepare() {
 	cmake-utils_src_prepare
-	sed \
-	        -e "s:\"\.\.\":\"${EPREFIX}/usr\":g" \
-	        -i test/testbabel.py || die
-	swig -python -c++ -small -O -templatereduce -naturalvar \
-	        -I"${EPREFIX}/usr/include/openbabel3" \
-	        -o scripts/python/openbabel-python.cpp \
-	        -DHAVE_EIGEN \
-	        -outdir scripts/python \
-	        scripts/openbabel-python.i \
-	        || die "Regeneration of openbabel-python.cpp failed"
+# using -DRUN_SWIG=ON below instead?
+#	sed \
+#		-e "s:\"\.\.\":\"${EPREFIX}/usr\":g" \
+#		-i test/testbabel.py || die
+#	swig -python -c++ -small -O -templatereduce -naturalvar \
+#		-I"${EPREFIX}/usr/include/openbabel3" \
+#		-o scripts/python/openbabel-python.cpp \
+#		-DHAVE_EIGEN \
+#		-outdir scripts/python \
+#		scripts/openbabel-python.i \
+#		|| die "Regeneration of openbabel-python.cpp failed"
 }
-
-
 
 src_configure() {
 	use wxwidgets && setup-wxwidgets
@@ -72,6 +71,7 @@ src_configure() {
 		-DOPENBABEL_USE_SYSTEM_INCHI=ON
 		-DENABLE_OPENMP=$(usex openmp)
 		-DBUILD_GUI=$(usex wxwidgets)
+		-DRUN_SWIG=ON
 		-DPYTHON_BINDINGS=$(usex python)
 	)
 
