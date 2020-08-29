@@ -2,36 +2,43 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{7,8} )
 
-inherit distutils-r1 git-r3
+inherit git-r3 eutils toolchain-funcs
+inherit cmake-multilib
 
-DESCRIPTION="Short explination of what it does _here_"
+CMAKE_ECLASS="cmake-utils"
+DESCRIPTION="Schrödinger, Inc's 2D coordinate generation"
 HOMEPAGE="https://github.com/schrodinger/coordgenlibs"
-EGIT_REPO_URI="/home/cfg/_myapps/coordgenlibs https://github.com/schrodinger/coordgenlibs.git"
+#EGIT_REPO_URI="/home/cfg/_myapps/maeparser https://github.com/schrodinger/maeparser.git"
+EGIT_REPO_URI="https://github.com/schrodinger/coordgenlibs.git"
+#EGIT_BRANCH="patch-1"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
-RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
-"
+RDEPEND=""
 
 DEPEND="${RDEPEND}"
-#	test? ( dev-python/nose[${PYTHON_USEDEP}]
-#		>=dev-python/toolz-0.8[${PYTHON_USEDEP}] )"
 
-#python_compile() {
-#	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-#	distutils-r1_python_compile
-#}
+src_prepare() {
+	eapply_user
+	cmake-utils_src_prepare
+}
 
-#python_test() {
-#	pushd "${BUILD_DIR}"/lib/ > /dev/null || die
-#	PYTHONPATH=.:${PN} nosetests --with-doctest ${PN} || die "tests failed under ${EPYTHON}"
-#	popd > /dev/null || die
-#}
+src_configure() {
+	local libdir="$(get_libdir)"
+	mycmakeargs=(
+		-DLIBDIR="$(get_libdir)"
+		-DLIB_INSTALL_DIR="$(get_libdir)"
+	)
+	cmake-multilib_src_configure --libdir=/usr/$(get_libdir)
+}
+
+src_compile() {
+	cmake-multilib_src_compile
+}
+
+src_install() {
+	cmake-multilib_src_install
+}
