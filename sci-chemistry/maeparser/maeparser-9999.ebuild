@@ -47,7 +47,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die
+	cmake-multilib_src_compile
 }
 
 src_install() {
