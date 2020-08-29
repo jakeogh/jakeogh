@@ -7,7 +7,8 @@ inherit git-r3 eutils toolchain-funcs
 #inherit cmake
 inherit cmake-multilib
 
-CMAKE_ECLASS="cmake"
+#CMAKE_ECLASS="cmake"
+CMAKE_ECLASS="cmake-utils"
 DESCRIPTION="Parser for Schrodinger Maestro files"
 HOMEPAGE="https://github.com/schrodinger/maeparser"
 EGIT_REPO_URI="/home/cfg/_myapps/maeparser https://github.com/schrodinger/maeparser.git"
@@ -22,8 +23,8 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	eapply_user
-	#cmake-utils_src_prepare
-	cmake_src_prepare
+	cmake-utils_src_prepare
+	#cmake_src_prepare
 }
 
 #multilib_src_configure() {
