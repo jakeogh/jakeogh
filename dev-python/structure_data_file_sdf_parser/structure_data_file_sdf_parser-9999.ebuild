@@ -6,9 +6,9 @@ PYTHON_COMPAT=( python3_{7,8} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/structuredatafile"
-EGIT_REPO_URI="/home/cfg/_myapps/structuredatafile https://github.com/jakeogh/structuredatafile.git"
+DESCRIPTION="Read (chemical) Structure Data Files"
+HOMEPAGE="https://github.com/jakeogh/structure_data_file_sdf_parser"
+EGIT_REPO_URI="/home/cfg/_myapps/structure_data_file_sdf_parser https://github.com/jakeogh/structure_data_file_sdf_parser.git"
 
 LICENSE="BSD"
 SLOT="0"
