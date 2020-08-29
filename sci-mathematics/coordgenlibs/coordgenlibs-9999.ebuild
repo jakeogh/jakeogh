@@ -19,7 +19,8 @@ KEYWORDS=""
 
 RDEPEND=""
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	sci-chemistry/maeparser"
 
 src_prepare() {
 	eapply_user
