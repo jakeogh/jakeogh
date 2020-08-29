@@ -19,6 +19,7 @@ IUSE="doc java openmp perl python ruby test wxwidgets"
 RDEPEND="
 	dev-cpp/eigen:3
 	sci-chemistry/maeparser
+	dev-libs/rapidjson
 	sci-mathematics/coordgenlibs
 	dev-libs/libxml2:2
 	sci-libs/inchi
