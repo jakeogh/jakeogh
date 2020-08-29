@@ -44,5 +44,5 @@ src_compile() {
 
 src_install() {
 	cmake-multilib_src_install
-	doins templates.mae
+	use maeparser && doins templates.mae
 }
