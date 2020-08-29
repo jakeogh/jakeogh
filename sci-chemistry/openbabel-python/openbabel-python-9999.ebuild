@@ -64,7 +64,7 @@ src_configure() {
 
 # likely bug, the python bindings are in the main openbable repo, op this ebuild shluld be converted to a sci-chemistry/openbabel USE flag
 src_compile() {
-	python_foreach_impl cmake-utils_src_make all
+	python_foreach_impl cmake-utils_src_make _openbabel
 }
 
 src_test() {
@@ -75,7 +75,7 @@ src_install() {
 	my_impl_src_install() {
 		cd "${BUILD_DIR}" || die
 
-		cmake -DCOMPONENT=bindings_python -P cmake_install.cmake
+		cmake -DCOMPONENT=bindings_python -P cmake_install.cmake || die
 
 		python_optimize
 	}
