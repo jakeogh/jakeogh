@@ -31,7 +31,7 @@ src_prepare() {
 		-e "s:\"\.\.\":\"${EPREFIX}/usr\":g" \
 		-i test/testbabel.py || die
 	swig -python -c++ -small -O -templatereduce -naturalvar \
-		-I"${EPREFIX}/usr/include/openbabel-2.0" \
+		-I"${EPREFIX}/usr/include/openbabel3" \
 		-o scripts/python/openbabel-python.cpp \
 		-DHAVE_EIGEN \
 		-outdir scripts/python \
