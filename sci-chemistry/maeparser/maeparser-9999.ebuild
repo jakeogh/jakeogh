@@ -41,9 +41,9 @@ src_configure() {
 		-DLIBDIR="$(get_libdir)"
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 	)
-	econf \
-		--libdir=/usr/$(get_libdir)
-	cmake-multilib_src_configure
+#	econf \
+#		--libdir=/usr/$(get_libdir)
+	cmake-multilib_src_configure --libdir=/usr/$(get_libdir)
 }
 
 src_compile() {
