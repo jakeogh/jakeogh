@@ -44,6 +44,6 @@ src_compile() {
 
 src_install() {
 	cmake-multilib_src_install
-	insinto /usr/include/coordgen/
+	insinto /usr/lib64/
 	use maeparser && doins templates.mae
 }
