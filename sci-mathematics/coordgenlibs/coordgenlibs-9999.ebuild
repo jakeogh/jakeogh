@@ -16,11 +16,12 @@ EGIT_REPO_URI="https://github.com/schrodinger/coordgenlibs.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
+IUSE="+maeparser"
 
 RDEPEND=""
 
 DEPEND="${RDEPEND}
-	sci-chemistry/maeparser"
+maeparser? (sci-chemistry/maeparser)"
 
 src_prepare() {
 	eapply_user
@@ -32,6 +33,7 @@ src_configure() {
 	mycmakeargs=(
 		-DLIBDIR="$(get_libdir)"
 		-DLIB_INSTALL_DIR="$(get_libdir)"
+		-DCOORDGEN_USE_MAEPARSER=$(usex maeparser)
 	)
 	cmake-multilib_src_configure --libdir=/usr/$(get_libdir)
 }
