@@ -21,7 +21,7 @@ IUSE="+maeparser"
 RDEPEND=""
 
 DEPEND="${RDEPEND}
-maeparser? (sci-chemistry/maeparser)"
+maeparser? sci-chemistry/maeparser"
 
 src_prepare() {
 	eapply_user
