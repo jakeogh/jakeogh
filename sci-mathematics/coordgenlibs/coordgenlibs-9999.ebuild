@@ -7,7 +7,7 @@ inherit git-r3 eutils toolchain-funcs
 inherit cmake-multilib
 
 CMAKE_ECLASS="cmake-utils"
-DESCRIPTION="Schrödinger, Inc's 2D coordinate generation"
+DESCRIPTION="Schrodinger, Inc's 2D coordinate generation"
 HOMEPAGE="https://github.com/schrodinger/coordgenlibs"
 #EGIT_REPO_URI="/home/cfg/_myapps/maeparser https://github.com/schrodinger/maeparser.git"
 EGIT_REPO_URI="https://github.com/schrodinger/coordgenlibs.git"
