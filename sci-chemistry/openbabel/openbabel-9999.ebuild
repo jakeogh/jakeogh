@@ -6,8 +6,8 @@ WX_GTK_VER="3.0"
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils desktop eutils toolchain-funcs wxwidgets git-r3 distutils-r1
-DISTUTILS_USE_SETUPTOOLS=no
+inherit cmake-utils desktop eutils toolchain-funcs wxwidgets git-r3 #distutils-r1
+#DISTUTILS_USE_SETUPTOOLS=no
 
 DESCRIPTION="Interconverts file formats used in molecular modeling"
 HOMEPAGE="http://openbabel.org/wiki/Main_Page"
