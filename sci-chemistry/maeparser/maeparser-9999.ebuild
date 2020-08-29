@@ -44,6 +44,12 @@ src_configure() {
 	cmake-multilib_src_configure
 }
 
+src_compile() {
+	econf \
+		--libdir=/usr/$(get_libdir)
+	emake || die
+}
+
 src_install() {
 	cmake-multilib_src_install
 }
