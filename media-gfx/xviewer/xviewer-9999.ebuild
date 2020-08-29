@@ -6,6 +6,7 @@ EAPI=7
 
 #inherit distutils-r1
 inherit git-r3
+inherit autotools
 
 DESCRIPTION="Fast and functional image viewer"
 HOMEPAGE="https://github.com/linuxmint/xviewer"
