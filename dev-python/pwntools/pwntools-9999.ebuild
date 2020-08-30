@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]
 	dev-python/pyelftools[${PYTHON_USEDEP}]
+	dev-python/capstone[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
