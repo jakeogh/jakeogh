@@ -29,7 +29,7 @@ RDEPEND="
 	dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/intervaltree[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/capstone
+	dev-libs/capstone
 "
 
 DEPEND="${RDEPEND}"
