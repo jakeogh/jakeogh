@@ -20,6 +20,7 @@ RDEPEND="
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	sci-chemistry/openbabel
+	sys-fs/archivemount
 "
 
 DEPEND="${RDEPEND}"
