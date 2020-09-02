@@ -3,7 +3,6 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8} )
-#PYTHON_COMPAT=( python3_4 )
 
 inherit distutils-r1
 inherit git-r3
