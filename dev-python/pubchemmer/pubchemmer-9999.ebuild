@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="pubchem search"
+DESCRIPTION="pubchem postgresql import and search"
 HOMEPAGE="https://github.com/jakeogh/pubchemmer"
 EGIT_REPO_URI="/home/cfg/_myapps/pubchemmer https://github.com/jakeogh/pubchemmer.git"
 
