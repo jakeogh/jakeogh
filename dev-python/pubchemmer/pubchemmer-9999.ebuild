@@ -13,13 +13,12 @@ EGIT_REPO_URI="/home/cfg/_myapps/pubchemmer https://github.com/jakeogh/pubchemme
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	sci-chemistry/openbabel
+	sci-chemistry/openbabel +python
 "
 
 DEPEND="${RDEPEND}"
