@@ -13,14 +13,12 @@ EGIT_REPO_URI="/home/cfg/_myapps/structure_data_file_sdf_parser https://github.c
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	sci-chemistry/openbabel
-	sys-fs/archivemount
 "
 
 DEPEND="${RDEPEND}"
