@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1 flag-o-matic git-r3
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.h5py.org"
 #SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 EGIT_REPO_URI="https://github.com/h5py/h5py.git"
 
-# disable mpi until mpi4py gets python3_8
+# disable mpi until mpi4py gets python3_{7..9}
 #IUSE="examples mpi"
 IUSE="examples"
 

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{7..9} )
 
 inherit cmake-utils linux-info python-single-r1 python-utils-r1 git-r3
 
