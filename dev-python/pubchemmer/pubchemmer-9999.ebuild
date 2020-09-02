@@ -18,7 +18,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	sci-chemistry/openbabel +python
+	sci-chemistry/openbabel
 "
 
 DEPEND="${RDEPEND}"
