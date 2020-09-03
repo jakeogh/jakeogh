@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{7..9} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Recursively symlink the contents of a folder to another root"
 HOMEPAGE="https://github.com/jakeogh/symlinktree"
 EGIT_REPO_URI="/home/cfg/_myapps/symlinktree https://github.com/jakeogh/symlinktree.git"
 
@@ -23,6 +23,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-#	test? ( dev-python/nose[${PYTHON_USEDEP}]
-#		>=dev-python/toolz-0.8[${PYTHON_USEDEP}] )"
-
