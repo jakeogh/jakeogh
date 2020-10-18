@@ -24,6 +24,7 @@ RDEPEND="
 	app-text/docx2txt
 	app-text/antiword
 	media-gfx/fbida
+	media-libs/exiftool
 "
 
 DEPEND="${RDEPEND}"
