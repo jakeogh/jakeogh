@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{7..9} )
+PYTHON_COMPAT=( python3_{8..9} )
 #PYTHON_COMPAT=( python2_7 python3_{7..9} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
