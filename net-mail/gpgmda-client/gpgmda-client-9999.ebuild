@@ -23,11 +23,11 @@ DEPEND="
 	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/urwidtrees[${PYTHON_USEDEP}]
 	net-mail/notmuch[${PYTHON_USEDEP}]
-	www-client/lynx
 	dev-python/pudb[${PYTHON_USEDEP}]
 	mail-client/alot[${PYTHON_USEDEP}]
-	sys-apps/moreutils
 	dev-python/python-magic[${PYTHON_USEDEP}]
+	sys-apps/moreutils
+	www-client/lynx
 "
 #	sys-apps/file[python]
 #	mail-filter/afew
