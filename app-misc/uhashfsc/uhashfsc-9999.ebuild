@@ -13,6 +13,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+
+#DEPEND="
+#	dev-util/cwalk
+#"
+
 RDEPEND=""
 
 src_prepare() {
