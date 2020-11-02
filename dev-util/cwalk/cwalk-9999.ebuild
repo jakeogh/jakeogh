@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake git-r3
+inherit cmake-multilib git-r3
 
 DESCRIPTION="Cross-platform path library for C/C++"
 HOMEPAGE="https://github.com/likle/cwalk"
