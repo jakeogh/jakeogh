@@ -38,6 +38,4 @@ src_test() {
 
 src_install() {
 	dobin uhashfsc
-	dobin uhashfsc_nocheck
-	dodoc README
 }
