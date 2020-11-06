@@ -25,8 +25,8 @@ RDEPEND="
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/schedule[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
-	net-analyzer/scapy[${PYTHON_USEDEP}]
 	dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
+#	net-analyzer/scapy[${PYTHON_USEDEP}]
