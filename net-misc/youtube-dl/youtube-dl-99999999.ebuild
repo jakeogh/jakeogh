@@ -14,18 +14,7 @@ KEYWORDS=""
 SLOT="0"
 IUSE="test"
 RDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	|| (
-		dev-python/pycryptodome[${PYTHON_USEDEP}]
-		dev-python/pycrypto[${PYTHON_USEDEP}]
-	)
-"
-DEPEND="
-	${RDEPEND}
-	test? (
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/flake8[${PYTHON_USEDEP}]
-	)
+	dev-python/pycryptodome[${PYTHON_USEDEP}]
 "
 
 src_compile() {
@@ -60,11 +49,10 @@ pkg_postinst() {
 	elog "https://github.com/rg3/${PN}/blob/master/README.md#faq :"
 	elog
 	elog "${PN} works fine on its own on most sites. However, if you want"
-	elog "to convert video/audio, you'll need avconf (media-video/libav) or"
-	elog "ffmpeg (media-video/ffmpeg). On some sites - most notably YouTube -"
-	elog "videos can be retrieved in a higher quality format without sound."
-	elog "${PN} will detect whether avconv/ffmpeg is present and"
-	elog "automatically pick the best option."
+	elog "to convert video/audio, you'll need ffmpeg (media-video/ffmpeg)."
+	elog "On some sites - most notably YouTube - videos can be retrieved in"
+	elog "a higher quality format without sound. ${PN} will detect whether"
+	elog "ffmpeg is present and automatically pick the best option."
 	elog
 	elog "Videos or video formats streamed via RTMP protocol can only be"
 	elog "downloaded when rtmpdump (media-video/rtmpdump) is installed."
