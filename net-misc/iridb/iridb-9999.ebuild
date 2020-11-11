@@ -43,9 +43,9 @@ DEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/tld[${PYTHON_USEDEP}]
-	app-text/slmenu
 "
 
+#	app-text/slmenu
 #	sys-apps/file[python]
 #	dev-python/pydot[${PYTHON_USEDEP}]
 #	dev-db/sadisplay[${PYTHON_USEDEP}]
