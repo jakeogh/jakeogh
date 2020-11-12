@@ -43,7 +43,7 @@ DEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/tld[${PYTHON_USEDEP}]
-	dev-python/youtube_dl_wrapper[${PYTHON_USEDEP}]
+	dev-python/youtube-dl-wrapper[${PYTHON_USEDEP}]
 	dev-python/npyscreen[${PYTHON_USEDEP}]
 "
 
