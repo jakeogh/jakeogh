@@ -28,6 +28,7 @@ DEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/pyperclip[${PYTHON_USEDEP}]
+	dev-python/dateparser[${PYTHON_USEDEP}]
 	sys-fs/dd-rescue
 "
 
