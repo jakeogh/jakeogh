@@ -31,7 +31,7 @@ RDEPEND="
 # unresolved sandbox issues
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}"/sitedir.patch )
+#PATCHES=( "${FILESDIR}"/sitedir.patch )
 
 src_configure() {
 	# only build/install docs if enabled
