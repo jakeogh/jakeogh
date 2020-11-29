@@ -24,13 +24,9 @@ RDEPEND="
 	dev-python/pylibacl[${PYTHON_USEDEP}]
 	dev-python/pyxattr[${PYTHON_USEDEP}]
 	sys-libs/readline:0
-	dev-vcs/git"
-DEPEND="${RDEPEND}
-	test? (
-		dev-lang/perl
-		net-misc/rsync
-	)
+	dev-vcs/git
 "
+
 
 # unresolved sandbox issues
 RESTRICT="test"
