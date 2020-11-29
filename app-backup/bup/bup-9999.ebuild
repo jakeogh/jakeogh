@@ -18,7 +18,7 @@ KEYWORDS=""
 IUSE="+doc test web"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="
 	app-arch/par2cmdline
 	dev-python/fuse-python[${PYTHON_USEDEP}]
 	dev-python/pylibacl[${PYTHON_USEDEP}]
