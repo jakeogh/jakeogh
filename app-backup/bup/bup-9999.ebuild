@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-any-r1
 inherit git-r3
 
 DESCRIPTION="A highly efficient backup system based on the git packfile format"
