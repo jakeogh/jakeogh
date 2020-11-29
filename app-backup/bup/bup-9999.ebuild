@@ -35,7 +35,7 @@ RESTRICT="test"
 
 src_configure() {
 	# only build/install docs if enabled
-	export PANDOC=$(usex doc pandoc "")
+	#export PANDOC=$(usex doc pandoc "")
 
 	./configure || die
 }
