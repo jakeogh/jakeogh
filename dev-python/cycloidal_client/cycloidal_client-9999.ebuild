@@ -13,9 +13,7 @@ EGIT_REPO_URI="/home/cfg/_myapps/cycloidal_client"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
-#	dev-python/schedule[${PYTHON_USEDEP}]
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
@@ -23,10 +21,11 @@ RDEPEND="
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/pyserial[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
-	dev-python/schedule[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
-	dev-python/wxpython:4.0[${PYTHON_USEDEP}]
+	dev-python/wxpython:*[${PYTHON_USEDEP}]
 "
+#	dev-python/wxpython:4.0[${PYTHON_USEDEP}]
+#	dev-python/schedule[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}"
 #	net-analyzer/scapy[${PYTHON_USEDEP}]
