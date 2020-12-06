@@ -23,3 +23,6 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+python_configure_all() {
+	defaults
+}
