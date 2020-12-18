@@ -24,6 +24,7 @@ RDEPEND="
 	app-text/antiword
 	media-gfx/fbida
 	media-libs/exiftool
+	media-gfx/inkscape
 "
 
 DEPEND="${RDEPEND}"
