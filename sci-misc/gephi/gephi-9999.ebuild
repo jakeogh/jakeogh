@@ -4,7 +4,9 @@
 EAPI=7
 
 # from https://ict.fit.cvut.cz/gitlab/gentoo/overlay/blob/e1e9cc15a7eb136f7757c4804561c3781bcc94f6/sci-misc/gephi/gephi-0.9.2.ebuild
-inherit eutils fdo-mime git-r3
+inherit eutils
+inherit fdo-mime
+inherit git-r3
 
 DESCRIPTION="Gephi"
 HOMEPAGE="https://gephi.org/"
