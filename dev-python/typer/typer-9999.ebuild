@@ -9,6 +9,7 @@ inherit distutils-r1 git-r3
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/tiangolo/typer"
 EGIT_REPO_URI="/home/cfg/_myapps/typer https://github.com/tiangolo/typer.git"
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 LICENSE="BSD"
 SLOT="0"
