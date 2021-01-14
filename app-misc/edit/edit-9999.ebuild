@@ -24,6 +24,7 @@ DEPEND="dev-util/splint
 	app-misc/newapp[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/isort[${PYTHON_USEDEP}]
+	dev-python/python-ctags[${PYTHON_USEDEP}]
 	dev-util/ctags
 	dev-python/memory_profiler
 "
