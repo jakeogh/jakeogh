@@ -142,13 +142,13 @@ winapi-util-0.1.5
 winapi-x86_64-pc-windows-gnu-0.4.0
 "
 
-inherit cargo distutils-r1
+inherit cargo distutils-r1 git-r3
 
 DESCRIPTION="Sampling profiler for Python programs"
 # Double check the homepage as the cargo_metadata crate
 # does not provide this value so instead repository is used
 HOMEPAGE="https://github.com/benfred/py-spy"
-#EGIT_REPO_URI="/home/cfg/_myapps/py_spy https://github.com/benfred/py-spy.git"
+EGIT_REPO_URI="/home/cfg/_myapps/py_spy https://github.com/benfred/py-spy.git"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 RESTRICT="mirror"
 # License set may be more restrictive as OR is not respected
