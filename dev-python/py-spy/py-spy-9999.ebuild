@@ -212,22 +212,22 @@ src_compile() {
 	cargo build ${args} \
 		|| die "cargo build failed"
 
-	if use capi; then
-		cargo cbuild ${args} \
-			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED}" \
-			|| die "cargo cbuild failed"
-	fi
+#	if use capi; then
+#		cargo cbuild ${args} \
+#			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED}" \
+#			|| die "cargo cbuild failed"
+#	fi
 }
 
 src_install() {
 	export CARGO_HOME="${ECARGO_HOME}"
 	local args=$(usex debug "" --release)
 
-	if use capi; then
-		cargo cinstall $args \
-			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED}" \
-			|| die "cargo cinstall failed"
-	fi
+#	if use capi; then
+#		cargo cinstall $args \
+#			--prefix="/usr" --libdir="/usr/$(get_libdir)" --destdir="${ED}" \
+#			|| die "cargo cinstall failed"
+#	fi
 
 	cargo_src_install
 }
