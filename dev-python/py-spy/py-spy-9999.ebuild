@@ -193,6 +193,8 @@ SLOT="0"
 #DEPEND="amd64? ( ${ASM_DEP} )"
 #RDEPEND="capi? ( dev-util/cargo-c )"
 
+DEPEND="sys-libs/libunwind"
+
 src_unpack() {
 	if [[ "${PV}" == *9999* ]]; then
 		git-r3_src_unpack
