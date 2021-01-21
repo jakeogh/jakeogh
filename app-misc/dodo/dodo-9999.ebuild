@@ -9,7 +9,7 @@ DESCRIPTION="Repeat command execution at interval."
 HOMEPAGE="https://github.com/jakeogh/dodo"
 EGIT_REPO_URI="/home/user/_myapps/dodo https://github.com/jakeogh/dodo.git"
 
-LICENSE="UNLICENSE"
+LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
