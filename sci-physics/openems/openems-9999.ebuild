@@ -20,7 +20,7 @@ RDEPEND="
 	dev-libs/tinyxml
 	sci-mathematics/cgal
 	sci-libs/vtk
-	dev-qt/qtcore:4
+	>=dev-qt/qtcore:4
 "
 
 DEPEND="${RDEPEND}"
