@@ -16,6 +16,7 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="
+	dev-util/ninja
 "
 
 DEPEND="${RDEPEND}"
