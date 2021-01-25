@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}"
 src_configure() {
 	local CMAKE_BUILD_TYPE="Release"
 	mycmakeargs=(
-	-DCMAKE_INSTALL_PREFIX="/usr"
+	-DCMAKE_INSTALL_PREFIX="${D}"
 	)
 	cmake_src_configure
 }
