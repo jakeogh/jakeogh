@@ -17,6 +17,7 @@ IUSE=""
 
 RDEPEND="
 	dev-util/ninja
+	dev-libs/tinyxml
 "
 
 DEPEND="${RDEPEND}"
