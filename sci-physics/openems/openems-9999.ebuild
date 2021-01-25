@@ -20,10 +20,13 @@ RDEPEND="
 	dev-libs/tinyxml
 	sci-mathematics/cgal
 	sci-libs/vtk
-	dev-qt/qtcore:4
 "
 
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	sed -i 's/EQUAL 6/EQUAL 8/' "${S}/openEMS/CMakeLists.txt" || die
+}
 
 src_configure() {
 	local CMAKE_BUILD_TYPE="Release"
