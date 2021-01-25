@@ -18,6 +18,7 @@ IUSE=""
 RDEPEND="
 	dev-util/ninja
 	dev-libs/tinyxml
+	sci-mathematics/cgal
 "
 
 DEPEND="${RDEPEND}"
