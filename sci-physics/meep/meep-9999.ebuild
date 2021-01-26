@@ -22,6 +22,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
+	append-cflags -fPIC
 	default
 	./autogen.sh || die
 	#autoreconf
