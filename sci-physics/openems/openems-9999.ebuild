@@ -19,7 +19,7 @@ RDEPEND="
 	dev-util/ninja
 	dev-libs/tinyxml
 	sci-mathematics/cgal
-	sci-libs/vtk
+	sci-libs/vtk[qt5]
 "
 
 DEPEND="${RDEPEND}"
