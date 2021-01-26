@@ -16,12 +16,13 @@ KEYWORDS=""
 #IUSE="test"
 
 RDEPEND="
+	sci-libs/libctl
 "
 
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	#default
+	default
 	./autogen.sh || die
 	#autoreconf
 	#eautomake
