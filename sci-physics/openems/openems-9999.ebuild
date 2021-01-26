@@ -24,9 +24,10 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	sed -i 's/EQUAL 6/EQUAL 8/' "${S}/openEMS/CMakeLists.txt" || die
-}
+#src_prepare() {
+#	sed -i 's/EQUAL 6/EQUAL 8/' "${S}/openEMS/CMakeLists.txt" || die
+#	eapply_user
+#}
 
 src_configure() {
 	local CMAKE_BUILD_TYPE="Release"
