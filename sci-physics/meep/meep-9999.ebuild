@@ -22,9 +22,9 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	#default
-	#./autogen.sh || die
-	autoreconf
-	eautomake
+	./autogen.sh || die
+	#autoreconf
+	#eautomake
 }
 
 src_compile() {
