@@ -6,11 +6,11 @@ EAPI=7
 
 inherit autotools git-r3
 
-DESCRIPTION="free finite-difference time-domain (FDTD) software for electromagnetic simulations"
+DESCRIPTION="finite-difference time-domain (FDTD) software for electromagnetic simulations"
 HOMEPAGE="https://github.com/NanoComp/meep"
 EGIT_REPO_URI="/home/cfg/_myapps/meep https://github.com/NanoComp/meep.git"
 
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 #IUSE="test"
@@ -20,3 +20,14 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+	#default
+	#./autogen.sh || die
+	autoreconf
+	eautomake
+}
+
+src_compile() {
+	#econf $(use_enable nls)
+	emake
+}
