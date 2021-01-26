@@ -21,13 +21,13 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-        #default
-        ./autogen.sh || die
-        #autoreconf
-        #eautomake
+	default
+	./autogen.sh || die
+	#autoreconf
+	#eautomake
 }
 
 src_compile() {
-        #econf $(use_enable nls)
-        emake
+	#econf $(use_enable nls)
+	emake
 }
