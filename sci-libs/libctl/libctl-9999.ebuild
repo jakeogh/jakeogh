@@ -4,23 +4,30 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 
-inherit distutils-r1 git-r3
+inherit autotools git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Guile-based library implementing flexible control files for scientific simulations "
 HOMEPAGE="https://github.com/NanoComp/libctl"
 EGIT_REPO_URI="/home/cfg/_myapps/libctl https://github.com/NanoComp/libctl.git"
 
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/click-command-tree[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+        #default
+        ./autogen.sh || die
+        #autoreconf
+        #eautomake
+}
+
+src_compile() {
+        #econf $(use_enable nls)
+        emake
+}
