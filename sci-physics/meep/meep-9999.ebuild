@@ -30,8 +30,8 @@ src_prepare() {
 }
 
 src_configure() {
-	myeconfargs=("--enable-maintainer-mode")
-	autotools_src_configure
+	local myeconfargs=("--enable-maintainer-mode")
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
