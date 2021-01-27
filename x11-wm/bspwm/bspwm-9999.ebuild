@@ -31,11 +31,11 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" PREFIX=/usr DOCPREFIX="/usr/share/doc/${PF}" install
 
-	exeinto /etc/X11/Sessions
-	newexe "${FILESDIR}"/${PN}-session ${PN}
+	#exeinto /etc/X11/Sessions
+	#newexe "${FILESDIR}"/${PN}-session ${PN}
 
-	#insinto /usr/share/xsessions
-	#doins contrib/freedesktop/bspwm.desktop
+	insinto /usr/share/xsessions
+	doins contrib/freedesktop/bspwm.desktop
 
 	insinto /etc/xdg/sxhkd
 	doins examples/sxhkdrc
