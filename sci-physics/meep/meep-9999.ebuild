@@ -4,7 +4,7 @@
 EAPI=7
 #PYTHON_COMPAT=( python3_{8..9} )
 
-inherit autotools git-r3 flag-o-matic
+inherit autotools autotools-utils git-r3 flag-o-matic
 
 DESCRIPTION="finite-difference time-domain (FDTD) software for electromagnetic simulations"
 HOMEPAGE="https://github.com/NanoComp/meep"
@@ -28,6 +28,11 @@ src_prepare() {
 	./autogen.sh || die
 	#autoreconf
 	#eautomake
+}
+
+src_configure() {
+	myeconfargs=("--enable-maintainer-mode")
+	autotools-utils_src_configure
 }
 
 src_compile() {
