@@ -31,5 +31,5 @@ src_prepare() {
 
 src_compile() {
 	#econf $(use_enable nls)
-	emake || die
+	emake
 }
