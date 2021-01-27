@@ -24,7 +24,8 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	append-cflags -fPIC || die
 	default
-	./autogen.sh || die
+	#./autogen.sh || die
+	eautoreconf || die # replaces ./autogen.sh
 	#autoreconf
 	#eautomake
 }
