@@ -4,7 +4,7 @@
 EAPI=7
 #PYTHON_COMPAT=( python3_{8..9} )
 
-inherit autotools git-r3
+inherit autotools git-r3 flag-o-matic
 
 DESCRIPTION="Guile-based library implementing flexible control files for scientific simulations "
 HOMEPAGE="https://github.com/NanoComp/libctl"
@@ -21,8 +21,8 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	append-cflags -fPIC
-	default
+	append-cflags -fPIC || die
+	default || die
 	./autogen.sh || die
 	#autoreconf
 	#eautomake
@@ -30,5 +30,5 @@ src_prepare() {
 
 src_compile() {
 	#econf $(use_enable nls)
-	emake
+	emake || die
 }
