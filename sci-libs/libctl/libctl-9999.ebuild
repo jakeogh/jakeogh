@@ -20,6 +20,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+
 src_prepare() {
 	append-cflags -fPIC || die
 	default || die
