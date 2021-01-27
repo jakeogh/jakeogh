@@ -34,8 +34,8 @@ src_install() {
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
 
-	insinto /usr/share/xsessions
-	doins contrib/freedesktop/bspwm.desktop
+	#insinto /usr/share/xsessions
+	#doins contrib/freedesktop/bspwm.desktop
 
 	insinto /etc/xdg/sxhkd
 	doins examples/sxhkdrc
