@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,17 +6,42 @@ EAPI=7
 inherit git-r3
 inherit toolchain-funcs
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Tiling window manager based on binary space partitioning"
 HOMEPAGE="https://github.com/baskerville/bspwm/"
 EGIT_REPO_URI="/home/cfg/_myapps/bspwm https://github.com/baskerville/bspwm/.git"
 
-LICENSE="BSD"
+LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
+IUSE="examples"
 
-RDEPEND="
+DEPEND="
+	x11-libs/libxcb
+	x11-libs/xcb-util
+	x11-libs/xcb-util-wm
+"
+RDEPEND="${DEPEND}
+	x11-misc/sxhkd
 "
 
-DEPEND="${RDEPEND}"
+src_compile() {
+	emake CC="$(tc-getCC)"
+}
 
+src_install() {
+	emake DESTDIR="${D}" PREFIX=/usr DOCPREFIX="/usr/share/doc/${PF}" install
+
+	exeinto /etc/X11/Sessions
+	newexe "${FILESDIR}"/${PN}-session ${PN}
+
+	insinto /usr/share/xsessions
+	doins contrib/freedesktop/bspwm.desktop
+
+	insinto /etc/xdg/sxhkd
+	doins examples/sxhkdrc
+
+	if use examples ; then
+		dodoc -r examples
+		docompress -x /usr/share/doc/${PF}/examples
+	fi
+}
