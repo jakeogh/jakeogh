@@ -30,6 +30,7 @@ DEPEND="dev-python/click[${PYTHON_USEDEP}]
 	dev-tcltk/expect
 	dev-python/humanfriendly[${PYTHON_USEDEP}]
 	sys-apps/debianutils
+	dev-python/pexpect[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
