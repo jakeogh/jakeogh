@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/click-plugins[${PYTHON_USEDEP}]
 	dev-python/click-option-group[${PYTHON_USEDEP}]
@@ -42,6 +42,7 @@ DEPEND="
 	dev-python/classify[${PYTHON_USEDEP}]
 	dev-python/ordered-set[${PYTHON_USEDEP}]
 	app-text/tree
+	x11-misc/dmenu
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
@@ -62,10 +63,9 @@ DEPEND="
 #	dev-db/postgresql:*
 #	dev-python/amara3-iri[${PYTHON_USEDEP}]
 
-RDEPEND="
-	${DEPEND}
-	x11-misc/dmenu
-"
+#RDEPEND="
+#	${DEPEND}
+#"
 
 python_install_all() {
 	local DOCS=( README.md )
