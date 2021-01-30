@@ -29,6 +29,7 @@ RDEPEND="
 	dev-python/humanfriendly[${PYTHON_USEDEP}]
 	sys-apps/pv
 	dev-python/kcl[${PYTHON_USEDEP}]
+	dev-python/retry_on_exception[${PYTHON_USEDEP}]
 	dev-tcltk/expect
 	dev-python/humanfriendly[${PYTHON_USEDEP}]
 	sys-apps/debianutils
