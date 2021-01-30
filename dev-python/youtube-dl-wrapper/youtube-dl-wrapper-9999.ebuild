@@ -22,6 +22,7 @@ DEPEND="
 	dev-db/redis
 	x11-misc/xclip
 	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/youtube_extractor[${PYTHON_USEDEP}]
 	dev-python/smartmove[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/kcl[${PYTHON_USEDEP}]
