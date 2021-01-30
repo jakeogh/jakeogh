@@ -20,6 +20,7 @@ RDEPEND="dev-util/splint
 	dev-python/pylint[${PYTHON_USEDEP}]
 	app-misc/commandlock
 	dev-util/shellcheck
+	sys-process/schedtool
 	app-editors/neovim
 	app-misc/newapp[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
