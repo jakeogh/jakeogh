@@ -26,6 +26,7 @@ RDEPEND="
 	sys-fs/dosfstools
 	sys-block/parted
 	sys-apps/dmidecode
+	dev-python/humanfriendly[${PYTHON_USEDEP}]
 	sys-apps/pv
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-tcltk/expect
