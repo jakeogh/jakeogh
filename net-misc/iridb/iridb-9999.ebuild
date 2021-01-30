@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/uhashfs[${PYTHON_USEDEP}]
 	dev-python/retry_on_exception[${PYTHON_USEDEP}]
 	dev-python/enumerate_input[${PYTHON_USEDEP}]
+	dev-python/uniquepipe[${PYTHON_USEDEP}]
 	dev-python/cssselect[${PYTHON_USEDEP}]
 	dev-python/yapsy[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
