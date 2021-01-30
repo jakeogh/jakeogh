@@ -18,7 +18,7 @@ KEYWORDS=""
 
 
 # astor: nice AST printing
-DEPEND="
+RDEPEND="
 	dev-python/replace-text[${PYTHON_USEDEP}]
 	dev-python/fastentrypoints[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
@@ -27,8 +27,6 @@ DEPEND="
 	dev-python/walkup_until_found[${PYTHON_USEDEP}]
 	dev-vcs/hub
 "
-
-RDEPEND="${DEPEND}"
 
 python_install_all() {
     distutils-r1_python_install_all
