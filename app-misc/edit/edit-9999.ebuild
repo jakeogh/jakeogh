@@ -15,11 +15,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-DEPEND="dev-util/splint
+RDEPEND="dev-util/splint
 	app-portage/repoman
-	dev-util/shellcheck
 	dev-python/pylint[${PYTHON_USEDEP}]
 	app-misc/commandlock
+	dev-util/shellcheck
 	app-editors/neovim
 	app-misc/newapp[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
@@ -29,9 +29,6 @@ DEPEND="dev-util/splint
 	dev-util/ctags
 	dev-python/memory_profiler
 "
-
-RDEPEND="${DEPEND}"
-
 
 src_install() {
 #	dodoc README*
