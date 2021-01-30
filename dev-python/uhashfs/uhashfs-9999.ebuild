@@ -26,7 +26,7 @@ DEPEND="
 	dev-python/prettyprinter[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	app-misc/unitcalc[${PYTHON_USEDEP}]
-	app-misc/pathwatcher[${PYTHON_USEDEP}]
+	dev-python/pathwatcher[${PYTHON_USEDEP}]
 	dev-python/python-fadvise[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest-cov[${PYTHON_USEDEP}]
 			dev-python/pytest[${PYTHON_USEDEP}]
