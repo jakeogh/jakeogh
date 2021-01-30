@@ -26,6 +26,7 @@ RDEPEND="
 	sys-fs/dosfstools
 	sys-block/parted
 	sys-apps/gptfdisk
+	sys-apps/openrc
 	sys-apps/dmidecode
 	dev-python/humanfriendly[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
