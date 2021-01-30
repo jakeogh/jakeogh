@@ -20,6 +20,7 @@ RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/python-mpv[${PYTHON_USEDEP}]
+	dev-python/hashfilter[${PYTHON_USEDEP}]
 	sys-process/schedtool
 	media-plugins/alsaequal
 "
