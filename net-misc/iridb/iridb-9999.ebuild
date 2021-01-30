@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/uhashfs[${PYTHON_USEDEP}]
 	dev-python/retry_on_exception[${PYTHON_USEDEP}]
 	dev-python/lazy_import[${PYTHON_USEDEP}]
+	dev-python/rediskey[${PYTHON_USEDEP}]
 	dev-python/enumerate_input[${PYTHON_USEDEP}]
 	dev-python/iterator_filter[${PYTHON_USEDEP}]
 	dev-python/uniquepipe[${PYTHON_USEDEP}]
