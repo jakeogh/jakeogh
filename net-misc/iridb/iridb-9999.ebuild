@@ -18,6 +18,7 @@ IUSE=""
 
 DEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/click-plugins[${PYTHON_USEDEP}]
 	dev-python/click-option-group[${PYTHON_USEDEP}]
 	dev-python/uhashfs[${PYTHON_USEDEP}]
 	dev-python/cssselect[${PYTHON_USEDEP}]
