@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/python-mpv[${PYTHON_USEDEP}]
 	dev-python/hashfilter[${PYTHON_USEDEP}]
+	dev-python/jsonparser[${PYTHON_USEDEP}]
 	sys-process/schedtool
 	media-plugins/alsaequal
 "
