@@ -20,4 +20,5 @@ RDEPEND="
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/stringfilter[${PYTHON_USEDEP}]
+	dev-python/mpvpy[${PYTHON_USEDEP}]
 "
