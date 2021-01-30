@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="dev-python/psutil[${PYTHON_USEDEP}]
+RDEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/pint[${PYTHON_USEDEP}]
@@ -38,8 +38,6 @@ DEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 
 #sys-apps/file[python]
 #dev-python/python-magic[${PYTHON_USEDEP}] # file has a python flag. will that work instead?
-
-RDEPEND="${DEPEND}"
 
 python_install_all() {
 	distutils-r1_python_install_all
