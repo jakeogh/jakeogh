@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION="Force color output for terminal commands."
 HOMEPAGE="https://github.com/jakeogh/colorpipe"
-EGIT_REPO_URI="https://github.com/jakeogh/colorpipe.git"
+EGIT_REPO_URI="/home/user/_myapps/colorpipe https://github.com/jakeogh/colorpipe.git"
 
 LICENSE="Unlicense"
 SLOT="0"
