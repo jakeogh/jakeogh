@@ -30,6 +30,7 @@ RDEPEND="
 	sys-apps/dmidecode
 	dev-python/humanfriendly[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
+	dev-python/compile_kernel[${PYTHON_USEDEP}]
 	sys-apps/pv
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/retry_on_exception[${PYTHON_USEDEP}]
