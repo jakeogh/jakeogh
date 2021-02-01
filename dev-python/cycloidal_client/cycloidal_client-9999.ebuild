@@ -25,8 +25,6 @@ RDEPEND="
 	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/wxpython:*[${PYTHON_USEDEP}]
 "
-#	dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 #	dev-python/schedule[${PYTHON_USEDEP}]
 
-DEPEND="${RDEPEND}"
 #	net-analyzer/scapy[${PYTHON_USEDEP}]
