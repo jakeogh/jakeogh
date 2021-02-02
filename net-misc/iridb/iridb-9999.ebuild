@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/click-plugins[${PYTHON_USEDEP}]
 	dev-python/click-option-group[${PYTHON_USEDEP}]
 	dev-python/uhashfs[${PYTHON_USEDEP}]
+	app-misc/uhashfsc
 	dev-python/retry_on_exception[${PYTHON_USEDEP}]
 	dev-python/lazy_import[${PYTHON_USEDEP}]
 	dev-python/rediskey[${PYTHON_USEDEP}]
