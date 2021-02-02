@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Foundation
+# Copyright 1999-2021 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="
+RDEPEND="
 	app-crypt/gpgme[${PYTHON_USEDEP}]
 	dev-python/pygpgme[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
@@ -31,10 +31,6 @@ DEPEND="
 "
 #	sys-apps/file[python]
 #	mail-filter/afew
-
-RDEPEND="
-	${DEPEND}
-"
 
 python_install_all() {
 local DOCS=( README.md )
