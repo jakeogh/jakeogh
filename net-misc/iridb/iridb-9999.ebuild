@@ -48,6 +48,7 @@ RDEPEND="
 	dev-python/ordered-set[${PYTHON_USEDEP}]
 	app-text/tree
 	x11-misc/dmenu
+	app-text/slmenu
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
