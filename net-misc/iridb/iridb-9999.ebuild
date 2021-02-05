@@ -48,7 +48,6 @@ RDEPEND="
 	dev-python/ordered-set[${PYTHON_USEDEP}]
 	app-text/tree
 	x11-misc/dmenu
-	app-text/slmenu
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
@@ -68,6 +67,7 @@ RDEPEND="
 #	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
 #	dev-db/postgresql:*
 #	dev-python/amara3-iri[${PYTHON_USEDEP}]
+# rafaelgg/slmenu
 
 #RDEPEND="
 #	${DEPEND}
