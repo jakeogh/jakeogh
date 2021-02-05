@@ -27,6 +27,7 @@ RDEPEND="dev-util/splint
 	dev-python/isort[${PYTHON_USEDEP}]
 	dev-python/python-ctags[${PYTHON_USEDEP}]
 	dev-python/mypy[${PYTHON_USEDEP}]
+	dev-util/diffuse[${PYTHON_USEDEP}]
 	dev-util/ctags
 	dev-python/memory_profiler
 "
