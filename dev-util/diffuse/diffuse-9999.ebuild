@@ -4,7 +4,8 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 
-inherit fdo-mime python-single-r1 git-r3
+inherit python-single-r1 git-r3
+#inherit fdo-mime python-single-r1 git-r3
 #inherit fdo-mime distutils-r1 git-r3
 
 DESCRIPTION="A graphical tool to compare and merge text files"
@@ -54,10 +55,10 @@ src_install() {
 	#dodoc AUTHORS ChangeLog README
 }
 
-pkg_postinst() {
-	fdo-mime_desktop_database_update
-}
-
-pkg_postrm() {
-	fdo-mime_desktop_database_update
-}
+#pkg_postinst() {
+#	fdo-mime_desktop_database_update
+#}
+#
+#pkg_postrm() {
+#	fdo-mime_desktop_database_update
+#}
