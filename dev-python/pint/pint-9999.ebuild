@@ -17,9 +17,7 @@ KEYWORDS=""
 IUSE=""
 LICENSE="BSD"
 
-DEPEND=""
-
-RDEPEND="${DEPEND}"
+RDEPEND="dev-python/uncertainties[${PYTHON_USEDEP}]"
 
 python_install_all() {
 	distutils-r1_python_install_all
