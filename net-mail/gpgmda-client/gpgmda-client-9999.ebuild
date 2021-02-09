@@ -29,8 +29,6 @@ RDEPEND="
 	sys-apps/moreutils
 	www-client/lynx
 "
-#	sys-apps/file[python]
-#	mail-filter/afew
 
 python_install_all() {
 local DOCS=( README.md )
