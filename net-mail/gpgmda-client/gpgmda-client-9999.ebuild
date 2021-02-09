@@ -32,6 +32,7 @@ RDEPEND="
 "
 # mock is missing dep for urwidtrees
 
+
 python_install_all() {
 local DOCS=( README.md )
 	dobin nottoomuch-addresses.sh
