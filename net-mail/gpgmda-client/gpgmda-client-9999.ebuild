@@ -28,7 +28,9 @@ RDEPEND="
 	dev-python/python-magic[${PYTHON_USEDEP}]
 	sys-apps/moreutils
 	www-client/lynx
+	dev-python/mock[${PYTHON_USEDEP}]
 "
+# mock is missing dep for urwidtrees
 
 python_install_all() {
 local DOCS=( README.md )
