@@ -9,7 +9,7 @@ DESCRIPTION="A robust, optimal, and maintainable programming language"
 HOMEPAGE="https://ziglang.org/"
 LICENSE="MIT"
 SLOT="0"
-IUSE="+experimental"
+IUSE=""
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/ziglang/zig.git"
@@ -19,17 +19,18 @@ else
 	KEYWORDS="~amd64"
 fi
 
-ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430 NVPTX
-	PowerPC Sparc SystemZ WebAssembly X86 XCore )
+ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM AVR BPF Hexagon Lanai Mips MSP430 NVPTX
+	PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore )
 ALL_LLVM_TARGETS=( "${ALL_LLVM_TARGETS[@]/#/llvm_targets_}" )
+
 # According to zig's author, zig builds that do not support all targets are not
 # supported by the upstream project.
 LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]}
 
 RDEPEND="
-	sys-devel/llvm:11
-	!experimental? ( sys-devel/llvm:11[${LLVM_TARGET_USEDEPS// /,}] )
 	sys-devel/clang:11
+	=sys-devel/lld-11*[shared]
+	sys-devel/llvm:11[${LLVM_TARGET_USEDEPS// /,}]
 "
 
 DEPEND="${RDEPEND}"
@@ -41,20 +42,16 @@ llvm_check_deps() {
 }
 
 src_prepare() {
-	if use experimental; then
-		sed -i '/^NEED_TARGET(/d' cmake/Findllvm.cmake || die "unable to modify cmake/Findllvm.cmake"
-	fi
-
 	sed -i 's/--prefix "${CMAKE_INSTALL_PREFIX}"/--prefix ".\/${CMAKE_INSTALL_PREFIX}"/' CMakeLists.txt || \
-	    die "unable to fix install path"
+		die "unable to fix install path"
 
 	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DCLANG_INCLUDE_DIRS="$(llvm-config --includedir)"
-		-DCLANG_LIBDIRS="$(llvm-config --libdir)"
+		-DZIG_PREFER_CLANG_CPP_DYLIB=on
+		-DZIG_PREFER_LLVM_CONFIG=on
 	)
 
 	cmake_src_configure
