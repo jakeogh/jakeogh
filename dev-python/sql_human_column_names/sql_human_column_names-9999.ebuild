@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/unitinv"
-EGIT_REPO_URI="/home/cfg/_myapps/sql_human_column_names https://github.com/jakeogh/unitinv.git"
+HOMEPAGE="https://github.com/jakeogh/sql_human_column_names"
+EGIT_REPO_URI="/home/cfg/_myapps/sql_human_column_names https://github.com/jakeogh/sql_human_column_names.git"
 
 LICENSE="BSD"
 SLOT="0"
