@@ -8,14 +8,14 @@ PYTHON_REQ_USE="sqlite?"
 
 inherit distutils-r1 optfeature git-r3
 
-MY_PN="SQLAlchemy"
-MY_P="${MY_PN}-${PV/_beta/b}"
+#MY_PN="SQLAlchemy"
+#MY_P="${MY_PN}-${PV/_beta/b}"
 
 DESCRIPTION="Python SQL toolkit and Object Relational Mapper"
 HOMEPAGE="https://www.sqlalchemy.org/ https://pypi.org/project/SQLAlchemy/"
 #SRC_URI="mirror://pypi/${MY_P:0:1}/${MY_PN}/${MY_P}.tar.gz"
 EGIT_REPO_URI="https://github.com/sqlalchemy/sqlalchemy"
-S="${WORKDIR}/${MY_P}"
+#S="${WORKDIR}/${MY_P}"
 
 LICENSE="MIT"
 SLOT="0"
