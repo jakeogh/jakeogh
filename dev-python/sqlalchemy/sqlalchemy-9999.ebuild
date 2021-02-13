@@ -24,6 +24,7 @@ IUSE="examples +sqlite test"
 
 # Use pytest-xdist to speed up tests
 BDEPEND="
+	dev-python/greenlet[${PYTHON_USEDEP}]
 	test? (
 		$(python_gen_impl_dep sqlite)
 		dev-python/pytest-xdist[${PYTHON_USEDEP}]
