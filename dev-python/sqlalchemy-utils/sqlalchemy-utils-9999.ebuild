@@ -9,7 +9,9 @@ inherit git-r3
 
 DESCRIPTION="Various utility functions and datatypes for SQLAlchemy."
 HOMEPAGE="https://github.com/kvesteri/sqlalchemy-utils"
-EGIT_REPO_URI="https://github.com/kvesteri/sqlalchemy-utils.git"
+#EGIT_REPO_URI="https://github.com/kvesteri/sqlalchemy-utils.git"
+EGIT_REPO_URI="https://github.com/spacetimelabs/sqlalchemy-utils.git"
+EGIT_TREE="sqlalchemy-1.4"
 
 LICENSE="BSD"
 SLOT="0"
