@@ -57,17 +57,13 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
 	restore_config config.h
-
 	tc-export CC PKG_CONFIG
 }
 
 src_install() {
 	default
-
 	save_config config.h
-
 	newicon "${S}"/"${PN}".png "${PN}".png
 
 	local mime_types="text/html;text/xml;application/xhtml+xml;"
