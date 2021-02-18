@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/gradle/gradle"
 LICENSE="Apache-2.0"
 SLOT="${PV}"
 
-KEYWORDS="~amd64"
+KEYWORDS=""
 RDEPEND="virtual/jre:*"
 
 #KEYWORDS="~amd64 ~arm ~arm64 ~mips ~x86"
