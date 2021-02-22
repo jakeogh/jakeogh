@@ -5,8 +5,6 @@ EAPI=7
 
 inherit autotools flag-o-matic gnome2-utils xdg-utils git-r3 xdg
 
-# from https://github.com/linxon/gentoo-overlay
-
 DESCRIPTION="A graphical hardware temperature monitor"
 HOMEPAGE="http://wpitchoune.net/psensor"
 if [[ ${PV} == *9999 ]]; then
