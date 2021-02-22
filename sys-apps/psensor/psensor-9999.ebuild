@@ -1,15 +1,23 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic gnome2-utils xdg-utils git-r3
+inherit autotools flag-o-matic gnome2-utils xdg-utils git-r3 xdg
 
 # from https://github.com/linxon/gentoo-overlay
 
 DESCRIPTION="A graphical hardware temperature monitor"
-HOMEPAGE="https://wpitchoune.net/psensor/"
-EGIT_REPO_URI="https://gitlab.com/jeanfi/psensor.git"
+HOMEPAGE="http://wpitchoune.net/psensor"
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://gitlab.com/jeanfi/psensor.git"
+	KEYWORDS=""
+else
+	SRC_URI="http://wpitchoune.net/${PN}/files/${PN}-${PV}.tar.gz"
+	KEYWORDS="~amd64"
+	RESTRICT="mirror"
+fi
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -34,6 +42,8 @@ RDEPEND="
 		x11-libs/libX11
 		x11-libs/libXext
 		x11-libs/cairo
+		dev-libs/libappindicator
+		gnome-base/dconf
 	)"
 
 DEPEND="${RDEPEND}"
