@@ -21,8 +21,8 @@ fi
 inherit distutils-r1
 
 DESCRIPTION="Python memory profiler for data processing"
-HOMEPAGE="https://github.com/jakeogh/filprofiler"
-EGIT_REPO_URI="https://github.com/jakeogh/filprofiler.git"
+HOMEPAGE="https://github.com/pythonspeed/filprofiler"
+EGIT_REPO_URI="https://github.com/pythonspeed/filprofiler.git"
 
 LICENSE="Apache-2.0"
 SLOT="0"
