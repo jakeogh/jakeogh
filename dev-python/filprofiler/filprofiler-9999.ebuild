@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 src_compile() {
 	#mkdir -p "${WORKDIR}"/filprofiler-9999-python3_8/temp.linux-x86_64-3.8/filprofiler/target/release || die
 	mkdir -p "${WORKDIR}"/filprofiler-9999/target/release || die
-	cargo build || die
+	cargo build --release || die
 	distutils-r1_src_compile
 	build_ext
 	defaults
