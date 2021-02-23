@@ -20,7 +20,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	mkdir "${WORKDIR}"/test
+	mkdir "${WORKDIR}"/filprofiler-9999-python3_8/temp.linux-x86_64-3.8/filprofiler/target/release
 	distutils-r1_src_compile
 	build_ext
 	defaults
