@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 
-CRATES=""
+CRATES=""  # TODO cargo-ebuild didnt like this py/rust fustion project
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="/home/cfg/_myapps/py_spy https://github.com/benfred/py-spy.git"
