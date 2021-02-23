@@ -19,7 +19,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-src_compile {
-	defaults
+src_compile() {
 	mkdir "${work}"/test
+	defaults
 }
