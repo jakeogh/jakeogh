@@ -8,8 +8,9 @@ CRATES=""
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="/home/cfg/_myapps/py_spy https://github.com/benfred/py-spy.git"
-	inherit git-r3
+	inherit git-r3 cargo
 else
+	inherit cargo
 	SRC_URI="
 			https://github.com/pythonspeed/filprofiler/archive/${PV}.tar.gz -> ${P}.tar.gz
 			$(cargo_crate_uris ${CRATES})
@@ -17,7 +18,7 @@ else
 	KEYWORDS="~amd64 ~arm64 ~ppc64"
 fi
 
-inherit cargo distutils-r1
+inherit distutils-r1
 
 DESCRIPTION="Python memory profiler for data processing"
 HOMEPAGE="https://github.com/jakeogh/filprofiler"
