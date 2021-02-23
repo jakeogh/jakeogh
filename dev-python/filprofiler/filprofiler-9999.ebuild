@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}"
 
 src_compile() {
 	mkdir "${WORKDIR}"/test
-	defaults
+	distutils-r1_src_compile
 	build_ext
+	defaults
 }
