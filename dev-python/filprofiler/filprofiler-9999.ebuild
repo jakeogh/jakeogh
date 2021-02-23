@@ -15,6 +15,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
+	dev-python/threadpoolctl
 "
 
 DEPEND="${RDEPEND}"
