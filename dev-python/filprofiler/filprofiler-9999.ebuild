@@ -22,4 +22,5 @@ DEPEND="${RDEPEND}"
 src_compile() {
 	mkdir "${WORKDIR}"/test
 	defaults
+	build_ext
 }
