@@ -20,6 +20,6 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	mkdir "${work}"/test
+	mkdir "${WORKDIR}"/test
 	defaults
 }
