@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 
-inherit distutils-r1 git-r3 cargo
+inherit git-r3 cargo distutils-r1
 
 DESCRIPTION="Python memory profiler for data processing"
 HOMEPAGE="https://github.com/jakeogh/filprofiler"
