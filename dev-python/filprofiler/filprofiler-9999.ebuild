@@ -19,6 +19,11 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+src_unpack() {
+	git-r3_src_unpack
+	cargo_live_src_unpack
+}
+
 src_compile() {
 	#mkdir -p "${WORKDIR}"/filprofiler-9999-python3_8/temp.linux-x86_64-3.8/filprofiler/target/release || die
 	mkdir -p "${WORKDIR}"/filprofiler-9999/target/release || die
