@@ -19,6 +19,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/kcl[${PYTHON_USEDEP}]
+	dev-python/run-command[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
