@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{8..9} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/randompipe"
-EGIT_REPO_URI="/home/cfg/_myapps/randompipe https://github.com/jakeogh/randompipe.git"
+HOMEPAGE="https://github.com/jakeogh/randomize_input"
+EGIT_REPO_URI="/home/cfg/_myapps/randomize_input https://github.com/jakeogh/randomize_input.git"
 
 LICENSE="BSD"
 SLOT="0"
