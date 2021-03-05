@@ -6,7 +6,6 @@ PYTHON_COMPAT=( python3_{8..9} )
 
 inherit git-r3
 
-
 DESCRIPTION="Outputs X window title given windowid"
 HOMEPAGE="https://github.com/jakeogh/bspwm-xtitle"
 EGIT_REPO_URI="/home/cfg/_myapps/bspwm-xtitle https://github.com/jakeogh/bspwm-xtitle.git"
@@ -14,7 +13,8 @@ EGIT_REPO_URI="/home/cfg/_myapps/bspwm-xtitle https://github.com/jakeogh/bspwm-x
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
-
-
+src_install() {
+	emake PREFIX="/usr" DESTDIR="${D}" install
+	einstalldocs
+}
