@@ -2,19 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
 
-inherit git-r3
+inherit git-r3 toolchain-funcs
 
+DESCRIPTION="dmenu spinoff for the console"
+HOMEPAGE="https://github.com/joshaw/slmenu"
+EHG_REPO_URI="/home/user/_myapps/slmenu https://github.com/jakeogh/slmenu"
 
-DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/slmenu"
-EGIT_REPO_URI="/home/cfg/_myapps/slmenu https://github.com/jakeogh/slmenu.git"
-
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
+IUSE=""
 
+RDEPEND=""
+DEPEND="${RDEPEND}"
+PATCHES=()
 
+src_prepare() {
+	default
+}
 
+src_compile() {
+	emake
+}
+
+src_install() {
+	emake DESTDIR="${D}" PREFIX="${EPREFIX}/usr" install
+	#emake install
+}

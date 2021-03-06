@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit mercurial toolchain-funcs
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="dmenu spinoff for the console"
-HOMEPAGE="https://bitbucket.org/rafaelgg/slmenu"
-EHG_REPO_URI="https://bitbucket.org/rafaelgg/slmenu"
+HOMEPAGE="https://github.com/joshaw/slmenu"
+EHG_REPO_URI="/home/user/_myapps/slmenu https://github.com/jakeogh/slmenu"
 
 LICENSE="MIT"
 SLOT="0"
