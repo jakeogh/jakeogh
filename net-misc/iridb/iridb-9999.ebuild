@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 
 inherit distutils-r1
@@ -47,17 +47,16 @@ RDEPEND="
 	dev-python/classify[${PYTHON_USEDEP}]
 	dev-python/ordered-set[${PYTHON_USEDEP}]
 	app-text/tree
-	x11-misc/dmenu
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/tld[${PYTHON_USEDEP}]
 	dev-python/npyscreen[${PYTHON_USEDEP}]
 	dev-python/cachetools[${PYTHON_USEDEP}]
+	dev-python/menu[${PYTHON_USEDEP}]
 "
 
 #	dev-python/youtube-dl-wrapper[${PYTHON_USEDEP}]
-#	app-text/slmenu
 #	sys-apps/file[python]
 #	dev-python/pydot[${PYTHON_USEDEP}]
 #	dev-db/sadisplay[${PYTHON_USEDEP}]
@@ -67,7 +66,6 @@ RDEPEND="
 #	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
 #	dev-db/postgresql:*
 #	dev-python/amara3-iri[${PYTHON_USEDEP}]
-# rafaelgg/slmenu
 
 #RDEPEND="
 #	${DEPEND}
