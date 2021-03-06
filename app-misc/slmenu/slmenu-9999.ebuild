@@ -7,7 +7,7 @@ inherit git-r3 toolchain-funcs
 
 DESCRIPTION="dmenu spinoff for the console"
 HOMEPAGE="https://github.com/joshaw/slmenu"
-EHG_REPO_URI="/home/user/_myapps/slmenu https://github.com/jakeogh/slmenu"
+EGIT_REPO_URI="/home/user/_myapps/slmenu https://github.com/jakeogh/slmenu"
 
 LICENSE="MIT"
 SLOT="0"
