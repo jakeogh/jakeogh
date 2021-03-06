@@ -7,23 +7,21 @@ PYTHON_COMPAT=( python3_{8..9} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Wrapper for dmenu and slmenu for X or VT"
 HOMEPAGE="https://github.com/jakeogh/menu"
 EGIT_REPO_URI="/home/cfg/_myapps/menu https://github.com/jakeogh/menu.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/click-command-tree[${PYTHON_USEDEP}]
+	app-misc/slmenu
+	x11-misc/dmenu
 "
 
 DEPEND="${RDEPEND}"
-
-
