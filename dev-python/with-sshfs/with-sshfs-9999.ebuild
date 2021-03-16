@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..9} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Context manager for sshfs mount"
 HOMEPAGE="https://github.com/jakeogh/with-sshfs"
 EGIT_REPO_URI="/home/cfg/_myapps/with-sshfs https://github.com/jakeogh/with-sshfs.git"
 
@@ -20,8 +20,8 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/click-command-tree[${PYTHON_USEDEP}]
+	dev-python/sh[${PYTHON_USEDEP}]
+	net-fs/sshfs
 "
 
 DEPEND="${RDEPEND}"
