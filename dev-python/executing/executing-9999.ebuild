@@ -17,6 +17,10 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
+	dev-python/pip[${PYTHON_USEDEP}]
+"
+
+DEPEND="
 "
 
 RDEPEND="${DEPEND}"
