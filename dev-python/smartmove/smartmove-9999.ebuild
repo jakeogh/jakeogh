@@ -20,6 +20,7 @@ DEPEND="
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/advisory-lock[${PYTHON_USEDEP}]
+	dev-python/classify[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
