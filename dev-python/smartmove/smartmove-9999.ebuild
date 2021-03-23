@@ -19,6 +19,7 @@ IUSE=""
 DEPEND="
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/advisory-lock[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
