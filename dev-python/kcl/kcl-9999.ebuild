@@ -29,6 +29,7 @@ RDEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/pyperclip[${PYTHON_USEDEP}]
 	dev-python/dateparser[${PYTHON_USEDEP}]
 	dev-python/retry_on_exception[${PYTHON_USEDEP}]
+	dev-python/humanize[${PYTHON_USEDEP}]
 	sys-fs/dd-rescue
 "
 
