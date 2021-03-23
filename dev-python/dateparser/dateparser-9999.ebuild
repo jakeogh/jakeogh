@@ -19,6 +19,7 @@ DEPEND="
 	dev-python/tzlocal
 	dev-python/ruamel-yaml
 	dev-python/regex[${PYTHON_USEDEP}]
+	dev-python/python-dateutil[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
