@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,13 +14,12 @@ EGIT_REPO_URI="/home/cfg/_myapps/classify https://github.com/jakeogh/classify.gi
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/run-comand[${PYTHON_USEDEP}]
+	dev-python/run-command[${PYTHON_USEDEP}]
 	media-gfx/gifsicle
 "
 
