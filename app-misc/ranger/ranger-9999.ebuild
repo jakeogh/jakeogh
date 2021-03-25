@@ -23,6 +23,19 @@ SLOT="0"
 RDEPEND="
 	virtual/pager
 	www-client/w3m[fbcon]
+	dev-python/chardet
+	media-libs/libcaca
+	media-gfx/imagemagick
+	media-video/ffmpegthumbnailer
+	app-text/highlight
+	app-arch/p7zip
+	app-arch/unrar
+	app-arch/atool
+	app-arch/tar
+	net-p2p/transmission
+	media-video/mediainfo
+	media-libs/exiftool
+	media-gfx/openscad
 "
 
 distutils_enable_tests pytest
