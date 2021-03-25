@@ -22,7 +22,7 @@ SLOT="0"
 
 RDEPEND="
 	virtual/pager
-	www-client/w3m[fbcon]
+	www-client/w3m[fbcon,X]
 	dev-python/chardet
 	media-libs/libcaca
 	media-gfx/imagemagick
