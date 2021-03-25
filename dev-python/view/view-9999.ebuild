@@ -27,6 +27,7 @@ RDEPEND="
 	media-gfx/fbida
 	media-libs/exiftool
 	media-gfx/inkscape
+	app-misc/ranger
 "
 
 DEPEND="${RDEPEND}"
