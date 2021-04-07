@@ -23,5 +23,3 @@ RDEPEND="
 	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}"
-
-
