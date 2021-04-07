@@ -18,7 +18,6 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/docopt[${PYTHON_USEDEP}]
 "
 	#dev-python/click-command-tree[${PYTHON_USEDEP}]

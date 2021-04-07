@@ -36,6 +36,7 @@ RDEPEND="
 	media-video/mediainfo
 	media-libs/exiftool
 	media-gfx/openscad
+	dev-python/ueberzug[]
 "
 
 distutils_enable_tests pytest
