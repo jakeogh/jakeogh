@@ -19,6 +19,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/docopt[${PYTHON_USEDEP}]
+	app-xemacs/xlib
 "
 	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
