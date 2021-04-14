@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..9} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Like moreutils sponge, but takes an optional buffer size"
 HOMEPAGE="https://github.com/jakeogh/pysponge"
 EGIT_REPO_URI="/home/cfg/_myapps/pysponge https://github.com/jakeogh/pysponge.git"
 
@@ -19,11 +19,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/unitcalc[${PYTHON_USEDEP}]
 "
-	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}"
-
-
