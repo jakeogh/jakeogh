@@ -5,9 +5,9 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 
 inherit git-r3
+#inherit distutils
 
-
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="A fast NoSQL database on-disk alternative to Redis"
 HOMEPAGE="https://github.com/jakeogh/ssdb"
 EGIT_REPO_URI="/home/cfg/_myapps/ssdb https://github.com/jakeogh/ssdb.git"
 
