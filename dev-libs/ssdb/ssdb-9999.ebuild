@@ -17,4 +17,4 @@ KEYWORDS=""
 #IUSE="test"
 
 
-
+RDEPEND="dev-libs/leveldb"
