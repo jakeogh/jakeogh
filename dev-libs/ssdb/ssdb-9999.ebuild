@@ -4,7 +4,7 @@
 # from https://github.com/longlene/clx/tree/master/dev-db/ssdb
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..9} )
+#PYTHON_COMPAT=( python3_{8..9} )
 
 inherit git-r3
 #inherit distutils
@@ -20,9 +20,7 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
-
 RDEPEND="dev-libs/leveldb"
-
 
 pkg_setup() {
 	enewgroup ssdb 75
