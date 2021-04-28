@@ -18,3 +18,7 @@ KEYWORDS=""
 
 
 RDEPEND="dev-libs/leveldb"
+
+src_install() {
+	emake DESTDIR="${D}" PREFIX=/usr DOCPREFIX="/usr/share/doc/${PF}" install
+}
