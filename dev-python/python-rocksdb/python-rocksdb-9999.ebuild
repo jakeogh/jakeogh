@@ -7,23 +7,19 @@ PYTHON_COMPAT=( python3_{8..9} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Python bindings for RocksDB"
 HOMEPAGE="https://github.com/jakeogh/python-rocksdb"
 EGIT_REPO_URI="/home/cfg/_myapps/python-rocksdb https://github.com/jakeogh/python-rocksdb.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-libs/rocksdb
 "
-	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}"
-
-
