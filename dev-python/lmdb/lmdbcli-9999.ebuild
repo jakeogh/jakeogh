@@ -9,8 +9,8 @@ inherit distutils-r1
 inherit xdg
 
 DESCRIPTION="Another CLI for LMDB"
-HOMEPAGE="https://github.com/jakeogh/lmdb"
-EGIT_REPO_URI="/home/cfg/_myapps/lmdb https://github.com/jakeogh/lmdb.git"
+HOMEPAGE="https://github.com/jakeogh/lmdbcli"
+EGIT_REPO_URI="/home/cfg/_myapps/lmdbcli https://github.com/jakeogh/lmdbcli.git"
 
 LICENSE="BSD"
 SLOT="0"
