@@ -8,7 +8,7 @@ inherit git-r3
 inherit distutils-r1
 inherit xdg
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Another CLI for LMDB"
 HOMEPAGE="https://github.com/jakeogh/lmdb"
 EGIT_REPO_URI="/home/cfg/_myapps/lmdb https://github.com/jakeogh/lmdb.git"
 
@@ -21,13 +21,11 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
 "
-	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	default
 	xdg_src_prepare
+	default
 }
