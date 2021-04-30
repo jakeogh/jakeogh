@@ -15,12 +15,11 @@ EGIT_REPO_URI="/home/cfg/_myapps/lmdbcli https://github.com/jakeogh/lmdbcli.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
+	dev-python/lmdb[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
