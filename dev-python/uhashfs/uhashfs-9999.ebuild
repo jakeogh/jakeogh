@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/kcl[${PYTHON_USEDEP}]
+	dev-python/hasher[${PYTHON_USEDEP}]
 	dev-python/python-getdents[${PYTHON_USEDEP}]
 	dev-python/retry_on_exception[${PYTHON_USEDEP}]
 	dev-python/prettyprinter[${PYTHON_USEDEP}]
