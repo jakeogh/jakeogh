@@ -38,6 +38,7 @@ RDEPEND="
 	dev-python/humanfriendly[${PYTHON_USEDEP}]
 	sys-apps/debianutils
 	dev-python/pexpect[${PYTHON_USEDEP}]
+	dev-python/compile_kernel[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
