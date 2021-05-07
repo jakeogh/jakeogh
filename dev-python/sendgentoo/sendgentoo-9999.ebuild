@@ -38,6 +38,8 @@ RDEPEND="
 	sys-apps/debianutils
 	dev-python/pexpect[${PYTHON_USEDEP}]
 	dev-python/compile-kernel[${PYTHON_USEDEP}]
+	dev-python/blocktool[${PYTHON_USEDEP}]
+	dev-python/mounttool[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
