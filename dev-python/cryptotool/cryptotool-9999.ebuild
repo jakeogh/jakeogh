@@ -8,8 +8,8 @@ inherit git-r3
 inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/create-luks-device"
-EGIT_REPO_URI="/home/cfg/_myapps/create-luks-device https://github.com/jakeogh/create-luks-device.git"
+HOMEPAGE="https://github.com/jakeogh/ccryptotool"
+EGIT_REPO_URI="/home/cfg/_myapps/cryptotool https://github.com/jakeogh/cryptotool.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -20,7 +20,8 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/destroy-block-device[${PYTHON_USEDEP}]
+	dev-python/blocktool[${PYTHON_USEDEP}]
+	dev-python/mounttool[${PYTHON_USEDEP}]
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/run-command[${PYTHON_USEDEP}]
 "
