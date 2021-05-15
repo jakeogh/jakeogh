@@ -19,9 +19,8 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	sci-electronics/kinparse[${PYTHON_USEDEP}]
+	dev-python/graphviz[${PYTHON_USEDEP}]
 "
 	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
