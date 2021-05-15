@@ -21,6 +21,7 @@ KEYWORDS=""
 RDEPEND="
 	sci-electronics/kinparse[${PYTHON_USEDEP}]
 	dev-python/graphviz[${PYTHON_USEDEP}]
+	sci-electronics/kicad[${PYTHON_USEDEP}]
 "
 	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
