@@ -16,6 +16,8 @@ IUSE="firejail"
 
 SPN="surf"
 
+#SS="${WORKDIR}/${P}"
+
 COMMON_DEPEND="
 	firejail? (
 		sys-apps/firejail
@@ -64,26 +66,27 @@ src_prepare() {
 }
 
 src_install() {
-	default
+	cp "${S}/${SPN}" "${D}/surf-persistent"
+	#default
 	save_config config.h
 	#newicon "${S}"/"${SPN}".png "${PN}".png
 
-	local mime_types="text/html;text/xml;application/xhtml+xml;"
-	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
-	make_desktop_entry \
-		"surf-persistent" \
-		"Surf-Persistent" \
-		"surf-persistent" \
-		"Network;WebBrowser" \
-		"MimeType=${mime_types}\nStartupWMClass=surf-persistent" || die
+	#local mime_types="text/html;text/xml;application/xhtml+xml;"
+	#mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
+	#make_desktop_entry \
+	#	"surf-persistent" \
+	#	"Surf-Persistent" \
+	#	"surf-persistent" \
+	#	"Network;WebBrowser" \
+	#	"MimeType=${mime_types}\nStartupWMClass=surf-persistent" || die
 }
 
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
+#pkg_postinst() {
+#	xdg_desktop_database_update
+#	xdg_icon_cache_update
+#}
+#
+#pkg_postrm() {
+#	xdg_desktop_database_update
+#	xdg_icon_cache_update
+#}
