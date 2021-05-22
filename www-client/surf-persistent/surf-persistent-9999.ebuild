@@ -66,7 +66,7 @@ src_prepare() {
 }
 
 src_install() {
-	mkdir "${D}/usr/bin"
+	mkdir -p "${D}/usr/bin"
 	cp "${S}/${SPN}" "${D}/usr/bin/surf-persistent" || die
 	#default
 	save_config config.h
