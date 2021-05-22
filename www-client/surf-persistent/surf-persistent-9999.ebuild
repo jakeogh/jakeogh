@@ -35,12 +35,10 @@ DEPEND="
 RDEPEND="
 	!sci-chemistry/surf
 	${COMMON_DEPEND}
-	!savedconfig? (
-		>=x11-misc/dmenu-4.7
-		net-misc/curl
-		x11-apps/xprop
-		x11-terms/st
-	)
+	>=x11-misc/dmenu-4.7
+	net-misc/curl
+	x11-apps/xprop
+	x11-terms/st
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-gentoo.patch
