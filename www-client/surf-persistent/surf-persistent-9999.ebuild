@@ -66,7 +66,8 @@ src_prepare() {
 }
 
 src_install() {
-	cp "${S}/${SPN}" "${D}/usr/bin/surf-persistent"
+	mkdir "${D}/usr/bin"
+	cp "${S}/${SPN}" "${D}/usr/bin/surf-persistent" || die
 	#default
 	save_config config.h
 	#newicon "${S}"/"${SPN}".png "${PN}".png
