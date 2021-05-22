@@ -10,7 +10,7 @@ index f1910bf..55d7066 100644
 +PREFIX = /usr
  MANPREFIX = $(PREFIX)/share/man
  LIBPREFIX = $(PREFIX)/lib
- LIBDIR = $(LIBPREFIX)/surf-persistent
+ LIBDIR = $(LIBPREFIX)/surf
  
 -X11INC = `pkg-config --cflags x11`
 -X11LIB = `pkg-config --libs x11`
