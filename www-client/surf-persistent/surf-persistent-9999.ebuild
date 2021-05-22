@@ -66,7 +66,7 @@ src_prepare() {
 src_install() {
 	default
 	save_config config.h
-	newicon "${S}"/"${SPN}".png "${PN}".png
+	#newicon "${S}"/"${SPN}".png "${PN}".png
 
 	local mime_types="text/html;text/xml;application/xhtml+xml;"
 	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
