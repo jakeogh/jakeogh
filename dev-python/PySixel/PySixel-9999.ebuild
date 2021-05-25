@@ -6,6 +6,7 @@ PYTHON_COMPAT=( python3_{8..9} )
 
 inherit git-r3
 inherit distutils-r1
+inherit toolchain-funcs
 #inherit xdg
 
 DESCRIPTION="Short explination of what it does _here_"
@@ -29,3 +30,8 @@ DEPEND="${RDEPEND}"
 #	default
 #	xdg_src_prepare
 #}
+
+src_compile() {
+	#tc-export CC
+	emake
+}
