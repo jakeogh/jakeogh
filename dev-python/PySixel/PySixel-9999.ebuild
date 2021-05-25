@@ -30,7 +30,7 @@ src_prepare() {
 	default
 }
 
-src_compile() {
+python_compile_all() {
 	#tc-export CC
 	emake
 }
