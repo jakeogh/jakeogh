@@ -13,7 +13,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/uniquepipe https://github.com/jakeogh/uniquepip
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
@@ -22,4 +21,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
