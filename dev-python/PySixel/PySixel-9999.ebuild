@@ -26,10 +26,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_prepare() {
+	default
+}
 
 src_compile() {
 	#tc-export CC
