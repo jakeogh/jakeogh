@@ -35,3 +35,7 @@ src_compile() {
 	#tc-export CC
 	emake
 }
+
+python_install_all() {
+	distutils-r1_python_install_all
+}
