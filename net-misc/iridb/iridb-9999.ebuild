@@ -54,6 +54,7 @@ RDEPEND="
 	dev-python/npyscreen[${PYTHON_USEDEP}]
 	dev-python/cachetools[${PYTHON_USEDEP}]
 	dev-python/menu[${PYTHON_USEDEP}]
+	dev-python/pdfx[${PYTHON_USEDEP}]
 "
 
 #	dev-python/youtube-dl-wrapper[${PYTHON_USEDEP}]
