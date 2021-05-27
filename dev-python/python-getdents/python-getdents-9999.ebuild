@@ -28,9 +28,9 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-python_compile() {
-	defaults
-}
+#python_compile() {
+#	defaults
+#}
 
 python_install_all() {
 	distutils-r1_python_install_all
