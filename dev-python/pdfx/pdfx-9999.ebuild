@@ -6,7 +6,6 @@ PYTHON_COMPAT=( python3_{8..9} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/pdfx"
@@ -19,16 +18,9 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	app-text/pdfminer[${PYTHON_USEDEP}]
+	dev-python/chardet[${PYTHON_USEDEP}]
 "
-	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
