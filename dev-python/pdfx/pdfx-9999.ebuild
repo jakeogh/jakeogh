@@ -18,7 +18,7 @@ KEYWORDS=""
 
 
 RDEPEND="
-	app-text/pdfminer[${PYTHON_USEDEP}]
+	=app-text/pdfminer-9999[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 "
 
