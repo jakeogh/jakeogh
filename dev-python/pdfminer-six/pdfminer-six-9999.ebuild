@@ -8,7 +8,7 @@ PYTHON_COMPAT=(python3_{8..9})
 inherit distutils-r1
 inherit git-r3
 
-#MY_P="${PN//-/.}-${PV}"
+MY_P="${PN//./-}-${PV}"
 
 DESCRIPTION="Python tool for extracting information from PDF documents"
 HOMEPAGE="https://github.com/pdfminer/pdfminer.six"
