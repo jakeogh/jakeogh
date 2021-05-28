@@ -8,8 +8,6 @@ POSTGRES_COMPAT=( 11 12 13 )
 inherit postgres-multi
 inherit git-r3
 
-#inherit xdg
-
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/pg-spgist-hamming"
 EGIT_REPO_URI="/home/cfg/_myapps/pg-spgist-hamming https://github.com/jakeogh/pg-spgist-hamming.git"
@@ -18,11 +16,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 #IUSE="test"
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
 
 src_configure() {
 	postgres-multi_foreach econf
