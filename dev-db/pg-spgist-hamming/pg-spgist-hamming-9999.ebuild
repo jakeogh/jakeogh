@@ -3,7 +3,9 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
+POSTGRES_COMPAT=( 11 12 13 )
 
+inherit postgres-multi
 inherit git-r3
 
 #inherit xdg
@@ -17,9 +19,11 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
-
-
 #src_prepare() {
 #	default
 #	xdg_src_prepare
 #}
+
+src_configure() {
+	postgres-multi_foreach econf
+}
