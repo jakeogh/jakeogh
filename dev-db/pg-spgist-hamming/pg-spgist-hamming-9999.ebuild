@@ -5,6 +5,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..9} )
 POSTGRES_COMPAT=( 11 12 13 )
 
+
+distutils-r1
 inherit postgres-multi
 inherit git-r3
 
@@ -21,9 +23,9 @@ KEYWORDS=""
 #	#postgres-multi_foreach econf
 #}
 
-src_compile () {
-	ewarn "is this thing on?"
-	cd bktree
-	einfo `pwd`
-	postgres-multi_foreach emake
-}
+#src_compile () {
+#	ewarn "is this thing on?"
+#	cd bktree
+#	einfo `pwd`
+#	postgres-multi_foreach emake
+#}
