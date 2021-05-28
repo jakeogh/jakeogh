@@ -23,14 +23,14 @@ KEYWORDS=""
 #}
 
 src_compile () {
-	ewarn "is this thing on?"
 	cd bktree
-	einfo `pwd`
+	ewarn `pwd`
 	#postgres-multi_foreach emake
 	make
 }
 
 src_install() {
-	einfo `pwd`
+	ewarn "is this thing on?"
+	ewarn `pwd`
 	default
 }
