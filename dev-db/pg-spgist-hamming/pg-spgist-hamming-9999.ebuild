@@ -29,3 +29,8 @@ src_compile () {
 	#postgres-multi_foreach emake
 	make
 }
+
+src_install() {
+	einfo `pwd`
+	defaults
+}
