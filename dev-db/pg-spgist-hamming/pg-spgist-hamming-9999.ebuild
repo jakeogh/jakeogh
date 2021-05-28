@@ -32,5 +32,5 @@ src_compile () {
 
 src_install() {
 	einfo `pwd`
-	defaults
+	default
 }
