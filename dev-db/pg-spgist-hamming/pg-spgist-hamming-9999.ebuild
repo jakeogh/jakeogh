@@ -17,7 +17,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/pg-spgist-hamming https://github.com/jakeogh/pg
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 #src_configure() {
 #	#postgres-multi_foreach econf
