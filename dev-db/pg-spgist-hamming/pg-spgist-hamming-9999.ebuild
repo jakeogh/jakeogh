@@ -22,6 +22,7 @@ KEYWORDS=""
 #}
 
 src_compile () {
+	ewarn "is this thing on?"
 	cd bktree
 	einfo `pwd`
 	postgres-multi_foreach emake
