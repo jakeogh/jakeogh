@@ -23,6 +23,6 @@ KEYWORDS=""
 
 src_compile () {
 	cd bktree
-	pwd
+	einfo `pwd`
 	postgres-multi_foreach emake
 }
