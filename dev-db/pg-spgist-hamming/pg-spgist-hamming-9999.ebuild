@@ -30,7 +30,8 @@ src_compile () {
 }
 
 src_install() {
-	ewarn "is this thing on?"
+	cd bktree
+	#ewarn "is this thing on?"
 	ewarn `pwd`
 	default
 }
