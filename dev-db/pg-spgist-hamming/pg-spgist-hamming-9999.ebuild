@@ -22,5 +22,6 @@ KEYWORDS=""
 #}
 
 src_compile () {
+	cd bktree
 	postgres-multi_foreach emake
 }
