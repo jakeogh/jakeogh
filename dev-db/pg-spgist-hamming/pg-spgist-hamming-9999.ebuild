@@ -17,6 +17,10 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
-src_configure() {
-	postgres-multi_foreach econf
+#src_configure() {
+#	#postgres-multi_foreach econf
+#}
+
+src_compile () {
+	postgres-multi_foreach emake
 }
