@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{8..9} )
+PYTHON_COMPAT=( python3_{8..10} )
 
 inherit readme.gentoo-r1 autotools perl-functions python-single-r1 toolchain-funcs udev user git-r3
 
