@@ -4,10 +4,8 @@
 # from https://github.com/longlene/clx/tree/master/dev-db/ssdb
 
 EAPI=7
-#PYTHON_COMPAT=( python3_{8..9} )
 
 inherit git-r3
-#inherit distutils
 inherit eutils user
 
 DESCRIPTION="A fast NoSQL database on-disk alternative to Redis"
