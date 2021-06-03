@@ -34,7 +34,6 @@ RDEPEND="
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/tldextract[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
@@ -57,6 +56,7 @@ RDEPEND="
 	dev-python/pdfx[${PYTHON_USEDEP}]
 "
 
+#	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 #	dev-python/youtube-dl-wrapper[${PYTHON_USEDEP}]
 #	sys-apps/file[python]
 #	dev-python/pydot[${PYTHON_USEDEP}]
