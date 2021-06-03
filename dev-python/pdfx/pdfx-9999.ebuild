@@ -20,6 +20,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/pdfminer-six[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
+	dev-python/cryptography[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
