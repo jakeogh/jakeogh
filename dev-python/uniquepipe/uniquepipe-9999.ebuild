@@ -19,6 +19,7 @@ RDEPEND="
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/bitstring[${PYTHON_USEDEP}]
+	dev-python/pyphash[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
