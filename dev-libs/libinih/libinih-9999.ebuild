@@ -1,14 +1,11 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-#PYTHON_COMPAT=( python2_7 )
+EAPI="7"
 
 inherit git-r3
-#inherit autotools
-#inherit python-single-r1
 
-DESCRIPTION="libpsl"
+DESCRIPTION="Simple .INI file parser in C, good for embedded systems"
 HOMEPAGE="https://github.com/benhoyt/inih"
 
 EGIT_REPO_URI="https://github.com/benhoyt/inih.git"
@@ -19,12 +16,3 @@ SLOT="0"
 IUSE=""
 
 DEPEND=""
-
-#src_prepare() {
-#	default
-#	./autogen.sh || die
-#}
-
-#src_compile() {
-#	emake || die "Compile failed."
-#}
