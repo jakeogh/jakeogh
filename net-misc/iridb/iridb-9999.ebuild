@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/reify[${PYTHON_USEDEP}]
 	dev-python/rediskey[${PYTHON_USEDEP}]
 	dev-python/enumerate_input[${PYTHON_USEDEP}]
+	dev-python/statfilter[${PYTHON_USEDEP}]
 	dev-python/iterator_filter[${PYTHON_USEDEP}]
 	dev-python/uniquepipe[${PYTHON_USEDEP}]
 	dev-python/cssselect[${PYTHON_USEDEP}]
