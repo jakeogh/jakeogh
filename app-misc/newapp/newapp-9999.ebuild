@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/astor[${PYTHON_USEDEP}]
 	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/walkup_until_found[${PYTHON_USEDEP}]
+	dev-python/licenseguesser[${PYTHON_USEDEP}]
 	dev-vcs/hub
 "
 
