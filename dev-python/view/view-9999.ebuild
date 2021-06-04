@@ -19,6 +19,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/classify[${PYTHON_USEDEP}]
+	dev-python/hashfilter[${PYTHON_USEDEP}]
 	net-misc/iridb[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	app-text/djview
