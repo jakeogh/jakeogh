@@ -17,7 +17,6 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/stringfilter[${PYTHON_USEDEP}]
 	dev-python/mpvpy[${PYTHON_USEDEP}]
 	dev-python/redisfilter[${PYTHON_USEDEP}]
