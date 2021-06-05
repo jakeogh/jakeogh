@@ -33,7 +33,6 @@ RDEPEND="
 	dev-python/iterator_filter[${PYTHON_USEDEP}]
 	dev-python/uniquepipe[${PYTHON_USEDEP}]
 	dev-python/cssselect[${PYTHON_USEDEP}]
-	dev-python/yapsy[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
@@ -60,6 +59,7 @@ RDEPEND="
 	dev-python/pdfx[${PYTHON_USEDEP}]
 "
 
+#	dev-python/yapsy[${PYTHON_USEDEP}]
 #	dev-python/lazy_import[${PYTHON_USEDEP}]
 #	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 #	dev-python/youtube-dl-wrapper[${PYTHON_USEDEP}]
