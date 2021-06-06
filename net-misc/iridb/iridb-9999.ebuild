@@ -57,6 +57,7 @@ RDEPEND="
 	dev-python/cachetools[${PYTHON_USEDEP}]
 	dev-python/menu[${PYTHON_USEDEP}]
 	dev-python/pdfx[${PYTHON_USEDEP}]
+	dev-python/dotmap[${PYTHON_USEDEP}]
 "
 
 #	dev-python/yapsy[${PYTHON_USEDEP}]
