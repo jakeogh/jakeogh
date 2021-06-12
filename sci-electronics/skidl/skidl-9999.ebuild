@@ -10,7 +10,7 @@ DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1
 
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Programatically draw circuits"
 HOMEPAGE="https://github.com/jakeogh/skidl"
 EGIT_REPO_URI="/home/cfg/_myapps/skidl https://github.com/jakeogh/skidl.git"
 
@@ -20,9 +20,9 @@ KEYWORDS=""
 
 
 RDEPEND="
-	gen_cond_dep 'sci-electronics/kinparse[${PYTHON_SINGLE_USEDEP}]'
-	gen_cond_dep 'dev-python/graphviz[${PYTHON_SINGLE_USEDEP}]'
-	gen_cond_dep 'sci-electronics/kicad[${PYTHON_SINGLE_USEDEP}]'
+	$(gen_cond_dep 'sci-electronics/kinparse[${PYTHON_SINGLE_USEDEP}]' python3_9)
+	$(gen_cond_dep 'dev-python/graphviz[${PYTHON_SINGLE_USEDEP}]' python3_9)
+	$(gen_cond_dep 'sci-electronics/kicad[${PYTHON_SINGLE_USEDEP}]' python3_9)
 "
 
 DEPEND="${RDEPEND}"
