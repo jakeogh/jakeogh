@@ -20,9 +20,10 @@ KEYWORDS=""
 
 
 RDEPEND="
-	$(python_gen_cond_dep 'sci-electronics/kinparse[${PYTHON_SINGLE_USEDEP}]' python3_9)
-	$(python_gen_cond_dep 'dev-python/graphviz[${PYTHON_SINGLE_USEDEP}]' python3_9)
-	$(python_gen_cond_dep 'sci-electronics/kicad[${PYTHON_SINGLE_USEDEP}]' python3_9)
+	$(python_gen_cond_dep '
+		sci-electronics/kinparse[${PYTHON_SINGLE_USEDEP}]
+		dev-python/graphviz[${PYTHON_SINGLE_USEDEP}]
+		sci-electronics/kicad[${PYTHON_SINGLE_USEDEP}]')
 "
 
 DEPEND="${RDEPEND}"
