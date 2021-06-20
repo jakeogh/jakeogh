@@ -18,8 +18,8 @@ KEYWORDS=""
 #IUSE="test"
 
 
+#	dev-python/numba[${PYTHON_USEDEP}]
 RDEPEND="
-	dev-python/numba[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
