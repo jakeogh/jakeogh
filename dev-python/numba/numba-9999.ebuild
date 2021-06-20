@@ -12,18 +12,16 @@ DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/numba"
 EGIT_REPO_URI="/home/cfg/_myapps/numba https://github.com/jakeogh/numba.git"
 
-LICENSE="BSD"
+LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/llvmlite[${PYTHON_USEDEP}]
 "
-	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}"
 
