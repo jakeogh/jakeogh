@@ -12,18 +12,16 @@ DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/pytzwhere"
 EGIT_REPO_URI="/home/cfg/_myapps/pytzwhere https://github.com/jakeogh/pytzwhere.git"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
+	sci-libs/shapely[${PYTHON_USEDEP}]
 "
-	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}"
 
