@@ -21,6 +21,8 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/llvmlite[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/pyyaml[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
