@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/compile-kernel"
-EGIT_REPO_URI="/home/cfg/_myapps/compile_kernel https://github.com/jakeogh/compile-kernel.git"
+EGIT_REPO_URI="/home/cfg/_myapps/compile-kernel https://github.com/jakeogh/compile-kernel.git"
 
 LICENSE="BSD"
 SLOT="0"
