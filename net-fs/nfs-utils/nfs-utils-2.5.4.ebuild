@@ -19,9 +19,19 @@ fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="caps ipv6 junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 nfsv41 selinux tcpd +uuid"
-REQUIRED_USE="kerberos? ( nfsv4 )"
+IUSE="caps ipv6 junction kerberos ldap +libmount nfsdcld +nfsidmap +nfsv4 +nfsv41 selinux tcpd +uuid"
+REQUIRED_USE="kerberos? ( nfsv4 nfsv41 )"
 RESTRICT="test" #315573
+
+# +nfsv4 or +nfsv41
+NFSV4_DEPEND="
+	dev-libs/libevent:=
+	>=sys-apps/keyutils-1.5.9:=
+	kerberos? (
+		>=net-libs/libtirpc-0.2.4-r1[kerberos]
+		app-crypt/mit-krb5
+	)
+"
 
 # kth-krb doesn't provide the right include
 # files, and nfs-utils doesn't build against heimdal either,
@@ -36,15 +46,9 @@ DEPEND="
 	caps? ( sys-libs/libcap )
 	ldap? ( net-nds/openldap )
 	libmount? ( sys-apps/util-linux )
-	nfsv4? (
-		dev-libs/libevent:=
-		>=sys-apps/keyutils-1.5.9:=
-		kerberos? (
-			>=net-libs/libtirpc-0.2.4-r1[kerberos]
-			app-crypt/mit-krb5
-		)
-	)
+	nfsv4? ( ${NFSV4_DEPEND} )
 	nfsv41? (
+		${NFSV4_DEPEND}
 		sys-fs/lvm2
 	)
 	tcpd? ( sys-apps/tcp-wrappers )
@@ -70,7 +74,7 @@ PATCHES=(
 
 pkg_setup() {
 	linux-info_pkg_setup
-	if use nfsv4 && ! use nfsdcld && linux_config_exists && ! linux_chkconfig_present CRYPTO_MD5 ; then
+	if use nfsdcld && ! ( nfsv4 || nfsv41 ) && linux_config_exists && ! linux_chkconfig_present CRYPTO_MD5 ; then
 		ewarn "Your NFS server will be unable to track clients across server restarts!"
 		ewarn "Please enable the \"${HILITE}nfsdcld${NORMAL}\" USE flag to install the nfsdcltrack usermode"
 		ewarn "helper upcall program, or enable ${HILITE}CONFIG_CRYPTO_MD5${NORMAL} in your kernel to"
@@ -136,7 +140,7 @@ src_install() {
 	dodir /sbin
 	mv "${ED}"/usr/sbin/rpc.statd "${ED}"/sbin/ || die
 
-	if use nfsv4 && use nfsidmap ; then
+	if use nfsv4 || nfsv41 && use nfsidmap ; then
 		insinto /etc
 		doins support/nfsidmap/idmapd.conf
 
@@ -151,7 +155,7 @@ src_install() {
 	keepdir /etc/exports.d
 
 	local f list=() opt_need=""
-	if use nfsv4 ; then
+	if use nfsv4 || nfsv41 ; then
 		opt_need="rpc.idmapd"
 		list+=( rpc.idmapd rpc.pipefs )
 		use kerberos && list+=( rpc.gssd rpc.svcgssd )
