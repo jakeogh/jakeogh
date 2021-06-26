@@ -140,7 +140,7 @@ src_install() {
 	dodir /sbin
 	mv "${ED}"/usr/sbin/rpc.statd "${ED}"/sbin/ || die
 
-	if use nfsv4 || nfsv41 && use nfsidmap ; then
+	if ( use nfsv4 || use nfsv41 ) && use nfsidmap ; then
 		insinto /etc
 		doins support/nfsidmap/idmapd.conf
 
@@ -155,7 +155,7 @@ src_install() {
 	keepdir /etc/exports.d
 
 	local f list=() opt_need=""
-	if use nfsv4 || nfsv41 ; then
+	if use nfsv4 || use nfsv41 ; then
 		opt_need="rpc.idmapd"
 		list+=( rpc.idmapd rpc.pipefs )
 		use kerberos && list+=( rpc.gssd rpc.svcgssd )
