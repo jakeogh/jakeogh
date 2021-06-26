@@ -163,7 +163,12 @@ src_install() {
 	for f in nfs nfsclient rpc.statd "${list[@]}" ; do
 		newinitd "${FILESDIR}"/${f}.initd ${f}
 	done
-	newinitd "${FILESDIR}"/nfsmount.initd-1.3.1 nfsmount # Nuke after 2015/08/01
+
+	#537996 #406021 #426944
+	# this patch adds a no-op /etc/init.d/nfsmount that produces a warning:
+	# "This migration script will be removed after 01 Aug 2015."
+	#newinitd "${FILESDIR}"/nfsmount.initd-1.3.1 nfsmount # Nuke after 2015/08/01
+
 	for f in nfs nfsclient ; do
 		newconfd "${FILESDIR}"/${f}.confd ${f}
 	done
