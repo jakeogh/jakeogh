@@ -211,6 +211,6 @@ pkg_postinst() {
 	else
 		ewarn "If you use OpenRC, the nfsmount service has been replaced with nfsclient."
 		ewarn "If you were using nfsmount, please add nfsclient and netmount to the"
-		ewarn "same runlevel as nfsmount."
+		ewarn "same runlevel as nfsmount and 'rc-update del nfsmount'."
 	fi
 }
