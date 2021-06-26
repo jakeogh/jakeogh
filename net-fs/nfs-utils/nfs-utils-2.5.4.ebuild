@@ -74,7 +74,7 @@ PATCHES=(
 
 pkg_setup() {
 	linux-info_pkg_setup
-	if use nfsdcld && ! ( use nfsv4 || use nfsv41 ) && linux_config_exists &&  linux_chkconfig_present CRYPTO_MD5 ; then
+	if use nfsdcld && ! ( use nfsv4 || use nfsv41 ) && linux_config_exists && ! linux_chkconfig_present CRYPTO_MD5 ; then
 		ewarn "Your NFS server will be unable to track clients across server restarts!"
 		ewarn "Please enable the \"${HILITE}nfsdcld${NORMAL}\" USE flag to install the nfsdcltrack usermode"
 		ewarn "helper upcall program, or enable ${HILITE}CONFIG_CRYPTO_MD5${NORMAL} in your kernel to"
