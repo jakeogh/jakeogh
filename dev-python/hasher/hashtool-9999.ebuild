@@ -8,8 +8,8 @@ inherit git-r3
 inherit distutils-r1
 
 DESCRIPTION="Hash stdin"
-HOMEPAGE="https://github.com/jakeogh/hasher"
-EGIT_REPO_URI="/home/cfg/_myapps/hasher https://github.com/jakeogh/hasher.git"
+HOMEPAGE="https://github.com/jakeogh/hashtool"
+EGIT_REPO_URI="/home/cfg/_myapps/hashtool https://github.com/jakeogh/hashtool.git"
 
 LICENSE="BSD"
 SLOT="0"
