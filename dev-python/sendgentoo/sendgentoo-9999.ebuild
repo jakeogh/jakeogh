@@ -40,6 +40,7 @@ RDEPEND="
 	dev-python/compile-kernel[${PYTHON_USEDEP}]
 	dev-python/blocktool[${PYTHON_USEDEP}]
 	dev-python/mounttool[${PYTHON_USEDEP}]
+	dev-python/nettool[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
