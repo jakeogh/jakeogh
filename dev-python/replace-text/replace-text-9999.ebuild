@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,6 @@ DEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/enumerate_input[${PYTHON_USEDEP}]
 "
-#	dev-python/icecream[${PYTHON_USEDEP}]  # too many deps for sendgentoo
 
 RDEPEND="${DEPEND}"
 
