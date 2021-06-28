@@ -26,7 +26,7 @@ RDEPEND="
 	dev-python/retry_on_exception[${PYTHON_USEDEP}]
 	dev-python/prettyprinter[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
-	app-misc/unitcalc[${PYTHON_USEDEP}]
+	dev-python/unitcalc[${PYTHON_USEDEP}]
 	dev-python/pathwatcher[${PYTHON_USEDEP}]
 	dev-python/python-fadvise[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest-cov[${PYTHON_USEDEP}]
