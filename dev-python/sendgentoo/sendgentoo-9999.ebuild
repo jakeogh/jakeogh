@@ -41,6 +41,7 @@ RDEPEND="
 	dev-python/blocktool[${PYTHON_USEDEP}]
 	dev-python/mounttool[${PYTHON_USEDEP}]
 	dev-python/nettool[${PYTHON_USEDEP}]
+	dev-python/asserttool[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
