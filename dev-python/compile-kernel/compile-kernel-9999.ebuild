@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="genkernel/grub wrapper"
 HOMEPAGE="https://github.com/jakeogh/compile-kernel"
 EGIT_REPO_URI="/home/cfg/_myapps/compile-kernel https://github.com/jakeogh/compile-kernel.git"
 
