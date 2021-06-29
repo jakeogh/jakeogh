@@ -23,7 +23,6 @@ RDEPEND="
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 "
-	#dev-python/click-command-tree[${PYTHON_USEDEP}]
 
 DEPEND="${RDEPEND}"
 
