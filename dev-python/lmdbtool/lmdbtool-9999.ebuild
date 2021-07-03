@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-inherit xdg
+#inherit xdg
 
 DESCRIPTION="Another CLI for LMDB"
 HOMEPAGE="https://github.com/jakeogh/lmdbtool"
@@ -24,7 +24,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	xdg_src_prepare
-	default
-}
+#src_prepare() {
+#	xdg_src_prepare
+#	default
+#}
