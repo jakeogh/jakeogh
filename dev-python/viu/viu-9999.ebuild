@@ -9,8 +9,8 @@ inherit git-r3
 #inherit xdg
 
 DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/viu"
-EGIT_REPO_URI="/home/cfg/_myapps/viu https://github.com/jakeogh/viu.git"
+HOMEPAGE="https://www.github.com/atanunq/viu"
+EGIT_REPO_URI="/home/cfg/_myapps/viu https://www.github.com/atanunq/viu.git"
 
 LICENSE="BSD"
 SLOT="0"
