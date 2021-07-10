@@ -34,7 +34,8 @@ RDEPEND="dev-util/splint
 
 src_install() {
 #	dodoc README*
-	dobin ${PN}
-	dosym "/usr/bin/${PN}" "/usr/bin/${PN}f"
+	dobin ${PN}.sh
+	#dosym "/usr/bin/${PN}" "/usr/bin/${PN}f"
+	dosym "/usr/bin/${PN}.sh" "/usr/bin/${PN}"
 #	dobin ${PN}_test
 }
