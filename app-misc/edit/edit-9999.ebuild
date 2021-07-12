@@ -29,6 +29,7 @@ RDEPEND="dev-util/splint
 	dev-python/mypy[${PYTHON_USEDEP}]
 	dev-util/ctags
 	dev-python/memory_profiler
+	dev-util/pkgdev[${PYTHON_USEDEP}]
 "
 	#dev-util/diffuse[${PYTHON_USEDEP}]  # no py 3.8
 
