@@ -28,7 +28,7 @@ src_prepare() {
 		sed -i -e '/(__APPLE__)/a#define HAVE_MEMALIGN 1\n#define memalign(X,Y) malloc(X)' mdb.c || die
 	fi
 	if use developer-mode; then
-		sed -i -e '#define MDB_DEVEL 0/#define MDB_DEVEL 1' mdb.c || die
+		sed -i -e 's/#define MDB_DEVEL 0/#define MDB_DEVEL 1/g' mdb.c || die
 	fi
 
 	multilib_copy_sources
