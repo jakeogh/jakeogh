@@ -30,6 +30,7 @@ src_prepare() {
 	if use developer-mode; then
 		sed -i -e '#define MDB_DEVEL 0/#define MDB_DEVEL 1' mdb.c || die
 	fi
+
 	multilib_copy_sources
 }
 
