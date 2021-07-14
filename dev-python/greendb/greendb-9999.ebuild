@@ -6,9 +6,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="server frontend for lmdb"
 HOMEPAGE="https://github.com/jakeogh/greendb"
 EGIT_REPO_URI="/home/cfg/_myapps/greendb https://github.com/jakeogh/greendb.git"
 
@@ -24,12 +23,9 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/lmdb[${PYTHON_USEDEP}]
+	dev-python/gevent[${PYTHON_USEDEP}]
+	dev-python/msgpack[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
