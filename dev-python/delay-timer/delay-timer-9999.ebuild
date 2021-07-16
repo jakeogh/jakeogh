@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python object that sleeps longer each time its called"
-HOMEPAGE="https://github.com/jakeogh/delay_timer"
-EGIT_REPO_URI="/home/cfg/_myapps/delay_timer https://github.com/jakeogh/delay_timer.git"
+HOMEPAGE="https://github.com/jakeogh/delay-timer"
+EGIT_REPO_URI="/home/cfg/_myapps/delay-timer https://github.com/jakeogh/delay-timer.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -17,6 +17,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
+	dev-python/asserttool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
