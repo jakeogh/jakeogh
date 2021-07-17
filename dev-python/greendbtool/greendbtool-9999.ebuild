@@ -6,16 +6,14 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Configuration manager for https://github.com/coleifer/greendb"
 HOMEPAGE="https://github.com/jakeogh/greendbtool"
 EGIT_REPO_URI="/home/cfg/_myapps/greendbtool https://github.com/jakeogh/greendbtool.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
@@ -24,6 +22,8 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/configtool[${PYTHON_USEDEP}]
+	app-misc/tmux
 "
 
 DEPEND="${RDEPEND}"
