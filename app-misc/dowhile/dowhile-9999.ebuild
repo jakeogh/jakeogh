@@ -6,8 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-#inherit xdg
-
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/dowhile"
 EGIT_REPO_URI="/home/cfg/_myapps/dowhile https://github.com/jakeogh/dowhile.git"
@@ -15,11 +13,9 @@ EGIT_REPO_URI="/home/cfg/_myapps/dowhile https://github.com/jakeogh/dowhile.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_install() {
+	dobin ${PN}/${PN}
+#	dosym "/usr/bin/${PN}.sh" "/usr/bin/${PN}"
+}
