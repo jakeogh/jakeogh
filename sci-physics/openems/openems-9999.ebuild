@@ -4,7 +4,7 @@
 EAPI=7
 #PYTHON_COMPAT=( python3_{8..10} )
 
-inherit git-r3 cmake-utils
+inherit git-r3 cmake
 
 DESCRIPTION="Electromagnetic field solver using the FDTD method"
 HOMEPAGE="https://github.com/thliebig/openEMS-Project"
@@ -36,7 +36,7 @@ src_configure() {
 		-DBUILD_APPCSXCAD=$(usex gui)
 		-DWITH_MPI=$(usex mpi)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 #src_configure() {
