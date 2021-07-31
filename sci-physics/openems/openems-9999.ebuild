@@ -2,18 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+#PYTHON_COMPAT=( python3_{8..10} )
 
-inherit distutils-r1 git-r3 cmake
+inherit git-r3 cmake-utils
 
 DESCRIPTION="Electromagnetic field solver using the FDTD method"
 HOMEPAGE="https://github.com/thliebig/openEMS-Project"
-EGIT_REPO_URI="/home/cfg/_myapps/openems https://github.com/thliebig/openEMS-Project.git"
+EGIT_REPO_URI="/home/cfg/_myapps/openEMS-Project https://github.com/thliebig/openEMS-Project.git"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+IUSE="hyp2mat ctb +gui mpi"
 
 RDEPEND="
 	dev-util/ninja
@@ -24,15 +24,25 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+
 #src_prepare() {
 #	sed -i 's/EQUAL 6/EQUAL 8/' "${S}/openEMS/CMakeLists.txt" || die
 #	eapply_user
 #}
 
+
 src_configure() {
-	local CMAKE_BUILD_TYPE="Release"
 	mycmakeargs=(
-	-DCMAKE_INSTALL_PREFIX="${D}"
+		-DBUILD_APPCSXCAD=$(usex gui)
+		-DWITH_MPI=$(usex mpi)
 	)
-	cmake_src_configure
+	cmake-utils_src_configure
 }
+
+#src_configure() {
+#	local CMAKE_BUILD_TYPE="Release"
+#	mycmakeargs=(
+#	-DCMAKE_INSTALL_PREFIX="${D}"
+#	)
+#	cmake_src_configure
+#}
