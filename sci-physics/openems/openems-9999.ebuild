@@ -8,7 +8,7 @@ inherit git-r3 cmake
 
 DESCRIPTION="Electromagnetic field solver using the FDTD method"
 HOMEPAGE="https://github.com/thliebig/openEMS-Project"
-EGIT_REPO_URI="/home/cfg/_myapps/openEMS-Project https://github.com/thliebig/openEMS-Project.git"
+EGIT_REPO_URI="https://github.com/thliebig/openEMS-Project.git"
 
 LICENSE="GPL-3+"
 SLOT="0"
@@ -24,13 +24,6 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	sed -i 's/EQUAL 6/EQUAL 8/' "${S}/openEMS/CMakeLists.txt" || die
-#	eapply_user
-#}
-
-
 src_configure() {
 	mycmakeargs=(
 		-DBUILD_APPCSXCAD=$(usex gui)
@@ -38,11 +31,3 @@ src_configure() {
 	)
 	cmake_src_configure
 }
-
-#src_configure() {
-#	local CMAKE_BUILD_TYPE="Release"
-#	mycmakeargs=(
-#	-DCMAKE_INSTALL_PREFIX="${D}"
-#	)
-#	cmake_src_configure
-#}
