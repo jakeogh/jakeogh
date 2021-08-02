@@ -18,6 +18,10 @@ KEYWORDS=""
 
 src_prepare() {
 	default
+	touch src/ibsimu.cpp || die
+	echo -n "#define IBSIMU_GIT_ID \"" > src/id.hpp || die
+	git log -1 --pretty=format:"%h, %ad" >> src/id.hpp || die
+	echo "\"" >> src/id.hpp || die
 	eautoreconf
 }
 
