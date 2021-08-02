@@ -16,6 +16,12 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
 
+RDEPEND='
+	x11-libs/gtkglext
+	sci-libs/suitesparse
+	media-gfx/opencsg
+'
+
 src_prepare() {
 	default
 	touch src/ibsimu.cpp || die
