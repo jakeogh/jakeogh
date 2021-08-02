@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit toolchain-funcs
-inherit automake
+inherit autotools
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/ibsimu"
