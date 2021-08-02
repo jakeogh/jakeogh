@@ -29,6 +29,7 @@ src_prepare() {
 	git log -1 --pretty=format:"%h, %ad" >> src/id.hpp || die
 	echo "\"" >> src/id.hpp || die
 	sed '0,/suitesparse\//s///' -i m4/check_umfpack.m4 || die
+	sed '0,/suitesparse\//s///' -i m4/check_umfpack.m4 || die
 	eautoreconf
 }
 
