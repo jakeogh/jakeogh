@@ -32,7 +32,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf
+	econf --with-umfpack=/usr
 }
 
 src_install() {
