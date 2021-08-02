@@ -18,8 +18,15 @@ KEYWORDS=""
 #IUSE="test"
 
 
+src_prepare() {
+	default
+	eautoreconf
+}
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_configure() {
+	econf
+}
+
+src_install() {
+	default
+}
