@@ -8,15 +8,13 @@ inherit git-r3
 inherit toolchain-funcs
 inherit autotools
 
-DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/ibsimu"
-EGIT_REPO_URI="/home/cfg/_myapps/ibsimu https://github.com/jakeogh/ibsimu.git"
+DESCRIPTION="Ion beam simulator"
+HOMEPAGE="http://ibsimu.sourceforge.net/index.html"
+EGIT_REPO_URI="/home/user/_myapps/ibsimu git://ibsimu.git.sourceforge.net/gitroot/ibsimu/ibsimu"
 
-LICENSE="BSD"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 src_prepare() {
 	default
