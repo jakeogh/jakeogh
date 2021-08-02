@@ -5,8 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
-
-#inherit xdg
+inherit toolchain-funcs
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/ibsimu"
