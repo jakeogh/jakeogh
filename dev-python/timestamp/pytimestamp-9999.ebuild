@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Prepend timestamps to input"
-HOMEPAGE="https://github.com/jakeogh/timestamp"
-EGIT_REPO_URI="/home/cfg/_myapps/timestamp https://github.com/jakeogh/timestamp.git"
+DESCRIPTION="Prepend pytimestamps to input"
+HOMEPAGE="https://github.com/jakeogh/pytimestamp"
+EGIT_REPO_URI="/home/cfg/_myapps/pytimestamp https://github.com/jakeogh/pytimestamp.git"
 
 LICENSE="BSD"
 SLOT="0"
