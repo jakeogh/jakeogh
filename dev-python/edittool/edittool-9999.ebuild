@@ -15,7 +15,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
-
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/click-default-group[${PYTHON_USEDEP}]
