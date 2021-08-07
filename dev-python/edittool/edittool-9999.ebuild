@@ -23,7 +23,6 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/hashtool[${PYTHON_USEDEP}]
-	dev-python/shutil[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
