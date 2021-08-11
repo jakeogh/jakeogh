@@ -24,6 +24,9 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/pyusb[${PYTHON_USEDEP}]
+	dev-python/pyvisa-py[${PYTHON_USEDEP}]
+	sci-libs/linux-gpib
 "
 
 DEPEND="${RDEPEND}"
