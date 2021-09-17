@@ -42,7 +42,7 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
 	dev-python/python-dmenu[${PYTHON_USEDEP}]
-	dev-python/beautifulsoup:*[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup4:*[${PYTHON_USEDEP}]
 	dev-python/requests-cache[${PYTHON_USEDEP}]
 	dev-python/requests-file[${PYTHON_USEDEP}]
 	dev-python/requests-ftp[${PYTHON_USEDEP}]
