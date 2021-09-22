@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/youtube-extractor"
-EGIT_REPO_URI="/home/cfg/_myapps/youtube_extractor https://github.com/jakeogh/youtube-extractor.git"
+HOMEPAGE="https://github.com/jakeogh/yt-dlp-url-extractor"
+EGIT_REPO_URI="/home/cfg/_myapps/yt-dlp-url-extractor https://github.com/jakeogh/yt-dlp-url-extractor.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,7 +18,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	net-misc/yt-dlp[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
