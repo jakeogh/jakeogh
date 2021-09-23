@@ -11,6 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp"
 EGIT_REPO_URI="/home/cfg/_myapps/yt-dlp https://github.com/jakeogh/yt-dlp.git"
+EGIT_BRANCH="locked_file"
 
 LICENSE="BSD"
 SLOT="0"
