@@ -18,7 +18,6 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/python-mpv[${PYTHON_USEDEP}]
 	dev-python/hashfilter[${PYTHON_USEDEP}]
 	dev-python/jsonparser[${PYTHON_USEDEP}]
