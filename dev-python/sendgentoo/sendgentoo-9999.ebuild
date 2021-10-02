@@ -43,6 +43,7 @@ RDEPEND="
 	dev-python/nettool[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/symlinktree[${PYTHON_USEDEP}]
+	dev-python/portagetool[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
