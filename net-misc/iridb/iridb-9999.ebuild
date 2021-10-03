@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/click-option-group[${PYTHON_USEDEP}]
 	dev-python/uhashfs[${PYTHON_USEDEP}]
 	app-misc/uhashfsc
-	dev-python/retry_on_exception[${PYTHON_USEDEP}]
+	dev-python/retry-on-exception[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/htmlparser[${PYTHON_USEDEP}]
 	dev-python/reify[${PYTHON_USEDEP}]
