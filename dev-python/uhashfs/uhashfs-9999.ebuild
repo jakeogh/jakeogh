@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/hashtool[${PYTHON_USEDEP}]
 	dev-python/python-getdents[${PYTHON_USEDEP}]
-	dev-python/retry_on_exception[${PYTHON_USEDEP}]
+	dev-python/retry-on-exception[${PYTHON_USEDEP}]
 	dev-python/prettyprinter[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/unitcalc[${PYTHON_USEDEP}]
