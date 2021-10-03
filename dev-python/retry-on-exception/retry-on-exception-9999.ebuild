@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/retry_on_exception"
-EGIT_REPO_URI="/home/cfg/_myapps/retry_on_exception https://github.com/jakeogh/retry_on_exception.git"
+HOMEPAGE="https://github.com/jakeogh/retry-on-exception"
+EGIT_REPO_URI="/home/cfg/_myapps/retry-on-exception https://github.com/jakeogh/retry-on-exception.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -19,7 +19,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/delay_timer[${PYTHON_USEDEP}]
+	dev-python/delay-timer[${PYTHON_USEDEP}]
 "
 
 #DEPEND="${RDEPEND}"
