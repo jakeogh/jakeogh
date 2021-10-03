@@ -23,13 +23,8 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/configtool[${PYTHON_USEDEP}]
+	dev-python/retry-on-exception[${PYTHON_USEDEP}]
 	app-misc/tmux
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
