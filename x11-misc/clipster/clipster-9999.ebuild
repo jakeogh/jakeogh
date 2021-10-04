@@ -1,29 +1,35 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit distutils-r1
-
-DESCRIPTION="clipster - python clipboard manager"
-HOMEPAGE="https://github.com/mrichar1/clipster"
-EGIT_REPO_URI="https://github.com/mrichar1/clipster.git" #has setup.py
-#EGIT_REPO_URI="https://github.com/jakeogh/clipster.git" #has setup.py
 inherit git-r3
+inherit distutils-r1
+#inherit xdg
 
-LICENSE="AGPL-3"
+DESCRIPTION="Short explination of what it does _here_"
+HOMEPAGE="https://github.com/jakeogh/clipster"
+EGIT_REPO_URI="/home/cfg/_myapps/clipster https://github.com/jakeogh/clipster.git"
+
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+#IUSE="test"
 
-DEPEND="
-	dev-python/pygobject:*
-	dev-python/setuptools_scm
+
+RDEPEND="
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/icecream[${PYTHON_USEDEP}]
+	dev-python/sh[${PYTHON_USEDEP}]
+	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/pathtool[${PYTHON_USEDEP}]
 "
 
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
-python_install_all() {
-	distutils-r1_python_install_all
-}
+
+#src_prepare() {
+#	default
+#	xdg_src_prepare
+#}
