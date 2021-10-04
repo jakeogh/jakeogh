@@ -26,6 +26,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/dateparser[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
+	dev-python/humanize[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
