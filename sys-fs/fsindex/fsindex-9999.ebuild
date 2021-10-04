@@ -17,7 +17,6 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 "
