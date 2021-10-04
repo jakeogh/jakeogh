@@ -31,7 +31,6 @@ RDEPEND="
 	dev-python/humanfriendly[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	sys-apps/pv
-	dev-python/kcl[${PYTHON_USEDEP}]
 	dev-python/retry-on-exception[${PYTHON_USEDEP}]
 	dev-tcltk/expect
 	dev-python/humanfriendly[${PYTHON_USEDEP}]
