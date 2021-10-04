@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/dateparser[${PYTHON_USEDEP}]
+	dev-python/pytz[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
