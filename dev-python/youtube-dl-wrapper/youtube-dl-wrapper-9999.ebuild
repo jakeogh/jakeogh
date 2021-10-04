@@ -25,7 +25,6 @@ DEPEND="
 	dev-python/youtube-extractor[${PYTHON_USEDEP}]
 	dev-python/smartmove[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/kcl[${PYTHON_USEDEP}]
 	net-misc/iridb[${PYTHON_USEDEP}]
 "
 
