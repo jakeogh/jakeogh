@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/timetool[${PYTHON_USEDEP}]
+	app-portage/gentoolkit[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
