@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/mounttool[${PYTHON_USEDEP}]
 	dev-python/portagetool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/boottool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
