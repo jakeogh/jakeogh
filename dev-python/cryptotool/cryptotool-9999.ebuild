@@ -20,9 +20,9 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/blocktool[${PYTHON_USEDEP}]
+	dev-python/devicetool[${PYTHON_USEDEP}]
 	dev-python/mounttool[${PYTHON_USEDEP}]
-	dev-python/run-command[${PYTHON_USEDEP}]
+	dev-python/sh[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
