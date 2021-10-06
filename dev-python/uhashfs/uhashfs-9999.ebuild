@@ -29,12 +29,6 @@ RDEPEND="
 	dev-python/unitcalc[${PYTHON_USEDEP}]
 	dev-python/pathwatcher[${PYTHON_USEDEP}]
 	dev-python/python-fadvise[${PYTHON_USEDEP}]
-	test? ( dev-python/pytest-cov[${PYTHON_USEDEP}]
-			dev-python/pytest[${PYTHON_USEDEP}]
-			dev-python/tox[${PYTHON_USEDEP}]
-			dev-python/twine[${PYTHON_USEDEP}]
-			dev-python/wheel[${PYTHON_USEDEP}]
-			dev-python/virtualenv[${PYTHON_USEDEP}] )
 "
 
 python_install_all() {
