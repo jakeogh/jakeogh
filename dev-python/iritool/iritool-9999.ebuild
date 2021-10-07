@@ -8,7 +8,7 @@ inherit git-r3
 inherit distutils-r1
 #inherit xdg
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Common functions for working with IRI's and URI's"
 HOMEPAGE="https://github.com/jakeogh/iritool"
 EGIT_REPO_URI="/home/cfg/_myapps/iritool https://github.com/jakeogh/iritool.git"
 
@@ -21,13 +21,6 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
