@@ -6,7 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/sendgentoo-post-chroot"
@@ -15,8 +14,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/sendgentoo-post-chroot https://github.com/jakeo
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
