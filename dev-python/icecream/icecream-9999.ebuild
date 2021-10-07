@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 inherit git-r3
 
-DESCRIPTION="Sweet and creamy print debugging."
+DESCRIPTION="(fork of) Sweet and creamy print debugging."
 HOMEPAGE="https://github.com/gruns/icecream"
-EGIT_REPO_URI="/home/user/_myapps/icecream https://github.com/gruns/icecream.git"
+EGIT_REPO_URI="/home/user/_myapps/icecream https://github.com/jakeogh/icecream.git"
 
 LICENSE="MIT"
 SLOT="0"
