@@ -6,7 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-#inherit xdg
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/fatrace"
@@ -18,8 +17,3 @@ KEYWORDS=""
 #IUSE="test"
 
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
