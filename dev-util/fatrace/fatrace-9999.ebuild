@@ -6,7 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/fatrace"
 EGIT_REPO_URI="/home/cfg/_myapps/fatrace https://github.com/jakeogh/fatrace.git"
@@ -16,4 +15,6 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
-
+src_install() {
+	emake DESTDIR="${D}" PREFIX=/usr install || die "Install failed."
+}
