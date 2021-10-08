@@ -42,6 +42,7 @@ RDEPEND="
 	dev-python/nettool[${PYTHON_USEDEP}]
 	dev-python/itertool[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/timetool[${PYTHON_USEDEP}]
 	dev-python/symlinktree[${PYTHON_USEDEP}]
 	dev-python/portagetool[${PYTHON_USEDEP}]
 	dev-python/sendgentoo-post-chroot[${PYTHON_USEDEP}]
