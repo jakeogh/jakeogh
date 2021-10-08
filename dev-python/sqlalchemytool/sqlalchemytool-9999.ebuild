@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
