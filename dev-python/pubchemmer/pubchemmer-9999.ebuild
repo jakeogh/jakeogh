@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/pandas[${PYTHON_USEDEP}]
 	dev-python/structure_data_file_sdf_parser[${PYTHON_USEDEP}]
 	sci-chemistry/openbabel[python]
-	=dev-db/postgresql-13:*[${PYTHON_USEDEP}]
+	~dev-db/postgresql-13:*[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
