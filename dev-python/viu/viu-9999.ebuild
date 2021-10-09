@@ -6,20 +6,10 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-#inherit xdg
-
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Simple terminal image viewer written in Rust."
 HOMEPAGE="https://www.github.com/atanunq/viu"
-EGIT_REPO_URI="/home/cfg/_myapps/viu https://www.github.com/atanunq/viu.git"
+EGIT_REPO_URI="https://www.github.com/atanunq/viu.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
