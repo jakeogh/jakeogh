@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,14 +6,13 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="A simple Python wrapper around inotify"
 HOMEPAGE="https://github.com/chrisjbillington/inotify_simple"
-EGIT_REPO_URI="/home/cfg/_myapps/inotify_simple https://github.com/chrisjbillington/inotify_simple.git"
+EGIT_REPO_URI="https://github.com/chrisjbillington/inotify_simple.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
@@ -22,4 +21,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
