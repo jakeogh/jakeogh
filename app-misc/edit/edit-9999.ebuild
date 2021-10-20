@@ -37,7 +37,7 @@ RDEPEND="
 src_install() {
 #	dodoc README*
 	#dobin ${PN}.sh
-	dobin ${PN}_failsafe ${PN}.sh
+	newbin ${PN}.sh ${PN}_failsafe
 	#dosym "/usr/bin/${PN}" "/usr/bin/${PN}f"
 	#dosym "/usr/bin/${PN}.sh" "/usr/bin/${PN}_failsafe"
 #	dobin ${PN}_test
