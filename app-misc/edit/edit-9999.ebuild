@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1
 inherit git-r3
 
-DESCRIPTION="vi wrapper for workflow"
-HOMEPAGE="https://github.com/jakeogh"
-EGIT_REPO_URI="/home/cfg/_myapps/edit"
+DESCRIPTION="bash version of vi wrapper for programatic(m) workflow"
+HOMEPAGE="https://github.com/jakeogh/edit"
+EGIT_REPO_URI="/home/cfg/_myapps/edit https://github.com/jakeogh/edit.git"
 
 LICENSE="MIT"
 SLOT="0"
@@ -30,13 +30,13 @@ RDEPEND="dev-util/splint
 	dev-util/ctags
 	dev-python/memory_profiler
 	dev-util/pkgdev[${PYTHON_USEDEP}]
+	dev-util/diffuse[${PYTHON_USEDEP}]
 "
-	#dev-util/diffuse[${PYTHON_USEDEP}]  # no py 3.8
 
 src_install() {
 #	dodoc README*
 	dobin ${PN}.sh
 	#dosym "/usr/bin/${PN}" "/usr/bin/${PN}f"
-	dosym "/usr/bin/${PN}.sh" "/usr/bin/${PN}"
+	dosym "/usr/bin/${PN}.sh" "/usr/bin/${PN}_failsafe"
 #	dobin ${PN}_test
 }
