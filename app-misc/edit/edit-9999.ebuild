@@ -15,7 +15,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-util/splint
+RDEPEND="
+	dev-util/splint
 	app-portage/repoman
 	dev-python/pylint[${PYTHON_USEDEP}]
 	app-misc/commandlock
