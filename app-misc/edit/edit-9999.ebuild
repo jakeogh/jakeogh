@@ -31,8 +31,8 @@ RDEPEND="
 	dev-util/ctags
 	dev-python/memory_profiler
 	dev-util/pkgdev[${PYTHON_USEDEP}]
-	dev-util/diffuse[${PYTHON_USEDEP}]
 "
+#	dev-util/diffuse[${PYTHON_USEDEP}]
 
 src_install() {
 #	dodoc README*
