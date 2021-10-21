@@ -18,14 +18,16 @@ KEYWORDS=""
 DEPEND="virtual/libusb"
 
 src_compile() {
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} -std=c99 -D_POSIX_C_SOURCE=200112L -Iinclude/" all misc
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} -std=c99 -D_POSIX_C_SOURCE=200112L -Iinclude/" tools misc
 }
 
 src_install() {
-	dobin bin2fex fex2bin phoenix_info
-	newbin sunxi-bootinfo bootinfo
-	newbin sunxi-fel fel
-	newbin sunxi-fexc fexc
-	newbin sunxi-nand-part nand-part
-	newbin sunxi-pio pio
+	dobin bin2fex
+	dobin fex2bin
+	dobin phoenix_info
+	dobin sunxi-bootinfo
+	dobin sunxi-fel
+	dobin sunxi-fexc
+	dobin sunxi-nand-part
+	dobin sunxi-pio
 }
