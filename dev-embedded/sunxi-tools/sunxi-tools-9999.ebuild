@@ -2,24 +2,30 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
-
-#inherit xdg
+inherit toolchain-funcs
 
 DESCRIPTION="Tools for Allwinner A10 devices."
 HOMEPAGE="https://github.com/jakeogh/sunxi-tools"
 EGIT_REPO_URI="/home/cfg/_myapps/sunxi-tools https://github.com/jakeogh/sunxi-tools.git"
 
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
+IUSE=""
 KEYWORDS=""
-#IUSE="test"
 
+DEPEND="virtual/libusb"
 
+src_compile() {
+	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS} -std=c99 -D_POSIX_C_SOURCE=200112L -Iinclude/" all misc
+}
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_install() {
+	dobin bin2fex fex2bin phoenix_info
+	newbin sunxi-bootinfo bootinfo
+	newbin sunxi-fel fel
+	newbin sunxi-fexc fexc
+	newbin sunxi-nand-part nand-part
+	newbin sunxi-pio pio
+}
