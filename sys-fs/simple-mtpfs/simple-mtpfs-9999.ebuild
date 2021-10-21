@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,18 +12,21 @@ EGIT_REPO_URI="/home/cfg/_myapps/simple-mtpfs https://github.com/phatina/simple-
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
-RDEPEND="media-libs/libmtp
+
+RDEPEND="
+	media-libs/libmtp
 	sys-fs/fuse:0"
-DEPEND="${RDEPEND}
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="
+	sys-devel/autoconf-archive
 	virtual/pkgconfig"
 
-#S="${WORKDIR}/${PN}-${P}"
 
 src_prepare() {
 	default
-
 	# The tarball doesn't contain ./configure, only configure.ac and
 	# autogen.sh.
 	eautoreconf
