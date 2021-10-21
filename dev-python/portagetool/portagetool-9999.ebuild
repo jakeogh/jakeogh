@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/timetool[${PYTHON_USEDEP}]
 	app-portage/gentoolkit[${PYTHON_USEDEP}]
-	app-portage/portage-utils[${PYTHON_USEDEP}]
+	app-portage/portage-utils
 "
 
 DEPEND="${RDEPEND}"
