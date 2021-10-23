@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
-	pp-portage/repoman[${PYTHON_USEDEP}]
+	app-portage/repoman[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
