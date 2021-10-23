@@ -6,7 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
 
 DESCRIPTION="crossdev setup and workflow managment"
 HOMEPAGE="https://github.com/jakeogh/crossdevtool"
@@ -15,7 +14,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/crossdevtool https://github.com/jakeogh/crossde
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
@@ -24,12 +22,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	pp-portage/repoman[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
