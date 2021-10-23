@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	app-portage/repoman[${PYTHON_USEDEP}]
+	sys-devel/crossdev
 "
 
 DEPEND="${RDEPEND}"
