@@ -14,7 +14,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 #IUSE="+minimal test"
 
-#RDEPEND="!minimal? ( ${COMMON_DEPS} )"
 DEPEND=""
 
 
