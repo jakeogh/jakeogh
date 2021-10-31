@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-DESCRIPTION="Simple terminal image viewer written in Rust."
+DESCRIPTION="Simple terminal image viewer written in Rust"
 HOMEPAGE="https://www.github.com/atanunq/viu"
 EGIT_REPO_URI="https://www.github.com/atanunq/viu.git"
 
