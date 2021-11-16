@@ -28,7 +28,8 @@ RDEPEND="${DEPEND}"
 
 python_install_all() {
 	local DOCS=( README.md )
-	mkdir -p /var/cache/dnsgate/tldextract_cache
-	chmod o+w /var/cache/dnsgate/tldextract_cache
+	keepdir /var/cache/${PN}/tldextract_cache
+	fperms 0700 /var/tmp/${PN}
+	fperms 0700 /var/tmp/${PN}/tldextract_cache
 	distutils-r1_python_install_all
 }
