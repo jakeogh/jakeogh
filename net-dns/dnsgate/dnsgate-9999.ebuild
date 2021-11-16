@@ -28,8 +28,5 @@ RDEPEND="${DEPEND}"
 
 python_install_all() {
 	local DOCS=( README.md )
-	keepdir /var/cache/${PN}/tldextract_cache
-	fperms 0755 /var/cache/${PN}
-	fperms 0755 /var/cache/${PN}/tldextract_cache
 	distutils-r1_python_install_all
 }
