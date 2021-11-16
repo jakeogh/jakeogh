@@ -20,6 +20,9 @@ DEPEND="
 	dev-python/tldextract
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/urltool[${PYTHON_USEDEP}]
+	dev-python/hashtool[${PYTHON_USEDEP}]
+	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/logtool[${PYTHON_USEDEP}]
 	dev-python/stringtool[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 "
