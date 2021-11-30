@@ -8,7 +8,7 @@ inherit git-r3
 inherit distutils-r1
 #inherit xdg
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="youtube-dl fork"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp"
 EGIT_REPO_URI="/home/cfg/_myapps/yt-dlp https://github.com/jakeogh/yt-dlp.git"
 EGIT_BRANCH="locked_file"
@@ -20,11 +20,8 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/websockets[${PYTHON_USEDEP}]
+	dev-python/pycryptodome[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
