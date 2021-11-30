@@ -22,6 +22,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/websockets[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
+	media-libs/mutagen[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
