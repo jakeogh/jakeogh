@@ -29,4 +29,5 @@ DEPEND="${RDEPEND}"
 
 python_prepare_all() {
 	sed -i -e 's/pycryptodomex/pycryptodome/g' setup.py || die
+	distutils-r1_python_prepare_all
 }
