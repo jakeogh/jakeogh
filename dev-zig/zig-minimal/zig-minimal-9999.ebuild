@@ -18,7 +18,8 @@ KEYWORDS=""
 #IUSE="test"
 
 src_compile() {
-	zig build-exe ${PN}.zig --strip || die
+	#zig build-exe ${PN}.zig --strip || die
+	zig build-exe zig_minimal.zig --strip || die
 }
 
 #src_prepare() {
