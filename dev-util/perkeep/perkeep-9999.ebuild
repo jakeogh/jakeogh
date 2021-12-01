@@ -29,8 +29,9 @@ src_unpack() {
 
 src_compile() {
 	#export GOFLAGS="-offline"
-	export GO_BUILD_FLAGS="-offline"
-	emake PREFIX="${EPREFIX}/usr"
+	#export GO_BUILD_FLAGS="-offline"
+	#go run make.go -offline
+	emake -offline PREFIX="${EPREFIX}/usr"
 }
 
 
