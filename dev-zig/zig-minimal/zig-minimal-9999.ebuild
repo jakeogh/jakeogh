@@ -17,6 +17,9 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
+src_compile() {
+	zig build-exe ${PN} --strip || die
+}
 
 #src_prepare() {
 #	default
