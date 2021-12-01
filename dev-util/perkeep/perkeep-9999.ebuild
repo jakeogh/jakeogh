@@ -31,7 +31,9 @@ src_compile() {
 	#export GOFLAGS="-offline"
 	#export GO_BUILD_FLAGS="-offline"
 	#go run make.go -offline
-	emake -offline PREFIX="${EPREFIX}/usr"
+	rm Makefile || die
+	go run make.go -offline
+	#emake -offline PREFIX="${EPREFIX}/usr"
 }
 
 
