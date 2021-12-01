@@ -5,6 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
+inherit go-module
 
 #inherit xdg
 
