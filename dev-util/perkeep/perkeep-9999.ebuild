@@ -28,7 +28,8 @@ src_unpack() {
 }
 
 src_compile() {
-	emake PREFIX="${EPREFIX}/usr" offline
+	export GOFLAGS="-offline"
+	emake PREFIX="${EPREFIX}/usr"
 }
 
 
