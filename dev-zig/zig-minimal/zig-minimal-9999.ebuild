@@ -12,6 +12,10 @@ DESCRIPTION="Minimal zig binary"
 HOMEPAGE="https://github.com/jakeogh/zig-minimal"
 EGIT_REPO_URI="/home/cfg/_myapps/zig-minimal https://github.com/jakeogh/zig-minimal.git"
 
+MY_P="${P/-/_}"
+MY_PN="${PN/-/_}"
+MY_S=""${WORKDIR}/${MY_P}""
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
@@ -19,7 +23,8 @@ KEYWORDS=""
 
 src_compile() {
 	#zig build-exe ${PN}.zig --strip || die
-	zig build-exe zig_minimal.zig --strip || die
+	zig build-exe ${MY_S}/${MY_PN}.zig --strip || die
+	#zig build-exe zig_minimal.zig --strip || die
 }
 
 #src_prepare() {
