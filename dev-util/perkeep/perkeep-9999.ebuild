@@ -27,6 +27,10 @@ src_unpack() {
         fi
 }
 
+src_compile() {
+	emake PREFIX="${EPREFIX}/usr" offline
+}
+
 
 #src_prepare() {
 #	default
