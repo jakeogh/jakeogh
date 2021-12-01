@@ -43,10 +43,10 @@ BDEPEND="
 distutils_enable_sphinx docs/source dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
 
-PATCHES=(
-	# https://github.com/python/mypy/pull/11017
-	"${FILESDIR}/${P}-py3.10-tests.patch"
-)
+#PATCHES=(
+#	# https://github.com/python/mypy/pull/11017
+#	"${FILESDIR}/${P}-py3.10-tests.patch"
+#)
 
 # this requires packaging a lot of type stubs
 export MYPY_USE_MYPYC=0
