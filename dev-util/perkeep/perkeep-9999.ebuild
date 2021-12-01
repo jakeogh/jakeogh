@@ -32,10 +32,13 @@ src_compile() {
 	#export GO_BUILD_FLAGS="-offline"
 	#go run make.go -offline
 	rm Makefile || die
-	go run make.go -offline
+	go run make.go -offline PREFIX="${EPREFIX}/usr"
 	#emake -offline PREFIX="${EPREFIX}/usr"
 }
 
+src_install() {
+	GOBIN=${S}/bin CGO_ENABLED=0 go install ./... || die
+}
 
 #src_prepare() {
 #	default
