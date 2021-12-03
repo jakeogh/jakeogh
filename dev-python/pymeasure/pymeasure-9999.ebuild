@@ -17,6 +17,9 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
+BDEPEND="
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
