@@ -22,14 +22,15 @@ BDEPEND="
 "
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/pip[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
+
+#src_prepare() {
+#	sed -i -e "/import pip/s/^/#/" -e "/pip.__version__/,+3 s/^/#/" setup.py || die
+#	distutils-r1_src_prepare
+#}
 
 
 #src_prepare() {
