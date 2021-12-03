@@ -11,6 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Scientific measurement library for instruments, experiments, and live-plotting"
 HOMEPAGE="https://github.com/jakeogh/pymeasure"
 EGIT_REPO_URI="/home/cfg/_myapps/pymeasure https://github.com/jakeogh/pymeasure.git"
+EGIT_BRANCH="remove_pytest_runner"
 
 LICENSE="BSD"
 SLOT="0"
