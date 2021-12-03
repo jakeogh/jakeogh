@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Common interface for GPUB device control"
 HOMEPAGE="https://github.com/jakeogh/gpibtool"
 EGIT_REPO_URI="/home/cfg/_myapps/gpibtool https://github.com/jakeogh/gpibtool.git"
 
@@ -22,8 +22,8 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/pyusb[${PYTHON_USEDEP}]
-	dev-python/pymeasure[${PYTHON_USEDEP}]
 	dev-python/PyVISA-py[${PYTHON_USEDEP}]
+	dev-python/pymeasure[${PYTHON_USEDEP}]
 	sci-libs/linux-gpib
 "
 
