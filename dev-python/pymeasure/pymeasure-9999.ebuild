@@ -16,7 +16,6 @@ EGIT_BRANCH="remove_pytest_runner"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
