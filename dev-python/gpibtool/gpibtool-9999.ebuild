@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/pyusb[${PYTHON_USEDEP}]
+	dev-python/pymeasure[${PYTHON_USEDEP}]
 	dev-python/PyVISA-py[${PYTHON_USEDEP}]
 	sci-libs/linux-gpib
 "
