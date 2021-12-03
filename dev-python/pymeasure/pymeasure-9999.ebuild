@@ -32,9 +32,3 @@ DEPEND="${RDEPEND}"
 #	sed -i -e "/import pip/s/^/#/" -e "/pip.__version__/,+3 s/^/#/" setup.py || die
 #	distutils-r1_src_prepare
 #}
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
