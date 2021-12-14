@@ -16,7 +16,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc"
 
-
 RDEPEND="
 	dev-python/humanize[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
