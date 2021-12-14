@@ -29,6 +29,7 @@ RDEPEND="
 	dev-python/unitcalc[${PYTHON_USEDEP}]
 	dev-python/pathwatcher[${PYTHON_USEDEP}]
 	dev-python/python-fadvise[${PYTHON_USEDEP}]
+	dev-python/pydantic[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
