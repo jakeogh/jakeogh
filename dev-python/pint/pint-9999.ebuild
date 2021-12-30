@@ -9,7 +9,8 @@ inherit git-r3
 
 DESCRIPTION="Operate and manipulate physical quantities in Python"
 HOMEPAGE="https://github.com/hgrecco/pint"
-EGIT_REPO_URI="https://github.com/hgrecco/pint.git"
+EGIT_REPO_URI="/home/user/_myapps/pint https://github.com/hgrecco/pint.git"
+EGIT_BRANCH="debugging"
 
 LICENSE=""
 SLOT="0"
