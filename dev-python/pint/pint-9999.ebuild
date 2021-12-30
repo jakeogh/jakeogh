@@ -11,6 +11,7 @@ DESCRIPTION="Operate and manipulate physical quantities in Python"
 HOMEPAGE="https://github.com/hgrecco/pint"
 EGIT_REPO_URI="/home/user/_myapps/pint https://github.com/hgrecco/pint.git"
 #EGIT_BRANCH="debugging"
+EGIT_BRANCH="master"
 
 LICENSE=""
 SLOT="0"
