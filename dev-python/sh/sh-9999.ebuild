@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,17 +20,7 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
