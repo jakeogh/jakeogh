@@ -6,7 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
 
 DESCRIPTION="general asm compilation frontend"
 HOMEPAGE="https://github.com/jakeogh/assemblytool"
@@ -15,7 +14,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/assemblytool https://github.com/jakeogh/assembl
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
@@ -24,12 +22,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-util/cgdb
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
