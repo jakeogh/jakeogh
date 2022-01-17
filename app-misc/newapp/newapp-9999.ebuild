@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/licenseguesser[${PYTHON_USEDEP}]
 	dev-python/with-chdir[${PYTHON_USEDEP}]
 	dev-vcs/hub
+	app-misc/colorpipe
 "
 
 python_install_all() {
