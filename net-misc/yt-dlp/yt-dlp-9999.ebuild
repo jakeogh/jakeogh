@@ -6,7 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
 
 DESCRIPTION="youtube-dl fork"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp"
