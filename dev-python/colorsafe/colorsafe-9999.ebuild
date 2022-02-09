@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/reedsolomon[${PYTHON_USEDEP}]
+	dev-python/reportlab[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
