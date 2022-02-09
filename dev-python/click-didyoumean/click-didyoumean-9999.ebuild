@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-#inherit xdg
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="git-like did-you-mean feature in click"
 HOMEPAGE="https://github.com/jakeogh/click-didyoumean"
@@ -15,8 +15,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/click-didyoumean https://github.com/jakeogh/cli
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 
 #src_prepare() {
