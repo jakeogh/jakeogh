@@ -6,8 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="print full --help when a incorrect command is used"
 HOMEPAGE="https://github.com/jakeogh/click-auto-help"
@@ -24,13 +22,11 @@ RDEPEND="
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
 
+python_install_ll() {
+	distutils-r1_python_install_all
+}
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
