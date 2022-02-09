@@ -18,5 +18,5 @@ KEYWORDS=""
 #IUSE="test"
 
 src_install() {
-	dobin qrbackup
+	dobin ${PN}
 }
