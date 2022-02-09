@@ -15,7 +15,6 @@ EGIT_BRANCH='py3'
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
