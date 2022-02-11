@@ -6,8 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+
 
 DESCRIPTION="Modular data acquisition framework"
 HOMEPAGE="https://github.com/jakeogh/qcodes"
@@ -20,13 +19,9 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/h5py[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
 
+distutils_enable_tests pytest
