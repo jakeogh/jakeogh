@@ -6,8 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="additional drivers for Qcodes"
 HOMEPAGE="https://github.com/jakeogh/qcodes-contrib-drivers"
@@ -16,7 +14,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/qcodes-contrib-drivers https://github.com/jakeo
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
