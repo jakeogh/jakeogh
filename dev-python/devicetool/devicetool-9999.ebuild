@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Functions related to block devices"
 HOMEPAGE="https://github.com/jakeogh/devicetool"
 EGIT_REPO_URI="/home/cfg/_myapps/devicetool https://github.com/jakeogh/devicetool.git"
 
