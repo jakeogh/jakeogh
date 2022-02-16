@@ -6,9 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="automatically fixes wrong import statements"
 HOMEPAGE="https://github.com/jakeogh/autoimport"
 EGIT_REPO_URI="/home/cfg/_myapps/autoimport https://github.com/jakeogh/autoimport.git"
@@ -16,7 +13,7 @@ EGIT_REPO_URI="/home/cfg/_myapps/autoimport https://github.com/jakeogh/autoimpor
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
+IUSE="test"
 
 
 
