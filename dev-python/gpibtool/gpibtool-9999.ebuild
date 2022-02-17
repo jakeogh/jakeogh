@@ -19,12 +19,12 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/pyusb[${PYTHON_USEDEP}]
 	dev-python/PyVISA-py[${PYTHON_USEDEP}]
 	dev-python/pymeasure[${PYTHON_USEDEP}]
 	sci-libs/linux-gpib
+	dev-python/PyVISA-sim[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
