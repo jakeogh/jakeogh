@@ -6,8 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="selects specified keys from messagepacked dicts on stdin"
 HOMEPAGE="https://github.com/jakeogh/mpdictkeypick"
