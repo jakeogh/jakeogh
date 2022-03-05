@@ -8,7 +8,7 @@ inherit git-r3
 inherit distutils-r1
 #inherit xdg
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Unpack messagepacked objects and write to stdout without a delim"
 HOMEPAGE="https://github.com/jakeogh/unmp"
 EGIT_REPO_URI="/home/cfg/_myapps/unmp https://github.com/jakeogh/unmp.git"
 
@@ -28,9 +28,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
