@@ -25,9 +25,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
