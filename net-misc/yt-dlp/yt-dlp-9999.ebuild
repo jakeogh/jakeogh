@@ -13,7 +13,7 @@ EGIT_REPO_URI="/home/cfg/_myapps/yt-dlp https://github.com/jakeogh/yt-dlp.git"
 #EGIT_BRANCH="locked_file"
 #EGIT_BRANCH="minicurses_bell"
 #EGIT_BRANCH="continue_on_lock"
-EGIT_COMMIT="acea8d7cfb60d9f9c33ed7662f72110531a54e6d"
+#EGIT_COMMIT="acea8d7cfb60d9f9c33ed7662f72110531a54e6d"
 
 LICENSE="BSD"
 SLOT="0"
