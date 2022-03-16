@@ -6,8 +6,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="convert messagepacked stdin to \n terminated utf8"
 HOMEPAGE="https://github.com/jakeogh/mp2nl"
