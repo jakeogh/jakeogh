@@ -34,6 +34,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/zope-interface[${PYTHON_USEDEP}]
 	dev-python/Protego[${PYTHON_USEDEP}]
+	>=dev-python/itemadapter-0.1.0[${PYTHON_USEDEP}]
 "
 
 
