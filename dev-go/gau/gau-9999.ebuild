@@ -8,11 +8,11 @@ inherit git-r3
 
 inherit go-module golang-vcs golang-build
 
-EGO_PN=github.com/jakeogh/gau
+EGO_PN=github.com/lc/gau/v2/cmd/gau@latest
 
 DESCRIPTION="list all pages archived in the wayback machine"
-HOMEPAGE="https://github.com/jakeogh/gau"
-EGIT_REPO_URI="/home/cfg/_myapps/gau https://github.com/jakeogh/gau.git"
+HOMEPAGE="https://github.com/lc/gau"
+EGIT_REPO_URI="https://github.com/lc/gau"
 
 LICENSE="BSD"
 SLOT="0"
