@@ -6,8 +6,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-inherit go-module golang-vcs golang-build
-#inherit golang-vcs golang-build
+#inherit go-module golang-vcs golang-build
+inherit golang-vcs golang-build
 
 #EGO_PN=github.com/lc/gau/v2/cmd/gau@latest
 EGO_PN=github.com/lc/gau
@@ -25,6 +25,12 @@ KEYWORDS=""
 #	default
 #	#xdg_src_prepare
 #}
+
+src_unpack() {
+	git-r3_src_unpack
+	#go-module_live_vendor
+}
+
 
 src_compile() {
 	go build -mod=vendor . || die
