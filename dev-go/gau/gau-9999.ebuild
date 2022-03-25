@@ -19,10 +19,10 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
-src_prepare() {
-	default
-	#xdg_src_prepare
-}
+#src_prepare() {
+#	default
+#	#xdg_src_prepare
+#}
 
 src_compile() {
 	go build -mod=vendor . || die
