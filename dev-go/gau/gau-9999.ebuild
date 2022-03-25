@@ -7,10 +7,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 
 inherit go-module
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
-DESCRIPTION="list app pages archived in the wayback machine"
+DESCRIPTION="list all pages archived in the wayback machine"
 HOMEPAGE="https://github.com/jakeogh/gau"
 EGIT_REPO_URI="/home/cfg/_myapps/gau https://github.com/jakeogh/gau.git"
 
@@ -19,13 +17,15 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
+src_prepare() {
+	default
+	#xdg_src_prepare
+}
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_compile() {
+	go build -mod=vendor . || die
+}
 
 src_install() {
-        dobin ${app_name}
+	dobin ${PN}
 }
