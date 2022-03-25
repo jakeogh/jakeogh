@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-inherit go-module
+inherit go-module golang-vcs golang-vcs-snapshot golang-build
 
 DESCRIPTION="list all pages archived in the wayback machine"
 HOMEPAGE="https://github.com/jakeogh/gau"
