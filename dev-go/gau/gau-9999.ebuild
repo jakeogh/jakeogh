@@ -32,10 +32,10 @@ src_unpack() {
 }
 
 
-src_compile() {
-	#go build -mod=vendor . || die
-	go build . || die
-}
+#src_compile() {
+#	#go build -mod=vendor . || die
+#	go build . || die
+#}
 
 src_install() {
 	dobin ${PN}
