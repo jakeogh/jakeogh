@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-inherit go-module golang-vcs golang-vcs-snapshot golang-build
+inherit go-module golang-vcs golang-build
 
 EGO_PN=github.com/jakeogh/gau
 
