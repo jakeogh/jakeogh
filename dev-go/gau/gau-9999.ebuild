@@ -8,6 +8,8 @@ inherit git-r3
 
 inherit go-module golang-vcs golang-vcs-snapshot golang-build
 
+EGO_PN=github.com/jakeogh/gau
+
 DESCRIPTION="list all pages archived in the wayback machine"
 HOMEPAGE="https://github.com/jakeogh/gau"
 EGIT_REPO_URI="/home/cfg/_myapps/gau https://github.com/jakeogh/gau.git"
