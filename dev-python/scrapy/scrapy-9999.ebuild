@@ -7,10 +7,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
-DESCRIPTION="python web scraping framework"
+DESCRIPTION="A high-level Web Crawling and Web Scraping framework"
 HOMEPAGE="https://github.com/jakeogh/scrapy"
 EGIT_REPO_URI="/home/cfg/_myapps/scrapy https://github.com/jakeogh/scrapy.git"
 
@@ -20,18 +18,24 @@ KEYWORDS=""
 #IUSE="test"
 
 
-RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
+# The 'PyDispatcher>=2.0.5' distribution was not found and is required by Scrapy
+# https://bugs.gentoo.org/684734
+RDEPEND="${PYTHON_DEPS}
+	>=dev-python/twisted-17.9.0[${PYTHON_USEDEP}]
+	dev-python/cryptography[${PYTHON_USEDEP}]
+	dev-python/cssselect[${PYTHON_USEDEP}]
+	dev-python/lxml[${PYTHON_USEDEP}]
+	dev-python/parsel[${PYTHON_USEDEP}]
+	>=dev-python/pydispatcher-2.0.5[${PYTHON_USEDEP}]
+	dev-python/pyopenssl[${PYTHON_USEDEP}]
+	dev-python/queuelib[${PYTHON_USEDEP}]
+	dev-python/service_identity[${PYTHON_USEDEP}]
+	dev-python/w3lib[${PYTHON_USEDEP}]
+	dev-python/six[${PYTHON_USEDEP}]
+	dev-python/zope-interface[${PYTHON_USEDEP}]
+	dev-python/Protego[${PYTHON_USEDEP}]
 "
+
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
