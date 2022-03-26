@@ -7,8 +7,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Wayback Machine API interface & a command-line tool"
 HOMEPAGE="https://github.com/jakeogh/waybackpy"
@@ -21,17 +19,13 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
 
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_prepare() {
+	default
+	xdg_src_prepare
+	rm -rf tests || die
+}
