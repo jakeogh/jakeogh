@@ -36,6 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/Protego[${PYTHON_USEDEP}]
 	>=dev-python/itemadapter-0.1.0[${PYTHON_USEDEP}]
 	>=dev-python/itemloaders-1.0.1[${PYTHON_USEDEP}]
+	>=dev-python/jmespath-0.9.5[${PYTHON_USEDEP}]
 "
 
 
