@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/jsonparser[${PYTHON_USEDEP}]
 	dev-python/redis-py[${PYTHON_USEDEP}]
 	dev-python/click-auto-help[${PYTHON_USEDEP}]
+	dev-python/terminaltool[${PYTHON_USEDEP}]
 	sys-process/schedtool
 	media-plugins/alsaequal
 "
