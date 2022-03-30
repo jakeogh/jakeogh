@@ -55,6 +55,8 @@ RDEPEND="
 	dev-libs/libpcre[static-libs]
 	"
 
+DEPEND="$RDEPEND"
+
 python_install_all() {
 	distutils-r1_python_install_all
 }
