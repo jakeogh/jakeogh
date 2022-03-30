@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/eprint[${PYTHON_USEDEP}]
+	dev-python/epprint[${PYTHON_USEDEP}]
 	dev-python/ipdb[${PYTHON_USEDEP}]
 "
 
