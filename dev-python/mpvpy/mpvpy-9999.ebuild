@@ -20,6 +20,7 @@ RDEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/python-mpv[${PYTHON_USEDEP}]
 	dev-python/hashfilter[${PYTHON_USEDEP}]
+	dev-python/clipboardtool[${PYTHON_USEDEP}]
 	dev-python/jsonparser[${PYTHON_USEDEP}]
 	dev-python/redis-py[${PYTHON_USEDEP}]
 	sys-process/schedtool
