@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/clicktool[${PYTHON_USEDEP}]
 	dev-embedded/u-boot-tools
 "
 
