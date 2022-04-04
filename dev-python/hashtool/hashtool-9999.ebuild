@@ -19,7 +19,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
-	dev-python/enumerate_input[${PYTHON_USEDEP}]
+	dev-python/mptool[${PYTHON_USEDEP}]
 	dev-python/advisory-lock[${PYTHON_USEDEP}]
 	dev-python/python-getdents[${PYTHON_USEDEP}]
 "
