@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Decorator to retry a function call on an exception"
-HOMEPAGE="https://github.com/jakeogh/enumerate_input"
-EGIT_REPO_URI="/home/cfg/_myapps/enumerate_input https://github.com/jakeogh/enumerate_input.git"
+HOMEPAGE="https://github.com/jakeogh/enumerate-input"
+EGIT_REPO_URI="/home/cfg/_myapps/enumerate-input https://github.com/jakeogh/enumerate-input.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -18,6 +18,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/delay-timer[${PYTHON_USEDEP}]
+	dev-python/bytestool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
