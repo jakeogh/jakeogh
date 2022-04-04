@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,13 +13,12 @@ EGIT_REPO_URI="/home/cfg/_myapps/advisory-lock https://github.com/jakeogh/adviso
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/enumerate_input[${PYTHON_USEDEP}]
+	dev-python/mptool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
