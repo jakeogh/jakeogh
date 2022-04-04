@@ -20,7 +20,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/pint[${PYTHON_USEDEP}]
 	dev-python/python-levenshtein[${PYTHON_USEDEP}]
-	dev-python/enumerate_input[${PYTHON_USEDEP}]
+	dev-python/mptool[${PYTHON_USEDEP}]
 	dev-python/number-parser[${PYTHON_USEDEP}]
 "
 
