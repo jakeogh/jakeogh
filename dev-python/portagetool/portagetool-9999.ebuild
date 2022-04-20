@@ -27,6 +27,7 @@ RDEPEND="
 	app-portage/gentoolkit[${PYTHON_USEDEP}]
 	dev-python/mathtool[${PYTHON_USEDEP}]
 	dev-python/clicktool[${PYTHON_USEDEP}]
+	dev-python/mptool[${PYTHON_USEDEP}]
 	app-portage/portage-utils
 "
 
