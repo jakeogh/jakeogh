@@ -26,6 +26,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
+	dev-python/epprint[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
