@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/portagetool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/boottool[${PYTHON_USEDEP}]
+	dev-python/compile-kernel[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
