@@ -23,7 +23,6 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/with-chdir[${PYTHON_USEDEP}]
-	dev-python/click-command-tree[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
