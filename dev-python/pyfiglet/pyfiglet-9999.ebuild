@@ -1,5 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+# from https://github.com/gentoo/guru/raw/master/dev-python/pyfiglet/pyfiglet-9999.ebuild
 
 EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
