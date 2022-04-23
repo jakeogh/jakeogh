@@ -30,3 +30,6 @@ src_install() {
 	distutils-r1_src_install
 	doman doc/pyfiglet.1
 }
+SLOT="0"
+
+RESTRICT="mirror test"
