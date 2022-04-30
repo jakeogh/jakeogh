@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/hashtool[${PYTHON_USEDEP}]
 	dev-python/rope[${PYTHON_USEDEP}]
 	dev-python/types-requests[${PYTHON_USEDEP}]
+	dev-python/black[${PYTHON_USEDEP}]
 	sys-apps/yarn
 "
 # sys-apps/yarn pulls in nodejs for CoC
