@@ -1,7 +1,6 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-
 EAPI=8
 
 inherit cmake
@@ -46,6 +45,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 		dev-qt/qtxml:5
 	)
+	ffmpeg? ( <media-video/ffmpeg-5:= )
 	freeimage? ( media-libs/freeimage )
 	tbb? ( <dev-cpp/tbb-2021.4 )
 	vtk? ( sci-libs/vtk:=[rendering] )
