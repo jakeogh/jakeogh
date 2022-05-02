@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/proxytool[${PYTHON_USEDEP}]
+	dev-python/tmuxtool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
