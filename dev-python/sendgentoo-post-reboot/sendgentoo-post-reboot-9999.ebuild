@@ -7,9 +7,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="takes a minimal sendgentoo install to my setup"
 HOMEPAGE="https://github.com/jakeogh/sendgentoo-post-reboot"
 EGIT_REPO_URI="/home/cfg/_myapps/sendgentoo-post-reboot https://github.com/jakeogh/sendgentoo-post-reboot.git"
@@ -26,12 +23,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/proxytool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
