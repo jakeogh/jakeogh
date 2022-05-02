@@ -47,6 +47,7 @@ RDEPEND="
 	dev-python/symlinktree[${PYTHON_USEDEP}]
 	dev-python/portagetool[${PYTHON_USEDEP}]
 	dev-python/sendgentoo-post-chroot[${PYTHON_USEDEP}]
+	dev-python/sendgentoo-post-reboot[${PYTHON_USEDEP}]
 	dev-python/sendgentoo-chroot[${PYTHON_USEDEP}]
 	dev-python/sendgentoo-stage[${PYTHON_USEDEP}]
 	dev-python/zfstool[${PYTHON_USEDEP}]
