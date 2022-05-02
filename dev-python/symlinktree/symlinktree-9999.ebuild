@@ -19,6 +19,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/dirtool[${PYTHON_USEDEP}]
+	dev-python/walkup_until_found[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
