@@ -7,9 +7,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="extract cookies from popular web browsers"
 HOMEPAGE="https://github.com/jakeogh/browser-cookie3"
 EGIT_REPO_URI="/home/cfg/_myapps/browser-cookie3 https://github.com/jakeogh/browser-cookie3.git"
@@ -21,17 +18,7 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/lz4[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
