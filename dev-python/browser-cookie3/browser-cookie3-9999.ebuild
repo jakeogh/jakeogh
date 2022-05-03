@@ -19,6 +19,11 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/lz4[${PYTHON_USEDEP}]
+	dev-python/keyring[${PYTHON_USEDEP}]
+	dev-python/secretstorage[${PYTHON_USEDEP}]
+	dev-python/pycryptodome[${PYTHON_USEDEP}]
+	dev-python/pbkdf2[${PYTHON_USEDEP}]
+	dev-python/pyaes[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
