@@ -14,9 +14,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-#DEPEND="
-#	dev-util/cwalk
-#"
+DEPEND="
+	dev-lang/zig
+"
 
 RDEPEND=""
 
