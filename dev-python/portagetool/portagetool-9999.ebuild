@@ -8,7 +8,7 @@ inherit git-r3
 inherit distutils-r1
 #inherit xdg
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Common portage operations"
 HOMEPAGE="https://github.com/jakeogh/portagetool"
 EGIT_REPO_URI="/home/cfg/_myapps/portagetool https://github.com/jakeogh/portagetool.git"
 
