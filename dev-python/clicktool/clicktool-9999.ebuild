@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,16 +6,14 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Common functions for @click"
 HOMEPAGE="https://github.com/jakeogh/clicktool"
 EGIT_REPO_URI="/home/cfg/_myapps/clicktool https://github.com/jakeogh/clicktool.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
@@ -27,9 +25,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
