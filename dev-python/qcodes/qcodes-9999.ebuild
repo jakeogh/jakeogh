@@ -19,6 +19,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/h5py[${PYTHON_USEDEP}]
+	dev-python/versioningit[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
