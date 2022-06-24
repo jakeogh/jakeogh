@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Client software for cycloidal mass-spec"
+DESCRIPTION="Client software for CTIA cycloidal mass-spec"
 HOMEPAGE="https://github.com/jakeogh/cycloidal_client"
 EGIT_REPO_URI="/home/cfg/_myapps/cycloidal_client"
 
@@ -26,6 +26,3 @@ RDEPEND="
 	net-analyzer/scapy[${PYTHON_USEDEP}]
 	dev-python/wxpython:*[${PYTHON_USEDEP}]
 "
-#	dev-python/schedule[${PYTHON_USEDEP}]
-
-#	net-analyzer/scapy[${PYTHON_USEDEP}]
