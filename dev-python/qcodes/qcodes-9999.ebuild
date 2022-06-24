@@ -15,7 +15,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/qcodes https://github.com/jakeogh/qcodes.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
