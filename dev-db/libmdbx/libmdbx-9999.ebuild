@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
-inherit distutils-r1
+#inherit distutils-r1
 
 
 DESCRIPTION="One of the fastest compact embeddable key-value ACID database without WAL"
