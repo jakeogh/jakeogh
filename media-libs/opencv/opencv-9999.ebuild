@@ -11,7 +11,8 @@ DESCRIPTION="A collection of algorithms and sample code for various computer vis
 HOMEPAGE="https://opencv.org"
 TINY_DNN_PV="1.0.0a3"
 
-EGIT_REPO_URI="/home/cfg/_myapps/opencv https://github.com/jakeogh/opencv.git"
+#EGIT_REPO_URI="/home/cfg/_myapps/opencv https://github.com/jakeogh/opencv.git"
+EGIT_REPO_URI="https://github.com/opencv/opencv.git"
 
 LICENSE="Apache-2.0"
 SLOT="0/${PV}" # subslot = libopencv* soname version
