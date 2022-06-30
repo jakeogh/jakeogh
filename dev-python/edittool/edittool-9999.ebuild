@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/types-requests[${PYTHON_USEDEP}]
 	dev-python/black[${PYTHON_USEDEP}]
 	dev-python/byte-vector-replacer[${PYTHON_USEDEP}]
+	dev-python/gittool[${PYTHON_USEDEP}]
 	sys-apps/yarn
 "
 # sys-apps/yarn pulls in nodejs for CoC
