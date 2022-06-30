@@ -18,7 +18,6 @@ IUSE=""
 
 RDEPEND="
 	app-crypt/gpgme[${PYTHON_USEDEP}]
-	dev-python/pygpgme[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/twisted[${PYTHON_USEDEP}]
 	dev-python/urwidtrees[${PYTHON_USEDEP}]
