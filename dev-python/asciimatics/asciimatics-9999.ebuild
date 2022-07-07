@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="curses widgets to create text UIs and ASCII art"
 HOMEPAGE="https://github.com/jakeogh/asciimatics"
-EGIT_REPO_URI="/home/cfg/_myapps/asciimatics https://github.com/jakeogh/asciimatics.git"
+EGIT_REPO_URI="https://github.com/peterbrittain/asciimatics"
 
 LICENSE="BSD"
 SLOT="0"
