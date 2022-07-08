@@ -7,9 +7,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="iridb spider launcher"
 HOMEPAGE="https://github.com/jakeogh/iridb-spider-wrapper"
 EGIT_REPO_URI="/home/cfg/_myapps/iridb-spider-wrapper https://github.com/jakeogh/iridb-spider-wrapper.git"
@@ -29,9 +26,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
