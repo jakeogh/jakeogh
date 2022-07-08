@@ -37,6 +37,7 @@ RDEPEND="
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
+	dev-python/requeststool[${PYTHON_USEDEP}]
 	dev-python/tldextract[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/httplib2[${PYTHON_USEDEP}]
