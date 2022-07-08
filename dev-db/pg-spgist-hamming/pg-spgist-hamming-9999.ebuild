@@ -3,14 +3,14 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
-POSTGRES_COMPAT=( 11 12 13 )
+POSTGRES_COMPAT=( 11 12 13 14 )
 
 
 inherit distutils-r1
 inherit postgres-multi
 inherit git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="postgres hamming distance"
 HOMEPAGE="https://github.com/jakeogh/pg-spgist-hamming"
 EGIT_REPO_URI="/home/cfg/_myapps/pg-spgist-hamming https://github.com/jakeogh/pg-spgist-hamming.git"
 
@@ -31,7 +31,6 @@ src_compile () {
 
 src_install() {
 	cd bktree
-	#ewarn "is this thing on?"
 	ewarn `pwd`
 	default
 }
