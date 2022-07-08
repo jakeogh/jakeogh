@@ -7,9 +7,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="common requests functions"
 HOMEPAGE="https://github.com/jakeogh/requeststool"
 EGIT_REPO_URI="/home/cfg/_myapps/requeststool https://github.com/jakeogh/requeststool.git"
@@ -17,8 +14,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/requeststool https://github.com/jakeogh/request
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
@@ -26,12 +21,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/browser-cookie3[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
