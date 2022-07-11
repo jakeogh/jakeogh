@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/click-auto-help[${PYTHON_USEDEP}]
-	net-vpn/corkscrew[${PYTHON_USEDEP}]
+	net-vpn/corkscrew
 "
 
 DEPEND="${RDEPEND}"
