@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pyglm[${PYTHON_USEDEP}]
+	dev-python/arrex[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
