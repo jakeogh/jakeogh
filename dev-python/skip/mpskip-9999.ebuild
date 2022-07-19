@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
-HOMEPAGE="https://github.com/jakeogh/skip"
-EGIT_REPO_URI="/home/cfg/_myapps/skip https://github.com/jakeogh/skip.git"
+HOMEPAGE="https://github.com/jakeogh/mpskip"
+EGIT_REPO_URI="/home/cfg/_myapps/mpskip https://github.com/jakeogh/mpskip.git"
 
 LICENSE="BSD"
 SLOT="0"
