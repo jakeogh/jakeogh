@@ -1,27 +1,35 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{8..10} )
+EAPI=8
 
-inherit git-r3
+inherit autotools
 
+DESCRIPTION="View and edit files in hex or ASCII"
+HOMEPAGE="http://rigaux.org/hexedit.html"
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+#EGIT_REPO_URI="https://github.com/pixel/hexedit.git"
+EGIT_REPO_URI="/home/cfg/_myapps/hexedit"
+else
+SRC_URI="https://github.com/pixel/hexedit/archive/${PV}.tar.gz -> ${P}.tar.gz"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+fi
 
-DESCRIPTION="View and edit files in hexadecimal or in ASCII"
-HOMEPAGE="https://github.com/jakeogh/hexedit"
-EGIT_REPO_URI="/home/cfg/_myapps/hexedit https://github.com/jakeogh/hexedit.git"
-
-LICENSE="BSD"
+LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-#IUSE="test"
 
+DEPEND="sys-libs/ncurses:="
+RDEPEND="${DEPEND}"
 
+src_prepare() {
+	default
+	eautoreconf
+}
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_install() {
+	dobin hexedit
+	doman hexedit.1
+	dodoc Changes
+}
