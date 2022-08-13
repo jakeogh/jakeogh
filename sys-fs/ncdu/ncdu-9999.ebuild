@@ -16,6 +16,7 @@ KEYWORDS=""
 RDEPEND="
 	sys-libs/ncurses:0=[unicode]
 "
+
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
