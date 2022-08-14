@@ -1,11 +1,11 @@
-# Copyright 1999-2021 Gentoo Foundation
+# Copyright 1999-2022 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{8..10} )
 
-inherit cmake-utils python-r1 git-r3
+inherit cmake python-r1 git-r3
 
 DESCRIPTION="Cheminformatics and machine-learning software written in C++ and Python"
 HOMEPAGE="http://www.rdkit.org/"
