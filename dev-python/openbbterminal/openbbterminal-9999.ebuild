@@ -17,5 +17,6 @@ SLOT="0"
 KEYWORDS=""
 
 BDEPEND="dev-python/pyproject2setuppy[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/terminal[${PYTHON_USEDEP}]"
+#RDEPEND="dev-python/terminal[${PYTHON_USEDEP}]" # wrong pkx, terminal.py is in the repo
+RDEPEND=""
 DEPEND="${RDEPEND}"
