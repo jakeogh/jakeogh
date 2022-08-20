@@ -5,6 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
+inherit distutils-r1
 
 DESCRIPTION="python stock terminal"
 HOMEPAGE="https://github.com/jakeogh/openbbterminal"
@@ -14,3 +15,6 @@ DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
+
+RDEPEND=""
+DEPEND="${RDEPEND}"
