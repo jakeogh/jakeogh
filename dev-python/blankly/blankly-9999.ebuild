@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/python-binance[${PYTHON_USEDEP}]
 	dev-python/newnewtulipy[${PYTHON_USEDEP}]
+	dev-python/bokeh[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
