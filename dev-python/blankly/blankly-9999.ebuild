@@ -29,6 +29,7 @@ RDEPEND="
 	dev-python/python-binance[${PYTHON_USEDEP}]
 	dev-python/newnewtulipy[${PYTHON_USEDEP}]
 	dev-python/bokeh[${PYTHON_USEDEP}]
+	dev-python/alpaca-trade-api-python[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
