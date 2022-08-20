@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ DESCRIPTION="Library for rapid development of adaptive hp-FEM / hp-DG solvers."
 HOMEPAGE="http://www.hpfem.org/hermes/"
 EGIT_REPO_URI="https://github.com/hpfem/hermes.git"
 inherit git-r3
-inherit cmake-utils
+inherit cmake
 
 #S="${WORKDIR}/${P}/hermes2d"
 
