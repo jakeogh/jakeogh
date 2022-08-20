@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/python-binance[${PYTHON_USEDEP}]
+	dev-python/newnewtulipy[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
