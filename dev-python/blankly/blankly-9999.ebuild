@@ -30,6 +30,7 @@ RDEPEND="
 	dev-python/newnewtulipy[${PYTHON_USEDEP}]
 	dev-python/bokeh[${PYTHON_USEDEP}]
 	dev-python/alpaca-trade-api-python[${PYTHON_USEDEP}]
+	dev-python/yaspin[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
