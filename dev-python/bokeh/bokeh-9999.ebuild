@@ -24,7 +24,6 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 "
 DEPEND="
