@@ -17,5 +17,5 @@ SLOT="0"
 KEYWORDS=""
 
 BDEPEND="dev-python/pyproject2setuppy[${PYTHON_USEDEP}]"
-RDEPEND=""
+RDEPEND="dev-python/terminal[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
