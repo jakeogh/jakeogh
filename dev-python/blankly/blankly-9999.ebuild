@@ -17,7 +17,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/blankly https://github.com/jakeogh/blankly.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
