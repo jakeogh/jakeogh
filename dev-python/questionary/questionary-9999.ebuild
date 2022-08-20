@@ -4,11 +4,10 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 inherit git-r3
+inherit distutils-r1
 
-
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Python library to build pretty command line user prompts"
 HOMEPAGE="https://github.com/jakeogh/questionary"
