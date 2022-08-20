@@ -31,6 +31,11 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 
+python_prepare_all() {
+	sed -i "s/'pytest-runner'\(,\)\?//" setup.py || die
+	distutils-r1_python_prepare_all
+}
+
 #src_prepare() {
 #	default
 #	xdg_src_prepare
