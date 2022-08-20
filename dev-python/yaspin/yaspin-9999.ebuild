@@ -5,10 +5,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
+inherit distutils-r1
 
-
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="lightweight terminal spinner for Python with safe pipes and redirects"
 HOMEPAGE="https://github.com/jakeogh/yaspin"
