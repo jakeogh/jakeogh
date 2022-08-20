@@ -13,6 +13,7 @@ inherit distutils-r1
 DESCRIPTION="A terminal environment tools for python"
 HOMEPAGE="https://github.com/jakeogh/terminal"
 EGIT_REPO_URI="/home/cfg/_myapps/terminal https://github.com/jakeogh/terminal.git"
+EGIT_OVERRIDE_REPO_LEPTURE_FLASK_SPHINX_THEMES="/home/cfg/_myapps/flask-sphinx-themes"
 
 LICENSE="BSD"
 SLOT="0"
