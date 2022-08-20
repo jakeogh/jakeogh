@@ -16,5 +16,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
+BDEPEND="dev-python/pyproject2setuppy[${PYTHON_USEDEP}]"
 RDEPEND=""
 DEPEND="${RDEPEND}"
