@@ -6,22 +6,11 @@ PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
 
-
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="python stock terminal"
 HOMEPAGE="https://github.com/jakeogh/openbbterminal"
 EGIT_REPO_URI="/home/cfg/_myapps/openbbterminal https://github.com/jakeogh/openbbterminal.git"
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
