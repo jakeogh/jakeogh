@@ -22,6 +22,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/flask[${PYTHON_USEDEP}]
+	dev-python/flask-babel[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
