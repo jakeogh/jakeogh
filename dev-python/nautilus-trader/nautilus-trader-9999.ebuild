@@ -15,3 +15,7 @@ EGIT_REPO_URI="/home/cfg/_myapps/nautilus-trader https://github.com/jakeogh/naut
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
+
+RDEPEND="dev-python/fsspec[${PYTHON_USEDEP}]"
+
+DEPEND="${RDEPEND}"
