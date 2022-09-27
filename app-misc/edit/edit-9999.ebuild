@@ -17,7 +17,8 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-util/splint
-	app-portage/repoman
+	dev-util/pkgcheck[${PYTHON_USEDEP}]
+	dev-util/pkgdev[${PYTHON_USEDEP}]
 	dev-python/pylint[${PYTHON_USEDEP}]
 	app-misc/commandlock
 	dev-util/shellcheck
