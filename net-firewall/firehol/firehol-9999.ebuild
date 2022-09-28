@@ -20,7 +20,6 @@ RDEPEND="net-firewall/iptables
 	net-misc/iputils
 	net-misc/iprange
 	net-analyzer/traceroute
-	virtual/modutils
 	app-arch/gzip
 	ipset? (
 		net-firewall/ipset
