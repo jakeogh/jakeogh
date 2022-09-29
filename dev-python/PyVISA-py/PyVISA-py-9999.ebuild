@@ -15,7 +15,7 @@ EGIT_REPO_URI="https://github.com/bobmcnamara/pyvisa-py"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 RDEPEND="
 	>=dev-python/PyVISA-1.12.0[${PYTHON_USEDEP}]
