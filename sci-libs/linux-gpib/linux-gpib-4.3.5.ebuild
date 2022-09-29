@@ -21,7 +21,7 @@ S="${WORKDIR}/${PN}-user-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="pcmcia static guile perl php python tcl doc firmware"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
