@@ -3,7 +3,6 @@
 
 EAPI=8
 
-
 inherit linux-info linux-mod
 
 DESCRIPTION="Kernel modules for GPIB (IEEE 488.2) hardware"
