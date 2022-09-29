@@ -15,7 +15,7 @@ EGIT_REPO_URI="/home/user/_myapps/pyvisa https://github.com/pyvisa/pyvisa"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS=""
 
 # Only works if nipalk.ko is loaded
 # which does not load on new kernels
