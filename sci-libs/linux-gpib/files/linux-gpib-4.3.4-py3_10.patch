@@ -1,0 +1,11 @@
+diff -ruN linux-gpib-user-4.3.4.orig/language/python/gpibinter.c linux-gpib-user-4.3.4/language/python/gpibinter.c
+--- linux-gpib-user-4.3.4.orig/language/python/gpibinter.c	2022-09-28 18:47:20.931948924 -0700
++++ linux-gpib-user-4.3.4/language/python/gpibinter.c	2022-09-28 18:48:05.585950748 -0700
+@@ -4,6 +4,7 @@
+  ************************************************************/
+ 
+ 
++#define PY_SSIZE_T_CLEAN
+ #include "Python.h"
+ 
+ #ifdef USE_INES
