@@ -11,6 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Plot in the terminal using braille dots"
 HOMEPAGE="https://github.com/jakeogh/plotille"
 EGIT_REPO_URI="/home/cfg/_myapps/plotille https://github.com/jakeogh/plotille.git"
+EGIT_BRANCH="pep517"
 
 LICENSE="BSD"
 SLOT="0"
