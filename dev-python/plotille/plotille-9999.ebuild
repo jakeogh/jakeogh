@@ -5,10 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{8..10} )
 
 inherit git-r3
-
-
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+inherit distutils-r1
 
 DESCRIPTION="Plot in the terminal using braille dots"
 HOMEPAGE="https://github.com/jakeogh/plotille"
@@ -17,11 +14,3 @@ EGIT_REPO_URI="/home/cfg/_myapps/plotille https://github.com/jakeogh/plotille.gi
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
