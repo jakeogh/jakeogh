@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # https://github.com/nE0sIghT/vortex-overlay/blob/master/dev-util/aosp-devel-meta/aosp-devel-meta-7-r1.ebuild
 DESCRIPTION="Meta package providing AOSP build environment"
