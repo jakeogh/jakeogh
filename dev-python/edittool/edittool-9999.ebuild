@@ -28,6 +28,7 @@ RDEPEND="
 	dev-python/black[${PYTHON_USEDEP}]
 	dev-python/byte-vector-replacer[${PYTHON_USEDEP}]
 	dev-python/gittool[${PYTHON_USEDEP}]
+	app-misc/colorpipe
 	dev-util/pkgcheck[${PYTHON_USEDEP}]
 	dev-util/pkgdev[${PYTHON_USEDEP}]
 	sys-apps/yarn
