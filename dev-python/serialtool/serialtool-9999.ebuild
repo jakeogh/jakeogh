@@ -7,8 +7,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="common functions for serial communication"
 HOMEPAGE="https://github.com/jakeogh/serialtool"
@@ -17,7 +15,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/serialtool https://github.com/jakeogh/serialtoo
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
@@ -30,8 +27,3 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
