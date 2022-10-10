@@ -52,7 +52,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 # using -DRUN_SWIG=ON below instead?
 #	sed \
 #		-e "s:\"\.\.\":\"${EPREFIX}/usr\":g" \
@@ -76,7 +76,7 @@ src_configure() {
 		-DPYTHON_BINDINGS=$(usex python)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
@@ -90,7 +90,7 @@ src_install() {
 	make_desktop_entry obgui "Open Babel" "${PN}"
 	#doicon "${DISTDIR}/${PN}.png"
 
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 src_test() {
@@ -102,9 +102,9 @@ src_test() {
 		-DTESTS=$(usex test)
 	)
 
-	cmake-utils_src_configure
-	cmake-utils_src_compile
-	cmake-utils_src_test -E py
+	cmake_src_configure
+	cmake_src_compile
+	cmake_src_test -E py
 }
 
 pkg_postinst() {
