@@ -51,7 +51,6 @@ RDEPEND="${DEPEND}
 	media-fonts/urw-fonts
 "
 
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-automagic.patch
 	"${FILESDIR}"/${PN}-visibility.patch
