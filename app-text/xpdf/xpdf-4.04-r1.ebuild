@@ -52,7 +52,7 @@ RDEPEND="${DEPEND}
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-automagic.patch
+	#"${FILESDIR}"/${PN}-automagic.patch
 	"${FILESDIR}"/${PN}-visibility.patch
 	"${FILESDIR}"/${PN}-shared-libs.patch
 )
