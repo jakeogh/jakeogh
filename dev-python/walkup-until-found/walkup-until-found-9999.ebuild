@@ -7,8 +7,8 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit distutils-r1 git-r3
 
 DESCRIPTION="locate name somewhere above the current folder location"
-HOMEPAGE="https://github.com/jakeogh/walkup_until_found"
-EGIT_REPO_URI="/home/cfg/_myapps/walkup_until_found https://github.com/jakeogh/walkup_until_found.git"
+HOMEPAGE="https://github.com/jakeogh/walkup-until-found"
+EGIT_REPO_URI="/home/cfg/_myapps/walkup-until-found https://github.com/jakeogh/walkup-until-found.git"
 
 LICENSE="BSD"
 SLOT="0"

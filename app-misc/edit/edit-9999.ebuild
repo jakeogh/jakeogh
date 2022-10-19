@@ -32,7 +32,7 @@ RDEPEND="
 	dev-util/ctags
 	dev-python/memory_profiler
 	dev-util/pkgdev[${PYTHON_USEDEP}]
-	dev-python/walkup_until_found[${PYTHON_USEDEP}]
+	dev-python/walkup-until-found[${PYTHON_USEDEP}]
 "
 #	dev-util/diffuse[${PYTHON_USEDEP}]
 

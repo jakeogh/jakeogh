@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/fastentrypoints[${PYTHON_USEDEP}]
 	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/astor[${PYTHON_USEDEP}]
-	dev-python/walkup_until_found[${PYTHON_USEDEP}]
+	dev-python/walkup-until-found[${PYTHON_USEDEP}]
 	dev-python/licenseguesser[${PYTHON_USEDEP}]
 	dev-python/with-chdir[${PYTHON_USEDEP}]
 	dev-vcs/hub
