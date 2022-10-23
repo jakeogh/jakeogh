@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="HTML parsing functions"
 HOMEPAGE="https://github.com/jakeogh/htmlparser"
 EGIT_REPO_URI="/home/cfg/_myapps/htmlparser https://github.com/jakeogh/htmlparser.git"
 
@@ -19,7 +19,6 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/pdfx[${PYTHON_USEDEP}]
 "
 
