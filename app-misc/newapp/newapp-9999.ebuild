@@ -21,7 +21,6 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/replace-text[${PYTHON_USEDEP}]
 	dev-python/fastentrypoints[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/astor[${PYTHON_USEDEP}]
 	dev-python/walkup-until-found[${PYTHON_USEDEP}]
 	dev-python/licenseguesser[${PYTHON_USEDEP}]
