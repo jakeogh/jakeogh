@@ -13,7 +13,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/symlinktree https://github.com/jakeogh/symlinkt
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
