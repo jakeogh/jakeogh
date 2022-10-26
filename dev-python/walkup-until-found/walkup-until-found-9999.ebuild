@@ -14,11 +14,9 @@ EGIT_REPO_URI="/home/cfg/_myapps/walkup-until-found"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
 	dev-python/mptool[${PYTHON_USEDEP}]
 "
 
