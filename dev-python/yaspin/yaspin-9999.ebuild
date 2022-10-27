@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{9..11} )
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_PEP517="poetry"
 
 inherit git-r3
 inherit distutils-r1
@@ -16,11 +16,3 @@ EGIT_REPO_URI="/home/cfg/_myapps/yaspin https://github.com/jakeogh/yaspin.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
