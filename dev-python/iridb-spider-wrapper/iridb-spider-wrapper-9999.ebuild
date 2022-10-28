@@ -21,7 +21,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/iridb[${PYTHON_USEDEP}]
+	net-misc/iridb[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
