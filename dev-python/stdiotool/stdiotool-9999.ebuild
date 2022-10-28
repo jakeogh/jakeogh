@@ -15,12 +15,10 @@ EGIT_REPO_URI="/home/cfg/_myapps/stdiotool https://github.com/jakeogh/stdiotool.
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
 "
 
 DEPEND="${RDEPEND}"
