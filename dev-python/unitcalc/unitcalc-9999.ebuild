@@ -19,7 +19,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/pint[${PYTHON_USEDEP}]
-	dev-python/python-levenshtein[${PYTHON_USEDEP}]
+	dev-python/Levenshtein[${PYTHON_USEDEP}]
 	dev-python/mptool[${PYTHON_USEDEP}]
 	dev-python/number-parser[${PYTHON_USEDEP}]
 "
