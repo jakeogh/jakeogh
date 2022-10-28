@@ -25,7 +25,7 @@ RDEPEND="
 	sys-process/schedtool
 	app-editors/neovim
 	app-misc/newapp[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/isort[${PYTHON_USEDEP}]
 	dev-python/python-ctags[${PYTHON_USEDEP}]
 	dev-python/mypy[${PYTHON_USEDEP}]

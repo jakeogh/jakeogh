@@ -19,7 +19,7 @@ KEYWORDS=""
 RDEPEND="
 	sci-chemistry/mendeleev[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/texttable[${PYTHON_USEDEP}]
 "

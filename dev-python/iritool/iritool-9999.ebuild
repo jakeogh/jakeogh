@@ -20,7 +20,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 "
 
 DEPEND="${RDEPEND}"

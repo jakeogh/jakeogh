@@ -17,7 +17,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	dev-python/mako[${PYTHON_USEDEP}]

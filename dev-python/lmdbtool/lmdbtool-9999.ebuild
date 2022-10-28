@@ -17,7 +17,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/lmdb[${PYTHON_USEDEP}]
 	dev-python/with-lmdb[${PYTHON_USEDEP}]
 "

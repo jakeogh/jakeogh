@@ -18,7 +18,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/psutil[${PYTHON_USEDEP}]
 "
 

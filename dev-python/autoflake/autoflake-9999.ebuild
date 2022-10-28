@@ -16,7 +16,7 @@ KEYWORDS=""
 #IUSE="test"
 
 RDEPEND="
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/pyflakes[${PYTHON_USEDEP}]
 "
 

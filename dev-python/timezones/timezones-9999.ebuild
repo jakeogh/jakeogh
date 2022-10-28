@@ -20,7 +20,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/pytzwhere[${PYTHON_USEDEP}]
 	dev-python/timezonefinder[${PYTHON_USEDEP}]
 "

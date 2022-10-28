@@ -18,7 +18,7 @@ IUSE="doc"
 
 RDEPEND="
 	dev-python/humanize[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/hashtool[${PYTHON_USEDEP}]
 	dev-python/python-getdents[${PYTHON_USEDEP}]

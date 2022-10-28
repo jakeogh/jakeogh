@@ -21,7 +21,7 @@ BDEPEND="dev-python/pyproject2setuppy"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/colorama[${PYTHON_USEDEP}]
 "
 

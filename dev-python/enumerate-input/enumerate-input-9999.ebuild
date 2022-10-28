@@ -16,7 +16,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 	dev-python/delay-timer[${PYTHON_USEDEP}]
 	dev-python/bytestool[${PYTHON_USEDEP}]
 "

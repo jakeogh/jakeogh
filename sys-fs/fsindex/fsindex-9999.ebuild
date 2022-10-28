@@ -18,7 +18,7 @@ IUSE=""
 
 DEPEND="
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+	
 "
 
 RDEPEND="${DEPEND}"
