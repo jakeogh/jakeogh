@@ -7,8 +7,6 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="python module allowing to create efficient dynamic arrays of user-defined types"
 HOMEPAGE="https://github.com/jakeogh/arrex"
@@ -17,21 +15,14 @@ EGIT_REPO_URI="/home/cfg/_myapps/arrex https://github.com/jakeogh/arrex.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/icecream[${PYTHON_USEDEP}]
+
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
