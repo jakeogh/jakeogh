@@ -7,9 +7,6 @@ PYTHON_COMPAT=( python3_{8..10} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="extract metadata from media"
 HOMEPAGE="https://github.com/jakeogh/mediametadatatool"
 EGIT_REPO_URI="/home/cfg/_myapps/mediametadatatool https://github.com/jakeogh/mediametadatatool.git"
@@ -17,18 +14,12 @@ EGIT_REPO_URI="/home/cfg/_myapps/mediametadatatool https://github.com/jakeogh/me
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
+	media-libs/mutagen[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
