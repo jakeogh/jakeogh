@@ -20,7 +20,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	media-libs/mutagen[${PYTHON_USEDEP}]
-	media-libs/classify[${PYTHON_USEDEP}]
+	dev-python/classify[${PYTHON_USEDEP}]
 	media-libs/exempi
 "
 
