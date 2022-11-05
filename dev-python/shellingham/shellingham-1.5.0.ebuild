@@ -17,6 +17,6 @@ SRC_URI="
 		-> ${P}.gh.tar.gz
 "
 
-LICENSE="GPL"
+LICENSE="GPL1+"
 SLOT="0"
 KEYWORDS="~amd64"
