@@ -31,6 +31,10 @@ BDEPEND="
 	)
 "
 
+RDEPEND="
+	dev-python/pylev[${PYTHON_USEDEP}]
+"
+
 distutils_enable_tests pytest
 
 S="${WORKDIR}/${MY_P}"
