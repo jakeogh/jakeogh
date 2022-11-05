@@ -6,6 +6,8 @@ EAPI=8
 DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{8..10} )
 
+inherit distutils-r1
+
 DESCRIPTION="A plugin that allows the export of locked packages to various formats"
 HOMEPAGE="
 	https://python-poetry.org/
