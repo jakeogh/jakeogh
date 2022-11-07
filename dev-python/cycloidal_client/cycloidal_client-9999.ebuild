@@ -16,10 +16,9 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/pyserial[${PYTHON_USEDEP}]
+	dev-python/serialtool[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
