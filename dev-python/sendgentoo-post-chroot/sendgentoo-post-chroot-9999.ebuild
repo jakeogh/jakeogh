@@ -17,13 +17,13 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/mounttool[${PYTHON_USEDEP}]
 	dev-python/portagetool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/devicetool[${PYTHON_USEDEP}]
 	dev-python/boottool[${PYTHON_USEDEP}]
 	dev-python/compile-kernel[${PYTHON_USEDEP}]
 "
