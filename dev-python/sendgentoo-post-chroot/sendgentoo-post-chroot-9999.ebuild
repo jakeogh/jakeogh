@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/devicetool[${PYTHON_USEDEP}]
 	dev-python/boottool[${PYTHON_USEDEP}]
 	dev-python/compile-kernel[${PYTHON_USEDEP}]
+	dev-python/click-auto-help[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
