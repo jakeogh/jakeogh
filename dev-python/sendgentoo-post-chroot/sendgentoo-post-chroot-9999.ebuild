@@ -14,6 +14,9 @@ EGIT_REPO_URI="/home/cfg/_myapps/sendgentoo-post-chroot https://github.com/jakeo
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
+IUSE="svg"
+
+REQUIRED_USE="!svg"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
