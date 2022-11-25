@@ -27,9 +27,9 @@ RDEPEND="
 	app-text/antiword
 	media-gfx/fbida
 	media-libs/exiftool
-	kde-apps/okular
 	media-gfx/inkscape
 	app-misc/ranger
 "
+#	kde-apps/okular  # depends on kde, and thus dbus
 
 DEPEND="${RDEPEND}"
