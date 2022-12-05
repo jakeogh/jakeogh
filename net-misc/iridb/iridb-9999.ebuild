@@ -58,6 +58,7 @@ RDEPEND="
 	dev-python/menu[${PYTHON_USEDEP}]
 	dev-python/pdfx[${PYTHON_USEDEP}]
 	dev-python/dotmap[${PYTHON_USEDEP}]
+	dev-python/greendbtool[${PYTHON_USEDEP}]
 "
 
 #	dev-python/yapsy[${PYTHON_USEDEP}]
