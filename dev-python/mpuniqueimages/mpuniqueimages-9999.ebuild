@@ -7,9 +7,6 @@ PYTHON_COMPAT=( python3_{9..11} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="testing"
 HOMEPAGE="https://github.com/jakeogh/mpuniqueimages"
 EGIT_REPO_URI="/home/cfg/_myapps/mpuniqueimages https://github.com/jakeogh/mpuniqueimages.git"
@@ -22,16 +19,9 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
-	dev-python/sh[${PYTHON_USEDEP}]
+	dev-python/mppdqhash[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
