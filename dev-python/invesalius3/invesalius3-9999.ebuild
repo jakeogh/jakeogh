@@ -18,8 +18,6 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
