@@ -9,8 +9,8 @@ inherit distutils-r1
 inherit git-r3
 
 DESCRIPTION="Python Publish-Subscribe Package"
-HOMEPAGE="https://github.com/schollii/pypubsub https://pypi.org/project/PyPubSub/"
-MY_PN="pypubsub"
+HOMEPAGE="https://github.com/schollii/pypubsub"
+#MY_PN="pypubsub"
 #SRC_URI="https://github.com/schollii/${MY_PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.gh.tar.gz"
 EGIT_REPO_URI="https://github.com/schollii/pypubsub"
 S="${WORKDIR}/${MY_PN}-${PV}"
