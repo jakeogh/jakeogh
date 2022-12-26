@@ -11,10 +11,10 @@ inherit rpm
 inherit rindeal-utils
 
 ## functions: systemd_dounit, systemd_newtmpfilesd, systemd_get_utildir
-inherit systemd
+#inherit systemd
 
 ## functions: enewgroup, enewuser
-inherit user
+#inherit user
 
 DESCRIPTION="Validity Fingerprint Reader Driver"
 HOMEPAGE="https://support.hp.com/in-en/drivers/selfservice/swdetails/a/5359405/swItemId/ob-203205-1"
