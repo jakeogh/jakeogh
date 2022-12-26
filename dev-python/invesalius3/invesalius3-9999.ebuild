@@ -24,11 +24,12 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-python_configure_all() {
-	cat >> setup.cfg <<-EOF
-	[build_ext]
-	EOF
-}
+# no change
+#python_configure_all() {
+#	cat >> setup.cfg <<-EOF
+#	[build_ext]
+#	EOF
+#}
 
 python_install_all() {
 	distutils-r1_python_install_all
