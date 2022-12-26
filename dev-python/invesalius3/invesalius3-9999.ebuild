@@ -27,6 +27,9 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+python_install_all() {
+	distutils-r1_python_install_all
+}
 
 #src_prepare() {
 #	default
