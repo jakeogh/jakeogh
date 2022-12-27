@@ -20,6 +20,7 @@ IUSE=""
 
 RDEPEND="
 	sci-libs/gdcm[${PYTHON_USEDEP}]
+	dev-python/imageio[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
