@@ -81,6 +81,7 @@ src_prepare() {
 	cmake_src_prepare
 }
 
+#		-DGDCM_BUILD_TESTING=$(usex test)
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=ON
@@ -102,7 +103,7 @@ src_configure() {
 		-DGDCM_USE_SYSTEM_CHARLS=ON
 		-DGDCM_USE_SYSTEM_POPPLER=ON
 		-DGDCM_USE_SYSTEM_LIBXML2=ON
-		-DGDCM_BUILD_TESTING=$(usex test)
+		-DGDCM_BUILD_TESTING=OFF
 		-DGDCM_WRAP_PYTHON=$(usex python)
 		$(usex python "-DGDCM_DEFAULT_PYTHON_VERSION=${EPYTHON#python}" "")
 		-DGDCM_WRAP_PERL=OFF
