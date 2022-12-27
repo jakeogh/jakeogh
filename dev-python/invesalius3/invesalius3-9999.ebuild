@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 DISTUTILS_USE_PEP517=setuptools
+
 PYTHON_COMPAT=( python3_{9..10} )
 
 inherit git-r3
@@ -17,10 +19,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-#	sci-libs/gdcm[${PYTHON_USEDEP}]
-#	dev-python/pyvista[${PYTHON_USEDEP}]
 
 RDEPEND="
+	sci-libs/gdcm[${PYTHON_USEDEP}]
+	dev-python/pyvista[${PYTHON_USEDEP}]
 	dev-python/imageio[${PYTHON_USEDEP}]
 	sci-libs/scikit-image[${PYTHON_USEDEP}]
 	sci-libs/nibabel[${PYTHON_USEDEP}]
@@ -29,18 +31,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-# no change
-#python_configure_all() {
-#	cat >> setup.cfg <<-EOF
-#	[build_ext]
-#	EOF
-#}
-
 python_install_all() {
 	distutils-r1_python_install_all
 }
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
