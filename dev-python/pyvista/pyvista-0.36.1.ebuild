@@ -6,6 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{8..10} )
 
 DISTUTILS_SINGLE_IMPL=1  # because "sci-libs/vtk" inherits "python-single-r1"
+
 inherit distutils-r1
 
 DESCRIPTION="Easier Pythonic interface to VTK"
