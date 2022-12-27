@@ -15,6 +15,7 @@ EGIT_REPO_URI="/home/cfg/_myapps/invesalius3 https://github.com/jakeogh/invesali
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
+IUSE=""
 
 
 RDEPEND="
