@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/imageio[${PYTHON_USEDEP}]
 	sci-libs/scikit-image[${PYTHON_USEDEP}]
 	sci-libs/nibabel[${PYTHON_USEDEP}]
+	dev-python/pyacvd[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
