@@ -19,6 +19,7 @@ IUSE=""
 
 
 RDEPEND="
+	sci-libs/gdcm[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
