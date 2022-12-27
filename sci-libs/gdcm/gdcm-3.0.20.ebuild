@@ -47,10 +47,9 @@ BDEPEND="
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-PATCHES=(
-	"${FILESDIR}/gdcm_support_vtk9.patch"
-	"${FILESDIR}/gdcm-3.0.14-include-math-h.patch"
-)
+#	"${FILESDIR}/gdcm_support_vtk9.patch"
+#	"${FILESDIR}/gdcm-3.0.14-include-math-h.patch"
+PATCHES=()
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
