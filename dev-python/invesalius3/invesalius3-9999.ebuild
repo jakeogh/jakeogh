@@ -24,6 +24,7 @@ RDEPEND="
 	sci-libs/scikit-image[${PYTHON_USEDEP}]
 	sci-libs/nibabel[${PYTHON_USEDEP}]
 	dev-python/pyacvd[${PYTHON_USEDEP}]
+	dev-python/pyvista[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
