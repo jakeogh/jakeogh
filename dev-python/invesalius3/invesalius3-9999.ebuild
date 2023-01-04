@@ -21,8 +21,8 @@ IUSE=""
 
 
 #	sci-libs/gdcm[${PYTHON_USEDEP}]
+#	dev-python/pyvista[${PYTHON_USEDEP}]
 RDEPEND="
-	dev-python/pyvista[${PYTHON_USEDEP}]
 	dev-python/imageio[${PYTHON_USEDEP}]
 	sci-libs/scikit-image[${PYTHON_USEDEP}]
 	sci-libs/nibabel[${PYTHON_USEDEP}]
