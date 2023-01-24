@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Properties of elements, ions and isotopes in the periodic table of elements"
 HOMEPAGE="https://github.com/lmmentel/mendeleev"
-EGIT_REPO_URI="https://github.com/lmmentel/mendeleev.git"
+EGIT_REPO_URI="/home/cfg/_myapps/mendeleev https://github.com/lmmentel/mendeleev.git"
 
 LICENSE="MIT"
 SLOT="0"
