@@ -6,9 +6,9 @@ PYTHON_COMPAT=( python3_{9..11} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="popen() wrapper"
 HOMEPAGE="https://github.com/jakeogh/run-command"
-EGIT_REPO_URI="/home/cfg/_myapps/run_command https://github.com/jakeogh/run-command.git"
+EGIT_REPO_URI="/home/cfg/_myapps/run-command https://github.com/jakeogh/run-command.git"
 
 LICENSE="BSD"
 SLOT="0"
