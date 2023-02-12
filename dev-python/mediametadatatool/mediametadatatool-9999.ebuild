@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	media-libs/mutagen[${PYTHON_USEDEP}]
 	dev-python/classify[${PYTHON_USEDEP}]
+	media-libs/libxmp[${PYTHON_USEDEP}]
 	media-libs/exempi
 "
 
