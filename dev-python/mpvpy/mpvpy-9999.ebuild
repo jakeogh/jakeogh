@@ -16,13 +16,11 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/python-mpv[${PYTHON_USEDEP}]
 	dev-python/hashfilter[${PYTHON_USEDEP}]
 	dev-python/clipboardtool[${PYTHON_USEDEP}]
 	dev-python/jsonparser[${PYTHON_USEDEP}]
-	dev-python/redis-py[${PYTHON_USEDEP}]
 	dev-python/click-auto-help[${PYTHON_USEDEP}]
 	dev-python/terminaltool[${PYTHON_USEDEP}]
 	sys-process/schedtool
