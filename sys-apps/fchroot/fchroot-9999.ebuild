@@ -11,7 +11,7 @@ inherit git-r3
 
 DESCRIPTION="Funtoo's franken-chroot tool"
 HOMEPAGE="https://pypi.org/project/fchroot/"
-EGIT_SRC_URI="https://code.funtoo.org/bitbucket/scm/~drobbins/fchroot.git"
+EGIT_REPO_URI="https://code.funtoo.org/bitbucket/scm/~drobbins/fchroot.git"
 #SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
