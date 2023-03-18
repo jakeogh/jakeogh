@@ -21,6 +21,10 @@ KEYWORDS="amd64 arm64 ~x86"
 RDEPEND=""
 DEPEND="${RDEPEND}"
 
+src_prepare(){
+	./make.sh
+	default
+}
 
 #FIXME:
 #QEMU_USER_TARGETS="aarch64 arm"
