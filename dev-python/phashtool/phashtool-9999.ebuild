@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	media-libs/opencv[${PYTHON_USEDEP}]
+	dev-python/pdqhash-python[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
