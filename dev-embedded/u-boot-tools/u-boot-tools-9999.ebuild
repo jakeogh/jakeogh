@@ -12,7 +12,7 @@ HOMEPAGE="https://www.denx.de/wiki/U-Boot/WebHome"
 #SRC_URI="https://ftp.denx.de/pub/u-boot/${MY_P}.tar.bz2"
 EGIT_REPO_URI="https://github.com/u-boot/u-boot"
 
-S="${WORKDIR}/${MY_P}"
+#S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2"
 SLOT="0"
