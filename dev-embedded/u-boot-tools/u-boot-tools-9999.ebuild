@@ -10,7 +10,7 @@ MY_P="u-boot-${PV/_/-}"
 DESCRIPTION="utilities for working with Das U-Boot"
 HOMEPAGE="https://www.denx.de/wiki/U-Boot/WebHome"
 #SRC_URI="https://ftp.denx.de/pub/u-boot/${MY_P}.tar.bz2"
-EGIT_SRC_URI="https://github.com/u-boot/u-boot"
+EGIT_REPO_URI="https://github.com/u-boot/u-boot"
 
 S="${WORKDIR}/${MY_P}"
 
