@@ -30,6 +30,7 @@ RDEPEND="
 	dev-python/python-fadvise[${PYTHON_USEDEP}]
 	dev-python/pydantic[${PYTHON_USEDEP}]
 	dev-python/statustool[${PYTHON_USEDEP}]
+	dev-python/signaltool[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
