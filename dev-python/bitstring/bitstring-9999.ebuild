@@ -11,6 +11,8 @@ DESCRIPTION="A Python module to help you manage your bits"
 HOMEPAGE="https://github.com/scott-griffiths/bitstring"
 EGIT_REPO_URI="https://github.com/scott-griffiths/bitstring.git"
 
+DISTUTILS_USE_PEP517="setuptools"
+
 LICENSE=""
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
