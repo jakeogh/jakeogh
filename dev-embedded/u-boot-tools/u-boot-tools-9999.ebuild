@@ -70,7 +70,7 @@ src_install() {
 	cd tools || die
 
 	if ! use envtools; then
-		dobin bmp_logo dumpimage fdtgrep gen_eth_addr img2srec mkenvimage mkimage
+		dobin dumpimage fdtgrep gen_eth_addr img2srec mkenvimage mkimage
 	fi
 
 	dobin env/fw_printenv
