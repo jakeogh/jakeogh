@@ -26,7 +26,6 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/htmlparser[${PYTHON_USEDEP}]
 	dev-python/reify[${PYTHON_USEDEP}]
-	dev-python/rediskey[${PYTHON_USEDEP}]
 	dev-python/statfilter[${PYTHON_USEDEP}]
 	dev-python/yt-dlp-wrapper[${PYTHON_USEDEP}]
 	dev-python/iterator_filter[${PYTHON_USEDEP}]
@@ -76,6 +75,7 @@ RDEPEND="
 #	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
 #	dev-db/postgresql:*
 #	dev-python/amara3-iri[${PYTHON_USEDEP}]
+#	dev-python/rediskey[${PYTHON_USEDEP}]
 
 #RDEPEND="
 #	${DEPEND}
