@@ -20,11 +20,11 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/retry-on-exception[${PYTHON_USEDEP}]
+	dev-python/yt-dlp-exception-translator[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
