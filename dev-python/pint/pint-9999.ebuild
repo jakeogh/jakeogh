@@ -13,14 +13,24 @@ EGIT_REPO_URI="/home/user/_myapps/pint https://github.com/hgrecco/pint.git"
 #EGIT_BRANCH="debugging"
 EGIT_BRANCH="master"
 
-LICENSE=""
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
-LICENSE="BSD"
+IUSE="babel uncertainties test"
 
-RDEPEND="dev-python/uncertainties[${PYTHON_USEDEP}]"
 
-python_install_all() {
-	distutils-r1_python_install_all
+DEPEND=""
+RDEPEND="${DEPEND}
+	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' pypy3)
+	babel? ( dev-python/Babel[${PYTHON_USEDEP}] )
+	uncertainties? ( dev-python/uncertainties[${PYTHON_USEDEP}] )
+"
+
+RESTRICT="!test? ( test )"
+
+distutils_enable_tests pytest
+
+src_prepare () {
+	default
+	sed -i "s/PACKAGE_VERSION/${PV}/" ${S}/${PN}/__init__.py
 }
