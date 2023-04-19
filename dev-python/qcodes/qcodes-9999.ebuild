@@ -21,6 +21,7 @@ RDEPEND="
 	dev-python/h5py[${PYTHON_USEDEP}]
 	dev-python/versioningit[${PYTHON_USEDEP}]
 	dev-python/broadbean[${PYTHON_USEDEP}]
+	dev-python/schema[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
