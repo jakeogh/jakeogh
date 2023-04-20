@@ -22,6 +22,7 @@ RDEPEND="
 	media-libs/mutagen[${PYTHON_USEDEP}]
 	dev-python/classify[${PYTHON_USEDEP}]
 	dev-python/python-xmp-toolkit[${PYTHON_USEDEP}]
+	media-libs/libxmp
 	media-libs/exempi
 "
 
