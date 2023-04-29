@@ -20,6 +20,7 @@ RDEPEND="dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/daemonize[${PYTHON_USEDEP}]
+	dev-python/clicktool[${PYTHON_USEDEP}]
 	net-misc/openssh
 "
 
