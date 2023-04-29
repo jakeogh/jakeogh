@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	dev-python/asserttool[${PYTHON_USEDEP}]"
+	"
 
 src_prepare() {
 	default
