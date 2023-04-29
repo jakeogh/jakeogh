@@ -17,7 +17,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
+	dev-python/unmp[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/mptool[${PYTHON_USEDEP}]
 	dev-python/advisory-lock[${PYTHON_USEDEP}]
