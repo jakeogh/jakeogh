@@ -3,6 +3,7 @@
 
 EAPI=8
 
+
 PYTHON_COMPAT=( python3_11 )
 inherit bazel distutils-r1
 
