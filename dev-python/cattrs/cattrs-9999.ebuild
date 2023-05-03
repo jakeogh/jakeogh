@@ -3,7 +3,7 @@
 # from https://gpo.zugaina.org/Overlays/4nykey/dev-python/cattrs
 EAPI=7
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1
 if [[ -z ${PV%%*9999} ]]; then
  inherit git-r3

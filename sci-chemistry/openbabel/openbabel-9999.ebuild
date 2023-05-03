@@ -4,7 +4,7 @@
 EAPI=7
 WX_GTK_VER="3.0"
 
-PYTHON_COMPAT=( python3_{9..11} )
+PYTHON_COMPAT=( python3_{10..11} )
 
 inherit cmake desktop eutils toolchain-funcs wxwidgets git-r3 #distutils-r1
 
