@@ -16,10 +16,10 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
+#	dev-python/pdfx[${PYTHON_USEDEP}]
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/pdfx[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
