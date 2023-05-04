@@ -55,13 +55,13 @@ RDEPEND="
 	dev-python/npyscreen[${PYTHON_USEDEP}]
 	dev-python/cachetools[${PYTHON_USEDEP}]
 	dev-python/menu[${PYTHON_USEDEP}]
-	dev-python/pdfx[${PYTHON_USEDEP}]
 	dev-python/dotmap[${PYTHON_USEDEP}]
 	dev-python/greendbtool[${PYTHON_USEDEP}]
 	dev-python/irifilter[${PYTHON_USEDEP}]
 	dev-python/yt-dlp-wrapper-iridb-import[${PYTHON_USEDEP}]
 "
 
+#	dev-python/pdfx[${PYTHON_USEDEP}]
 #	dev-python/yapsy[${PYTHON_USEDEP}]
 #	dev-python/lazy_import[${PYTHON_USEDEP}]
 #	dev-python/sqlalchemy[${PYTHON_USEDEP}]
