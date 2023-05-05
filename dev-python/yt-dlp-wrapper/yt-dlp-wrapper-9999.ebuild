@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/retry-on-exception[${PYTHON_USEDEP}]
 	dev-python/yt-dlp-exception-translator[${PYTHON_USEDEP}]
+	dev-python/yt-dlp-url-extractor[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
