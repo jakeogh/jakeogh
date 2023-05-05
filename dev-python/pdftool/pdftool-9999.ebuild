@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/pikepdf[${PYTHON_USEDEP}]
 	dev-python/pdfplumber[${PYTHON_USEDEP}]
+	dev-python/pdfx[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
