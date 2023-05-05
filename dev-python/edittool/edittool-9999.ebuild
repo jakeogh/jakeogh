@@ -31,6 +31,7 @@ RDEPEND="
 	app-misc/colorpipe
 	dev-util/pkgcheck[${PYTHON_USEDEP}]
 	dev-util/pkgdev[${PYTHON_USEDEP}]
+	dev-util/portagetool[${PYTHON_USEDEP}]
 	sys-apps/yarn
 "
 # sys-apps/yarn pulls in nodejs for CoC
