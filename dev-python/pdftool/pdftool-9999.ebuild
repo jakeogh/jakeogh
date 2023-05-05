@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/pikepdf[${PYTHON_USEDEP}]
+	dev-python/pdfplumber[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
