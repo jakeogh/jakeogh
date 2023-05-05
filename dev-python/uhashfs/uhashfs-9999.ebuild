@@ -33,6 +33,7 @@ RDEPEND="
 	dev-python/signaltool[${PYTHON_USEDEP}]
 	dev-python/iritool[${PYTHON_USEDEP}]
 	dev-python/with-greendb[${PYTHON_USEDEP}]
+	dev-python/angryfiles[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
