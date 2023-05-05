@@ -22,7 +22,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/pdfminer[${PYTHON_USEDEP}]
+	app-text/pdfminer[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
