@@ -20,6 +20,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/pdftool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
