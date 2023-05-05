@@ -31,6 +31,7 @@ RDEPEND="
 	dev-python/pydantic[${PYTHON_USEDEP}]
 	dev-python/statustool[${PYTHON_USEDEP}]
 	dev-python/signaltool[${PYTHON_USEDEP}]
+	dev-python/iritool[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
