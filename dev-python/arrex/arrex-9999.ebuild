@@ -9,8 +9,8 @@ inherit distutils-r1
 
 
 DESCRIPTION="python module allowing to create efficient dynamic arrays of user-defined types"
-HOMEPAGE="https://github.com/jakeogh/arrex"
-EGIT_REPO_URI="/home/cfg/_myapps/arrex https://github.com/jakeogh/arrex.git"
+HOMEPAGE="https://github.com/jimy-byerley/arrex"
+EGIT_REPO_URI="/home/cfg/_myapps/arrex https://github.com/jimy-byerley/arrex"
 
 LICENSE="BSD"
 SLOT="0"
