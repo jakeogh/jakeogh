@@ -8,17 +8,13 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit git-r3
 
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="A python CAD programming library"
-HOMEPAGE="https://github.com/jakeogh/build123d"
+HOMEPAGE="https://github.com/gumyr/build123d"
 EGIT_REPO_URI="/home/cfg/_myapps/build123d https://github.com/jakeogh/build123d.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 
