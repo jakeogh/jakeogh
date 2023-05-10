@@ -20,6 +20,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/eprint[${PYTHON_USEDEP}]
 	dev-python/epprint[${PYTHON_USEDEP}]
+	dev-python/globalverbose[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
