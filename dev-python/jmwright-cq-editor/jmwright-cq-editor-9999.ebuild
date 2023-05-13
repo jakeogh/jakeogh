@@ -12,8 +12,8 @@ inherit distutils-r1
 #DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="cq-editor for build123d"
-HOMEPAGE="https://github.com/jakeogh/jmwright-CQ-Editor"
-EGIT_REPO_URI="/home/cfg/_myapps/jmwright-cq-editor https://github.com/jakeogh/jmwright-CQ-Editor.git"
+HOMEPAGE="https://github.com/jdegenstein/jmwright-CQ-Editor"
+EGIT_REPO_URI="/home/cfg/_myapps/jmwright-cq-editor https://github.com/jdegenstein/jmwright-CQ-Editor.git"
 
 LICENSE="BSD"
 SLOT="0"
