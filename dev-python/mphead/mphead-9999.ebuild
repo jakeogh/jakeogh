@@ -11,9 +11,9 @@ inherit distutils-r1
 #inherit xdg
 #DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
-DESCRIPTION="messagepacked head/tail"
-HOMEPAGE="https://github.com/jakeogh/mpheadtail"
-EGIT_REPO_URI="/home/cfg/_myapps/mpheadtail https://github.com/jakeogh/mpheadtail.git"
+DESCRIPTION="messagepacked head"
+HOMEPAGE="https://github.com/jakeogh/mphead"
+EGIT_REPO_URI="/home/cfg/_myapps/mphead https://github.com/jakeogh/mphead.git"
 
 LICENSE="BSD"
 SLOT="0"
