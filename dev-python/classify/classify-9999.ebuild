@@ -16,11 +16,14 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	
+	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/clicktool[${PYTHON_USEDEP}]
+	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/run-command[${PYTHON_USEDEP}]
+	dev-python/python-magic[${PYTHON_USEDEP}]  # https://github.com/ahupp/python-magic
 	media-gfx/gifsicle
 "
+
+#sys-apps/file -python is done in python-magic-9999.ebuild
 
 DEPEND="${RDEPEND}"
