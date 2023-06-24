@@ -1,7 +1,7 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
@@ -15,15 +15,16 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
+#sys-apps/file -python is done in python-magic-9999.ebuild
+# dev-python/python-magic[${PYTHON_USEDEP}]  # https://github.com/ahupp/python-magic
 RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/clicktool[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/python-magic[${PYTHON_USEDEP}]  # https://github.com/ahupp/python-magic
+	dev-python/python-magic[${PYTHON_USEDEP}]
 	media-gfx/gifsicle
 "
 
-#sys-apps/file -python is done in python-magic-9999.ebuild
 
 DEPEND="${RDEPEND}"
