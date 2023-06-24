@@ -24,12 +24,8 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-util/android-tools[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
