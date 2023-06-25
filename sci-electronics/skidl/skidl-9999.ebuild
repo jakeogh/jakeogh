@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Programatically draw circuits"
 HOMEPAGE="https://github.com/devbisme/skidl"
-EGIT_REPO_URI="https://github.com/devbisme/skidl"
+EGIT_REPO_URI="/home/cfg/_myapps/skidl https://github.com/devbisme/skidl"
 
 LICENSE="BSD"
 SLOT="0"
