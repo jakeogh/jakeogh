@@ -20,6 +20,7 @@ RDEPEND="
 	$(python_gen_cond_dep 'sci-electronics/kinparse[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/graphviz[${PYTHON_USEDEP}]')
 	$(python_gen_cond_dep 'dev-python/future[${PYTHON_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/sexpdata[${PYTHON_USEDEP}]')
 	sci-electronics/kicad[${PYTHON_SINGLE_USEDEP}]
 "
 
