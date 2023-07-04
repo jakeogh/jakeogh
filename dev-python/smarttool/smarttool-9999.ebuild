@@ -18,18 +18,12 @@ EGIT_REPO_URI="/home/cfg/_myapps/smarttool https://github.com/jakeogh/smarttool.
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/clicktool[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/devicetool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
