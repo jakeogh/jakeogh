@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{10..11} )
 
-DISTUTILS_USE_PEP517="setuptools"
+DISTUTILS_USE_PEP517="poetry"
 inherit git-r3
 inherit distutils-r1
 #inherit xdg
