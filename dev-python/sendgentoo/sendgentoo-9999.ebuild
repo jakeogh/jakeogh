@@ -46,7 +46,6 @@ RDEPEND="
 	dev-python/timetool[${PYTHON_USEDEP}]
 	dev-python/symlinktree[${PYTHON_USEDEP}]
 	dev-python/portagetool[${PYTHON_USEDEP}]
-	dev-python/sendgentoo-post-chroot[${PYTHON_USEDEP}]
 	dev-python/sendgentoo-post-reboot[${PYTHON_USEDEP}]
 	dev-python/sendgentoo-chroot[${PYTHON_USEDEP}]
 	dev-python/sendgentoo-stage[${PYTHON_USEDEP}]
@@ -60,6 +59,7 @@ RDEPEND="
 	"
 
 #	sys-apps/fchroot
+#	dev-python/sendgentoo-post-chroot[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 
 python_install_all() {
