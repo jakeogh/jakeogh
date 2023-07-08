@@ -53,13 +53,13 @@ RDEPEND="
 	dev-python/zfstool[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
 	app-portage/smart-live-rebuild[${PYTHON_USEDEP}]
-	sys-apps/fchroot
 	dev-libs/glib[static-libs]
 	sys-apps/attr[static-libs]
 	sys-libs/zlib[static-libs]
 	dev-libs/libpcre[static-libs]
 	"
 
+#	sys-apps/fchroot
 DEPEND="${RDEPEND}"
 
 python_install_all() {
