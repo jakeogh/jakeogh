@@ -3,6 +3,7 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_EXT=1
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1
@@ -13,7 +14,7 @@ HOMEPAGE="https://github.com/ZipFile/python-getdents"
 
 #EGIT_REPO_URI="/home/cfg/_myapps/python-getdents https://github.com/jakeogh/python-getdents.git"
 EGIT_REPO_URI="https://github.com/jakeogh/python-getdents.git"
-BRANCH="attrs-bytes"
+EGIT_BRANCH="attrs-bytes"
 
 LICENSE="MIT"
 SLOT="0"
