@@ -50,6 +50,7 @@ RDEPEND="
 	dev-python/sendgentoo-chroot[${PYTHON_USEDEP}]
 	dev-python/sendgentoo-stage[${PYTHON_USEDEP}]
 	dev-python/zfstool[${PYTHON_USEDEP}]
+	dev-python/boottool[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
 	app-portage/smart-live-rebuild[${PYTHON_USEDEP}]
 	dev-libs/glib[static-libs]
