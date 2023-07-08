@@ -14,7 +14,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/proxytool https://github.com/jakeogh/proxytool.
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
