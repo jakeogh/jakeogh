@@ -17,8 +17,6 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
-	dev-python/dirtool[${PYTHON_USEDEP}]
 	dev-python/walkup-until-found[${PYTHON_USEDEP}]
 "
 
