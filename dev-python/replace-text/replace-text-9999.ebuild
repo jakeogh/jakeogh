@@ -22,7 +22,6 @@ DEPEND="
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/mptool[${PYTHON_USEDEP}]
-	dev-python/enumerate-input[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${DEPEND}"
