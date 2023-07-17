@@ -13,7 +13,6 @@ EGIT_REPO_URI="/home/cfg/_myapps/compile-kernel https://github.com/jakeogh/compi
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
@@ -22,6 +21,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/with-chdir[${PYTHON_USEDEP}]
+	sys-apps/busybox
 "
 
 DEPEND="${RDEPEND}"
