@@ -29,6 +29,7 @@ RDEPEND="
 	dev-python/run-command[${PYTHON_USEDEP}]
 	dev-python/mptool[${PYTHON_USEDEP}]
 	app-portage/portage-utils
+	app-misc/echocommand
 "
 
 DEPEND="${RDEPEND}"
