@@ -15,7 +15,8 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/click-auto-help[${PYTHON_USEDEP}]
+	dev-python/clicktool[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/run-command[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
