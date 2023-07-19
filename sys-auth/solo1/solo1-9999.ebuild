@@ -18,11 +18,3 @@ EGIT_REPO_URI="/home/cfg/_myapps/solo1 https://github.com/jakeogh/solo1.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
