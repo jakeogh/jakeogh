@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python3.8+ process launching"
 HOMEPAGE="https://github.com/jakeogh/sh"
-EGIT_REPO_URI="/home/cfg/_myapps/sh https://github.com/jakeogh/sh.git"
+EGIT_REPO_URI="/home/sysskel/myapps/sh https://github.com/jakeogh/sh.git"
 #EGIT_BRANCH="fd_control"
 
 LICENSE="BSD"

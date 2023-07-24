@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python client for Alpaca's trade API"
 HOMEPAGE="https://github.com/jakeogh/alpaca-trade-api-python"
-EGIT_REPO_URI="/home/cfg/_myapps/alpaca-trade-api-python https://github.com/jakeogh/alpaca-trade-api-python.git"
+EGIT_REPO_URI="/home/sysskel/myapps/alpaca-trade-api-python https://github.com/jakeogh/alpaca-trade-api-python.git"
 
 LICENSE="BSD"
 SLOT="0"

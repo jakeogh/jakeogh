@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="extract data from pdf tables"
 HOMEPAGE="https://github.com/jakeogh/camelot"
-EGIT_REPO_URI="/home/cfg/_myapps/camelot https://github.com/jakeogh/camelot.git"
+EGIT_REPO_URI="/home/sysskel/myapps/camelot https://github.com/jakeogh/camelot.git"
 
 LICENSE="BSD"
 SLOT="0"

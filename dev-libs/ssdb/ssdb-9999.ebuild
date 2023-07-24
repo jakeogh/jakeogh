@@ -11,7 +11,7 @@ inherit eutils
 DESCRIPTION="A fast NoSQL database on-disk alternative to Redis"
 HOMEPAGE="https://ssdb.io"
 #SRC_URI="https://github.com/ideawu/ssdb/archive/${PV}.tar.gz -> ${P}.tar.gz"
-EGIT_REPO_URI="/home/cfg/_myapps/ssdb https://github.com/jakeogh/ssdb.git"
+EGIT_REPO_URI="/home/sysskel/myapps/ssdb https://github.com/jakeogh/ssdb.git"
 
 LICENSE="BSD-2"
 SLOT="0"

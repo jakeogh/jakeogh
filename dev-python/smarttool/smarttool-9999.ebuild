@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="Device S.M.A.R.T. functions"
 HOMEPAGE="https://github.com/jakeogh/smarttool"
-EGIT_REPO_URI="/home/cfg/_myapps/smarttool https://github.com/jakeogh/smarttool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/smarttool https://github.com/jakeogh/smarttool.git"
 
 LICENSE="BSD"
 SLOT="0"

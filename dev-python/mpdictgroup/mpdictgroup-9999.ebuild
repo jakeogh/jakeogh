@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="group messagepacked dicts on stdin by key"
 HOMEPAGE="https://github.com/jakeogh/mpdictgroup"
-EGIT_REPO_URI="/home/cfg/_myapps/mpdictgroup https://github.com/jakeogh/mpdictgroup.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpdictgroup https://github.com/jakeogh/mpdictgroup.git"
 
 LICENSE="BSD"
 SLOT="0"

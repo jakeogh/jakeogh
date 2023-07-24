@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="common functions for working with torrents"
 HOMEPAGE="https://github.com/jakeogh/torrenttool"
-EGIT_REPO_URI="/home/cfg/_myapps/torrenttool https://github.com/jakeogh/torrenttool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/torrenttool https://github.com/jakeogh/torrenttool.git"
 
 LICENSE="BSD"
 SLOT="0"

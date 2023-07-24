@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="installer for GPIB drivers"
 HOMEPAGE="https://github.com/jakeogh/linux-gpib-installer"
-EGIT_REPO_URI="/home/cfg/_myapps/linux-gpib-installer https://github.com/jakeogh/linux-gpib-installer.git"
+EGIT_REPO_URI="/home/sysskel/myapps/linux-gpib-installer https://github.com/jakeogh/linux-gpib-installer.git"
 
 LICENSE="BSD"
 SLOT="0"

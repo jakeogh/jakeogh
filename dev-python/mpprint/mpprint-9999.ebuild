@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="pprint() messagepacked stdin"
 HOMEPAGE="https://github.com/jakeogh/mpprint"
-EGIT_REPO_URI="/home/cfg/_myapps/mpprint https://github.com/jakeogh/mpprint.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpprint https://github.com/jakeogh/mpprint.git"
 
 LICENSE="BSD"
 SLOT="0"

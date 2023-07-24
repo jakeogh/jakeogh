@@ -6,7 +6,7 @@ inherit git-r3 savedconfig toolchain-funcs desktop xdg
 
 DESCRIPTION="a simple web browser based on surf from suckless.org"
 HOMEPAGE="http://surf.suckless.org/"
-EGIT_REPO_URI="/home/cfg/_myapps/glide/glide"
+EGIT_REPO_URI="/home/sysskel/myapps/glide/glide"
 EGIT_BRANCH="glide"
 
 LICENSE="MIT"

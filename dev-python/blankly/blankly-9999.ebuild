@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="build, backtest and deploy your algo"
 HOMEPAGE="https://github.com/jakeogh/blankly"
-EGIT_REPO_URI="/home/cfg/_myapps/blankly https://github.com/jakeogh/blankly.git"
+EGIT_REPO_URI="/home/sysskel/myapps/blankly https://github.com/jakeogh/blankly.git"
 
 LICENSE="BSD"
 SLOT="0"

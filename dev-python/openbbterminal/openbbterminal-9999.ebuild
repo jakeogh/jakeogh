@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="python stock terminal"
 HOMEPAGE="https://github.com/jakeogh/openbbterminal"
-EGIT_REPO_URI="/home/cfg/_myapps/openbbterminal https://github.com/jakeogh/openbbterminal.git"
+EGIT_REPO_URI="/home/sysskel/myapps/openbbterminal https://github.com/jakeogh/openbbterminal.git"
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 LICENSE="BSD"

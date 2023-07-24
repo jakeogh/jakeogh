@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/nifpy"
-EGIT_REPO_URI="/home/cfg/_myapps/nifpy https://github.com/jakeogh/nifpy.git"
+EGIT_REPO_URI="/home/sysskel/myapps/nifpy https://github.com/jakeogh/nifpy.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="git-like did-you-mean feature in click"
 HOMEPAGE="https://github.com/jakeogh/click-didyoumean"
-EGIT_REPO_URI="/home/cfg/_myapps/click-didyoumean https://github.com/jakeogh/click-didyoumean.git"
+EGIT_REPO_URI="/home/sysskel/myapps/click-didyoumean https://github.com/jakeogh/click-didyoumean.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Wayback Machine API interface & a command-line tool"
 HOMEPAGE="https://github.com/jakeogh/waybackpy"
-EGIT_REPO_URI="/home/cfg/_myapps/waybackpy https://github.com/jakeogh/waybackpy.git"
+EGIT_REPO_URI="/home/sysskel/myapps/waybackpy https://github.com/jakeogh/waybackpy.git"
 
 LICENSE="BSD"
 SLOT="0"

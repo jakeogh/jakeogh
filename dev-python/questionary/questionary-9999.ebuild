@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python library to build pretty command line user prompts"
 HOMEPAGE="https://github.com/jakeogh/questionary"
-EGIT_REPO_URI="/home/cfg/_myapps/questionary https://github.com/jakeogh/questionary.git"
+EGIT_REPO_URI="/home/sysskel/myapps/questionary https://github.com/jakeogh/questionary.git"
 
 LICENSE="BSD"
 SLOT="0"

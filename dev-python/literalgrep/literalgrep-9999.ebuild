@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Replace text in file(s) or stdin."
 HOMEPAGE="https://github.com/jakeogh/literalgrep"
-EGIT_REPO_URI="/home/cfg/_myapps/literalgrep https://github.com/jakeogh/literalgrep.git"
+EGIT_REPO_URI="/home/sysskel/myapps/literalgrep https://github.com/jakeogh/literalgrep.git"
 
 LICENSE=""
 SLOT="0"

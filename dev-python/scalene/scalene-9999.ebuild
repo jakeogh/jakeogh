@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="high-performance, high-precision CPU, GPU, and memory profiler"
 HOMEPAGE="https://github.com/jakeogh/scalene"
-EGIT_REPO_URI="/home/cfg/_myapps/scalene https://github.com/jakeogh/scalene.git"
+EGIT_REPO_URI="/home/sysskel/myapps/scalene https://github.com/jakeogh/scalene.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="functions for truck modification"
 HOMEPAGE="https://github.com/jakeogh/trucktool"
-EGIT_REPO_URI="/home/cfg/_myapps/trucktool https://github.com/jakeogh/trucktool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/trucktool https://github.com/jakeogh/trucktool.git"
 
 LICENSE="BSD"
 SLOT="0"

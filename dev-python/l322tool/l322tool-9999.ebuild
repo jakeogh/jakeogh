@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="car functions"
 HOMEPAGE="https://github.com/jakeogh/l322tool"
-EGIT_REPO_URI="/home/cfg/_myapps/l322tool https://github.com/jakeogh/l322tool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/l322tool https://github.com/jakeogh/l322tool.git"
 
 LICENSE="BSD"
 SLOT="0"

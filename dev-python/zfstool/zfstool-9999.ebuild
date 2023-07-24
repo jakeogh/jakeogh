@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common functions for working with zfs"
 HOMEPAGE="https://github.com/jakeogh/zfstool"
-EGIT_REPO_URI="/home/cfg/_myapps/zfstool https://github.com/jakeogh/zfstool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/zfstool https://github.com/jakeogh/zfstool.git"
 
 LICENSE="BSD"
 SLOT="0"

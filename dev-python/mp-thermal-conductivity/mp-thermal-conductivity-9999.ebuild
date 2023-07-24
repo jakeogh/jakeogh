@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="lookup messagepacked bytes as tokens in a thermal conductivity config file"
 HOMEPAGE="https://github.com/jakeogh/mp-thermal-conductivity"
-EGIT_REPO_URI="/home/cfg/_myapps/mp-thermal-conductivity https://github.com/jakeogh/mp-thermal-conductivity.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mp-thermal-conductivity https://github.com/jakeogh/mp-thermal-conductivity.git"
 
 LICENSE="BSD"
 SLOT="0"

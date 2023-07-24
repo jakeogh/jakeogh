@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="tr '\0' '\n'"
 HOMEPAGE="https://github.com/jakeogh/unnull"
-EGIT_REPO_URI="/home/cfg/_myapps/unnull https://github.com/jakeogh/unnull.git"
+EGIT_REPO_URI="/home/sysskel/myapps/unnull https://github.com/jakeogh/unnull.git"
 
 LICENSE="BSD"
 SLOT="0"

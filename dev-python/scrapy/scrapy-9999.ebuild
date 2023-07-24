@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A high-level Web Crawling and Web Scraping framework"
 HOMEPAGE="https://github.com/jakeogh/scrapy"
-EGIT_REPO_URI="/home/cfg/_myapps/scrapy https://github.com/jakeogh/scrapy.git"
+EGIT_REPO_URI="/home/sysskel/myapps/scrapy https://github.com/jakeogh/scrapy.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="DB backed filesystem hash index."
 HOMEPAGE="https://github.com/jakeogh/pgfsindex"
-EGIT_REPO_URI="/home/cfg/_myapps/pgfsindex https://github.com/jakeogh/pgfsindex.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pgfsindex https://github.com/jakeogh/pgfsindex.git"
 
 LICENSE="MIT"
 SLOT="0"

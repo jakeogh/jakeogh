@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Decorator to retry a function call on an exception"
 HOMEPAGE="https://github.com/jakeogh/enumerate-input"
-EGIT_REPO_URI="/home/cfg/_myapps/enumerate-input https://github.com/jakeogh/enumerate-input.git"
+EGIT_REPO_URI="/home/sysskel/myapps/enumerate-input https://github.com/jakeogh/enumerate-input.git"
 
 LICENSE="BSD"
 SLOT="0"

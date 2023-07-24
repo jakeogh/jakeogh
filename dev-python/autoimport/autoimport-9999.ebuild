@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="automatically fixes wrong import statements"
 HOMEPAGE="https://github.com/jakeogh/autoimport"
-EGIT_REPO_URI="/home/cfg/_myapps/autoimport https://github.com/jakeogh/autoimport.git"
+EGIT_REPO_URI="/home/sysskel/myapps/autoimport https://github.com/jakeogh/autoimport.git"
 
 LICENSE="BSD"
 SLOT="0"

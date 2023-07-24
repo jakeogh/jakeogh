@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/find_unplayed_media"
-EGIT_REPO_URI="/home/cfg/_myapps/find_unplayed_media https://github.com/jakeogh/find_unplayed_media.git"
+EGIT_REPO_URI="/home/sysskel/myapps/find_unplayed_media https://github.com/jakeogh/find_unplayed_media.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="swap key and values in messagepacked dicts"
 HOMEPAGE="https://github.com/jakeogh/mpdictreverse"
-EGIT_REPO_URI="/home/cfg/_myapps/mpdictreverse https://github.com/jakeogh/mpdictreverse.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpdictreverse https://github.com/jakeogh/mpdictreverse.git"
 
 LICENSE="BSD"
 SLOT="0"

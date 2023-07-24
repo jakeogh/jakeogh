@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="messagepack stdin/stdout wrapper for feh"
 HOMEPAGE="https://github.com/jakeogh/mpfeh"
-EGIT_REPO_URI="/home/cfg/_myapps/mpfeh https://github.com/jakeogh/mpfeh.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpfeh https://github.com/jakeogh/mpfeh.git"
 
 LICENSE="BSD"
 SLOT="0"

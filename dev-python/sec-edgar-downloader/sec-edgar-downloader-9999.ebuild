@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/sec-edgar-downloader"
-EGIT_REPO_URI="/home/cfg/_myapps/sec-edgar-downloader https://github.com/jakeogh/sec-edgar-downloader.git"
+EGIT_REPO_URI="/home/sysskel/myapps/sec-edgar-downloader https://github.com/jakeogh/sec-edgar-downloader.git"
 
 LICENSE="BSD"
 SLOT="0"

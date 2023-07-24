@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="validates hostnames and addresses"
 HOMEPAGE="https://github.com/jakeogh/validate-hostname"
-EGIT_REPO_URI="/home/cfg/_myapps/validate-hostname https://github.com/jakeogh/validate-hostname.git"
+EGIT_REPO_URI="/home/sysskel/myapps/validate-hostname https://github.com/jakeogh/validate-hostname.git"
 
 LICENSE="BSD"
 SLOT="0"

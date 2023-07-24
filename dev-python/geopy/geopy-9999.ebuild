@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/geopy"
-EGIT_REPO_URI="/home/cfg/_myapps/geopy https://github.com/jakeogh/geopy.git"
+EGIT_REPO_URI="/home/sysskel/myapps/geopy https://github.com/jakeogh/geopy.git"
 
 LICENSE="BSD"
 SLOT="0"

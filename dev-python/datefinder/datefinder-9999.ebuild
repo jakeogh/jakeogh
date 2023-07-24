@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Find dates inside text using Python and get back datetime objects"
 HOMEPAGE="https://github.com/jakeogh/datefinder"
-EGIT_REPO_URI="/home/cfg/_myapps/datefinder https://github.com/jakeogh/datefinder.git"
+EGIT_REPO_URI="/home/sysskel/myapps/datefinder https://github.com/jakeogh/datefinder.git"
 
 LICENSE="BSD"
 SLOT="0"

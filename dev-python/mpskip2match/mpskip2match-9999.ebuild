@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="skip messagepacked input until match"
 HOMEPAGE="https://github.com/jakeogh/mpskip2match"
-EGIT_REPO_URI="/home/cfg/_myapps/mpskip2match https://github.com/jakeogh/mpskip2match.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpskip2match https://github.com/jakeogh/mpskip2match.git"
 
 LICENSE="BSD"
 SLOT="0"

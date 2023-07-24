@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/ccryptotool"
-EGIT_REPO_URI="/home/cfg/_myapps/cryptotool https://github.com/jakeogh/cryptotool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/cryptotool https://github.com/jakeogh/cryptotool.git"
 
 LICENSE="BSD"
 SLOT="0"

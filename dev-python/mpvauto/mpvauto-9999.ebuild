@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Played quered media from redis"
 HOMEPAGE="https://github.com/jakeogh/mpvauto"
-EGIT_REPO_URI="/home/cfg/_myapps/mpvauto https://github.com/jakeogh/mpvauto.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpvauto https://github.com/jakeogh/mpvauto.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit git-r3
 
 DESCRIPTION="Extensible Memory Allocation Infrastructure"
 HOMEPAGE="https://github.com/jakeogh/heap-layers"
-EGIT_REPO_URI="/home/cfg/_myapps/heap-layers https://github.com/jakeogh/heap-layers.git"
+EGIT_REPO_URI="/home/sysskel/myapps/heap-layers https://github.com/jakeogh/heap-layers.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit distutils-r1
 if [[ -z ${PV%%*9999} ]]; then
  inherit git-r3
- EGIT_REPO_URI="/home/cfg/_myapps/cattrs https://github.com/Tinche/${PN}.git"
+ EGIT_REPO_URI="/home/sysskel/myapps/cattrs https://github.com/Tinche/${PN}.git"
  EGIT_BRANCH="structure-default"
  EGIT_SUBMODULES=( )
 else

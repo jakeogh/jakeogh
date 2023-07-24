@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/est"
-EGIT_REPO_URI="/home/cfg/_myapps/est https://github.com/jakeogh/est.git"
+EGIT_REPO_URI="/home/sysskel/myapps/est https://github.com/jakeogh/est.git"
 
 LICENSE="BSD"
 SLOT="0"

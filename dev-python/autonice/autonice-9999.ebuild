@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="renice processes"
 HOMEPAGE="https://github.com/jakeogh/autonice"
-EGIT_REPO_URI="/home/cfg/_myapps/autonice https://github.com/jakeogh/autonice.git"
+EGIT_REPO_URI="/home/sysskel/myapps/autonice https://github.com/jakeogh/autonice.git"
 
 LICENSE="BSD"
 SLOT="0"

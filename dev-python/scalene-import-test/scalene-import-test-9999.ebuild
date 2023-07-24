@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="debugging example"
 HOMEPAGE="https://github.com/jakeogh/scalene-import-test"
-EGIT_REPO_URI="/home/cfg/_myapps/scalene-import-test https://github.com/jakeogh/scalene-import-test.git"
+EGIT_REPO_URI="/home/sysskel/myapps/scalene-import-test https://github.com/jakeogh/scalene-import-test.git"
 
 LICENSE="BSD"
 SLOT="0"

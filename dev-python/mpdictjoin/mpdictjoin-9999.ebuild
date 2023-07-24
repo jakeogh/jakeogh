@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="mpdict | mpdict"
 HOMEPAGE="https://github.com/jakeogh/mpdictjoin"
-EGIT_REPO_URI="/home/cfg/_myapps/mpdictjoin https://github.com/jakeogh/mpdictjoin.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpdictjoin https://github.com/jakeogh/mpdictjoin.git"
 
 LICENSE="BSD"
 SLOT="0"

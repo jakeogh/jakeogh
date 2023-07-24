@@ -7,7 +7,7 @@ inherit systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	#EGIT_REPO_URI="git://linux-nfs.org/~steved/rpcbind.git"
-	EGIT_REPO_URI="/home/cfg/_myapps/erpcbind/rpcbind"
+	EGIT_REPO_URI="/home/sysskel/myapps/erpcbind/rpcbind"
 	inherit autotools git-r3
 	EGIT_BRANCH="simple"
 else

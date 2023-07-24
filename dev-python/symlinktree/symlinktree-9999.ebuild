@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Recursively symlink the contents of a folder to another root"
 HOMEPAGE="https://github.com/jakeogh/symlinktree"
-EGIT_REPO_URI="/home/cfg/_myapps/symlinktree https://github.com/jakeogh/symlinktree.git"
+EGIT_REPO_URI="/home/sysskel/myapps/symlinktree https://github.com/jakeogh/symlinktree.git"
 
 LICENSE="BSD"
 SLOT="0"

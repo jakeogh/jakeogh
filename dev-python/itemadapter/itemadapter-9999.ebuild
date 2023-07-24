@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common interface for data container classes"
 HOMEPAGE="https://github.com/jakeogh/itemadapter"
-EGIT_REPO_URI="/home/cfg/_myapps/itemadapter https://github.com/jakeogh/itemadapter.git"
+EGIT_REPO_URI="/home/sysskel/myapps/itemadapter https://github.com/jakeogh/itemadapter.git"
 
 LICENSE="BSD"
 SLOT="0"

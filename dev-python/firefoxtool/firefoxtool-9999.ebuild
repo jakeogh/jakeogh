@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="automatically fix firefirefox profiles"
 HOMEPAGE="https://github.com/jakeogh/firefoxtool"
-EGIT_REPO_URI="/home/cfg/_myapps/firefoxtool https://github.com/jakeogh/firefoxtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/firefoxtool https://github.com/jakeogh/firefoxtool.git"
 
 LICENSE="BSD"
 SLOT="0"

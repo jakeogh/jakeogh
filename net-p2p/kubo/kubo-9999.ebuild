@@ -12,7 +12,7 @@ inherit go-module golang-vcs golang-build
 
 DESCRIPTION="IPFS implementation in Go"
 HOMEPAGE="https://github.com/jakeogh/kubo"
-EGIT_REPO_URI="/home/cfg/_myapps/kubo https://github.com/jakeogh/kubo.git"
+EGIT_REPO_URI="/home/sysskel/myapps/kubo https://github.com/jakeogh/kubo.git"
 
 LICENSE="BSD"
 SLOT="0"

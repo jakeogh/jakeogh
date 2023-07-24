@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="module for refreshing multi-line output in terminal"
 HOMEPAGE="https://github.com/jakeogh/reprint"
-EGIT_REPO_URI="/home/cfg/_myapps/reprint https://github.com/jakeogh/reprint.git"
+EGIT_REPO_URI="/home/sysskel/myapps/reprint https://github.com/jakeogh/reprint.git"
 
 LICENSE="BSD"
 SLOT="0"

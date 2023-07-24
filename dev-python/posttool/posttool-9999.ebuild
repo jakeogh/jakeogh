@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="common functions for posting web content"
 HOMEPAGE="https://github.com/jakeogh/posttool"
-EGIT_REPO_URI="/home/cfg/_myapps/posttool https://github.com/jakeogh/posttool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/posttool https://github.com/jakeogh/posttool.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="wrapper for youtube-dl"
 HOMEPAGE="https://github.com/jakeogh/youtube-dl-wrapper"
-EGIT_REPO_URI="/home/cfg/_myapps/youtube-dl-wrapper https://github.com/jakeogh/youtube-dl-wrapper.git"
+EGIT_REPO_URI="/home/sysskel/myapps/youtube-dl-wrapper https://github.com/jakeogh/youtube-dl-wrapper.git"
 inherit git-r3
 
 LICENSE="MIT"

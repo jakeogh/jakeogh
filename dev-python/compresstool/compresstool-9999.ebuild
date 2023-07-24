@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="compress/decompress various compresson formats"
 HOMEPAGE="https://github.com/jakeogh/compresstool"
-EGIT_REPO_URI="/home/cfg/_myapps/compresstool https://github.com/jakeogh/compresstool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/compresstool https://github.com/jakeogh/compresstool.git"
 
 LICENSE="BSD"
 SLOT="0"

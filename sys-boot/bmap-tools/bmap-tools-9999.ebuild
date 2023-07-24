@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="tool for creating and copying files using block maps"
 HOMEPAGE="https://github.com/jakeogh/bmap-tools"
-EGIT_REPO_URI="/home/cfg/_myapps/bmap-tools https://github.com/jakeogh/bmap-tools.git"
+EGIT_REPO_URI="/home/sysskel/myapps/bmap-tools https://github.com/jakeogh/bmap-tools.git"
 
 LICENSE="BSD"
 SLOT="0"

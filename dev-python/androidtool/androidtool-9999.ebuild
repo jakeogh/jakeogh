@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="common android functions"
 HOMEPAGE="https://github.com/jakeogh/androidtool"
-EGIT_REPO_URI="/home/cfg/_myapps/androidtool https://github.com/jakeogh/androidtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/androidtool https://github.com/jakeogh/androidtool.git"
 
 LICENSE="BSD"
 SLOT="0"

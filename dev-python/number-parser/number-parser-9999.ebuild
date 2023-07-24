@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/number-parser"
-EGIT_REPO_URI="/home/cfg/_myapps/number-parser https://github.com/jakeogh/number-parser.git"
+EGIT_REPO_URI="/home/sysskel/myapps/number-parser https://github.com/jakeogh/number-parser.git"
 
 LICENSE="BSD"
 SLOT="0"

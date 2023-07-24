@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="build and deploy p-boot"
 HOMEPAGE="https://github.com/jakeogh/pboottool"
-EGIT_REPO_URI="/home/cfg/_myapps/pboottool https://github.com/jakeogh/pboottool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pboottool https://github.com/jakeogh/pboottool.git"
 
 LICENSE="BSD"
 SLOT="0"

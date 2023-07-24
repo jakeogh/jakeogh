@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/mapscii"
-EGIT_REPO_URI="/home/cfg/_myapps/mapscii https://github.com/jakeogh/mapscii.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mapscii https://github.com/jakeogh/mapscii.git"
 
 LICENSE="BSD"
 SLOT="0"

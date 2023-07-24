@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="A python CAD programming library"
 HOMEPAGE="https://github.com/gumyr/build123d"
-EGIT_REPO_URI="/home/cfg/_myapps/build123d https://github.com/jakeogh/build123d.git"
+EGIT_REPO_URI="/home/sysskel/myapps/build123d https://github.com/jakeogh/build123d.git"
 
 LICENSE="BSD"
 SLOT="0"

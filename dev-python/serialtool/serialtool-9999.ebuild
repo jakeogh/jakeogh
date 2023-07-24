@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="common functions for serial communication"
 HOMEPAGE="https://github.com/jakeogh/serialtool"
-EGIT_REPO_URI="/home/cfg/_myapps/serialtool https://github.com/jakeogh/serialtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/serialtool https://github.com/jakeogh/serialtool.git"
 
 LICENSE="BSD"
 SLOT="0"

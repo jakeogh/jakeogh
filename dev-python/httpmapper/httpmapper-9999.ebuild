@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/httpmapper"
-EGIT_REPO_URI="/home/cfg/_myapps/httpmapper https://github.com/jakeogh/httpmapper.git"
+EGIT_REPO_URI="/home/sysskel/myapps/httpmapper https://github.com/jakeogh/httpmapper.git"
 
 LICENSE="BSD"
 SLOT="0"

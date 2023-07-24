@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="write messagepacked path name to stdout from mp paths on stdin"
 HOMEPAGE="https://github.com/jakeogh/mppathname"
-EGIT_REPO_URI="/home/cfg/_myapps/mppathname https://github.com/jakeogh/mppathname.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mppathname https://github.com/jakeogh/mppathname.git"
 
 LICENSE="BSD"
 SLOT="0"

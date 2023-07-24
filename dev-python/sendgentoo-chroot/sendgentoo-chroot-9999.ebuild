@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/sendgentoo-chroot"
-EGIT_REPO_URI="/home/cfg/_myapps/sendgentoo-chroot https://github.com/jakeogh/sendgentoo-chroot.git"
+EGIT_REPO_URI="/home/sysskel/myapps/sendgentoo-chroot https://github.com/jakeogh/sendgentoo-chroot.git"
 
 LICENSE="BSD"
 SLOT="0"

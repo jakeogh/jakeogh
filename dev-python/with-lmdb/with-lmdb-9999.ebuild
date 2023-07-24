@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/with-lmdb"
-EGIT_REPO_URI="/home/cfg/_myapps/with-lmdb https://github.com/jakeogh/with-lmdb.git"
+EGIT_REPO_URI="/home/sysskel/myapps/with-lmdb https://github.com/jakeogh/with-lmdb.git"
 
 LICENSE="BSD"
 SLOT="0"

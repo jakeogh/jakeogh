@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="messagepack str input from terminal"
 HOMEPAGE="https://github.com/jakeogh/mp8"
-EGIT_REPO_URI="/home/cfg/_myapps/mp8 https://github.com/jakeogh/mp8.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mp8 https://github.com/jakeogh/mp8.git"
 
 LICENSE="BSD"
 SLOT="0"

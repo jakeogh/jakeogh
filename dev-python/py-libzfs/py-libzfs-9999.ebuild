@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/freenas/py-libzfs"
-EGIT_REPO_URI="/home/cfg/_myapps/py_libzfs https://github.com/freenas/py-libzfs.git"
+EGIT_REPO_URI="/home/sysskel/myapps/py_libzfs https://github.com/freenas/py-libzfs.git"
 
 LICENSE="BSD"
 SLOT="0"

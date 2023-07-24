@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Merge youtube-dl archives"
 HOMEPAGE="https://github.com/jakeogh/youtubedl_merge"
-EGIT_REPO_URI="/home/cfg/_myapps/youtubedl_merge https://github.com/jakeogh/youtubedl_merge.git"
+EGIT_REPO_URI="/home/sysskel/myapps/youtubedl_merge https://github.com/jakeogh/youtubedl_merge.git"
 
 LICENSE="MIT"
 SLOT="0"

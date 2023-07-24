@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Contexy manager for fcntl"
 HOMEPAGE="https://github.com/jakeogh/advisory-lock"
-EGIT_REPO_URI="/home/cfg/_myapps/advisory-lock https://github.com/jakeogh/advisory-lock.git"
+EGIT_REPO_URI="/home/sysskel/myapps/advisory-lock https://github.com/jakeogh/advisory-lock.git"
 
 LICENSE="BSD"
 SLOT="0"

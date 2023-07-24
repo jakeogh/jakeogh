@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Library to populate items using XPath and CSS with a convenient API"
 HOMEPAGE="https://github.com/jakeogh/itemloaders"
-EGIT_REPO_URI="/home/cfg/_myapps/itemloaders https://github.com/jakeogh/itemloaders.git"
+EGIT_REPO_URI="/home/sysskel/myapps/itemloaders https://github.com/jakeogh/itemloaders.git"
 
 LICENSE="BSD"
 SLOT="0"

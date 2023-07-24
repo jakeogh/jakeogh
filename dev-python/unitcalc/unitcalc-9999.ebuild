@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Convert units using pint"
 HOMEPAGE="https://github.com/jakeogh/unitcalc"
-EGIT_REPO_URI="/home/cfg/_myapps/unitcalc https://github.com/jakeogh/unitcalc.git"
+EGIT_REPO_URI="/home/sysskel/myapps/unitcalc https://github.com/jakeogh/unitcalc.git"
 
 LICENSE="MIT"
 SLOT="0"

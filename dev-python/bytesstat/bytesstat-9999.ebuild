@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/bytesstat"
-EGIT_REPO_URI="/home/cfg/_myapps/bytesstat https://github.com/jakeogh/bytesstat.git"
+EGIT_REPO_URI="/home/sysskel/myapps/bytesstat https://github.com/jakeogh/bytesstat.git"
 
 LICENSE="BSD"
 SLOT="0"

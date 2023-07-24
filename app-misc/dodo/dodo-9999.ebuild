@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION="Repeat command execution at interval."
 HOMEPAGE="https://github.com/jakeogh/dodo"
-EGIT_REPO_URI="/home/cfg/_myapps/dodo https://github.com/jakeogh/dodo.git"
+EGIT_REPO_URI="/home/sysskel/myapps/dodo https://github.com/jakeogh/dodo.git"
 
 LICENSE="Unlicense"
 SLOT="0"

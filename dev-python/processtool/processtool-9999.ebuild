@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/processtool"
-EGIT_REPO_URI="/home/cfg/_myapps/processtool https://github.com/jakeogh/processtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/processtool https://github.com/jakeogh/processtool.git"
 
 LICENSE="BSD"
 SLOT="0"

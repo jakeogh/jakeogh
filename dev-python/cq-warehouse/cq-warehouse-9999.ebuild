@@ -13,7 +13,7 @@ inherit git-r3
 
 DESCRIPTION="A cadquery parametric part collection"
 HOMEPAGE="https://github.com/gumyr/cq_warehouse"
-EGIT_REPO_URI="/home/cfg/_myapps/cq-warehouse https://github.com/gumyr/cq_warehouse.git"
+EGIT_REPO_URI="/home/sysskel/myapps/cq-warehouse https://github.com/gumyr/cq_warehouse.git"
 
 LICENSE="BSD"
 SLOT="0"

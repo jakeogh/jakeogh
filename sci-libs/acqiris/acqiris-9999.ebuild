@@ -7,7 +7,7 @@ inherit linux-info git-r3 eutils linux-mod toolchain-funcs
 
 DESCRIPTION="Acqiris device interface (kernel modules)"
 HOMEPAGE="https://www.keysight.com/en/pd-1184928-pn-U1068A/acqiris-8-bit-high-speed-pci-digitizers"
-EGIT_REPO_URI="/home/cfg/_myapps/acqiris_kernel26module"
+EGIT_REPO_URI="/home/sysskel/myapps/acqiris_kernel26module"
 
 LICENSE="GPL-2+"
 SLOT="0"

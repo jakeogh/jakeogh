@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="decode messagepacked objects with specified encoding"
 HOMEPAGE="https://github.com/jakeogh/mpdecode"
-EGIT_REPO_URI="/home/cfg/_myapps/mpdecode https://github.com/jakeogh/mpdecode.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpdecode https://github.com/jakeogh/mpdecode.git"
 
 LICENSE="BSD"
 SLOT="0"

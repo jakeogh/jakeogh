@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="libpcap cli wrapper"
 HOMEPAGE="https://github.com/jakeogh/pyethercap"
-EGIT_REPO_URI="/home/cfg/_myapps/pyethercap https://github.com/jakeogh/pyethercap.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pyethercap https://github.com/jakeogh/pyethercap.git"
 
 LICENSE="BSD"
 SLOT="0"

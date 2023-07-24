@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="temp file utils"
 HOMEPAGE="https://github.com/jakeogh/tempfiletool"
-EGIT_REPO_URI="/home/cfg/_myapps/tempfiletool https://github.com/jakeogh/tempfiletool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/tempfiletool https://github.com/jakeogh/tempfiletool.git"
 
 LICENSE="BSD"
 SLOT="0"

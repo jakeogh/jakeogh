@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="zfs backup tool, replication tool or snapshot tool"
 HOMEPAGE="https://github.com/jakeogh/zfs-autobackup"
-EGIT_REPO_URI="/home/cfg/_myapps/zfs-autobackup https://github.com/jakeogh/zfs-autobackup.git"
+EGIT_REPO_URI="/home/sysskel/myapps/zfs-autobackup https://github.com/jakeogh/zfs-autobackup.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/sshtool"
-EGIT_REPO_URI="/home/cfg/_myapps/sshtool https://github.com/jakeogh/sshtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/sshtool https://github.com/jakeogh/sshtool.git"
 
 LICENSE="BSD"
 SLOT="0"

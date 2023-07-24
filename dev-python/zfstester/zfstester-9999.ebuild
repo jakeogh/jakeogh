@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Create zfs filesystem for testing"
 HOMEPAGE="https://github.com/jakeogh/zfstester"
-EGIT_REPO_URI="/home/cfg/_myapps/zfstester https://github.com/jakeogh/zfstester.git"
+EGIT_REPO_URI="/home/sysskel/myapps/zfstester https://github.com/jakeogh/zfstester.git"
 
 LICENSE="BSD"
 SLOT="0"

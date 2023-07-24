@@ -10,7 +10,7 @@ inherit cmake
 CMAKE_ECLASS="cmake-utils"
 DESCRIPTION="Parser for Schrodinger Maestro files"
 HOMEPAGE="https://github.com/schrodinger/maeparser"
-#EGIT_REPO_URI="/home/cfg/_myapps/maeparser https://github.com/schrodinger/maeparser.git"
+#EGIT_REPO_URI="/home/sysskel/myapps/maeparser https://github.com/schrodinger/maeparser.git"
 #EGIT_REPO_URI="https://github.com/Peter-Levine/maeparser.git"
 EGIT_REPO_URI="https://github.com/schrodinger/maeparser"
 #EGIT_BRANCH="patch-1"

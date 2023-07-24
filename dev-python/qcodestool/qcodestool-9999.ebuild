@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="cli for Qcodes"
 HOMEPAGE="https://github.com/jakeogh/qcodestool"
-EGIT_REPO_URI="/home/cfg/_myapps/qcodestool https://github.com/jakeogh/qcodestool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/qcodestool https://github.com/jakeogh/qcodestool.git"
 
 LICENSE="BSD"
 SLOT="0"

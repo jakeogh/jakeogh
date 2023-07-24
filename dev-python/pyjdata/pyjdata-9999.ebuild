@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="numpy to json encoder and decoder for Python"
 HOMEPAGE="https://github.com/jakeogh/pyjdata"
-EGIT_REPO_URI="/home/cfg/_myapps/pyjdata https://github.com/jakeogh/pyjdata.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pyjdata https://github.com/jakeogh/pyjdata.git"
 
 LICENSE="BSD"
 SLOT="0"

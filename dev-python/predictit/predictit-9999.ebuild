@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="graph predictit"
 HOMEPAGE="https://github.com/jakeogh/predictit"
-EGIT_REPO_URI="/home/cfg/_myapps/predictit"
+EGIT_REPO_URI="/home/sysskel/myapps/predictit"
 
 LICENSE="MIT"
 SLOT="0"

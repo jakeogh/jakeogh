@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/nettool"
-EGIT_REPO_URI="/home/cfg/_myapps/nettool https://github.com/jakeogh/nettool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/nettool https://github.com/jakeogh/nettool.git"
 
 LICENSE="BSD"
 SLOT="0"

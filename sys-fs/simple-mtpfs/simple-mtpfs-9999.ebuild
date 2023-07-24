@@ -7,7 +7,7 @@ inherit autotools git-r3
 
 DESCRIPTION="Simple MTP fuse filesystem driver"
 HOMEPAGE="https://github.com/phatina/simple-mtpfs"
-EGIT_REPO_URI="/home/cfg/_myapps/simple-mtpfs https://github.com/phatina/simple-mtpfs.git"
+EGIT_REPO_URI="/home/sysskel/myapps/simple-mtpfs https://github.com/phatina/simple-mtpfs.git"
 
 LICENSE="GPL-2+"
 SLOT="0"

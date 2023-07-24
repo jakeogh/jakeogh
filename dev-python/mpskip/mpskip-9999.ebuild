@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="skip N to M messagepacked records on stdin"
 HOMEPAGE="https://github.com/jakeogh/mpskip"
-EGIT_REPO_URI="/home/cfg/_myapps/mpskip https://github.com/jakeogh/mpskip.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpskip https://github.com/jakeogh/mpskip.git"
 
 LICENSE="BSD"
 SLOT="0"

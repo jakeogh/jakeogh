@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="per-file-ignores for flake8"
 HOMEPAGE="https://github.com/bagerard/flake8-in-file-ignores"
-EGIT_REPO_URI="/home/cfg/_myapps/flake8-in-file-ignores https://github.com/bagerard/flake8-in-file-ignores.git"
+EGIT_REPO_URI="/home/sysskel/myapps/flake8-in-file-ignores https://github.com/bagerard/flake8-in-file-ignores.git"
 
 LICENSE="BSD"
 SLOT="0"

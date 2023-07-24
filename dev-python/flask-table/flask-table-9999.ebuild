@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="flask html table generator"
 HOMEPAGE="https://github.com/jakeogh/flask-table"
-EGIT_REPO_URI="/home/cfg/_myapps/flask-table https://github.com/jakeogh/flask-table.git"
+EGIT_REPO_URI="/home/sysskel/myapps/flask-table https://github.com/jakeogh/flask-table.git"
 
 LICENSE="BSD"
 SLOT="0"

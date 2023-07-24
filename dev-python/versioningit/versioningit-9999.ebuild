@@ -11,7 +11,7 @@ inherit git-r3
 
 DESCRIPTION="Versioning It with your Version In Git"
 HOMEPAGE="https://github.com/jakeogh/versioningit"
-EGIT_REPO_URI="/home/cfg/_myapps/versioningit https://github.com/jakeogh/versioningit.git"
+EGIT_REPO_URI="/home/sysskel/myapps/versioningit https://github.com/jakeogh/versioningit.git"
 
 LICENSE="BSD"
 SLOT="0"

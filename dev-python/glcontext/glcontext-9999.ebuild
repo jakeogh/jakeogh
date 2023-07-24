@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="connects moderngl to your window or create headless contexts"
 HOMEPAGE="https://github.com/jakeogh/glcontext"
-EGIT_REPO_URI="/home/cfg/_myapps/glcontext https://github.com/jakeogh/glcontext.git"
+EGIT_REPO_URI="/home/sysskel/myapps/glcontext https://github.com/jakeogh/glcontext.git"
 
 LICENSE="BSD"
 SLOT="0"

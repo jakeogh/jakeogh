@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/transpose"
-EGIT_REPO_URI="/home/cfg/_myapps/transpose https://github.com/jakeogh/transpose.git"
+EGIT_REPO_URI="/home/sysskel/myapps/transpose https://github.com/jakeogh/transpose.git"
 
 LICENSE="BSD"
 SLOT="0"

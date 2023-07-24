@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="colorized data storage scheme for printing on paper"
 HOMEPAGE="https://github.com/jakeogh/colorsafe"
-EGIT_REPO_URI="/home/cfg/_myapps/colorsafe https://github.com/jakeogh/colorsafe.git"
+EGIT_REPO_URI="/home/sysskel/myapps/colorsafe https://github.com/jakeogh/colorsafe.git"
 EGIT_BRANCH='py3'
 
 LICENSE="BSD"

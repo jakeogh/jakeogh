@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION=""
 HOMEPAGE="https://github.com/jakeogh/dodo command prior to execution."
-EGIT_REPO_URI="/home/cfg/_myapps/echocommand https://github.com/jakeogh/echocommand.git"
+EGIT_REPO_URI="/home/sysskel/myapps/echocommand https://github.com/jakeogh/echocommand.git"
 
 LICENSE="Unlicense"
 SLOT="0"

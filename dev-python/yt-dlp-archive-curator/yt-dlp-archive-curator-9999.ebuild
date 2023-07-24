@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp-archive-curator"
-EGIT_REPO_URI="/home/cfg/_myapps/yt-dlp-archive-curator https://github.com/jakeogh/yt-dlp-archive-curator.git"
+EGIT_REPO_URI="/home/sysskel/myapps/yt-dlp-archive-curator https://github.com/jakeogh/yt-dlp-archive-curator.git"
 
 LICENSE="BSD"
 SLOT="0"

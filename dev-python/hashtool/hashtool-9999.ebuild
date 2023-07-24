@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Hash stdin"
 HOMEPAGE="https://github.com/jakeogh/hashtool"
-EGIT_REPO_URI="/home/cfg/_myapps/hashtool https://github.com/jakeogh/hashtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/hashtool https://github.com/jakeogh/hashtool.git"
 
 LICENSE="BSD"
 SLOT="0"

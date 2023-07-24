@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="messagepacked head"
 HOMEPAGE="https://github.com/jakeogh/mphead"
-EGIT_REPO_URI="/home/cfg/_myapps/mphead https://github.com/jakeogh/mphead.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mphead https://github.com/jakeogh/mphead.git"
 
 LICENSE="BSD"
 SLOT="0"

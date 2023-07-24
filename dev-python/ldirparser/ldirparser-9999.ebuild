@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Parse the CSV output of an Agilent LDIR"
 HOMEPAGE="https://github.com/jakeogh/ldirparser"
-EGIT_REPO_URI="/home/cfg/_myapps/ldirparser https://github.com/jakeogh/ldirparser.git"
+EGIT_REPO_URI="/home/sysskel/myapps/ldirparser https://github.com/jakeogh/ldirparser.git"
 
 LICENSE="BSD"
 SLOT="0"

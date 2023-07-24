@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Python Data Validation for Humans"
 HOMEPAGE="https://github.com/kvesteri/validators"
-EGIT_REPO_URI="/home/cfg/_myapps/validators https://github.com/kvesteri/validators.git"
+EGIT_REPO_URI="/home/sysskel/myapps/validators https://github.com/kvesteri/validators.git"
 
 LICENSE="MIT"
 SLOT="0"

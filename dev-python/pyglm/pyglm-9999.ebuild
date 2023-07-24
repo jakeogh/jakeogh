@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Fast OpenGL Mathematics (GLM) for Python"
 HOMEPAGE="https://github.com/jakeogh/pyglm"
-EGIT_REPO_URI="/home/cfg/_myapps/pyglm https://github.com/jakeogh/pyglm.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pyglm https://github.com/jakeogh/pyglm.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit go-module
 
 DESCRIPTION="personal storage system for life"
 HOMEPAGE="https://github.com/jakeogh/perkeep"
-EGIT_REPO_URI="/home/cfg/_myapps/perkeep https://github.com/jakeogh/perkeep.git"
+EGIT_REPO_URI="/home/sysskel/myapps/perkeep https://github.com/jakeogh/perkeep.git"
 
 LICENSE="BSD"
 SLOT="0"

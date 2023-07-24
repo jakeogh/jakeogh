@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="user-first fork of LibreTube"
 HOMEPAGE="https://github.com/jakeogh/LibreTube"
-EGIT_REPO_URI="/home/cfg/_myapps/libretube https://github.com/jakeogh/LibreTube.git"
+EGIT_REPO_URI="/home/sysskel/myapps/libretube https://github.com/jakeogh/LibreTube.git"
 
 LICENSE="BSD"
 SLOT="0"

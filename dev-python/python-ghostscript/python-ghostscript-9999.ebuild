@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="python ghostscript module"
 HOMEPAGE="https://github.com/jakeogh/python-ghostscript"
-EGIT_REPO_URI="/home/cfg/_myapps/python-ghostscript https://github.com/jakeogh/python-ghostscript.git"
+EGIT_REPO_URI="/home/sysskel/myapps/python-ghostscript https://github.com/jakeogh/python-ghostscript.git"
 
 LICENSE="BSD"
 SLOT="0"

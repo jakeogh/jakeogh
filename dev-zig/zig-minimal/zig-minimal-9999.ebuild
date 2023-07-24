@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Minimal zig binary"
 HOMEPAGE="https://github.com/jakeogh/zig-minimal"
-EGIT_REPO_URI="/home/cfg/_myapps/zig-minimal https://github.com/jakeogh/zig-minimal.git"
+EGIT_REPO_URI="/home/sysskel/myapps/zig-minimal https://github.com/jakeogh/zig-minimal.git"
 
 MY_P="${P/-/_}"
 MY_PN="${PN/-/_}"

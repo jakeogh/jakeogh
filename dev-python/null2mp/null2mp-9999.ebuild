@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="read NULL terminated byte groups from stdin and write messagepacked byte groups to stdout"
 HOMEPAGE="https://github.com/jakeogh/null2mp"
-EGIT_REPO_URI="/home/cfg/_myapps/null2mp https://github.com/jakeogh/null2mp.git"
+EGIT_REPO_URI="/home/sysskel/myapps/null2mp https://github.com/jakeogh/null2mp.git"
 
 LICENSE="BSD"
 SLOT="0"

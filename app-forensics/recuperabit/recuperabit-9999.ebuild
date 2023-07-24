@@ -12,7 +12,7 @@ inherit git-r3
 
 DESCRIPTION="A tool for forensic file system reconstruction."
 HOMEPAGE="https://github.com/jakeogh/recuperabit"
-EGIT_REPO_URI="/home/cfg/_myapps/recuperabit https://github.com/jakeogh/recuperabit.git"
+EGIT_REPO_URI="/home/sysskel/myapps/recuperabit https://github.com/jakeogh/recuperabit.git"
 
 LICENSE="BSD"
 SLOT="0"

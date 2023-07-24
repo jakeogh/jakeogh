@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="remove key from mp(dict) on stdin"
 HOMEPAGE="https://github.com/jakeogh/mpdictkeydrop"
-EGIT_REPO_URI="/home/cfg/_myapps/mpdictkeydrop https://github.com/jakeogh/mpdictkeydrop.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpdictkeydrop https://github.com/jakeogh/mpdictkeydrop.git"
 
 LICENSE="BSD"
 SLOT="0"

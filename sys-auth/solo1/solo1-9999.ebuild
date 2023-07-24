@@ -13,7 +13,7 @@ inherit git-r3
 
 DESCRIPTION="solokey1"
 HOMEPAGE="https://github.com/jakeogh/solo1"
-EGIT_REPO_URI="/home/cfg/_myapps/solo1 https://github.com/jakeogh/solo1.git"
+EGIT_REPO_URI="/home/sysskel/myapps/solo1 https://github.com/jakeogh/solo1.git"
 
 LICENSE="BSD"
 SLOT="0"

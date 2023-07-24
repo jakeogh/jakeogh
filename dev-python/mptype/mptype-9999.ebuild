@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="output types of messagepacked objects"
 HOMEPAGE="https://github.com/jakeogh/mptype"
-EGIT_REPO_URI="/home/cfg/_myapps/mptype https://github.com/jakeogh/mptype.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mptype https://github.com/jakeogh/mptype.git"
 
 LICENSE="BSD"
 SLOT="0"

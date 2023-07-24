@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/assetplanner"
-EGIT_REPO_URI="/home/cfg/_myapps/assetplanner https://github.com/jakeogh/assetplanner.git"
+EGIT_REPO_URI="/home/sysskel/myapps/assetplanner https://github.com/jakeogh/assetplanner.git"
 
 LICENSE="BSD"
 SLOT="0"

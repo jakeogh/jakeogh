@@ -7,7 +7,7 @@ inherit bash-completion-r1 distutils-r1 git-r3 readme.gentoo-r1
 #EGIT_BRANCH="locked_file"
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://rg3.github.com/youtube-dl/"
-EGIT_REPO_URI="/home/cfg/_myapps/youtube-dl"
+EGIT_REPO_URI="/home/sysskel/myapps/youtube-dl"
 #EGIT_BRANCH="write_error"
 #EGIT_BRANCH="find_decode"
 EGIT_BRANCH="locked_file"

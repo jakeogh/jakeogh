@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="perceptual hashing functions"
 HOMEPAGE="https://github.com/jakeogh/phashtool"
-EGIT_REPO_URI="/home/cfg/_myapps/phashtool https://github.com/jakeogh/phashtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/phashtool https://github.com/jakeogh/phashtool.git"
 
 LICENSE="BSD"
 SLOT="0"

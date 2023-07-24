@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Paper backup of files using QR codes"
 HOMEPAGE="https://github.com/jakeogh/qr-backup"
-EGIT_REPO_URI="/home/cfg/_myapps/qr-backup https://github.com/jakeogh/qr-backup.git"
+EGIT_REPO_URI="/home/sysskel/myapps/qr-backup https://github.com/jakeogh/qr-backup.git"
 
 LICENSE="BSD"
 SLOT="0"

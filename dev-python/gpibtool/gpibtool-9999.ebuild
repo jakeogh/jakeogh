@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common interface for GPUB device control"
 HOMEPAGE="https://github.com/jakeogh/gpibtool"
-EGIT_REPO_URI="/home/cfg/_myapps/gpibtool https://github.com/jakeogh/gpibtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/gpibtool https://github.com/jakeogh/gpibtool.git"
 
 LICENSE="BSD"
 SLOT="0"

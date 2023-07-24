@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/timezonefinder"
-EGIT_REPO_URI="/home/cfg/_myapps/timezonefinder https://github.com/jakeogh/timezonefinder.git"
+EGIT_REPO_URI="/home/sysskel/myapps/timezonefinder https://github.com/jakeogh/timezonefinder.git"
 
 LICENSE="BSD"
 SLOT="0"

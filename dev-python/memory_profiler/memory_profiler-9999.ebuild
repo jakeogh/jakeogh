@@ -10,7 +10,7 @@ inherit distutils-r1 git-r3
 DESCRIPTION="A module for monitoring memory usage of a python program"
 HOMEPAGE="https://pypi.org/project/memory_profiler/ https://github.com/fabianp/memory_profiler"
 #SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
-EGIT_REPO_URI="/home/cfg/_myapps/memory_profiler"
+EGIT_REPO_URI="/home/sysskel/myapps/memory_profiler"
 EGIT_BRANCH="asyncio"
 
 LICENSE="BSD"

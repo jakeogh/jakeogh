@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Multi-producer-multi-consumer signal dispatching mechanism"
 HOMEPAGE="https://github.com/jakeogh/pypydispatcher"
-EGIT_REPO_URI="/home/cfg/_myapps/pypydispatcher https://github.com/jakeogh/pypydispatcher.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pypydispatcher https://github.com/jakeogh/pypydispatcher.git"
 
 LICENSE="BSD"
 SLOT="0"

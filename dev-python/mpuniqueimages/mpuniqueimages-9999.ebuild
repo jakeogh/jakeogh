@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="testing"
 HOMEPAGE="https://github.com/jakeogh/mpuniqueimages"
-EGIT_REPO_URI="/home/cfg/_myapps/mpuniqueimages https://github.com/jakeogh/mpuniqueimages.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpuniqueimages https://github.com/jakeogh/mpuniqueimages.git"
 
 LICENSE="BSD"
 SLOT="0"

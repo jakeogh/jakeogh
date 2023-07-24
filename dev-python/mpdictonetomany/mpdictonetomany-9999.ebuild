@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="pass messagepacked dicts on stdin to stdout iff they have more than one value"
 HOMEPAGE="https://github.com/jakeogh/mpdictonetomany"
-EGIT_REPO_URI="/home/cfg/_myapps/mpdictonetomany https://github.com/jakeogh/mpdictonetomany.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpdictonetomany https://github.com/jakeogh/mpdictonetomany.git"
 
 LICENSE="BSD"
 SLOT="0"

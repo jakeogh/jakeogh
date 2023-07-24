@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python bindings for RocksDB"
 HOMEPAGE="https://github.com/jakeogh/python-rocksdb"
-EGIT_REPO_URI="/home/cfg/_myapps/python-rocksdb https://github.com/jakeogh/python-rocksdb.git"
+EGIT_REPO_URI="/home/sysskel/myapps/python-rocksdb https://github.com/jakeogh/python-rocksdb.git"
 
 LICENSE="BSD"
 SLOT="0"

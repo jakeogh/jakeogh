@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/cytoolz"
-EGIT_REPO_URI="/home/cfg/_myapps/cytoolz https://github.com/jakeogh/cytoolz.git"
+EGIT_REPO_URI="/home/sysskel/myapps/cytoolz https://github.com/jakeogh/cytoolz.git"
 
 LICENSE="BSD"
 SLOT="0"

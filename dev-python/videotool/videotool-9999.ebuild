@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common video operations"
 HOMEPAGE="https://github.com/jakeogh/videotool"
-EGIT_REPO_URI="/home/cfg/_myapps/videotool https://github.com/jakeogh/videotool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/videotool https://github.com/jakeogh/videotool.git"
 
 LICENSE="BSD"
 SLOT="0"

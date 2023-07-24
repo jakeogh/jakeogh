@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="extract metadata from media"
 HOMEPAGE="https://github.com/jakeogh/mediametadatatool"
-EGIT_REPO_URI="/home/cfg/_myapps/mediametadatatool https://github.com/jakeogh/mediametadatatool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mediametadatatool https://github.com/jakeogh/mediametadatatool.git"
 
 LICENSE="BSD"
 SLOT="0"

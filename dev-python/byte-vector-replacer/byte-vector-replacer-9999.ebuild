@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="manages and applies dict of automatically replaced byte vectors in ~/.config"
 HOMEPAGE="https://github.com/jakeogh/byte-vector-replacer"
-EGIT_REPO_URI="/home/cfg/_myapps/byte-vector-replacer https://github.com/jakeogh/byte-vector-replacer.git"
+EGIT_REPO_URI="/home/sysskel/myapps/byte-vector-replacer https://github.com/jakeogh/byte-vector-replacer.git"
 
 LICENSE="BSD"
 SLOT="0"

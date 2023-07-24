@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Modern OpenGL binding for python"
 HOMEPAGE="https://github.com/jakeogh/moderngl"
-EGIT_REPO_URI="/home/cfg/_myapps/moderngl https://github.com/jakeogh/moderngl.git"
+EGIT_REPO_URI="/home/sysskel/myapps/moderngl https://github.com/jakeogh/moderngl.git"
 
 LICENSE="BSD"
 SLOT="0"

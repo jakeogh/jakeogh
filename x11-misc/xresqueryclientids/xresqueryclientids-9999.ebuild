@@ -9,7 +9,7 @@ inherit git-r3
 # from: https://stackoverflow.com/questions/37283179/python-pid-to-x11-window-id-using-xresqueryclientids
 DESCRIPTION="XResQueryClientIds example"
 HOMEPAGE="https://github.com/jakeogh/xresqueryclientids"
-EGIT_REPO_URI="/home/cfg/_myapps/xresqueryclientids https://github.com/jakeogh/xresqueryclientids.git"
+EGIT_REPO_URI="/home/sysskel/myapps/xresqueryclientids https://github.com/jakeogh/xresqueryclientids.git"
 
 LICENSE="BSD"
 SLOT="0"

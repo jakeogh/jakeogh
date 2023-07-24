@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Like moreutils sponge, but takes an optional buffer size"
 HOMEPAGE="https://github.com/jakeogh/pysponge"
-EGIT_REPO_URI="/home/cfg/_myapps/pysponge https://github.com/jakeogh/pysponge.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pysponge https://github.com/jakeogh/pysponge.git"
 
 LICENSE="BSD"
 SLOT="0"

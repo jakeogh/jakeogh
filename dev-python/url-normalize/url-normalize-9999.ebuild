@@ -10,7 +10,7 @@ DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/niksite/url-normalize"
-EGIT_REPO_URI="/home/cfg/_myapps/url-normalize https://github.com/niksite/url-normalize.git"
+EGIT_REPO_URI="/home/sysskel/myapps/url-normalize https://github.com/niksite/url-normalize.git"
 
 LICENSE="BSD"
 SLOT="0"

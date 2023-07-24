@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="testing 123"
 HOMEPAGE="https://github.com/jakeogh/testappdelme"
-EGIT_REPO_URI="/home/cfg/_myapps/testappdelme https://github.com/jakeogh/testappdelme.git"
+EGIT_REPO_URI="/home/sysskel/myapps/testappdelme https://github.com/jakeogh/testappdelme.git"
 
 LICENSE="BSD"
 SLOT="0"

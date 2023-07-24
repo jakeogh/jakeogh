@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="top down shell"
 HOMEPAGE="https://github.com/jakeogh/demoshell"
-EGIT_REPO_URI="/home/cfg/_myapps/demoshell https://github.com/jakeogh/demoshell.git"
+EGIT_REPO_URI="/home/sysskel/myapps/demoshell https://github.com/jakeogh/demoshell.git"
 
 LICENSE="BSD"
 SLOT="0"

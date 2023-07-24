@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/kinparse"
-EGIT_REPO_URI="/home/cfg/_myapps/kinparse https://github.com/jakeogh/kinparse.git"
+EGIT_REPO_URI="/home/sysskel/myapps/kinparse https://github.com/jakeogh/kinparse.git"
 
 LICENSE="BSD"
 SLOT="0"

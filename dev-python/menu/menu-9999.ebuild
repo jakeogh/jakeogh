@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Wrapper for dmenu and slmenu for X or VT"
 HOMEPAGE="https://github.com/jakeogh/menu"
-EGIT_REPO_URI="/home/cfg/_myapps/menu https://github.com/jakeogh/menu.git"
+EGIT_REPO_URI="/home/sysskel/myapps/menu https://github.com/jakeogh/menu.git"
 
 LICENSE="BSD"
 SLOT="0"

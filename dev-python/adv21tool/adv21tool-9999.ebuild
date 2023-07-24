@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="graph stats from the Arcadyan ADV21 4G/5G Router"
 HOMEPAGE="https://github.com/jakeogh/adv21tool"
-EGIT_REPO_URI="/home/cfg/_myapps/adv21tool https://github.com/jakeogh/adv21tool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/adv21tool https://github.com/jakeogh/adv21tool.git"
 
 LICENSE="BSD"
 SLOT="0"

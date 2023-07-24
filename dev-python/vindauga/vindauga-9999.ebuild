@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Text Windowing Library"
 HOMEPAGE="https://github.com/jakeogh/vindauga"
-EGIT_REPO_URI="/home/cfg/_myapps/vindauga https://github.com/jakeogh/vindauga.git"
+EGIT_REPO_URI="/home/sysskel/myapps/vindauga https://github.com/jakeogh/vindauga.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -11,7 +11,7 @@ HOMEPAGE="http://rigaux.org/hexedit.html"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 #EGIT_REPO_URI="https://github.com/pixel/hexedit.git"
-EGIT_REPO_URI="/home/cfg/_myapps/hexedit"
+EGIT_REPO_URI="/home/sysskel/myapps/hexedit"
 else
 SRC_URI="https://github.com/pixel/hexedit/archive/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"

@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Search zfs ids for specific parents"
 HOMEPAGE="https://github.com/jakeogh/zfs-index"
-EGIT_REPO_URI="/home/cfg/_myapps/zfs-index https://github.com/jakeogh/zfs-index.git"
+EGIT_REPO_URI="/home/sysskel/myapps/zfs-index https://github.com/jakeogh/zfs-index.git"
 
 LICENSE="Unlicense"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="git functions"
 HOMEPAGE="https://github.com/jakeogh/gittool"
-EGIT_REPO_URI="/home/cfg/_myapps/gittool https://github.com/jakeogh/gittool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/gittool https://github.com/jakeogh/gittool.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Report inotify events for a path."
 HOMEPAGE="https://github.com/jakeogh/inotifywatcher"
-EGIT_REPO_URI="/home/cfg/_myapps/inotifywatcher"
+EGIT_REPO_URI="/home/sysskel/myapps/inotifywatcher"
 
 LICENSE="MIT"
 SLOT="0"

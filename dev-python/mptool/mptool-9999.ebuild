@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="messagepack functions for typed CLI IPC"
 HOMEPAGE="https://github.com/jakeogh/mptool"
-EGIT_REPO_URI="/home/cfg/_myapps/mptool https://github.com/jakeogh/mptool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mptool https://github.com/jakeogh/mptool.git"
 
 LICENSE="BSD"
 SLOT="0"

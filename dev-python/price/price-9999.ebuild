@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="get prices"
 HOMEPAGE="https://github.com/jakeogh"
-EGIT_REPO_URI="/home/cfg/_myapps/price"
+EGIT_REPO_URI="/home/sysskel/myapps/price"
 
 LICENSE="MIT"
 SLOT="0"

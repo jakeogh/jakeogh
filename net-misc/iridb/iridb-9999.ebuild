@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Tag and save iris"
 HOMEPAGE="https://github.com/jakeogh/iridb"
-EGIT_REPO_URI="/home/cfg/_myapps/iridb"
+EGIT_REPO_URI="/home/sysskel/myapps/iridb"
 
 LICENSE="MIT"
 SLOT="0"
@@ -47,7 +47,6 @@ RDEPEND="
 	dev-python/requests-ftp[${PYTHON_USEDEP}]
 	dev-python/classify[${PYTHON_USEDEP}]
 	dev-python/ordered-set[${PYTHON_USEDEP}]
-	app-text/tree
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
@@ -60,6 +59,7 @@ RDEPEND="
 	dev-python/irifilter[${PYTHON_USEDEP}]
 	dev-python/processtool[${PYTHON_USEDEP}]
 	dev-python/yt-dlp-wrapper-iridb-import[${PYTHON_USEDEP}]
+	app-text/tree
 "
 
 #	dev-python/pdfx[${PYTHON_USEDEP}]

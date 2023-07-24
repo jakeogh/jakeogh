@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="writes unique messagepacked objects to stdout"
 HOMEPAGE="https://github.com/jakeogh/mpunique"
-EGIT_REPO_URI="/home/cfg/_myapps/mpunique https://github.com/jakeogh/mpunique.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpunique https://github.com/jakeogh/mpunique.git"
 
 LICENSE="BSD"
 SLOT="0"

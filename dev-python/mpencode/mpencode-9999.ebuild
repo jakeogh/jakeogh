@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="encode messagepacked bytes on stdin to a chosen encoding"
 HOMEPAGE="https://github.com/jakeogh/mpencode"
-EGIT_REPO_URI="/home/cfg/_myapps/mpencode https://github.com/jakeogh/mpencode.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpencode https://github.com/jakeogh/mpencode.git"
 
 LICENSE="BSD"
 SLOT="0"

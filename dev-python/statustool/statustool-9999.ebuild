@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="status line functions"
 HOMEPAGE="https://github.com/jakeogh/statustool"
-EGIT_REPO_URI="/home/cfg/_myapps/statustool https://github.com/jakeogh/statustool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/statustool https://github.com/jakeogh/statustool.git"
 
 LICENSE="BSD"
 SLOT="0"

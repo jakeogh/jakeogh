@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="lookup key in messagepacked dict and resolve to messagepacked input file of dicts"
 HOMEPAGE="https://github.com/jakeogh/mpkeylookup"
-EGIT_REPO_URI="/home/cfg/_myapps/mpkeylookup https://github.com/jakeogh/mpkeylookup.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpkeylookup https://github.com/jakeogh/mpkeylookup.git"
 
 LICENSE="BSD"
 SLOT="0"

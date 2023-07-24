@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Simple yet powerful CAD (Computer Aided Design) library"
 HOMEPAGE="https://github.com/jimy-byerley/pymadcad"
-EGIT_REPO_URI="/home/cfg/_myapps/pymadcad https://github.com/jimy-byerley/pymadcad.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pymadcad https://github.com/jimy-byerley/pymadcad.git"
 
 LICENSE="BSD"
 SLOT="0"

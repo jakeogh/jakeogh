@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pulse building library interfaceable with Tektronix AWGs 5014, 5208 and 70000A"
 HOMEPAGE="https://github.com/jakeogh/broadbean"
-EGIT_REPO_URI="/home/cfg/_myapps/broadbean https://github.com/jakeogh/broadbean.git"
+EGIT_REPO_URI="/home/sysskel/myapps/broadbean https://github.com/jakeogh/broadbean.git"
 
 LICENSE="BSD"
 SLOT="0"

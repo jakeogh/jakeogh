@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Common function library"
 HOMEPAGE="https://github.com/jakeogh/kcl"
-EGIT_REPO_URI="/home/cfg/_myapps/kcl https://github.com/jakeogh/kcl.git"
+EGIT_REPO_URI="/home/sysskel/myapps/kcl https://github.com/jakeogh/kcl.git"
 
 LICENSE="MIT"
 SLOT="0"

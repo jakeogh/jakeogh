@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="list portage categories"
 HOMEPAGE="https://github.com/jakeogh/portage_category"
-EGIT_REPO_URI="/home/cfg/_myapps/portage-category https://github.com/jakeogh/portage-category.git"
+EGIT_REPO_URI="/home/sysskel/myapps/portage-category https://github.com/jakeogh/portage-category.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Tools for Allwinner A10 devices."
 HOMEPAGE="https://github.com/jakeogh/sunxi-tools"
-EGIT_REPO_URI="/home/cfg/_myapps/sunxi-tools https://github.com/jakeogh/sunxi-tools.git"
+EGIT_REPO_URI="/home/sysskel/myapps/sunxi-tools https://github.com/jakeogh/sunxi-tools.git"
 
 LICENSE="GPL-2"
 SLOT="0"

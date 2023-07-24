@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="convert \n stdin bytes to messagepack"
 HOMEPAGE="https://github.com/jakeogh/nl2mp"
-EGIT_REPO_URI="/home/cfg/_myapps/nl2mp https://github.com/jakeogh/nl2mp.git"
+EGIT_REPO_URI="/home/sysskel/myapps/nl2mp https://github.com/jakeogh/nl2mp.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/numba"
-EGIT_REPO_URI="/home/cfg/_myapps/numba https://github.com/jakeogh/numba.git"
+EGIT_REPO_URI="/home/sysskel/myapps/numba https://github.com/jakeogh/numba.git"
 
 LICENSE="BSD-2"
 SLOT="0"

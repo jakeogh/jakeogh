@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="counts messagepacked items"
 HOMEPAGE="https://github.com/jakeogh/mpcount"
-EGIT_REPO_URI="/home/cfg/_myapps/mpcount https://github.com/jakeogh/mpcount.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpcount https://github.com/jakeogh/mpcount.git"
 
 LICENSE="BSD"
 SLOT="0"

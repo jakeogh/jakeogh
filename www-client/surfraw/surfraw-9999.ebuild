@@ -8,7 +8,7 @@ inherit autotools bash-completion-r1 git-r3
 
 DESCRIPTION="A fast unix command line interface to WWW"
 HOMEPAGE="https://gitlab.com/surfraw/Surfraw"
-EGIT_REPO_URI="/home/cfg/_myapps/surfraw https://gitlab.com/surfraw/Surfraw.git"
+EGIT_REPO_URI="/home/sysskel/myapps/surfraw https://gitlab.com/surfraw/Surfraw.git"
 
 LICENSE="public-domain"
 

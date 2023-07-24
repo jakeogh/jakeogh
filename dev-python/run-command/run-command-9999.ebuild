@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="popen() wrapper"
 HOMEPAGE="https://github.com/jakeogh/run-command"
-EGIT_REPO_URI="/home/cfg/_myapps/run-command https://github.com/jakeogh/run-command.git"
+EGIT_REPO_URI="/home/sysskel/myapps/run-command https://github.com/jakeogh/run-command.git"
 
 LICENSE="BSD"
 SLOT="0"

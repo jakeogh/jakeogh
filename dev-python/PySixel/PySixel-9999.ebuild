@@ -11,7 +11,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/PySixel"
-EGIT_REPO_URI="/home/cfg/_myapps/PySixel https://github.com/jakeogh/PySixel.git"
+EGIT_REPO_URI="/home/sysskel/myapps/PySixel https://github.com/jakeogh/PySixel.git"
 
 LICENSE="BSD"
 SLOT="0"

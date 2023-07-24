@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="common json functions"
 HOMEPAGE="https://github.com/jakeogh/jsontool"
-EGIT_REPO_URI="/home/cfg/_myapps/jsontool https://github.com/jakeogh/jsontool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/jsontool https://github.com/jakeogh/jsontool.git"
 
 LICENSE="BSD"
 SLOT="0"

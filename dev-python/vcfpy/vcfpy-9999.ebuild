@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python 3 library with good support for both reading and writing VCF"
 HOMEPAGE="https://github.com/jakeogh/vcfpy"
-EGIT_REPO_URI="/home/cfg/_myapps/vcfpy https://github.com/jakeogh/vcfpy.git"
+EGIT_REPO_URI="/home/sysskel/myapps/vcfpy https://github.com/jakeogh/vcfpy.git"
 
 LICENSE="BSD"
 SLOT="0"

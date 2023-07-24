@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Client software for CTIA cycloidal mass-spec"
 HOMEPAGE="https://github.com/jakeogh/cycloidal_client"
-EGIT_REPO_URI="/home/cfg/_myapps/cycloidal_client"
+EGIT_REPO_URI="/home/sysskel/myapps/cycloidal_client"
 
 LICENSE="BSD"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="lightweight terminal spinner for Python with safe pipes and redirects"
 HOMEPAGE="https://github.com/jakeogh/yaspin"
-EGIT_REPO_URI="/home/cfg/_myapps/yaspin https://github.com/jakeogh/yaspin.git"
+EGIT_REPO_URI="/home/sysskel/myapps/yaspin https://github.com/jakeogh/yaspin.git"
 
 LICENSE="BSD"
 SLOT="0"

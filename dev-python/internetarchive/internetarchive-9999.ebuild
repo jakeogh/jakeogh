@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python and Command-Line Interface to Archive.org"
 HOMEPAGE="https://github.com/jakeogh/internetarchive"
-EGIT_REPO_URI="/home/cfg/_myapps/internetarchive https://github.com/jakeogh/internetarchive.git"
+EGIT_REPO_URI="/home/sysskel/myapps/internetarchive https://github.com/jakeogh/internetarchive.git"
 
 LICENSE="BSD"
 SLOT="0"

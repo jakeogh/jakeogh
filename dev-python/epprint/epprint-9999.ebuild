@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="print() alias that writes to sys.stderr prepended by stack metadata"
 HOMEPAGE="https://github.com/jakeogh/epprint"
-EGIT_REPO_URI="/home/cfg/_myapps/epprint https://github.com/jakeogh/epprint.git"
+EGIT_REPO_URI="/home/sysskel/myapps/epprint https://github.com/jakeogh/epprint.git"
 
 LICENSE="BSD"
 SLOT="0"

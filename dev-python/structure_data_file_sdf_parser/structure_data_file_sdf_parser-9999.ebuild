@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Read (chemical) Structure Data Files"
 HOMEPAGE="https://github.com/jakeogh/structure_data_file_sdf_parser"
-EGIT_REPO_URI="/home/cfg/_myapps/structure_data_file_sdf_parser https://github.com/jakeogh/structure_data_file_sdf_parser.git"
+EGIT_REPO_URI="/home/sysskel/myapps/structure_data_file_sdf_parser https://github.com/jakeogh/structure_data_file_sdf_parser.git"
 
 LICENSE="BSD"
 SLOT="0"

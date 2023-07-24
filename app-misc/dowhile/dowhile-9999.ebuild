@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/dowhile"
-EGIT_REPO_URI="/home/cfg/_myapps/dowhile https://github.com/jakeogh/dowhile.git"
+EGIT_REPO_URI="/home/sysskel/myapps/dowhile https://github.com/jakeogh/dowhile.git"
 
 LICENSE="BSD"
 SLOT="0"

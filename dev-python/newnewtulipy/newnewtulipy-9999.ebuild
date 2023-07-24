@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="actively maintained version of tulipy"
 HOMEPAGE="https://github.com/jakeogh/newnewtulipy"
-EGIT_REPO_URI="/home/cfg/_myapps/newnewtulipy https://github.com/jakeogh/newnewtulipy.git"
+EGIT_REPO_URI="/home/sysskel/myapps/newnewtulipy https://github.com/jakeogh/newnewtulipy.git"
 
 LICENSE="BSD"
 SLOT="0"

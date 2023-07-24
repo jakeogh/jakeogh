@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="common search engine functions"
 HOMEPAGE="https://github.com/jakeogh/searchtool"
-EGIT_REPO_URI="/home/cfg/_myapps/searchtool https://github.com/jakeogh/searchtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/searchtool https://github.com/jakeogh/searchtool.git"
 
 LICENSE="BSD"
 SLOT="0"

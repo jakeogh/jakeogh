@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="print full --help when a incorrect command is used"
 HOMEPAGE="https://github.com/jakeogh/click-auto-help"
-EGIT_REPO_URI="/home/cfg/_myapps/click-auto-help https://github.com/jakeogh/click-auto-help.git"
+EGIT_REPO_URI="/home/sysskel/myapps/click-auto-help https://github.com/jakeogh/click-auto-help.git"
 
 LICENSE="BSD"
 SLOT="0"

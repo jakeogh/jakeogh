@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Offline timexone calculation"
 HOMEPAGE="https://github.com/jakeogh/pytzwhere"
-EGIT_REPO_URI="/home/cfg/_myapps/pytzwhere https://github.com/jakeogh/pytzwhere.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pytzwhere https://github.com/jakeogh/pytzwhere.git"
 
 LICENSE="MIT"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/mathtool"
-EGIT_REPO_URI="/home/cfg/_myapps/mathtool https://github.com/jakeogh/mathtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mathtool https://github.com/jakeogh/mathtool.git"
 
 LICENSE="BSD"
 SLOT="0"

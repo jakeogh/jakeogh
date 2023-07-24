@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/clipboardtool"
-EGIT_REPO_URI="/home/cfg/_myapps/clipboardtool https://github.com/jakeogh/clipboardtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/clipboardtool https://github.com/jakeogh/clipboardtool.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="crossdev setup and workflow managment"
 HOMEPAGE="https://github.com/jakeogh/crossdevtool"
-EGIT_REPO_URI="/home/cfg/_myapps/crossdevtool https://github.com/jakeogh/crossdevtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/crossdevtool https://github.com/jakeogh/crossdevtool.git"
 
 LICENSE="BSD"
 SLOT="0"

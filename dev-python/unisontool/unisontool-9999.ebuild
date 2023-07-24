@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="generate unison commands"
 HOMEPAGE="https://github.com/jakeogh/unisontool"
-EGIT_REPO_URI="/home/cfg/_myapps/unisontool https://github.com/jakeogh/unisontool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/unisontool https://github.com/jakeogh/unisontool.git"
 
 LICENSE="BSD"
 SLOT="0"

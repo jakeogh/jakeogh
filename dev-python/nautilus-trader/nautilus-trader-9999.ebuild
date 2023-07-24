@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="A high-performance algorithmic trading platform and event-driven backtester"
 HOMEPAGE="https://github.com/jakeogh/nautilus-trader"
-EGIT_REPO_URI="/home/cfg/_myapps/nautilus-trader https://github.com/jakeogh/nautilus-trader.git"
+EGIT_REPO_URI="/home/sysskel/myapps/nautilus-trader https://github.com/jakeogh/nautilus-trader.git"
 
 LICENSE="BSD"
 SLOT="0"

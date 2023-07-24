@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="sum messagepacked numbers on stdin"
 HOMEPAGE="https://github.com/jakeogh/mpsum"
-EGIT_REPO_URI="/home/cfg/_myapps/mpsum https://github.com/jakeogh/mpsum.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpsum https://github.com/jakeogh/mpsum.git"
 
 LICENSE="BSD"
 SLOT="0"

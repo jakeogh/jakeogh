@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Plumb a PDF for detailed information"
 HOMEPAGE="https://github.com/jakeogh/pdfplumber"
-EGIT_REPO_URI="/home/cfg/_myapps/pdfplumber https://github.com/jakeogh/pdfplumber.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pdfplumber https://github.com/jakeogh/pdfplumber.git"
 
 LICENSE="BSD"
 SLOT="0"

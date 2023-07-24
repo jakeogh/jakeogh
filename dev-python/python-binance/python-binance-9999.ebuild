@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Binance Exchange API python implementation for automated trading"
 HOMEPAGE="https://github.com/jakeogh/python-binance"
-EGIT_REPO_URI="/home/cfg/_myapps/python-binance https://github.com/jakeogh/python-binance.git"
+EGIT_REPO_URI="/home/sysskel/myapps/python-binance https://github.com/jakeogh/python-binance.git"
 
 LICENSE="BSD"
 SLOT="0"

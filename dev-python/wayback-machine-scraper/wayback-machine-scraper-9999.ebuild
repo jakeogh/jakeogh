@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="wayback machine scaper"
 HOMEPAGE="https://github.com/jakeogh/wayback-machine-scraper"
-EGIT_REPO_URI="/home/cfg/_myapps/wayback-machine-scraper https://github.com/jakeogh/wayback-machine-scraper.git"
+EGIT_REPO_URI="/home/sysskel/myapps/wayback-machine-scraper https://github.com/jakeogh/wayback-machine-scraper.git"
 
 LICENSE="BSD"
 SLOT="0"

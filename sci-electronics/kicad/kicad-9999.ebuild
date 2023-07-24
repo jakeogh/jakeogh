@@ -13,7 +13,7 @@ DESCRIPTION="Electronic Schematic and PCB design tools"
 HOMEPAGE="https://www.kicad.org"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="/home/cfg/_myapps/kicad https://gitlab.com/kicad/code/kicad.git"
+	EGIT_REPO_URI="/home/sysskel/myapps/kicad https://gitlab.com/kicad/code/kicad.git"
 	inherit git-r3
 else
 	MY_PV="${PV/_rc/-rc}"

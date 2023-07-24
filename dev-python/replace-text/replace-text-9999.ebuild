@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Replace text in file(s) or stdin."
 HOMEPAGE="https://github.com/jakeogh/replace-text"
-EGIT_REPO_URI="/home/cfg/_myapps/replace-text https://github.com/jakeogh/replace-text.git"
+EGIT_REPO_URI="/home/sysskel/myapps/replace-text https://github.com/jakeogh/replace-text.git"
 
 LICENSE=""
 SLOT="0"

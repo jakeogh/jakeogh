@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="assertish funcs"
 HOMEPAGE="https://github.com/jakeogh/asserttool"
-EGIT_REPO_URI="/home/cfg/_myapps/asserttool https://github.com/jakeogh/asserttool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/asserttool https://github.com/jakeogh/asserttool.git"
 
 LICENSE="BSD"
 SLOT="0"

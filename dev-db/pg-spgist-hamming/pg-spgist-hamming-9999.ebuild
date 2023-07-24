@@ -12,7 +12,7 @@ inherit git-r3
 
 DESCRIPTION="postgres hamming distance"
 HOMEPAGE="https://github.com/jakeogh/pg-spgist-hamming"
-EGIT_REPO_URI="/home/cfg/_myapps/pg-spgist-hamming https://github.com/jakeogh/pg-spgist-hamming.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pg-spgist-hamming https://github.com/jakeogh/pg-spgist-hamming.git"
 
 LICENSE="BSD"
 SLOT="0"

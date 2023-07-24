@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="extra functionality for TensorFlow"
 HOMEPAGE="https://github.com/jakeogh/addons"
-EGIT_REPO_URI="/home/cfg/_myapps/addons https://github.com/jakeogh/addons.git"
+EGIT_REPO_URI="/home/sysskel/myapps/addons https://github.com/jakeogh/addons.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="python parser for human readable dates"
 HOMEPAGE="https://github.com/scrapinghub/dateparser"
-EGIT_REPO_URI="/home/cfg/_myapps/dateparser https://github.com/scrapinghub/dateparser.git"
+EGIT_REPO_URI="/home/sysskel/myapps/dateparser https://github.com/scrapinghub/dateparser.git"
 
 LICENSE=""
 SLOT="0"

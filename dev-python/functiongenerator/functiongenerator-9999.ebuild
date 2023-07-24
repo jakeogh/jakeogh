@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/functiongenerator"
-EGIT_REPO_URI="/home/cfg/_myapps/functiongenerator https://github.com/jakeogh/functiongenerator.git"
+EGIT_REPO_URI="/home/sysskel/myapps/functiongenerator https://github.com/jakeogh/functiongenerator.git"
 
 LICENSE="BSD"
 SLOT="0"

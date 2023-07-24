@@ -148,7 +148,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 ## Double check the homepage as the cargo_metadata crate
 ## does not provide this value so instead repository is used
 #HOMEPAGE="https://github.com/benfred/py-spy"
-#EGIT_REPO_URI="/home/cfg/_myapps/py_spy https://github.com/benfred/py-spy.git"
+#EGIT_REPO_URI="/home/sysskel/myapps/py_spy https://github.com/benfred/py-spy.git"
 #SRC_URI="$(cargo_crate_uris ${CRATES})"
 #RESTRICT="mirror"
 ## License set may be more restrictive as OR is not respected
@@ -171,7 +171,7 @@ CRATES=""
 inherit cargo
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="/home/cfg/_myapps/py_spy https://github.com/benfred/py-spy.git"
+	EGIT_REPO_URI="/home/sysskel/myapps/py_spy https://github.com/benfred/py-spy.git"
 	inherit git-r3
 else
 	SRC_URI="

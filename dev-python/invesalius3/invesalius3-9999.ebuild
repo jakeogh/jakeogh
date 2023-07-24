@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="3D medical imaging reconstruction software"
 HOMEPAGE="https://github.com/jakeogh/invesalius3"
-EGIT_REPO_URI="/home/cfg/_myapps/invesalius3 https://github.com/jakeogh/invesalius3.git"
+EGIT_REPO_URI="/home/sysskel/myapps/invesalius3 https://github.com/jakeogh/invesalius3.git"
 
 LICENSE="BSD"
 SLOT="0"

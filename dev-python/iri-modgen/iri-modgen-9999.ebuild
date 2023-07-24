@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="triggers for generating alternate iris"
 HOMEPAGE="https://github.com/jakeogh/iri-modgen"
-EGIT_REPO_URI="/home/cfg/_myapps/iri-modgen https://github.com/jakeogh/iri-modgen.git"
+EGIT_REPO_URI="/home/sysskel/myapps/iri-modgen https://github.com/jakeogh/iri-modgen.git"
 
 LICENSE="BSD"
 SLOT="0"

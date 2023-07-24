@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/whwright/click-command-tree"
-EGIT_REPO_URI="/home/cfg/_myapps/click_command_tree https://github.com/whwright/click-command-tree.git"
+EGIT_REPO_URI="/home/sysskel/myapps/click_command_tree https://github.com/whwright/click-command-tree.git"
 EGIT_BRANCH="fixes"
 
 LICENSE="BSD"

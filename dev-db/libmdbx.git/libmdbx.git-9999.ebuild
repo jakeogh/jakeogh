@@ -12,7 +12,7 @@ inherit git-r3
 
 DESCRIPTION="One of the fastest compact embeddable key-value ACID database without WAL"
 HOMEPAGE="https://github.com/jakeogh/libmdbx.git"
-EGIT_REPO_URI="/home/cfg/_myapps/libmdbx.git https://github.com/jakeogh/libmdbx.git.git"
+EGIT_REPO_URI="/home/sysskel/myapps/libmdbx.git https://github.com/jakeogh/libmdbx.git.git"
 
 LICENSE="BSD"
 SLOT="0"

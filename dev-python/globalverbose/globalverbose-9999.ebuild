@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="minimal global state for verbose"
 HOMEPAGE="https://github.com/jakeogh/globalverbose"
-EGIT_REPO_URI="/home/cfg/_myapps/globalverbose https://github.com/jakeogh/globalverbose.git"
+EGIT_REPO_URI="/home/sysskel/myapps/globalverbose https://github.com/jakeogh/globalverbose.git"
 
 LICENSE="BSD"
 SLOT="0"

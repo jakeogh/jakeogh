@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/pycolumnize"
-EGIT_REPO_URI="/home/cfg/_myapps/pycolumnize https://github.com/jakeogh/pycolumnize.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pycolumnize https://github.com/jakeogh/pycolumnize.git"
 
 LICENSE="BSD"
 SLOT="0"

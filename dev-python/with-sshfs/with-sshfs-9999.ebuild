@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Context manager for sshfs mount"
 HOMEPAGE="https://github.com/jakeogh/with-sshfs"
-EGIT_REPO_URI="/home/cfg/_myapps/with-sshfs https://github.com/jakeogh/with-sshfs.git"
+EGIT_REPO_URI="/home/sysskel/myapps/with-sshfs https://github.com/jakeogh/with-sshfs.git"
 
 LICENSE="BSD"
 SLOT="0"

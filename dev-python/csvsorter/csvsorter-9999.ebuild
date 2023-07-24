@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="@click version of https://github.com/richardpenman/csvsort"
 HOMEPAGE="https://github.com/jakeogh/csvsorter"
-EGIT_REPO_URI="/home/cfg/_myapps/csvsorter https://github.com/jakeogh/csvsorter.git"
+EGIT_REPO_URI="/home/sysskel/myapps/csvsorter https://github.com/jakeogh/csvsorter.git"
 
 LICENSE="BSD"
 SLOT="0"

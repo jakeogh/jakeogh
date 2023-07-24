@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="common string manipulation functions"
 HOMEPAGE="https://github.com/jakeogh/stringtool"
-EGIT_REPO_URI="/home/cfg/_myapps/stringtool https://github.com/jakeogh/stringtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/stringtool https://github.com/jakeogh/stringtool.git"
 
 LICENSE="BSD"
 SLOT="0"

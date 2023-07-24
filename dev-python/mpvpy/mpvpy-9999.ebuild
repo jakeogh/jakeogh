@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Python wrapper for mpv"
 HOMEPAGE="https://github.com/jakeogh/mpvpy"
-EGIT_REPO_URI="/home/cfg/_myapps/mpvpy https://github.com/jakeogh/mpvpy.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpvpy https://github.com/jakeogh/mpvpy.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="make lists"
 HOMEPAGE="https://github.com/jakeogh/triplistgen"
-EGIT_REPO_URI="/home/cfg/_myapps/triplistgen https://github.com/jakeogh/triplistgen.git"
+EGIT_REPO_URI="/home/sysskel/myapps/triplistgen https://github.com/jakeogh/triplistgen.git"
 
 LICENSE="BSD"
 SLOT="0"

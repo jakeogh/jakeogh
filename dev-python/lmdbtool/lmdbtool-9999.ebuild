@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Another CLI for LMDB"
 HOMEPAGE="https://github.com/jakeogh/lmdbtool"
-EGIT_REPO_URI="/home/cfg/_myapps/lmdbtool https://github.com/jakeogh/lmdbtool.git"
+EGIT_REPO_URI="/home/sysskel/myapps/lmdbtool https://github.com/jakeogh/lmdbtool.git"
 
 LICENSE="BSD"
 SLOT="0"

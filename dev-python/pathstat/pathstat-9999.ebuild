@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/pathstat"
-EGIT_REPO_URI="/home/cfg/_myapps/pathstat https://github.com/jakeogh/pathstat.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pathstat https://github.com/jakeogh/pathstat.git"
 
 LICENSE="BSD"
 SLOT="0"

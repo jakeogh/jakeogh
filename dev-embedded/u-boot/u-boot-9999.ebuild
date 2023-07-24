@@ -13,7 +13,7 @@ inherit git-r3
 
 DESCRIPTION="Das U-Boot"
 HOMEPAGE="https://github.com/jakeogh/u-boot"
-EGIT_REPO_URI="/home/cfg/_myapps/u-boot https://github.com/jakeogh/u-boot.git"
+EGIT_REPO_URI="/home/sysskel/myapps/u-boot https://github.com/jakeogh/u-boot.git"
 
 LICENSE="BSD"
 SLOT="0"

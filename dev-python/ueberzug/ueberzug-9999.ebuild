@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/ueberzug"
-EGIT_REPO_URI="/home/cfg/_myapps/ueberzug https://github.com/jakeogh/ueberzug.git"
+EGIT_REPO_URI="/home/sysskel/myapps/ueberzug https://github.com/jakeogh/ueberzug.git"
 
 LICENSE="BSD"
 SLOT="0"

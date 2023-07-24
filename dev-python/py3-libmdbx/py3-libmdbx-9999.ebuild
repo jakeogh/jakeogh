@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python 3 bindings for libmdbx"
 HOMEPAGE="https://github.com/jakeogh/py3-libmdbx"
-EGIT_REPO_URI="/home/cfg/_myapps/py3-libmdbx https://github.com/jakeogh/py3-libmdbx.git"
+EGIT_REPO_URI="/home/sysskel/myapps/py3-libmdbx https://github.com/jakeogh/py3-libmdbx.git"
 
 LICENSE="BSD"
 SLOT="0"

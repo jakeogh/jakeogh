@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Parse and extract data from ASN1"
 HOMEPAGE="https://github.com/jakeogh/asn1parser"
-EGIT_REPO_URI="/home/cfg/_myapps/asn1parser https://github.com/jakeogh/asn1parser.git"
+EGIT_REPO_URI="/home/sysskel/myapps/asn1parser https://github.com/jakeogh/asn1parser.git"
 
 LICENSE="BSD"
 SLOT="0"

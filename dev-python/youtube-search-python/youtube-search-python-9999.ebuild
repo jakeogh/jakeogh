@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Get YouTube video information using link WITHOUT YouTube Data API v3"
 HOMEPAGE="https://github.com/jakeogh/youtube-search-python"
-EGIT_REPO_URI="/home/cfg/_myapps/youtube-search-python https://github.com/jakeogh/youtube-search-python.git"
+EGIT_REPO_URI="/home/sysskel/myapps/youtube-search-python https://github.com/jakeogh/youtube-search-python.git"
 
 LICENSE="BSD"
 SLOT="0"

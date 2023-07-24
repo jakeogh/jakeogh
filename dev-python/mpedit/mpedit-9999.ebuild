@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="vidir for messagepacked files"
 HOMEPAGE="https://github.com/jakeogh/mpedit"
-EGIT_REPO_URI="/home/cfg/_myapps/mpedit https://github.com/jakeogh/mpedit.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpedit https://github.com/jakeogh/mpedit.git"
 
 LICENSE="BSD"
 SLOT="0"

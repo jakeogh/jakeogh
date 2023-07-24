@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="split mp sequences"
 HOMEPAGE="https://github.com/jakeogh/mpsequencesplit"
-EGIT_REPO_URI="/home/cfg/_myapps/mpsequencesplit https://github.com/jakeogh/mpsequencesplit.git"
+EGIT_REPO_URI="/home/sysskel/myapps/mpsequencesplit https://github.com/jakeogh/mpsequencesplit.git"
 
 LICENSE="BSD"
 SLOT="0"

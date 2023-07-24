@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Randomize stdin to stdout"
 HOMEPAGE="https://github.com/jakeogh/randomize-input"
-EGIT_REPO_URI="/home/cfg/_myapps/randomize-input https://github.com/jakeogh/randomize-input.git"
+EGIT_REPO_URI="/home/sysskel/myapps/randomize-input https://github.com/jakeogh/randomize-input.git"
 
 LICENSE="BSD"
 SLOT="0"

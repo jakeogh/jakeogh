@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="server frontend for lmdb"
 HOMEPAGE="https://github.com/jakeogh/greenhashkey"
-EGIT_REPO_URI="/home/cfg/_myapps/greenhashkey https://github.com/jakeogh/greenhashkey.git"
+EGIT_REPO_URI="/home/sysskel/myapps/greenhashkey https://github.com/jakeogh/greenhashkey.git"
 
 LICENSE="BSD"
 SLOT="0"

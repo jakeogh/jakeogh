@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="extract cookies from popular web browsers"
 HOMEPAGE="https://github.com/jakeogh/browser-cookie3"
-EGIT_REPO_URI="/home/cfg/_myapps/browser-cookie3 https://github.com/jakeogh/browser-cookie3.git"
+EGIT_REPO_URI="/home/sysskel/myapps/browser-cookie3 https://github.com/jakeogh/browser-cookie3.git"
 
 LICENSE="BSD"
 SLOT="0"

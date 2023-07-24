@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/atominventory"
-EGIT_REPO_URI="/home/cfg/_myapps/atominventory https://github.com/jakeogh/atominventory.git"
+EGIT_REPO_URI="/home/sysskel/myapps/atominventory https://github.com/jakeogh/atominventory.git"
 
 LICENSE="BSD"
 SLOT="0"

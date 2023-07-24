@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/pymenus"
-EGIT_REPO_URI="/home/cfg/_myapps/pymenus https://github.com/jakeogh/pymenus.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pymenus https://github.com/jakeogh/pymenus.git"
 
 LICENSE="BSD"
 SLOT="0"

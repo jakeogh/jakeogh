@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Python bindings for Facebook's PDQ hash"
 HOMEPAGE="https://github.com/faustomorales/pdqhash-python"
-EGIT_REPO_URI="/home/cfg/_myapps/pdqhash-python https://github.com/faustomorales/pdqhash-python.git"
+EGIT_REPO_URI="/home/sysskel/myapps/pdqhash-python https://github.com/faustomorales/pdqhash-python.git"
 EGIT_OVERRIDE_REPO_GIT_GITHUB_COM_FACEBOOK_THREATEXCHANGE="https://github.com/facebook/ThreatExchange.git"
 
 LICENSE="MIT"
