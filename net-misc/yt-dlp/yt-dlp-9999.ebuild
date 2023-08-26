@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="youtube-dl fork"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp"
 EGIT_REPO_URI="/home/sysskel/myapps/yt-dlp https://github.com/jakeogh/yt-dlp.git"
-#EGIT_BRANCH="locked_file"
+EGIT_BRANCH="youtube_comments"
 #EGIT_BRANCH="minicurses_bell"
 #EGIT_BRANCH="continue_on_lock"
 #EGIT_COMMIT="acea8d7cfb60d9f9c33ed7662f72110531a54e6d"
