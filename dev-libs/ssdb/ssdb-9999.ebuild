@@ -3,7 +3,7 @@
 
 # from https://github.com/longlene/clx/tree/master/dev-db/ssdb
 
-EAPI=7
+EAPI=8
 
 inherit git-r3
 inherit eutils
