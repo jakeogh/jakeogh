@@ -196,10 +196,11 @@ pkg_setup() {
 	check-reqs_pkg_setup
 }
 
+#unpack tensorflow-patches-${PVR}.tar.bz2
 src_unpack() {
 	# Only unpack the main distfile
 	unpack "${P}.tar.gz"
-	unpack tensorflow-patches-${PVR}.tar.bz2
+	unpack tensorflow-patches-2.12.0.tar.bz2
 	bazel_load_distfiles "${bazel_external_uris}"
 }
 
