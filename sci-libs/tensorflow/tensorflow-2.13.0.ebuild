@@ -3,7 +3,6 @@
 
 EAPI=8
 
-
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_10 python3_11 )
 MY_PV=${PV/_rc/-rc}
@@ -75,14 +74,15 @@ bazel_external_uris="
 	https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/openmp-10.0.1.src.tar.xz -> llvmorg-10.0.1-openmp-10.0.1.src.tar.xz
 	https://github.com/mborgerding/kissfft/archive/131.1.0.tar.gz -> kissfft-131.1.0.tar.gz
 	https://github.com/oneapi-src/oneDNN/archive/refs/tags/v2.7.3.tar.gz -> oneDNN-v2.7.3.tar.gz
-	https://github.com/openxla/stablehlo/archive/51f005f0a8ff6e28f535adfec4de936cb4097aa4.zip -> openxla-stablehlo-51f005f0a8ff6e28f535adfec4de936cb4097aa4.zip
+	https://github.com/openxla/stablehlo/archive/43d81c6883ade82052920bd367c61f9e52f09954.zip -> openxla-stablehlo-43d81c6883ade82052920bd367c61f9e52f09954.zip
 	https://github.com/openxla/triton/archive/2c3853269281da6742cf469a5ca5772947d271ce.tar.gz -> openxla-triton-2c3853269281da6742cf469a5ca5772947d271ce.tar.gz
 	https://github.com/petewarden/OouraFFT/archive/v1.0.tar.gz -> OouraFFT-v1.0.tar.gz
 	https://github.com/pytorch/cpuinfo/archive/3dc310302210c1891ffcfb12ae67b11a3ad3a150.tar.gz -> pytorch-cpuinfo-3dc310302210c1891ffcfb12ae67b11a3ad3a150.tar.gz
 	https://github.com/pytorch/cpuinfo/archive/3dc310302210c1891ffcfb12ae67b11a3ad3a150.zip -> pytorch-cpuinfo-3dc310302210c1891ffcfb12ae67b11a3ad3a150.zip
 	https://github.com/pybind/pybind11_abseil/archive/2c4932ed6f6204f1656e245838f4f5eae69d2e29.tar.gz -> pybind-pybind11_abseil-2c4932ed6f6204f1656e245838f4f5eae69d2e29.tar.gz
 	https://github.com/tensorflow/runtime/archive/7d879c8b161085a4374ea481b93a52adb19c0529.tar.gz -> tensorflow-runtime-7d879c8b161085a4374ea481b93a52adb19c0529.tar.gz
-	https://gitlab.com/libeigen/eigen/-/archive/3460f3558e7b469efb8a225894e21929c8c77629/eigen-3460f3558e7b469efb8a225894e21929c8c77629.tar.gz
+	https://gitlab.com/libeigen/eigen/-/archive/b0f877f8e01e90a5b0f3a79d46ea234899f8b499/eigen-b0f877f8e01e90a5b0f3a79d46ea234899f8b499.tar.gz
+	https://github.com/pybind/pybind11_protobuf/archive/80f3440cd8fee124e077e2e47a8a17b78b451363.zip -> pybind-pybind11_protobuf-80f3440cd8fee124e077e2e47a8a17b78b451363.zip
 	cuda? (
 		https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v0.8.zip -> cudnn-frontend-v0.8.zip
 		https://github.com/NVlabs/cub/archive/1.9.9.zip -> cub-1.9.9.zip
