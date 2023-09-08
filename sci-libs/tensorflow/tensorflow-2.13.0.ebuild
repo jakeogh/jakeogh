@@ -3,7 +3,6 @@
 
 EAPI=8
 
-
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_10 python3_11 )
 MY_PV=${PV/_rc/-rc}
@@ -39,6 +38,8 @@ done
 #	https://github.com/google/XNNPACK/archive/659147817805d17c7be2d60bd7bbca7e780f9c82.zip -> XNNPACK-659147817805d17c7be2d60bd7bbca7e780f9c82.zip
 #		https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v0.7.3.zip -> cudnn-frontend-v0.7.3.zip
 #		https://github.com/nvidia/nccl/archive/v2.16.2-1.tar.gz -> nvidia-nccl-v2.16.2-1.tar.gz
+#	https://github.com/tensorflow/runtime/archive/91d765cad5599f9710973d3e34d4dc22583e2e79.tar.gz -> tensorflow-runtime-91d765cad5599f9710973d3e34d4dc22583e2e79.tar.gz
+#	https://github.com/llvm/llvm-project/archive/10939d1d580b9d3c9c2f3539c6bdb39f408179c0.tar.gz -> llvm-project-10939d1d580b9d3c9c2f3539c6bdb39f408179c0.tar.gz
 # unknown: farmhash,gemmlowp,llvm-project, stablehlo, triton, tensorflow-runtine, eigen
 bazel_external_uris="
 	https://github.com/Maratyszcza/FP16/archive/4dfe081cf6bcd15db339cf2680b9281b8451eeb3.zip -> FP16-4dfe081cf6bcd15db339cf2680b9281b8451eeb3.zip
@@ -67,7 +68,7 @@ bazel_external_uris="
 	https://github.com/google/re2/archive/a276a8c738735a0fe45a6ee590fe2df69bcf4502.tar.gz -> re2-a276a8c738735a0fe45a6ee590fe2df69bcf4502.tar.gz
 	https://github.com/google/ruy/archive/3286a34cc8de6149ac6844107dfdffac91531e72.zip -> ruy-3286a34cc8de6149ac6844107dfdffac91531e72.zip
 	https://github.com/joe-kuo/sobol_data/archive/835a7d7b1ee3bc83e575e302a985c66ec4b65249.tar.gz -> sobol_data-835a7d7b1ee3bc83e575e302a985c66ec4b65249.tar.gz
-	https://github.com/llvm/llvm-project/archive/10939d1d580b9d3c9c2f3539c6bdb39f408179c0.tar.gz -> llvm-project-10939d1d580b9d3c9c2f3539c6bdb39f408179c0.tar.gz
+	https://github.com/llvm/llvm-project/archive/dc275fd03254d67d29cc70a5a0569acf24d2280d.tar.gz -> llvm-project-dc275fd03254d67d29cc70a5a0569acf24d2280d.tar.gz
 	https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/openmp-10.0.1.src.tar.xz -> llvmorg-10.0.1-openmp-10.0.1.src.tar.xz
 	https://github.com/mborgerding/kissfft/archive/131.1.0.tar.gz -> kissfft-131.1.0.tar.gz
 	https://github.com/oneapi-src/oneDNN/archive/refs/tags/v2.7.3.tar.gz -> oneDNN-v2.7.3.tar.gz
@@ -76,7 +77,7 @@ bazel_external_uris="
 	https://github.com/petewarden/OouraFFT/archive/v1.0.tar.gz -> OouraFFT-v1.0.tar.gz
 	https://github.com/pytorch/cpuinfo/archive/3dc310302210c1891ffcfb12ae67b11a3ad3a150.tar.gz -> pytorch-cpuinfo-3dc310302210c1891ffcfb12ae67b11a3ad3a150.tar.gz
 	https://github.com/pytorch/cpuinfo/archive/3dc310302210c1891ffcfb12ae67b11a3ad3a150.zip -> pytorch-cpuinfo-3dc310302210c1891ffcfb12ae67b11a3ad3a150.zip
-	https://github.com/tensorflow/runtime/archive/91d765cad5599f9710973d3e34d4dc22583e2e79.tar.gz -> tensorflow-runtime-91d765cad5599f9710973d3e34d4dc22583e2e79.tar.gz
+	https://github.com/tensorflow/runtime/archive/7d879c8b161085a4374ea481b93a52adb19c0529.tar.gz -> tensorflow-runtime-7d879c8b161085a4374ea481b93a52adb19c0529.tar.gz
 	https://gitlab.com/libeigen/eigen/-/archive/3460f3558e7b469efb8a225894e21929c8c77629/eigen-3460f3558e7b469efb8a225894e21929c8c77629.tar.gz
 	cuda? (
 		https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v0.8.zip -> cudnn-frontend-v0.8.zip
