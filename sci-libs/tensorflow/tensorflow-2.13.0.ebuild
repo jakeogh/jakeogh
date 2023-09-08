@@ -3,7 +3,6 @@
 
 EAPI=8
 
-
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_10 python3_11 )
 MY_PV=${PV/_rc/-rc}
