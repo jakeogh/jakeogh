@@ -1,10 +1,10 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+
 EAPI=8
 
-
-PYTHON_COMPAT=( python3_11 )
+PYTHON_COMPAT=( python3_10 python3_11 )
 inherit bazel distutils-r1
 
 DESCRIPTION="Deep Learning for humans"
@@ -33,20 +33,20 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	>=sci-libs/keras-applications-1.0.8[${PYTHON_USEDEP}]
 	>=sci-libs/keras-preprocessing-1.1.2[${PYTHON_USEDEP}]
-	>=sci-libs/tensorflow-2.10[python,${PYTHON_USEDEP}]"
+	>=sci-libs/tensorflow-2.12[python,${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 BDEPEND="
 	app-arch/unzip
 	>=dev-libs/protobuf-3.13.0
 	dev-java/java-config
-	>=dev-util/bazel-4.2.2"
+	>=dev-util/bazel-5.3.0"
 
 # Bazel tests not pytest, also want GPU access
 RESTRICT="test"
 DOCS=( CONTRIBUTING.md README.md )
 PATCHES=(
-	"${FILESDIR}/keras-2.11.0-0001-bazel-Use-system-protobuf.patch"
+	"${FILESDIR}/keras-2.12.0-0001-bazel-Use-system-protobuf.patch"
 )
 
 src_unpack() {
