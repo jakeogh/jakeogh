@@ -3,6 +3,7 @@
 
 EAPI=8
 
+
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_10 python3_11 )
 MY_PV=${PV/_rc/-rc}
@@ -83,6 +84,7 @@ bazel_external_uris="
 	https://github.com/tensorflow/runtime/archive/7d879c8b161085a4374ea481b93a52adb19c0529.tar.gz -> tensorflow-runtime-7d879c8b161085a4374ea481b93a52adb19c0529.tar.gz
 	https://gitlab.com/libeigen/eigen/-/archive/b0f877f8e01e90a5b0f3a79d46ea234899f8b499/eigen-b0f877f8e01e90a5b0f3a79d46ea234899f8b499.tar.gz
 	https://github.com/pybind/pybind11_protobuf/archive/80f3440cd8fee124e077e2e47a8a17b78b451363.zip -> pybind-pybind11_protobuf-80f3440cd8fee124e077e2e47a8a17b78b451363.zip
+	https://github.com/pybind/pybind11_bazel/archive/72cbbf1fbc830e487e3012862b7b720001b70672.tar.gz -> pybind-pybind11_bazel-72cbbf1fbc830e487e3012862b7b720001b70672.tar.gz
 	cuda? (
 		https://github.com/NVIDIA/cudnn-frontend/archive/refs/tags/v0.8.zip -> cudnn-frontend-v0.8.zip
 		https://github.com/NVlabs/cub/archive/1.9.9.zip -> cub-1.9.9.zip
