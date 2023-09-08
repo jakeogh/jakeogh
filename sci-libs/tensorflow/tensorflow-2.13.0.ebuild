@@ -3,6 +3,7 @@
 
 EAPI=8
 
+
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_10 python3_11 )
 MY_PV=${PV/_rc/-rc}
@@ -89,7 +90,7 @@ bazel_external_uris="
 
 # https://dev.gentoo.org/~perfinion/patches/tensorflow-patches-${PVR}.tar.bz2
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
-		https://dev.gentoo.org/~perfinion/patches/tensorflow-patches-2.12.0.tar.bz2
+		http://v6y.net/tensorflow-patches-${PVR}.tar.bz2
 		${bazel_external_uris}"
 
 # abseil-cpp-20211102.0-r0 does not work with NVCC
@@ -196,11 +197,10 @@ pkg_setup() {
 	check-reqs_pkg_setup
 }
 
-#unpack tensorflow-patches-${PVR}.tar.bz2
 src_unpack() {
 	# Only unpack the main distfile
 	unpack "${P}.tar.gz"
-	unpack tensorflow-patches-2.12.0.tar.bz2
+	unpack tensorflow-patches-${PVR}.tar.bz2
 	bazel_load_distfiles "${bazel_external_uris}"
 }
 
