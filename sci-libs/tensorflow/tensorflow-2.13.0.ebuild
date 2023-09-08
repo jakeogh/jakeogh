@@ -3,6 +3,7 @@
 
 EAPI=8
 
+
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_10 python3_11 )
 MY_PV=${PV/_rc/-rc}
@@ -79,6 +80,7 @@ bazel_external_uris="
 	https://github.com/petewarden/OouraFFT/archive/v1.0.tar.gz -> OouraFFT-v1.0.tar.gz
 	https://github.com/pytorch/cpuinfo/archive/3dc310302210c1891ffcfb12ae67b11a3ad3a150.tar.gz -> pytorch-cpuinfo-3dc310302210c1891ffcfb12ae67b11a3ad3a150.tar.gz
 	https://github.com/pytorch/cpuinfo/archive/3dc310302210c1891ffcfb12ae67b11a3ad3a150.zip -> pytorch-cpuinfo-3dc310302210c1891ffcfb12ae67b11a3ad3a150.zip
+	https://github.com/pybind/pybind11_abseil/archive/2c4932ed6f6204f1656e245838f4f5eae69d2e29.tar.gz -> pybind-pybind11_abseil-2c4932ed6f6204f1656e245838f4f5eae69d2e29.tar.gz
 	https://github.com/tensorflow/runtime/archive/7d879c8b161085a4374ea481b93a52adb19c0529.tar.gz -> tensorflow-runtime-7d879c8b161085a4374ea481b93a52adb19c0529.tar.gz
 	https://gitlab.com/libeigen/eigen/-/archive/3460f3558e7b469efb8a225894e21929c8c77629/eigen-3460f3558e7b469efb8a225894e21929c8c77629.tar.gz
 	cuda? (
