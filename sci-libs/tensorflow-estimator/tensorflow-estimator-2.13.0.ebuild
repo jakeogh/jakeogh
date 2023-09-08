@@ -1,12 +1,12 @@
 # Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+
 EAPI=8
 
-
-PYTHON_COMPAT=( python3_11 )
+PYTHON_COMPAT=( python3_10 python3_11 )
 MY_PN="estimator"
-MY_PV=${PV}-rc0
+MY_PV=${PV/_rc/-rc}
 MY_P=${MY_PN}-${MY_PV}
 
 inherit bazel distutils-r1
@@ -23,7 +23,7 @@ bazel_external_uris="
 	https://github.com/bazelbuild/rules_cc/archive/b1c40e1de81913a3c40e5948f78719c28152486d.zip -> bazelbuild-rules_cc-b1c40e1de81913a3c40e5948f78719c28152486d.zip
 	https://github.com/bazelbuild/rules_java/archive/7cf3cefd652008d0a64a419c34c13bdca6c8f178.zip -> bazelbuild-rules_java-7cf3cefd652008d0a64a419c34c13bdca6c8f178.zip"
 
-SRC_URI="https://github.com/tensorflow/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}-rc0.tar.gz
+SRC_URI="https://github.com/tensorflow/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	${bazel_external_uris}"
 
 RDEPEND="
@@ -33,18 +33,14 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	app-arch/unzip
 	dev-java/java-config
-	>=dev-util/bazel-5.1.1"
+	>=dev-util/bazel-5.3.0"
 
 S="${WORKDIR}/${MY_P}"
 
 DOCS=( CONTRIBUTING.md README.md )
-PATCHES=(
-	# Tag is missing for v2.11.0, apply version update manually
-	"${FILESDIR}/0001-Update-setup.py-for-2.11.0-final-release.patch"
-)
 
 src_unpack() {
-	unpack "${P}-rc0.tar.gz"
+	unpack "${P}.tar.gz"
 	bazel_load_distfiles "${bazel_external_uris}"
 }
 
