@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit eutils python-r1
+inherit python-r1
 inherit git-r3
 
 DESCRIPTION="Generic Colouriser beautifies your logfiles or output of commands"
