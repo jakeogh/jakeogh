@@ -24,4 +24,7 @@ RDEPEND="
 	dev-python/scipy[${PYTHON_USEDEP}]
 	net-analyzer/scapy[${PYTHON_USEDEP}]
 	dev-python/wxpython:*[${PYTHON_USEDEP}]
+	dev-python/devicefilesystemtool[${PYTHON_USEDEP}]
+	dev-python/devicelabeltool[${PYTHON_USEDEP}]
+	dev-python/devicepartitiontool[${PYTHON_USEDEP}]
 "
