@@ -23,6 +23,7 @@ BDEPEND="
 
 RDEPEND="
 	dev-python/pip[${PYTHON_USEDEP}]
+	dev-python/pyqtgraph[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
