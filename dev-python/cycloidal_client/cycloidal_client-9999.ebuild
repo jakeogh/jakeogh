@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
+	dev-python/pymeasure[${PYTHON_USEDEP}]
 	net-analyzer/scapy[${PYTHON_USEDEP}]
 	dev-python/wxpython:*[${PYTHON_USEDEP}]
 	dev-python/devicefilesystemtool[${PYTHON_USEDEP}]
