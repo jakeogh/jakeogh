@@ -19,3 +19,15 @@ RDEPEND=""
 
 DEPEND="${RDEPEND}"
 
+distutils_enable_tests pytest
+# exception: No module named 'sphinx.apidoc' even if sphinxcontrib-apidoc is installed
+#distutils_enable_sphinx docs dev-python/sphinxcontrib-apidoc
+
+python_prepare_all() {
+        # do not depend on pytest-runner
+        sed -i -e '/pytest-runner/d' setup.py || die
+
+        distutils-r1_python_prepare_all
+}
+
+
