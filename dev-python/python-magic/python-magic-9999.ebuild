@@ -11,6 +11,7 @@ inherit git-r3
 DESCRIPTION="Access the libmagic file type identification library"
 HOMEPAGE="https://github.com/ahupp/python-magic"
 EGIT_REPO_URI="https://github.com/ahupp/python-magic.git"
+EGIT_BRANCH="MAGIC_PARAM_NAME_MAX"
 
 LICENSE="MIT"
 SLOT="0"
