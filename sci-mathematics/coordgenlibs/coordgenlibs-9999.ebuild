@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 eutils toolchain-funcs
+inherit git-r3 toolchain-funcs
 inherit cmake-multilib
 
 CMAKE_ECLASS="cmake-utils"
