@@ -6,7 +6,6 @@
 EAPI=8
 
 inherit git-r3
-inherit eutils
 
 DESCRIPTION="A fast NoSQL database on-disk alternative to Redis"
 HOMEPAGE="https://ssdb.io"
