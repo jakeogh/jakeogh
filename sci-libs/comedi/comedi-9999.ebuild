@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info git-r3 autotools eutils linux-mod toolchain-funcs
+inherit linux-info git-r3 autotools linux-mod toolchain-funcs
 
 DESCRIPTION="Linux control and measurement device interface (kernel modules)"
 HOMEPAGE="http://www.comedi.org/"
