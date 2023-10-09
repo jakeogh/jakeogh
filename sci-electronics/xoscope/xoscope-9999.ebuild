@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils linux-info git-r3
+inherit autotools linux-info git-r3
 
 DESCRIPTION="Soundcard Oscilloscope for X"
 HOMEPAGE="http://xoscope.sourceforge.net"
