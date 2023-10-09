@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools eutils versionator git-r3
+inherit autotools versionator git-r3
 
 MY_PV=$(get_version_component_range 1-2 ${PV})
 
