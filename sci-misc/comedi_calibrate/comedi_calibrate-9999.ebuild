@@ -4,7 +4,7 @@
 
 EAPI=7
 
-inherit eutils git-r3
+ git-r3
 
 DESCRIPTION="Linux control and measurement device interface (calibration tool)"
 HOMEPAGE="http://www.comedi.org/"
