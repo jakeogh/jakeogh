@@ -6,7 +6,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit linux-info python-single-r1 multilib-minimal git-r3 autotools eutils
+inherit linux-info python-single-r1 multilib-minimal git-r3 autotools
 
 DESCRIPTION="Linux control and measurement device interface (userspace libraries)"
 HOMEPAGE="http://www.comedi.org/"
