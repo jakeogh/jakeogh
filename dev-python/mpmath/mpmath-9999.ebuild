@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit distutils-r1 eutils
+inherit distutils-r1
 inherit git-r3
 
 DESCRIPTION="Python library for arbitrary-precision floating-point arithmetic"
