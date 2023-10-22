@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Convenience functions wrapping pubchempy"
 HOMEPAGE="https://github.com/ejhonglab/chemutils"
 EGIT_REPO_URI="/home/sysskel/myapps/chemutils https://github.com/ejhonglab/chemutils.git"
 
@@ -16,22 +16,11 @@ KEYWORDS=""
 #IUSE="test"
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	
-	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/pint[${PYTHON_USEDEP}]
+	dev-python/xlsxwriter[${PYTHON_USEDEP}]
+	dev-python/openpyxl[${PYTHON_USEDEP}]
+	sci-chemistry/pubchempy[${PYTHON_USEDEP}]
+	dev-python/pandas[${PYTHON_USEDEP}]
+	dev-python/openpyxl[${PYTHON_USEDEP}]
 "
 
-DEPEND="${RDEPEND}"
-#	test? ( dev-python/nose[${PYTHON_USEDEP}]
-#		>=dev-python/toolz-0.8[${PYTHON_USEDEP}] )"
-
-#python_compile() {
-#	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-#	distutils-r1_python_compile
-#}
-
-#python_test() {
-#	pushd "${BUILD_DIR}"/lib/ > /dev/null || die
-#	PYTHONPATH=.:${PN} nosetests --with-doctest ${PN} || die "tests failed under ${EPYTHON}"
-#	popd > /dev/null || die
-#}
