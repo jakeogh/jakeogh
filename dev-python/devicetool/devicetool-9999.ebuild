@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/warntool[${PYTHON_USEDEP}]
 	dev-python/timetool[${PYTHON_USEDEP}]
+	dev-python/timestamptool[${PYTHON_USEDEP}]
 	dev-python/devicefilesystemtool[${PYTHON_USEDEP}]
 "
 
