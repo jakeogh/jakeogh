@@ -33,6 +33,7 @@ RDEPEND="
 	dev-util/pkgcheck[${PYTHON_USEDEP}]
 	dev-util/pkgdev[${PYTHON_USEDEP}]
 	dev-python/portagetool[${PYTHON_USEDEP}]
+	dev-python/isort[${PYTHON_USEDEP}]
 	sys-apps/yarn
 "
 # sys-apps/yarn pulls in nodejs for CoC
