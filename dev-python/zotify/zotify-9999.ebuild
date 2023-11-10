@@ -17,8 +17,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/librespot[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
