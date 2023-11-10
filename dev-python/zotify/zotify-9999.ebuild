@@ -17,7 +17,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
-	dev-python/librespot[${PYTHON_USEDEP}]
+	dev-python/librespot-python[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
