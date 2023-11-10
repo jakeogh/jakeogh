@@ -19,6 +19,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/librespot-python[${PYTHON_USEDEP}]
 	dev-python/ffmpy[${PYTHON_USEDEP}]
+	dev-python/music-tag[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
