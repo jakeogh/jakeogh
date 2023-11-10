@@ -9,7 +9,7 @@ inherit git-r3
 
 
 #inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="A music and podcast downloader needing only Python and FFmpeg"
 HOMEPAGE="https://gitlab.com/team-zotify/zotify"
