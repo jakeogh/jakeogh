@@ -8,8 +8,6 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Stress-Terminal UI monitoring tool"
 HOMEPAGE="https://github.com/amanusk/s-tui"
@@ -22,14 +20,8 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/urwid[${PYTHON_USEDEP}]
+	app-benchmarks/stress
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
