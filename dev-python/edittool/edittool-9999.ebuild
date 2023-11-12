@@ -35,6 +35,8 @@ RDEPEND="
 	dev-python/portagetool[${PYTHON_USEDEP}]
 	dev-python/isort[${PYTHON_USEDEP}]
 	dev-python/flake8[${PYTHON_USEDEP}]
+	dev-python/pylint[${PYTHON_USEDEP}]
+	dev-python/mypy[${PYTHON_USEDEP}]
 	sys-apps/yarn
 "
 # sys-apps/yarn pulls in nodejs for CoC
