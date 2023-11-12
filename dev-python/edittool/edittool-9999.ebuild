@@ -40,4 +40,5 @@ RDEPEND="
 # sys-apps/yarn pulls in nodejs for CoC
 
 
+
 DEPEND="${RDEPEND}"
