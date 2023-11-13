@@ -20,7 +20,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
+	dev-python/urltool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
