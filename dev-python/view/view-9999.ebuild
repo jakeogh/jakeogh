@@ -22,6 +22,7 @@ RDEPEND="
 	net-misc/iridb[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	dev-python/mpvpy[${PYTHON_USEDEP}]
+	dev-python/hashfilter[${PYTHON_USEDEP}]
 	app-text/djview
 	www-client/elinks
 	app-text/docx2txt
