@@ -19,12 +19,12 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
 	dev-python/mptool[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/htmlparser[${PYTHON_USEDEP}]
 	dev-python/pyperclip[${PYTHON_USEDEP}]
+	dev-python/pyclip[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
