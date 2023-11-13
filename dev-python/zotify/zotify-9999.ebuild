@@ -20,6 +20,8 @@ RDEPEND="
 	dev-python/librespot-python[${PYTHON_USEDEP}]
 	dev-python/ffmpy[${PYTHON_USEDEP}]
 	dev-python/music-tag[${PYTHON_USEDEP}]
+	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/tabulate[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
