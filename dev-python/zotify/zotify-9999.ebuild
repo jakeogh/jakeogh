@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/music-tag[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
+	dev-python/pwinput[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
