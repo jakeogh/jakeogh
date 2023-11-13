@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/Levenshtein[${PYTHON_USEDEP}]
 	dev-python/mptool[${PYTHON_USEDEP}]
 	dev-python/number-parser[${PYTHON_USEDEP}]
+	dev-python/unittool[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
