@@ -59,6 +59,7 @@ RDEPEND="
 	dev-python/irifilter[${PYTHON_USEDEP}]
 	dev-python/processtool[${PYTHON_USEDEP}]
 	dev-python/yt-dlp-wrapper-iridb-import[${PYTHON_USEDEP}]
+	dev-python/stringtool[${PYTHON_USEDEP}]
 	app-text/tree
 "
 
