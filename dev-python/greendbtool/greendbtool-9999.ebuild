@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/configtool[${PYTHON_USEDEP}]
 	dev-python/retry-on-exception[${PYTHON_USEDEP}]
+	dev-python/nettool[${PYTHON_USEDEP}]
 	app-misc/tmux
 "
 
