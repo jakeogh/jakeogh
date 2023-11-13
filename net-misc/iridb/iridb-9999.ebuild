@@ -61,6 +61,7 @@ RDEPEND="
 	dev-python/yt-dlp-wrapper-iridb-import[${PYTHON_USEDEP}]
 	net-misc/yt-dlp[${PYTHON_USEDEP}]
 	dev-python/stringtool[${PYTHON_USEDEP}]
+	dev-python/zotify-wrapper[${PYTHON_USEDEP}]
 	app-text/tree
 "
 
