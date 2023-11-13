@@ -62,6 +62,7 @@ RDEPEND="
 	net-misc/yt-dlp[${PYTHON_USEDEP}]
 	dev-python/stringtool[${PYTHON_USEDEP}]
 	dev-python/zotify-wrapper[${PYTHON_USEDEP}]
+	dev-python/with-lmdb[${PYTHON_USEDEP}]
 	app-text/tree
 "
 
