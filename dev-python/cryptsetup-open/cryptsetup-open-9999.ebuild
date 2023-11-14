@@ -13,7 +13,6 @@ EGIT_REPO_URI="/home/sysskel/myapps/cryptsetup-open https://github.com/jakeogh/c
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
