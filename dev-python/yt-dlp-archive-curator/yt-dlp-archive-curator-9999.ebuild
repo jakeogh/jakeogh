@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/pyppath[${PYTHON_USEDEP}]
+	dev-python/jsontool[${PYTHON_USEDEP}]
 	net-misc/iridb[${PYTHON_USEDEP}]
 "
 
