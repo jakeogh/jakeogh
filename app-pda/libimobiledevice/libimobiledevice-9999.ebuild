@@ -48,8 +48,9 @@ BDEPEND="
 
 BUILD_DIR="${S}_build"
 
+
+#	"${FILESDIR}/${P}-slibtool.patch"
 PATCHES=(
-	"${FILESDIR}/${P}-slibtool.patch"
 	"${FILESDIR}/${P}-missing_libflags.patch" #787962
 	"${FILESDIR}/${P}-python.patch"
 )
