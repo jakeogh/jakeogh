@@ -52,9 +52,8 @@ BUILD_DIR="${S}_build"
 
 #	"${FILESDIR}/${P}-missing_libflags.patch" #787962
 #	"${FILESDIR}/${P}-slibtool.patch"
-PATCHES=(
-	"${FILESDIR}/${P}-python.patch"
-)
+#	"${FILESDIR}/${P}-python.patch"
+PATCHES=()
 
 src_prepare() {
 	default
