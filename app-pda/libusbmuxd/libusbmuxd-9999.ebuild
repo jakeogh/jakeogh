@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ~ppc64 ~riscv x86"
 IUSE="static-libs"
 
 RDEPEND="
-	>=app-pda/libplist-2.2.0:=
+	>=app-pda/libplist-2.3.0:=
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
