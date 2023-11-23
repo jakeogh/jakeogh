@@ -5,6 +5,7 @@ EAPI=8
 
 inherit systemd udev
 inherit git-r3
+inherit autotools
 
 DESCRIPTION="USB multiplex daemon for use with Apple iPhone/iPod Touch devices"
 HOMEPAGE="https://libimobiledevice.org/"
@@ -35,6 +36,11 @@ RDEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf \
