@@ -23,7 +23,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=( "${FILESDIR}"/libusbmuxd-2.0.2-configure.patch )
+#PATCHES=( "${FILESDIR}"/libusbmuxd-2.0.2-configure.patch )
 
 src_prepare() {
 	default
