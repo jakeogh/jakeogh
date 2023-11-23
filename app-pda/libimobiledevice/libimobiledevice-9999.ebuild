@@ -20,8 +20,12 @@ KEYWORDS="amd64 ~arm ~arm64 ~loong ppc ~ppc64 ~riscv x86"
 IUSE="doc gnutls python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
+#	>=app-pda/libplist-2.3.0:=
+#	python? (
+#		${PYTHON_DEPS}
+#		app-pda/libplist[python(-),${PYTHON_USEDEP}]
+#	)
 RDEPEND="
-	>=app-pda/libplist-2.3.0:=
 	>=app-pda/libusbmuxd-2.0.2:=
 	gnutls? (
 		dev-libs/libgcrypt:0
@@ -30,10 +34,6 @@ RDEPEND="
 	)
 	!gnutls? (
 		dev-libs/openssl:0=
-	)
-	python? (
-		${PYTHON_DEPS}
-		app-pda/libplist[python(-),${PYTHON_USEDEP}]
 	)
 "
 DEPEND="
