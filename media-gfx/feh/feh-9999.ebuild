@@ -48,7 +48,6 @@ pkg_setup() {
 		debug=$(use_feh debug)
 		xinerama=$(use_feh xinerama)
 		exif=$(use_feh exif)
-		inotify=$(use_feh inotify)
 	)
 }
 
