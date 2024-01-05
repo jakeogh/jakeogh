@@ -30,7 +30,9 @@ RDEPEND="
 	sys-apps/busybox
 	www-client/lynx
 	dev-python/mock[${PYTHON_USEDEP}]
+	mail-filter/maildrop
 "
+# maildrop for reformime
 # mock is missing dep for urwidtrees
 
 python_install_all() {
