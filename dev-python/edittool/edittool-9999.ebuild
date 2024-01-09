@@ -37,6 +37,7 @@ RDEPEND="
 	dev-python/flake8[${PYTHON_USEDEP}]
 	dev-python/pylint[${PYTHON_USEDEP}]
 	dev-python/mypy[${PYTHON_USEDEP}]
+	dev-util/splint
 	sys-apps/yarn
 "
 # sys-apps/yarn pulls in nodejs for CoC
