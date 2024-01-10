@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/inputtool[${PYTHON_USEDEP}]
 	dev-python/itertool[${PYTHON_USEDEP}]
+	dev-python/timestamptool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
