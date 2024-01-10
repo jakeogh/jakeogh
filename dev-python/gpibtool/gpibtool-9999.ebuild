@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/pymeasure[${PYTHON_USEDEP}]
 	sci-libs/linux-gpib
 	dev-python/PyVISA-sim[${PYTHON_USEDEP}]
+	dev-python/gpib-ctypes[${PYTHON_USEDEP}]
 "
 
 
