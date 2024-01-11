@@ -26,7 +26,7 @@ src_compile() {
 	#zig build-exe ${PN}.zig --strip || die
 	echo ${S}/${MY_PN}/${MY_PN}.zig
 	#zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
-	zig build-exe ${S}/${MY_PN}/${MY_PN}.zig -O ReleaseSmall --strip || die
+	zig build-exe ${S}/${MY_PN}/${MY_PN}.zig -O ReleaseSmall || die
 	strip ${S}/${MY_PN}/${MY_PN} || die
 	#zig build-exe zig_minimal.zig --strip || die
 }
