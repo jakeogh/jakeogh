@@ -6,7 +6,6 @@ PYTHON_COMPAT=( python3_{10..11} )
 
 inherit git-r3
 
-#inherit xdg
 
 DESCRIPTION="content addressed fs tree lookup"
 HOMEPAGE="https://github.com/jakeogh/uhashfsz"
