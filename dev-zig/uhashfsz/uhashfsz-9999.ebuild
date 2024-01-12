@@ -11,8 +11,8 @@ DESCRIPTION="content addressed fs tree lookup"
 HOMEPAGE="https://github.com/jakeogh/uhashfsz"
 EGIT_REPO_URI="/home/sysskel/myapps/uhashfsz https://github.com/jakeogh/uhashfsz.git"
 
-#MY_P="${P/-/_}"
-#MY_PN="${PN/-/_}"
+MY_P="${P/-/_}"
+MY_PN="${PN/-/_}"
 #MY_S=""${WORKDIR}/${MY_P}""
 
 LICENSE="BSD"
