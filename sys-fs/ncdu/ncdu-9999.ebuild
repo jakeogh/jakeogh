@@ -3,15 +3,11 @@
 
 EAPI=8
 
-inherit verify-sig edo
+inherit edo
 inherit git-r3
 
 DESCRIPTION="NCurses Disk Usage"
 HOMEPAGE="https://dev.yorhel.nl/ncdu"
-#SRC_URI="
-#	https://dev.yorhel.nl/download/${P}.tar.gz
-#	verify-sig? ( https://dev.yorhel.nl/download/${P}.tar.gz.asc )
-#"
 #
 EGIT_REPO_URI="/home/sysskel/myapps/ncdu"
 
@@ -28,7 +24,6 @@ BDEPEND="
 	|| ( dev-lang/zig:${EZIG_MIN} dev-lang/zig-bin:${EZIG_MIN} )
 	virtual/pkgconfig
 	dev-lang/perl
-	verify-sig? ( sec-keys/openpgp-keys-yorhel )
 "
 
 VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/yoranheling.asc
@@ -110,9 +105,6 @@ ezig() {
 }
 
 src_unpack() {
-	if use verify-sig; then
-		verify-sig_verify_detached "${DISTDIR}"/${P}.tar.gz{,.asc}
-	fi
 	default
 }
 
