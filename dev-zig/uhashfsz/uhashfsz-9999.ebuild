@@ -32,3 +32,6 @@ src_compile() {
 	#zig build-exe zig_minimal.zig --strip || die
 }
 
+src_install() {
+	dobin uhashfsz
+}
