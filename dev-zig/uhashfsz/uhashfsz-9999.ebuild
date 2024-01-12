@@ -24,6 +24,8 @@ src_compile() {
 	#zig build-exe ${PN}.zig --strip || die
 	echo ${S}/${MY_PN}/${MY_PN}.zig
 	pwd
+	cd uhashfsz
+	pwd
 	#zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
 	zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --verbose-link -O ReleaseSmall || die
 #	strip ${S}/${MY_PN}/${MY_PN} || die
