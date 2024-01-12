@@ -26,7 +26,6 @@ BDEPEND="
 	dev-lang/perl
 "
 
-VERIFY_SIG_OPENPGP_KEY_PATH=/usr/share/openpgp-keys/yoranheling.asc
 
 # see https://github.com/ziglang/zig/issues/3382
 # For now, Zig doesn't support CFLAGS/LDFLAGS/etc.
