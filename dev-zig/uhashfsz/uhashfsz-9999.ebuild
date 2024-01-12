@@ -33,5 +33,5 @@ src_compile() {
 }
 
 src_install() {
-	dobin uhashfsz
+	dobin uhashfsz/uhashfsz
 }
