@@ -27,9 +27,7 @@ src_compile() {
 	cd uhashfsz
 	pwd
 	#zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
-	zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --verbose-link -O ReleaseSmall || die
-#	strip ${S}/${MY_PN}/${MY_PN} || die
-	#zig build-exe zig_minimal.zig --strip || die
+	zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --verbose-link -O Debug || die
 }
 
 src_install() {
