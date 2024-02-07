@@ -9,7 +9,7 @@ inherit git-r3
 DESCRIPTION="NCurses Disk Usage"
 HOMEPAGE="https://dev.yorhel.nl/ncdu"
 #
-EGIT_REPO_URI="/home/sysskel/myapps/ncdu"
+EGIT_REPO_URI="/home/sysskel/myapps/ncdu https://g.blicky.net/ncdu.git"
 
 LICENSE="MIT"
 SLOT="0"
