@@ -18,7 +18,6 @@ IUSE=""
 
 DEPEND="
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
-	
 "
 
 RDEPEND="${DEPEND}"
