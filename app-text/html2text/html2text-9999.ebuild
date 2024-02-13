@@ -4,6 +4,7 @@
 EAPI=7
 
 inherit toolchain-funcs
+inherit autotools
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
@@ -21,22 +22,23 @@ SLOT="0"
 
 src_prepare() {
 	default
-	tc-export CXX
+	eautoreconf
+	#tc-export CXX
 }
 
-# https://bugs.gentoo.org/840625
-src_configure() {
-	./configure || die
-}
+## https://bugs.gentoo.org/840625
+#src_configure() {
+#	./configure || die
+#}
 
-src_compile() {
-	emake LDFLAGS="${LDFLAGS}" CXXFLAGS="${CXXFLAGS}"
-}
-
-src_install() {
-	emake DESTDIR="${D}" \
-		PREFIX="${EPREFIX}/usr" \
-		MANDIR="${EPREFIX}/usr/share/man" \
-		DOCDIR="${EPREFIX}/usr/share/doc/${P}" \
-		install
-}
+#src_compile() {
+#	emake LDFLAGS="${LDFLAGS}" CXXFLAGS="${CXXFLAGS}"
+#}
+#
+#src_install() {
+#	emake DESTDIR="${D}" \
+#		PREFIX="${EPREFIX}/usr" \
+#		MANDIR="${EPREFIX}/usr/share/man" \
+#		DOCDIR="${EPREFIX}/usr/share/doc/${P}" \
+#		install
+#}
