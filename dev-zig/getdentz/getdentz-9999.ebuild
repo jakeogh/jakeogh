@@ -33,4 +33,5 @@ src_compile() {
 src_install() {
 	dobin getdentz/getdentz
 	dosym "/usr/bin/${PN}" "/usr/bin/${PN}-files"
+	dosym "/usr/bin/${PN}" "/usr/bin/${PN}-files-names"
 }
