@@ -12,7 +12,6 @@ EGIT_REPO_URI="/home/sysskel/myapps/getdentz https://github.com/jakeogh/uhashfsz
 
 MY_P="${P/-/_}"
 MY_PN="${PN/-/_}"
-#MY_S=""${WORKDIR}/${MY_P}""
 
 
 LICENSE="BSD"
