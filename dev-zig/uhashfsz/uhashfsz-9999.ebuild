@@ -7,8 +7,8 @@ inherit git-r3
 
 
 DESCRIPTION="content addressed fs tree lookup"
-HOMEPAGE="https://github.com/jakeogh/getdentz"
-EGIT_REPO_URI="/home/sysskel/myapps/getdentz https://github.com/jakeogh/uhashfsz.git"
+HOMEPAGE="https://github.com/jakeogh/uhashfsz"
+EGIT_REPO_URI="/home/sysskel/myapps/uhashfsz https://github.com/jakeogh/uhashfsz.git"
 
 MY_P="${P/-/_}"
 MY_PN="${PN/-/_}"
@@ -24,13 +24,13 @@ src_compile() {
 	#zig build-exe ${PN}.zig --strip || die
 	echo ${S}/${MY_PN}/${MY_PN}.zig
 	pwd
-	cd getdentz
+	cd uhashfsz
 	pwd
 	#zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
 	zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --verbose-link -O Debug || die
 }
 
 src_install() {
-	dobin getdentz/getdentz
+	dobin uhashfsz/uhashfsz
 	#dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
 }
