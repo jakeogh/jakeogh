@@ -33,5 +33,5 @@ src_compile() {
 
 src_install() {
 	dobin getdentz/getdentz
-	#dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
+	dosym "/usr/bin/${PN}" "/usr/bin/${PN}-files"
 }
