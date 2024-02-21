@@ -31,6 +31,6 @@ src_compile() {
 }
 
 src_install() {
-	dobin getdentz/uhashfsz
+	dobin getdentz/getdentz
 	#dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
 }
