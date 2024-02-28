@@ -30,4 +30,5 @@ RDEPEND="
 	dev-python/devicefilesystemtool[${PYTHON_USEDEP}]
 	dev-python/devicelabeltool[${PYTHON_USEDEP}]
 	dev-python/devicepartitiontool[${PYTHON_USEDEP}]
+	dev-python/schedule[${PYTHON_USEDEP}]
 "
