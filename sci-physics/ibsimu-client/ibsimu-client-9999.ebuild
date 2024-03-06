@@ -21,8 +21,9 @@ KEYWORDS=""
 #IUSE="test"
 
 
-
-#src_prepare() {
-#	default
+src_prepare() {
+	mkdir bin/build -p
+	echo "CWD: $CWD"
+	default
 #	xdg_src_prepare
-#}
+}
