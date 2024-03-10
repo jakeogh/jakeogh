@@ -13,7 +13,7 @@ inherit distutils-r1
 DESCRIPTION="clang-format python wheel"
 HOMEPAGE="https://github.com/ssciwr/clang-format-wheel"
 EGIT_REPO_URI="/home/sysskel/myapps/clang-format-wheel https://github.com/ssciwr/clang-format-wheel.git"
-SRC_URI="https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.0/llvm-project-18.1.0.src.tar.xz"
+#SRC_URI="https://github.com/llvm/llvm-project/releases/download/llvmorg-18.1.0/llvm-project-18.1.0.src.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
