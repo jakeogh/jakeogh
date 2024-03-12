@@ -32,5 +32,5 @@ src_compile() {
 
 src_install() {
 	dobin uhashfsz/uhashfsz
-	#dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
+	dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
 }
