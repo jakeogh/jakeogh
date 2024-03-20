@@ -39,5 +39,4 @@ src_install() {
 	#dobin ${PN}.sh
 	newbin ${PN}.sh ${PN}_failsafe
 	#dosym "/usr/bin/${PN}" "/usr/bin/${PN}f"
-#	dobin ${PN}_test
 }
