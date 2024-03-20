@@ -28,10 +28,10 @@ RDEPEND="
 	dev-python/isort[${PYTHON_USEDEP}]
 	dev-python/mypy[${PYTHON_USEDEP}]
 	dev-util/ctags
-	dev-python/memory_profiler
 	dev-util/pkgdev[${PYTHON_USEDEP}]
 	dev-python/walkup-until-found[${PYTHON_USEDEP}]
 "
+	#dev-python/memory_profiler
 #	dev-util/diffuse[${PYTHON_USEDEP}]
 
 src_install() {
