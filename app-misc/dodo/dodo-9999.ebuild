@@ -18,4 +18,5 @@ DEPEND=""
 
 src_install() {
 	dobin ${PN}
+	dosym "/usr/bin/${PN}" "/usr/bin/${PN}-force"
 }
