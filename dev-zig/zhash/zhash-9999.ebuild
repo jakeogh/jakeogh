@@ -32,5 +32,5 @@ src_compile() {
 
 src_install() {
 	dobin zhash/zhash
-	#dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
+	dosym "/usr/bin/${PN}" "/usr/bin/${PN}-match-name"
 }
