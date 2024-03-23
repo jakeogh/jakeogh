@@ -7,8 +7,7 @@ PYTHON_COMPAT=( python3_{10..11} )
 
 inherit git-r3
 
-
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Parse /proc/mounts and find/list mountpoints (Not a wrapper of findmnt)"
 HOMEPAGE="https://github.com/nukemiko/python-mntfinder"
