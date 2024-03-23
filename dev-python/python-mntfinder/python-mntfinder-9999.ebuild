@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python3_{10..11} )
 inherit git-r3
 
 
-#inherit xdg
 #DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Parse /proc/mounts and find/list mountpoints (Not a wrapper of findmnt)"
@@ -19,10 +18,3 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 #IUSE="test"
-
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
