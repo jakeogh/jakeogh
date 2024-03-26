@@ -20,6 +20,10 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
+RDEPEND="
+	dev-libs/libgit2
+"
+
 
 
 #src_prepare() {
