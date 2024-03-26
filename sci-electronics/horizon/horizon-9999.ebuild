@@ -5,7 +5,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 
-inherit git-r3
+inherit git-r3 meson
 
 
 #inherit xdg
@@ -15,7 +15,7 @@ DESCRIPTION="free EDA package"
 HOMEPAGE="https://github.com/horizon-eda/horizon"
 EGIT_REPO_URI="/home/sysskel/myapps/horizon https://github.com/horizon-eda/horizon.git"
 
-LICENSE="BSD"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 #IUSE="test"
