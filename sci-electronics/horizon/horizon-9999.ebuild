@@ -28,4 +28,5 @@ RDEPEND="
 
 src_configure() {
 	append-cxxflags -fpermissive
+	default
 }
