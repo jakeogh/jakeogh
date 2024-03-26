@@ -22,11 +22,10 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-libs/libgit2
+	net-libs/cppzmq
+	app-text/podofo
 "
 
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_configure() {
+	append-cxxflags -fpermissive
+}
