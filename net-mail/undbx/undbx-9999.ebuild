@@ -15,8 +15,12 @@ SLOT="0"
 KEYWORDS=""
 
 
+src_prepare() {
+        default
+}
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_compile() {
+        emake
+}
+
+
