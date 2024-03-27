@@ -28,5 +28,5 @@ RDEPEND="
 
 src_configure() {
 	append-cxxflags -fpermissive
-	default
+	meson_src_configure
 }
