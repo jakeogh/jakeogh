@@ -3,6 +3,7 @@
 
 EAPI=8
 
+inherit autotools
 inherit git-r3
 inherit toolchain-funcs
 
