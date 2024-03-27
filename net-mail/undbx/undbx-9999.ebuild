@@ -4,7 +4,7 @@
 EAPI=8
 
 inherit git-r3
-
+inherit toolchain-funcs
 
 DESCRIPTION="https://github.com/ZungBang/undbx"
 HOMEPAGE="https://github.com/ZungBang/undbx"
