@@ -7,7 +7,6 @@ PYTHON_COMPAT=( python3_{10..11} )
 
 inherit git-r3
 
-
 #DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="A FUSE based file system in zig"
@@ -22,17 +21,17 @@ KEYWORDS=""
 
 
 src_compile() {
-    #zig build-exe ${PN}.zig --strip || die
-    echo ${S}/${MY_PN}/${MY_PN}.zig
-    pwd
-    cd src
-    pwd
-    #zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
-    zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --verbose-link -O Debug || die
+   #zig build-exe ${PN}.zig --strip || die
+   echo ${S}/${PN}/${PN}.zig
+   pwd
+   cd src
+   pwd
+   #zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
+   zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --verbose-link -O Debug || die
 }
 
 src_install() {
-    dobin "${PN}/${PN}"
-    #dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
+   dobin "${PN}/${PN}"
+   #dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
 }
 
