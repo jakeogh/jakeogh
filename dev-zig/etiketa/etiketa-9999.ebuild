@@ -24,10 +24,8 @@ src_compile() {
    #zig build-exe ${PN}.zig --strip || die
    echo ${S}/src/main.zig
    pwd
-   cd src
-   pwd
-   #zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
-   zig build-exe ${S}/src/main.zig --verbose-link -O Debug || die
+   #zig build-exe ${S}/src/main.zig --verbose-link -O Debug || die
+   zig build --verbose-link -Doptimize=Debug || die
 }
 
 src_install() {
