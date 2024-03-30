@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/with-chdir[${PYTHON_USEDEP}]
 	sys-apps/busybox
-	sys-kernel/installkernel
+	sys-kernel/installkernel:=[grub]
 "
 
 DEPEND="${RDEPEND}"
