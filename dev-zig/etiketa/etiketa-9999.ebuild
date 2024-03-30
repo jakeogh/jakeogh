@@ -29,7 +29,7 @@ src_compile() {
 }
 
 src_install() {
-   dobin "${PN}/${PN}"
+   dobin zig-out/bin/"${PN}"
    #dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
 }
 
