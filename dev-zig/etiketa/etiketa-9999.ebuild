@@ -22,12 +22,12 @@ KEYWORDS=""
 
 src_compile() {
    #zig build-exe ${PN}.zig --strip || die
-   echo ${S}/${PN}/${PN}.zig
+   echo ${S}/src/main.zig
    pwd
    cd src
    pwd
    #zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
-   zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --verbose-link -O Debug || die
+   zig build-exe ${S}/src/main.zig --verbose-link -O Debug || die
 }
 
 src_install() {
