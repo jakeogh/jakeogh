@@ -21,24 +21,18 @@ KEYWORDS=""
 
 
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
-#
-
 src_compile() {
-        #zig build-exe ${PN}.zig --strip || die
-        echo ${S}/${MY_PN}/${MY_PN}.zig
-        pwd
-        cd uhashfsz
-        pwd
-        #zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
-        zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --verbose-link -O Debug || die
+    #zig build-exe ${PN}.zig --strip || die
+    echo ${S}/${MY_PN}/${MY_PN}.zig
+    pwd
+    cd "${PN}"
+    pwd
+    #zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --strip || die
+    zig build-exe ${S}/${MY_PN}/${MY_PN}.zig --verbose-link -O Debug || die
 }
 
 src_install() {
-        dobin "${PN}/${PN}"
-        #dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
+    dobin "${PN}/${PN}"
+    #dosym "/usr/bin/${PN}" "/usr/bin/${PN}-print-missing"
 }
 
