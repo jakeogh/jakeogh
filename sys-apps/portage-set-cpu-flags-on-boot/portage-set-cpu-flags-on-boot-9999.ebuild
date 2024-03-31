@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
+
 src_install() {
 	doinitd portage_set_cpu_flags.start
 }
