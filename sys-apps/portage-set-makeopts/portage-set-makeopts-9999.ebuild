@@ -5,9 +5,9 @@ EAPI=8
 
 inherit git-r3
 
-DESCRIPTION="local.d script to generate CPU_FLAGS_x include file for make.conf"
-HOMEPAGE="https://github.com/jakeogh/portage-set-cpu-flags-on-boot"
-EGIT_REPO_URI="/home/sysskel/myapps/portage-set-cpu-flags-on-boot https://github.com/jakeogh/portage-set-cpu-flags-on-boot.git"
+DESCRIPTION="local.d script to generate MAKEOPTS include file for make.conf"
+HOMEPAGE="https://github.com/jakeogh/portage-set-makeopts-on-boot"
+EGIT_REPO_URI="/home/sysskel/myapps/portage-set-makeopts-on-boot https://github.com/jakeogh/portage-makeopts-on-boot.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -15,5 +15,5 @@ KEYWORDS=""
 
 src_install() {
 	exeinto /etc/local.d
-	doexe portage_set_cpu_flags.start
+	doexe portage_set_makeopts.start
 }
