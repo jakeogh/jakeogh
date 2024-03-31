@@ -2,31 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..11} )
 
 inherit git-r3
 
-
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
-DESCRIPTION="local.d script to generate MAKEOPTS include file for make.conf"
-HOMEPAGE="https://github.com/jakeogh/portage-set-makeopts"
-EGIT_REPO_URI="/home/sysskel/myapps/portage-set-makeopts https://github.com/jakeogh/portage-set-makeopts.git"
+DESCRIPTION="local.d script to generate CPU_FLAGS_x include file for make.conf"
+HOMEPAGE="https://github.com/jakeogh/portage-set-cpu-flags-on-boot"
+EGIT_REPO_URI="/home/sysskel/myapps/portage-set-cpu-flags-on-boot https://github.com/jakeogh/portage-set-cpu-flags-on-boot.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
 
 src_install() {
-    dobin ${PN}
+	exeinto /etc/local.d
+	doexe portage_set_cpu_flags.start
 }
