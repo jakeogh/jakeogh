@@ -14,5 +14,5 @@ KEYWORDS=""
 
 src_install() {
 	exeinto /etc/local.d
-	doexe portage_set_emerge-default-opts.start
+	doexe portage_set_emerge_default_opts.start
 }
