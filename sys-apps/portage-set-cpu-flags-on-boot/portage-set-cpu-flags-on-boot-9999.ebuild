@@ -14,7 +14,5 @@ SLOT="0"
 KEYWORDS=""
 
 src_install() {
-	pwd
-	into /etc/local.d
-	dobin portage_set_cpu_flags.start
+	doinitd portage_set_cpu_flags.start
 }
