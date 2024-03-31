@@ -14,5 +14,6 @@ SLOT="0"
 KEYWORDS=""
 
 src_install() {
-	doinitd portage_set_cpu_flags.start
+	insinto /etc/local.d
+	doins portage_set_cpu_flags.start
 }
