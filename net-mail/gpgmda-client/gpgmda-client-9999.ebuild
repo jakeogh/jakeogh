@@ -23,7 +23,6 @@ RDEPEND="
 	dev-python/urwidtrees[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 	net-mail/notmuch[${PYTHON_USEDEP}]
-	dev-python/pudb[${PYTHON_USEDEP}]
 	mail-client/alot[${PYTHON_USEDEP}]
 	dev-python/python-magic[${PYTHON_USEDEP}]
 	sys-apps/moreutils
