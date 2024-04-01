@@ -47,7 +47,6 @@ RDEPEND="
 	dev-python/requests-ftp[${PYTHON_USEDEP}]
 	dev-python/classify[${PYTHON_USEDEP}]
 	dev-python/ordered-set[${PYTHON_USEDEP}]
-	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/attrs[${PYTHON_USEDEP}]
 	dev-python/tld[${PYTHON_USEDEP}]
