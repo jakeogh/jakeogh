@@ -29,7 +29,9 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+src_prepare() {
+	pwd
+	/bin/ls -alh
+	default
+	#xdg_src_prepare
+}
