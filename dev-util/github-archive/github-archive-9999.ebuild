@@ -30,8 +30,7 @@ DEPEND="${RDEPEND}"
 
 
 src_prepare() {
-	pwd
-	/bin/ls -alh
+	rm -rf test
 	default
 	#xdg_src_prepare
 }
