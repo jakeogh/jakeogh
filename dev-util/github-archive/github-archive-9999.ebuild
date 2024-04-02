@@ -23,7 +23,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/woodchips[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
@@ -32,5 +32,4 @@ DEPEND="${RDEPEND}"
 src_prepare() {
 	rm -rf test
 	default
-	#xdg_src_prepare
 }
