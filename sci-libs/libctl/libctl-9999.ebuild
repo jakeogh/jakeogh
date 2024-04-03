@@ -15,6 +15,7 @@ KEYWORDS=""
 #IUSE="test"
 
 RDEPEND="
+	dev-scheme/guile
 "
 
 DEPEND="${RDEPEND}"
