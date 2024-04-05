@@ -20,6 +20,7 @@ RDEPEND='
 	x11-libs/gtkglext
 	sci-libs/suitesparse
 	media-gfx/opencsg
+	sci-libs/gsl
 '
 
 src_prepare() {
