@@ -68,7 +68,7 @@ BDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.2.2204-find-Tk-include-directories.patch"
-	"${FILESDIR}/${PN}-6.2.2204-link-against-ffmpeg.patch"
+	#"${FILESDIR}/${PN}-6.2.2204-link-against-ffmpeg.patch"
 	"${FILESDIR}/${PN}-6.2.2204-use-system-spdlog.patch"
 	"${FILESDIR}/${PN}-6.2.2204-use-system-catch.patch"
 	"${FILESDIR}/${PN}-6.2.2204-disable-failing-tests.patch"
