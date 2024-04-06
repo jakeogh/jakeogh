@@ -9,7 +9,7 @@ inherit cmake desktop python-single-r1 xdg git-r3
 DESCRIPTION="Automatic 3d tetrahedral mesh generator"
 HOMEPAGE="https://ngsolve.org/ https://github.com/NGSolve/netgen"
 #SRC_URI="https://github.com/NGSolve/netgen/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
-EGIT_SRC_URI="https://github.com/NGSolve/netgen"
+EGIT_REPO_URI="https://github.com/NGSolve/netgen"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
