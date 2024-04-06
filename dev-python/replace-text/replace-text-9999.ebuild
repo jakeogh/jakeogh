@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{10..11} )  # keep 6 for gentoo install
+PYTHON_COMPAT=( python3_{10..12} )  # keep 6 for gentoo install
 
 inherit distutils-r1
 inherit git-r3
