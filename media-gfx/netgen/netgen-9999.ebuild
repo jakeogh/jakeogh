@@ -13,7 +13,7 @@ EGIT_REPO_URI="https://github.com/NGSolve/netgen"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="ffmpeg gui jpeg logging mpi opencascade python test"
 RESTRICT="!test? ( test )"
