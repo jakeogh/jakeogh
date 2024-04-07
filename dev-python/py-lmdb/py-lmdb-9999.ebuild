@@ -2,14 +2,14 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+DISTUTILS_EXT=1
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..11} )
 
 inherit git-r3
 inherit distutils-r1
+#inherit pypi
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Universal Python binding for the LMDB Lightning Database"
 HOMEPAGE="https://github.com/jnwatson/py-lmdb"
@@ -20,16 +20,23 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
-
+# cffi is used only on pypy, so no dep
+DEPEND="
+	>=dev-db/lmdb-0.9.28:=
+"
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
+	${DEPEND}
 "
 
-DEPEND="${RDEPEND}"
+distutils_enable_sphinx docs
+distutils_enable_tests pytest
 
+src_compile() {
+	local -x LMDB_FORCE_SYSTEM=1
+	distutils-r1_src_compile
+}
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+python_test() {
+	rm -rf lmdb || die
+	epytest tests
+}
