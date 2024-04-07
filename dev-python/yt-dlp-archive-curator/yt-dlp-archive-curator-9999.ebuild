@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/pyppath[${PYTHON_USEDEP}]
 	dev-python/jsontool[${PYTHON_USEDEP}]
+	dev-python/yt-dlp-path-to-url-extractor[${PYTHON_USEDEP}]
 	net-misc/iridb[${PYTHON_USEDEP}]
 "
 
