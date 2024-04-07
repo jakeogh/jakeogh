@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
+# https://github.com/NikitaBeloglazov/clipman
+	#dev-python/clipman[${PYTHON_USEDEP}]
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
@@ -23,7 +25,6 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/htmlparser[${PYTHON_USEDEP}]
-	dev-python/pyperclip[${PYTHON_USEDEP}]
 	dev-python/pyclip[${PYTHON_USEDEP}]
 "
 
