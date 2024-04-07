@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="Universal Python binding for the LMDB Lightning Database"
 HOMEPAGE="https://github.com/jnwatson/py-lmdb"
-EGIT_REPO_URI="/home/sysskel/myapps/py-lmdb https://github.com/jnwatson/py-lmdb.git"
+EGIT_REPO_URI="/home/sysskel/myapps/py-lmdb"
 
 LICENSE="BSD"
 SLOT="0"
