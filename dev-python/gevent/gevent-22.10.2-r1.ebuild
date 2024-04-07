@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Coroutine-based network library"
 HOMEPAGE="
@@ -16,7 +16,9 @@ HOMEPAGE="
 	https://github.com/gevent/gevent/
 	https://pypi.org/project/gevent/
 "
-SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+#SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
+EGIT_REPO_URI="/home/sysskel/myapps/gevent"
+EGIT_TAG="22.10.2"
 
 LICENSE="MIT"
 SLOT="0"
