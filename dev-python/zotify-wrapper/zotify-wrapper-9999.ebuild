@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/zotify[${PYTHON_USEDEP}]
+	dev-python/zotify-wrapper-iridb-import[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
