@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	dev-python/pwinput[${PYTHON_USEDEP}]
+	media-libs/mutagen[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
