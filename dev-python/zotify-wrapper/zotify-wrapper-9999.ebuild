@@ -8,8 +8,6 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="python wrapper for zotify"
 HOMEPAGE="https://github.com/jakeogh/zotify-wrapper"
@@ -28,9 +26,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
