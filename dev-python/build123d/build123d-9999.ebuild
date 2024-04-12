@@ -3,10 +3,10 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=setuptools
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit git-r3
+inherit distutils-r1 git-r3
 
 
 DESCRIPTION="A python CAD programming library"
