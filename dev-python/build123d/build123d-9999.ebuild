@@ -17,3 +17,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
+RDEPEND="
+	sci-libs/opencascade
+"
