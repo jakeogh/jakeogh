@@ -11,7 +11,7 @@ inherit bash-completion-r1 distutils-r1 git-r3 optfeature wrapper
 DESCRIPTION="youtube-dl fork with additional features and fixes"
 HOMEPAGE="https://github.com/yt-dlp/yt-dlp/"
 EGIT_REPO_URI="/home/sysskel/myapps/yt-dlp https://github.com/jakeogh/yt-dlp.git"
-EGIT_BRANCH="youtube_comments"
+EGIT_BRANCH="youtube_comments_ab"
 
 #EGIT_BRANCH="minicurses_bell"
 #EGIT_BRANCH="continue_on_lock"
