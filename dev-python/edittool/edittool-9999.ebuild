@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,6 +37,7 @@ RDEPEND="
 	dev-python/flake8[${PYTHON_USEDEP}]
 	dev-python/pylint[${PYTHON_USEDEP}]
 	dev-python/mypy[${PYTHON_USEDEP}]
+	dev-python/beartype[${PYTHON_USEDEP}]
 	dev-util/splint
 	sys-apps/yarn
 "
