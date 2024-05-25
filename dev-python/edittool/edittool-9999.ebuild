@@ -38,6 +38,7 @@ RDEPEND="
 	dev-python/pylint[${PYTHON_USEDEP}]
 	dev-python/mypy[${PYTHON_USEDEP}]
 	dev-python/beartype[${PYTHON_USEDEP}]
+	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-util/splint
 	sys-apps/yarn
 "
