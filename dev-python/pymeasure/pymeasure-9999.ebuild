@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Scientific measurement library for instruments, experiments, and live-plotting"
 HOMEPAGE="https://github.com/jakeogh/pymeasure"
 EGIT_REPO_URI="/home/sysskel/myapps/pymeasure https://github.com/jakeogh/pymeasure.git"
-EGIT_BRANCH="remove_pytest_runner"
+#EGIT_BRANCH="remove_pytest_runner"
 
 LICENSE="BSD"
 SLOT="0"
