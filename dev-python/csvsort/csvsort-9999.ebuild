@@ -7,9 +7,9 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="example of a local-only package"
 HOMEPAGE="https://github.com/jakeogh/csvsort"
-EGIT_REPO_URI="/home/sysskel/myapps/csvsort https://github.com/jakeogh/csvsort.git"
+EGIT_REPO_URI="/home/sysskel/myapps/csvsort"
 
 LICENSE="BSD"
 SLOT="0"
