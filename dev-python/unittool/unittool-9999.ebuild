@@ -8,8 +8,6 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="persistent pint unitregistry"
 HOMEPAGE="https://github.com/jakeogh/unittool"
@@ -18,18 +16,13 @@ EGIT_REPO_URI="/home/sysskel/myapps/unittool https://github.com/jakeogh/unittool
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/configtool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
