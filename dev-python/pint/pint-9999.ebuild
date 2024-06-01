@@ -25,6 +25,7 @@ RDEPEND="${DEPEND}
 	$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' pypy3)
 	babel? ( dev-python/Babel[${PYTHON_USEDEP}] )
 	uncertainties? ( dev-python/uncertainties[${PYTHON_USEDEP}] )
+	dev-python/flexcache[${PYTHON_USEDEP}]
 "
 
 RESTRICT="!test? ( test )"
