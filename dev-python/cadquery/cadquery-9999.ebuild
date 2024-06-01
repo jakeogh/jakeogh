@@ -8,9 +8,6 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="parametric CAD scripting framework based on OCCT"
 HOMEPAGE="https://github.com/CadQuery/cadquery"
 EGIT_REPO_URI="/home/sysskel/myapps/cadquery https://github.com/CadQuery/cadquery.git"
@@ -27,9 +24,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
