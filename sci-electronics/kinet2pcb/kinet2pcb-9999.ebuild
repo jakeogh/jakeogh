@@ -8,9 +8,6 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="Utility to convert a KiCad netlist into a PCBNEW .kicad_pcb file"
 HOMEPAGE="https://github.com/devbisme/kinet2pcb"
 EGIT_REPO_URI="/home/sysskel/myapps/kinet2pcb https://github.com/devbisme/kinet2pcb.git"
@@ -18,7 +15,6 @@ EGIT_REPO_URI="/home/sysskel/myapps/kinet2pcb https://github.com/devbisme/kinet2
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
@@ -27,9 +23,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
