@@ -14,12 +14,10 @@ EGIT_REPO_URI="/home/sysskel/myapps/csvsort"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
