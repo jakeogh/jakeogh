@@ -23,4 +23,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
