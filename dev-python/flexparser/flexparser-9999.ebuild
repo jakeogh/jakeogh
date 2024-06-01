@@ -7,16 +7,11 @@ PYTHON_COMPAT=( python3_{10..11} )
 
 inherit git-r3
 
-
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
-DESCRIPTION="unknown"
+DESCRIPTION="not another parser"
 HOMEPAGE="https://github.com/hgrecco/flexparser"
-EGIT_REPO_URI="/home/sysskel/myapps/flexparser https://github.com/hgrecco/flexparser.git"
+EGIT_REPO_URI="https://github.com/hgrecco/flexparser.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
