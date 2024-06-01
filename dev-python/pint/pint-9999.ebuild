@@ -26,6 +26,7 @@ RDEPEND="${DEPEND}
 	babel? ( dev-python/Babel[${PYTHON_USEDEP}] )
 	uncertainties? ( dev-python/uncertainties[${PYTHON_USEDEP}] )
 	dev-python/flexcache[${PYTHON_USEDEP}]
+	dev-python/flexparser[${PYTHON_USEDEP}]
 "
 
 RESTRICT="!test? ( test )"
