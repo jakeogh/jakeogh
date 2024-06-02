@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="generate a tree of diverse file names"
 HOMEPAGE="https://github.com/jakeogh/angryfiles"
-EGIT_REPO_URI="/home/user/_myapps/angryfiles https://github.com/jakeogh/angryfiles.git"
+EGIT_REPO_URI="https://github.com/jakeogh/angryfiles.git"
 
 LICENSE=""
 SLOT="0"
