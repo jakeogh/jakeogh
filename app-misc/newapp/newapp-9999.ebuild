@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Create new python app from template"
 HOMEPAGE="https://github.com/jakeogh/newapp"
-EGIT_REPO_URI="/home/sysskel/myapps/newapp https://github.com/jakeogh/newapp.git"
+EGIT_REPO_URI="https://github.com/jakeogh/newapp.git"
 
 LICENSE="MIT"
 SLOT="0"
