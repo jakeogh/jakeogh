@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="example of a local-only package"
 HOMEPAGE="https://github.com/jakeogh/csvsort"
-EGIT_REPO_URI="/home/sysskel/myapps/csvsort"
+EGIT_REPO_URI="https://github.com/jakeogh/csvsort.git"
 
 LICENSE="BSD"
 SLOT="0"
