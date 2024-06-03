@@ -20,11 +20,11 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/bitstring[${PYTHON_USEDEP}]
+	dev-python/bitarray[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
