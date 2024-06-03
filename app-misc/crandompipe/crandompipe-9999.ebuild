@@ -7,7 +7,7 @@ inherit toolchain-funcs
 inherit git-r3
 
 DESCRIPTION="Hash-based file manager."
-EGIT_REPO_URI="/home/user/_myapps/crandompipe/"
+EGIT_REPO_URI="https://github.com/jakeogh/crandompipe.git"
 
 LICENSE="MIT"
 SLOT="0"
