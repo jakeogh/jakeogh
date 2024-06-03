@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Tag and save iris"
 HOMEPAGE="https://github.com/jakeogh/iridb"
-EGIT_REPO_URI="/home/sysskel/myapps/iridb"
+EGIT_REPO_URI="https://github.com/jakeogh/iridb.git"
 
 LICENSE="MIT"
 SLOT="0"
