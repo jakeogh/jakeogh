@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
+#	dev-python/iterator_filter[${PYTHON_USEDEP}]
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/click-plugins[${PYTHON_USEDEP}]
@@ -28,7 +29,6 @@ RDEPEND="
 	dev-python/reify[${PYTHON_USEDEP}]
 	dev-python/statfilter[${PYTHON_USEDEP}]
 	dev-python/yt-dlp-wrapper[${PYTHON_USEDEP}]
-	dev-python/iterator_filter[${PYTHON_USEDEP}]
 	dev-python/uniquepipe[${PYTHON_USEDEP}]
 	dev-python/cssselect[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
