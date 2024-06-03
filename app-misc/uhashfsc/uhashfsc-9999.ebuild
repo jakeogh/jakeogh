@@ -7,7 +7,7 @@ inherit toolchain-funcs
 inherit git-r3
 
 DESCRIPTION="Hash-based file manager."
-EGIT_REPO_URI="/home/user/_myapps/uhashfsc/"
+EGIT_REPO_URI="https://github.com/jakeogh/uhashfsc.git"
 
 LICENSE="MIT"
 SLOT="0"
