@@ -9,8 +9,7 @@ inherit git-r3
 
 DESCRIPTION="List elements"
 HOMEPAGE="https://github.com/jakeogh/elements"
-#EGIT_REPO_URI="/home/sysskel/myapps/elements https://github.com/jakeogh/elements.git"
-EGIT_REPO_URI="/home/sysskel/myapps/elements"
+EGIT_REPO_URI="/home/sysskel/myapps/elements https://github.com/jakeogh/elements.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -19,7 +18,7 @@ KEYWORDS=""
 RDEPEND="
 	sci-chemistry/mendeleev[${PYTHON_USEDEP}]
 	dev-python/click[${PYTHON_USEDEP}]
-	
+
 	dev-python/colorama[${PYTHON_USEDEP}]
 	dev-python/texttable[${PYTHON_USEDEP}]
 "
