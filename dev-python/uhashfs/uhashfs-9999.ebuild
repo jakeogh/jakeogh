@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="doc"
 
+#	dev-python/prettyprinter[${PYTHON_USEDEP}]
 RDEPEND="
 	dev-python/humanize[${PYTHON_USEDEP}]
 	dev-python/greendbtool[${PYTHON_USEDEP}]
@@ -23,7 +24,6 @@ RDEPEND="
 	dev-python/hashtool[${PYTHON_USEDEP}]
 	dev-python/python-getdents[${PYTHON_USEDEP}]
 	dev-python/retry-on-exception[${PYTHON_USEDEP}]
-	dev-python/prettyprinter[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/unitcalc[${PYTHON_USEDEP}]
 	dev-python/python-fadvise[${PYTHON_USEDEP}]
