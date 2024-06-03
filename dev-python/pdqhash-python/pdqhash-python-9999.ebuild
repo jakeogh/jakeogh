@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/faustomorales/pdqhash-python.git"
 
 #EGIT_OVERRIDE_REPO_GIT_GITHUB_COM_FACEBOOK_THREATEXCHANGE="https://github.com/facebook/ThreatExchange.git"
 EGIT_OVERRIDE_REPO_GIT_GITHUB_COM_FACEBOOK_THREATEXCHANGE="/home/user/_myapps/ThreatExchange"
-EGIT_OVERRIDE_REPO_FACEBOOK_THREATEXCHANGE="/home/user/_myapps/ThreatExchange"
+EGIT_OVERRIDE_REPO_FACEBOOK_THREATEXCHANGE="/home/user/_myapps/threatexchange"
 
 LICENSE="MIT"
 SLOT="0"
