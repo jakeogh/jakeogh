@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="common plotting functions"
 HOMEPAGE="https://github.com/jakeogh/plottool"
-EGIT_REPO_URI="/home/sysskel/myapps/plottool https://github.com/jakeogh/plottool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/plottool.git"
 
 LICENSE="BSD"
 SLOT="0"

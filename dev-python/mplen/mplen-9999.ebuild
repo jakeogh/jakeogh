@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="len() of messagepacked objects"
 HOMEPAGE="https://github.com/jakeogh/mplen"
-EGIT_REPO_URI="/home/sysskel/myapps/mplen https://github.com/jakeogh/mplen.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mplen.git"
 
 LICENSE="BSD"
 SLOT="0"

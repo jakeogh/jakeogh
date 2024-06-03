@@ -9,7 +9,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="https://github.com/ZungBang/undbx"
 HOMEPAGE="https://github.com/ZungBang/undbx"
-EGIT_REPO_URI="/home/sysskel/myapps/undbx https://github.com/ZungBang/undbx.git"
+EGIT_REPO_URI="https://github.com/ZungBang/undbx.git"
 
 LICENSE="BSD"
 SLOT="0"

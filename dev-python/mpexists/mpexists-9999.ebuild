@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="filter messagepacked paths that exist"
 HOMEPAGE="https://github.com/jakeogh/mpexists"
-EGIT_REPO_URI="/home/sysskel/myapps/mpexists https://github.com/jakeogh/mpexists.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpexists.git"
 
 LICENSE="BSD"
 SLOT="0"

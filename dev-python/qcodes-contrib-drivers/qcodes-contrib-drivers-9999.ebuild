@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="additional drivers for Qcodes"
 HOMEPAGE="https://github.com/jakeogh/qcodes-contrib-drivers"
-EGIT_REPO_URI="/home/sysskel/myapps/qcodes-contrib-drivers https://github.com/jakeogh/qcodes-contrib-drivers.git"
+EGIT_REPO_URI="https://github.com/jakeogh/qcodes-contrib-drivers.git"
 
 LICENSE="BSD"
 SLOT="0"

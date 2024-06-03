@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="common python profiling functions"
 HOMEPAGE="https://github.com/jakeogh/perftool"
-EGIT_REPO_URI="/home/sysskel/myapps/perftool https://github.com/jakeogh/perftool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/perftool.git"
 
 LICENSE="BSD"
 SLOT="0"

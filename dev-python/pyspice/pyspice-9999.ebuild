@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="Simulate electronic circuit using the Ngspice / Xyce simulators"
 HOMEPAGE="https://github.com/PySpice-org/PySpice"
-EGIT_REPO_URI="/home/sysskel/myapps/pyspice https://github.com/PySpice-org/PySpice.git"
+EGIT_REPO_URI="https://github.com/PySpice-org/PySpice.git"
 
 LICENSE="BSD"
 SLOT="0"

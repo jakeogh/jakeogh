@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Modular data acquisition framework"
 HOMEPAGE="https://github.com/jakeogh/qcodes"
-EGIT_REPO_URI="/home/sysskel/myapps/qcodes https://github.com/jakeogh/qcodes.git"
+EGIT_REPO_URI="https://github.com/jakeogh/qcodes.git"
 
 LICENSE="BSD"
 SLOT="0"

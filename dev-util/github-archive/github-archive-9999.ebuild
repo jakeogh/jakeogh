@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="clone, pull, or fork user and org repos and gists to create a GitHub archive"
 HOMEPAGE="https://github.com/Justintime50/github-archive"
-EGIT_REPO_URI="/home/sysskel/myapps/github-archive https://github.com/Justintime50/github-archive.git"
+EGIT_REPO_URI="https://github.com/Justintime50/github-archive.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="common ipfs functions"
 HOMEPAGE="https://github.com/jakeogh/ipfstool"
-EGIT_REPO_URI="/home/sysskel/myapps/ipfstool https://github.com/jakeogh/ipfstool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/ipfstool.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit git-r3
 
 DESCRIPTION="Client application for the Ion Beam Simulator ibsimu"
 HOMEPAGE="https://github.com/dgasparri/IBSimu_Client"
-EGIT_REPO_URI="/home/sysskel/myapps/ibsimu-client https://github.com/dgasparri/IBSimu_Client.git"
+EGIT_REPO_URI="https://github.com/dgasparri/IBSimu_Client.git"
 
 LICENSE="BSD"
 SLOT="0"

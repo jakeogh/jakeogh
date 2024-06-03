@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Utility to convert a KiCad netlist into a PCBNEW .kicad_pcb file"
 HOMEPAGE="https://github.com/devbisme/kinet2pcb"
-EGIT_REPO_URI="/home/sysskel/myapps/kinet2pcb https://github.com/devbisme/kinet2pcb.git"
+EGIT_REPO_URI="https://github.com/devbisme/kinet2pcb.git"
 
 LICENSE="BSD"
 SLOT="0"

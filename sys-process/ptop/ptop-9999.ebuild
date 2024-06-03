@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/darxtrix/ptop"
-EGIT_REPO_URI="/home/sysskel/myapps/ptop https://github.com/darxtrix/ptop.git"
+EGIT_REPO_URI="https://github.com/darxtrix/ptop.git"
 
 LICENSE="BSD"
 SLOT="0"

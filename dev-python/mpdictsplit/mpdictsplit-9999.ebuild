@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="split messagepacked dict into dicts by key"
 HOMEPAGE="https://github.com/jakeogh/mpdictsplit"
-EGIT_REPO_URI="/home/sysskel/myapps/mpdictsplit https://github.com/jakeogh/mpdictsplit.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictsplit.git"
 
 LICENSE="BSD"
 SLOT="0"

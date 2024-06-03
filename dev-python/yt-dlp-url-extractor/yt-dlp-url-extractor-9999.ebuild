@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp-url-extractor"
-EGIT_REPO_URI="/home/sysskel/myapps/yt-dlp-url-extractor https://github.com/jakeogh/yt-dlp-url-extractor.git"
+EGIT_REPO_URI="https://github.com/jakeogh/yt-dlp-url-extractor.git"
 
 LICENSE="BSD"
 SLOT="0"

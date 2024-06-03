@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="convert exceptions from yt-dlp"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp-exception-translator"
-EGIT_REPO_URI="/home/sysskel/myapps/yt-dlp-exception-translator https://github.com/jakeogh/yt-dlp-exception-translator.git"
+EGIT_REPO_URI="https://github.com/jakeogh/yt-dlp-exception-translator.git"
 
 LICENSE="BSD"
 SLOT="0"

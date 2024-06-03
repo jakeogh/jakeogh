@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="common requests functions"
 HOMEPAGE="https://github.com/jakeogh/requeststool"
-EGIT_REPO_URI="/home/sysskel/myapps/requeststool https://github.com/jakeogh/requeststool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/requeststool.git"
 
 LICENSE="BSD"
 SLOT="0"

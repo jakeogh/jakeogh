@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="swap dict k/v"
 HOMEPAGE="https://github.com/jakeogh/mpdictinvert"
-EGIT_REPO_URI="/home/sysskel/myapps/mpdictinvert https://github.com/jakeogh/mpdictinvert.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictinvert.git"
 
 LICENSE="BSD"
 SLOT="0"

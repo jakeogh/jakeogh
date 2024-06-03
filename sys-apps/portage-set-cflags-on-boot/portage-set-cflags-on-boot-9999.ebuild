@@ -6,7 +6,7 @@ inherit git-r3
 
 DESCRIPTION="local.d script to generate cflags include file for make.conf"
 HOMEPAGE="https://github.com/jakeogh/portage-set-cflags-on-boot"
-EGIT_REPO_URI="/home/sysskel/myapps/portage-set-cflags-on-boot https://github.com/jakeogh/portage-cflags-on-boot.git"
+EGIT_REPO_URI="https://github.com/jakeogh/portage-cflags-on-boot.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="lstat messagepacked paths on stdin"
 HOMEPAGE="https://github.com/jakeogh/mplstat"
-EGIT_REPO_URI="/home/sysskel/myapps/mplstat https://github.com/jakeogh/mplstat.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mplstat.git"
 
 LICENSE="BSD"
 SLOT="0"

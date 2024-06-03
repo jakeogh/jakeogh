@@ -7,7 +7,7 @@ inherit autotools git-r3 flag-o-matic
 
 DESCRIPTION="finite-difference time-domain (FDTD) software for electromagnetic simulations"
 HOMEPAGE="https://github.com/NanoComp/meep"
-EGIT_REPO_URI="/home/sysskel/myapps/meep https://github.com/NanoComp/meep.git"
+EGIT_REPO_URI="https://github.com/NanoComp/meep.git"
 
 LICENSE="GPL-2"
 SLOT="0"

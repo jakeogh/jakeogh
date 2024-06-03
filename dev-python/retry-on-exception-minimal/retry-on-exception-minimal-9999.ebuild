@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="decorator to retry a function if a specific exception is encountered"
 HOMEPAGE="https://github.com/jakeogh/retry-on-exception-minimal"
-EGIT_REPO_URI="/home/sysskel/myapps/retry-on-exception-minimal https://github.com/jakeogh/retry-on-exception-minimal.git"
+EGIT_REPO_URI="https://github.com/jakeogh/retry-on-exception-minimal.git"
 
 LICENSE="BSD"
 SLOT="0"

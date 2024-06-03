@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="postprocessor for iridb video plugin"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp-wrapper-iridb-import"
-EGIT_REPO_URI="/home/sysskel/myapps/yt-dlp-wrapper-iridb-import https://github.com/jakeogh/yt-dlp-wrapper-iridb-import.git"
+EGIT_REPO_URI="https://github.com/jakeogh/yt-dlp-wrapper-iridb-import.git"
 
 LICENSE="BSD"
 SLOT="0"

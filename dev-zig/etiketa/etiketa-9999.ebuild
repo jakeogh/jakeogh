@@ -11,7 +11,7 @@ inherit git-r3
 
 DESCRIPTION="A FUSE based file system in zig"
 HOMEPAGE="https://github.com/Sekky61/etiketa"
-EGIT_REPO_URI="/home/sysskel/myapps/etiketa https://github.com/Sekky61/etiketa.git"
+EGIT_REPO_URI="https://github.com/Sekky61/etiketa.git"
 
 LICENSE="BSD"
 SLOT="0"

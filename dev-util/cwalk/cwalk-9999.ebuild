@@ -7,7 +7,7 @@ inherit cmake-multilib git-r3
 
 DESCRIPTION="Cross-platform path library for C/C++"
 HOMEPAGE="https://github.com/likle/cwalk"
-EGIT_REPO_URI="/home/sysskel/myapps/cwalk https://github.com/likle/cwalk.git"
+EGIT_REPO_URI="https://github.com/likle/cwalk.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="The cutest little logger you've ever seen"
 HOMEPAGE="https://github.com/Justintime50/woodchips"
-EGIT_REPO_URI="/home/sysskel/myapps/woodchips https://github.com/Justintime50/woodchips.git"
+EGIT_REPO_URI="https://github.com/Justintime50/woodchips.git"
 
 LICENSE="BSD"
 SLOT="0"

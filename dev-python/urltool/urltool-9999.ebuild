@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common functions for manipulating url/iris"
 HOMEPAGE="https://github.com/jakeogh/urltool"
-EGIT_REPO_URI="/home/sysskel/myapps/urltool https://github.com/jakeogh/urltool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/urltool.git"
 
 LICENSE="BSD"
 SLOT="0"

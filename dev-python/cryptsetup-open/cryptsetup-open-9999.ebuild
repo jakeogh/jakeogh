@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Cryptsetup wrapper to handle single passphrase on multiple LUKS devices"
 HOMEPAGE="https://github.com/jakeogh/cryptsetup_open"
-EGIT_REPO_URI="/home/sysskel/myapps/cryptsetup-open https://github.com/jakeogh/cryptsetup-open.git"
+EGIT_REPO_URI="https://github.com/jakeogh/cryptsetup-open.git"
 
 LICENSE="BSD"
 SLOT="0"

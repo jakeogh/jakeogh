@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Merge hash indexed file trees"
 HOMEPAGE="https://github.com/jakeogh/mergehashtree"
-EGIT_REPO_URI="/home/sysskel/myapps/mergehashtree https://github.com/jakeogh/mergehashtree.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mergehashtree.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="create partitions"
 HOMEPAGE="https://github.com/jakeogh/devicepartitiontool"
-EGIT_REPO_URI="/home/sysskel/myapps/devicepartitiontool https://github.com/jakeogh/devicepartitiontool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/devicepartitiontool.git"
 
 LICENSE="BSD"
 SLOT="0"

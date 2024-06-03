@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="common DB functions"
 HOMEPAGE="https://github.com/jakeogh/databasetool"
-EGIT_REPO_URI="/home/sysskel/myapps/databasetool https://github.com/jakeogh/databasetool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/databasetool.git"
 
 LICENSE="BSD"
 SLOT="0"

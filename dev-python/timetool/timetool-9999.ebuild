@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/timetool"
-EGIT_REPO_URI="/home/sysskel/myapps/timetool https://github.com/jakeogh/timetool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/timetool.git"
 
 LICENSE="BSD"
 SLOT="0"

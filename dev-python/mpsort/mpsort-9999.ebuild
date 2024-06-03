@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="sort messagepacked stdin"
 HOMEPAGE="https://github.com/jakeogh/mpsort"
-EGIT_REPO_URI="/home/sysskel/myapps/mpsort https://github.com/jakeogh/mpsort.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpsort.git"
 
 LICENSE="BSD"
 SLOT="0"

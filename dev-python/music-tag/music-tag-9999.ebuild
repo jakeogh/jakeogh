@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="Simple interface to edit audio file metadata"
 HOMEPAGE="https://github.com/KristoforMaynard/music-tag"
-EGIT_REPO_URI="/home/sysskel/myapps/music-tag https://github.com/KristoforMaynard/music-tag.git"
+EGIT_REPO_URI="https://github.com/KristoforMaynard/music-tag.git"
 
 LICENSE="BSD"
 SLOT="0"

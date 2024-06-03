@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="persistent pint unitregistry"
 HOMEPAGE="https://github.com/jakeogh/unittool"
-EGIT_REPO_URI="/home/sysskel/myapps/unittool https://github.com/jakeogh/unittool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/unittool.git"
 
 LICENSE="BSD"
 SLOT="0"

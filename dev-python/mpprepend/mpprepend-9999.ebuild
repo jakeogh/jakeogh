@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="prepend str to messagepacked stdin"
 HOMEPAGE="https://github.com/jakeogh/mpprepend"
-EGIT_REPO_URI="/home/sysskel/myapps/mpprepend https://github.com/jakeogh/mpprepend.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpprepend.git"
 
 LICENSE="BSD"
 SLOT="0"

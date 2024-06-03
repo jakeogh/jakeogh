@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="api stuff for interactivebrokers.com"
 HOMEPAGE="https://github.com/jakeogh/interactivebrokerstool"
-EGIT_REPO_URI="/home/sysskel/myapps/interactivebrokerstool https://github.com/jakeogh/interactivebrokerstool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/interactivebrokerstool.git"
 
 LICENSE="BSD"
 SLOT="0"

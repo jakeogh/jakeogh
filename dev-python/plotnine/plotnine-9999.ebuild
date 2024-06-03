@@ -13,7 +13,7 @@ inherit git-r3
 
 DESCRIPTION="A Grammar of Graphics for Python"
 HOMEPAGE="https://github.com/has2k1/plotnine"
-EGIT_REPO_URI="/home/sysskel/myapps/plotnine https://github.com/has2k1/plotnine.git"
+EGIT_REPO_URI="https://github.com/has2k1/plotnine.git"
 
 LICENSE="BSD"
 SLOT="0"

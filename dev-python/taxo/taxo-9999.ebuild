@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="Taxonomy CLI"
 HOMEPAGE="https://github.com/jakeogh/taxo"
-EGIT_REPO_URI="/home/sysskel/myapps/taxo https://github.com/jakeogh/taxo.git"
+EGIT_REPO_URI="https://github.com/jakeogh/taxo.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="Outputs X window title given windowid"
 HOMEPAGE="https://github.com/jakeogh/bspwm-xtitle"
-EGIT_REPO_URI="/home/sysskel/myapps/bspwm-xtitle https://github.com/jakeogh/bspwm-xtitle.git"
+EGIT_REPO_URI="https://github.com/jakeogh/bspwm-xtitle.git"
 
 LICENSE="BSD"
 SLOT="0"

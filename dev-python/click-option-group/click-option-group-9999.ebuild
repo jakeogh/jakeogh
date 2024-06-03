@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Option groups missing in Click"
 HOMEPAGE="https://github.com/click-contrib/click-option-group"
-EGIT_REPO_URI="/home/sysskel/myapps/click-option-group https://github.com/click-contrib/click-option-group.git"
+EGIT_REPO_URI="https://github.com/click-contrib/click-option-group.git"
 
 LICENSE="BSD"
 SLOT="0"

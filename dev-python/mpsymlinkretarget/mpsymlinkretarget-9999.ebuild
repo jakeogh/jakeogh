@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="change messagepacked symlink target prefix"
 HOMEPAGE="https://github.com/jakeogh/mpsymlinkretarget"
-EGIT_REPO_URI="/home/sysskel/myapps/mpsymlinkretarget https://github.com/jakeogh/mpsymlinkretarget.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpsymlinkretarget.git"
 
 LICENSE="BSD"
 SLOT="0"

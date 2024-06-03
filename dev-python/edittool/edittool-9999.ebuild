@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Development workflow integration"
 HOMEPAGE="https://github.com/jakeogh/edittool"
-EGIT_REPO_URI="/home/sysskel/myapps/edittool https://github.com/jakeogh/edittool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/edittool.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit git-r3
 
 DESCRIPTION="local.d script to generate EMERGE_DEFAULT_OPTS include file for make.conf"
 HOMEPAGE="https://github.com/jakeogh/portage-set-emerge-default-opts-on-boot"
-EGIT_REPO_URI="/home/sysskel/myapps/portage-set-emerge-default-opts-on-boot https://github.com/jakeogh/portage-emerge-default-opts-on-boot.git"
+EGIT_REPO_URI="https://github.com/jakeogh/portage-emerge-default-opts-on-boot.git"
 
 LICENSE="BSD"
 SLOT="0"

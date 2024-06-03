@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="python df(1)"
 HOMEPAGE="https://github.com/jakeogh/dfpy"
-EGIT_REPO_URI="/home/sysskel/myapps/dfpy https://github.com/jakeogh/dfpy.git"
+EGIT_REPO_URI="https://github.com/jakeogh/dfpy.git"
 
 LICENSE="BSD"
 SLOT="0"

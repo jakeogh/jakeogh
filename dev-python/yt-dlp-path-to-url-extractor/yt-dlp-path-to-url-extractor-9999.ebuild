@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="extract youtube urls from file paths"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp-path-to-url-extractor"
-EGIT_REPO_URI="/home/sysskel/myapps/yt-dlp-path-to-url-extractor https://github.com/jakeogh/yt-dlp-path-to-url-extractor.git"
+EGIT_REPO_URI="https://github.com/jakeogh/yt-dlp-path-to-url-extractor.git"
 
 LICENSE="BSD"
 SLOT="0"

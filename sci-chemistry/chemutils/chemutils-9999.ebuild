@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Convenience functions wrapping pubchempy"
 HOMEPAGE="https://github.com/ejhonglab/chemutils"
-EGIT_REPO_URI="/home/sysskel/myapps/chemutils https://github.com/ejhonglab/chemutils.git"
+EGIT_REPO_URI="https://github.com/ejhonglab/chemutils.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Split a multiple record vcard .vcf file into individual .vcf files"
 HOMEPAGE="https://github.com/jakeogh/vcardtool"
-EGIT_REPO_URI="/home/sysskel/myapps/vcardtool https://github.com/jakeogh/vcardtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/vcardtool.git"
 
 LICENSE="BSD"
 SLOT="0"

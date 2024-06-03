@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="common functions for generating html"
 HOMEPAGE="https://github.com/jakeogh/htmltool"
-EGIT_REPO_URI="/home/sysskel/myapps/htmltool https://github.com/jakeogh/htmltool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/htmltool.git"
 
 LICENSE="BSD"
 SLOT="0"

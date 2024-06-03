@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common functions for working with IRI's and URI's"
 HOMEPAGE="https://github.com/jakeogh/iritool"
-EGIT_REPO_URI="/home/sysskel/myapps/iritool https://github.com/jakeogh/iritool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/iritool.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="check hash named filesystems"
 HOMEPAGE="https://github.com/jakeogh/uhashfs-verify"
-EGIT_REPO_URI="/home/sysskel/myapps/uhashfs-verify https://github.com/jakeogh/uhashfs-verify.git"
+EGIT_REPO_URI="https://github.com/jakeogh/uhashfs-verify.git"
 
 LICENSE="BSD"
 SLOT="0"

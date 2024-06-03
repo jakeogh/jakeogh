@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="replace paths with path content"
 HOMEPAGE="https://github.com/jakeogh/mppcat"
-EGIT_REPO_URI="/home/sysskel/myapps/mppcat https://github.com/jakeogh/mppcat.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mppcat.git"
 
 LICENSE="BSD"
 SLOT="0"

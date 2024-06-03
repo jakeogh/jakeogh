@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="python implementation of tr \0 \n"
 HOMEPAGE="https://github.com/jakeogh/null2nl"
-EGIT_REPO_URI="/home/sysskel/myapps/null2nl https://github.com/jakeogh/null2nl.git"
+EGIT_REPO_URI="https://github.com/jakeogh/null2nl.git"
 
 LICENSE="BSD"
 SLOT="0"

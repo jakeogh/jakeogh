@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="bash version of vi wrapper for programatic(m) workflow"
 HOMEPAGE="https://github.com/jakeogh/edit"
-EGIT_REPO_URI="/home/sysskel/myapps/edit https://github.com/jakeogh/edit.git"
+EGIT_REPO_URI="https://github.com/jakeogh/edit.git"
 
 LICENSE="MIT"
 SLOT="0"

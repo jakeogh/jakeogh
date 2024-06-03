@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Python object that sleeps longer each time its called"
 HOMEPAGE="https://github.com/jakeogh/delay-timer"
-EGIT_REPO_URI="/home/sysskel/myapps/delay-timer https://github.com/jakeogh/delay-timer.git"
+EGIT_REPO_URI="https://github.com/jakeogh/delay-timer.git"
 
 LICENSE="BSD"
 SLOT="0"

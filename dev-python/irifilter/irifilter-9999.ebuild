@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="filter messagepacked iris"
 HOMEPAGE="https://github.com/jakeogh/irifilter"
-EGIT_REPO_URI="/home/sysskel/myapps/irifilter https://github.com/jakeogh/irifilter.git"
+EGIT_REPO_URI="https://github.com/jakeogh/irifilter.git"
 
 LICENSE="BSD"
 SLOT="0"

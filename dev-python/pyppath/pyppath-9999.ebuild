@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="pathlib.Path kitchen sink class"
 HOMEPAGE="https://github.com/jakeogh/pyppath"
-EGIT_REPO_URI="/home/sysskel/myapps/pyppath https://github.com/jakeogh/pyppath.git"
+EGIT_REPO_URI="https://github.com/jakeogh/pyppath.git"
 
 LICENSE="BSD"
 SLOT="0"

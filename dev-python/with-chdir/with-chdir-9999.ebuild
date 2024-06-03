@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Python context manager for or.chdir()"
 HOMEPAGE="https://github.com/jakeogh/with-chdir"
-EGIT_REPO_URI="/home/sysskel/myapps/with-chdir https://github.com/jakeogh/with-chdir.git"
+EGIT_REPO_URI="https://github.com/jakeogh/with-chdir.git"
 
 LICENSE="BSD"
 SLOT="0"

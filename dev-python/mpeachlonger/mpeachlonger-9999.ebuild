@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="write messagepacked stdin to stdout iff an element is the current greatest len()"
 HOMEPAGE="https://github.com/jakeogh/mpeachlonger"
-EGIT_REPO_URI="/home/sysskel/myapps/mpeachlonger https://github.com/jakeogh/mpeachlonger.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpeachlonger.git"
 
 LICENSE="BSD"
 SLOT="0"

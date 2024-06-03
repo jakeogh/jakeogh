@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/nelenkov/android-backup-extractor"
-EGIT_REPO_URI="/home/sysskel/myapps/android-backup-extractor https://github.com/nelenkov/android-backup-extractor.git"
+EGIT_REPO_URI="https://github.com/nelenkov/android-backup-extractor.git"
 
 LICENSE="BSD"
 SLOT="0"

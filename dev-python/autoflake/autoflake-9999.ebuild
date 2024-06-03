@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/myint/autoflake"
-EGIT_REPO_URI="/home/sysskel/myapps/autoflake https://github.com/myint/autoflake.git"
+EGIT_REPO_URI="https://github.com/myint/autoflake.git"
 
 LICENSE="BSD"
 SLOT="0"

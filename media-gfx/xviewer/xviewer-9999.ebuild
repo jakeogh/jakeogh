@@ -10,7 +10,7 @@ inherit autotools
 
 DESCRIPTION="Fast and functional image viewer"
 HOMEPAGE="https://github.com/linuxmint/xviewer"
-EGIT_REPO_URI="/home/sysskel/myapps/xviewer https://github.com/linuxmint/xviewer.git"
+EGIT_REPO_URI="https://github.com/linuxmint/xviewer.git"
 
 LICENSE="BSD"
 SLOT="0"

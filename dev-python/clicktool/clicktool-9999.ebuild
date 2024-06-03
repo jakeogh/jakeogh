@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common functions for @click"
 HOMEPAGE="https://github.com/jakeogh/clicktool"
-EGIT_REPO_URI="/home/sysskel/myapps/clicktool https://github.com/jakeogh/clicktool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/clicktool.git"
 
 LICENSE="BSD"
 SLOT="0"

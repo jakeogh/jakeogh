@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="mp3/id3 common functions"
 HOMEPAGE="https://github.com/jakeogh/mp3tool"
-EGIT_REPO_URI="/home/sysskel/myapps/mp3tool https://github.com/jakeogh/mp3tool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mp3tool.git"
 
 LICENSE="BSD"
 SLOT="0"

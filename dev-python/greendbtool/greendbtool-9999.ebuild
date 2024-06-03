@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Configuration manager for https://github.com/coleifer/greendb"
 HOMEPAGE="https://github.com/jakeogh/greendbtool"
-EGIT_REPO_URI="/home/sysskel/myapps/greendbtool https://github.com/jakeogh/greendbtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/greendbtool.git"
 
 LICENSE="BSD"
 SLOT="0"

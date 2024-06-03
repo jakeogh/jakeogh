@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="mv messagepacked dicts[bytes, bytes]"
 HOMEPAGE="https://github.com/jakeogh/mpmove"
-EGIT_REPO_URI="/home/sysskel/myapps/mpmove https://github.com/jakeogh/mpmove.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpmove.git"
 
 LICENSE="BSD"
 SLOT="0"

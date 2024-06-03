@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="append to messagepacked stdin"
 HOMEPAGE="https://github.com/jakeogh/mpappend"
-EGIT_REPO_URI="/home/sysskel/myapps/mpappend https://github.com/jakeogh/mpappend.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpappend.git"
 
 LICENSE="BSD"
 SLOT="0"

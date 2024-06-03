@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Pipe filter to pass unique items by hash tracking"
 HOMEPAGE="https://github.com/jakeogh/uniquepipe"
-EGIT_REPO_URI="/home/sysskel/myapps/uniquepipe https://github.com/jakeogh/uniquepipe.git"
+EGIT_REPO_URI="https://github.com/jakeogh/uniquepipe.git"
 
 LICENSE="BSD"
 SLOT="0"

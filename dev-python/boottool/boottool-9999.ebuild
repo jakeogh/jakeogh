@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/boottool"
-EGIT_REPO_URI="/home/sysskel/myapps/boottool https://github.com/jakeogh/boottool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/boottool.git"
 
 LICENSE="BSD"
 SLOT="0"

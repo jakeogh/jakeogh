@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Calculate RAID size given a geometry"
 HOMEPAGE="https://github.com/jakeogh/raidcalc"
-EGIT_REPO_URI="/home/sysskel/myapps/raidcalc https://github.com/jakeogh/raidcalc.git"
+EGIT_REPO_URI="https://github.com/jakeogh/raidcalc.git"
 
 LICENSE="BSD"
 SLOT="0"

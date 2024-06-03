@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="takes paths as args and writes messagepacked paths to stdout"
 HOMEPAGE="https://github.com/jakeogh/mpp"
-EGIT_REPO_URI="/home/sysskel/myapps/mpp https://github.com/jakeogh/mpp.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpp.git"
 
 LICENSE="BSD"
 SLOT="0"

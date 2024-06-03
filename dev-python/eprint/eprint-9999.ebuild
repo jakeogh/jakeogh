@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="print() alias that writes to sys.stderr"
 HOMEPAGE="https://github.com/jakeogh/eprint"
-EGIT_REPO_URI="/home/sysskel/myapps/eprint https://github.com/jakeogh/eprint.git"
+EGIT_REPO_URI="https://github.com/jakeogh/eprint.git"
 
 LICENSE="BSD"
 SLOT="0"

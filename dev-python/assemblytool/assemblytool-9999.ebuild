@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="general asm compilation frontend"
 HOMEPAGE="https://github.com/jakeogh/assemblytool"
-EGIT_REPO_URI="/home/sysskel/myapps/assemblytool https://github.com/jakeogh/assemblytool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/assemblytool.git"
 
 LICENSE="BSD"
 SLOT="0"

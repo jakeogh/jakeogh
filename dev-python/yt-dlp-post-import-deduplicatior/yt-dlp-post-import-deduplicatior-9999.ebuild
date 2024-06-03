@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="deduplicate old files"
 HOMEPAGE="https://github.com/jakeogh/yt-dlp-post-import-deduplicatior"
-EGIT_REPO_URI="/home/sysskel/myapps/yt-dlp-post-import-deduplicatior https://github.com/jakeogh/yt-dlp-post-import-deduplicatior.git"
+EGIT_REPO_URI="https://github.com/jakeogh/yt-dlp-post-import-deduplicatior.git"
 
 LICENSE="BSD"
 SLOT="0"

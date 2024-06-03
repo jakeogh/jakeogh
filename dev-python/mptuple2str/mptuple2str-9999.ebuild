@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="split messagepacked tuples into str"
 HOMEPAGE="https://github.com/jakeogh/mptuple2str"
-EGIT_REPO_URI="/home/sysskel/myapps/mptuple2str https://github.com/jakeogh/mptuple2str.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mptuple2str.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="mp(int(mp(dict[key])))"
 HOMEPAGE="https://github.com/jakeogh/mpdictkeyint"
-EGIT_REPO_URI="/home/sysskel/myapps/mpdictkeyint https://github.com/jakeogh/mpdictkeyint.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictkeyint.git"
 
 LICENSE="BSD"
 SLOT="0"

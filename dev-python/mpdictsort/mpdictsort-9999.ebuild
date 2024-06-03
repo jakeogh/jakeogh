@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="sort messagepacked dicts on stdin by key"
 HOMEPAGE="https://github.com/jakeogh/mpdictsort"
-EGIT_REPO_URI="/home/sysskel/myapps/mpdictsort https://github.com/jakeogh/mpdictsort.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictsort.git"
 
 LICENSE="BSD"
 SLOT="0"

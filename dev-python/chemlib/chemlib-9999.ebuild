@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="A comprehensive chemistry library for Python"
 HOMEPAGE="https://github.com/harirakul/chemlib"
-EGIT_REPO_URI="/home/sysskel/myapps/chemlib https://github.com/harirakul/chemlib.git"
+EGIT_REPO_URI="https://github.com/harirakul/chemlib.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Filter files from stdin to stdout based on stat(1)"
 HOMEPAGE="https://github.com/jakeogh/statfilter"
-EGIT_REPO_URI="/home/sysskel/myapps/statfilter https://github.com/jakeogh/statfilter.git"
+EGIT_REPO_URI="https://github.com/jakeogh/statfilter.git"
 
 LICENSE="BSD"
 SLOT="0"

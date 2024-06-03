@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Stress-Terminal UI monitoring tool"
 HOMEPAGE="https://github.com/amanusk/s-tui"
-EGIT_REPO_URI="/home/sysskel/myapps/s-tui https://github.com/amanusk/s-tui.git"
+EGIT_REPO_URI="https://github.com/amanusk/s-tui.git"
 
 LICENSE="BSD"
 SLOT="0"

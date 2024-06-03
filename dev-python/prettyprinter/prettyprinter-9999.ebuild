@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Syntax-highlighting, declarative and composable pretty printer"
 HOMEPAGE="https://github.com/tommikaikkonen/prettyprinter"
-EGIT_REPO_URI="/home/user/_myapps/prettyprinter https://github.com/tommikaikkonen/prettyprinter.git"
+EGIT_REPO_URI="https://github.com/tommikaikkonen/prettyprinter.git"
 
 LICENSE="MIT"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="locate name somewhere above the current folder location"
 HOMEPAGE="https://github.com/jakeogh/walkup-until-found"
-EGIT_REPO_URI="/home/sysskel/myapps/walkup-until-found https://github.com/jakeogh/walkup-until-found.git"
+EGIT_REPO_URI="https://github.com/jakeogh/walkup-until-found.git"
 #EGIT_REPO_URI="/home/sysskel/myapps/walkup-until-found"
 
 LICENSE="BSD"

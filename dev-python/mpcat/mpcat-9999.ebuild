@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="write messagepacked files to stdout unchanged if stdout is not a tty, otherwise, repr()"
 HOMEPAGE="https://github.com/jakeogh/mpcat"
-EGIT_REPO_URI="/home/sysskel/myapps/mpcat https://github.com/jakeogh/mpcat.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpcat.git"
 
 LICENSE="BSD"
 SLOT="0"

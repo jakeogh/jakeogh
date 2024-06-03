@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="create or modify device (disk) label"
 HOMEPAGE="https://github.com/jakeogh/devicelabeltool"
-EGIT_REPO_URI="/home/sysskel/myapps/devicelabeltool https://github.com/jakeogh/devicelabeltool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/devicelabeltool.git"
 
 LICENSE="BSD"
 SLOT="0"

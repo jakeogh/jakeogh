@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="tee for messagepacked tty stderr monitoring"
 HOMEPAGE="https://github.com/jakeogh/mptee"
-EGIT_REPO_URI="/home/sysskel/myapps/mptee https://github.com/jakeogh/mptee.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mptee.git"
 
 LICENSE="BSD"
 SLOT="0"

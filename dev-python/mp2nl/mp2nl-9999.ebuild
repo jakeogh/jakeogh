@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="convert messagepacked stdin to \n terminated utf8"
 HOMEPAGE="https://github.com/jakeogh/mp2nl"
-EGIT_REPO_URI="/home/sysskel/myapps/mp2nl https://github.com/jakeogh/mp2nl.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mp2nl.git"
 
 LICENSE="BSD"
 SLOT="0"

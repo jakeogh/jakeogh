@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="cache on disk the result of expensive calculations"
 HOMEPAGE="https://github.com/hgrecco/flexcache"
-EGIT_REPO_URI="/home/sysskel/myapps/flexcache https://github.com/hgrecco/flexcache.git"
+EGIT_REPO_URI="https://github.com/hgrecco/flexcache.git"
 
 LICENSE="BSD"
 SLOT="0"

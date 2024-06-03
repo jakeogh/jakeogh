@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/asweigart/pyperclip"
-EGIT_REPO_URI="/home/sysskel/myapps/pyperclip https://github.com/asweigart/pyperclip.git"
+EGIT_REPO_URI="https://github.com/asweigart/pyperclip.git"
 
 LICENSE="BSD"
 SLOT="0"

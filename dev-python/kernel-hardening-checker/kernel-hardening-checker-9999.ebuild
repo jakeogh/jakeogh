@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="tool for checking the security hardening options of the Linux kernel"
 HOMEPAGE="https://github.com/a13xp0p0v/kernel-hardening-checker"
-EGIT_REPO_URI="/home/sysskel/myapps/kernel-hardening-checker https://github.com/a13xp0p0v/kernel-hardening-checker.git"
+EGIT_REPO_URI="https://github.com/a13xp0p0v/kernel-hardening-checker.git"
 
 LICENSE="BSD"
 SLOT="0"

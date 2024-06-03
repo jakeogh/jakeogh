@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="read messagepacked input on stdin, write input with expected length to stdout"
 HOMEPAGE="https://github.com/jakeogh/mprequirelength"
-EGIT_REPO_URI="/home/sysskel/myapps/mprequirelength https://github.com/jakeogh/mprequirelength.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mprequirelength.git"
 
 LICENSE="BSD"
 SLOT="0"

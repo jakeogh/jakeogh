@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="common process id operations"
 HOMEPAGE="https://github.com/jakeogh/pstool"
-EGIT_REPO_URI="/home/sysskel/myapps/pstool https://github.com/jakeogh/pstool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/pstool.git"
 
 LICENSE="BSD"
 SLOT="0"

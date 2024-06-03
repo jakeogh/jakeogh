@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="common term functions"
 HOMEPAGE="https://github.com/jakeogh/terminaltool"
-EGIT_REPO_URI="/home/sysskel/myapps/terminaltool https://github.com/jakeogh/terminaltool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/terminaltool.git"
 
 LICENSE="BSD"
 SLOT="0"

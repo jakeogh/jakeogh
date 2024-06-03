@@ -9,7 +9,7 @@ inherit git-r3 meson
 
 DESCRIPTION="free EDA package"
 HOMEPAGE="https://github.com/horizon-eda/horizon"
-EGIT_REPO_URI="/home/sysskel/myapps/horizon https://github.com/horizon-eda/horizon.git"
+EGIT_REPO_URI="https://github.com/horizon-eda/horizon.git"
 
 LICENSE="GPL-3"
 SLOT="0"

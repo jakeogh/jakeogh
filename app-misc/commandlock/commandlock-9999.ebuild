@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION="Prevent identical bash/sh commands from executing concurrently."
 HOMEPAGE="https://github.com/jakeogh/commandlock"
-EGIT_REPO_URI="/home/user/_myapps/commandlock https://github.com/jakeogh/commandlock.git"
+EGIT_REPO_URI="https://github.com/jakeogh/commandlock.git"
 
 LICENSE="MIT"
 SLOT="0"

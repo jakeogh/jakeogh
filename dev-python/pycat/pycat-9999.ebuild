@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="like cat, but accepts paths on stdin"
 HOMEPAGE="https://github.com/jakeogh/pycat"
-EGIT_REPO_URI="/home/sysskel/myapps/pycat https://github.com/jakeogh/pycat.git"
+EGIT_REPO_URI="https://github.com/jakeogh/pycat.git"
 
 LICENSE="BSD"
 SLOT="0"

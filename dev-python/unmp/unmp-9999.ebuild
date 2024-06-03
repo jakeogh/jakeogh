@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Unpack messagepacked objects and write to stdout without a delim"
 HOMEPAGE="https://github.com/jakeogh/unmp"
-EGIT_REPO_URI="/home/sysskel/myapps/unmp https://github.com/jakeogh/unmp.git"
+EGIT_REPO_URI="https://github.com/jakeogh/unmp.git"
 
 LICENSE="BSD"
 SLOT="0"

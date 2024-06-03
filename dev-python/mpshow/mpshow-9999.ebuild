@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="debug messagepacked stdin"
 HOMEPAGE="https://github.com/jakeogh/mpshow"
-EGIT_REPO_URI="/home/sysskel/myapps/mpshow https://github.com/jakeogh/mpshow.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpshow.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="skip messagepacked data of specified lengths"
 HOMEPAGE="https://github.com/jakeogh/mpdictskiplengths"
-EGIT_REPO_URI="/home/sysskel/myapps/mpdictskiplengths https://github.com/jakeogh/mpdictskiplengths.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictskiplengths.git"
 
 LICENSE="BSD"
 SLOT="0"

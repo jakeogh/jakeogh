@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="write unique messagepacked objects on stdin to stdout"
 HOMEPAGE="https://github.com/jakeogh/mpuniquepipe"
-EGIT_REPO_URI="/home/sysskel/myapps/mpuniquepipe https://github.com/jakeogh/mpuniquepipe.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpuniquepipe.git"
 
 LICENSE="BSD"
 SLOT="0"

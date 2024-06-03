@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="match within path data"
 HOMEPAGE="https://github.com/jakeogh/mppgrep"
-EGIT_REPO_URI="/home/sysskel/myapps/mppgrep https://github.com/jakeogh/mppgrep.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mppgrep.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="iridb spider launcher"
 HOMEPAGE="https://github.com/jakeogh/iridb-spider-wrapper"
-EGIT_REPO_URI="/home/sysskel/myapps/iridb-spider-wrapper https://github.com/jakeogh/iridb-spider-wrapper.git"
+EGIT_REPO_URI="https://github.com/jakeogh/iridb-spider-wrapper.git"
 
 LICENSE="BSD"
 SLOT="0"

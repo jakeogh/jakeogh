@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/chanparser"
-EGIT_REPO_URI="/home/sysskel/myapps/chanparser https://github.com/jakeogh/chanparser.git"
+EGIT_REPO_URI="https://github.com/jakeogh/chanparser.git"
 
 LICENSE="BSD"
 SLOT="0"

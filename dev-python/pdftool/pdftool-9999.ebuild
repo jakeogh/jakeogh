@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Commpn pdf operations, print book etc"
 HOMEPAGE="https://github.com/jakeogh/pdftool"
-EGIT_REPO_URI="/home/sysskel/myapps/pdftool https://github.com/jakeogh/pdftool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/pdftool.git"
 
 LICENSE="BSD"
 SLOT="0"

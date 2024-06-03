@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION="NoteBook FanControl"
 HOMEPAGE="https://github.com/hirschmann/nbfc"
-EGIT_REPO_URI="/home/sysskel/myapps/nbfc https://github.com/hirschmann/nbfc.git"
+EGIT_REPO_URI="https://github.com/hirschmann/nbfc.git"
 EGIT_BRANCH="stable"
 
 LICENSE="BSD"

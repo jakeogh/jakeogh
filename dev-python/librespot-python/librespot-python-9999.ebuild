@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="Open source Spotify client"
 HOMEPAGE="https://github.com/kokarare1212/librespot-python"
-EGIT_REPO_URI="/home/sysskel/myapps/librespot-python https://github.com/kokarare1212/librespot-python.git"
+EGIT_REPO_URI="https://github.com/kokarare1212/librespot-python.git"
 
 LICENSE="BSD"
 SLOT="0"

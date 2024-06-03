@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="split messagepacked objects with python slice syntax"
 HOMEPAGE="https://github.com/jakeogh/mpsplit"
-EGIT_REPO_URI="/home/sysskel/myapps/mpsplit https://github.com/jakeogh/mpsplit.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpsplit.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="functions for parsing bytes"
 HOMEPAGE="https://github.com/jakeogh/bytestool"
-EGIT_REPO_URI="/home/sysskel/myapps/bytestool https://github.com/jakeogh/bytestool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/bytestool.git"
 
 LICENSE="BSD"
 SLOT="0"

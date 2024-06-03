@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="A cross-platform Python module that displays **** for password input"
 HOMEPAGE="https://github.com/asweigart/pwinput"
-EGIT_REPO_URI="/home/sysskel/myapps/pwinput https://github.com/asweigart/pwinput.git"
+EGIT_REPO_URI="https://github.com/asweigart/pwinput.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Python object abstraction over redis keys"
 HOMEPAGE="https://github.com/jakeogh/rediskey"
-EGIT_REPO_URI="/home/sysskel/myapps/rediskey https://github.com/jakeogh/rediskey.git"
+EGIT_REPO_URI="https://github.com/jakeogh/rediskey.git"
 
 LICENSE="BSD"
 SLOT="0"

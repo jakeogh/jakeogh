@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Group specific types from the 'file' comand"
 HOMEPAGE="https://github.com/jakeogh/classify"
-EGIT_REPO_URI="/home/sysskel/myapps/classify https://github.com/jakeogh/classify.git"
+EGIT_REPO_URI="https://github.com/jakeogh/classify.git"
 
 LICENSE="BSD"
 SLOT="0"

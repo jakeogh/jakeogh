@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="wrapper for the screen terminal emulator"
 HOMEPAGE="https://github.com/jakeogh/screentool"
-EGIT_REPO_URI="/home/sysskel/myapps/screentool https://github.com/jakeogh/screentool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/screentool.git"
 
 LICENSE="BSD"
 SLOT="0"

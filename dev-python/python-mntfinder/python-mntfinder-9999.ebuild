@@ -11,7 +11,7 @@ inherit git-r3
 
 DESCRIPTION="Parse /proc/mounts and find/list mountpoints (Not a wrapper of findmnt)"
 HOMEPAGE="https://github.com/nukemiko/python-mntfinder"
-EGIT_REPO_URI="/home/sysskel/myapps/python-mntfinder https://github.com/nukemiko/python-mntfinder.git"
+EGIT_REPO_URI="https://github.com/nukemiko/python-mntfinder.git"
 
 LICENSE="BSD"
 SLOT="0"

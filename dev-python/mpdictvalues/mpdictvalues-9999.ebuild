@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="select values from messagepacked dicts"
 HOMEPAGE="https://github.com/jakeogh/mpdictvalues"
-EGIT_REPO_URI="/home/sysskel/myapps/mpdictvalues https://github.com/jakeogh/mpdictvalues.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictvalues.git"
 
 LICENSE="BSD"
 SLOT="0"

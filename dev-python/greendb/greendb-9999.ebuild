@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="server frontend for lmdb"
 HOMEPAGE="https://github.com/jakeogh/greendb"
-EGIT_REPO_URI="/home/sysskel/myapps/greendb https://github.com/jakeogh/greendb.git"
+EGIT_REPO_URI="https://github.com/jakeogh/greendb.git"
 #EGIT_BRANCH="master"
 GIT_BRANCH="jkdev"
 

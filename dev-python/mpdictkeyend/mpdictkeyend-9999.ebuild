@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="rearrange messagepacked dict key to end"
 HOMEPAGE="https://github.com/jakeogh/mpdictkeyend"
-EGIT_REPO_URI="/home/sysskel/myapps/mpdictkeyend https://github.com/jakeogh/mpdictkeyend.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictkeyend.git"
 
 LICENSE="BSD"
 SLOT="0"

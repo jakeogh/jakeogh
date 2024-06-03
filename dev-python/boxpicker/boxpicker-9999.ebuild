@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/boxpicker"
-EGIT_REPO_URI="/home/sysskel/myapps/boxpicker https://github.com/jakeogh/boxpicker.git"
+EGIT_REPO_URI="https://github.com/jakeogh/boxpicker.git"
 
 LICENSE="BSD"
 SLOT="0"

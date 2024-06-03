@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="python wrapper for zotify"
 HOMEPAGE="https://github.com/jakeogh/zotify-wrapper"
-EGIT_REPO_URI="/home/sysskel/myapps/zotify-wrapper https://github.com/jakeogh/zotify-wrapper.git"
+EGIT_REPO_URI="https://github.com/jakeogh/zotify-wrapper.git"
 
 LICENSE="BSD"
 SLOT="0"

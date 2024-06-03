@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="The can package provides controller area network support for Python developers"
 HOMEPAGE="https://github.com/hardbyte/python-can"
-EGIT_REPO_URI="/home/sysskel/myapps/python-can https://github.com/hardbyte/python-can.git"
+EGIT_REPO_URI="https://github.com/hardbyte/python-can.git"
 
 LICENSE="LGPL-3"
 SLOT="0"

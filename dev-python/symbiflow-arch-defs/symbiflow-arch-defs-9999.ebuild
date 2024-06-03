@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/SymbiFlow/symbiflow-arch-defs"
-EGIT_REPO_URI="/home/sysskel/myapps/symbiflow_arch_defs https://github.com/SymbiFlow/symbiflow-arch-defs.git"
+EGIT_REPO_URI="https://github.com/SymbiFlow/symbiflow-arch-defs.git"
 
 LICENSE="BSD"
 SLOT="0"

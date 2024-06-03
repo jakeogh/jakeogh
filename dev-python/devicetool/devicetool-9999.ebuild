@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Functions related to block devices"
 HOMEPAGE="https://github.com/jakeogh/devicetool"
-EGIT_REPO_URI="/home/sysskel/myapps/devicetool https://github.com/jakeogh/devicetool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/devicetool.git"
 
 LICENSE="BSD"
 SLOT="0"

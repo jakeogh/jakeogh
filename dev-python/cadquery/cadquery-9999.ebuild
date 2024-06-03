@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="parametric CAD scripting framework based on OCCT"
 HOMEPAGE="https://github.com/CadQuery/cadquery"
-EGIT_REPO_URI="/home/sysskel/myapps/cadquery https://github.com/CadQuery/cadquery.git"
+EGIT_REPO_URI="https://github.com/CadQuery/cadquery.git"
 
 LICENSE="BSD"
 SLOT="0"

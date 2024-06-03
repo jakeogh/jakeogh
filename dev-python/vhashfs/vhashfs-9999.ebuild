@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="disk backed hash tree"
 HOMEPAGE="https://github.com/jakeogh/vhashfs"
-EGIT_REPO_URI="/home/sysskel/myapps/vhashfs https://github.com/jakeogh/vhashfs.git"
+EGIT_REPO_URI="https://github.com/jakeogh/vhashfs.git"
 
 LICENSE="BSD"
 SLOT="0"

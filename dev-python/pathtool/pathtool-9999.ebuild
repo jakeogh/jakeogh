@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/pathtool"
-EGIT_REPO_URI="/home/sysskel/myapps/pathtool https://github.com/jakeogh/pathtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/pathtool.git"
 
 LICENSE="BSD"
 SLOT="0"

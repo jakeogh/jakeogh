@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="unlink messagepacked paths on stdin"
 HOMEPAGE="https://github.com/jakeogh/mpdelete"
-EGIT_REPO_URI="/home/sysskel/myapps/mpdelete https://github.com/jakeogh/mpdelete.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdelete.git"
 
 LICENSE="BSD"
 SLOT="0"

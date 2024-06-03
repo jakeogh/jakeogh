@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="track blood tests over time"
 HOMEPAGE="https://github.com/jakeogh/bloodwork"
-EGIT_REPO_URI="/home/sysskel/myapps/bloodwork https://github.com/jakeogh/bloodwork.git"
+EGIT_REPO_URI="https://github.com/jakeogh/bloodwork.git"
 
 LICENSE="BSD"
 SLOT="0"

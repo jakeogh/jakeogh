@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="common x11 functions"
 HOMEPAGE="https://github.com/jakeogh/x11tool"
-EGIT_REPO_URI="/home/sysskel/myapps/x11tool https://github.com/jakeogh/x11tool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/x11tool.git"
 
 LICENSE="BSD"
 SLOT="0"

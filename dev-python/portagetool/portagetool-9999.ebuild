@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common portage operations"
 HOMEPAGE="https://github.com/jakeogh/portagetool"
-EGIT_REPO_URI="/home/sysskel/myapps/portagetool https://github.com/jakeogh/portagetool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/portagetool.git"
 
 LICENSE="BSD"
 SLOT="0"

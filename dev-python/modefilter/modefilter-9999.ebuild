@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="filter paths by their dtype"
 HOMEPAGE="https://github.com/jakeogh/modefilter"
-EGIT_REPO_URI="/home/sysskel/myapps/modefilter https://github.com/jakeogh/modefilter.git"
+EGIT_REPO_URI="https://github.com/jakeogh/modefilter.git"
 
 LICENSE="BSD"
 SLOT="0"

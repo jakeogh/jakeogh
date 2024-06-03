@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/stringfilter"
-EGIT_REPO_URI="/home/sysskel/myapps/stringfilter https://github.com/jakeogh/stringfilter.git"
+EGIT_REPO_URI="https://github.com/jakeogh/stringfilter.git"
 
 LICENSE="BSD"
 SLOT="0"

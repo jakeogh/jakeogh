@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="common posix signal functions"
 HOMEPAGE="https://github.com/jakeogh/signaltool"
-EGIT_REPO_URI="/home/sysskel/myapps/signaltool https://github.com/jakeogh/signaltool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/signaltool.git"
 
 LICENSE="BSD"
 SLOT="0"

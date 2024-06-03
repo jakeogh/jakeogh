@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/LuminosoInsight/ordered-set"
-EGIT_REPO_URI="/home/sysskel/myapps/ordered-set https://github.com/LuminosoInsight/ordered-set.git"
+EGIT_REPO_URI="https://github.com/LuminosoInsight/ordered-set.git"
 
 LICENSE="BSD"
 SLOT="0"

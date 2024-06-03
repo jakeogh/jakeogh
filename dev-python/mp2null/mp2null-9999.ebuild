@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="convert messagepacked stdin to null terminated stdout"
 HOMEPAGE="https://github.com/jakeogh/mp2null"
-EGIT_REPO_URI="/home/sysskel/myapps/mp2null https://github.com/jakeogh/mp2null.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mp2null.git"
 
 LICENSE="BSD"
 SLOT="0"

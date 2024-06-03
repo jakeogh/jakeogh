@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="selects specified keys from messagepacked dicts on stdin"
 HOMEPAGE="https://github.com/jakeogh/mpdictkeypick"
-EGIT_REPO_URI="/home/sysskel/myapps/mpdictkeypick https://github.com/jakeogh/mpdictkeypick.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictkeypick.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit autotools git-r3 flag-o-matic
 
 DESCRIPTION="Guile-based flexible control files for scientific simulations"
 HOMEPAGE="https://github.com/NanoComp/libctl"
-EGIT_REPO_URI="/home/sysskel/myapps/libctl https://github.com/NanoComp/libctl.git"
+EGIT_REPO_URI="https://github.com/NanoComp/libctl.git"
 
 LICENSE="GPL-2"
 SLOT="0"

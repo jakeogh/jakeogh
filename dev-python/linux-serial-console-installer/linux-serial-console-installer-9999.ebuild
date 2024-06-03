@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="setup a login console on a serial device"
 HOMEPAGE="https://github.com/jakeogh/linux-serial-console-installer"
-EGIT_REPO_URI="/home/sysskel/myapps/linux-serial-console-installer https://github.com/jakeogh/linux-serial-console-installer.git"
+EGIT_REPO_URI="https://github.com/jakeogh/linux-serial-console-installer.git"
 
 LICENSE="BSD"
 SLOT="0"

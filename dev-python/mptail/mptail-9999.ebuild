@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="messagepacked tail"
 HOMEPAGE="https://github.com/jakeogh/mptail"
-EGIT_REPO_URI="/home/sysskel/myapps/mptail https://github.com/jakeogh/mptail.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mptail.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -6,7 +6,7 @@ inherit git-r3
 
 DESCRIPTION="local.d script to generate MAKEOPTS include file for make.conf"
 HOMEPAGE="https://github.com/jakeogh/portage-set-makeopts-on-boot"
-EGIT_REPO_URI="/home/sysskel/myapps/portage-set-makeopts-on-boot https://github.com/jakeogh/portage-makeopts-on-boot.git"
+EGIT_REPO_URI="https://github.com/jakeogh/portage-makeopts-on-boot.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="lookup symlink targets"
 HOMEPAGE="https://github.com/jakeogh/mpsymlinktarget"
-EGIT_REPO_URI="/home/sysskel/myapps/mpsymlinktarget https://github.com/jakeogh/mpsymlinktarget.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpsymlinktarget.git"
 
 LICENSE="BSD"
 SLOT="0"

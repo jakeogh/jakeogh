@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="calculate password statistics"
 HOMEPAGE="https://github.com/jakeogh/passwordtool"
-EGIT_REPO_URI="/home/sysskel/myapps/passwordtool https://github.com/jakeogh/passwordtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/passwordtool.git"
 
 LICENSE="BSD"
 SLOT="0"

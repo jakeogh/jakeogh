@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Parse csv into dict"
 HOMEPAGE="https://github.com/jakeogh/csvparser"
-EGIT_REPO_URI="/home/sysskel/myapps/csvparser https://github.com/jakeogh/csvparser.git"
+EGIT_REPO_URI="https://github.com/jakeogh/csvparser.git"
 
 LICENSE="BSD"
 SLOT="0"

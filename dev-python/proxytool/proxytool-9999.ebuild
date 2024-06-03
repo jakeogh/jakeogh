@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="common proxy functions"
 HOMEPAGE="https://github.com/jakeogh/proxytool"
-EGIT_REPO_URI="/home/sysskel/myapps/proxytool https://github.com/jakeogh/proxytool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/proxytool.git"
 
 LICENSE="BSD"
 SLOT="0"

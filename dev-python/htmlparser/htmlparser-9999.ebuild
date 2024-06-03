@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="HTML parsing functions"
 HOMEPAGE="https://github.com/jakeogh/htmlparser"
-EGIT_REPO_URI="/home/sysskel/myapps/htmlparser https://github.com/jakeogh/htmlparser.git"
+EGIT_REPO_URI="https://github.com/jakeogh/htmlparser.git"
 
 LICENSE="BSD"
 SLOT="0"

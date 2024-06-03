@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="python module to use for debugging in the case where a simple exception class is needed"
 HOMEPAGE="https://github.com/jakeogh/test-single-exception-class"
-EGIT_REPO_URI="/home/sysskel/myapps/test-single-exception-class https://github.com/jakeogh/test-single-exception-class.git"
+EGIT_REPO_URI="https://github.com/jakeogh/test-single-exception-class.git"
 
 LICENSE="BSD"
 SLOT="0"

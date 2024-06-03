@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="python tmux launcher"
 HOMEPAGE="https://github.com/jakeogh/tmuxtool"
-EGIT_REPO_URI="/home/sysskel/myapps/tmuxtool https://github.com/jakeogh/tmuxtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/tmuxtool.git"
 
 LICENSE="BSD"
 SLOT="0"

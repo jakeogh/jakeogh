@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="zotify iridb importer"
 HOMEPAGE="https://github.com/jakeogh/zotify-wrapper-iridb-import"
-EGIT_REPO_URI="/home/sysskel/myapps/zotify-wrapper-iridb-import https://github.com/jakeogh/zotify-wrapper-iridb-import.git"
+EGIT_REPO_URI="https://github.com/jakeogh/zotify-wrapper-iridb-import.git"
 
 LICENSE="BSD"
 SLOT="0"

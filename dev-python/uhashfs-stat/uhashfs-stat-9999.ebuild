@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="statistics for a hash folder tree"
 HOMEPAGE="https://github.com/jakeogh/uhashfs-stat"
-EGIT_REPO_URI="/home/sysskel/myapps/uhashfs-stat https://github.com/jakeogh/uhashfs-stat.git"
+EGIT_REPO_URI="https://github.com/jakeogh/uhashfs-stat.git"
 
 LICENSE="BSD"
 SLOT="0"

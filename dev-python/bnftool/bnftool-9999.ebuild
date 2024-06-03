@@ -11,7 +11,7 @@ inherit distutils-r1
 
 DESCRIPTION="functions related to Backus-Naur Form (BNF) notation"
 HOMEPAGE="https://github.com/jakeogh/bnftool"
-EGIT_REPO_URI="/home/sysskel/myapps/bnftool https://github.com/jakeogh/bnftool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/bnftool.git"
 
 LICENSE="BSD"
 SLOT="0"

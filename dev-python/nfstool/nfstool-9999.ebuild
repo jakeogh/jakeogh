@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="NFS functions"
 HOMEPAGE="https://github.com/jakeogh/nfstool"
-EGIT_REPO_URI="/home/sysskel/myapps/nfstool https://github.com/jakeogh/nfstool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/nfstool.git"
 
 LICENSE="BSD"
 SLOT="0"

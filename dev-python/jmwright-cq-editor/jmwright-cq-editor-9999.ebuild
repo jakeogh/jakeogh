@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="cq-editor for build123d"
 HOMEPAGE="https://github.com/jdegenstein/jmwright-CQ-Editor"
-EGIT_REPO_URI="/home/sysskel/myapps/jmwright-cq-editor https://github.com/jdegenstein/jmwright-CQ-Editor.git"
+EGIT_REPO_URI="https://github.com/jdegenstein/jmwright-CQ-Editor.git"
 
 LICENSE="BSD"
 SLOT="0"

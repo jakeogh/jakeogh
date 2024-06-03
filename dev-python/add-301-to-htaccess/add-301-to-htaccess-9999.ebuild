@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="add 301 redirect to .htaccess on remote ssh host"
 HOMEPAGE="https://github.com/jakeogh/add-301-to-htaccess"
-EGIT_REPO_URI="/home/sysskel/myapps/add-301-to-htaccess https://github.com/jakeogh/add-301-to-htaccess.git"
+EGIT_REPO_URI="https://github.com/jakeogh/add-301-to-htaccess.git"
 
 LICENSE="BSD"
 SLOT="0"

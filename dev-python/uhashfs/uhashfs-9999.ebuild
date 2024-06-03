@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="A content-addressable file management system for Python"
 HOMEPAGE="https://github.com/jakeogh/uhashfs"
-EGIT_REPO_URI="/home/sysskel/myapps/uhashfs https://github.com/jakeogh/uhashfs.git"
+EGIT_REPO_URI="https://github.com/jakeogh/uhashfs.git"
 
 LICENSE="MIT"
 SLOT="0"

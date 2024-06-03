@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="decorator to retry function call on exception"
 HOMEPAGE="https://github.com/jakeogh/retry-on-exception-new"
-EGIT_REPO_URI="/home/sysskel/myapps/retry-on-exception-new https://github.com/jakeogh/retry-on-exception-new.git"
+EGIT_REPO_URI="https://github.com/jakeogh/retry-on-exception-new.git"
 
 LICENSE="BSD"
 SLOT="0"

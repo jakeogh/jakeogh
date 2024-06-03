@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Install Gentoo Linux"
 HOMEPAGE="https://github.com/jakeogh/sendgentoo"
-EGIT_REPO_URI="/home/sysskel/myapps/sendgentoo https://github.com/jakeogh/sendgentoo.git"
+EGIT_REPO_URI="https://github.com/jakeogh/sendgentoo.git"
 
 LICENSE=""
 SLOT="0"

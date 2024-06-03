@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="A music and podcast downloader needing only Python and FFmpeg"
 HOMEPAGE="https://gitlab.com/team-zotify/zotify"
-EGIT_REPO_URI="/home/sysskel/myapps/zotify https://gitlab.com/team-zotify/zotify.git"
+EGIT_REPO_URI="https://gitlab.com/team-zotify/zotify.git"
 
 LICENSE="BSD"
 SLOT="0"

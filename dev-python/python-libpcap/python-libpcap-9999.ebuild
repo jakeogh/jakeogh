@@ -8,7 +8,7 @@ inherit distutils-r1 git-r3
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/caizhengxin/python-libpcap"
-EGIT_REPO_URI="/home/sysskel/myapps/python-libpcap https://github.com/caizhengxin/python-libpcap.git"
+EGIT_REPO_URI="https://github.com/caizhengxin/python-libpcap.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="content addressed fs tree lookup"
 HOMEPAGE="https://github.com/jakeogh/getdentz"
-EGIT_REPO_URI="/home/sysskel/myapps/getdentz https://github.com/jakeogh/uhashfsz.git"
+EGIT_REPO_URI="https://github.com/jakeogh/uhashfsz.git"
 
 MY_P="${P/-/_}"
 MY_PN="${PN/-/_}"

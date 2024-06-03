@@ -20,7 +20,7 @@ HOMEPAGE="
 #		-> ${P}.gh.tar.gz
 #"
 #S=${WORKDIR}/${PN}-${P}
-EGIT_REPO_URI="/home/user/_myapps/pyqtgraph https://github.com/pyqtgraph/pyqtgraph"
+EGIT_REPO_URI="https://github.com/pyqtgraph/pyqtgraph.git"
 
 
 LICENSE="MIT"

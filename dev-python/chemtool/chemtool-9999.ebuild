@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="common chemistry functions"
 HOMEPAGE="https://github.com/jakeogh/chemtool"
-EGIT_REPO_URI="/home/sysskel/myapps/chemtool https://github.com/jakeogh/chemtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/chemtool.git"
 
 LICENSE="BSD"
 SLOT="0"

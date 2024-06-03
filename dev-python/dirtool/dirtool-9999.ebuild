@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/dirtool"
-EGIT_REPO_URI="/home/sysskel/myapps/dirtool https://github.com/jakeogh/dirtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/dirtool.git"
 
 LICENSE="BSD"
 SLOT="0"

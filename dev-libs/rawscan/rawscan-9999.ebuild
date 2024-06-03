@@ -7,7 +7,7 @@ inherit cmake git-r3
 
 DESCRIPTION="High performance getline() alternative"
 HOMEPAGE="https://github.com/ThePythonicCow/rawscan"
-EGIT_REPO_URI="/home/sysskel/myapps/rawscan https://github.com/ThePythonicCow/rawscan.git"
+EGIT_REPO_URI="https://github.com/ThePythonicCow/rawscan.git"
 
 LICENSE="MIT"
 SLOT="0"

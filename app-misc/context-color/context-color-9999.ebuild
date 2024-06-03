@@ -7,7 +7,7 @@ inherit git-r3
 
 DESCRIPTION="convert any content into a deterministic shell color"
 HOMEPAGE="https://github.com/ramnes/context-color"
-EGIT_REPO_URI="/home/sysskel/myapps/context-color https://github.com/ramnes/context-color.git"
+EGIT_REPO_URI="https://github.com/ramnes/context-color.git"
 
 LICENSE="BSD"
 SLOT="0"

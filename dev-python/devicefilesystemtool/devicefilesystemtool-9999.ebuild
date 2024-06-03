@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="create filesystems"
 HOMEPAGE="https://github.com/jakeogh/devicefilesystemtool"
-EGIT_REPO_URI="/home/sysskel/myapps/devicefilesystemtool https://github.com/jakeogh/devicefilesystemtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/devicefilesystemtool.git"
 
 LICENSE="BSD"
 SLOT="0"

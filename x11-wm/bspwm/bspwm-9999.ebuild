@@ -8,7 +8,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Tiling window manager based on binary space partitioning"
 HOMEPAGE="https://github.com/baskerville/bspwm/"
-EGIT_REPO_URI="/home/sysskel/myapps/bspwm https://github.com/baskerville/bspwm/.git"
+EGIT_REPO_URI="https://github.com/baskerville/bspwm/.git"
 
 LICENSE="BSD-2"
 SLOT="0"

@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="GPG encrypting MDA"
 HOMEPAGE="https://github.com/jakeogh/gpgmda-client"
-EGIT_REPO_URI="/home/user/_myapps/gpgmda-client https://github.com/jakeogh/gpgmda-client.git"
+EGIT_REPO_URI="https://github.com/jakeogh/gpgmda-client.git"
 
 LICENSE="MIT"
 SLOT="0"

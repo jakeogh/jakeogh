@@ -12,7 +12,7 @@ inherit distutils-r1
 
 DESCRIPTION="join messagepacked objects from stdin"
 HOMEPAGE="https://github.com/jakeogh/mpjoin"
-EGIT_REPO_URI="/home/sysskel/myapps/mpjoin https://github.com/jakeogh/mpjoin.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpjoin.git"
 
 LICENSE="BSD"
 SLOT="0"

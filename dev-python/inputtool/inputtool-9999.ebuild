@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common functions for accepting human input"
 HOMEPAGE="https://github.com/jakeogh/inputtool"
-EGIT_REPO_URI="/home/sysskel/myapps/inputtool https://github.com/jakeogh/inputtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/inputtool.git"
 
 LICENSE="BSD"
 SLOT="0"

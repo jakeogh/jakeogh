@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="DB backed filesystem hash index."
 HOMEPAGE="https://github.com/jakeogh/fsindex"
-EGIT_REPO_URI="/home/sysskel/myapps/fsindex https://github.com/jakeogh/fsindex.git"
+EGIT_REPO_URI="https://github.com/jakeogh/fsindex.git"
 
 LICENSE="MIT"
 SLOT="0"

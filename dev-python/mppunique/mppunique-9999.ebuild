@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="read messagepacked paths on stdin, output first instance of each unique path sha3_256"
 HOMEPAGE="https://github.com/jakeogh/mppunique"
-EGIT_REPO_URI="/home/sysskel/myapps/mppunique https://github.com/jakeogh/mppunique.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mppunique.git"
 
 LICENSE="BSD"
 SLOT="0"

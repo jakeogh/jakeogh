@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="Common python logging functions"
 HOMEPAGE="https://github.com/jakeogh/logtool"
-EGIT_REPO_URI="/home/sysskel/myapps/logtool https://github.com/jakeogh/logtool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/logtool.git"
 
 LICENSE="BSD"
 SLOT="0"

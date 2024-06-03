@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="generate full length timestamps"
 HOMEPAGE="https://github.com/jakeogh/timestamptool"
-EGIT_REPO_URI="/home/sysskel/myapps/timestamptool https://github.com/jakeogh/timestamptool.git"
+EGIT_REPO_URI="https://github.com/jakeogh/timestamptool.git"
 
 LICENSE="BSD"
 SLOT="0"

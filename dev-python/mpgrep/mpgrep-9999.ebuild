@@ -10,7 +10,7 @@ inherit distutils-r1
 
 DESCRIPTION="grep for messagepacked streams"
 HOMEPAGE="https://github.com/jakeogh/mpgrep"
-EGIT_REPO_URI="/home/sysskel/myapps/mpgrep https://github.com/jakeogh/mpgrep.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mpgrep.git"
 
 LICENSE="BSD"
 SLOT="0"

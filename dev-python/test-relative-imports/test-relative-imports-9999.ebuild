@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="testing relative imports"
 HOMEPAGE="https://github.com/jakeogh/test-relative-imports"
-EGIT_REPO_URI="/home/sysskel/myapps/test-relative-imports https://github.com/jakeogh/test-relative-imports.git"
+EGIT_REPO_URI="https://github.com/jakeogh/test-relative-imports.git"
 
 LICENSE="BSD"
 SLOT="0"

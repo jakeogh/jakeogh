@@ -13,7 +13,7 @@ inherit distutils-r1
 
 DESCRIPTION="Pythonic interface for FFmpeg/FFprobe command line"
 HOMEPAGE="https://github.com/Ch00k/ffmpy"
-EGIT_REPO_URI="/home/sysskel/myapps/ffmpy https://github.com/Ch00k/ffmpy.git"
+EGIT_REPO_URI="https://github.com/Ch00k/ffmpy.git"
 
 LICENSE="BSD"
 SLOT="0"

@@ -8,7 +8,7 @@ inherit git-r3
 
 DESCRIPTION="sha3-256 null terminated paths on stdin"
 HOMEPAGE="https://github.com/jakeogh/zhash"
-EGIT_REPO_URI="/home/sysskel/myapps/zhash https://github.com/jakeogh/zhash.git"
+EGIT_REPO_URI="https://github.com/jakeogh/zhash.git"
 
 MY_P="${P/-/_}"
 MY_PN="${PN/-/_}"

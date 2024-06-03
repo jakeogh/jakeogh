@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="takes a minimal sendgentoo install to my setup"
 HOMEPAGE="https://github.com/jakeogh/sendgentoo-post-reboot"
-EGIT_REPO_URI="/home/sysskel/myapps/sendgentoo-post-reboot https://github.com/jakeogh/sendgentoo-post-reboot.git"
+EGIT_REPO_URI="https://github.com/jakeogh/sendgentoo-post-reboot.git"
 
 LICENSE="BSD"
 SLOT="0"

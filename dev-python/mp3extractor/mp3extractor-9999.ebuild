@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="extract metadata from mp3 files"
 HOMEPAGE="https://github.com/jakeogh/mp3extractor"
-EGIT_REPO_URI="/home/sysskel/myapps/mp3extractor https://github.com/jakeogh/mp3extractor.git"
+EGIT_REPO_URI="https://github.com/jakeogh/mp3extractor.git"
 
 LICENSE="BSD"
 SLOT="0"
