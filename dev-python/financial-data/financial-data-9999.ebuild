@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="get financial data from iridb"
 HOMEPAGE="https://github.com/jakeogh"
-EGIT_REPO_URI="/home/sysskel/myapps/financial_data"
+EGIT_REPO_URI="https://github.com/jakeogh/financial_data"
 
 LICENSE="MIT"
 SLOT="0"
