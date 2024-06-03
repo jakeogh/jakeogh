@@ -9,7 +9,7 @@ inherit git-r3
 
 DESCRIPTION="Manages sshd configuration prior to sshd starting."
 HOMEPAGE="https://github.com/jakeogh/sshd-configurator"
-EGIT_REPO_URI="/home/sysskel/myapps/sshd-configurator"
+EGIT_REPO_URI="https://github.com/jakeogh/sshd-configurator.git"
 
 LICENSE="MIT"
 SLOT="0"
