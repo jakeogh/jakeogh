@@ -26,7 +26,6 @@ RDEPEND="
 	dev-python/prettyprinter[${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/unitcalc[${PYTHON_USEDEP}]
-	dev-python/pathwatcher[${PYTHON_USEDEP}]
 	dev-python/python-fadvise[${PYTHON_USEDEP}]
 	dev-python/pydantic[${PYTHON_USEDEP}]
 	dev-python/statustool[${PYTHON_USEDEP}]
