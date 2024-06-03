@@ -22,6 +22,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/pdftool[${PYTHON_USEDEP}]
 	dev-python/csvparser[${PYTHON_USEDEP}]
+	dev-python/rich[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
