@@ -8,9 +8,6 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="lookup symlink targets"
 HOMEPAGE="https://github.com/jakeogh/mpsymlinktarget"
 EGIT_REPO_URI="https://github.com/jakeogh/mpsymlinktarget.git"
@@ -18,7 +15,6 @@ EGIT_REPO_URI="https://github.com/jakeogh/mpsymlinktarget.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
