@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="chroots into a stage3 and installs the base gentoo system"
 HOMEPAGE="https://github.com/jakeogh/sendgentoo-chroot"
 EGIT_REPO_URI="https://github.com/jakeogh/sendgentoo-chroot.git"
 
