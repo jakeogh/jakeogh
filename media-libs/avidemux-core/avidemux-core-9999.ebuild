@@ -47,7 +47,7 @@ PATCHES=(
 	"${FILESDIR}"/avidemux-core-2.8.1-ffmpeg-2.41.patch
 )
 
-S="${WORKDIR}/avidemux2-core-${PV}"
+S="${WORKDIR}/avidemux-core-${PV}"
 CMAKE_USE_DIR="${S}/${PN/-/_}"
 
 src_prepare() {
