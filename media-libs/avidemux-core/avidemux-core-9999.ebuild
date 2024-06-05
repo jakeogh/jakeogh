@@ -73,6 +73,7 @@ src_prepare() {
 
 		sed -i -e "s/@@GENTOO_FFMPEG_FLAGS@@/${ffmpeg_args[*]}/" cmake/ffmpeg_configure.sh.cmake || die
 	fi
+	rm -f avidemux_core/ffmpeg_package/patches/libavcodec_mathops.h_binutils_241.patch || die
 }
 
 src_configure() {
