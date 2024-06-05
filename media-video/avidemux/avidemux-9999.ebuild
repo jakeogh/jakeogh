@@ -47,7 +47,7 @@ RDEPEND="
 
 PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,gui?]"
 
-S="${WORKDIR}/avidemux2-${PV}"
+S="${WORKDIR}/avidemux-${PV}"
 
 #src_unpack() {
 #	default
