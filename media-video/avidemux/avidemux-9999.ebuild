@@ -49,10 +49,10 @@ PDEPEND="~media-libs/avidemux-plugins-${PV}:${SLOT}[opengl?,gui?]"
 
 S="${WORKDIR}/avidemux2-${PV}"
 
-src_unpack() {
-	default
-	mv -f -T avidemux2_i18n-"${PV}" "${S}"/avidemux/qt4/i18n >/dev/null || die
-}
+#src_unpack() {
+#	default
+#	mv -f -T avidemux2_i18n-"${PV}" "${S}"/avidemux/qt4/i18n >/dev/null || die
+#}
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.7.4-qt-5.15.patch"
