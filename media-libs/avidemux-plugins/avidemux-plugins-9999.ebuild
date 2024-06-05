@@ -83,7 +83,7 @@ RDEPEND="
 	!<media-libs/avidemux-plugins-${PV}
 "
 
-S="${WORKDIR}/avidemux2-${PV}"
+S="${WORKDIR}/avidemux-${PV}"
 
 PATCHES=( "${FILESDIR}/${PN}-2.8.1-optional-pulse.patch" )
 
