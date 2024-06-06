@@ -116,6 +116,7 @@ DEPEND="${RDEPEND}
 	test? ( <dev-cpp/catch-3:0 )"
 BDEPEND="|| ( dev-lang/nasm dev-lang/yasm )
 	sys-devel/gettext
+	media-libs/allegro
 	virtual/pkgconfig"
 
 PATCHES=(
