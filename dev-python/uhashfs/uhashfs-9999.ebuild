@@ -33,6 +33,7 @@ RDEPEND="
 	dev-python/iritool[${PYTHON_USEDEP}]
 	dev-python/with-greendb[${PYTHON_USEDEP}]
 	dev-python/angryfiles[${PYTHON_USEDEP}]
+	dev-python/timestamptool[${PYTHON_USEDEP}]
 "
 
 python_install_all() {
