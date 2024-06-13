@@ -17,7 +17,7 @@ HOMEPAGE="
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="/home/sysskel/myapps/dsview https://github.com/DreamSourceLab/${GITHUB_PN}.git"
-	EGIT_BRANCH="dev-1.3.2"
+	#EGIT_BRANCH="dev-1.3.2"
 else
 	SRC_URI="https://github.com/DreamSourceLab/${GITHUB_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
