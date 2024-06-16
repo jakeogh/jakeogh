@@ -1,45 +1,49 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-inherit git-r3 savedconfig toolchain-funcs desktop xdg
+EAPI=8
 
-DESCRIPTION="a simple web browser based on WebKit/GTK+"
+inherit desktop savedconfig toolchain-funcs xdg
+
+DESCRIPTION="A simple web browser based on WebKit/GTK+"
 HOMEPAGE="https://surf.suckless.org/"
-EGIT_REPO_URI="https://git.suckless.org/surf"
-EGIT_BRANCH="surf-webkit2"
+
+if [[ ${PV} == "9999" ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.suckless.org/surf"
+	EGIT_BRANCH="surf-webkit2"
+else
+	SRC_URI="https://dl.suckless.org/${PN}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~riscv ~x86"
+fi
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE="firejail"
+IUSE="tabbed"
 
-COMMON_DEPEND="
-	firejail? (
-		sys-apps/firejail
-	)
-	app-crypt/gcr[gtk]
+DEPEND="
+	app-crypt/gcr:0=[gtk]
 	dev-libs/glib:2
-	net-libs/webkit-gtk:4
+	net-libs/webkit-gtk:4.1=
 	x11-libs/gtk+:3
 	x11-libs/libX11
 "
-DEPEND="
-	${COMMON_DEPEND}
-	virtual/pkgconfig
-"
-RDEPEND="
+RDEPEND="${DEPEND}
 	!sci-chemistry/surf
-	${COMMON_DEPEND}
 	!savedconfig? (
-		>=x11-misc/dmenu-4.7
 		net-misc/curl
 		x11-apps/xprop
+		x11-misc/dmenu
 		x11-terms/st
 	)
+	tabbed? ( x11-misc/tabbed )
 "
+BDEPEND="
+	virtual/pkgconfig
+"
+
 PATCHES=(
-	"${FILESDIR}"/${PN}-9999-gentoo.patch
+	"${FILESDIR}/${PN}-2.1-gentoo-webkit-4.1.patch"
 )
 
 pkg_setup() {
@@ -57,23 +61,31 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
 	restore_config config.h
+
 	tc-export CC PKG_CONFIG
 }
 
 src_install() {
 	default
+
+	if use tabbed; then
+		dobin surf-open.sh
+	fi
+
 	save_config config.h
-	newicon "${S}"/"${PN}".png "${PN}".png
+
+	newicon "${S}/${PN}.png" "${PN}.png"
 
 	local mime_types="text/html;text/xml;application/xhtml+xml;"
 	mime_types+="x-scheme-handler/http;x-scheme-handler/https;"
 	make_desktop_entry \
-		"surf" \
+		"surf %u" \
 		"Surf" \
 		"surf" \
 		"Network;WebBrowser" \
-		"MimeType=${mime_types}\nStartupWMClass=surf" || die
+		"MimeType=${mime_types}\nStartupWMClass=surf"
 }
 
 pkg_postinst() {
