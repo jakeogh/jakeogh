@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=(python3_{10..12})
 
 inherit git-r3
 inherit distutils-r1
@@ -40,11 +40,10 @@ RDEPEND="
 	dev-python/beartype[${PYTHON_USEDEP}]
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/walkup-until-found[${PYTHON_USEDEP}]
+	sys-apps/ripgrep
 	dev-util/splint
 	sys-apps/yarn
 "
 # sys-apps/yarn pulls in nodejs for CoC
-
-
 
 DEPEND="${RDEPEND}"
