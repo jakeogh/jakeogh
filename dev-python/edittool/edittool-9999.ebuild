@@ -41,6 +41,7 @@ RDEPEND="
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/walkup-until-found[${PYTHON_USEDEP}]
 	sys-apps/ripgrep
+	dev-lua/luarocks
 	dev-util/splint
 	sys-apps/yarn
 "
