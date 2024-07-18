@@ -1,21 +1,15 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-
 
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=(python3_{10..13})
 inherit bash-completion-r1 distutils-r1 git-r3 optfeature wrapper
 
 DESCRIPTION="youtube-dl fork with additional features and fixes"
 HOMEPAGE="https://github.com/yt-dlp/yt-dlp/"
-EGIT_REPO_URI="/home/sysskel/myapps/yt-dlp https://github.com/jakeogh/yt-dlp.git"
-#EGIT_BRANCH="youtube_comments_ab"
-
-#EGIT_BRANCH="minicurses_bell"
-#EGIT_BRANCH="continue_on_lock"
-#EGIT_COMMIT="acea8d7cfb60d9f9c33ed7662f72110531a54e6d"
+EGIT_REPO_URI="https://github.com/yt-dlp/yt-dlp.git"
 
 LICENSE="Unlicense"
 SLOT="0"
@@ -52,6 +46,8 @@ python_compile() {
 
 python_test() {
 	local EPYTEST_DESELECT=(
+		# fails with FEATURES=network-sandbox
+		test/test_networking.py::TestHTTPRequestHandler::test_connect_timeout
 		# fails with FEATURES=distcc, bug #915614
 		test/test_networking.py::TestYoutubeDLNetworking::test_proxy\[None-expected2\]
 	)
