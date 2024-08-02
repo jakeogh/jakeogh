@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=(python3_{10..12})
 
 inherit git-r3
 inherit distutils-r1
@@ -15,7 +15,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
-
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/devicetool[${PYTHON_USEDEP}]
@@ -24,6 +23,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/clicktool[${PYTHON_USEDEP}]
 	dev-python/devicelabeltool[${PYTHON_USEDEP}]
+	dev-python/bootool[${PYTHON_USEDEP}]
 	dev-embedded/u-boot-tools
 	sys-boot/grub
 "
