@@ -23,7 +23,7 @@ RDEPEND="
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/clicktool[${PYTHON_USEDEP}]
 	dev-python/devicelabeltool[${PYTHON_USEDEP}]
-	dev-python/bootool[${PYTHON_USEDEP}]
+	dev-python/compile-kernel[${PYTHON_USEDEP}]
 	dev-embedded/u-boot-tools
 	sys-boot/grub
 "
