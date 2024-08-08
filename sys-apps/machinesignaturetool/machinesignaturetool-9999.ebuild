@@ -5,7 +5,7 @@ EAPI=8
 
 inherit git-r3
 
-DESCRIPTION="Make a unique string based on the current hardware"
+DESCRIPTION="Make a unique string based on the current hardware."
 HOMEPAGE="https://github.com/jakeogh/machinesignaturetool"
 EGIT_REPO_URI="https://github.com/jakeogh/machinesignaturetool.git"
 
@@ -16,4 +16,3 @@ KEYWORDS=""
 src_install() {
 	dobin ${PN}
 }
-
