@@ -43,8 +43,9 @@ RDEPEND="
 	sys-apps/ripgrep
 	dev-lua/luarocks
 	dev-util/splint
-	sys-apps/yarn
 "
+
+#	sys-apps/yarn
 # sys-apps/yarn pulls in nodejs for CoC
 
 DEPEND="${RDEPEND}"
