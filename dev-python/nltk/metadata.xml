@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marcin.deranek@slonko.net</email>
+		<name>Marcin Deranek</name>
+	</maintainer>
+	<stabilize-allarches/>
+	<upstream>
+		<remote-id type="google-code">nltk</remote-id>
+		<remote-id type="pypi">nltk</remote-id>
+		<remote-id type="github">nltk/nltk</remote-id>
+	</upstream>
+</pkgmetadata>
