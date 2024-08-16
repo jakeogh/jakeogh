@@ -12,8 +12,8 @@ inherit distutils-r1
 #DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="drops messagepacked dicts with specified key/value pair value numeric range"
-HOMEPAGE="https://github.com/jakeogh/mpdictmatchdroprange"
-EGIT_REPO_URI="https://github.com/jakeogh/mpdictmatchdroprange.git"
+HOMEPAGE="https://github.com/jakeogh/mpdictkeydroprange"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictkeydroprange.git"
 
 LICENSE="BSD"
 SLOT="0"
