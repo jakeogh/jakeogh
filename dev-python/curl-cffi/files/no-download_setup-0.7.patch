@@ -1,0 +1,54 @@
+diff --git a/scripts/build.py b/scripts/build.py
+--- a/scripts/build.py
++++ b/scripts/build.py
+@@ -39,38 +39,17 @@
+             else:
+                 global tmpdir
+                 tmpdir = tempfile.TemporaryDirectory()
+                 arch["libdir"] = tmpdir.name
++            arch["link_type"] = "dynamic"
+             return arch
+     raise Exception(f"Unsupported arch: {uname}")
+ 
+ 
+ arch = detect_arch()
+ print(f"Using {arch['libdir']} to store libcurl-impersonate")
+ 
+ 
+-def download_libcurl():
+-    if (Path(arch["libdir"]) / arch["so_name"]).exists():
+-        print(".so files already downloaded.")
+-        return
+-
+-    file = "libcurl-impersonate.tar.gz"
+-    sysname = "linux-" + arch["libc"] if arch["system"] == "Linux" else arch["sysname"]
+-
+-    url = (
+-        f"https://github.com/yifeikong/curl-impersonate/releases/download/"
+-        f"v{__version__}/libcurl-impersonate-v{__version__}"
+-        f".{arch['so_arch']}-{sysname}.tar.gz"
+-    )
+-
+-    print(f"Downloading libcurl-impersonate-chrome from {url}...")
+-    urlretrieve(url, file)
+-
+-    print("Unpacking downloaded files...")
+-    os.makedirs(arch["libdir"], exist_ok=True)
+-    shutil.unpack_archive(file, arch["libdir"])
+-
+-
+ def get_curl_archives():
+     if arch["system"] == "Linux" and arch.get("link_type") == "static":
+         # note that the order of libraries matters
+         # https://stackoverflow.com/a/36581865
+@@ -102,9 +81,8 @@
+ 
+ ffibuilder = FFI()
+ system = platform.system()
+ root_dir = Path(__file__).parent.parent
+-download_libcurl()
+ 
+ 
+ ffibuilder.set_source(
+     "curl_cffi._wrapper",
+
