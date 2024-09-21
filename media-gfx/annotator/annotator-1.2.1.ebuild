@@ -1,5 +1,6 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+#
 # from https://github.com/inode64/inode64-overlay/blob/main/media-gfx/annotator/annotator-1.2.1.ebuild
 
 EAPI=8
