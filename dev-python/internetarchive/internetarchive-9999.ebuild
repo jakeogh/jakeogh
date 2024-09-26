@@ -23,6 +23,7 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/jsonpatch[${PYTHON_USEDEP}]
+	dev-python/schema[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
