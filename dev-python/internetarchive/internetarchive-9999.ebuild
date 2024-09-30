@@ -7,9 +7,6 @@ PYTHON_COMPAT=(python3_{10..12})
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="Python and Command-Line Interface to Archive.org"
 HOMEPAGE="https://github.com/jakeogh/internetarchive"
 EGIT_REPO_URI="/home/sysskel/myapps/internetarchive https://github.com/jakeogh/internetarchive.git"
