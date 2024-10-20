@@ -3,13 +3,11 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=(python3_{10..12})
 
 inherit git-r3
 
-
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="library for calculating amortizations and generating amortization schedules"
 HOMEPAGE="https://github.com/roniemartinez/amortization"
@@ -19,8 +17,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 #IUSE="test"
-
-
 
 #src_prepare() {
 #	default
