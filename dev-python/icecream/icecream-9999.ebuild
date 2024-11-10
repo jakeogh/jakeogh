@@ -1,30 +1,35 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
+DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..12} )
 
-inherit distutils-r1
 inherit git-r3
+inherit distutils-r1
 
-DESCRIPTION="(fork of) Sweet and creamy print debugging."
+#inherit xdg
+#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+
+DESCRIPTION="print() replacement for debugging"
 HOMEPAGE="https://github.com/gruns/icecream"
-EGIT_REPO_URI="https://github.com/jakeogh/icecream.git"
+EGIT_REPO_URI="https://github.com/gruns/icecream.git"
 
-LICENSE="MIT"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE=""
+#IUSE="test"
 
-DEPEND="
-	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/executing[${PYTHON_USEDEP}]
-	dev-python/asttokens[${PYTHON_USEDEP}]
+
+RDEPEND="
+	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/asserttool[${PYTHON_USEDEP}]
 "
 
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 
-python_install_all() {
-	distutils-r1_python_install_all
-}
+
+#src_prepare() {
+#	default
+#	xdg_src_prepare
+#}
