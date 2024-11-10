@@ -3,7 +3,7 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=(python3_{10..12})
 
 inherit git-r3
 inherit distutils-r1
@@ -18,18 +18,12 @@ EGIT_REPO_URI="https://github.com/gruns/icecream.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
-
-RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
+DEPEND="
+	dev-python/pygments[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
+	dev-python/executing[${PYTHON_USEDEP}]
+	dev-python/asttokens[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
