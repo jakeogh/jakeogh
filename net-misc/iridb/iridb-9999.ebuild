@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=(python3_{10..12})
 
 inherit distutils-r1
 inherit git-r3
@@ -62,6 +62,7 @@ RDEPEND="
 	dev-python/stringtool[${PYTHON_USEDEP}]
 	dev-python/zotify-wrapper[${PYTHON_USEDEP}]
 	dev-python/with-lmdb[${PYTHON_USEDEP}]
+	dev-python/iridb-list-tags-zset[${PYTHON_USEDEP}]
 	app-text/tree
 "
 
@@ -86,7 +87,7 @@ RDEPEND="
 #"
 
 python_install_all() {
-	local DOCS=( README.md )
+	local DOCS=(README.md)
 	mkdir /var/tmp/iridb
 	chmod o+w /var/tmp/iridb
 	distutils-r1_python_install_all
