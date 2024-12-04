@@ -3,7 +3,7 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit git-r3
 inherit distutils-r1
@@ -20,11 +20,10 @@ RDEPEND="
 	dev-python/librespot-python[${PYTHON_USEDEP}]
 	dev-python/ffmpy[${PYTHON_USEDEP}]
 	dev-python/music-tag[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	dev-python/protobuf[${PYTHON_USEDEP}]
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	dev-python/pwinput[${PYTHON_USEDEP}]
 	media-libs/mutagen[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
