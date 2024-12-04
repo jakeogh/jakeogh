@@ -16,6 +16,7 @@ SLOT="0"
 KEYWORDS=""
 
 RDEPEND="
+	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/urlextract[${PYTHON_USEDEP}]
 "
 
