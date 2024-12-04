@@ -3,11 +3,10 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit git-r3
 inherit distutils-r1
-
 
 DESCRIPTION="python wrapper for zotify"
 HOMEPAGE="https://github.com/jakeogh/zotify-wrapper"
@@ -17,7 +16,6 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 #IUSE="test"
-
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
