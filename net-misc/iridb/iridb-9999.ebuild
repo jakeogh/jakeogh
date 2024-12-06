@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit distutils-r1
 inherit git-r3
@@ -63,6 +63,7 @@ RDEPEND="
 	dev-python/zotify-wrapper[${PYTHON_USEDEP}]
 	dev-python/with-lmdb[${PYTHON_USEDEP}]
 	dev-python/iridb-list-tags-zset[${PYTHON_USEDEP}]
+	dev-python/numexpr[${PYTHON_USEDEP}]
 	app-text/tree
 "
 
