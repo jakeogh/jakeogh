@@ -37,7 +37,6 @@ BDEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.10-no-intersphinx-docs.patch"
 )
 
 distutils_enable_tests unittest
