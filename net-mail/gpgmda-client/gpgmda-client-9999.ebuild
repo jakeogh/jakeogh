@@ -1,8 +1,8 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
-PYTHON_COMPAT=( python3_{11..13} )
+EAPI=8
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit distutils-r1
 inherit git-r3
@@ -35,7 +35,7 @@ RDEPEND="
 # mock is missing dep for urwidtrees
 
 python_install_all() {
-local DOCS=( README.md )
+	local DOCS=(README.md)
 	dobin nottoomuch-addresses.sh
 	dobin gpgmda-client-make-alot-config.sh
 	dobin gpgmda-client-make-alot-theme.sh
