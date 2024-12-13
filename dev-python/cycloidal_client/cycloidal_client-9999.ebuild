@@ -31,5 +31,6 @@ RDEPEND="
 	dev-python/devicelabeltool[${PYTHON_USEDEP}]
 	dev-python/devicepartitiontool[${PYTHON_USEDEP}]
 	dev-python/schedule[${PYTHON_USEDEP}]
+	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 "
 #dev-python/PyQt6[${PYTHON_USEDEP}]
