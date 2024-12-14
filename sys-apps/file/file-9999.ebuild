@@ -57,13 +57,13 @@ BDEPEND+="
 # https://bugs.gentoo.org/898676
 QA_CONFIG_IMPL_DECL_SKIP=(makedev)
 
-#PATCHES=(
-#	"${FILESDIR}/file-5.43-seccomp-fstatat64-musl.patch" #789336, not upstream yet
-#	"${FILESDIR}/file-5.45-seccomp-sandbox.patch"
-#	"${FILESDIR}/${P}-32-bit-time_t.patch"
-#	"${FILESDIR}/${P}-32-bit-time_t-deux.patch"
-#	"${FILESDIR}/${P}-weak-magic-shell.patch" #908401
-#)
+PATCHES=(
+	"${FILESDIR}/file-5.43-seccomp-fstatat64-musl.patch" #789336, not upstream yet
+	"${FILESDIR}/file-5.45-seccomp-sandbox.patch"
+	"${FILESDIR}/${P}-32-bit-time_t.patch"
+	"${FILESDIR}/${P}-32-bit-time_t-deux.patch"
+	"${FILESDIR}/${P}-weak-magic-shell.patch" #908401
+)
 
 src_prepare() {
 	default
