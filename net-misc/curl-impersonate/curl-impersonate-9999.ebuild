@@ -24,17 +24,17 @@ BDEPEND=""
 
 S="${WORKDIR}"
 
-src_prepare() {
-	default
-}
-
-src_configure() {
-	:
-}
-
-src_compile() {
-	:
-}
+#src_prepare() {
+#	default
+#}
+#
+#src_configure() {
+#	:;
+#}
+#
+#src_compile() {
+#	:;
+#}
 
 src_install() {
 	insinto /usr/lib64
