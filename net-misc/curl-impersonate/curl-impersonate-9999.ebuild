@@ -46,6 +46,9 @@ src_configure() {
 src_compile() {
 	pwd
 	ls -al
+	ls -al ./"${P}"
+	cd ./"${P}"/build || die
+	pwd
 	make chrome-build || die
 }
 
