@@ -30,7 +30,9 @@ src_prepare() {
 }
 
 src_configure() {
-	mkdir build && cd build
+	cd "${P}" | die
+	mkdir build | die
+	cd build | die
 	pwd
 	ls -al
 	../configure || die
