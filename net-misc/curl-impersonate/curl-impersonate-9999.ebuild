@@ -31,7 +31,8 @@ src_prepare() {
 
 src_configure() {
 	mkdir build && cd build
-	../configure
+	ls -al
+	../configure || die
 }
 
 src_compile() {
