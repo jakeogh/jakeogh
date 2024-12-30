@@ -30,7 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
-	:
+	eautoreconf
 }
 
 src_compile() {
