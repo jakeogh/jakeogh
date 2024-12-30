@@ -36,8 +36,8 @@ src_configure() {
 	cd ./"${P}"
 	pwd
 	ls -al
-	mkdir build | die
-	cd build | die
+	mkdir build || die
+	cd build || die
 	pwd
 	ls -al
 	../configure || die
