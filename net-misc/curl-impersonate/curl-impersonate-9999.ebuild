@@ -31,6 +31,7 @@ src_prepare() {
 
 src_configure() {
 	pwd
+	ls -al
 	echo "${P}"
 	cd "${P}" | die
 	mkdir build | die
