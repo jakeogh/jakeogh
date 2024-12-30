@@ -8,7 +8,8 @@ inherit git-r3
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="https://curl.se/"
 #SRC_URI="https://github.com/lwthiker/curl-impersonate/releases/download/v${PV}/libcurl-impersonate-v${PV}.x86_64-linux-gnu.tar.gz -> ${P}-bin.tar.gz"
-EGIT_REPO_URI="https://github.com/lwthiker/curl-impersonate"
+#EGIT_REPO_URI="https://github.com/lwthiker/curl-impersonate"
+EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate" # newer
 
 LICENSE="MIT"
 SLOT="0"
