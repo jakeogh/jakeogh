@@ -27,26 +27,26 @@ S="${WORKDIR}"
 
 src_prepare() {
 	default
-	eautoreconf
 }
 
 src_configure() {
-	default
+	mkdir build && cd build
+	../configure
 }
 
-src_compile() {
-	default
-}
-
-src_install() {
-	insinto /usr/lib64
-	doins libcurl-impersonate-chrome.la
-	doins libcurl-impersonate-chrome.so
-	doins libcurl-impersonate-chrome.so.4
-	doins libcurl-impersonate-chrome.so.4.8.0
-	doins libcurl-impersonate-ff.a
-	doins libcurl-impersonate-ff.la
-	doins libcurl-impersonate-ff.so
-	doins libcurl-impersonate-ff.so.4
-	doins libcurl-impersonate-ff.so.4.8.0
-}
+#src_compile() {
+#	default
+#}
+#
+#src_install() {
+#	insinto /usr/lib64
+#	doins libcurl-impersonate-chrome.la
+#	doins libcurl-impersonate-chrome.so
+#	doins libcurl-impersonate-chrome.so.4
+#	doins libcurl-impersonate-chrome.so.4.8.0
+#	doins libcurl-impersonate-ff.a
+#	doins libcurl-impersonate-ff.la
+#	doins libcurl-impersonate-ff.so
+#	doins libcurl-impersonate-ff.so.4
+#	doins libcurl-impersonate-ff.so.4.8.0
+#}
