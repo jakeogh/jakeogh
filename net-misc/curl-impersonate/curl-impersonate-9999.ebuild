@@ -5,6 +5,7 @@ EAPI=8
 
 inherit git-r3
 inherit autotools
+inherit toolchain-funcs
 
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="https://curl.se/"
@@ -24,17 +25,17 @@ BDEPEND=""
 
 S="${WORKDIR}"
 
-#src_prepare() {
-#	default
-#}
-#
-#src_configure() {
-#	:;
-#}
-#
-#src_compile() {
-#	:;
-#}
+src_prepare() {
+	default
+}
+
+src_configure() {
+	:
+}
+
+src_compile() {
+	:
+}
 
 src_install() {
 	insinto /usr/lib64
