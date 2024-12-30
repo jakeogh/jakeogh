@@ -29,6 +29,7 @@ S="${WORKDIR}"
 src_prepare() {
 	sed -i '118 s/^/#/' curl-impersonate-9999/Makefile.in
 	sed -i '119 s/^/#/' curl-impersonate-9999/Makefile.in
+	cp /var/db/repos/gentoo/distfiles/brotli-1.1.0.tar.gz curl-impersonate-9999/build/
 	default
 }
 
