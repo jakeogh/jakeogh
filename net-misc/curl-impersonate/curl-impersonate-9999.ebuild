@@ -27,6 +27,8 @@ BDEPEND=""
 S="${WORKDIR}"
 
 src_prepare() {
+	sed -i '118 s/^/#/' curl-impersonate-9999/Makefile.in
+	sed -i '119 s/^/#/' curl-impersonate-9999/Makefile.in
 	default
 }
 
