@@ -4,6 +4,7 @@
 EAPI=8
 
 inherit git-r3
+inherit autotools
 
 DESCRIPTION="A Client that groks URLs"
 HOMEPAGE="https://curl.se/"
