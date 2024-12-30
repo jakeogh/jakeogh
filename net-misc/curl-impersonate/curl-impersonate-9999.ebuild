@@ -34,9 +34,10 @@ src_configure() {
 	../configure
 }
 
-#src_compile() {
-#	default
-#}
+src_compile() {
+	make chrome-build
+}
+
 #
 #src_install() {
 #	insinto /usr/lib64
