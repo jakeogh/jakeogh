@@ -44,10 +44,14 @@ src_configure() {
 }
 
 src_compile() {
+	pwd
+	ls -al
 	make chrome-build || die
 }
 
 src_install() {
+	pwd
+	ls -al
 	make chrome-install || die
 }
 
