@@ -33,7 +33,9 @@ src_configure() {
 	pwd
 	ls -al
 	echo "${P}"
-	cd "${P}" | die
+	cd ./"${P}"
+	pwd
+	ls -al
 	mkdir build | die
 	cd build | die
 	pwd
