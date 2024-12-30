@@ -30,6 +30,7 @@ src_prepare() {
 }
 
 src_configure() {
+	echo "${P}"
 	cd "${P}" | die
 	mkdir build | die
 	cd build | die
