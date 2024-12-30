@@ -38,8 +38,10 @@ src_compile() {
 	make chrome-build
 }
 
-#
-#src_install() {
+src_install() {
+	make chrome-install
+}
+
 #	insinto /usr/lib64
 #	doins libcurl-impersonate-chrome.la
 #	doins libcurl-impersonate-chrome.so
