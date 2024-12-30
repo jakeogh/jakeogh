@@ -12,7 +12,8 @@ HOMEPAGE="https://curl.se/"
 #SRC_URI="https://github.com/lwthiker/curl-impersonate/releases/download/v${PV}/libcurl-impersonate-v${PV}.x86_64-linux-gnu.tar.gz -> ${P}-bin.tar.gz"
 #EGIT_REPO_URI="https://github.com/lwthiker/curl-impersonate"
 EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate" # newer
-SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> brotli-1.1.0.tar.gz"
+SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> brotli-1.1.0.tar.gz
+		 https://github.com/google/boringssl/archive/cd95210465496ac2337b313cf49f607762abe286.zip -> boringssl-cd95210465496ac2337b313cf49f607762abe286.zip"
 
 LICENSE="MIT"
 SLOT="0"
@@ -43,6 +44,7 @@ src_configure() {
 	cd build || die
 	pwd
 	cp -v /var/db/repos/gentoo/distfiles/brotli-1.1.0.tar.gz .
+	cp -v /var/db/repos/gentoo/distfiles/boringssl-cd95210465496ac2337b313cf49f607762abe286.zip .
 	ls -al
 	../configure || die
 }
