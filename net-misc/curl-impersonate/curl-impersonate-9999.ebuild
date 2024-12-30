@@ -27,14 +27,15 @@ S="${WORKDIR}"
 
 src_prepare() {
 	default
-}
-
-src_configure() {
 	eautoreconf
 }
 
+src_configure() {
+	default
+}
+
 src_compile() {
-	:
+	default
 }
 
 src_install() {
