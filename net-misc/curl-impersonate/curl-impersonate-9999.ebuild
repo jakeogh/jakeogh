@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -12,6 +12,7 @@ HOMEPAGE="https://curl.se/"
 #SRC_URI="https://github.com/lwthiker/curl-impersonate/releases/download/v${PV}/libcurl-impersonate-v${PV}.x86_64-linux-gnu.tar.gz -> ${P}-bin.tar.gz"
 #EGIT_REPO_URI="https://github.com/lwthiker/curl-impersonate"
 EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate" # newer
+SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> brotli-1.1.0.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
