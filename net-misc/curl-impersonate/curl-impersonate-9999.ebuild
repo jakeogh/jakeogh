@@ -44,11 +44,11 @@ src_configure() {
 }
 
 src_compile() {
-	make chrome-build
+	make chrome-build || die
 }
 
 src_install() {
-	make chrome-install
+	make chrome-install || die
 }
 
 #	insinto /usr/lib64
