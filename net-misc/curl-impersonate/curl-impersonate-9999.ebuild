@@ -51,7 +51,7 @@ src_configure() {
 	cd build || die
 	pwd
 	cp -v /var/db/repos/gentoo/distfiles/brotli-1.1.0.tar.gz .
-	cp -v /var/db/repos/gentoo/distfiles/boringssl-dbd69aaf8ae7e003b0a5deb1fa996bc5f14740ad.zip .
+	cp -v /var/db/repos/gentoo/distfiles/boringssl-cd95210465496ac2337b313cf49f607762abe286.zip .
 	ls -al
 	../configure || die
 }
