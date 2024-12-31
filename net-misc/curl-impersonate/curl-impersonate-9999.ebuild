@@ -31,7 +31,6 @@ S="${WORKDIR}"
 src_prepare() {
 	# https://github.com/lexiforest/curl-impersonate/issues/81
 	sed -i -e 's/    unsigned ext_index;/    unsigned ext_index = 0;/g' curl-impersonate-9999/chrome/patches/boringssl.patch
-	#sed -i -e 's/add_libs="-pthread -lc++";/add_libs="-pthread";/g' curl-impersonate-9999/Makefile.in
 	sed -i -e 's/add_libs="-pthread -lc++";/add_libs="-pthread -lstdc++";/g' curl-impersonate-9999/Makefile.in
 	sed -i -e 's/LDFLAGS="-lc++"//g' curl-impersonate-9999/Makefile.in
 	default
@@ -54,19 +53,5 @@ src_compile() {
 }
 
 src_install() {
-	#pwd
-	ls -al
 	make chrome-install || die
 }
-
-#	insinto /usr/lib64
-#	doins libcurl-impersonate-chrome.la
-#	doins libcurl-impersonate-chrome.so
-#	doins libcurl-impersonate-chrome.so.4
-#	doins libcurl-impersonate-chrome.so.4.8.0
-#	doins libcurl-impersonate-ff.a
-#	doins libcurl-impersonate-ff.la
-#	doins libcurl-impersonate-ff.so
-#	doins libcurl-impersonate-ff.so.4
-#	doins libcurl-impersonate-ff.so.4.8.0
-#}
