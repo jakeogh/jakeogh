@@ -14,7 +14,8 @@ HOMEPAGE="https://curl.se/"
 EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate" # newer
 SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> brotli-1.1.0.tar.gz
 		 https://github.com/google/boringssl/archive/cd95210465496ac2337b313cf49f607762abe286.zip -> boringssl-cd95210465496ac2337b313cf49f607762abe286.zip
-		 https://github.com/nghttp2/nghttp2/releases/download/v1.63.0/nghttp2-1.63.0.tar.bz2 -> nghttp2-1.63.0.tar.bz2"
+		 https://github.com/nghttp2/nghttp2/releases/download/v1.63.0/nghttp2-1.63.0.tar.bz2 -> nghttp2-1.63.0.tar.bz2
+		 https://github.com/curl/curl/archive/curl-8_7_1.tar.gz -> curl-8_7_1.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -31,26 +32,27 @@ S="${WORKDIR}"
 src_prepare() {
 	sed -i '118 s/^/#/' curl-impersonate-9999/Makefile.in
 	sed -i '119 s/^/#/' curl-impersonate-9999/Makefile.in
-	sed -i '155 s/^/#/' curl-impersonate-9999/Makefile.in
-	sed -i '156 s/^/#/' curl-impersonate-9999/Makefile.in
+	#sed -i '155 s/^/#/' curl-impersonate-9999/Makefile.in
+	#sed -i '156 s/^/#/' curl-impersonate-9999/Makefile.in
 	sed -i -e 's/    unsigned ext_index;/    unsigned ext_index = 0;/g' curl-impersonate-9999/chrome/patches/boringssl.patch
 	default
 }
 
 src_configure() {
-	pwd
-	ls -al
-	echo "${P}"
+	#pwd
+	#ls -al
+	#echo "${P}"
 	cd ./"${P}"
-	pwd
-	ls -al
+	#pwd
+	#ls -al
 	mkdir build || die
 	cd build || die
-	pwd
+	#pwd
 	cp -v /var/db/repos/gentoo/distfiles/brotli-1.1.0.tar.gz .
 	cp -v /var/db/repos/gentoo/distfiles/boringssl-cd95210465496ac2337b313cf49f607762abe286.zip .
 	cp -v /var/db/repos/gentoo/distfiles/nghttp2-1.63.0.tar.bz2 .
-	ls -al
+	cp -v /var/db/repos/gentoo/distfiles/curl-8_7_1.tar.gz .
+	#ls -al
 	../configure || die
 }
 
