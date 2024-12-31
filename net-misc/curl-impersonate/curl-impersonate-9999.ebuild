@@ -30,8 +30,8 @@ BDEPEND=""
 S="${WORKDIR}"
 
 src_prepare() {
-	sed -i '118 s/^/#/' curl-impersonate-9999/Makefile.in
-	sed -i '119 s/^/#/' curl-impersonate-9999/Makefile.in
+	#sed -i '118 s/^/#/' curl-impersonate-9999/Makefile.in
+	#sed -i '119 s/^/#/' curl-impersonate-9999/Makefile.in
 	#sed -i '155 s/^/#/' curl-impersonate-9999/Makefile.in
 	#sed -i '156 s/^/#/' curl-impersonate-9999/Makefile.in
 	sed -i -e 's/    unsigned ext_index;/    unsigned ext_index = 0;/g' curl-impersonate-9999/chrome/patches/boringssl.patch
@@ -39,29 +39,22 @@ src_prepare() {
 }
 
 src_configure() {
-	#pwd
-	#ls -al
-	#echo "${P}"
 	cd ./"${P}"
-	#pwd
-	#ls -al
 	mkdir build || die
 	cd build || die
-	#pwd
 	cp -v /var/db/repos/gentoo/distfiles/brotli-1.1.0.tar.gz .
 	cp -v /var/db/repos/gentoo/distfiles/boringssl-cd95210465496ac2337b313cf49f607762abe286.zip .
 	cp -v /var/db/repos/gentoo/distfiles/nghttp2-1.63.0.tar.bz2 .
 	cp -v /var/db/repos/gentoo/distfiles/curl-8_7_1.tar.gz .
-	#ls -al
 	../configure || die
 }
 
 src_compile() {
-	pwd
-	ls -al
-	ls -al ./"${P}"
+	#pwd
+	#ls -al
+	#ls -al ./"${P}"
 	cd ./"${P}"/build || die
-	pwd
+	#pwd
 	make chrome-build || die
 }
 
