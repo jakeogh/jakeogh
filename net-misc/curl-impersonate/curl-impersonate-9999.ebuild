@@ -53,6 +53,6 @@ src_compile() {
 }
 
 src_install() {
-	pwd
+	cd ./"${P}"/build || die
 	make chrome-install || die
 }
