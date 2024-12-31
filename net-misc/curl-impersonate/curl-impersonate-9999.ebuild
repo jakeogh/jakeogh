@@ -7,9 +7,8 @@ inherit git-r3
 inherit autotools
 inherit toolchain-funcs
 
-DESCRIPTION="A Client that groks URLs"
-HOMEPAGE="https://curl.se/"
-#SRC_URI="https://github.com/lwthiker/curl-impersonate/releases/download/v${PV}/libcurl-impersonate-v${PV}.x86_64-linux-gnu.tar.gz -> ${P}-bin.tar.gz"
+DESCRIPTION="An active fork of curl-impersonate with more versions and build targets"
+HOMEPAGE="https://github.com/lwthiker/curl-impersonate"
 #EGIT_REPO_URI="https://github.com/lwthiker/curl-impersonate"
 EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate" # newer
 SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> brotli-1.1.0.tar.gz
@@ -30,10 +29,7 @@ BDEPEND=""
 S="${WORKDIR}"
 
 src_prepare() {
-	#sed -i '118 s/^/#/' curl-impersonate-9999/Makefile.in
-	#sed -i '119 s/^/#/' curl-impersonate-9999/Makefile.in
-	#sed -i '155 s/^/#/' curl-impersonate-9999/Makefile.in
-	#sed -i '156 s/^/#/' curl-impersonate-9999/Makefile.in
+	# https://github.com/lexiforest/curl-impersonate/issues/81
 	sed -i -e 's/    unsigned ext_index;/    unsigned ext_index = 0;/g' curl-impersonate-9999/chrome/patches/boringssl.patch
 	default
 }
@@ -50,16 +46,12 @@ src_configure() {
 }
 
 src_compile() {
-	#pwd
-	#ls -al
-	#ls -al ./"${P}"
 	cd ./"${P}"/build || die
-	#pwd
 	make chrome-build || die
 }
 
 src_install() {
-	pwd
+	#pwd
 	ls -al
 	make chrome-install || die
 }
