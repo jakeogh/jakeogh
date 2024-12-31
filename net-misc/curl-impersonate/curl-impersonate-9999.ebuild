@@ -35,7 +35,7 @@ src_prepare() {
 	sed -i '155 s/^/#/' curl-impersonate-9999/Makefile.in
 	sed -i '156 s/^/#/' curl-impersonate-9999/Makefile.in
 	sed -i '163 s/^/#/' curl-impersonate-9999/Makefile.in
-	rm curl-impersonate-9999/chrome/patches/boringssl.patch
+	#rm curl-impersonate-9999/chrome/patches/boringssl.patch
 	sed -i -e 's/cd95210465496ac2337b313cf49f607762abe286/dbd69aaf8ae7e003b0a5deb1fa996bc5f14740ad/g' curl-impersonate-9999/Makefile.in
 	sed -i -e 's/cd95210465496ac2337b313cf49f607762abe286/dbd69aaf8ae7e003b0a5deb1fa996bc5f14740ad/g' curl-impersonate-9999/win/build.sh
 	default
