@@ -32,7 +32,7 @@ src_prepare() {
 	# https://github.com/lexiforest/curl-impersonate/issues/81
 	sed -i -e 's/    unsigned ext_index;/    unsigned ext_index = 0;/g' curl-impersonate-9999/chrome/patches/boringssl.patch
 	#sed -i -e 's/add_libs="-pthread -lc++";/add_libs="-pthread";/g' curl-impersonate-9999/Makefile.in
-	sed -i -e 's/add_libs="-pthread -lstdc++";/add_libs="-pthread";/g' curl-impersonate-9999/Makefile.in
+	sed -i -e 's/add_libs="-pthread -lc++";/add_libs="-pthread -lstdc++";/g' curl-impersonate-9999/Makefile.in
 	sed -i -e 's/LDFLAGS="-lc++"//g' curl-impersonate-9999/Makefile.in
 	default
 }
