@@ -13,9 +13,7 @@ HOMEPAGE="https://curl.se/"
 #EGIT_REPO_URI="https://github.com/lwthiker/curl-impersonate"
 EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate" # newer
 SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> brotli-1.1.0.tar.gz
-         https://github.com/lexiforest/boringssl/archive/dbd69aaf8ae7e003b0a5deb1fa996bc5f14740ad.zip -> boringssl-dbd69aaf8ae7e003b0a5deb1fa996bc5f14740ad.zip"
-
-#https://github.com/google/boringssl/archive/cd95210465496ac2337b313cf49f607762abe286.zip -> boringssl-cd95210465496ac2337b313cf49f607762abe286.zip
+		 https://github.com/google/boringssl/archive/cd95210465496ac2337b313cf49f607762abe286.zip -> boringssl-cd95210465496ac2337b313cf49f607762abe286.zip"
 
 LICENSE="MIT"
 SLOT="0"
@@ -34,10 +32,11 @@ src_prepare() {
 	sed -i '119 s/^/#/' curl-impersonate-9999/Makefile.in
 	sed -i '155 s/^/#/' curl-impersonate-9999/Makefile.in
 	sed -i '156 s/^/#/' curl-impersonate-9999/Makefile.in
-	sed -i '163 s/^/#/' curl-impersonate-9999/Makefile.in
+	#sed -i '163 s/^/#/' curl-impersonate-9999/Makefile.in
 	#rm curl-impersonate-9999/chrome/patches/boringssl.patch
-	sed -i -e 's/cd95210465496ac2337b313cf49f607762abe286/dbd69aaf8ae7e003b0a5deb1fa996bc5f14740ad/g' curl-impersonate-9999/Makefile.in
-	sed -i -e 's/cd95210465496ac2337b313cf49f607762abe286/dbd69aaf8ae7e003b0a5deb1fa996bc5f14740ad/g' curl-impersonate-9999/win/build.sh
+	#sed -i -e 's/cd95210465496ac2337b313cf49f607762abe286/dbd69aaf8ae7e003b0a5deb1fa996bc5f14740ad/g' curl-impersonate-9999/Makefile.in
+	#sed -i -e 's/cd95210465496ac2337b313cf49f607762abe286/dbd69aaf8ae7e003b0a5deb1fa996bc5f14740ad/g' curl-impersonate-9999/win/build.sh
+	sed -i -e 's/    unsigned ext_index;/    unsigned ext_index = 0;/g' curl-impersonate-9999/chrome/patches/boringssl.patch
 	default
 }
 
