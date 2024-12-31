@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,7 +13,7 @@ HOMEPAGE="https://curl.se/"
 #EGIT_REPO_URI="https://github.com/lwthiker/curl-impersonate"
 EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate" # newer
 SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> brotli-1.1.0.tar.gz
-		 https://github.com/google/boringssl/releases/download/0.20241209.0/boringssl-0.20241209.0.tar.gz -> boringssl-cd95210465496ac2337b313cf49f607762abe286.tar.gz"
+		 https://github.com/google/boringssl/archive/refs/tags/0.20241209.0.zip -> boringssl-cd95210465496ac2337b313cf49f607762abe286.zip"
 
 #https://github.com/google/boringssl/archive/cd95210465496ac2337b313cf49f607762abe286.zip -> boringssl-cd95210465496ac2337b313cf49f607762abe286.zip
 
