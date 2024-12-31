@@ -53,6 +53,11 @@ src_compile() {
 }
 
 src_install() {
-	cd ./"${P}"/build || die
-	make chrome-install || die
+	#make chrome-install
+	cd ./"${P}"/build/curl-8_7_1/lib/.libs || die
+	insinto /usr/lib64
+	doins libcurl-impersonate-chrome.la
+	doins libcurl-impersonate-chrome.so
+	doins libcurl-impersonate-chrome.so.4
+	doins libcurl-impersonate-chrome.so.4.8.0
 }
