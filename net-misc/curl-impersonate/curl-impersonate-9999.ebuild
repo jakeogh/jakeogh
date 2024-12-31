@@ -9,7 +9,6 @@ inherit toolchain-funcs
 
 DESCRIPTION="An active fork of curl-impersonate with more versions and build targets"
 HOMEPAGE="https://github.com/lwthiker/curl-impersonate"
-#EGIT_REPO_URI="https://github.com/lwthiker/curl-impersonate"
 EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate" # newer
 SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> brotli-1.1.0.tar.gz
 		 https://github.com/google/boringssl/archive/cd95210465496ac2337b313cf49f607762abe286.zip -> boringssl-cd95210465496ac2337b313cf49f607762abe286.zip
@@ -44,8 +43,7 @@ src_configure() {
 	cp -v /var/db/repos/gentoo/distfiles/boringssl-cd95210465496ac2337b313cf49f607762abe286.zip .
 	cp -v /var/db/repos/gentoo/distfiles/nghttp2-1.63.0.tar.bz2 .
 	cp -v /var/db/repos/gentoo/distfiles/curl-8_7_1.tar.gz .
-	default
-	#../configure || die
+	../configure || die
 }
 
 src_compile() {
