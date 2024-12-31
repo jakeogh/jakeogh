@@ -77,5 +77,7 @@ src_install() {
 	doins libcurl-impersonate-chrome.so
 	doins libcurl-impersonate-chrome.so.4
 	doins libcurl-impersonate-chrome.so.4.8.0
+
+	cd "${S}"/"${P}"/build/curl-8_7_1/src/.libs || die
 	dobin curl-impersonate-chrome
 }
