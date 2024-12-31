@@ -55,20 +55,21 @@ src_compile() {
 src_install() {
 	#make chrome-install
 	cd "${S}"/"${P}"/chrome || die
-	dobin curl_chrome119
-	dobin curl_chrome123
-	dobin curl_chrome124
-	dobin curl_chrome104
-	dobin curl_chrome101
-	dobin curl_chrome131_android
-	dobin curl_chrome110
-	dobin curl_chrome100
-	dobin curl_chrome120
-	dobin curl_chrome107
-	dobin curl_chrome131
-	dobin curl_chrome99_android
-	dobin curl_chrome99
-	dobin curl_chrome116
+	dobin curl_chrome*
+	#dobin curl_chrome119
+	#dobin curl_chrome123
+	#dobin curl_chrome124
+	#dobin curl_chrome104
+	#dobin curl_chrome101
+	#dobin curl_chrome131_android
+	#dobin curl_chrome110
+	#dobin curl_chrome100
+	#dobin curl_chrome120
+	#dobin curl_chrome107
+	#dobin curl_chrome131
+	#dobin curl_chrome99_android
+	#dobin curl_chrome99
+	#dobin curl_chrome116
 
 	cd "${S}"/"${P}"/build/curl-8_7_1/lib/.libs || die
 	insinto /usr/lib64
