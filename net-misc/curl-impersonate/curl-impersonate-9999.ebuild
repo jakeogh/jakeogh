@@ -53,5 +53,6 @@ src_compile() {
 }
 
 src_install() {
+	pwd
 	make chrome-install || die
 }
