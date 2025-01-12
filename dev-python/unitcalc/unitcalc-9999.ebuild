@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit distutils-r1
 inherit git-r3
@@ -19,7 +19,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/pint[${PYTHON_USEDEP}]
-	dev-python/Levenshtein[${PYTHON_USEDEP}]
+	dev-python/levenshtein[${PYTHON_USEDEP}]
 	dev-python/mptool[${PYTHON_USEDEP}]
 	dev-python/number-parser[${PYTHON_USEDEP}]
 	dev-python/unittool[${PYTHON_USEDEP}]
