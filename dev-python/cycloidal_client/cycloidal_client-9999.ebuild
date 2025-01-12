@@ -24,7 +24,6 @@ RDEPEND="
 	dev-python/rich[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/gpibtool[${PYTHON_USEDEP}]
-	dev-python/pymeasure[${PYTHON_USEDEP}]
 	net-analyzer/scapy[${PYTHON_USEDEP}]
 	dev-python/wxpython:*[${PYTHON_USEDEP}]
 	dev-python/devicefilesystemtool[${PYTHON_USEDEP}]
@@ -34,3 +33,4 @@ RDEPEND="
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 "
 #dev-python/PyQt6[${PYTHON_USEDEP}]
+#dev-python/pymeasure[${PYTHON_USEDEP}]
