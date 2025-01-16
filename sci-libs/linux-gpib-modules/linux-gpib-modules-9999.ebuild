@@ -48,12 +48,14 @@ src_configure() {
 }
 
 src_compile() {
+	cd linux-gpib-kernel/
 	# The individual modules don't have separate targets so we can't use
 	# modlist here.
 	emake "${MODULES_MAKEARGS[@]}"
 }
 
 src_install() {
+	cd linux-gpib-kernel/
 	emake \
 		"${MODULES_MAKEARGS[@]}" \
 		DESTDIR="${ED}" \
