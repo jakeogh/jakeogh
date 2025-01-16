@@ -35,6 +35,8 @@ PATCHES=(
 MODULES_KERNEL_MIN=2.6.8
 
 src_configure() {
+	pwd
+	echo "${FILESDIR}"
 	MODULES_MAKEARGS+=(LINUX_SRCDIR="${KV_OUT_DIR}")
 	use debug && MODULES_MAKEARGS+=('GPIB-DEBUG=1')
 }
