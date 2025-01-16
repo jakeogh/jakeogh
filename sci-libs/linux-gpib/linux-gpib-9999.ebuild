@@ -116,7 +116,8 @@ src_install() {
 	echo "KERNEL==\"gpib[0-9]*\",	MODE=\"0660\", GROUP=\"gpib\"" >>99-gpib.rules || die
 	udev_dorules 99-gpib.rules
 
-	dodoc doc/linux-gpib.pdf ChangeLog AUTHORS README* NEWS
+	#dodoc doc/linux-gpib.pdf ChangeLog AUTHORS README* NEWS
+	dodoc ChangeLog AUTHORS README* NEWS
 
 	insinto /etc
 	newins util/templates/gpib.conf gpib.conf
