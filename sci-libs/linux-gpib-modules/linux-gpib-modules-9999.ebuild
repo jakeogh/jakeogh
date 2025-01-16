@@ -65,7 +65,6 @@ src_install() {
 
 	modules_post_process
 
-	cd ..
-	dodoc ChangeLog AUTHORS README* NEWS
+	dodoc ../ChangeLog AUTHORS README* NEWS
 	einstalldocs
 }
