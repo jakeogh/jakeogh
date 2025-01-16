@@ -16,10 +16,10 @@ HOMEPAGE="https://linux-gpib.sourceforge.io/"
 SRC_URI="
 	firmware? ( https://linux-gpib.sourceforge.io/firmware/gpib_firmware-${FW_PV}.tar.gz )
 "
-S="${WORKDIR}/${PN}-user-${PV}"
+S="${WORKDIR}/${PN}-user-${PV}/linux-gpib-user"
 
 EGIT_REPO_URI="https://git.code.sf.net/p/linux-gpib/git"
-EGIT_CHECKOUT_DIR="${S}"
+EGIT_CHECKOUT_DIR="${WORKDIR}/${PN}-user-${PV}"
 
 LICENSE="GPL-2"
 SLOT="0"
