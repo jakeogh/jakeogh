@@ -34,11 +34,6 @@ PATCHES=(
 
 MODULES_KERNEL_MIN=2.6.8
 
-#src_unpack() {
-#	default
-#	unpack "${WORKDIR}/linux-gpib-${PV}/linux-gpib-kernel-${PV}.tar.gz"
-#}
-
 src_configure() {
 	MODULES_MAKEARGS+=(LINUX_SRCDIR="${KV_OUT_DIR}")
 	use debug && MODULES_MAKEARGS+=('GPIB-DEBUG=1')
