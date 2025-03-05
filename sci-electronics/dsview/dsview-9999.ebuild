@@ -1,10 +1,10 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 GITHUB_PN="DSView"
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit cmake python-r1 udev xdg
 
@@ -14,7 +14,7 @@ HOMEPAGE="
 	https://github.com/DreamSourceLab/DSView
 "
 
-if [[ ${PV} == "9999" ]] ; then
+if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="/home/sysskel/myapps/dsview https://github.com/DreamSourceLab/${GITHUB_PN}.git"
 	#EGIT_BRANCH="dev-1.3.2"
@@ -23,7 +23,6 @@ else
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${GITHUB_PN}-${PV}"
 fi
-
 
 LICENSE="GPL-3"
 SLOT="0"
