@@ -33,5 +33,4 @@ RDEPEND="
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	dev-python/pymodbus[${PYTHON_USEDEP}]
 "
-#dev-python/PyQt6[${PYTHON_USEDEP}]
 #dev-python/pymeasure[${PYTHON_USEDEP}]
