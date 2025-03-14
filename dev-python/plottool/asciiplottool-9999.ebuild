@@ -11,8 +11,8 @@ inherit distutils-r1
 #DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="common plotting functions"
-HOMEPAGE="https://github.com/jakeogh/plottool"
-EGIT_REPO_URI="https://github.com/jakeogh/plottool.git"
+HOMEPAGE="https://github.com/jakeogh/asciiplottool"
+EGIT_REPO_URI="https://github.com/jakeogh/asciiplottool.git"
 
 LICENSE="BSD"
 SLOT="0"
