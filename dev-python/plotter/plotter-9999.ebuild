@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit git-r3
 inherit distutils-r1
@@ -17,15 +17,13 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
-
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
+	dev-python/pyqtgraph[${PYTHON_USEDEP}]
 	dev-python/colorama[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
 
 #src_prepare() {
 #	default
