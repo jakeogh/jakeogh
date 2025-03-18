@@ -9,7 +9,7 @@ inherit git-r3
 inherit distutils-r1
 
 #inherit xdg
-DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="library for data extraction, analysis, conversion & manipulation of documents"
 HOMEPAGE="https://github.com/pymupdf/PyMuPDF"
