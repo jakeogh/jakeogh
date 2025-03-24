@@ -18,7 +18,7 @@ SLOT="0"
 
 RDEPEND="
 	>=dev-python/requests-2.20[${PYTHON_USEDEP}]
-	<dev-python/pyrate-limiter-3.0[${PYTHON_USEDEP}]
+	dev-python/pyrate-limiter[${PYTHON_USEDEP}]
 "
 BDEPEND="
 	${RDEPEND}
