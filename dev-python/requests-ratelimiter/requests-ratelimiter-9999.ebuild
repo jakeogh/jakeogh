@@ -7,7 +7,7 @@ PYTHON_COMPAT=(python3_{10..12})
 
 inherit git-r3
 
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Easy rate-limiting for python requests"
 HOMEPAGE="https://github.com/JWCook/requests-ratelimiter"
