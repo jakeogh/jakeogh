@@ -11,7 +11,7 @@ PYTHON_COMPAT=(python{3_10,3_11,3_12})
 #DISTUTILS_USE_PEP517=standalone
 DISTUTILS_USE_PEP517=hatchling
 
-inherit python-r1 git-r3
+inherit distutils-r1 python-r1 git-r3
 
 DESCRIPTION="Navigate Edgar filings with ease"
 
