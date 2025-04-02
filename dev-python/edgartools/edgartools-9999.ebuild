@@ -9,7 +9,7 @@ EAPI=8
 #DIGEST_SOURCES="yes"
 PYTHON_COMPAT=(python{3_10,3_11,3_12})
 #DISTUTILS_USE_PEP517=standalone
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=hatchling
 
 inherit python-r1 git-r3
 
