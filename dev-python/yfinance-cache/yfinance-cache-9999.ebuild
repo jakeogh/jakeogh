@@ -14,3 +14,7 @@ EGIT_REPO_URI="https://github.com/ValueRaider/yfinance-cache.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
+
+RDEPEND="
+        dev-python/PuLP[${PYTHON_USEDEP}]
+"
