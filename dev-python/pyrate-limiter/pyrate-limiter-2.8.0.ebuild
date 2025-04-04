@@ -14,8 +14,6 @@ DESCRIPTION="Python Rate-Limiter using Leaky-Bucket Algorithm"
 HOMEPAGE="https://github.com/vutran1710/PyrateLimiter"
 LICENSE="MIT"
 SRC_URI="https://github.com/vutran1710/PyrateLimiter/archive/refs/tags/v2.8.0.tar.gz"
-#SRC_URI="https://files.pythonhosted.org/packages/source/${REALNAME::1}/${REALNAME}/${REALNAME//-/_}-${REALVERSION}.tar.gz"
-#SOURCEFILE="${REALNAME//-/_}-${REALVERSION}.tar.gz"
 RESTRICT="test"
 
 SLOT="0"
@@ -33,3 +31,5 @@ DEPENDENCIES="all? ( >=dev-python/filelock-3.0[${PYTHON_USEDEP}] )
 	docs? ( <dev-python/sphinxcontrib-apidoc-0.4[${PYTHON_USEDEP}] )"
 BDEPEND="${DEPENDENCIES}"
 RDEPEND="${DEPENDENCIES}"
+
+echo "${WORKDIR}"
