@@ -1,14 +1,10 @@
 EAPI=8
 
-REALNAME="${PN}"
-LITERALNAME="${PN}"
-REALVERSION="${PV}"
 S="${WORKDIR}/PyrateLimiter-${PV}"
-DIGEST_SOURCES="yes"
 PYTHON_COMPAT=(python{3_10,3_11,3_12})
 DISTUTILS_USE_PEP517=poetry
 
-inherit python-r1
+inherit distutils-r1
 
 DESCRIPTION="Python Rate-Limiter using Leaky-Bucket Algorithm"
 
@@ -32,6 +28,3 @@ DEPENDENCIES="all? ( >=dev-python/filelock-3.0[${PYTHON_USEDEP}] )
 	docs? ( <dev-python/sphinxcontrib-apidoc-0.4[${PYTHON_USEDEP}] )"
 BDEPEND="${DEPENDENCIES}"
 RDEPEND="${DEPENDENCIES}"
-
-echo "${WORKDIR}"
-echo "${S}"
