@@ -18,4 +18,5 @@ RDEPEND=""
 DEPEND="${RDEPEND}"
 
 KEYWORDS="~amd64 ~x86"
+
 EGIT_REPO_URI="https://github.com/JoffreyN/PyExecJS.git"
