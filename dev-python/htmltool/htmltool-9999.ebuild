@@ -2,11 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit git-r3
 inherit distutils-r1
-
 
 DESCRIPTION="common functions for generating html"
 HOMEPAGE="https://github.com/jakeogh/htmltool"
@@ -17,13 +16,12 @@ SLOT="0"
 KEYWORDS=""
 #IUSE="test"
 
-
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
+	dev-python/flask[${PYTHON_USEDEP}]
 	dev-python/flask-table[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
