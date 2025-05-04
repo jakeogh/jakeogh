@@ -3,7 +3,7 @@
 
 EAPI=8
 #DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=(python3_{11..13})
 
 inherit git-r3
 inherit distutils-r1
@@ -13,7 +13,8 @@ inherit distutils-r1
 
 DESCRIPTION="Sweet and creamy print debugging"
 HOMEPAGE="https://github.com/gruns/icecream"
-EGIT_REPO_URI="https://github.com/gruns/icecream.git"
+#EGIT_REPO_URI="https://github.com/gruns/icecream.git"
+EGIT_REPO_URI="https://github.com/jakeogh/icecream.git"
 
 LICENSE="BSD"
 SLOT="0"
