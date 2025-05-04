@@ -21,13 +21,12 @@ SLOT="0"
 KEYWORDS=""
 RESTRICT="test" # Test phase runs with fails
 
-DEPEND="
-	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/executing[${PYTHON_USEDEP}]
-	dev-python/asttokens[${PYTHON_USEDEP}]
+RDEPEND="
+    dev-python/pygments[${PYTHON_USEDEP}]
+    dev-python/colorama[${PYTHON_USEDEP}]
+    dev-python/executing[${PYTHON_USEDEP}]
+    dev-python/asttokens[${PYTHON_USEDEP}]
 "
-
 DEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
