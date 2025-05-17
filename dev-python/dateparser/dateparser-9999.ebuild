@@ -13,7 +13,7 @@ EGIT_REPO_URI="/home/sysskel/myapps/dateparser https://github.com/scrapinghub/da
 
 LICENSE=""
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 
 DEPEND="
 	dev-python/ruamel-yaml
