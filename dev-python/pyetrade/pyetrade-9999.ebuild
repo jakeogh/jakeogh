@@ -23,6 +23,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/xmltodict[${PYTHON_USEDEP}]
+	dev-python/jxmlease[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
