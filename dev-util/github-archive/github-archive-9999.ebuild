@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python3_{11..13} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
 #DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="clone, pull, or fork user and org repos and gists to create a GitHub archive"
