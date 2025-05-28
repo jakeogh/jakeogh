@@ -45,13 +45,7 @@ BDEPEND="
 	)
 "
 
-PATCHES=(
-	# https://github.com/psf/requests/pull/6897
-	"${WORKDIR}/${PN}-2.32.3-patches/${PN}-2.32.3-tests.patch"
-	"${WORKDIR}/${PN}-2.32.3-patches/${PN}-2.32.3-tests-regenerate.patch"
-	# https://github.com/psf/requests/pull/6924
-	"${WORKDIR}/${PN}-2.32.3-patches/${PN}-2.32.3-tests-more.patch"
-)
+PATCHES=()
 
 distutils_enable_tests pytest
 
