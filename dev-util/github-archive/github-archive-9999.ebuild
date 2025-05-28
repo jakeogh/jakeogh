@@ -22,7 +22,7 @@ KEYWORDS=""
 
 
 RDEPEND="
-	dev-python/PyGithub[${PYTHON_USEDEP}]
+	dev-python/pygithub[${PYTHON_USEDEP}]
 	dev-python/woodchips[${PYTHON_USEDEP}]
 "
 
