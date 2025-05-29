@@ -26,7 +26,7 @@ SLOT="0"
 #   Streamlit GitHub repository at:
 #       https://github.com/streamlit/streamlit/tree/develop/lib
 RDEPEND="
-	dev-python/GitPython[${PYTHON_USEDEP}]
+	dev-python/gitpython[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	dev-python/semver[${PYTHON_USEDEP}]
