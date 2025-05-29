@@ -25,6 +25,7 @@ SLOT="0"
 # * Streamlit itself is housed under the "lib/" subdirectory of the official
 #   Streamlit GitHub repository at:
 #       https://github.com/streamlit/streamlit/tree/develop/lib
+	#>=dev-python/protobuf-python-3.12[${PYTHON_USEDEP}]
 RDEPEND="
 	dev-python/gitpython[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
@@ -41,7 +42,6 @@ RDEPEND="
 	>=dev-python/pandas-0.21.0[${PYTHON_USEDEP}]
 	>=dev-python/pillow-6.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pydeck-0.1.0[${PYTHON_USEDEP}]
-	>=dev-python/protobuf-python-3.12[${PYTHON_USEDEP}]
 	>=dev-python/pyarrow-4.0[${PYTHON_USEDEP}]
 	>=dev-python/pympler-0.9[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.4[${PYTHON_USEDEP}]
