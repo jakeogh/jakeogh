@@ -44,7 +44,7 @@ BDEPEND="
 RDEPEND="
 	>=dev-python/ipykernel-5.1.2[${PYTHON_USEDEP}]
 	>=dev-python/ipywidgets-7.0.0[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.10.1[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	>=dev-python/numpy-1.16.4[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.3.2[${PYTHON_USEDEP}]
 "
