@@ -34,7 +34,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 #
 # Note that Jinja2 appears to be required at build time, oddly. *shrug*
 BDEPEND="
-	>=dev-python/jinja-2.10.1[${PYTHON_USEDEP}]
+	dev-python/jinja2[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
