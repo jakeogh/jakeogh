@@ -4,7 +4,8 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{8..12} )
-DISTUTILS_USE_PEP517=poetry
+#DISTUTILS_USE_PEP517=poetry
+DISTUTILS_USE_PEP517=hatchling
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Ollama Python library for integrating Python projects with Ollama"
