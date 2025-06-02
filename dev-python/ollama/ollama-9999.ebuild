@@ -8,12 +8,10 @@ PYTHON_COMPAT=( python3_{10..12} )
 inherit git-r3
 
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="Ollama Python library"
 HOMEPAGE="https://github.com/ollama/ollama-python"
 EGIT_REPO_URI="https://github.com/ollama/ollama-python.git"
+PN="ollama"
 
 LICENSE="BSD"
 SLOT="0"
