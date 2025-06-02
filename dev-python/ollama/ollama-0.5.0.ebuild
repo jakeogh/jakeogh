@@ -11,6 +11,7 @@ PYTHON_COMPAT=( python{3_10,3_11,3_12} )
 DISTUTILS_USE_PEP517=standalone
 
 inherit python-r1
+inherit distutils-r1
 
 DESCRIPTION="The official Python client for Ollama."
 
