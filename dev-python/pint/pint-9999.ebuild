@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{11..13} )
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=hatchling
 
 inherit distutils-r1
 inherit git-r3
