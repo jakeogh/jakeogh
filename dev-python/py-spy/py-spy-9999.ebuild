@@ -3,6 +3,7 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{11..13} )
+DISTUTILS_USE_PEP517=setuptools
 
 #CRATES="
 #addr2line-0.11.0

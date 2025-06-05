@@ -3,6 +3,7 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{11..13} )
+DISTUTILS_USE_PEP517=setuptools
 
 inherit python-single-r1 git-r3
 #inherit fdo-mime python-single-r1 git-r3
