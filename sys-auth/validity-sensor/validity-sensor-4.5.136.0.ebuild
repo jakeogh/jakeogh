@@ -1,7 +1,7 @@
 # Copyright 2016,2018-2019 Jan Chren (rindeal)
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 inherit rindeal
 
 ## functions: rpm_unpack

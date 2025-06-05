@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 #GITHUB_USER="tmbinc"
 #GITHUB_HASH="49b098be9548d174023ad05c10f6af9d02b8e18e"

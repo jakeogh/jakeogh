@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # https://raw.githubusercontent.com/Jannis234/jm-overlay/master/sci-libs/comedilib/comedilib-0.10.2-r1.ebuild
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 

@@ -1,7 +1,7 @@
 # Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # from https://ict.fit.cvut.cz/gitlab/gentoo/overlay/blob/e1e9cc15a7eb136f7757c4804561c3781bcc94f6/sci-misc/gephi/gephi-0.9.2.ebuild
 

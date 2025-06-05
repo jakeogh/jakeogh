@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 # from https://gpo.zugaina.org/Overlays/4nykey/dev-python/cattrs
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 inherit distutils-r1

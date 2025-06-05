@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # from https://raw.githubusercontent.com/Jannis234/jm-overlay/master/sci-misc/comedi_calibrate/comedi_calibrate-3-r2.ebuild
 
-EAPI=7
+EAPI=8
 
 inherit git-r3
 

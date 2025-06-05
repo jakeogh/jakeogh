@@ -3,7 +3,7 @@
 
 # shellcheck disable=SC2034
 
-EAPI=7
+EAPI=8
 
 inherit autotools
 

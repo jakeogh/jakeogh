@@ -1,7 +1,7 @@
 # Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 # https://github.com/nE0sIghT/vortex-overlay/blob/master/dev-util/lineageos-devel-meta/lineageos-devel-meta-14.1-r1.ebuild
 DESCRIPTION="Meta package providing LineageOS build environment"

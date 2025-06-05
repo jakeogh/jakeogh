@@ -3,7 +3,7 @@
 
 # from https://raw.githubusercontent.com/soltysek/soltys-overlay/master/dev-python/r2pipe/r2pipe-9999.ebuild
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{11..13} )
 
