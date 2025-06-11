@@ -3,10 +3,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{10..12} )
-DISTUTILS_USE_PEP517=setuptools
-
-inherit cmake git-r3 distutils-r1
+inherit cmake git-r3
 
 DESCRIPTION="Tensor library for machine learning, optimized for edge AI inference"
 HOMEPAGE="https://github.com/ggml-org/ggml"
@@ -23,31 +20,28 @@ DEPEND="
 	opencl? ( virtual/opencl )
 	sycl? ( dev-libs/intel-oneapi-dpcpp )
 	hip? ( dev-util/hip )
-	${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_USEDEP}]
-	')
 "
 
-src_prepare() {
-	cmake_src_prepare
-	distutils-r1_src_prepare
-}
-
 src_configure() {
+	local mycmakeargs=(
+		-DGGML_BLAS=$(usex blas ON OFF)
+		-DGGML_CUDA=$(usex cuda ON OFF)
+		-DGGML_OPENCL=$(usex opencl ON OFF)
+		-DGGML_SYCL=$(usex sycl ON OFF)
+		-DGGML_HIP=$(usex hip ON OFF)
+	)
+
 	if use blas; then
 		if ! pkg-config --libs openblas; then
 			die "BLAS enabled but openblas not found. Please install sci-libs/openblas."
 		fi
-		# Explicitly set BLAS flags
 		local blas_cflags=$(pkg-config --cflags openblas)
 		local blas_libs=$(pkg-config --libs openblas)
-		local mycmakeargs=(
-			-DGGML_BLAS=ON
+		mycmakeargs+=(
 			-DGGML_BLAS_VENDOR=OpenBLAS
 			-DCMAKE_C_FLAGS="${CFLAGS} ${blas_cflags}"
 			-DCMAKE_CXX_FLAGS="${CXXFLAGS} ${blas_cflags}"
@@ -55,31 +49,15 @@ src_configure() {
 			-DBLAS_INCLUDE_DIRS="$(pkg-config --variable=includedir openblas)"
 			-DBLAS_LIBRARIES="${blas_libs}"
 		)
-		# Debug BLAS detection
 		einfo "BLAS CFLAGS: ${blas_cflags}"
 		einfo "BLAS LIBS: ${blas_libs}"
-	else
-		local mycmakeargs=(
-			-DGGML_BLAS=OFF
-		)
 	fi
 
-	mycmakeargs+=(
-		-DGGML_CUDA=$(usex cuda ON OFF)
-		-DGGML_OPENCL=$(usex opencl ON OFF)
-		-DGGML_SYCL=$(usex sycl ON OFF)
-		-DGGML_HIP=$(usex hip ON OFF)
-	)
 	cmake_src_configure
-}
-
-src_compile() {
-	cmake_src_compile
-	distutils-r1_src_compile
 }
 
 src_install() {
 	cmake_src_install
-	distutils-r1_src_install
 	dodoc README.md
 }
+
