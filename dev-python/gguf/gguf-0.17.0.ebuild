@@ -26,7 +26,7 @@ IUSE="gui"
 DEPENDENCIES="gui? ( dev-python/pyside6[${PYTHON_USEDEP}] )
 	>=dev-python/numpy-1.17[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
-	dev-python/sentencepiece[${PYTHON_USEDEP}]
+	sci-ml/sentencepiece[${PYTHON_USEDEP}]
 	>=dev-python/tqdm-4.27[${PYTHON_USEDEP}]"
 BDEPEND="${DEPENDENCIES}"
 RDEPEND="${DEPENDENCIES}"
