@@ -18,7 +18,7 @@ KEYWORDS=""
 IUSE="blas cuda opencl sycl hip"
 
 DEPEND="
-	blas? ( sci-libs/openblas )
+	blas? ( sci-libs/openblas[openmp] )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	opencl? ( virtual/opencl )
 	sycl? ( dev-libs/intel-oneapi-dpcpp )
@@ -43,13 +43,21 @@ src_configure() {
 		if ! pkg-config --libs openblas; then
 			die "BLAS enabled but openblas not found. Please install sci-libs/openblas."
 		fi
+		# Explicitly set BLAS flags
+		local blas_cflags=$(pkg-config --cflags openblas)
+		local blas_libs=$(pkg-config --libs openblas)
 		local mycmakeargs=(
 			-DGGML_BLAS=ON
 			-DGGML_BLAS_VENDOR=OpenBLAS
-			-DCMAKE_C_FLAGS="${CFLAGS} $(pkg-config --cflags openblas)"
-			-DCMAKE_CXX_FLAGS="${CXXFLAGS} $(pkg-config --cflags openblas)"
-			-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} $(pkg-config --libs openblas)"
+			-DCMAKE_C_FLAGS="${CFLAGS} ${blas_cflags}"
+			-DCMAKE_CXX_FLAGS="${CXXFLAGS} ${blas_cflags}"
+			-DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS} ${blas_libs}"
+			-DBLAS_INCLUDE_DIRS="$(pkg-config --variable=includedir openblas)"
+			-DBLAS_LIBRARIES="${blas_libs}"
 		)
+		# Debug BLAS detection
+		einfo "BLAS CFLAGS: ${blas_cflags}"
+		einfo "BLAS LIBS: ${blas_libs}"
 	else
 		local mycmakeargs=(
 			-DGGML_BLAS=OFF
