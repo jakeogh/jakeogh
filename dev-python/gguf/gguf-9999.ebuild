@@ -3,7 +3,7 @@
 
 EAPI=8
 
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=poetry
 PYTHON_COMPAT=( python3_{10..12} )
 
 inherit distutils-r1 git-r3
@@ -20,7 +20,6 @@ SLOT="0"
 KEYWORDS=""
 IUSE="gui"
 
-
 DEPEND="
 	>=dev-python/numpy-1.24[${PYTHON_USEDEP}]
 	gui? (
@@ -29,7 +28,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 BDEPEND="
-	>=dev-python/setuptools-61[${PYTHON_USEDEP}]
+	>=dev-python/poetry-core-1.0[${PYTHON_USEDEP}]
 	>=dev-python/wheel-0.37[${PYTHON_USEDEP}]
 "
 
