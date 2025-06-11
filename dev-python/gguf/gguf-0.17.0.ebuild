@@ -9,7 +9,7 @@ DIGEST_SOURCES="yes"
 PYTHON_COMPAT=( python{3_10,3_11,3_12} )
 DISTUTILS_USE_PEP517=standalone
 
-inherit python-r1
+inherit python-r1 distutils-r1
 
 DESCRIPTION="Read and write ML models in GGUF for GGML"
 
