@@ -1,42 +1,34 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
 
-inherit git-r3
+inherit git-r3 go-module
 
-#inherit go-module golang-vcs golang-build
-inherit golang-vcs go-module golang-build
+EGO_PN="github.com/lc/gau/v2/cmd/gau"
 
-#EGO_PN=github.com/lc/gau/v2/cmd/gau@latest
-EGO_PN=github.com/lc/gau
-
-DESCRIPTION="list all pages archived in the wayback machine"
+DESCRIPTION="Fetch known URLs from the Wayback Machine and other sources"
 HOMEPAGE="https://github.com/lc/gau"
-EGIT_REPO_URI="https://github.com/lc/gau"
+EGIT_REPO_URI="https://github.com/lc/gau.git"
 
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-#IUSE="test"
+KEYWORDS="~amd64"
+RESTRICT="test"
 
-#src_prepare() {
-#	default
-#	#xdg_src_prepare
-#}
+DEPEND=">=dev-lang/go-1.20"
+RDEPEND="${DEPEND}"
 
 src_unpack() {
 	git-r3_src_unpack
-	#go-module_live_vendor
+	go-module_setup_proxy
 }
 
-
-#src_compile() {
-#	#go build -mod=vendor . || die
-#	go build . || die
-#}
+src_compile() {
+	ego build -o ${PN} || die "Failed to build gau"
+}
 
 src_install() {
 	dobin ${PN}
+	dodoc README.md
 }
