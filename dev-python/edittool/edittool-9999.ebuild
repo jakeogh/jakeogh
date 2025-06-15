@@ -41,11 +41,11 @@ RDEPEND="
 	dev-python/beartype[${PYTHON_USEDEP}]
 	dev-python/pudb[${PYTHON_USEDEP}]
 	dev-python/walkup-until-found[${PYTHON_USEDEP}]
-	sys-apps/ripgrep
 	dev-lua/luarocks
 	dev-util/splint
 "
 
+	#sys-apps/ripgrep # rust
 #	sys-apps/yarn
 # sys-apps/yarn pulls in nodejs for CoC
 
