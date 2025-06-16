@@ -3,9 +3,11 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{11..13} )
+DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
 inherit git-r3
+
 
 DESCRIPTION="A Python module to help you manage your bits"
 HOMEPAGE="https://github.com/scott-griffiths/bitstring"
