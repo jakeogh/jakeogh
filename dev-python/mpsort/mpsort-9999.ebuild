@@ -8,9 +8,6 @@ DISTUTILS_USE_PEP517=setuptools
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="sort messagepacked stdin"
 HOMEPAGE="https://github.com/jakeogh/mpsort"
 EGIT_REPO_URI="https://github.com/jakeogh/mpsort.git"
@@ -23,16 +20,9 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
