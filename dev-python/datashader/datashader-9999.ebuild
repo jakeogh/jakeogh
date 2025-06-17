@@ -12,6 +12,30 @@ DESCRIPTION="Quickly and accurately render even the largest data"
 HOMEPAGE="https://github.com/holoviz/datashader"
 EGIT_REPO_URI="https://github.com/holoviz/datashader.git"
 
-LICENSE="BSD"
+
+LICENSE="BSD-3"
 SLOT="0"
 KEYWORDS=""
+IUSE=""
+
+
+RDEPEND="
+    >=dev-python/numpy-1.16[${PYTHON_USEDEP}]
+    >=dev-python/pandas-0.25[${PYTHON_USEDEP}]
+    >=dev-python/dask-2.0[${PYTHON_USEDEP}]
+    >=dev-python/xarray-0.10[${PYTHON_USEDEP}]
+    >=dev-python/numba-0.40[${PYTHON_USEDEP}]
+    >=dev-python/pyct-0.4.4[${PYTHON_USEDEP}]
+    >=dev-python/colorcet-2.0.1[${PYTHON_USEDEP}]
+    >=dev-python/param-1.9.3[${PYTHON_USEDEP}]
+    dev-python/python-dateutil[${PYTHON_USEDEP}]
+    dev-python/pyproj[${PYTHON_USEDEP}]
+"
+
+BDEPEND="
+    dev-python/setuptools[${PYTHON_USEDEP}]
+    dev-python/wheel[${PYTHON_USEDEP}]
+"
+
+distutils_enable_tests pytest
+
