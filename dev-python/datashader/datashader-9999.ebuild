@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/holoviz/datashader"
 EGIT_REPO_URI="https://github.com/holoviz/datashader.git"
 
 
-LICENSE="BSD-3"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
