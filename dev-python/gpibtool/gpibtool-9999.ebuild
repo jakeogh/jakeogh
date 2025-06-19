@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS=""
 
 	#dev-python/PyVISA-sim[${PYTHON_USEDEP}]
+	#dev-python/PyVISA-py[${PYTHON_USEDEP}]
 	#sci-libs/linux-gpib
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
@@ -26,7 +27,6 @@ RDEPEND="
 	dev-python/pyusb[${PYTHON_USEDEP}]
 	dev-python/stdiotool[${PYTHON_USEDEP}]
 	dev-python/bnftool[${PYTHON_USEDEP}]
-	dev-python/PyVISA-py[${PYTHON_USEDEP}]
 	dev-python/pymeasure[${PYTHON_USEDEP}]
 	dev-python/gpib-ctypes[${PYTHON_USEDEP}]
 "
