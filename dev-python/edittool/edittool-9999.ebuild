@@ -43,6 +43,7 @@ RDEPEND="
 	dev-python/walkup-until-found[${PYTHON_USEDEP}]
 	dev-lua/luarocks
 	dev-util/splint
+	app-misc/commandlock
 "
 
 	#sys-apps/ripgrep # rust
