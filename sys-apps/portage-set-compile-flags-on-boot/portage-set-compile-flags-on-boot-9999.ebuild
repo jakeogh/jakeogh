@@ -14,7 +14,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-RDEPEND="app-portage/cpuid2cpuflags"
+RDEPEND="app-portage/cpuid2cpuflags
+         app-misc/resolve-march-native
+"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
