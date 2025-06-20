@@ -3,10 +3,8 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{11..13} )
-DISTUTILS_USE_PEP517=setuptools
 
-
-inherit distutils-r1
+#inherit distutils-r1
 inherit git-r3
 
 DESCRIPTION="bash version of vi wrapper for programatic(m) workflow"
@@ -19,19 +17,19 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-util/splint
-	dev-util/pkgcheck[${PYTHON_USEDEP}]
-	dev-util/pkgdev[${PYTHON_USEDEP}]
-	dev-python/pylint[${PYTHON_USEDEP}]
+	dev-util/pkgcheck
+	dev-util/pkgdev
+	dev-python/pylint
 	app-misc/commandlock
 	dev-util/shellcheck
 	sys-process/schedtool
 	app-editors/neovim
-	app-misc/newapp[${PYTHON_USEDEP}]
-	dev-python/isort[${PYTHON_USEDEP}]
-	dev-python/mypy[${PYTHON_USEDEP}]
+	app-misc/newapp
+	dev-python/isort
+	dev-python/mypy
 	dev-util/ctags
-	dev-util/pkgdev[${PYTHON_USEDEP}]
-	dev-python/walkup-until-found[${PYTHON_USEDEP}]
+	dev-util/pkgdev
+	dev-python/walkup-until-found
 "
 	#dev-python/memory_profiler
 #	dev-util/diffuse[${PYTHON_USEDEP}]
