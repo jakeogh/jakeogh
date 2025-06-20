@@ -21,5 +21,5 @@ RDEPEND="app-portage/cpuid2cpuflags"
 src_install() {
     exeinto /etc/local.d
     newexe portage_set_cpu_flags.start portage_set_cpu_flags.start
-    dodoc README.md || die
+    #dodoc README.md || die
 }
