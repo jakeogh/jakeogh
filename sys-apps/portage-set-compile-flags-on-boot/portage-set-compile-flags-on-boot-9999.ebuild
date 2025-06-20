@@ -19,7 +19,6 @@ BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
     default
-
     emake -f Makefile cpu_flags || die "make cpu_flags failed"
 }
 
