@@ -38,7 +38,7 @@ src_prepare() {
     )
 
     # Apply header template
-    sed "${replacements[@]}" "${FILESDIR}/set_flags_template.in" > "${out}" || die
+    sed "${replacements[@]}" "${FILESDIR}/header_template.in" > "${out}" || die
 
     # Append body template
     sed "${replacements[@]}" "${FILESDIR}/start_template.in" >> "${out}" || die
