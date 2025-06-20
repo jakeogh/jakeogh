@@ -19,7 +19,10 @@ RDEPEND="app-portage/cpuid2cpuflags"
 
 # No build phase, pure script installation
 src_install() {
+    local commit=$(git rev-parse --short HEAD)
+    sed "s/^# Version: .*/# Version:    git-${commit}/" \
+        portage_set_cpu_flags.start > "${T}/portage_set_cpu_flags.start"
+
     exeinto /etc/local.d
-    newexe portage_set_cpu_flags.start portage_set_cpu_flags.start
-    #dodoc README.md || die
+    doexe "${T}/portage_set_cpu_flags.start"
 }
