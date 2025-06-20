@@ -5,9 +5,9 @@ EAPI=8
 
 inherit git-r3
 
-DESCRIPTION="OpenRC local.d script to safely generate cpu_flags.conf from cpuid2cpuflags"
-HOMEPAGE="https://github.com/jakeogh/portage-set-cpu-flags-on-boot"
-EGIT_REPO_URI="https://github.com/jakeogh/portage-set-cpu-flags-on-boot.git"
+DESCRIPTION="OpenRC local.d scripts to safely generate cpu_flags.conf and cflags.conf"
+HOMEPAGE="https://github.com/jakeogh/portage-set-compile-flags-on-boot"
+EGIT_REPO_URI="https://github.com/jakeogh/portage-set-compile-flags-on-boot.git"
 
 LICENSE="MIT"
 SLOT="0"
