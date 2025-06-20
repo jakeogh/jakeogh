@@ -33,19 +33,19 @@ src_install() {
 	local script="${S}/portage_set_cpu_flags.start"
 	[[ -e "${script}" ]] || die "Expected output file not found: ${script}"
 
-	#einfo "DEBUG: S=${S}"
-	#einfo "DEBUG: script=${script}"
-	#einfo "DEBUG: listing content of $(dirname "${script}")"
-	#ls -l "${script}" || einfo "DEBUG: script not found at install time"
+	einfo "DEBUG: S=${S}"
+	einfo "DEBUG: script=${script}"
+	einfo "DEBUG: listing content of $(dirname "${script}")"
+	ls -l "${script}" || einfo "DEBUG: script not found at install time"
 	doexe "${script}" || die "failed to install .start script"
 
 
 	local script="${S}/portage_set_cflags.start"
 	[[ -e "${script}" ]] || die "Expected output file not found: ${script}"
 
-	#einfo "DEBUG: S=${S}"
-	#einfo "DEBUG: script=${script}"
-	#einfo "DEBUG: listing content of $(dirname "${script}")"
-	#ls -l "${script}" || einfo "DEBUG: script not found at install time"
+	einfo "DEBUG: S=${S}"
+	einfo "DEBUG: script=${script}"
+	einfo "DEBUG: listing content of $(dirname "${script}")"
+	ls -l "${script}" || einfo "DEBUG: script not found at install time"
 	doexe "${script}" || die "failed to install .start script"
 }
