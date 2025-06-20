@@ -34,6 +34,7 @@ src_prepare() {
         -e "s|{LICENSE}|MIT|g"
         -e "s|{VERSION}|git-${commit}|g"
         -e "s|{TYPE_OF_FLAGS}|CPU|g"
+        -e "s|{FILES_DIR_URL}|https://github.com/jakeogh/jakeogh/fixme|g"
     )
 
     # Apply header template
