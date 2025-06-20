@@ -15,39 +15,16 @@ KEYWORDS=""
 IUSE=""
 
 RDEPEND="app-portage/cpuid2cpuflags"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
     default
 
-    local commit=$(git rev-parse --short HEAD)
-    local out="${T}/portage_set_cpu_flags.start"
-
-    local replacements=(
-        -e "s|{PROGRAM_NAME}|portage-set-cpu-flags-on-boot|g"
-        -e "s|{PROGRAM_NAME_UNDERSCORE}|portage_set_cpu_flags|g"
-        -e "s|{FLAG_COMMAND}|cpuid2cpuflags|g"
-        -e "s|{CONFIG_FILE}|cpu_flags.conf|g"
-        -e "s|{CONF_FILE}|cpu_flags.conf|g"
-        -e "s|{FLAG_PACKAGE}|cpuid2cpuflags|g"
-        -e "s|{REPO_URL}|https://github.com/jakeogh/portage-set-cpu-flags-on-boot|g"
-        -e "s|{AUTHOR}|Justin Keogh <jakeogh@users.noreply.github.com>|g"
-        -e "s|{LICENSE}|MIT|g"
-        -e "s|{VERSION}|git-${commit}|g"
-        -e "s|{TYPE_OF_FLAGS}|CPU|g"
-        -e "s|{FILES_DIR_URL}|https://github.com/jakeogh/jakeogh/fixme|g"
-    )
-
-    # Apply header template
-    sed "${replacements[@]}" "${FILESDIR}/header_template.in" > "${out}" || die
-
-    # Append body template
-    sed "${replacements[@]}" "${FILESDIR}/start_template.in" >> "${out}" || die
-
-    chmod +x "${out}" || die
+    emake -f Makefile cpu_flags || die "make cpu_flags failed"
 }
 
 src_install() {
     exeinto /etc/local.d
-    doexe "${T}/portage_set_cpu_flags.start"
+    doexe portage_set_cpu_flags.start
 }
 
