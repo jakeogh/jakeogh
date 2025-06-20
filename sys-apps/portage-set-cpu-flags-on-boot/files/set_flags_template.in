@@ -1,0 +1,40 @@
+# -----------------------------------------------------------------------------
+# {PROGRAM_NAME}
+#
+# This script is designed to run automatically via OpenRC's /etc/local.d
+# system as: /etc/local.d/{PROGRAM_NAME_UNDERSCORE}.start
+#
+# Automatically detects CPU instruction set extensions (e.g., SSE, AVX, etc.)
+# via `{FLAG_COMMAND}` and generates a safe, portable {CONFIG_FILE} file
+# for Gentoo Portage.
+#
+# If /etc/portage/{CONFIG_FILE} does not exist, it is generated from the
+# detected CPU flags and written atomically. If it already exists, its contents
+# are compared to the current CPU flags. If they differ, the script aborts to
+# avoid corrupting the ABI of already-built binaries.
+#
+# If /etc/portage/make.conf does not already source the generated file, the
+# script appends the appropriate `source` line and creates a timestamped backup
+# of the original first.
+#
+# All actions are logged to standard output using consistent INFO and ERROR
+# prefixes. All writes are verified, all reads are checked, and the script is
+# designed to be safe for use in /etc/local.d or other early boot-time hooks.
+#
+# A read-only /etc is supported after the first time the script is run.
+#
+# Dependencies:
+#   - Gentoo Linux (or compatible Portage-based system)
+#   - /etc/portage/make.conf must exist and be writable for the first run
+#   - /etc/portage/make.conf must exist and be readable
+#   - The `{FLAG_COMMAND}` utility must be installed and in PATH
+#     (available via `{FLAG_PACKAGE}`)
+#   - Root privileges (required to write to /etc/portage and modify make.conf)
+#   - awk, grep, mv, mktemp, and core POSIX tools must be available
+#
+# Repository: {REPO_URL}
+# Author:     {AUTHOR}
+# License:    {LICENSE}
+# Version:    {VERSION}
+# -----------------------------------------------------------------------------
+
