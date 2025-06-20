@@ -24,6 +24,10 @@ src_prepare() {
 
 src_install() {
     exeinto /etc/local.d
-	doexe "${T}/portage_set_cpu_flags.start" || die "failed to install .start script"
-}
 
+    if [[ ! -e "${T}/portage_set_cpu_flags.start" ]]; then
+        die "Expected output file not found: ${T}/portage_set_cpu_flags.start"
+    fi
+
+    doexe "${T}/portage_set_cpu_flags.start" || die "failed to install .start script"
+}
