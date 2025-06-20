@@ -19,6 +19,8 @@ BDEPEND="virtual/pkgconfig"
 src_prepare() {
     default
     emake -f Makefile cpu_flags OUT="${S}/portage_set_cpu_flags.start" || die "make cpu_flags failed"
+	/bin/ls -alht
+	pwd
 }
 
 src_install() {
@@ -27,9 +29,9 @@ src_install() {
     local script="${S}/portage_set_cpu_flags.start"
     [[ -e "${script}" ]] || die "Expected output file not found: ${script}"
 
-	einfo "DEBUG: S=${S}"
-	einfo "DEBUG: script=${script}"
-	einfo "DEBUG: listing content of $(dirname "${script}")"
+    einfo "DEBUG: S=${S}"
+    einfo "DEBUG: script=${script}"
+    einfo "DEBUG: listing content of $(dirname "${script}")"
 	ls -l "${script}" || einfo "DEBUG: script not found at install time"
     doexe "${script}" || die "failed to install .start script"
 }
