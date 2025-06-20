@@ -33,5 +33,6 @@ RDEPEND="
 	dev-python/schedule[${PYTHON_USEDEP}]
 	dev-python/sortedcontainers[${PYTHON_USEDEP}]
 	dev-python/pymodbus[${PYTHON_USEDEP}]
+	dev-python/usbtool[${PYTHON_USEDEP}]
 "
 #dev-python/pymeasure[${PYTHON_USEDEP}]
