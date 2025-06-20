@@ -18,16 +18,15 @@ RDEPEND="app-portage/cpuid2cpuflags"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-    default
-    emake -f Makefile cpu_flags || die "make cpu_flags failed"
+	default
+	emake -f Makefile cpu_flags || die "make cpu_flags failed"
 }
 
 src_install() {
-    exeinto /etc/local.d
+	exeinto /etc/local.d
 
-    if [[ ! -e "${T}/portage_set_cpu_flags.start" ]]; then
-        die "Expected output file not found: ${T}/portage_set_cpu_flags.start"
-    fi
+	local script="portage_set_cpu_flags.start"
+	[[ -e "${script}" ]] || die "Expected output file not found: ${script}"
 
-    doexe "${T}/portage_set_cpu_flags.start" || die "failed to install .start script"
+	doexe "${script}" || die "failed to install .start script"
 }
