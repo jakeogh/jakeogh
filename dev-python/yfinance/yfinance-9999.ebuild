@@ -8,6 +8,7 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
+
 DESCRIPTION="Download market data from Yahoo Finance API"
 HOMEPAGE="https://github.com/ranaroussi/yfinance"
 EGIT_REPO_URI="https://github.com/ranaroussi/yfinance.git"
