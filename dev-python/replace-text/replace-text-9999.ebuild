@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools  # keep 6 for gentoo install
 
 inherit distutils-r1

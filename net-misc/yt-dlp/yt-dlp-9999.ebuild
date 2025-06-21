@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=hatchling
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 inherit bash-completion-r1 distutils-r1 git-r3 optfeature wrapper
 
 DESCRIPTION="youtube-dl fork with additional features and fixes"

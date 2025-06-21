@@ -4,7 +4,7 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit linux-info python-single-r1 multilib-minimal git-r3 autotools
 

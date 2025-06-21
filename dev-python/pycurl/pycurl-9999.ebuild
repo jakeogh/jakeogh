@@ -4,7 +4,7 @@
 EAPI=8
 
 # The selftests fail with pypy, and urlgrabber segfaults for me.
-PYTHON_COMPAT=( python3_{11..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
 
 inherit distutils-r1
