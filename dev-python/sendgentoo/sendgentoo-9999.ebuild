@@ -54,10 +54,10 @@ RDEPEND="
 	dev-python/boottool[${PYTHON_USEDEP}]
 	dev-python/distro[${PYTHON_USEDEP}]
 	app-portage/smart-live-rebuild[${PYTHON_USEDEP}]
-	dev-libs/glib[static-libs]
-	sys-apps/attr[static-libs]
-	sys-libs/zlib[static-libs]
-	dev-libs/libpcre[static-libs]
+	dev-libs/glib
+	sys-apps/attr
+	sys-libs/zlib
+	dev-libs/libpcre
 	"
 
 #	sys-apps/fchroot
