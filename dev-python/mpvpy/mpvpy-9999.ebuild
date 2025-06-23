@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/click-auto-help[${PYTHON_USEDEP}]
 	dev-python/terminaltool[${PYTHON_USEDEP}]
 	dev-python/pynput[${PYTHON_USEDEP}]
+	dev-python/with-lmdb[${PYTHON_USEDEP}]
 	sys-process/schedtool
 	media-plugins/alsaequal
 "
