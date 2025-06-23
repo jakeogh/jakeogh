@@ -3,13 +3,11 @@
 
 EAPI=8
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit git-r3
 inherit distutils-r1
-
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+distutils_enable_tests pytest
 
 DESCRIPTION="common file operatons"
 HOMEPAGE="https://github.com/jakeogh/filetool"
@@ -28,8 +26,7 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
+BDEPEND="
+    dev-python/pytest[${PYTHON_USEDEP}]
+"
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
