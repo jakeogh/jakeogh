@@ -31,6 +31,7 @@ BDEPEND="
 "
 
 python_test() {
-    cd "${BUILD_DIR}/${P}" || die
+	cd "${S}" || die
+    #cd "${BUILD_DIR}/${P}" || die
     epytest tests
 }
