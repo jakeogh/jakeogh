@@ -30,3 +30,7 @@ BDEPEND="
     dev-python/pytest[${PYTHON_USEDEP}]
 "
 
+python_test() {
+    cd "${BUILD_DIR}/${P}" || die
+    epytest tests
+}
