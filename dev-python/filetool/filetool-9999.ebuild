@@ -36,7 +36,7 @@ python_test() {
     epytest tests
 }
 
-src_prepare() {
-    default
-    cp -r "${WORKDIR}"/${PN}-9999/tests "${S}"/ || die "failed to copy tests"
-}
+#src_prepare() {
+#    default
+#    cp -r "${WORKDIR}"/${PN}-9999/tests "${S}"/ || die "failed to copy tests"
+#}
