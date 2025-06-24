@@ -30,6 +30,11 @@ BDEPEND="
     dev-python/pytest[${PYTHON_USEDEP}]
 "
 
+src_test() {
+    distutils-r1_src_test
+}
+
+
 python_test() {
 	cd "${S}" || die
     #cd "${BUILD_DIR}/${P}" || die
