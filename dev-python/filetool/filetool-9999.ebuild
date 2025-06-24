@@ -35,3 +35,8 @@ python_test() {
     #cd "${BUILD_DIR}/${P}" || die
     epytest tests
 }
+
+src_prepare() {
+    default
+    cp -r "${WORKDIR}"/${PN}-9999/tests "${S}"/ || die "failed to copy tests"
+}
