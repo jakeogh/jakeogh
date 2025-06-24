@@ -16,7 +16,7 @@ EGIT_REPO_URI="https://github.com/jakeogh/filetool.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
+IUSE="test"
 
 
 RDEPEND="
