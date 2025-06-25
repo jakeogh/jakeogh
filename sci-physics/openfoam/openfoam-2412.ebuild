@@ -21,7 +21,7 @@ IUSE="mpi metis scotch paraview"
 DEPEND="
     sys-libs/zlib
     dev-libs/boost
-    dev-libs/fftw:3.0
+	sci-libs/fftw:3.0
     media-libs/libpng
     media-libs/libjpeg-turbo
     mpi? ( virtual/mpi )
