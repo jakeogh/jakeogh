@@ -31,6 +31,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="
     dev-python/pytest[${PYTHON_USEDEP}]
 	dev-python/hypothesis[${PYTHON_USEDEP}]
+	dev-python/pytest-cov[${PYTHON_USEDEP}]
 "
 
 src_test() {
