@@ -19,6 +19,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/urlextract[${PYTHON_USEDEP}]
+	dev-python/tldextract[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
