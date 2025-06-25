@@ -21,7 +21,7 @@ IUSE="mpi metis scotch paraview"
 DEPEND="
     sys-libs/zlib
     dev-libs/boost
-	sci-libs/fftw:3.0
+    sci-libs/fftw:3.0
     media-libs/libpng
     media-libs/libjpeg-turbo
     mpi? ( virtual/mpi )
@@ -31,8 +31,7 @@ DEPEND="
 
 RDEPEND="${DEPEND}"
 
-
-S="${WORKDIR}/OpenFOAM-${PV}"
+S="${WORKDIR}/OpenFOAM-v${PV}"
 
 src_prepare() {
     default
@@ -40,7 +39,6 @@ src_prepare() {
     # Apply any patches here if needed
     eapply_user
 }
-
 
 src_compile() {
     # Build ThirdParty first
@@ -66,7 +64,7 @@ src_install() {
     # Install OpenFOAM tree into versioned directory
     local instdir="/usr/lib/OpenFOAM/${PV}"
     dodir "${instdir}"
-    cp -a "${WORKDIR}/OpenFOAM-${PV}"/* "${ED}${instdir}" || die
+    cp -a "${S}"/* "${ED}${instdir}" || die
     cp -a "${WORKDIR}/ThirdParty-${PV}" "${ED}${instdir}/ThirdParty" || die
 
     # Install env setup script
