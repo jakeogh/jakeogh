@@ -40,6 +40,7 @@ src_prepare() {
     eapply_user
 }
 
+
 src_compile() {
     export FOAM_INST_DIR="${WORKDIR}"
     export WM_PROJECT_VERSION="${PV}"
@@ -52,19 +53,47 @@ src_compile() {
         export WM_MPLIB=NONE
     fi
 
-    # Load OpenFOAM build environment
-    source "${WM_PROJECT_DIR}/etc/bashrc"
-
     einfo "Building ThirdParty"
-    pushd "${WM_THIRD_PARTY_DIR}" > /dev/null || die
-    ./Allwmake -j$(makeopts_jobs) || die "ThirdParty build failed"
-    popd > /dev/null || die
+    bash -c "
+        source '${WM_PROJECT_DIR}/etc/bashrc' || exit 1
+        cd '${WM_THIRD_PARTY_DIR}' || exit 1
+        ./Allwmake -j$(makeopts_jobs) || exit 1
+    " || die "ThirdParty build failed"
 
     einfo "Building OpenFOAM"
-    pushd "${WM_PROJECT_DIR}" > /dev/null || die
-    ./Allwmake -j$(makeopts_jobs) || die "OpenFOAM build failed"
-    popd > /dev/null || die
+    bash -c "
+        source '${WM_PROJECT_DIR}/etc/bashrc' || exit 1
+        cd '${WM_PROJECT_DIR}' || exit 1
+        ./Allwmake -j$(makeopts_jobs) || exit 1
+    " || die "OpenFOAM build failed"
 }
+
+
+#src_compile() {
+#    export FOAM_INST_DIR="${WORKDIR}"
+#    export WM_PROJECT_VERSION="${PV}"
+#    export WM_PROJECT_DIR="${FOAM_INST_DIR}/OpenFOAM-v${PV}"
+#    export WM_THIRD_PARTY_DIR="${FOAM_INST_DIR}/ThirdParty-v${PV}"
+#
+#    if use mpi; then
+#        export WM_MPLIB=SYSTEMOPENMPI
+#    else
+#        export WM_MPLIB=NONE
+#    fi
+#
+#    # Load OpenFOAM build environment
+#    source "${WM_PROJECT_DIR}/etc/bashrc"
+#
+#    einfo "Building ThirdParty"
+#    pushd "${WM_THIRD_PARTY_DIR}" > /dev/null || die
+#    ./Allwmake -j$(makeopts_jobs) || die "ThirdParty build failed"
+#    popd > /dev/null || die
+#
+#    einfo "Building OpenFOAM"
+#    pushd "${WM_PROJECT_DIR}" > /dev/null || die
+#    ./Allwmake -j$(makeopts_jobs) || die "OpenFOAM build failed"
+#    popd > /dev/null || die
+#}
 
 
 src_test() {
