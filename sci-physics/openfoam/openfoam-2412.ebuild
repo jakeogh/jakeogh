@@ -43,7 +43,7 @@ src_prepare() {
 src_compile() {
     # Build ThirdParty first
     einfo "Building ThirdParty"
-    pushd "${WORKDIR}/ThirdParty-${PV}" > /dev/null || die
+    pushd "${WORKDIR}/ThirdParty-v${PV}" > /dev/null || die
     ./Allwmake -j$(makeopts_jobs) || die "ThirdParty build failed"
     popd > /dev/null || die
 
@@ -65,7 +65,7 @@ src_install() {
     local instdir="/usr/lib/OpenFOAM/${PV}"
     dodir "${instdir}"
     cp -a "${S}"/* "${ED}${instdir}" || die
-    cp -a "${WORKDIR}/ThirdParty-${PV}" "${ED}${instdir}/ThirdParty" || die
+    cp -a "${WORKDIR}/ThirdParty-v${PV}" "${ED}${instdir}/ThirdParty" || die
 
     # Install env setup script
     insinto /etc/profile.d
