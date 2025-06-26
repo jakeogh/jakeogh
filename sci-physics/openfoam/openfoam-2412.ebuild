@@ -46,6 +46,12 @@ src_compile() {
     export WM_PROJECT_DIR="${FOAM_INST_DIR}/OpenFOAM-v${PV}"
     export WM_THIRD_PARTY_DIR="${FOAM_INST_DIR}/ThirdParty-v${PV}"
 
+    if use mpi; then
+        export WM_MPLIB=SYSTEMOPENMPI
+    else
+        export WM_MPLIB=NONE
+    fi
+
     # Load OpenFOAM build environment
     source "${WM_PROJECT_DIR}/etc/bashrc"
 
@@ -60,20 +66,6 @@ src_compile() {
     popd > /dev/null || die
 }
 
-
-#src_compile() {
-#    # Build ThirdParty first
-#    einfo "Building ThirdParty"
-#    pushd "${WORKDIR}/ThirdParty-v${PV}" > /dev/null || die
-#    ./Allwmake -j$(makeopts_jobs) || die "ThirdParty build failed"
-#    popd > /dev/null || die
-#
-#    # Now build OpenFOAM
-#    einfo "Building OpenFOAM"
-#    pushd "${S}" > /dev/null || die
-#    ./Allwmake -j$(makeopts_jobs) || die "OpenFOAM build failed"
-#    popd > /dev/null || die
-#}
 
 src_test() {
     einfo "Running foamInstallationTest"
