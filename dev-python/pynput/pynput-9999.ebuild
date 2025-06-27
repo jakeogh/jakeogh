@@ -5,10 +5,12 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 pypi
+inherit distutils-r1
+inherit git-r3
 
 DESCRIPTION="Sends virtual input commands"
 HOMEPAGE="https://github.com/moses-palmer/pynput https://pypi.org/project/pynput"
+EGIT_REPO_URI="https://github.com/moses-palmer/pynput"
 RDEPEND="
 	dev-python/evdev[${PYTHON_USEDEP}]
 	dev-python/python-xlib[${PYTHON_USEDEP}]
