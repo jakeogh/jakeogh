@@ -31,9 +31,9 @@ RDEPEND="
 	media-gfx/fbida
 	media-libs/exiftool
 	media-gfx/inkscape
-	app-misc/ranger
 	media-gfx/feh
 "
 #	kde-apps/okular  # depends on kde, and thus dbus
+#	app-misc/ranger
 
 DEPEND="${RDEPEND}"
