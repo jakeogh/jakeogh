@@ -15,12 +15,10 @@ EGIT_REPO_URI="https://github.com/jakeogh/with-sshfs.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
 	dev-python/sh[${PYTHON_USEDEP}]
 	net-fs/sshfs
 "
