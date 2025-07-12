@@ -8,7 +8,6 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Python E-Trade API Wrapper"
 HOMEPAGE="https://github.com/jessecooper/pyetrade"
@@ -17,8 +16,6 @@ EGIT_REPO_URI="https://github.com/jessecooper/pyetrade.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
