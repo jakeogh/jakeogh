@@ -18,7 +18,7 @@ EAPI=8
 # from https://raw.githubusercontent.com/Miezhiko/Overlay/refs/heads/mawa/dev-python/pydeck/pydeck-0.7.1.ebuild
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{10..12} )
+PYTHON_COMPAT=( python3_{12..14} )
 
 inherit distutils-r1
 

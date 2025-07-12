@@ -6,7 +6,7 @@ REALNAME="${PN}"
 LITERALNAME="${PN}"
 REALVERSION="${PV}"
 DIGEST_SOURCES="yes"
-PYTHON_COMPAT=( python{3_10,3_11,3_12} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=standalone
 
 inherit python-r1 distutils-r1

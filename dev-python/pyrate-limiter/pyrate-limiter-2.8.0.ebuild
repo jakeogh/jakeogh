@@ -1,7 +1,7 @@
 EAPI=8
 
 S="${WORKDIR}/PyrateLimiter-${PV}"
-PYTHON_COMPAT=(python{3_10,3_11,3_12})
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=poetry
 
 inherit distutils-r1
