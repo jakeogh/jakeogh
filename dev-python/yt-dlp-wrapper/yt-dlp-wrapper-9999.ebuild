@@ -27,6 +27,7 @@ RDEPEND="
 	dev-python/retry-on-exception[${PYTHON_USEDEP}]
 	dev-python/yt-dlp-exception-translator[${PYTHON_USEDEP}]
 	dev-python/yt-dlp-url-extractor[${PYTHON_USEDEP}]
+	dev-python/with-greendb[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
