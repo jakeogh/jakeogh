@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/msgpack[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	dev-python/globalverbose[${PYTHON_USEDEP}]
-	dev-python/messagepack[${PYTHON_USEDEP}]
+	dev-python/msgpack[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
