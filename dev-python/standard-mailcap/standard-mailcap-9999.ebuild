@@ -1,11 +1,8 @@
 # Copyright 2025
 # Distributed under the terms of the GNU General Public License v2
-
 EAPI=8
-
 PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
-
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Portable mailcap module compatible with modern Python versions"
@@ -16,16 +13,16 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
 IUSE=""
-
 RESTRICT="test"
 
 src_prepare() {
     default
-
     rm -rf dead six tests */__pycache__ || die
 
-    # Extract just the real module
-    mv mailcap/mailcap standard_mailcap || die "Failed to move nested mailcap module"
+    # Extract the actual mailcap.py module from the nested structure
+    # The repo has mailcap/mailcap.py - we want just mailcap.py
+    mv mailcap/mailcap.py . || die "Failed to extract mailcap.py"
+    rm -rf mailcap || die
 
     cat > setup.py <<EOF || die
 from setuptools import setup
@@ -36,7 +33,7 @@ setup(
     description="Portable mailcap module compatible with modern Python versions",
     author="youknowone",
     url="https://github.com/youknowone/python-deadlib",
-    py_modules=["standard_mailcap"],
+    py_modules=["mailcap"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -46,4 +43,3 @@ setup(
 )
 EOF
 }
-
