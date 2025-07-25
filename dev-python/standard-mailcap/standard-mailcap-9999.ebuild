@@ -22,11 +22,13 @@ RESTRICT="test"
 src_prepare() {
     default
 
-    rm -rf dead six tests || die
+    # Clean other packages out
+    rm -rf dead six tests _crypt */__pycache__ || die
 
-    # Just keep the mailcap package, which has an __init__.py
-    [[ -d mailcap ]] || die "mailcap/ directory not found"
+    # Move mailcap package to build root
+    mv mailcap "${S}/mailcap" || die "Failed to move mailcap/"
 
+    # Create synthetic setup.py
     cat > setup.py <<EOF || die
 from setuptools import setup
 
@@ -46,3 +48,4 @@ setup(
 )
 EOF
 }
+
