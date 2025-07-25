@@ -23,7 +23,9 @@ src_prepare() {
     default
 
     rm -rf dead six tests || die
-    [[ -d mailcap ]] || die "Expected mailcap/ directory not found"
+
+    # Move the single source file into place
+    mv mailcap/mailcap.py ./standard_mailcap.py || die "Failed to move mailcap.py"
 
     cat > setup.py <<EOF || die
 from setuptools import setup
@@ -34,8 +36,7 @@ setup(
     description="Portable mailcap module compatible with modern Python versions",
     author="youknowone",
     url="https://github.com/youknowone/python-deadlib",
-    packages=["mailcap"],
-    package_dir={"mailcap": "mailcap"},
+    py_modules=["standard_mailcap"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -45,5 +46,3 @@ setup(
 )
 EOF
 }
-
-
