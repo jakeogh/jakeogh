@@ -19,9 +19,8 @@ src_prepare() {
     default
     rm -rf dead six tests */__pycache__ || die
 
-    # Extract the actual mailcap.py module from the nested structure
-    # The repo has mailcap/mailcap.py - we want just mailcap.py
-    mv mailcap/mailcap.py . || die "Failed to extract mailcap.py"
+    # Extract the mailcap module from mailcap/mailcap/__init__.py
+    mv mailcap/mailcap/__init__.py ./mailcap.py || die "Failed to extract mailcap.py"
     rm -rf mailcap || die
 
     cat > setup.py <<EOF || die
