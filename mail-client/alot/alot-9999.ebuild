@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -23,31 +23,33 @@ SLOT="0"
 IUSE="doc"
 
 RDEPEND="
-	app-crypt/gpgme[python,${PYTHON_USEDEP}]
-	dev-python/configobj[${PYTHON_USEDEP}]
+	>=app-crypt/gpgme-1.10.1[python,${PYTHON_USEDEP}]
+	>=dev-python/configobj-4.7.0[${PYTHON_USEDEP}]
 	dev-python/python-magic[${PYTHON_USEDEP}]
-	dev-python/urwid[${PYTHON_USEDEP}]
-	dev-python/urwidtrees[${PYTHON_USEDEP}]
-	dev-python/twisted[${PYTHON_USEDEP}]
+	>=dev-python/urwid-1.3.0[${PYTHON_USEDEP}]
+	>=dev-python/urwidtrees-1.0.3[${PYTHON_USEDEP}]
+	>=dev-python/twisted-18.4.0[${PYTHON_USEDEP}]
 	net-mail/mailbase
-	net-mail/notmuch[crypt,python,${PYTHON_USEDEP}]
+	>=net-mail/notmuch-0.30[crypt,python,${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/setuptools-scm[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 "
 
-PATCHES=(
-)
+export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
 distutils_enable_tests unittest
 
 python_compile_all() {
+	# sphinx uses importlib to get the package version
+	local -x PYTHONPATH="${BUILD_DIR}/install$(python_get_sitedir):${PYTHONPATH}"
 	emake -C docs man
 	use doc && emake -C docs html
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=(docs/build/html/.)
+	use doc && local HTML_DOCS=( docs/build/html/. )
 	doman docs/build/man/*
 	distutils-r1_python_install_all
 
@@ -56,7 +58,7 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	if [[ -z ${REPLACING_VERSIONS} ]]; then
+	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog ""
 		elog "If you are new to Alot you may want to take a look at"
 		elog "the user manual:"
