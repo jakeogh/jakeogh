@@ -22,13 +22,11 @@ RESTRICT="test"
 src_prepare() {
     default
 
-    # Clean other packages out
-    rm -rf dead six tests _crypt */__pycache__ || die
+    rm -rf dead six tests */__pycache__ || die
 
-    # Move mailcap package to build root
-    mv mailcap "${S}/mailcap" || die "Failed to move mailcap/"
+    # Extract just the real module
+    mv mailcap/mailcap standard_mailcap || die "Failed to move nested mailcap module"
 
-    # Create synthetic setup.py
     cat > setup.py <<EOF || die
 from setuptools import setup
 
@@ -38,7 +36,7 @@ setup(
     description="Portable mailcap module compatible with modern Python versions",
     author="youknowone",
     url="https://github.com/youknowone/python-deadlib",
-    packages=["mailcap"],
+    py_modules=["standard_mailcap"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
