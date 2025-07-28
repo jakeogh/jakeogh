@@ -8,8 +8,6 @@ DISTUTILS_USE_PEP517=setuptools
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Library to populate items using XPath and CSS with a convenient API"
 HOMEPAGE="https://github.com/jakeogh/itemloaders"
@@ -23,7 +21,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
+
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
