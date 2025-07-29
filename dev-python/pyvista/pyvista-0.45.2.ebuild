@@ -4,7 +4,7 @@
 EAPI=8
 
 
-PYTHON_COMPAT=( python3_{12,14} )
+PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_SINGLE_IMPL=1  # because "sci-libs/vtk" inherits "python-single-r1"
 DISTUTILS_USE_PEP517=setuptools
 
