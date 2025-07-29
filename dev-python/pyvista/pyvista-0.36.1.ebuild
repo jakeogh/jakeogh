@@ -25,6 +25,7 @@ RDEPEND="
         dev-python/imageio[${PYTHON_USEDEP}]
         dev-python/numpy[${PYTHON_USEDEP}]
         dev-python/pillow[${PYTHON_USEDEP}]
+        dev-python/scooby[${PYTHON_USEDEP}]
     ')
 "
         # dev-python/scooby[${PYTHON_USEDEP}]  # Uncomment if needed
