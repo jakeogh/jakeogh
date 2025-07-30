@@ -19,7 +19,7 @@ EGIT_REPO_URI="https://github.com/vispy/vispy.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc examples test +opengl"
+IUSE="doc examples jupyter test +opengl"
 
 # Core dependencies based on setup.py and pyproject.toml
 RDEPEND="
@@ -62,8 +62,10 @@ PDEPEND="
 	dev-python/imageio[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/jupyter[${PYTHON_USEDEP}]
-	dev-python/jupyter-rfb[${PYTHON_USEDEP}]
+	jupyter? (
+		dev-python/jupyter[${PYTHON_USEDEP}]
+		dev-python/jupyter-rfb[${PYTHON_USEDEP}]
+	)
 	sci-mathematics/triangle[${PYTHON_USEDEP}]
 "
 
@@ -139,8 +141,13 @@ pkg_postinst() {
 	elog "  - GLFW"
 	elog "  - PySDL2"
 	elog ""
-	elog "For Jupyter notebook support, install jupyter-rfb:"
-	elog "  emerge dev-python/jupyter-rfb"
+	if use jupyter; then
+		elog "For Jupyter notebook support, you have jupyter-rfb installed."
+		elog "Use the 'jupyter_rfb' backend for inline visualizations."
+	else
+		elog "For Jupyter notebook support, enable the 'jupyter' USE flag:"
+		elog "  echo 'dev-python/vispy jupyter' >> /etc/portage/package.use"
+	fi
 	elog ""
 	elog "Graphics requirements:"
 	elog "  - OpenGL 2.1+ capable graphics driver"
