@@ -60,7 +60,7 @@ BDEPEND="
 PDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	dev-python/imageio[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/jupyter[${PYTHON_USEDEP}]
 	dev-python/jupyter-rfb[${PYTHON_USEDEP}]
