@@ -3,7 +3,6 @@
 
 EAPI=8
 
-
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
 
@@ -64,12 +63,24 @@ python_prepare_all() {
 		die "Triangle C library source not found. Submodule initialization may have failed."
 	fi
 
+	# Patch setup.py to build from .pyx instead of .c for live ebuild
+	sed -i "s/'triangle\/core\.c'/'triangle\/core.pyx'/" setup.py || die "Failed to patch setup.py"
+
+	# Add cython import to setup.py if not present
+	if ! grep -q "from Cython.Build import cythonize" setup.py; then
+		sed -i '1i from Cython.Build import cythonize' setup.py || die "Failed to add cython import"
+		sed -i 's/ext_modules=ext_modules,/ext_modules=cythonize(ext_modules),/' setup.py || die "Failed to add cythonize call"
+	fi
+
 	distutils-r1_python_prepare_all
 }
 
 python_compile() {
 	# Set up proper compilation environment
 	export CFLAGS="${CFLAGS} -DVOID=void -DREAL=double -DNO_TIMER=1 -DTRILIBRARY=1 -DANSI_DECLARATORS=1"
+
+	# Ensure numpy is available for Cython compilation
+	export CPPFLAGS="${CPPFLAGS} -I$(${EPYTHON} -c 'import numpy; print(numpy.get_include())')"
 
 	# Ensure Cython generates fresh C code from .pyx files
 	distutils-r1_python_compile
@@ -101,6 +112,7 @@ python_install_all() {
 		fi
 	fi
 }
+
 
 pkg_postinst() {
 	elog "Triangle is a Python wrapper around Jonathan Richard Shewchuk's"
