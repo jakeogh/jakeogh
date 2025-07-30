@@ -28,7 +28,7 @@ RDEPEND="
 	opengl? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP},opengl]
-			dev-python/PyQt6[${PYTHON_USEDEP},opengl]
+			dev-python/PyQt6[${PYTHON_USEDEP},opengl,testlib]
 			dev-python/pyside2[${PYTHON_USEDEP}]
 			dev-python/pyside6[${PYTHON_USEDEP}]
 			dev-python/wxpython[${PYTHON_USEDEP}]
@@ -67,7 +67,7 @@ PDEPEND="
 		dev-python/jupyter[${PYTHON_USEDEP}]
 		dev-python/jupyter-rfb[${PYTHON_USEDEP}]
 	)
-	dev-python/triangle[${PYTHON_USEDEP}]
+	sci-mathematics/triangle[${PYTHON_USEDEP}]
 "
 
 # OpenGL and graphics requirements
