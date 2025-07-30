@@ -67,7 +67,7 @@ PDEPEND="
 		dev-python/jupyter[${PYTHON_USEDEP}]
 		dev-python/jupyter-rfb[${PYTHON_USEDEP}]
 	)
-	sci-mathematics/triangle[${PYTHON_USEDEP}]
+	dev-python/triangle[${PYTHON_USEDEP}]
 "
 
 # OpenGL and graphics requirements
