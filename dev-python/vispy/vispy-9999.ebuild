@@ -24,6 +24,7 @@ IUSE="doc examples jupyter test +opengl"
 # Core dependencies based on setup.py and pyproject.toml
 RDEPEND="
 	>=dev-python/numpy-1.17.0[${PYTHON_USEDEP}]
+	dev-python/hsluv[${PYTHON_USEDEP}]
 	opengl? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP},opengl]
@@ -66,7 +67,7 @@ PDEPEND="
 		dev-python/jupyter[${PYTHON_USEDEP}]
 		dev-python/jupyter-rfb[${PYTHON_USEDEP}]
 	)
-	dev-python/triangle[${PYTHON_USEDEP}]
+	sci-mathematics/triangle[${PYTHON_USEDEP}]
 "
 
 # OpenGL and graphics requirements
