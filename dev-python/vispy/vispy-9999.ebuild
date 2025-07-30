@@ -28,7 +28,7 @@ RDEPEND="
 	opengl? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP},opengl]
-			dev-python/PyQt6[${PYTHON_USEDEP},opengl,testlib]
+			dev-python/pyqt6[${PYTHON_USEDEP},opengl,testlib]
 			dev-python/pyside2[${PYTHON_USEDEP}]
 			dev-python/pyside6[${PYTHON_USEDEP}]
 			dev-python/wxpython[${PYTHON_USEDEP}]
