@@ -67,6 +67,7 @@ PDEPEND="
 		dev-python/jupyter-rfb[${PYTHON_USEDEP}]
 	)
 	dev-python/triangle[${PYTHON_USEDEP}]
+	dev-python/freetype-py[${PYTHON_USEDEP}]
 "
 
 # OpenGL and graphics requirements
