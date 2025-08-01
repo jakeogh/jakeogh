@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -27,10 +27,6 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
-#	local PATCHES=(
-#		"${FILESDIR}/${P}.patch"
-#		)
-
 	# this test requires X
 	rm ${PN}/tests/test_visualization.py || die
 
