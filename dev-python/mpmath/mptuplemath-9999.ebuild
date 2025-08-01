@@ -10,8 +10,8 @@ inherit distutils-r1
 inherit git-r3
 
 DESCRIPTION="Python library for arbitrary-precision floating-point arithmetic"
-HOMEPAGE="http://mpmath.org/"
-EGIT_REPO_URI="https://github.com/fredrik-johansson/mpmath.git"
+HOMEPAGE="http://mptuplemath.org/"
+EGIT_REPO_URI="https://github.com/fredrik-johansson/mptuplemath.git"
 
 LICENSE="BSD"
 SLOT="0"
