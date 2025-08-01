@@ -12,8 +12,8 @@ inherit distutils-r1
 #DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="mv messagepacked dicts[bytes, bytes]"
-HOMEPAGE="https://github.com/jakeogh/mpmove"
-EGIT_REPO_URI="https://github.com/jakeogh/mpmove.git"
+HOMEPAGE="https://github.com/jakeogh/mpdictmove"
+EGIT_REPO_URI="https://github.com/jakeogh/mpdictmove.git"
 
 LICENSE="BSD"
 SLOT="0"
