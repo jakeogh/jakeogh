@@ -52,7 +52,7 @@ RDEPEND="
 		>=dev-python/lsprotocol-2023[${PYTHON_USEDEP}]
 		<dev-python/lsprotocol-2024[${PYTHON_USEDEP}]
 	)
-	svg? ( >=dev-python/drawsvg-2.0.0[${PYTHON_USEDEP}] <dev-python/drawsvg-3.0.0[${PYTHON_USEDEP}] )
+	svg? ( >=dev-python/drawsvg-2.0.0[${PYTHON_USEDEP}] )
 	pygments? ( >=dev-python/pygments-2.10.0[${PYTHON_USEDEP}] <dev-python/pygments-3.0.0[${PYTHON_USEDEP}] )
 	shapely? ( >=dev-python/shapely-2.0.0[${PYTHON_USEDEP}] <dev-python/shapely-3.0.0[${PYTHON_USEDEP}] )
 	image-analysis? (
