@@ -14,7 +14,7 @@ EGIT_REPO_URI="https://github.com/Argmaster/pygerber.git"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE="test deploy doc image-analysis language-server pygments shapely style svg"
 
 RESTRICT="!test? ( test )"
 
