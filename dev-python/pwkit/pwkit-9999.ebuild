@@ -8,8 +8,6 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Miscellaneous science/astronomy tools"
 HOMEPAGE="https://github.com/pkgw/pwkit"
@@ -28,8 +26,3 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
