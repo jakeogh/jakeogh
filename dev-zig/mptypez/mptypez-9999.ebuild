@@ -36,10 +36,25 @@ src_unpack() {
 }
 
 src_prepare() {
-	zig_src_prepare
-	einfo "Checking if dependency was extracted:"
-	ls -la "${WORKDIR}"/zig-eclass/p/ || einfo "No zig-eclass/p directory found"
+    zig_src_prepare
+
+    local extracted="${WORKDIR}/zig-msgpack-main"
+    local target="${WORKDIR}/zig-eclass/p/zig-msgpack-main"
+
+    if [[ -d "${extracted}" ]]; then
+        einfo "Moving ${extracted} → ${target}"
+        mkdir -p "$(dirname "${target}")"
+        mv "${extracted}" "${target}" || die "Failed to move Zig dependency"
+    else
+        die "Expected ${extracted} directory not found"
+    fi
 }
+
+#src_prepare() {
+#	zig_src_prepare
+#	einfo "Checking if dependency was extracted:"
+#	ls -la "${WORKDIR}"/zig-eclass/p/ || einfo "No zig-eclass/p directory found"
+#}
 
 src_install() {
 	zig_src_install
