@@ -16,7 +16,7 @@ KEYWORDS=""
 
 # Zig dependencies handled by the zig eclass
 declare -A ZBS_DEPENDENCIES=(
-	["zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne.tar.gz"]="https://github.com/zigcc/zig-msgpack/archive/main.tar.gz"
+	["zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne"]="https://github.com/zigcc/zig-msgpack/archive/main.tar.gz"
 )
 
 src_unpack() {
