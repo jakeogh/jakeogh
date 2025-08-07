@@ -19,8 +19,11 @@ KEYWORDS=""
 
 # Zig dependencies handled by the zig eclass
 declare -A ZBS_DEPENDENCIES=(
-    ["zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne"]="zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne.tar.gz zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne"
+    ["zig-msgpack-main"]="zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne.tar.gz zig-msgpack-main"
 )
+#declare -A ZBS_DEPENDENCIES=(
+#    ["zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne"]="zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne.tar.gz zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne"
+#)
 #declare -A ZBS_DEPENDENCIES=(
 #	["zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne"]="zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne.tar.gz"
 #)
