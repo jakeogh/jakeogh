@@ -9,7 +9,7 @@ inherit git-r3 zig
 DESCRIPTION="reads messagepacked bytes on stdin and prints their type and metadata to stdout"
 HOMEPAGE="https://github.com/jakeogh/mptypez"
 EGIT_REPO_URI="https://github.com/jakeogh/mptypez.git"
-EGIT_COMMIT="3343b40de196d69755567277a16986e1b8992f42"
+EGIT_COMMIT="96c675b4b5162037e6b056c451cf63f39e0aa23a"
 
 # Add dependencies to SRC_URI so they get downloaded
 SRC_URI="https://github.com/zigcc/zig-msgpack/archive/main.tar.gz -> zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne.tar.gz"
