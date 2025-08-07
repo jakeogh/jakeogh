@@ -19,7 +19,7 @@ RDEPEND="
 "
 
 BDEPEND="
-    dev-python/meson[${PYTHON_USEDEP}]
+    dev-python/meson-python[${PYTHON_USEDEP}]
     dev-python/cython[${PYTHON_USEDEP}]
     >=dev-python/numpy-2.0.0[${PYTHON_USEDEP}]
     test? ( dev-python/pytest[${PYTHON_USEDEP}] )
