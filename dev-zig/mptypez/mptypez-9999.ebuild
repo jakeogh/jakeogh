@@ -43,6 +43,7 @@ src_prepare() {
 
 src_install() {
 	zig_src_install
+
 	# Create a symlink with the package name
 	dosym msgpack-reader /usr/bin/mptypez
 }
