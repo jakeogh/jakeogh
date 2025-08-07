@@ -95,6 +95,7 @@ EOF
 src_compile() {
 	# Build with local dependencies
 	zig build -Doptimize=ReleaseSafe || die "compilation failed"
+
 }
 
 src_install() {
