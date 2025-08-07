@@ -10,13 +10,16 @@ DESCRIPTION="reads messagepacked bytes on stdin and prints their type and metada
 HOMEPAGE="https://github.com/jakeogh/mptypez"
 EGIT_REPO_URI="https://github.com/jakeogh/mptypez.git"
 
+# Add dependencies to SRC_URI so they get downloaded
+SRC_URI="https://github.com/zigcc/zig-msgpack/archive/main.tar.gz -> zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne.tar.gz"
+
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
 # Zig dependencies handled by the zig eclass
 declare -A ZBS_DEPENDENCIES=(
-	["zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne"]="https://github.com/zigcc/zig-msgpack/archive/main.tar.gz"
+	["zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne"]="zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne.tar.gz"
 )
 
 src_unpack() {
