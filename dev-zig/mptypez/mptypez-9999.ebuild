@@ -23,25 +23,77 @@ RDEPEND=""
 src_prepare() {
 	default
 
-	# Set up the zig dependencies manually
-	local zig_cache_dir="${HOME}/.cache/zig"
-	local dep_dir="${zig_cache_dir}/p"
+	# Extract zig-msgpack as a local dependency
+	mkdir -p deps/zig-msgpack || die
+	tar -xzf "${DISTDIR}/zig-msgpack-${ZIG_MSGPACK_COMMIT}.tar.gz" \
+		--strip-components=1 -C deps/zig-msgpack || die "Failed to extract zig-msgpack"
 
-	mkdir -p "${dep_dir}" || die
+	# Create a simplified build.zig that uses the local dependency
+	cat > build.zig << 'EOF'
+const std = @import("std");
 
-	# Extract the zig-msgpack dependency to the expected location
-	local msgpack_hash="zig_msgpack-0.0.8-evvueB_ZAQBNRm7kdh1FslBxMvpu5WKvU2RrYhUY_Dne"
-	local msgpack_dir="${dep_dir}/${msgpack_hash}"
+pub fn build(b: *std.Build) void {
+    const target = b.standardTargetOptions(.{});
+    const optimize = b.standardOptimizeOption(.{});
 
-	if [[ ! -d "${msgpack_dir}" ]]; then
-		mkdir -p "${msgpack_dir}" || die
-		tar -xzf "${DISTDIR}/zig-msgpack-${ZIG_MSGPACK_COMMIT}.tar.gz" \
-			--strip-components=1 -C "${msgpack_dir}" || die "Failed to extract zig-msgpack"
-	fi
+    const exe = b.addExecutable(.{
+        .name = "msgpack-reader",
+        .root_source_file = b.path("src/main.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+
+    // Add the local zig-msgpack dependency
+    const msgpack_module = b.addModule("msgpack", .{
+        .root_source_file = b.path("deps/zig-msgpack/src/msgpack.zig"),
+    });
+    exe.root_module.addImport("msgpack", msgpack_module);
+
+    b.installArtifact(exe);
+
+    const run_cmd = b.addRunArtifact(exe);
+    run_cmd.step.dependOn(b.getInstallStep());
+
+    if (b.args) |args| {
+        run_cmd.addArgs(args);
+    }
+
+    const run_step = b.step("run", "Run the app");
+    run_step.dependOn(&run_cmd.step);
+
+    const unit_tests = b.addTest(.{
+        .root_source_file = b.path("src/main.zig"),
+        .target = target,
+        .optimize = optimize,
+    });
+    unit_tests.root_module.addImport("msgpack", msgpack_module);
+
+    const run_unit_tests = b.addRunArtifact(unit_tests);
+
+    const test_step = b.step("test", "Run unit tests");
+    test_step.dependOn(&run_unit_tests.step);
+}
+EOF
+
+	# Create a simplified build.zig.zon without external dependencies
+	cat > build.zig.zon << 'EOF'
+.{
+    .name = .msgpack_reader,
+    .version = "0.1.0",
+    .minimum_zig_version = "0.14.0",
+
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "deps",
+    },
+}
+EOF
 }
 
 src_compile() {
-	# Build with dependencies already set up
+	# Build with local dependencies
 	zig build -Doptimize=ReleaseSafe || die "compilation failed"
 }
 
