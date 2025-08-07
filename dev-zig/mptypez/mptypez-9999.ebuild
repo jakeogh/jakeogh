@@ -21,7 +21,15 @@ declare -A ZBS_DEPENDENCIES=(
 
 src_unpack() {
 	git-r3_src_unpack
+	einfo "ZBS_DEPENDENCIES: ${!ZBS_DEPENDENCIES[@]}"
+	einfo "ZBS_DEPENDENCIES values: ${ZBS_DEPENDENCIES[@]}"
 	zig_src_unpack
+}
+
+src_prepare() {
+	zig_src_prepare
+	einfo "Checking if dependency was extracted:"
+	ls -la "${WORKDIR}"/zig-eclass/p/ || einfo "No zig-eclass/p directory found"
 }
 
 src_install() {
