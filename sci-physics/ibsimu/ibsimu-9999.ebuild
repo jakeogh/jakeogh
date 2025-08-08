@@ -10,7 +10,7 @@ inherit autotools
 
 DESCRIPTION="Ion beam simulator"
 HOMEPAGE="http://ibsimu.sourceforge.net/index.html"
-EGIT_REPO_URI="/home/user/_myapps/ibsimu git://ibsimu.git.sourceforge.net/gitroot/ibsimu/ibsimu"
+EGIT_REPO_URI="git://ibsimu.git.sourceforge.net/gitroot/ibsimu/ibsimu"
 
 LICENSE="GPL-2+"
 SLOT="0"
