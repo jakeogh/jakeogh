@@ -7,7 +7,7 @@ inherit toolchain-funcs gnome2-utils xdg-utils git-r3
 DESCRIPTION="A fast, lightweight imageviewer using imlib2"
 HOMEPAGE="https://feh.finalrewind.org/"
 #SRC_URI="https://feh.finalrewind.org/${P}.tar.bz2"
-EGIT_REPO_URI="/home/user/_myapps/feh https://github.com/ulteq/feh.git"
+EGIT_REPO_URI="https://github.com/ulteq/feh.git"
 #EGIT_BRANCH="preload-next-image"
 #
 #
