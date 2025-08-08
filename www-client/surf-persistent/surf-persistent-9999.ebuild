@@ -6,7 +6,7 @@ inherit git-r3 savedconfig toolchain-funcs desktop xdg
 
 DESCRIPTION="a simple web browser based on WebKit/GTK+"
 HOMEPAGE="https://surf.suckless.org/"
-EGIT_REPO_URI="/home/user/_myapps/surf-persistent"
+EGIT_REPO_URI="https://github.com/jakeogh/surf-persistent"
 EGIT_BRANCH="surf-webkit2"
 
 LICENSE="MIT"
