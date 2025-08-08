@@ -2,20 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit toolchain-funcs gnome2-utils xdg-utils git-r3
+inherit toolchain-funcs xdg-utils git-r3
 
 DESCRIPTION="A fast, lightweight imageviewer using imlib2"
 HOMEPAGE="https://feh.finalrewind.org/"
 #SRC_URI="https://feh.finalrewind.org/${P}.tar.bz2"
 EGIT_REPO_URI="https://github.com/ulteq/feh.git"
 #EGIT_BRANCH="preload-next-image"
-#
-#
 
 LICENSE="feh"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
-IUSE="debug curl exif test xinerama"
+KEYWORDS="amd64 ~arm arm64 ~mips ppc ppc64 ~riscv x86"
+IUSE="debug curl exif test xinerama inotify"
 RESTRICT="test" # Tests are broken.
 
 COMMON_DEPEND="
@@ -49,6 +47,7 @@ pkg_setup() {
 		debug=$(use_feh debug)
 		xinerama=$(use_feh xinerama)
 		exif=$(use_feh exif)
+		inotify=$(use_feh inotify)
 	)
 }
 
