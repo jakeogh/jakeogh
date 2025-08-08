@@ -24,6 +24,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/requeststool[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
