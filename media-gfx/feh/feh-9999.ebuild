@@ -34,7 +34,7 @@ DEPEND="${COMMON_DEPEND}
 		media-libs/imlib2[gif,jpeg,png]
 	)"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.2-debug-cflags.patch )
+#PATCHES=( "${FILESDIR}"/${PN}-3.2-debug-cflags.patch )
 
 pkg_setup() {
 	use_feh() { usex $1 1 0; }
