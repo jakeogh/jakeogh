@@ -10,7 +10,7 @@ inherit git-r3
 
 DESCRIPTION="Separate the TLD from the subdomains of a URL using the Public Suffix List."
 HOMEPAGE="https://github.com/john-kurkowski/tldextract"
-EGIT_REPO_URI="/home/user/_myapps/tldextract https://github.com/john-kurkowski/tldextract.git"
+EGIT_REPO_URI="https://github.com/john-kurkowski/tldextract.git"
 
 LICENSE="BSD"
 SLOT="0"
