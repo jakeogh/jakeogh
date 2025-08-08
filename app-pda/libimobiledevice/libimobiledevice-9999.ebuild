@@ -11,7 +11,7 @@ inherit git-r3
 DESCRIPTION="Support library to communicate with Apple iPhone/iPod Touch devices"
 HOMEPAGE="https://www.libimobiledevice.org/"
 #SRC_URI="https://github.com/libimobiledevice/libimobiledevice/releases/download/${PV}/${P}.tar.bz2"
-EGIT_REPO_URI="/home/user/_myapps/libimobiledevice https://github.com/libimobiledevice/libimobiledevice"
+EGIT_REPO_URI="https://github.com/libimobiledevice/libimobiledevice"
 
 # While COPYING* doesn't mention 'or any later version', all the headers do, hence use +
 #
