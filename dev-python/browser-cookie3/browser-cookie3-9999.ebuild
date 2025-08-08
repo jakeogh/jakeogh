@@ -15,7 +15,6 @@ EGIT_REPO_URI="/home/sysskel/myapps/browser-cookie3 https://github.com/jakeogh/b
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
