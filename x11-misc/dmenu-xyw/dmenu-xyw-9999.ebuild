@@ -6,7 +6,7 @@ inherit git-r3 savedconfig toolchain-funcs
 
 DESCRIPTION="a generic, highly customizable, and efficient menu for the X Window System"
 HOMEPAGE="https://github.com/jakeogh/dmenu-xyw"
-EGIT_REPO_URI="/home/user/_myapps/dmenu-xyw https://github.com/jakeogh/dmenu-xyw.git"
+EGIT_REPO_URI="https://github.com/jakeogh/dmenu-xyw.git"
 
 LICENSE="MIT"
 SLOT="0"
