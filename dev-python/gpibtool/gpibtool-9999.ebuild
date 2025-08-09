@@ -29,7 +29,7 @@ RDEPEND="
 	dev-python/pymeasure[${PYTHON_USEDEP}]
 	dev-python/gpib-ctypes[${PYTHON_USEDEP}]
 	dev-python/PyVISA-py[${PYTHON_USEDEP}]
-	sci-libs/linux-gpib
+	sci-libs/linux-gpib[${PYTHON_USEDEP}]
 "
 
 
