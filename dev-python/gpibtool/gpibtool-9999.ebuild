@@ -29,6 +29,7 @@ RDEPEND="
 	dev-python/bnftool[${PYTHON_USEDEP}]
 	dev-python/pymeasure[${PYTHON_USEDEP}]
 	dev-python/gpib-ctypes[${PYTHON_USEDEP}]
+	dev-python/PyVISA-py[${PYTHON_USEDEP}]
 "
 
 
