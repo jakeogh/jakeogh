@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+Subject: [patch] Prefer system msdfgen; only FetchContent if not found. Create
+ a compatibility alias 'msdfgen-atlas' if the system exports msdfgen::msdfgen.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -402,12 +402,39 @@ if(DVZ_USE_TEXT)
+   # msdfgen-atlas provides distance field font atlas utilities
+-  include(FetchContent)
+-  FetchContent_Declare(
+-    msdfgen-atlas
+-    GIT_REPOSITORY https://github.com/eliemichel/msdf-atlas-gen.git
+-  )
+-  FetchContent_MakeAvailable(msdfgen-atlas)
++  # First try system msdfgen (Gentoo: media-libs/msdfgen with CMake config).
++  # Different distros export different target names; try common ones.
++  find_package(msdfgen CONFIG QUIET)
++
++  # Some packages export target 'msdfgen::msdfgen'; Datoviz often expects a
++  # target named 'msdfgen-atlas'. If we only have msdfgen::msdfgen, create an
++  # ALIAS target for compatibility with downstream set_target_properties().
++  if(TARGET msdfgen::msdfgen AND NOT TARGET msdfgen-atlas)
++    add_library(msdfgen-atlas ALIAS msdfgen::msdfgen)
++  endif()
++
++  # If neither target exists, fallback to FetchContent (for developer builds).
++  if(NOT TARGET msdfgen-atlas)
++    include(FetchContent)
++    FetchContent_Declare(
++      msdfgen-atlas
++      GIT_REPOSITORY https://github.com/eliemichel/msdf-atlas-gen.git
++    )
++    FetchContent_MakeAvailable(msdfgen-atlas)
++  endif()
++
++  # Final guard to keep later set_target_properties() safe.
++  if(NOT TARGET msdfgen-atlas)
++    message(FATAL_ERROR "msdfgen-atlas target not found and FetchContent disabled; please install system msdfgen or allow fetching.")
++  endif()
+ endif()

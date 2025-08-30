@@ -3,8 +3,6 @@
 
 EAPI=8
 
-# We'll install the Python module with python-r1 helpers,
-# and build the C core with CMake/Ninja ourselves.
 PYTHON_COMPAT=( python3_12 python3_13 )
 
 inherit python-r1 git-r3
@@ -13,9 +11,8 @@ DESCRIPTION="Datoviz (live git): Vulkan-based viz core + Python wrapper"
 HOMEPAGE="https://github.com/datoviz/datoviz"
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
 EGIT_BRANCH="main"
-# Pull only the submodules actually used at runtime/tests; broaden if needed.
+# Only needed submodules; widen if upstream starts using more.
 EGIT_SUBMODULES=( data external/imgui )
-# Repo uses Git LFS for some assets.
 EGIT_LFS="yes"
 
 LICENSE="MIT"
@@ -24,7 +21,6 @@ KEYWORDS=""
 IUSE=""
 PROPERTIES="live"
 
-# Runtime deps: Python bits + the shared libs Datoviz needs at run-time.
 RDEPEND="
 	$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]')
 	media-libs/vulkan-loader
@@ -32,9 +28,9 @@ RDEPEND="
 	media-libs/freetype:2
 	dev-libs/tinyxml2
 	dev-libs/cglm
+	media-libs/msdfgen
 "
 
-# Build-time deps (also needed at runtime are placed in RDEPEND above).
 DEPEND="
 	${RDEPEND}
 	dev-util/vulkan-headers
@@ -47,27 +43,41 @@ BDEPEND="
 	dev-vcs/git-lfs
 "
 
-# CMake build directory for the C core
+# Apply patches to prefer system tinyxml2/msdfgen over FetchContent.
+PATCHES=(
+	"${FILESDIR}"/0001-prefer-system-tinyxml2-and-normalize-target.patch
+	"${FILESDIR}"/0002-prefer-system-msdfgen-and-normalize-target.patch
+)
+
 CMAKE_BUILD_DIR="${WORKDIR}/build-dvz"
 
 src_prepare() {
 	default
-	# Ensure upstream doesn't attempt to download SDKs or similar during build.
+	# No network helpers at build time
 	export DVZ_DOWNLOAD_SDK=0
 }
 
 src_configure() {
-	# Help CMake locate system cglm and forbid FetchContent network activity.
 	local libdir=$(get_libdir)
+
+	# CMake config dirs we expect on Gentoo
 	local cglm_cmake="/usr/${libdir}/cmake/cglm"
+	local tinyxml2_cmake="/usr/${libdir}/cmake/tinyxml2"
+	local msdfgen_cmake="/usr/${libdir}/cmake/msdfgen"
 
 	cmake -S "${S}" -B "${CMAKE_BUILD_DIR}" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=ON \
+		# Disallow any FetchContent downloads under sandbox:
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-		-DCMAKE_PREFIX_PATH="/usr/${libdir}/cmake;${cglm_cmake}" \
+		# Help CMake find our system libs so it doesn't try to fetch:
+		-DCMAKE_PREFIX_PATH="/usr/${libdir}/cmake;${cglm_cmake};${tinyxml2_cmake};${msdfgen_cmake}" \
 		-Dcglm_DIR="${cglm_cmake}" \
 		-DCGLM_DIR="${cglm_cmake}" \
+		-Dtinyxml2_DIR="${tinyxml2_cmake}" \
+		-DTinyXML2_DIR="${tinyxml2_cmake}" \
+		-Dmsdfgen_DIR="${msdfgen_cmake}" \
+		-DMSDFGEN_DIR="${msdfgen_cmake}" \
 		-G Ninja \
 		|| die "cmake configure failed"
 }
@@ -77,11 +87,10 @@ src_compile() {
 }
 
 python_install() {
-	# Install pure-Python package. In the upstream repo this directory is 'datoviz'.
-	# If upstream ever relocates it, adjust this path accordingly.
+	# Install pure-Python sources
 	python_domodule "${S}/datoviz" || die "failed to install Python module"
 
-	# Find the built shared lib and place it where datoviz/_ctypes.py expects it.
+	# Drop the built shared lib where the Python ctypes loader looks:
 	local built_lib
 	built_lib="$(find "${CMAKE_BUILD_DIR}" -type f -name 'libdatoviz.so' -print -quit)" \
 		|| die "search for libdatoviz.so failed"
@@ -97,8 +106,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Datoviz installed."
-	elog "Python will load the C core from: site-packages/datoviz/build/libdatoviz.so"
-	elog "Make sure a Vulkan ICD/driver is present (e.g., Mesa or vendor ICD)."
+	elog "Datoviz installed. Python will load the C core from:"
+	elog "  site-packages/datoviz/build/libdatoviz.so (per-impl)."
+	elog "Ensure a Vulkan ICD/driver is installed (Mesa or vendor)."
 }
 

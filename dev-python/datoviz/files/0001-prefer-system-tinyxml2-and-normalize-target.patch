@@ -1,0 +1,46 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+Subject: [patch] Prefer system tinyxml2; only FetchContent if not found. Create
+ compatibility alias target 'tinyxml2' if only tinyxml2::tinyxml2 exists.
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -386,12 +386,33 @@ if(DVZ_USE_FREETYPE)
+   endif()
+ endif()
+
+-# tinyxml2 (used for font metadata etc.)
+-include(FetchContent)
+-FetchContent_Declare(
+-  tinyxml2
+-  GIT_REPOSITORY https://github.com/leethomason/tinyxml2.git
+-)
+-FetchContent_MakeAvailable(tinyxml2)
++# tinyxml2 (used for font metadata etc.)
++# First, try system tinyxml2 (Gentoo installs a config file).
++find_package(tinyxml2 CONFIG QUIET)
++if(NOT TARGET tinyxml2::tinyxml2 AND NOT TARGET tinyxml2)
++  # Try case-variant if some distros export TinyXML2 instead.
++  find_package(TinyXML2 CONFIG QUIET)
++endif()
++
++if(NOT TARGET tinyxml2::tinyxml2 AND NOT TARGET tinyxml2)
++  include(FetchContent)
++  FetchContent_Declare(
++    tinyxml2
++    GIT_REPOSITORY https://github.com/leethomason/tinyxml2.git
++  )
++  FetchContent_MakeAvailable(tinyxml2)
++endif()
++
++# Normalize target name expected later in the script:
++if(TARGET tinyxml2::tinyxml2 AND NOT TARGET tinyxml2)
++  add_library(tinyxml2 ALIAS tinyxml2::tinyxml2)
++endif()
++
++# Some code may call set_target_properties(tinyxml2 ...); ensure target exists.
++if(NOT TARGET tinyxml2)
++  message(FATAL_ERROR "tinyxml2 target not found and FetchContent disabled; please install system tinyxml2 or allow fetching.")
++endif()
+
+ # keep any custom properties below
+ set_target_properties(tinyxml2 PROPERTIES POSITION_INDEPENDENT_CODE ON)
