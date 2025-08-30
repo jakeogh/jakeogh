@@ -52,194 +52,176 @@ src_configure() {
 	local tinyxml2_cmake="/usr/${libdir}/cmake/tinyxml2"
 	local msdfgen_cmake="/usr/${libdir}/cmake/msdfgen"
 
-	# Top-level shim: replace FetchContent deps with system packages (REAL imported targets).
+	# Top-level shim: replace FetchContent deps with system packages only.
 	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
 	cat > "${top_include}" <<'CMK' || die "write override failed"
-# Executed before project() via CMAKE_PROJECT_TOP_LEVEL_INCLUDES.
-# Provide non-alias IMPORTED targets for deps Datoviz otherwise FetchContent()s.
+# Run before project() via CMAKE_PROJECT_TOP_LEVEL_INCLUDES.
+# Provide system deps for Datoviz without any FetchContent downloads.
 
 function(FetchContent_Declare)
-  # no-op (we forbid downloading under sandbox)
+  # no-op
 endfunction()
 
-# Helper: create or adapt a REAL IMPORTED target named <tgt>
-# Prefer CMake config; then pkg-config; then find_library + common includes.
-function(_ensure_imported_target tgt)
-  if(TARGET ${tgt})
+# --- helpers ---------------------------------------------------------------
+
+function(_ensure_cglm)
+  if(TARGET cglm) return() endif()
+
+  find_package(cglm CONFIG QUIET)
+  if(TARGET cglm::cglm)
+    # Materialize a non-alias imported target 'cglm'
+    find_library(CGLM_LIB cglm)
+    get_target_property(CGLM_INC cglm::cglm INTERFACE_INCLUDE_DIRECTORIES)
+    add_library(cglm UNKNOWN IMPORTED)
+    if(CGLM_LIB) set_target_properties(cglm PROPERTIES IMPORTED_LOCATION "${CGLM_LIB}") endif()
+    if(CGLM_INC) set_target_properties(cglm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}") endif()
     return()
   endif()
 
-  # If there's a namespaced config target ${tgt}::<something>, reuse its props.
-  # Map common cases explicitly when needed.
-  if("${tgt}" STREQUAL "cglm")
-    find_package(cglm CONFIG QUIET)
-    if(TARGET cglm::cglm)
-      # Try to resolve a concrete lib path; fall back to -lcglm
-      find_library(_loc cglm)
-      get_target_property(_inc cglm::cglm INTERFACE_INCLUDE_DIRECTORIES)
-      add_library(cglm UNKNOWN IMPORTED)
-      if(_loc)
-        set_target_properties(cglm PROPERTIES IMPORTED_LOCATION "${_loc}")
-      endif()
-      if(_inc)
-        set_target_properties(cglm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_inc}")
-      endif()
-      return()
-    endif()
-  elseif("${tgt}" STREQUAL "tinyxml2")
-    find_package(tinyxml2 CONFIG QUIET)
-    if(TARGET tinyxml2::tinyxml2)
-      find_library(_loc tinyxml2)
-      get_target_property(_inc tinyxml2::tinyxml2 INTERFACE_INCLUDE_DIRECTORIES)
-      add_library(tinyxml2 UNKNOWN IMPORTED)
-      if(_loc)
-        set_target_properties(tinyxml2 PROPERTIES IMPORTED_LOCATION "${_loc}")
-      endif()
-      if(_inc)
-        set_target_properties(tinyxml2 PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_inc}")
-      endif()
-      return()
-    endif()
-  elseif("${tgt}" STREQUAL "glfw")
-    # Various configs export 'glfw' already; if so, do nothing.
-    find_package(glfw3 CONFIG QUIET)
-    if(TARGET glfw)
-      return()
-    endif()
-    find_package(glfw CONFIG QUIET)
-    if(TARGET glfw)
-      return()
-    endif()
+  find_package(PkgConfig QUIET)
+  if(PkgConfig_FOUND)
+    pkg_check_modules(PC_CGLM QUIET cglm)
   endif()
+
+  add_library(cglm UNKNOWN IMPORTED)
+  if(DEFINED PC_CGLM_LIBRARIES)
+    foreach(_cand IN LISTS PC_CGLM_LIBRARIES)
+      if(EXISTS "${_cand}") set(_loc "${_cand}") break() endif()
+    endforeach()
+    if(NOT _loc) find_library(_loc cglm) endif()
+  else()
+    find_library(_loc cglm)
+  endif()
+  if(_loc) set_target_properties(cglm PROPERTIES IMPORTED_LOCATION "${_loc}") endif()
+  if(DEFINED PC_CGLM_INCLUDE_DIRS)
+    set_target_properties(cglm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${PC_CGLM_INCLUDE_DIRS}")
+  elseif(EXISTS "/usr/include/cglm")
+    set_target_properties(cglm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "/usr/include")
+  endif()
+endfunction()
+
+function(_ensure_tinyxml2)
+  if(TARGET tinyxml2) return() endif()
+
+  find_package(tinyxml2 CONFIG QUIET)
+  if(TARGET tinyxml2::tinyxml2)
+    find_library(TXML2_LIB tinyxml2)
+    get_target_property(TXML2_INC tinyxml2::tinyxml2 INTERFACE_INCLUDE_DIRECTORIES)
+    add_library(tinyxml2 UNKNOWN IMPORTED)
+    if(TXML2_LIB) set_target_properties(tinyxml2 PROPERTIES IMPORTED_LOCATION "${TXML2_LIB}") endif()
+    if(TXML2_INC) set_target_properties(tinyxml2 PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${TXML2_INC}") endif()
+    return()
+  endif()
+
+  find_package(PkgConfig QUIET)
+  if(PkgConfig_FOUND)
+    pkg_check_modules(PC_TXML2 QUIET tinyxml2)
+  endif()
+
+  add_library(tinyxml2 UNKNOWN IMPORTED)
+  if(DEFINED PC_TXML2_LIBRARIES)
+    foreach(_cand IN LISTS PC_TXML2_LIBRARIES)
+      if(EXISTS "${_cand}") set(_loc "${_cand}") break() endif()
+    endforeach()
+    if(NOT _loc) find_library(_loc tinyxml2) endif()
+  else()
+    find_library(_loc tinyxml2)
+  endif()
+  if(_loc) set_target_properties(tinyxml2 PROPERTIES IMPORTED_LOCATION "${_loc}") endif()
+  if(DEFINED PC_TXML2_INCLUDE_DIRS)
+    set_target_properties(tinyxml2 PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${PC_TXML2_INCLUDE_DIRS}")
+  endif()
+endfunction()
+
+function(_ensure_glfw)
+  # If a 'glfw' target already exists (from a config), don't recreate it.
+  if(TARGET glfw) return() endif()
+
+  # Try configs; some export glfw already.
+  find_package(glfw3 CONFIG QUIET)
+  if(TARGET glfw) return() endif()
+  find_package(glfw CONFIG QUIET)
+  if(TARGET glfw) return() endif()
 
   # pkg-config fallback
   find_package(PkgConfig QUIET)
   if(PkgConfig_FOUND)
-    if("${tgt}" STREQUAL "cglm")
-      pkg_check_modules(PC_${tgt} QUIET cglm)
-    elseif("${tgt}" STREQUAL "tinyxml2")
-      pkg_check_modules(PC_${tgt} QUIET tinyxml2)
-    elseif("${tgt}" STREQUAL "glfw")
-      pkg_check_modules(PC_${tgt} QUIET glfw3)
-    endif()
+    pkg_check_modules(PC_GLFW QUIET glfw3)
   endif()
 
-  # Generic construction
-  add_library(${tgt} UNKNOWN IMPORTED)
-
-  # IMPORTED_LOCATION if we can resolve it
-  if(DEFINED PC_${tgt}_LIBRARIES)
-    # Prefer absolute paths in pkg-config libs; else try find_library
-    set(_loc "")
-    foreach(_cand IN LISTS PC_${tgt}_LIBRARIES)
-      if(EXISTS "${_cand}")
-        set(_loc "${_cand}")
-        break()
-      endif()
+  add_library(glfw UNKNOWN IMPORTED)
+  # Try to resolve a full path for IMPORTED_LOCATION
+  if(DEFINED PC_GLFW_LIBRARIES)
+    foreach(_cand IN LISTS PC_GLFW_LIBRARIES)
+      if(EXISTS "${_cand}") set(_loc "${_cand}") break() endif()
     endforeach()
-    if(NOT _loc)
-      if("${tgt}" STREQUAL "glfw")
-        find_library(_loc NAMES glfw glfw3)
-      else()
-        find_library(_loc ${tgt})
-      endif()
-    endif()
-    if(_loc)
-      set_target_properties(${tgt} PROPERTIES IMPORTED_LOCATION "${_loc}")
-    endif()
+    if(NOT _loc) find_library(_loc NAMES glfw glfw3) endif()
   else()
-    if("${tgt}" STREQUAL "glfw")
-      find_library(_loc NAMES glfw glfw3)
-    else()
-      find_library(_loc ${tgt})
-    endif()
-    if(_loc)
-      set_target_properties(${tgt} PROPERTIES IMPORTED_LOCATION "${_loc}")
-    endif()
+    find_library(_loc NAMES glfw glfw3)
   endif()
-
-  # Interface includes
-  if(DEFINED PC_${tgt}_INCLUDE_DIRS)
-    set_target_properties(${tgt} PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${PC_${tgt}_INCLUDE_DIRS}")
-  else()
-    # Heuristic include roots
-    foreach(_d /usr/include /usr/include/${tgt} /usr/local/include /usr/local/include/${tgt})
-      if(EXISTS "${_d}")
-        set_property(TARGET ${tgt} APPEND PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${_d}")
-      endif()
-    endforeach()
+  if(_loc) set_target_properties(glfw PROPERTIES IMPORTED_LOCATION "${_loc}") endif()
+  if(DEFINED PC_GLFW_INCLUDE_DIRS)
+    set_target_properties(glfw PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${PC_GLFW_INCLUDE_DIRS}")
   endif()
 endfunction()
 
+function(_ensure_msdfgen_atlas)
+  if(TARGET msdfgen-atlas) return() endif()
+
+  # Prefer CMake package that exports msdfgen::msdfgen-core/ext
+  find_package(msdfgen CONFIG QUIET)
+  if(TARGET msdfgen::msdfgen-core OR TARGET msdfgen::msdfgen-ext)
+    add_library(msdfgen-atlas UNKNOWN IMPORTED)
+    # include dirs from the package if available
+    get_target_property(_inc_core msdfgen::msdfgen-core INTERFACE_INCLUDE_DIRECTORIES)
+    get_target_property(_inc_ext  msdfgen::msdfgen-ext  INTERFACE_INCLUDE_DIRECTORIES)
+    if(_inc_core)
+      set_target_properties(msdfgen-atlas PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_inc_core}")
+    elseif(_inc_ext)
+      set_target_properties(msdfgen-atlas PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_inc_ext}")
+    elseif(EXISTS "/usr/include/msdfgen")
+      set_target_properties(msdfgen-atlas PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdfgen")
+    endif()
+    # link to the real components
+    if(TARGET msdfgen::msdfgen-core) target_link_libraries(msdfgen-atlas INTERFACE msdfgen::msdfgen-core) endif()
+    if(TARGET msdfgen::msdfgen-ext)  target_link_libraries(msdfgen-atlas INTERFACE msdfgen::msdfgen-ext)  endif()
+    return()
+  endif()
+
+  # Fallback: find split libs directly (Gentoo provides libmsdfgen-core.so, libmsdfgen-ext.so)
+  find_library(MSDFGEN_CORE msdfgen-core)
+  find_library(MSDFGEN_EXT  msdfgen-ext)
+  if(NOT MSDFGEN_CORE AND NOT MSDFGEN_EXT)
+    message(FATAL_ERROR "Could not find msdfgen-core or msdfgen-ext. Install media-libs/msdfgen.")
+  endif()
+
+  add_library(msdfgen-atlas UNKNOWN IMPORTED)
+  if(EXISTS "/usr/include/msdfgen")
+    set_target_properties(msdfgen-atlas PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdfgen")
+  endif()
+  if(MSDFGEN_CORE)
+    set_property(TARGET msdfgen-atlas APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_CORE}")
+  endif()
+  if(MSDFGEN_EXT)
+    set_property(TARGET msdfgen-atlas APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT}")
+  endif()
+endfunction()
+
+# --- override FetchContent -------------------------------------------------
+
 function(FetchContent_MakeAvailable)
   foreach(_name IN LISTS ARGV)
-
     if(_name STREQUAL "cglm")
-      _ensure_imported_target(cglm)
-
+      _ensure_cglm()
     elseif(_name STREQUAL "tinyxml2")
-      _ensure_imported_target(tinyxml2)
-
+      _ensure_tinyxml2()
     elseif(_name STREQUAL "glfw")
-      # If CMake config already created 'glfw', do nothing.
-      if(NOT TARGET glfw)
-        _ensure_imported_target(glfw)
-      endif()
-
+      _ensure_glfw()
     elseif(_name STREQUAL "msdfgen-atlas")
-      if(TARGET msdfgen-atlas)
-        # already provided
-      else()
-        # Prefer system CMake package exporting msdfgen::msdfgen-core/ext
-        find_package(msdfgen CONFIG QUIET)
-        if(TARGET msdfgen::msdfgen-core OR TARGET msdfgen::msdfgen-ext)
-          # Create a non-alias imported target and link both components
-          add_library(msdfgen-atlas UNKNOWN IMPORTED)
-          # Includes from either target if provided
-          get_target_property(_incs_core msdfgen::msdfgen-core INTERFACE_INCLUDE_DIRECTORIES)
-          get_target_property(_incs_ext  msdfgen::msdfgen-ext  INTERFACE_INCLUDE_DIRECTORIES)
-          if(_incs_core)
-            set_property(TARGET msdfgen-atlas PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${_incs_core}")
-          elseif(_incs_ext)
-            set_property(TARGET msdfgen-atlas PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${_incs_ext}")
-          else()
-            # common headers path
-            if(EXISTS "/usr/include/msdfgen")
-              set_property(TARGET msdfgen-atlas PROPERTY INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdfgen")
-            endif()
-          endif()
-          # Propagate link interface to the real libs/targets
-          if(TARGET msdfgen::msdfgen-core)
-            target_link_libraries(msdfgen-atlas INTERFACE msdfgen::msdfgen-core)
-          endif()
-          if(TARGET msdfgen::msdfgen-ext)
-            target_link_libraries(msdfgen-atlas INTERFACE msdfgen::msdfgen-ext)
-          endif()
-        else()
-          # Fallback: find_library for split libs
-          find_library(MSDFGEN_CORE msdfgen-core)
-          find_library(MSDFGEN_EXT  msdfgen-ext)
-          if(NOT MSDFGEN_CORE AND NOT MSDFGEN_EXT)
-            message(FATAL_ERROR "Could not find msdfgen-core/ext. Install media-libs/msdfgen.")
-          endif()
-          add_library(msdfgen-atlas UNKNOWN IMPORTED)
-          if(EXISTS "/usr/include/msdfgen")
-            set_property(TARGET msdfgen-atlas PROPERTY INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdfgen")
-          endif()
-          # Convey link requirements via interface (works for IMPORTED UNKNOWN)
-          if(MSDFGEN_CORE)
-            set_property(TARGET msdfgen-atlas APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_CORE}")
-          endif()
-          if(MSDFGEN_EXT)
-            set_property(TARGET msdfgen-atlas APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT}")
-          endif()
-        endif()
-      endif()
-
+      _ensure_msdfgen_atlas()
     else()
       message(FATAL_ERROR "FetchContent for '${_name}' is disabled under sandbox. Provide a system package.")
     endif()
-
   endforeach()
 endfunction()
 CMK
@@ -284,7 +266,6 @@ src_install() {
 
 pkg_postinst() {
 	elog "Datoviz installed. Python loads: site-packages/datoviz/build/libdatoviz.so"
-	elog "System msdfgen provides split libs (core/ext) with a CMake package; we link both."
-	elog "Ensure a Vulkan ICD/driver is installed (Mesa or vendor)."
+	elog "Using system glfw, cglm, tinyxml2, and msdfgen (core+ext)."
 }
 
