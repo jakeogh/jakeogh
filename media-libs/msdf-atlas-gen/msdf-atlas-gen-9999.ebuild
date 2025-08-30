@@ -26,12 +26,13 @@ BDEPEND="dev-build/cmake"
 
 src_prepare() {
   cmake_src_prepare
-  # Upstream’s embedded msdfgen unconditionally does: find_package(unofficial-skia REQUIRED)
-  # Make it non-fatal so we can build without Skia.
+
+  # Make Skia optional (QUIET) in the embedded msdfgen, so we can build without it.
   sed -i \
-    -e 's/find_package( *unofficial-skia *REQUIRED *\))/find_package(unofficial-skia QUIET))/Ig' \
-    -e 's/find_package( *Skia *REQUIRED *\))/find_package(Skia QUIET))/Ig' \
-    msdfgen/CMakeLists.txt || die "sed Skia REQUIRED→QUIET failed"
+    -e 's|find_package(unofficial-skia REQUIRED)|find_package(unofficial-skia QUIET)|g' \
+    -e 's|find_package(Skia REQUIRED)|find_package(Skia QUIET)|g' \
+    msdfgen/CMakeLists.txt \
+  || die "sed Skia REQUIRED→QUIET failed"
 }
 
 src_configure() {
