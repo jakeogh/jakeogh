@@ -14,27 +14,25 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+cli"
 
-# Upstream splits "core" (header-only/no deps) vs "extensions" + CLI that need these.
-# We always build the extensions/CLI by default to provide a useful tool.
-# If you set USE=-cli, we still build the library, just skip the standalone binary.
 RDEPEND="
 	media-libs/freetype:2
 	media-libs/libpng:0=
 	dev-libs/tinyxml2:=
 "
 DEPEND="${RDEPEND}"
-BDEPEND="
-	dev-build/cmake
-	virtual/pkgconfig
-"
+BDEPEND="dev-build/cmake"
 
 DOCS=( README.md CHANGELOG.md )
 
 src_configure() {
 	local mycmakeargs=(
-		# Do not use vcpkg; rely on system packages.
+		# Use system deps; do not let it auto-fetch via vcpkg.
 		-DMSDFGEN_USE_VCPKG=OFF
-		# Build/install shared libs.
+		# Explicitly disable Skia (avoids find_package(skia)).
+		-DMSDFGEN_USE_SKIA=OFF
+		# Provide install targets (CMake option exists upstream).
+		-DMSDFGEN_INSTALL=ON
+		# Build shared libs.
 		-DBUILD_SHARED_LIBS=ON
 		# Build the standalone CLI if requested.
 		-DMSDFGEN_BUILD_STANDALONE=$(usex cli ON OFF)
