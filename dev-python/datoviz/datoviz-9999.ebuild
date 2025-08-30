@@ -4,13 +4,13 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_12 python3_13 )
-
 inherit python-r1 git-r3
 
 DESCRIPTION="Datoviz (live git): Vulkan-based viz core + Python wrapper"
 HOMEPAGE="https://github.com/datoviz/datoviz"
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
 EGIT_BRANCH="main"
+# Submodules used by the project; widen if upstream adds more
 EGIT_SUBMODULES=( data external/imgui )
 EGIT_LFS="yes"
 
@@ -44,6 +44,7 @@ CMAKE_BUILD_DIR="${WORKDIR}/build-dvz"
 
 src_prepare() {
 	default
+	# Never pull SDKs or extras during build
 	export DVZ_DOWNLOAD_SDK=0
 }
 
@@ -53,19 +54,21 @@ src_configure() {
 	local tinyxml2_cmake="/usr/${libdir}/cmake/tinyxml2"
 	local msdfgen_cmake="/usr/${libdir}/cmake/msdfgen"
 
-	# Inject a tiny override so FetchContent uses system packages instead.
+	# Inject a top-level CMake include that replaces FetchContent with system libs.
 	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
 	cat > "${top_include}" <<'CMK' || die "write override failed"
 # Executed before project() via CMAKE_PROJECT_TOP_LEVEL_INCLUDES.
-# Replace Datoviz's FetchContent for cglm, tinyxml2, msdfgen-atlas with system libs.
+# Replace Datoviz's FetchContent for cglm, tinyxml2, msdfgen-atlas with system packages.
 
-function(FetchContent_Declare) endfunction()
+function(FetchContent_Declare)
+  # no-op
+endfunction()
 
 function(FetchContent_MakeAvailable)
   foreach(_name IN LISTS ARGV)
 
     if(_name STREQUAL "cglm")
-      # System cglm usually exports target cglm::cglm (Gentoo dev-libs/cglm).
+      # Gentoo: dev-libs/cglm provides cglm::cglm
       find_package(cglm CONFIG QUIET)
       if(NOT TARGET cglm::cglm AND NOT TARGET cglm)
         message(FATAL_ERROR "System cglm not found. Install dev-libs/cglm.")
@@ -87,6 +90,7 @@ function(FetchContent_MakeAvailable)
       endif()
 
     elseif(_name STREQUAL "msdfgen-atlas")
+      # Gentoo: media-libs/msdfgen generally exports msdfgen::msdfgen
       find_package(msdfgen CONFIG QUIET)
       if(NOT TARGET msdfgen::msdfgen AND NOT TARGET msdfgen-atlas)
         message(FATAL_ERROR "System msdfgen not found. Install media-libs/msdfgen.")
@@ -126,8 +130,10 @@ src_compile() {
 }
 
 python_install() {
+	# Install pure-Python package
 	python_domodule "${S}/datoviz" || die "install python module failed"
 
+	# Install the C core where datoviz/_ctypes.py expects it
 	local built_lib
 	built_lib="$(find "${CMAKE_BUILD_DIR}" -type f -name 'libdatoviz.so' -print -quit)" || die
 	[[ -n ${built_lib} ]] || die "libdatoviz.so not found"
