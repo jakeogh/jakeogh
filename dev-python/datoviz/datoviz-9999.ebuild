@@ -10,7 +10,7 @@ DESCRIPTION="Datoviz (live git): Vulkan-based viz core + Python wrapper"
 HOMEPAGE="https://github.com/datoviz/datoviz"
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
 EGIT_BRANCH="main"
-# Submodules used by the project; widen if upstream adds more
+# Submodules used at build/runtime
 EGIT_SUBMODULES=( data external/imgui )
 EGIT_LFS="yes"
 
@@ -44,7 +44,7 @@ CMAKE_BUILD_DIR="${WORKDIR}/build-dvz"
 
 src_prepare() {
 	default
-	# Never pull SDKs or extras during build
+	# never download SDKs during build
 	export DVZ_DOWNLOAD_SDK=0
 }
 
@@ -54,12 +54,11 @@ src_configure() {
 	local tinyxml2_cmake="/usr/${libdir}/cmake/tinyxml2"
 	local msdfgen_cmake="/usr/${libdir}/cmake/msdfgen"
 
-	# Inject a top-level CMake include that replaces FetchContent with system libs.
+	# Top-level include that overrides FetchContent to use system packages.
 	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
 	cat > "${top_include}" <<'CMK' || die "write override failed"
 # Executed before project() via CMAKE_PROJECT_TOP_LEVEL_INCLUDES.
-# Replace Datoviz's FetchContent for cglm, tinyxml2, msdfgen-atlas with system packages.
-
+# Replace FetchContent for cglm, tinyxml2, msdfgen-atlas with system packages.
 function(FetchContent_Declare)
   # no-op
 endfunction()
@@ -68,35 +67,76 @@ function(FetchContent_MakeAvailable)
   foreach(_name IN LISTS ARGV)
 
     if(_name STREQUAL "cglm")
-      # Gentoo: dev-libs/cglm provides cglm::cglm
+      # Try CMake config first
       find_package(cglm CONFIG QUIET)
-      if(NOT TARGET cglm::cglm AND NOT TARGET cglm)
-        message(FATAL_ERROR "System cglm not found. Install dev-libs/cglm.")
-      endif()
       if(TARGET cglm::cglm AND NOT TARGET cglm)
         add_library(cglm ALIAS cglm::cglm)
       endif()
+      # Fallback: pkg-config
+      if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
+        find_package(PkgConfig QUIET)
+        if(PkgConfig_FOUND)
+          pkg_check_modules(CGLM QUIET cglm)
+        endif()
+        if(CGLM_FOUND)
+          add_library(cglm INTERFACE)
+          target_include_directories(cglm INTERFACE ${CGLM_INCLUDE_DIRS})
+          target_compile_options(cglm INTERFACE ${CGLM_CFLAGS_OTHER})
+        elseif(EXISTS "/usr/include/cglm/cglm.h")
+          add_library(cglm INTERFACE)
+          target_include_directories(cglm INTERFACE /usr/include)
+        else()
+          message(FATAL_ERROR "System cglm not found. Install dev-libs/cglm.")
+        endif()
+      endif()
 
     elseif(_name STREQUAL "tinyxml2")
+      # Try CMake config
       find_package(tinyxml2 CONFIG QUIET)
-      if(NOT TARGET tinyxml2::tinyxml2 AND NOT TARGET tinyxml2)
-        find_package(TinyXML2 CONFIG QUIET)
-      endif()
-      if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
-        message(FATAL_ERROR "System tinyxml2 not found. Install dev-libs/tinyxml2.")
-      endif()
       if(TARGET tinyxml2::tinyxml2 AND NOT TARGET tinyxml2)
         add_library(tinyxml2 ALIAS tinyxml2::tinyxml2)
       endif()
+      # Fallback: pkg-config
+      if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
+        find_package(PkgConfig QUIET)
+        if(PkgConfig_FOUND)
+          pkg_check_modules(TINYXML2 QUIET tinyxml2)
+        endif()
+        if(TINYXML2_FOUND)
+          add_library(tinyxml2 INTERFACE)
+          target_include_directories(tinyxml2 INTERFACE ${TINYXML2_INCLUDE_DIRS})
+          if(TINYXML2_LINK_LIBRARIES)
+            target_link_libraries(tinyxml2 INTERFACE ${TINYXML2_LINK_LIBRARIES})
+          elseif(TINYXML2_LIBRARIES)
+            target_link_libraries(tinyxml2 INTERFACE ${TINYXML2_LIBRARIES})
+          else()
+            # common fallback
+            target_link_libraries(tinyxml2 INTERFACE tinyxml2)
+          endif()
+        else()
+          message(FATAL_ERROR "System tinyxml2 not found. Install dev-libs/tinyxml2.")
+        endif()
+      endif()
 
     elseif(_name STREQUAL "msdfgen-atlas")
-      # Gentoo: media-libs/msdfgen generally exports msdfgen::msdfgen
+      # Try CMake config (often exports msdfgen::msdfgen)
       find_package(msdfgen CONFIG QUIET)
-      if(NOT TARGET msdfgen::msdfgen AND NOT TARGET msdfgen-atlas)
-        message(FATAL_ERROR "System msdfgen not found. Install media-libs/msdfgen.")
-      endif()
       if(TARGET msdfgen::msdfgen AND NOT TARGET msdfgen-atlas)
         add_library(msdfgen-atlas ALIAS msdfgen::msdfgen)
+      endif()
+      # Fallback: pkg-config
+      if(NOT TARGET msdfgen-atlas AND NOT TARGET msdfgen::msdfgen)
+        find_package(PkgConfig QUIET)
+        if(PkgConfig_FOUND)
+          pkg_check_modules(MSDFGEN QUIET msdfgen)
+        endif()
+        if(MSDFGEN_FOUND)
+          add_library(msdfgen-atlas INTERFACE)
+          target_include_directories(msdfgen-atlas INTERFACE ${MSDFGEN_INCLUDE_DIRS})
+          target_link_libraries(msdfgen-atlas INTERFACE ${MSDFGEN_LIBRARIES})
+        else()
+          message(FATAL_ERROR "System msdfgen not found. Install media-libs/msdfgen.")
+        endif()
       endif()
 
     else()
