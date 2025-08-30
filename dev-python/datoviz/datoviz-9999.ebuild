@@ -1,230 +1,175 @@
-# Copyright 2025
+# Copyright 2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
+# Datoviz ships a C/C++ core and a thin Python wrapper that expects the built lib next to the package.
 PYTHON_COMPAT=( python3_12 python3_13 )
 
-inherit cmake git-r3 multilib python-r1
+inherit cmake git-r3 python-r1
 
-DESCRIPTION="Datoviz core + Python wrapper (ctypes) – live ebuild wired to system deps"
+DESCRIPTION="Datoviz (live git): Vulkan-based visualization core + Python bindings"
 HOMEPAGE="https://github.com/datoviz/datoviz"
 
+# live ebuild
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
-# Only fetch submodules that are actually used at build/runtime.
+EGIT_BRANCH="main"
+# only pull the bits that aren’t system-provided; don’t fetch msdfgen/msdf-atlas-gen
 EGIT_SUBMODULES=( data external/imgui )
 
 LICENSE="MIT"
 SLOT="0"
+KEYWORDS=""
 IUSE="test"
 
-# don't run tests unless USE=test is on
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	media-libs/glfw:=
-	dev-libs/cglm:=
-	dev-libs/tinyxml2:=
-	media-libs/msdf-atlas-gen:=
-	media-libs/libpng:=
-	media-libs/freetype:=
-	sys-libs/zlib:=
-	media-libs/vulkan-loader:=
-	>=dev-util/vulkan-headers-1.2:0
-"
-DEPEND="${RDEPEND}"
+# build deps
 BDEPEND="
-	virtual/pkgconfig
-	dev-vcs/git
-	dev-vcs/git-lfs
-	>=dev-build/cmake-3.24
-	>=dev-build/ninja-1.10
+  dev-build/cmake
+  dev-build/ninja
+  virtual/pkgconfig
+  dev-util/vulkan-headers
 "
 
-S="${WORKDIR}/${PN}-${PV}"
-BUILD_DIR="${WORKDIR}/build-dvz"
+# runtime / link deps
+RDEPEND="
+  ${PYTHON_DEPS}
+  media-libs/vulkan-loader
+  x11-libs/glfw
+  media-libs/freetype
+  media-libs/libpng
+  sys-libs/zlib
+  dev-libs/tinyxml2
+  media-libs/msdf-atlas-gen
+"
 
+DEPEND="
+  ${RDEPEND}
+"
+
+# CMake 4 removed <3.5 compatibility. We’ll set a minimum policy level at configure time.
+# Also, Datoviz’s CMake sometimes expects imported targets to already exist if it
+# decides not to FetchContent. We create an include file that defines them.
 src_prepare() {
-	cmake_src_prepare
-}
+  cmake_src_prepare
 
-_src_write_top_include() {
-	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
-	cat > "${top_include}" <<'EOF'
-# Provide system deps as imported targets and block FetchContent under sandbox.
-if(POLICY CMP0111)
-  cmake_policy(SET CMP0111 NEW)
-endif()
+  # Provide imported targets *before* the project() call via CMAKE_PROJECT_TOP_LEVEL_INCLUDES.
+  # - tinyxml2::tinyxml2       -> points to system libtinyxml2
+  # - msdf-atlas-gen::msdf-atlas-gen -> points to system libmsdf-atlas-gen
+  # - msdfgen::msdfgen         -> interface target that pulls in msdfgen-core & msdfgen-ext
+  # (msdf-atlas-gen installs libmsdfgen-*.so from its submodule; headers are not required here)
+  cat > "${T}/gentoo_fetchcontent_overrides.cmake" <<'EOF' || die
+# --- Gentoo overrides for Datoviz build ---------------------------------------
 
-function(_gentoo_import_lib _tgt _lib _inc)
-  if(NOT TARGET "${_tgt}")
-    if(EXISTS "${_lib}")
-      add_library(${_tgt} SHARED IMPORTED GLOBAL)
-      set_target_properties(${_tgt} PROPERTIES
-        IMPORTED_LOCATION "${_lib}"
-        INTERFACE_INCLUDE_DIRECTORIES "${_inc}")
+# Robust find_library wrapper with status output
+macro(_gentoo_findlib _out)
+  if(NOT ${_out})
+    find_library(${_out} NAMES ${ARGN})
+    if(${_out})
+      message(STATUS "Gentoo: found ${_out} = ${${_out}}")
     else()
-      message(STATUS "Gentoo: library for target ${_tgt} not found at: ${_lib}")
+      message(STATUS "Gentoo: NOT found ${_out} (tried: ${ARGN})")
     endif()
   endif()
-endfunction()
+endmacro()
 
-# tinyxml2
-if(NOT TARGET tinyxml2)
-  find_package(TinyXML2 QUIET)
-  if(TARGET TinyXML2::TinyXML2 AND NOT TARGET tinyxml2)
-    get_target_property(_loc TinyXML2::TinyXML2 IMPORTED_LOCATION)
-    if(NOT _loc)
-      get_target_property(_loc TinyXML2::TinyXML2 IMPORTED_LOCATION_RELEASE)
-    endif()
-    get_target_property(_inc TinyXML2::TinyXML2 INTERFACE_INCLUDE_DIRECTORIES)
-    if(NOT _inc)
-      set(_inc "/usr/include")
-    endif()
-    if(_loc)
-      _gentoo_import_lib(tinyxml2 "${_loc}" "${_inc}")
-    endif()
-  endif()
-endif()
-if(NOT TARGET tinyxml2)
-  find_library(TINYXML2_LIB tinyxml2)
-  find_path(TINYXML2_INC tinyxml2.h PATH_SUFFIXES tinyxml2)
-  if(NOT TINYXML2_INC)
-    set(TINYXML2_INC "/usr/include")
-  endif()
+# 1) tinyxml2::tinyxml2
+if(NOT TARGET tinyxml2::tinyxml2)
+  _gentoo_findlib(TINYXML2_LIB tinyxml2)
   if(TINYXML2_LIB)
-    _gentoo_import_lib(tinyxml2 "${TINYXML2_LIB}" "${TINYXML2_INC}")
-  else()
-    message(FATAL_ERROR "System tinyxml2 not found. Please install dev-libs/tinyxml2.")
+    add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
+    set_target_properties(tinyxml2::tinyxml2 PROPERTIES
+      IMPORTED_LOCATION "${TINYXML2_LIB}")
   endif()
 endif()
 
-# cglm
-if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
-  find_package(cglm QUIET)
-endif()
-if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
-  find_library(CGLM_LIB cglm)
-  set(CGLM_INC "/usr/include")
-  if(CGLM_LIB)
-    _gentoo_import_lib(cglm "${CGLM_LIB}" "${CGLM_INC}")
-    if(NOT TARGET cglm::cglm)
-      add_library(cglm::cglm SHARED IMPORTED GLOBAL)
-      set_target_properties(cglm::cglm PROPERTIES
-        IMPORTED_LOCATION "${CGLM_LIB}"
-        INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}")
-    endif()
-  else()
-    message(FATAL_ERROR "System cglm not found. Please install dev-libs/cglm.")
-  endif()
-endif()
-
-# glfw
-if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
-  find_package(PkgConfig QUIET)
-  if(PKG_CONFIG_FOUND)
-    pkg_check_modules(GLFW3 QUIET glfw3)
-  endif()
-  find_path(GLFW_INC GLFW/glfw3.h PATHS ${GLFW3_INCLUDE_DIRS} /usr/include /usr/include/GLFW)
-  find_library(GLFW_LIB NAMES glfw glfw3 PATHS ${GLFW3_LIBRARY_DIRS})
-  if(GLFW_LIB)
-    if(NOT GLFW_INC)
-      set(GLFW_INC "/usr/include")
-    endif()
-    if(NOT TARGET glfw)
-      add_library(glfw SHARED IMPORTED GLOBAL)
-      set_target_properties(glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB}" INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
-    endif()
-    if(NOT TARGET glfw::glfw)
-      add_library(glfw::glfw SHARED IMPORTED GLOBAL)
-      set_target_properties(glfw::glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB}" INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
-    endif()
-  else()
-    message(FATAL_ERROR "System GLFW not found. Please install media-libs/glfw.")
-  endif()
-endif()
-
-# msdf-atlas-gen
+# 2) msdf-atlas-gen::msdf-atlas-gen
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
-  find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen)
-  set(MSDF_ATLAS_GEN_INC "/usr/include")
+  _gentoo_findlib(MSDF_ATLAS_GEN_LIB msdf-atlas-gen)
   if(MSDF_ATLAS_GEN_LIB)
-    add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED GLOBAL)
+    add_library(msdf-atlas-gen::msdf-atlas-gen UNKNOWN IMPORTED)
+    # Headers are usually under /usr/include/msdf-atlas-gen; just give /usr/include for safety.
     set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
       IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
-      INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}")
-  else()
-    message(FATAL_ERROR "Could not resolve library file for msdf-atlas-gen. Install media-libs/msdf-atlas-gen.")
+      INTERFACE_INCLUDE_DIRECTORIES "/usr/include")
   endif()
 endif()
 
+# 3) msdfgen::msdfgen (interface target)
+if(NOT TARGET msdfgen::msdfgen)
+  _gentoo_findlib(MSDFGEN_CORE_LIB msdfgen-core)
+  _gentoo_findlib(MSDFGEN_EXT_LIB  msdfgen-ext)
+  if(MSDFGEN_CORE_LIB AND MSDFGEN_EXT_LIB)
+    add_library(msdfgen-core UNKNOWN IMPORTED)
+    set_target_properties(msdfgen-core PROPERTIES IMPORTED_LOCATION "${MSDFGEN_CORE_LIB}")
+    add_library(msdfgen-ext UNKNOWN IMPORTED)
+    set_target_properties(msdfgen-ext  PROPERTIES IMPORTED_LOCATION "${MSDFGEN_EXT_LIB}")
+
+    add_library(msdfgen::msdfgen INTERFACE IMPORTED)
+    target_link_libraries(msdfgen::msdfgen INTERFACE msdfgen-core msdfgen-ext)
+  endif()
+endif()
+
+# Tell any FetchContent users to stay offline; we are using system libs.
 set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
 EOF
-	echo "${top_include}"
 }
 
 src_configure() {
-	local top_include
-	top_include=$(_src_write_top_include) || die
+  local libdir=$(get_libdir)
 
-	local -a mycmakeargs=(
-		-DCMAKE_BUILD_TYPE=Release
-		-DBUILD_SHARED_LIBS=ON
-		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
-		-DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="${top_include}"
-		-DCMAKE_PREFIX_PATH="/usr/$(get_libdir)/cmake;/usr/$(get_libdir)"
-		-DBUILD_TESTING=$(usex test ON OFF)
-	)
+  local -a mycmakeargs=(
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    -DBUILD_SHARED_LIBS=ON
+    -DBUILD_TESTING=$(usex test ON OFF)
 
-	cmake_src_configure \
-		-S "${S}" \
-		-B "${BUILD_DIR}" \
-		-G Ninja \
-		"${mycmakeargs[@]}"
+    # ensure config packages can be discovered
+    -DCMAKE_PREFIX_PATH="/usr/${libdir}/cmake;/usr/${libdir};/usr"
+
+    # inject our overrides *before* project() runs
+    -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="${T}/gentoo_fetchcontent_overrides.cmake"
+
+    # CMake 4 compatibility shim (see QA note from the logs)
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+
+    # keep Datoviz from trying to download anything
+    -DFETCHCONTENT_FULLY_DISCONNECTED=ON
+  )
+
+  cmake_src_configure
 }
 
 src_compile() {
-	cmake_build -C "${BUILD_DIR}"
+  cmake_src_compile
 }
 
-src_test() {
-	# only run if enabled (RESTRICT covers the default-off case)
-	if use test; then
-		cmake_src_test -C "${BUILD_DIR}"
-	fi
+# The upstream Python bits just need the built shared library placed under
+# site-packages/datoviz/build/ so that the Python wrapper can dlopen it.
+python_install() {
+  local built_lib
+  # Accept versioned or unversioned SONAME
+  built_lib="$(printf '%s\n' \
+      "${BUILD_DIR}/libdatoviz.so" \
+      "${BUILD_DIR}/libdatoviz.so."* \
+    | head -n1)"
+
+  if [[ ! -f ${built_lib} ]]; then
+    die "Could not find built libdatoviz.so in ${BUILD_DIR}"
+  fi
+
+  insinto "$(python_get_sitedir)/datoviz/build"
+  doins "${built_lib}" || die
 }
 
 src_install() {
-	cmake_install -C "${BUILD_DIR}"
-
-	# Install Python ctypes wrapper and provide lib symlink it expects.
-	local psrc="${S}/python/datoviz"
-	if [[ ! -d ${psrc} ]]; then
-		ewarn "python/datoviz not found; attempting fallback to ${S}/bindings/python/datoviz"
-		psrc="${S}/bindings/python/datoviz"
-	fi
-	if [[ ! -d ${psrc} ]]; then
-		die "Could not find Datoviz Python sources; please adjust ebuild."
-	fi
-
-	python_foreach_impl python_install
-}
-
-python_install() {
-	local pydir
-	pydir="$(python_get_sitedir)" || die
-	insinto "${pydir}/datoviz"
-	doins -r "${S}/python/datoviz/"* || die
-
-	# ensure _ctypes loader finds libdatoviz.so at datoviz/build/libdatoviz.so
-	dodir "${pydir}/datoviz/build"
-	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
-		"${pydir}/datoviz/build/libdatoviz.so" || die
+  python_foreach_impl python_install
+  einstalldocs
 }
 
 pkg_postinst() {
-	elog "Datoviz built against system libraries (glfw, cglm, tinyxml2, msdf-atlas-gen, freetype, png, zlib)."
-	elog "If Python import fails with ctypes lookup errors, confirm the symlink:"
-	elog "  <site-packages>/datoviz/build/libdatoviz.so -> /usr/$(get_libdir)/libdatoviz.so"
+  elog "Datoviz installed."
+  elog "Python will load: $(python_get_sitedir)/datoviz/build/libdatoviz.so"
+  elog "Using system tinyxml2 and msdf-atlas-gen (which provides msdfgen libs)."
 }
 
