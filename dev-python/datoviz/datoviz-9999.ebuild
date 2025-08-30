@@ -36,7 +36,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-util/vulkan-headers
-	dev-cpp/pybind11
+	dev-python/pybind11
 "
 BDEPEND="
 	${PYTHON_DEPS}
