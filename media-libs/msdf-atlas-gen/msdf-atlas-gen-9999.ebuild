@@ -78,7 +78,13 @@ src_install() {
   doins "${S}"/msdf-atlas-gen/*.h || die
 
   insinto /usr/include/msdfgen
-  doins -r "${S}"/msdfgen/include/* || die
+  if compgen -G "${S}/msdfgen/include/*" >/dev/null; then
+    doins -r "${S}"/msdfgen/include/* || die
+  else
+    ewarn "No msdfgen headers found in ${S}/msdfgen/include; skipping."
+  fi
+
+
 
   # 3) CLI (optional — drop if you don’t ship it)
   if [[ -x ${BUILD_DIR}/bin/msdf-atlas-gen ]]; then
