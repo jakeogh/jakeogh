@@ -1,347 +1,230 @@
-# Copyright 2025 Gentoo Authors
+# Copyright 2025
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
 PYTHON_COMPAT=( python3_12 python3_13 )
-inherit python-r1 git-r3
 
-DESCRIPTION="Datoviz (live git): Vulkan-based viz core + Python wrapper"
+inherit cmake git-r3 multilib python-r1
+
+DESCRIPTION="Datoviz core + Python wrapper (ctypes) – live ebuild wired to system deps"
 HOMEPAGE="https://github.com/datoviz/datoviz"
+
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
-EGIT_BRANCH="main"
+# Only fetch submodules that are actually used at build/runtime.
 EGIT_SUBMODULES=( data external/imgui )
-EGIT_LFS="yes"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
-PROPERTIES="live"
+IUSE="test"
+
+# don't run tests unless USE=test is on
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]')
-	media-libs/vulkan-loader
-	media-libs/glfw
-	media-libs/freetype:2
-	dev-libs/tinyxml2
-	dev-libs/cglm
-	media-libs/msdfgen
-	media-libs/msdf-atlas-gen
+	media-libs/glfw:=
+	dev-libs/cglm:=
+	dev-libs/tinyxml2:=
+	media-libs/msdf-atlas-gen:=
+	media-libs/libpng:=
+	media-libs/freetype:=
+	sys-libs/zlib:=
+	media-libs/vulkan-loader:=
+	>=dev-util/vulkan-headers-1.2:0
 "
-DEPEND="
-	${RDEPEND}
-	dev-util/vulkan-headers
-"
-
+DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	dev-build/cmake
-	dev-build/ninja
+	dev-vcs/git
 	dev-vcs/git-lfs
+	>=dev-build/cmake-3.24
+	>=dev-build/ninja-1.10
 "
 
-CMAKE_BUILD_DIR="${WORKDIR}/build-dvz"
+S="${WORKDIR}/${PN}-${PV}"
+BUILD_DIR="${WORKDIR}/build-dvz"
 
 src_prepare() {
-	default
-	# forbid any helper downloads
-	export DVZ_DOWNLOAD_SDK=0
+	cmake_src_prepare
+}
+
+_src_write_top_include() {
+	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
+	cat > "${top_include}" <<'EOF'
+# Provide system deps as imported targets and block FetchContent under sandbox.
+if(POLICY CMP0111)
+  cmake_policy(SET CMP0111 NEW)
+endif()
+
+function(_gentoo_import_lib _tgt _lib _inc)
+  if(NOT TARGET "${_tgt}")
+    if(EXISTS "${_lib}")
+      add_library(${_tgt} SHARED IMPORTED GLOBAL)
+      set_target_properties(${_tgt} PROPERTIES
+        IMPORTED_LOCATION "${_lib}"
+        INTERFACE_INCLUDE_DIRECTORIES "${_inc}")
+    else()
+      message(STATUS "Gentoo: library for target ${_tgt} not found at: ${_lib}")
+    endif()
+  endif()
+endfunction()
+
+# tinyxml2
+if(NOT TARGET tinyxml2)
+  find_package(TinyXML2 QUIET)
+  if(TARGET TinyXML2::TinyXML2 AND NOT TARGET tinyxml2)
+    get_target_property(_loc TinyXML2::TinyXML2 IMPORTED_LOCATION)
+    if(NOT _loc)
+      get_target_property(_loc TinyXML2::TinyXML2 IMPORTED_LOCATION_RELEASE)
+    endif()
+    get_target_property(_inc TinyXML2::TinyXML2 INTERFACE_INCLUDE_DIRECTORIES)
+    if(NOT _inc)
+      set(_inc "/usr/include")
+    endif()
+    if(_loc)
+      _gentoo_import_lib(tinyxml2 "${_loc}" "${_inc}")
+    endif()
+  endif()
+endif()
+if(NOT TARGET tinyxml2)
+  find_library(TINYXML2_LIB tinyxml2)
+  find_path(TINYXML2_INC tinyxml2.h PATH_SUFFIXES tinyxml2)
+  if(NOT TINYXML2_INC)
+    set(TINYXML2_INC "/usr/include")
+  endif()
+  if(TINYXML2_LIB)
+    _gentoo_import_lib(tinyxml2 "${TINYXML2_LIB}" "${TINYXML2_INC}")
+  else()
+    message(FATAL_ERROR "System tinyxml2 not found. Please install dev-libs/tinyxml2.")
+  endif()
+endif()
+
+# cglm
+if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
+  find_package(cglm QUIET)
+endif()
+if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
+  find_library(CGLM_LIB cglm)
+  set(CGLM_INC "/usr/include")
+  if(CGLM_LIB)
+    _gentoo_import_lib(cglm "${CGLM_LIB}" "${CGLM_INC}")
+    if(NOT TARGET cglm::cglm)
+      add_library(cglm::cglm SHARED IMPORTED GLOBAL)
+      set_target_properties(cglm::cglm PROPERTIES
+        IMPORTED_LOCATION "${CGLM_LIB}"
+        INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}")
+    endif()
+  else()
+    message(FATAL_ERROR "System cglm not found. Please install dev-libs/cglm.")
+  endif()
+endif()
+
+# glfw
+if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
+  find_package(PkgConfig QUIET)
+  if(PKG_CONFIG_FOUND)
+    pkg_check_modules(GLFW3 QUIET glfw3)
+  endif()
+  find_path(GLFW_INC GLFW/glfw3.h PATHS ${GLFW3_INCLUDE_DIRS} /usr/include /usr/include/GLFW)
+  find_library(GLFW_LIB NAMES glfw glfw3 PATHS ${GLFW3_LIBRARY_DIRS})
+  if(GLFW_LIB)
+    if(NOT GLFW_INC)
+      set(GLFW_INC "/usr/include")
+    endif()
+    if(NOT TARGET glfw)
+      add_library(glfw SHARED IMPORTED GLOBAL)
+      set_target_properties(glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB}" INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
+    endif()
+    if(NOT TARGET glfw::glfw)
+      add_library(glfw::glfw SHARED IMPORTED GLOBAL)
+      set_target_properties(glfw::glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB}" INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
+    endif()
+  else()
+    message(FATAL_ERROR "System GLFW not found. Please install media-libs/glfw.")
+  endif()
+endif()
+
+# msdf-atlas-gen
+if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
+  find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen)
+  set(MSDF_ATLAS_GEN_INC "/usr/include")
+  if(MSDF_ATLAS_GEN_LIB)
+    add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED GLOBAL)
+    set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
+      IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
+      INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}")
+  else()
+    message(FATAL_ERROR "Could not resolve library file for msdf-atlas-gen. Install media-libs/msdf-atlas-gen.")
+  endif()
+endif()
+
+set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
+EOF
+	echo "${top_include}"
 }
 
 src_configure() {
-	local libdir=$(get_libdir)
-	local cglm_cmake="/usr/${libdir}/cmake/cglm"
-	local tinyxml2_cmake="/usr/${libdir}/cmake/tinyxml2"
-	local msdfgen_cmake="/usr/${libdir}/cmake/msdfgen"
+	local top_include
+	top_include=$(_src_write_top_include) || die
 
-	# Inject a top-level CMake include to replace FetchContent deps with system ones.
-	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
-	cat > "${top_include}" <<'CMK' || die "write override failed"
-# Executed before project() via CMAKE_PROJECT_TOP_LEVEL_INCLUDES.
-# Provide system deps for Datoviz without any FetchContent network.
+	local -a mycmakeargs=(
+		-DCMAKE_BUILD_TYPE=Release
+		-DBUILD_SHARED_LIBS=ON
+		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
+		-DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="${top_include}"
+		-DCMAKE_PREFIX_PATH="/usr/$(get_libdir)/cmake;/usr/$(get_libdir)"
+		-DBUILD_TESTING=$(usex test ON OFF)
+	)
 
-function(FetchContent_Declare)
-  # no-op
-endfunction()
-
-# --- helpers ---------------------------------------------------------------
-
-function(_ensure_cglm)
-  if(TARGET cglm)
-    return()
-  endif()
-
-  find_package(cglm CONFIG QUIET)
-  if(TARGET cglm::cglm)
-    find_library(CGLM_LIB cglm)
-    get_target_property(CGLM_INC cglm::cglm INTERFACE_INCLUDE_DIRECTORIES)
-    add_library(cglm UNKNOWN IMPORTED)
-    if(CGLM_LIB)
-      set_target_properties(cglm PROPERTIES IMPORTED_LOCATION "${CGLM_LIB}")
-    endif()
-    if(CGLM_INC)
-      set_target_properties(cglm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}")
-    endif()
-    return()
-  endif()
-
-  find_package(PkgConfig QUIET)
-  if(PkgConfig_FOUND)
-    pkg_check_modules(PC_CGLM QUIET cglm)
-  endif()
-
-  add_library(cglm UNKNOWN IMPORTED)
-  set(_loc "")
-  if(DEFINED PC_CGLM_LIBRARIES)
-    foreach(_cand IN LISTS PC_CGLM_LIBRARIES)
-      if(EXISTS "${_cand}")
-        set(_loc "${_cand}")
-        break()
-      endif()
-    endforeach()
-  endif()
-  if(NOT _loc)
-    find_library(_loc cglm)
-  endif()
-  if(_loc)
-    set_target_properties(cglm PROPERTIES IMPORTED_LOCATION "${_loc}")
-  endif()
-  if(DEFINED PC_CGLM_INCLUDE_DIRS)
-    set_target_properties(cglm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${PC_CGLM_INCLUDE_DIRS}")
-  elseif(EXISTS "/usr/include/cglm")
-    set_target_properties(cglm PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "/usr/include")
-  endif()
-endfunction()
-
-function(_ensure_tinyxml2)
-  if(TARGET tinyxml2)
-    return()
-  endif()
-
-  find_package(tinyxml2 CONFIG QUIET)
-  if(TARGET tinyxml2::tinyxml2)
-    find_library(TXML2_LIB tinyxml2)
-    get_target_property(TXML2_INC tinyxml2::tinyxml2 INTERFACE_INCLUDE_DIRECTORIES)
-    add_library(tinyxml2 UNKNOWN IMPORTED)
-    if(TXML2_LIB)
-      set_target_properties(tinyxml2 PROPERTIES IMPORTED_LOCATION "${TXML2_LIB}")
-    endif()
-    if(TXML2_INC)
-      set_target_properties(tinyxml2 PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${TXML2_INC}")
-    endif()
-    return()
-  endif()
-
-  find_package(PkgConfig QUIET)
-  if(PkgConfig_FOUND)
-    pkg_check_modules(PC_TXML2 QUIET tinyxml2)
-  endif()
-
-  add_library(tinyxml2 UNKNOWN IMPORTED)
-  set(_loc "")
-  if(DEFINED PC_TXML2_LIBRARIES)
-    foreach(_cand IN LISTS PC_TXML2_LIBRARIES)
-      if(EXISTS "${_cand}")
-        set(_loc "${_cand}")
-        break()
-      endif()
-    endforeach()
-  endif()
-  if(NOT _loc)
-    find_library(_loc tinyxml2)
-  endif()
-  if(_loc)
-    set_target_properties(tinyxml2 PROPERTIES IMPORTED_LOCATION "${_loc}")
-  endif()
-  if(DEFINED PC_TXML2_INCLUDE_DIRS)
-    set_target_properties(tinyxml2 PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${PC_TXML2_INCLUDE_DIRS}")
-  endif()
-endfunction()
-
-function(_ensure_glfw)
-  # If a 'glfw' target already exists (from a config), don't recreate it.
-  if(TARGET glfw)
-    return()
-  endif()
-
-  # Try configs that may define 'glfw' already.
-  find_package(glfw3 CONFIG QUIET)
-  if(TARGET glfw)
-    return()
-  endif()
-  find_package(glfw CONFIG QUIET)
-  if(TARGET glfw)
-    return()
-  endif()
-
-  # Fallback: pkg-config and/or find_library
-  find_package(PkgConfig QUIET)
-  if(PkgConfig_FOUND)
-    pkg_check_modules(PC_GLFW QUIET glfw3)
-  endif()
-
-  add_library(glfw UNKNOWN IMPORTED)
-
-  set(_loc "")
-  if(DEFINED PC_GLFW_LIBRARIES)
-    foreach(_cand IN LISTS PC_GLFW_LIBRARIES)
-      if(EXISTS "${_cand}")
-        set(_loc "${_cand}")
-        break()
-      endif()
-    endforeach()
-  endif()
-  if(NOT _loc)
-    find_library(_loc NAMES glfw glfw3)
-  endif()
-  if(_loc)
-    set_target_properties(glfw PROPERTIES IMPORTED_LOCATION "${_loc}")
-  endif()
-  if(DEFINED PC_GLFW_INCLUDE_DIRS)
-    set_target_properties(glfw PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${PC_GLFW_INCLUDE_DIRS}")
-  endif()
-endfunction()
-
-# Provide BOTH names Datoviz might reference:
-#   - msdf-atlas-gen::msdf-atlas-gen   (namespaced target it links to)
-#   - msdfgen-atlas                    (plain name some scripts refer to)
-# Make them INTERFACE IMPORTED targets so no LOCATION is required; they just
-# forward link interface to the real msdfgen libs (core/ext or monolithic).
-#
-
-
-
-
-
-
-
-
-
-function(_ensure_msdfgen)
-  # If the exact target already exists, done.
-  if(TARGET msdf-atlas-gen::msdf-atlas-gen)
-    # Optionally also provide a plain alias name Datoviz might reference
-    if(NOT TARGET msdfgen-atlas)
-      add_library(msdfgen-atlas INTERFACE IMPORTED)
-      target_link_libraries(msdfgen-atlas INTERFACE msdf-atlas-gen::msdf-atlas-gen)
-    endif()
-    return()
-  endif()
-
-  # Prefer the system package config
-  find_package(msdf-atlas-gen CONFIG QUIET)
-  if(TARGET msdf-atlas-gen::msdf-atlas-gen)
-    if(NOT TARGET msdfgen-atlas)
-      add_library(msdfgen-atlas INTERFACE IMPORTED)
-      target_link_libraries(msdfgen-atlas INTERFACE msdf-atlas-gen::msdf-atlas-gen)
-    endif()
-    # Ensure headers are visible even if package didn't export includes
-    foreach(inc_dir "/usr/include/msdf-atlas-gen" "/usr/local/include/msdf-atlas-gen")
-      if(EXISTS "${inc_dir}/msdf-atlas-gen.h")
-        set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${inc_dir}")
-      endif()
-    endforeach()
-    return()
-  endif()
-
-  # Last-resort compatibility: older msdfgen packages sometimes provide split libs.
-  # Create an INTERFACE target that forwards to whatever we can find.
-  find_library(MSDFGEN_CORE msdfgen-core)
-  find_library(MSDFGEN_EXT  msdfgen-ext)
-  find_library(MSDFGEN_MONO msdfgen)
-
-  if(NOT MSDFGEN_CORE AND NOT MSDFGEN_EXT AND NOT MSDFGEN_MONO)
-    message(FATAL_ERROR "msdf-atlas-gen not found: install media-libs/msdf-atlas-gen.")
-  endif()
-
-  add_library(msdf-atlas-gen::msdf-atlas-gen INTERFACE IMPORTED)
-  if(EXISTS "/usr/include/msdf-atlas-gen")
-    set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdf-atlas-gen")
-  endif()
-  if(MSDFGEN_CORE)
-    set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_CORE}")
-  endif()
-  if(MSDFGEN_EXT)
-    set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT}")
-  endif()
-  if(MSDFGEN_MONO)
-    set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_MONO}")
-  endif()
-
-  if(NOT TARGET msdfgen-atlas)
-    add_library(msdfgen-atlas INTERFACE IMPORTED)
-    target_link_libraries(msdfgen-atlas INTERFACE msdf-atlas-gen::msdf-atlas-gen)
-  endif()
-endfunction()
-
-
-
-
-
-
-
-# --- override FetchContent -------------------------------------------------
-
-function(FetchContent_MakeAvailable)
-  foreach(_name IN LISTS ARGV)
-    if(_name STREQUAL "cglm")
-      _ensure_cglm()
-    elseif(_name STREQUAL "tinyxml2")
-      _ensure_tinyxml2()
-    elseif(_name STREQUAL "glfw")
-      _ensure_glfw()
-    elseif(_name STREQUAL "msdfgen-atlas" OR _name STREQUAL "msdf-atlas-gen")
-      _ensure_msdfgen()
-    else()
-      message(FATAL_ERROR "FetchContent for '${_name}' is disabled under sandbox. Provide a system package.")
-    endif()
-  endforeach()
-endfunction()
-CMK
-
-	cmake \
+	cmake_src_configure \
 		-S "${S}" \
-		-B "${CMAKE_BUILD_DIR}" \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DBUILD_SHARED_LIBS=ON \
-		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-		-DCMAKE_PREFIX_PATH="/usr/${libdir}/cmake;${cglm_cmake};${tinyxml2_cmake};${msdfgen_cmake}" \
-		-Dcglm_DIR="${cglm_cmake}" \
-		-DCGLM_DIR="${cglm_cmake}" \
-		-Dtinyxml2_DIR="${tinyxml2_cmake}" \
-		-DTinyXML2_DIR="${tinyxml2_cmake}" \
-		-Dmsdfgen_DIR="${msdfgen_cmake}" \
-		-DMSDFGEN_DIR="${msdfgen_cmake}" \
-		-DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="${top_include}" \
+		-B "${BUILD_DIR}" \
 		-G Ninja \
-		|| die "cmake configure failed"
+		"${mycmakeargs[@]}"
 }
 
 src_compile() {
-	cmake --build "${CMAKE_BUILD_DIR}" || die "cmake build failed"
+	cmake_build -C "${BUILD_DIR}"
 }
 
-python_install() {
-	# install pure-Python module
-	python_domodule "${S}/datoviz" || die "install python module failed"
-
-	# install the C core where the Python loader expects it
-	local built_lib
-	built_lib="$(find "${CMAKE_BUILD_DIR}" -type f -name 'libdatoviz.so' -print -quit)" || die
-	[[ -n ${built_lib} ]] || die "libdatoviz.so not found"
-
-	insinto "$(python_get_sitedir)/datoviz/build"
-	doins "${built_lib}" || die
+src_test() {
+	# only run if enabled (RESTRICT covers the default-off case)
+	if use test; then
+		cmake_src_test -C "${BUILD_DIR}"
+	fi
 }
 
 src_install() {
+	cmake_install -C "${BUILD_DIR}"
+
+	# Install Python ctypes wrapper and provide lib symlink it expects.
+	local psrc="${S}/python/datoviz"
+	if [[ ! -d ${psrc} ]]; then
+		ewarn "python/datoviz not found; attempting fallback to ${S}/bindings/python/datoviz"
+		psrc="${S}/bindings/python/datoviz"
+	fi
+	if [[ ! -d ${psrc} ]]; then
+		die "Could not find Datoviz Python sources; please adjust ebuild."
+	fi
+
 	python_foreach_impl python_install
-	einstalldocs
+}
+
+python_install() {
+	local pydir
+	pydir="$(python_get_sitedir)" || die
+	insinto "${pydir}/datoviz"
+	doins -r "${S}/python/datoviz/"* || die
+
+	# ensure _ctypes loader finds libdatoviz.so at datoviz/build/libdatoviz.so
+	dodir "${pydir}/datoviz/build"
+	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
+		"${pydir}/datoviz/build/libdatoviz.so" || die
 }
 
 pkg_postinst() {
-	elog "Datoviz installed. Python loads: site-packages/datoviz/build/libdatoviz.so"
-	elog "Using system glfw, cglm, tinyxml2, and msdfgen (core/ext or mono)."
+	elog "Datoviz built against system libraries (glfw, cglm, tinyxml2, msdf-atlas-gen, freetype, png, zlib)."
+	elog "If Python import fails with ctypes lookup errors, confirm the symlink:"
+	elog "  <site-packages>/datoviz/build/libdatoviz.so -> /usr/$(get_libdir)/libdatoviz.so"
 }
 
