@@ -27,10 +27,21 @@ BDEPEND="dev-build/cmake"
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_SHARED_LIBS=ON
-		# Build the CLI tool optionally
+
+		# Build the library only (CLI optional via USE 'cli')
 		-DMSDF_ATLAS_GEN_BUILD_STANDALONE=$(usex cli ON OFF)
-		# Respect system deps (no vcpkg)
+
+		# Never pull dependencies via vcpkg/FetchContent
 		-DMSDF_ATLAS_GEN_USE_VCPKG=OFF
+
+		# Make absolutely sure Skia is disabled in BOTH layers
+		# (top-level and the embedded msdfgen subdir).
+		-DMSDF_ATLAS_GEN_USE_SKIA=OFF
+		-DMSDFGEN_USE_SKIA=OFF
+
+		# Also keep msdfgen’s own network helpers off just in case
+		-DMSDFGEN_USE_VCPKG=OFF
+		-DMSDFGEN_BUILD_STANDALONE=OFF
 	)
 	cmake_src_configure
 }
