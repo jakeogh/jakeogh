@@ -10,7 +10,6 @@ DESCRIPTION="Datoviz (live git): Vulkan-based viz core + Python wrapper"
 HOMEPAGE="https://github.com/datoviz/datoviz"
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
 EGIT_BRANCH="main"
-# Submodules used at build/runtime
 EGIT_SUBMODULES=( data external/imgui )
 EGIT_LFS="yes"
 
@@ -44,7 +43,6 @@ CMAKE_BUILD_DIR="${WORKDIR}/build-dvz"
 
 src_prepare() {
 	default
-	# never download SDKs during build
 	export DVZ_DOWNLOAD_SDK=0
 }
 
@@ -54,11 +52,12 @@ src_configure() {
 	local tinyxml2_cmake="/usr/${libdir}/cmake/tinyxml2"
 	local msdfgen_cmake="/usr/${libdir}/cmake/msdfgen"
 
-	# Top-level include that overrides FetchContent to use system packages.
+	# Top-level shim: replace FetchContent deps with system packages (cglm, tinyxml2, msdfgen-atlas, glfw).
 	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
 	cat > "${top_include}" <<'CMK' || die "write override failed"
 # Executed before project() via CMAKE_PROJECT_TOP_LEVEL_INCLUDES.
-# Replace FetchContent for cglm, tinyxml2, msdfgen-atlas with system packages.
+# Replace Datoviz's FetchContent for cglm, tinyxml2, msdfgen-atlas, glfw with system packages.
+
 function(FetchContent_Declare)
   # no-op
 endfunction()
@@ -67,12 +66,12 @@ function(FetchContent_MakeAvailable)
   foreach(_name IN LISTS ARGV)
 
     if(_name STREQUAL "cglm")
-      # Try CMake config first
+      # Try CMake config (Gentoo: dev-libs/cglm exports cglm::cglm)
       find_package(cglm CONFIG QUIET)
       if(TARGET cglm::cglm AND NOT TARGET cglm)
         add_library(cglm ALIAS cglm::cglm)
       endif()
-      # Fallback: pkg-config
+      # Fallback: pkg-config or headers
       if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
         find_package(PkgConfig QUIET)
         if(PkgConfig_FOUND)
@@ -91,7 +90,7 @@ function(FetchContent_MakeAvailable)
       endif()
 
     elseif(_name STREQUAL "tinyxml2")
-      # Try CMake config
+      # CMake config (Gentoo: tinyxml2::tinyxml2)
       find_package(tinyxml2 CONFIG QUIET)
       if(TARGET tinyxml2::tinyxml2 AND NOT TARGET tinyxml2)
         add_library(tinyxml2 ALIAS tinyxml2::tinyxml2)
@@ -110,7 +109,6 @@ function(FetchContent_MakeAvailable)
           elseif(TINYXML2_LIBRARIES)
             target_link_libraries(tinyxml2 INTERFACE ${TINYXML2_LIBRARIES})
           else()
-            # common fallback
             target_link_libraries(tinyxml2 INTERFACE tinyxml2)
           endif()
         else()
@@ -119,7 +117,7 @@ function(FetchContent_MakeAvailable)
       endif()
 
     elseif(_name STREQUAL "msdfgen-atlas")
-      # Try CMake config (often exports msdfgen::msdfgen)
+      # CMake config (Gentoo: msdfgen::msdfgen)
       find_package(msdfgen CONFIG QUIET)
       if(TARGET msdfgen::msdfgen AND NOT TARGET msdfgen-atlas)
         add_library(msdfgen-atlas ALIAS msdfgen::msdfgen)
@@ -136,6 +134,31 @@ function(FetchContent_MakeAvailable)
           target_link_libraries(msdfgen-atlas INTERFACE ${MSDFGEN_LIBRARIES})
         else()
           message(FATAL_ERROR "System msdfgen not found. Install media-libs/msdfgen.")
+        endif()
+      endif()
+
+    elseif(_name STREQUAL "glfw")
+      # GLFW can export different configs; try glfw3 first, then glfw.
+      find_package(glfw3 CONFIG QUIET)
+      if(TARGET glfw AND NOT TARGET glfw::glfw)
+        # Some configs define plain 'glfw' already; nothing to do.
+      elseif(NOT TARGET glfw)
+        find_package(glfw CONFIG QUIET)
+      endif()
+      # Fallback: pkg-config (name is 'glfw3' on Gentoo)
+      if(NOT TARGET glfw)
+        find_package(PkgConfig QUIET)
+        if(PkgConfig_FOUND)
+          pkg_check_modules(GLFW3 QUIET glfw3)
+        endif()
+        if(GLFW3_FOUND)
+          add_library(glfw INTERFACE)
+          target_include_directories(glfw INTERFACE ${GLFW3_INCLUDE_DIRS})
+          target_link_libraries(glfw INTERFACE ${GLFW3_LIBRARIES})
+        else()
+          # Common fallback
+          add_library(glfw INTERFACE)
+          target_link_libraries(glfw INTERFACE glfw)
         endif()
       endif()
 
@@ -170,10 +193,8 @@ src_compile() {
 }
 
 python_install() {
-	# Install pure-Python package
 	python_domodule "${S}/datoviz" || die "install python module failed"
 
-	# Install the C core where datoviz/_ctypes.py expects it
 	local built_lib
 	built_lib="$(find "${CMAKE_BUILD_DIR}" -type f -name 'libdatoviz.so' -print -quit)" || die
 	[[ -n ${built_lib} ]] || die "libdatoviz.so not found"
