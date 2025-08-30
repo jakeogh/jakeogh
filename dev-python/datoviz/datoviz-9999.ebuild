@@ -27,11 +27,13 @@ RDEPEND="
 	dev-libs/tinyxml2
 	dev-libs/cglm
 	media-libs/msdfgen
+	media-libs/msdf-atlas-gen
 "
 DEPEND="
 	${RDEPEND}
 	dev-util/vulkan-headers
 "
+
 BDEPEND="
 	virtual/pkgconfig
 	dev-build/cmake
