@@ -11,8 +11,9 @@ DESCRIPTION="Datoviz (live git): Vulkan-based viz core + Python wrapper"
 HOMEPAGE="https://github.com/datoviz/datoviz"
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
 EGIT_BRANCH="main"
-# Only needed submodules; widen if upstream starts using more.
+# Submodules needed at build/runtime
 EGIT_SUBMODULES=( data external/imgui )
+# Repo uses LFS assets
 EGIT_LFS="yes"
 
 LICENSE="MIT"
@@ -30,12 +31,10 @@ RDEPEND="
 	dev-libs/cglm
 	media-libs/msdfgen
 "
-
 DEPEND="
 	${RDEPEND}
 	dev-util/vulkan-headers
 "
-
 BDEPEND="
 	virtual/pkgconfig
 	dev-build/cmake
@@ -43,34 +42,75 @@ BDEPEND="
 	dev-vcs/git-lfs
 "
 
-# Apply patches to prefer system tinyxml2/msdfgen over FetchContent.
-PATCHES=(
-	"${FILESDIR}"/0001-prefer-system-tinyxml2-and-normalize-target.patch
-	"${FILESDIR}"/0002-prefer-system-msdfgen-and-normalize-target.patch
-)
-
 CMAKE_BUILD_DIR="${WORKDIR}/build-dvz"
 
 src_prepare() {
 	default
-	# No network helpers at build time
+	# Prevent any helper SDK downloads from Datoviz's build, if present
 	export DVZ_DOWNLOAD_SDK=0
 }
 
 src_configure() {
 	local libdir=$(get_libdir)
 
-	# CMake config dirs we expect on Gentoo
+	# Gentoo CMake config locations for system libs
 	local cglm_cmake="/usr/${libdir}/cmake/cglm"
 	local tinyxml2_cmake="/usr/${libdir}/cmake/tinyxml2"
 	local msdfgen_cmake="/usr/${libdir}/cmake/msdfgen"
 
+	# Create a small CMake include that runs at top-level to
+	# replace FetchContent for tinyxml2 and msdfgen-atlas with system packages.
+	# This avoids network activity and satisfies later target/property usage.
+	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
+	cat > "${top_include}" <<'CMK'
+# Run at top-level via CMAKE_PROJECT_TOP_LEVEL_INCLUDES
+# Map Datoviz's FetchContent names to system packages.
+
+# Provide minimal stubs that satisfy Datoviz's CMakeLists without downloading.
+function(FetchContent_Declare name)
+  # no-op; just record that something was declared
+  set(FETCHCONTENT_DECLARE_${name} TRUE PARENT_SCOPE)
+endfunction()
+
+function(FetchContent_MakeAvailable)
+  foreach(_name IN LISTS ARGV)
+    if(_name STREQUAL "tinyxml2")
+      find_package(tinyxml2 CONFIG QUIET)
+      if(NOT TARGET tinyxml2::tinyxml2 AND NOT TARGET tinyxml2)
+        find_package(TinyXML2 CONFIG QUIET)
+      endif()
+      if(TARGET tinyxml2::tinyxml2 AND NOT TARGET tinyxml2)
+        add_library(tinyxml2 ALIAS tinyxml2::tinyxml2)
+      endif()
+      if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
+        message(FATAL_ERROR "System tinyxml2 not found. Install dev-libs/tinyxml2.")
+      endif()
+
+    elseif(_name STREQUAL "msdfgen-atlas")
+      # System package typically exports msdfgen::msdfgen
+      find_package(msdfgen CONFIG QUIET)
+      if(TARGET msdfgen::msdfgen AND NOT TARGET msdfgen-atlas)
+        add_library(msdfgen-atlas ALIAS msdfgen::msdfgen)
+      endif()
+      if(NOT TARGET msdfgen-atlas AND NOT TARGET msdfgen::msdfgen)
+        message(FATAL_ERROR "System msdfgen not found. Install media-libs/msdfgen.")
+      endif()
+
+    else()
+      # Any unexpected FetchContent request is forbidden under sandbox.
+      message(FATAL_ERROR "FetchContent for '${_name}' is disabled under sandbox. Please provide a system package.")
+    endif()
+  endforeach()
+endfunction()
+CMK
+
+	# Configure Datoviz C core
 	cmake -S "${S}" -B "${CMAKE_BUILD_DIR}" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DBUILD_SHARED_LIBS=ON \
-		# Disallow any FetchContent downloads under sandbox:
+		# Disallow any FetchContent population under Portage sandbox:
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON \
-		# Help CMake find our system libs so it doesn't try to fetch:
+		# Help CMake find our system libs early:
 		-DCMAKE_PREFIX_PATH="/usr/${libdir}/cmake;${cglm_cmake};${tinyxml2_cmake};${msdfgen_cmake}" \
 		-Dcglm_DIR="${cglm_cmake}" \
 		-DCGLM_DIR="${cglm_cmake}" \
@@ -78,6 +118,8 @@ src_configure() {
 		-DTinyXML2_DIR="${tinyxml2_cmake}" \
 		-Dmsdfgen_DIR="${msdfgen_cmake}" \
 		-DMSDFGEN_DIR="${msdfgen_cmake}" \
+		# Inject our overrides before project() evaluates CMakeLists.txt:
+		-DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="${top_include}" \
 		-G Ninja \
 		|| die "cmake configure failed"
 }
@@ -87,10 +129,10 @@ src_compile() {
 }
 
 python_install() {
-	# Install pure-Python sources
+	# Install the pure-Python module tree
 	python_domodule "${S}/datoviz" || die "failed to install Python module"
 
-	# Drop the built shared lib where the Python ctypes loader looks:
+	# Install the C core where datoviz/_ctypes.py expects it
 	local built_lib
 	built_lib="$(find "${CMAKE_BUILD_DIR}" -type f -name 'libdatoviz.so' -print -quit)" \
 		|| die "search for libdatoviz.so failed"
@@ -106,8 +148,8 @@ src_install() {
 }
 
 pkg_postinst() {
-	elog "Datoviz installed. Python will load the C core from:"
-	elog "  site-packages/datoviz/build/libdatoviz.so (per-impl)."
+	elog "Datoviz installed."
+	elog "Python loads the C core from: site-packages/datoviz/build/libdatoviz.so"
 	elog "Ensure a Vulkan ICD/driver is installed (Mesa or vendor)."
 }
 
