@@ -51,32 +51,24 @@ src_prepare() {
 }
 
 
-src_configure() {
-  # Create a tiny top-include to define a no-op Skia target if anything still references it
-  local top_inc="${T}/noskia.cmake"
-  cat > "${top_inc}" <<'CMAKE' || die
-# Executed via CMAKE_PROJECT_TOP_LEVEL_INCLUDES before project() finishes.
-if(NOT TARGET unofficial::skia::skia)
-  add_library(unofficial::skia::skia INTERFACE IMPORTED)
-endif()
-if(NOT TARGET Skia::skia)
-  add_library(Skia::skia INTERFACE IMPORTED)
-endif()
-CMAKE
 
+src_configure() {
   local mycmakeargs=(
     -DBUILD_SHARED_LIBS=ON
     -DMSDF_ATLAS_GEN_BUILD_STANDALONE=OFF
     -DMSDF_ATLAS_GEN_USE_VCPKG=OFF
     -DMSDF_ATLAS_GEN_USE_SKIA=OFF
+
+    # Embedded msdfgen knobs
     -DMSDFGEN_USE_SKIA=OFF
     -DMSDFGEN_USE_VCPKG=OFF
     -DMSDFGEN_BUILD_STANDALONE=OFF
-    # Nice-to-have guards (now harmless after sed)
+
+    # Belt-and-suspenders: prevent accidental Skia discovery
     -DCMAKE_DISABLE_FIND_PACKAGE_unofficial-skia=ON
     -DCMAKE_DISABLE_FIND_PACKAGE_Skia=ON
-    # Inject our stub before project() so any late references don’t explode
-    -DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="${top_inc}"
   )
   cmake_src_configure
 }
+
+
