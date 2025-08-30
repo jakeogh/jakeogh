@@ -200,6 +200,10 @@ src_configure() {
 		-S "${S}" \
 		-B "${BUILD_DIR}" \
 		-G Ninja \
+        -DTINYXML2_INC_DIR=/usr/include \
+        -DTINYXML2_INCLUDE_DIR=/usr/include \
+        -DTINYXML2_LIBRARY="/usr/$(get_libdir)/libtinyxml2.so" \
+        -DTINYXML2_LIBRARIES="/usr/$(get_libdir)/libtinyxml2.so" \
 		"${mycmakeargs[@]}"
 }
 
