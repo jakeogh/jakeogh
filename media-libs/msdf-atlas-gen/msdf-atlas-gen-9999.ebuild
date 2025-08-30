@@ -46,17 +46,17 @@ src_prepare() {
 
 
 src_configure() {
-  local mycmakeargs=(
+
+local -a mycmakeargs=(
     -DBUILD_SHARED_LIBS=ON
     -DMSDF_ATLAS_GEN_BUILD_STANDALONE=OFF
     -DMSDF_ATLAS_GEN_USE_VCPKG=OFF
+    -DMSDF_ATLAS_GEN_USE_SKIA=OFF
     -DMSDFGEN_BUILD_STANDALONE=OFF
     -DMSDFGEN_USE_VCPKG=OFF
     -DMSDFGEN_USE_SKIA=OFF
     -DCMAKE_DISABLE_FIND_PACKAGE_unofficial-skia=ON
     -DCMAKE_DISABLE_FIND_PACKAGE_Skia=ON
-  )
-  cmake_src_configure
+)
+cmake_src_configure "${mycmakeargs[@]}"
 }
-
-
