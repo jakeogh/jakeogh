@@ -24,26 +24,22 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-build/cmake"
 
+
 src_configure() {
-	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=ON
+  local mycmakeargs=(
+    -DBUILD_SHARED_LIBS=ON
+    -DMSDF_ATLAS_GEN_BUILD_STANDALONE=OFF
+    -DMSDF_ATLAS_GEN_USE_VCPKG=OFF
+    -DMSDF_ATLAS_GEN_USE_SKIA=OFF
+    -DMSDFGEN_USE_SKIA=OFF
+    -DMSDFGEN_USE_VCPKG=OFF
+    -DMSDFGEN_BUILD_STANDALONE=OFF
 
-		# Build the library only (CLI optional via USE 'cli')
-		-DMSDF_ATLAS_GEN_BUILD_STANDALONE=$(usex cli ON OFF)
-
-		# Never pull dependencies via vcpkg/FetchContent
-		-DMSDF_ATLAS_GEN_USE_VCPKG=OFF
-
-		# Make absolutely sure Skia is disabled in BOTH layers
-		# (top-level and the embedded msdfgen subdir).
-		-DMSDF_ATLAS_GEN_USE_SKIA=OFF
-		-DMSDFGEN_USE_SKIA=OFF
-
-		# Also keep msdfgen’s own network helpers off just in case
-		-DMSDFGEN_USE_VCPKG=OFF
-		-DMSDFGEN_BUILD_STANDALONE=OFF
-	)
-	cmake_src_configure
+    # <<< hard block any Skia lookup >>>
+    -DCMAKE_DISABLE_FIND_PACKAGE_unofficial-skia=ON
+    -DCMAKE_DISABLE_FIND_PACKAGE_Skia=ON
+  )
+  cmake_src_configure
 }
 
 src_install() {
