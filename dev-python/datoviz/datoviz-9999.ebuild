@@ -52,114 +52,189 @@ src_configure() {
 	local tinyxml2_cmake="/usr/${libdir}/cmake/tinyxml2"
 	local msdfgen_cmake="/usr/${libdir}/cmake/msdfgen"
 
-	# Top-level shim: replace FetchContent deps with system packages (cglm, tinyxml2, msdfgen-atlas, glfw).
+	# Top-level shim: replace FetchContent deps with REAL IMPORTED targets.
 	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
 	cat > "${top_include}" <<'CMK' || die "write override failed"
 # Executed before project() via CMAKE_PROJECT_TOP_LEVEL_INCLUDES.
-# Replace Datoviz's FetchContent for cglm, tinyxml2, msdfgen-atlas, glfw with system packages.
-
+# Provide real IMPORTED targets for deps Datoviz otherwise FetchContent()s.
 function(FetchContent_Declare)
   # no-op
+endfunction()
+
+function(_first_defined out)
+  # helper: pick first defined CMake variable name from rest args
+  foreach(_v IN LISTS ARGN)
+    if(DEFINED ${_v})
+      set(${out} "${${_v}}" PARENT_SCOPE)
+      return()
+    endif()
+  endforeach()
+  set(${out} "" PARENT_SCOPE)
+endfunction()
+
+function(_import_lib_as target libnames)
+  # Create a real IMPORTED target with IMPORTED_LOCATION and include dirs.
+  # Tries: existing CMake target -> pkg-config -> find_library -> headers
+  # Args:
+  #   target    : desired target name (e.g., tinyxml2)
+  #   libnames  : semicolon-separated candidate library names (e.g., tinyxml2)
+  set(_tgt "${target}")
+  set(_names ${libnames})
+
+  # If a config package already provided an imported target, wrap it as REAL imported.
+  if(TARGET ${_tgt}::${_tgt})
+    # Try to extract a concrete library file path from known config props.
+    set(_loc "")
+    foreach(cfg RELEASE RELWITHDEBINFO MINSIZEREL DEBUG "")
+      if(NOT _loc STREQUAL "")
+        break()
+      endif()
+      if(cfg STREQUAL "")
+        get_target_property(_loc ${_tgt}::${_tgt} IMPORTED_LOCATION)
+      else()
+        get_target_property(_loc ${_tgt}::${_tgt} IMPORTED_LOCATION_${cfg})
+      endif()
+    endforeach()
+    get_target_property(_inc ${_tgt}::${_tgt} INTERFACE_INCLUDE_DIRECTORIES)
+
+    if(NOT _loc)
+      # Fallback to find_library if config didn't expose a location
+      find_library(_loc ${_names})
+    endif()
+
+    if(NOT _loc)
+      message(FATAL_ERROR "Could not resolve library file for ${_tgt}")
+    endif()
+
+    add_library(${_tgt} SHARED IMPORTED)
+    set_target_properties(${_tgt}
+      PROPERTIES
+        IMPORTED_LOCATION "${_loc}"
+        INTERFACE_INCLUDE_DIRECTORIES "${_inc}"
+    )
+    # Keep link to namespaced target in case downstream expects it
+    target_link_libraries(${_tgt} INTERFACE ${_tgt}::${_tgt})
+    return()
+  endif()
+
+  # Try pkg-config
+  find_package(PkgConfig QUIET)
+  if(PkgConfig_FOUND)
+    string(REPLACE ";" " " _pcnames "${_names}")
+    # Pick the first name that pkg-config knows
+    set(_pc_found FALSE)
+    foreach(_pc ${_names})
+      pkg_check_modules(PC_${_tgt} QUIET ${_pc})
+      if(PC_${_tgt}_FOUND)
+        set(_pc_found TRUE)
+        break()
+      endif()
+    endforeach()
+    if(_pc_found)
+      # Resolve a full lib path (prefer PC var with absolute paths, else find_library)
+      _first_defined(_liblist PC_${_tgt}_LINK_LIBRARIES PC_${_tgt}_LIBRARIES)
+      set(_loc "")
+      foreach(_cand IN LISTS _liblist)
+        if(EXISTS "${_cand}")
+          set(_loc "${_cand}")
+          break()
+        endif()
+      endforeach()
+      if(NOT _loc)
+        # try common names
+        find_library(_loc ${_names})
+      endif()
+      if(NOT _loc)
+        message(FATAL_ERROR "pkg-config could not resolve lib file for ${_tgt}")
+      endif()
+
+      add_library(${_tgt} SHARED IMPORTED)
+      set_target_properties(${_tgt}
+        PROPERTIES
+          IMPORTED_LOCATION "${_loc}"
+          INTERFACE_INCLUDE_DIRECTORIES "${PC_${_tgt}_INCLUDE_DIRS}"
+      )
+      # Also propagate additional linker flags if any
+      if(PC_${_tgt}_LDFLAGS_OTHER)
+        target_link_options(${_tgt} INTERFACE ${PC_${_tgt}_LDFLAGS_OTHER})
+      endif()
+      return()
+    endif()
+  endif()
+
+  # Last resort: find_library + common include roots
+  find_library(_loc ${_names})
+  if(NOT _loc)
+    message(FATAL_ERROR "System ${_tgt} not found (no config, no pkg-config, no lib).")
+  endif()
+  # Heuristic includes
+  set(_incs "")
+  foreach(d /usr/include /usr/include/${_tgt} /usr/local/include /usr/local/include/${_tgt})
+    if(EXISTS "${d}")
+      list(APPEND _incs "${d}")
+    endif()
+  endforeach()
+
+  add_library(${_tgt} SHARED IMPORTED)
+  set_target_properties(${_tgt}
+    PROPERTIES
+      IMPORTED_LOCATION "${_loc}"
+      INTERFACE_INCLUDE_DIRECTORIES "${_incs}"
+  )
 endfunction()
 
 function(FetchContent_MakeAvailable)
   foreach(_name IN LISTS ARGV)
 
     if(_name STREQUAL "cglm")
-      # Try CMake config (Gentoo: dev-libs/cglm exports cglm::cglm)
+      # Try config (Gentoo may ship cglm::cglm)
       find_package(cglm CONFIG QUIET)
-      if(TARGET cglm::cglm AND NOT TARGET cglm)
-        add_library(cglm ALIAS cglm::cglm)
-      endif()
-      # Fallback: pkg-config or headers
-      if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
-        find_package(PkgConfig QUIET)
-        if(PkgConfig_FOUND)
-          pkg_check_modules(CGLM QUIET cglm)
-        endif()
-        if(CGLM_FOUND)
-          add_library(cglm INTERFACE)
-          target_include_directories(cglm INTERFACE ${CGLM_INCLUDE_DIRS})
-          target_compile_options(cglm INTERFACE ${CGLM_CFLAGS_OTHER})
-        elseif(EXISTS "/usr/include/cglm/cglm.h")
-          add_library(cglm INTERFACE)
-          target_include_directories(cglm INTERFACE /usr/include)
-        else()
-          message(FATAL_ERROR "System cglm not found. Install dev-libs/cglm.")
-        endif()
+      if(TARGET cglm::cglm)
+        _import_lib_as(cglm "cglm")
+      else()
+        _import_lib_as(cglm "cglm")
       endif()
 
     elseif(_name STREQUAL "tinyxml2")
-      # CMake config (Gentoo: tinyxml2::tinyxml2)
       find_package(tinyxml2 CONFIG QUIET)
-      if(TARGET tinyxml2::tinyxml2 AND NOT TARGET tinyxml2)
-        add_library(tinyxml2 ALIAS tinyxml2::tinyxml2)
-      endif()
-      # Fallback: pkg-config
-      if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
-        find_package(PkgConfig QUIET)
-        if(PkgConfig_FOUND)
-          pkg_check_modules(TINYXML2 QUIET tinyxml2)
-        endif()
-        if(TINYXML2_FOUND)
-          add_library(tinyxml2 INTERFACE)
-          target_include_directories(tinyxml2 INTERFACE ${TINYXML2_INCLUDE_DIRS})
-          if(TINYXML2_LINK_LIBRARIES)
-            target_link_libraries(tinyxml2 INTERFACE ${TINYXML2_LINK_LIBRARIES})
-          elseif(TINYXML2_LIBRARIES)
-            target_link_libraries(tinyxml2 INTERFACE ${TINYXML2_LIBRARIES})
-          else()
-            target_link_libraries(tinyxml2 INTERFACE tinyxml2)
-          endif()
-        else()
-          message(FATAL_ERROR "System tinyxml2 not found. Install dev-libs/tinyxml2.")
-        endif()
+      if(TARGET tinyxml2::tinyxml2)
+        _import_lib_as(tinyxml2 "tinyxml2")
+      else()
+        _import_lib_as(tinyxml2 "tinyxml2")
       endif()
 
     elseif(_name STREQUAL "msdfgen-atlas")
-      # CMake config (Gentoo: msdfgen::msdfgen)
       find_package(msdfgen CONFIG QUIET)
-      if(TARGET msdfgen::msdfgen AND NOT TARGET msdfgen-atlas)
-        add_library(msdfgen-atlas ALIAS msdfgen::msdfgen)
-      endif()
-      # Fallback: pkg-config
-      if(NOT TARGET msdfgen-atlas AND NOT TARGET msdfgen::msdfgen)
-        find_package(PkgConfig QUIET)
-        if(PkgConfig_FOUND)
-          pkg_check_modules(MSDFGEN QUIET msdfgen)
-        endif()
-        if(MSDFGEN_FOUND)
-          add_library(msdfgen-atlas INTERFACE)
-          target_include_directories(msdfgen-atlas INTERFACE ${MSDFGEN_INCLUDE_DIRS})
-          target_link_libraries(msdfgen-atlas INTERFACE ${MSDFGEN_LIBRARIES})
-        else()
-          message(FATAL_ERROR "System msdfgen not found. Install media-libs/msdfgen.")
-        endif()
+      if(TARGET msdfgen::msdfgen)
+        # Provide a real 'msdfgen-atlas' IMPORTED target that points at libmsdfgen
+        # (Datoviz later calls set_target_properties on 'msdfgen-atlas').
+        # Resolve the actual lib file via config or find_library.
+        # Reuse helper with name 'msdfgen' then alias the name expected by Datoviz.
+        _import_lib_as(msdfgen "msdfgen")
+        # Create a NON-ALIAS imported target under the expected name too
+        get_target_property(_loc msdfgen IMPORTED_LOCATION)
+        get_target_property(_incs msdfgen INTERFACE_INCLUDE_DIRECTORIES)
+        add_library(msdfgen-atlas SHARED IMPORTED)
+        set_target_properties(msdfgen-atlas
+          PROPERTIES
+            IMPORTED_LOCATION "${_loc}"
+            INTERFACE_INCLUDE_DIRECTORIES "${_incs}"
+        )
+        target_link_libraries(msdfgen-atlas INTERFACE msdfgen::msdfgen)
+      else()
+        _import_lib_as(msdfgen-atlas "msdfgen")
       endif()
 
     elseif(_name STREQUAL "glfw")
-      # GLFW can export different configs; try glfw3 first, then glfw.
+      # Try configs (could be glfw3 or glfw)
       find_package(glfw3 CONFIG QUIET)
-      if(TARGET glfw AND NOT TARGET glfw::glfw)
-        # Some configs define plain 'glfw' already; nothing to do.
-      elseif(NOT TARGET glfw)
+      if(NOT TARGET glfw)
         find_package(glfw CONFIG QUIET)
       endif()
-      # Fallback: pkg-config (name is 'glfw3' on Gentoo)
-      if(NOT TARGET glfw)
-        find_package(PkgConfig QUIET)
-        if(PkgConfig_FOUND)
-          pkg_check_modules(GLFW3 QUIET glfw3)
-        endif()
-        if(GLFW3_FOUND)
-          add_library(glfw INTERFACE)
-          target_include_directories(glfw INTERFACE ${GLFW3_INCLUDE_DIRS})
-          target_link_libraries(glfw INTERFACE ${GLFW3_LIBRARIES})
-        else()
-          # Common fallback
-          add_library(glfw INTERFACE)
-          target_link_libraries(glfw INTERFACE glfw)
-        endif()
+      if(TARGET glfw)
+        _import_lib_as(glfw "glfw;glfw3")
+      else()
+        _import_lib_as(glfw "glfw;glfw3")
       endif()
 
     else()
