@@ -214,96 +214,71 @@ endfunction()
 
 
 
+
+
+
+
 function(_ensure_msdfgen)
-  if(TARGET msdf-atlas-gen::msdf-atlas-gen AND TARGET msdfgen-atlas)
-    return()
-  endif()
-
-  # Candidate include dirs for headers:
-  #   - /usr/include/msdf-atlas-gen           (common)
-  #   - /usr/include/msdfgen/msdf-atlas-gen   (some layouts)
-  #   - /usr/include/msdfgen                   (fallback for older installs)
-  set(_msdf_inc_candidates
-      "/usr/include/msdf-atlas-gen"
-      "/usr/include/msdfgen/msdf-atlas-gen"
-      "/usr/include/msdfgen"
-  )
-  set(_msdf_incs "")
-  foreach(d IN LISTS _msdf_inc_candidates)
-    if(EXISTS "${d}")
-      # Prefer dirs that actually contain the header
-      if(EXISTS "${d}/msdf-atlas-gen.h" OR EXISTS "${d}/msdf-atlas-gen/msdf-atlas-gen.h")
-        list(APPEND _msdf_incs "${d}")
-      endif()
-    endif()
-  endforeach()
-  if(NOT _msdf_incs AND EXISTS "/usr/include/msdfgen")
-    list(APPEND _msdf_incs "/usr/include/msdfgen")
-  endif()
-
-  # Prefer system CMake package (may export split or monolithic)
-  find_package(msdfgen CONFIG QUIET)
-  if(TARGET msdfgen::msdfgen-core OR TARGET msdfgen::msdfgen-ext OR TARGET msdfgen::msdfgen)
+  # If the exact target already exists, done.
+  if(TARGET msdf-atlas-gen::msdf-atlas-gen)
+    # Optionally also provide a plain alias name Datoviz might reference
     if(NOT TARGET msdfgen-atlas)
       add_library(msdfgen-atlas INTERFACE IMPORTED)
-    endif()
-    if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
-      add_library(msdf-atlas-gen::msdf-atlas-gen INTERFACE IMPORTED)
-    endif()
-
-    if(_msdf_incs)
-      set_target_properties(msdfgen-atlas PROPERTIES                 INTERFACE_INCLUDE_DIRECTORIES "${_msdf_incs}")
-      set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_msdf_incs}")
-    endif()
-
-    if(TARGET msdfgen::msdfgen-core)
-      target_link_libraries(msdfgen-atlas                 INTERFACE msdfgen::msdfgen-core)
-      target_link_libraries(msdf-atlas-gen::msdf-atlas-gen INTERFACE msdfgen::msdfgen-core)
-    endif()
-    if(TARGET msdfgen::msdfgen-ext)
-      target_link_libraries(msdfgen-atlas                 INTERFACE msdfgen::msdfgen-ext)
-      target_link_libraries(msdf-atlas-gen::msdf-atlas-gen INTERFACE msdfgen::msdfgen-ext)
-    endif()
-    if(TARGET msdfgen::msdfgen)
-      target_link_libraries(msdfgen-atlas                 INTERFACE msdfgen::msdfgen)
-      target_link_libraries(msdf-atlas-gen::msdf-atlas-gen INTERFACE msdfgen::msdfgen)
+      target_link_libraries(msdfgen-atlas INTERFACE msdf-atlas-gen::msdf-atlas-gen)
     endif()
     return()
   endif()
 
-  # Fallback: discover split/mono libs directly
+  # Prefer the system package config
+  find_package(msdf-atlas-gen CONFIG QUIET)
+  if(TARGET msdf-atlas-gen::msdf-atlas-gen)
+    if(NOT TARGET msdfgen-atlas)
+      add_library(msdfgen-atlas INTERFACE IMPORTED)
+      target_link_libraries(msdfgen-atlas INTERFACE msdf-atlas-gen::msdf-atlas-gen)
+    endif()
+    # Ensure headers are visible even if package didn't export includes
+    foreach(inc_dir "/usr/include/msdf-atlas-gen" "/usr/local/include/msdf-atlas-gen")
+      if(EXISTS "${inc_dir}/msdf-atlas-gen.h")
+        set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_INCLUDE_DIRECTORIES "${inc_dir}")
+      endif()
+    endforeach()
+    return()
+  endif()
+
+  # Last-resort compatibility: older msdfgen packages sometimes provide split libs.
+  # Create an INTERFACE target that forwards to whatever we can find.
   find_library(MSDFGEN_CORE msdfgen-core)
   find_library(MSDFGEN_EXT  msdfgen-ext)
   find_library(MSDFGEN_MONO msdfgen)
+
   if(NOT MSDFGEN_CORE AND NOT MSDFGEN_EXT AND NOT MSDFGEN_MONO)
-    message(FATAL_ERROR "Could not find msdfgen (core/ext/mono). Install media-libs/msdfgen.")
+    message(FATAL_ERROR "msdf-atlas-gen not found: install media-libs/msdf-atlas-gen.")
+  endif()
+
+  add_library(msdf-atlas-gen::msdf-atlas-gen INTERFACE IMPORTED)
+  if(EXISTS "/usr/include/msdf-atlas-gen")
+    set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdf-atlas-gen")
+  endif()
+  if(MSDFGEN_CORE)
+    set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_CORE}")
+  endif()
+  if(MSDFGEN_EXT)
+    set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT}")
+  endif()
+  if(MSDFGEN_MONO)
+    set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_MONO}")
   endif()
 
   if(NOT TARGET msdfgen-atlas)
     add_library(msdfgen-atlas INTERFACE IMPORTED)
-  endif()
-  if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
-    add_library(msdf-atlas-gen::msdf-atlas-gen INTERFACE IMPORTED)
-  endif()
-
-  if(_msdf_incs)
-    set_target_properties(msdfgen-atlas PROPERTIES                 INTERFACE_INCLUDE_DIRECTORIES "${_msdf_incs}")
-    set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES INTERFACE_INCLUDE_DIRECTORIES "${_msdf_incs}")
-  endif()
-
-  if(MSDFGEN_CORE)
-    set_property(TARGET msdfgen-atlas                 APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_CORE}")
-    set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_CORE}")
-  endif()
-  if(MSDFGEN_EXT)
-    set_property(TARGET msdfgen-atlas                 APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT}")
-    set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT}")
-  endif()
-  if(MSDFGEN_MONO)
-    set_property(TARGET msdfgen-atlas                 APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_MONO}")
-    set_property(TARGET msdf-atlas-gen::msdf-atlas-gen APPEND PROPERTY INTERFACE_LINK_LIBRARIES "${MSDFGEN_MONO}")
+    target_link_libraries(msdfgen-atlas INTERFACE msdf-atlas-gen::msdf-atlas-gen)
   endif()
 endfunction()
+
+
+
+
+
 
 
 # --- override FetchContent -------------------------------------------------
