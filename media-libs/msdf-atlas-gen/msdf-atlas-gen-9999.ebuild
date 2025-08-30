@@ -25,19 +25,25 @@ DEPEND="${RDEPEND}"
 BDEPEND="dev-build/cmake"
 
 
-
 src_prepare() {
-  cmake_src_prepare
+    cmake_src_prepare
 
-  # Make Skia optional/quiet and OFF, and never define the macro
-  sed -i \
-    -e 's/find_package( *unofficial-skia\>[^)]*)/find_package(unofficial-skia QUIET)/Ig' \
-    -e 's/find_package( *Skia\>[^)]*)/find_package(Skia QUIET)/Ig' \
-    -e 's/^[[:space:]]*option[[:space:]]*( *MSDFGEN_USE_SKIA[^)]*)/option(MSDFGEN_USE_SKIA "Use Skia" OFF)/I' \
-    -e 's/^[[:space:]]*set[[:space:]]*( *MSDFGEN_USE_SKIA[[:space:]]*ON[[:space:]]*)/set(MSDFGEN_USE_SKIA OFF)/I' \
-    -e '/^[[:space:]]*target_compile_definitions[[:space:]]*\([^)]*MSDFGEN_USE_SKIA[^)]*\)[[:space:]]*\)/Id' \
-    msdfgen/CMakeLists.txt || die "patch Skia off"
+    # Turn off Skia in the embedded msdfgen cleanly.
+    # - Demote REQUIRED -> QUIET for both finders
+    # - Default option OFF (and override any forced ON)
+    # - Neutralize if()/elseif(MSDFGEN_USE_SKIA) without breaking endif nesting
+    pushd msdfgen >/dev/null || die
+    sed -i -r \
+        -e 's/find_package\(\s*unofficial-skia[^)]*\)/find_package(unofficial-skia QUIET)/Ig' \
+        -e 's/find_package\(\s*Skia[^)]*\)/find_package(Skia QUIET)/Ig' \
+        -e 's/^[[:space:]]*option\(\s*MSDFGEN_USE_SKIA[^)]*\)/option(MSDFGEN_USE_SKIA "Use Skia" OFF)/I' \
+        -e 's/^[[:space:]]*set\(\s*MSDFGEN_USE_SKIA\s+ON\s*\)/set(MSDFGEN_USE_SKIA OFF)/I' \
+        -e 's/^[[:space:]]*if\(\s*MSDFGEN_USE_SKIA\s*\)/if(FALSE)/I' \
+        -e 's/^[[:space:]]*elseif\(\s*MSDFGEN_USE_SKIA\s*\)/elseif(FALSE)/I' \
+        CMakeLists.txt || die "patch Skia off"
+    popd >/dev/null || die
 }
+
 
 src_configure() {
   local mycmakeargs=(
