@@ -14,7 +14,7 @@ DESCRIPTION="Datoviz: Vulkan-based high-performance scientific visualization (Py
 HOMEPAGE="https://datoviz.org https://github.com/datoviz/datoviz"
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
 EGIT_BRANCH="main"
-# Repo includes submodules and Git LFS assets; fetch them.
+# Repo includes submodules and LFS assets
 EGIT_SUBMODULES=( '*' )
 EGIT_LFS="yes"
 
@@ -36,11 +36,12 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-util/vulkan-headers
-	dev-python/pybind11
+	dev-cpp/pybind11
 "
 BDEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig
+	dev-vcs/git-lfs
 "
 
 src_prepare() {
@@ -49,5 +50,6 @@ src_prepare() {
 	export CMAKE_BUILD_TYPE=Release
 	export DVZ_DOWNLOAD_SDK=0
 }
+
 
 # distutils-r1 will drive the setuptools PEP517 backend automatically.
