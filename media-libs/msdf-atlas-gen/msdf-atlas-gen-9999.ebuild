@@ -24,23 +24,32 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="dev-build/cmake"
 
+
+
+
 src_prepare() {
   cmake_src_prepare
 
-  # Make Skia find optional instead of REQUIRED
+  # 1) Make Skia optional (QUIET) instead of REQUIRED
   sed -i \
     -e 's|find_package(unofficial-skia REQUIRED)|find_package(unofficial-skia QUIET)|g' \
     -e 's|find_package(Skia REQUIRED)|find_package(Skia QUIET)|g' \
-    msdfgen/CMakeLists.txt \
-    || die "sed Skia REQUIRED→QUIET failed"
+    msdfgen/CMakeLists.txt || die "sed: Skia REQUIRED→QUIET failed"
 
-  # Remove any hard Skia link tokens so target_link_libraries() won't require it
+  # 2) Force the MSDFGEN_USE_SKIA option default OFF and neutralize any hard ON
+  #    (covers patterns like: option(... ON) and set(MSDFGEN_USE_SKIA ON))
+  sed -i \
+    -e 's/^[[:space:]]*option[[:space:]]*(MSDFGEN_USE_SKIA[[:space:]][^)]*ON[[:space:]]*)/option(MSDFGEN_USE_SKIA "Use Skia" OFF)/I' \
+    -e 's/^[[:space:]]*set[[:space:]]*(MSDFGEN_USE_SKIA[[:space:]]*ON[[:space:]]*)/set(MSDFGEN_USE_SKIA OFF)/I' \
+    msdfgen/CMakeLists.txt || die "sed: force MSDFGEN_USE_SKIA=OFF failed"
+
+  # 3) Remove any Skia link tokens so a stray target_link_libraries won’t reintroduce it
   sed -i \
     -e 's/[[:space:]]\+unofficial::skia::skia\>//g' \
     -e 's/[[:space:]]\+Skia::skia\>//g' \
-    msdfgen/CMakeLists.txt \
-    || die "sed remove Skia link token failed"
+    msdfgen/CMakeLists.txt || die "sed: strip Skia link targets failed"
 }
+
 
 src_configure() {
   # Create a tiny top-include to define a no-op Skia target if anything still references it
