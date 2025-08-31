@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_12 python3_13 )
 
 inherit cmake git-r3 multilib python-r1
 
-DESCRIPTION="Datoviz core + Python wrapper (ctypes) – live ebuild wired to system deps"
+DESCRIPTION="Datoviz core + Python wrapper (ctypes) — live ebuild wired to system deps"
 HOMEPAGE="https://github.com/datoviz/datoviz"
 
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
@@ -26,6 +26,7 @@ RDEPEND="
 	dev-libs/cglm:=
 	dev-libs/tinyxml2:=
 	media-libs/msdf-atlas-gen:=
+	media-libs/msdfgen:=
 	media-libs/libpng:=
 	media-libs/freetype:=
 	sys-libs/zlib:=
@@ -43,7 +44,6 @@ BDEPEND="
 
 S="${WORKDIR}/${PN}-${PV}"
 BUILD_DIR="${WORKDIR}/build-dvz"
-
 
 src_prepare() {
 	cmake_src_prepare
@@ -149,10 +149,13 @@ if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
   endif()
 endif()
 
-# msdf-atlas-gen
+# msdf-atlas-gen and msdfgen-ext
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
   find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen)
-  set(MSDF_ATLAS_GEN_INC "/usr/include")
+  find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include /usr/include/msdf-atlas-gen)
+  if(NOT MSDF_ATLAS_GEN_INC)
+    set(MSDF_ATLAS_GEN_INC "/usr/include")
+  endif()
   if(MSDF_ATLAS_GEN_LIB)
     add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED GLOBAL)
     set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
@@ -163,20 +166,19 @@ if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
   endif()
 endif()
 
-set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
-
-# ---- tinyxml2 (pre-project safe) --------------------------------------------
-if(NOT TARGET tinyxml2::tinyxml2)
-  find_library(TINYXML2_LIB NAMES tinyxml2 REQUIRED)
-  find_path(TINYXML2_INC_DIR NAMES tinyxml2.h PATHS /usr/include /usr/include/tinyxml2 REQUIRED)
-  add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
-  set_target_properties(tinyxml2::tinyxml2 PROPERTIES
-    IMPORTED_LOCATION "${TINYXML2_LIB}"
-    INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
+# Add msdfgen-ext as a separate target that atlas depends on
+if(NOT TARGET msdfgen-ext)
+  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext)
+  if(MSDFGEN_EXT_LIB)
+    add_library(msdfgen-ext SHARED IMPORTED GLOBAL)
+    set_target_properties(msdfgen-ext PROPERTIES
+      IMPORTED_LOCATION "${MSDFGEN_EXT_LIB}")
+  else()
+    message(FATAL_ERROR "Could not resolve library file for msdfgen-ext. Install media-libs/msdfgen.")
+  endif()
 endif()
-# -----------------------------------------------------------------------------
 
-
+set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
 EOF
 	echo "${top_include}"
 
@@ -196,12 +198,7 @@ if(NOT TARGET tinyxml2::tinyxml2)
     INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
 endif()
 # -----------------------------------------------------------------------------
-
 EOF
-
-
-
-
 }
 
 src_configure() {
