@@ -171,14 +171,17 @@ EOF
 # ---- tinyxml2 (pre-project safe) --------------------------------------------
 if(NOT TARGET tinyxml2::tinyxml2)
   find_library(TINYXML2_LIB NAMES tinyxml2 REQUIRED)
-  find_path(TINYXML2_INC_DIR NAMES tinyxml2.h REQUIRED)
+  find_path(TINYXML2_INC_DIR NAMES tinyxml2.h PATHS /usr/include /usr/include/tinyxml2 REQUIRED)
   add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
   set_target_properties(tinyxml2::tinyxml2 PROPERTIES
     IMPORTED_LOCATION "${TINYXML2_LIB}"
     INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
 endif()
 # -----------------------------------------------------------------------------
+
 EOF
+
+
 
 
 }
