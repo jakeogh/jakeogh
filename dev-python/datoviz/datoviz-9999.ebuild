@@ -152,29 +152,29 @@ endif()
 # msdf-atlas-gen and msdfgen-ext
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
   find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen)
+  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext)
   find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include /usr/include/msdf-atlas-gen)
   if(NOT MSDF_ATLAS_GEN_INC)
     set(MSDF_ATLAS_GEN_INC "/usr/include")
   endif()
-  if(MSDF_ATLAS_GEN_LIB)
+  if(MSDF_ATLAS_GEN_LIB AND MSDFGEN_EXT_LIB)
     add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED GLOBAL)
     set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
       IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
-      INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}")
+      INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}"
+      IMPORTED_LINK_INTERFACE_LIBRARIES "${MSDFGEN_EXT_LIB}")
   else()
-    message(FATAL_ERROR "Could not resolve library file for msdf-atlas-gen. Install media-libs/msdf-atlas-gen.")
+    message(FATAL_ERROR "Could not resolve library files for msdf-atlas-gen or msdfgen-ext. Install media-libs/msdf-atlas-gen and media-libs/msdfgen.")
   endif()
 endif()
 
-# Add msdfgen-ext as a separate target that atlas depends on
+# Also create standalone msdfgen-ext target for good measure
 if(NOT TARGET msdfgen-ext)
   find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext)
   if(MSDFGEN_EXT_LIB)
     add_library(msdfgen-ext SHARED IMPORTED GLOBAL)
     set_target_properties(msdfgen-ext PROPERTIES
       IMPORTED_LOCATION "${MSDFGEN_EXT_LIB}")
-  else()
-    message(FATAL_ERROR "Could not resolve library file for msdfgen-ext. Install media-libs/msdfgen.")
   endif()
 endif()
 
