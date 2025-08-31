@@ -104,13 +104,26 @@ src_install() {
   # 1) Library (only atlas gen; do NOT install bundled msdfgen libs)
   dolib.so "${BUILD_DIR}/libmsdf-atlas-gen.so" || die
 
-  # 2) Headers (only atlas gen) - install both .h and .hpp files
+
+# 2) Headers (only atlas gen) - install both .h and .hpp files
   insinto /usr/include/msdf-atlas-gen
   doins "${S}"/msdf-atlas-gen/*.h || die
-  # Also install .hpp files if they exist
-  if compgen -G "${S}"/msdf-atlas-gen/*.hpp >/dev/null; then
+
+  # Check if .hpp files exist and install them, or fail if rectangle-packing.hpp is missing
+  local hpp_files=$(find "${S}"/msdf-atlas-gen -name "*.hpp" 2>/dev/null)
+  if [[ -n ${hpp_files} ]]; then
     doins "${S}"/msdf-atlas-gen/*.hpp || die
   fi
+
+  # Specifically check for rectangle-packing.hpp since rectangle-packing.h includes it
+  if [[ ! -f "${S}/msdf-atlas-gen/rectangle-packing.hpp" ]]; then
+    eerror "rectangle-packing.hpp is missing but required by rectangle-packing.h"
+    eerror "Available files in ${S}/msdf-atlas-gen/:"
+    find "${S}/msdf-atlas-gen/" -name "*rectangle*" -type f
+    die "Missing required header file rectangle-packing.hpp"
+  fi
+
+
 
   # 3) CLI (if built)
   if [[ -x ${BUILD_DIR}/bin/msdf-atlas-gen ]]; then
