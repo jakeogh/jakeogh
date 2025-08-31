@@ -44,8 +44,13 @@ BDEPEND="
 S="${WORKDIR}/${PN}-${PV}"
 BUILD_DIR="${WORKDIR}/build-dvz"
 
+
 src_prepare() {
 	cmake_src_prepare
+
+	# Fix missing #include <cstdint> in earcut.hpp
+	sed -i '/#include <utility>/a #include <cstdint>' \
+		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
 }
 
 _src_write_top_include() {
