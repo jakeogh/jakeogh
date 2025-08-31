@@ -222,6 +222,8 @@ src_configure() {
         -DTINYXML2_INCLUDE_DIR=/usr/include \
         -DTINYXML2_LIBRARY="/usr/$(get_libdir)/libtinyxml2.so" \
         -DTINYXML2_LIBRARIES="/usr/$(get_libdir)/libtinyxml2.so" \
+        -DCMAKE_EXE_LINKER_FLAGS="-lmsdfgen-ext" \
+        -DCMAKE_SHARED_LINKER_FLAGS="-lmsdfgen-ext" \
 		"${mycmakeargs[@]}"
 }
 
