@@ -104,9 +104,13 @@ src_install() {
   # 1) Library (only atlas gen; do NOT install bundled msdfgen libs)
   dolib.so "${BUILD_DIR}/libmsdf-atlas-gen.so" || die
 
-  # 2) Headers (only atlas gen)
+  # 2) Headers (only atlas gen) - install both .h and .hpp files
   insinto /usr/include/msdf-atlas-gen
   doins "${S}"/msdf-atlas-gen/*.h || die
+  # Also install .hpp files if they exist
+  if compgen -G "${S}"/msdf-atlas-gen/*.hpp >/dev/null; then
+    doins "${S}"/msdf-atlas-gen/*.hpp || die
+  fi
 
   # 3) CLI (if built)
   if [[ -x ${BUILD_DIR}/bin/msdf-atlas-gen ]]; then
