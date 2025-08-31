@@ -105,23 +105,34 @@ src_install() {
   dolib.so "${BUILD_DIR}/libmsdf-atlas-gen.so" || die
 
 
-# 2) Headers (only atlas gen) - install both .h and .hpp files
+
+# 2) Headers (only atlas gen) - FAIL if required files are missing
   insinto /usr/include/msdf-atlas-gen
+
+  # Install .h files
   doins "${S}"/msdf-atlas-gen/*.h || die
 
-  # Check if .hpp files exist and install them, or fail if rectangle-packing.hpp is missing
-  local hpp_files=$(find "${S}"/msdf-atlas-gen -name "*.hpp" 2>/dev/null)
-  if [[ -n ${hpp_files} ]]; then
-    doins "${S}"/msdf-atlas-gen/*.hpp || die
+  # MANDATORY check: rectangle-packing.hpp MUST exist since rectangle-packing.h includes it
+  if [[ ! -f "${S}/msdf-atlas-gen/rectangle-packing.hpp" ]]; then
+    eerror "CRITICAL: rectangle-packing.hpp is missing from source but required by rectangle-packing.h"
+    eerror "This will cause compilation failures in dependent packages like datoviz"
+    eerror ""
+    eerror "Files found in ${S}/msdf-atlas-gen/ with 'rectangle' in name:"
+    find "${S}/msdf-atlas-gen/" -name "*rectangle*" -type f || eerror "No rectangle files found at all!"
+    eerror ""
+    eerror "All files in ${S}/msdf-atlas-gen/:"
+    ls -la "${S}/msdf-atlas-gen/" || eerror "Could not list source directory"
+    eerror ""
+    die "Missing required header file rectangle-packing.hpp - upstream source issue or build problem"
   fi
 
-  # Specifically check for rectangle-packing.hpp since rectangle-packing.h includes it
-  if [[ ! -f "${S}/msdf-atlas-gen/rectangle-packing.hpp" ]]; then
-    eerror "rectangle-packing.hpp is missing but required by rectangle-packing.h"
-    eerror "Available files in ${S}/msdf-atlas-gen/:"
-    find "${S}/msdf-atlas-gen/" -name "*rectangle*" -type f
-    die "Missing required header file rectangle-packing.hpp"
-  fi
+  # Install .hpp files (will only reach here if rectangle-packing.hpp exists)
+  doins "${S}"/msdf-atlas-gen/*.hpp || die
+
+
+
+
+
 
 
 
