@@ -38,18 +38,11 @@ BDEPEND="
 	dev-vcs/git-lfs
 	>=dev-build/cmake-3.24
 	>=dev-build/ninja-1.10
-	python? (
-		${PYTHON_DEPS}
-		dev-python/pip[${PYTHON_USEDEP}]
-		dev-python/setuptools[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
-		sys-devel/just
-	)
 "
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${PN}-${PV}"
 BUILD_DIR="${WORKDIR}/build-dvz"
-PYMOD_DIR="${S}/datoviz"
+PYMOD_DIR="${S}/datoviz"  # The Python module is here
 
 src_prepare() {
 	cmake_src_prepare
@@ -165,24 +158,8 @@ src_configure() {
 
 src_compile() {
 	cmake_build -C "${BUILD_DIR}"
-
-	if use python; then
-		einfo "Building Python bindings with 'just'..."
-		cd "${S}" || die
-
-		if ! command -v just >/dev/null 2>&1; then
-			die "USE=python enabled but 'just' not found. Please install sys-devel/just."
-		fi
-
-		# First call often fails due to msdf-atlas-gen issue
-		if ! just build; then
-			einfo "First 'just build' failed, retrying..."
-			if ! just build; then
-				die "Failed to build Python bindings with 'just' after two attempts."
-			fi
-		fi
-		einfo "Python bindings built successfully."
-	fi
+	# Do NOT run just build — it violates sandbox
+	# Python bindings are pure Python + ctypes — no build needed
 }
 
 src_test() {
