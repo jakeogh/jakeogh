@@ -157,10 +157,13 @@ src_configure() {
 }
 
 src_compile() {
+	# Pass the same CFLAGS/CXXFLAGS used in the rest of the system
+	tc-export CXX CC
 	cmake_build -C "${BUILD_DIR}"
-	# Do NOT run just build — it violates sandbox
+	# Do NOT run `just build` — it violates sandbox
 	# Python bindings are pure Python + ctypes — no build needed
 }
+
 
 src_test() {
 	if use test; then
