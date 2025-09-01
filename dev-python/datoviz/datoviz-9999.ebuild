@@ -255,7 +255,6 @@ python_install() {
 	dobin "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so into datoviz/"
 }
 
-
 #python_install() {
 #	local pydir
 #	pydir="$(python_get_sitedir)" || die "Failed to determine Python site-packages directory"
