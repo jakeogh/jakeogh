@@ -32,6 +32,7 @@ RDEPEND="
 	sys-libs/zlib:=
 	media-libs/vulkan-loader:=
 	>=dev-util/vulkan-headers-1.2:0
+	dev-libs/libb64:=
 	python? (
 		${PYTHON_DEPS}
 		dev-python/numpy[${PYTHON_USEDEP}]
