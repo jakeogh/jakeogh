@@ -68,8 +68,6 @@ src_configure() {
 # optional if you want the CLI toggled
 IUSE="+cli"
 
-
-
 #src_install() {
 #  cmake_src_install
 #
