@@ -103,59 +103,40 @@ function(_gentoo_import_lib _tgt _lib _inc)
   endif()
 endfunction()
 
+# tinyxml2
+if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
+  find_library(TINYXML2_LIB NAMES tinyxml2 REQUIRED)
+  find_path(TINYXML2_INC_DIR NAMES tinyxml2.h PATHS /usr/include /usr/include/tinyxml2 REQUIRED)
+  add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
+  set_target_properties(tinyxml2::tinyxml2 PROPERTIES
+    IMPORTED_LOCATION "${TINYXML2_LIB}"
+    INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
+endif()
+
 # cglm
 if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
-  find_package(cglm QUIET CONFIG)
-  if(TARGET cglm::cglm)
-    # Use system cglm
-  else()
-    # Fallback to raw library
-    find_library(CGLM_LIB cglm REQUIRED)
-    find_path(CGLM_INC cglm/cglm.h PATHS /usr/include NO_DEFAULT_PATH)
-    if(NOT CGLM_INC)
-      set(CGLM_INC "/usr/include")
-    endif()
-    add_library(cglm::cglm SHARED IMPORTED)
-    set_target_properties(cglm::cglm PROPERTIES
-      IMPORTED_LOCATION "${CGLM_LIB}"
-      INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}")
+  find_library(CGLM_LIB cglm REQUIRED)
+  find_path(CGLM_INC cglm/cglm.h PATHS /usr/include NO_DEFAULT_PATH)
+  if(NOT CGLM_INC)
+    set(CGLM_INC "/usr/include")
   endif()
+  add_library(cglm::cglm SHARED IMPORTED)
+  set_target_properties(cglm::cglm PROPERTIES
+    IMPORTED_LOCATION "${CGLM_LIB}"
+    INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}")
 endif()
 
 # glfw
 if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
-  find_package(glfw3 QUIET CONFIG)
-  if(TARGET glfw::glfw)
-    # Use system glfw
-  else()
-    find_library(GLFW_LIB NAMES glfw glfw3 REQUIRED)
-    find_path(GLFW_INC GLFW/glfw3.h PATHS /usr/include NO_DEFAULT_PATH)
-    if(NOT GLFW_INC)
-      set(GLFW_INC "/usr/include")
-    endif()
-    add_library(glfw::glfw SHARED IMPORTED)
-    set_target_properties(glfw::glfw PROPERTIES
-      IMPORTED_LOCATION "${GLFW_LIB}"
-      INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
+  find_library(GLFW_LIB NAMES glfw glfw3 REQUIRED)
+  find_path(GLFW_INC GLFW/glfw3.h PATHS /usr/include NO_DEFAULT_PATH)
+  if(NOT GLFW_INC)
+    set(GLFW_INC "/usr/include")
   endif()
-endif()
-
-# tinyxml2
-if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
-  find_package(TinyXML2 QUIET CONFIG)
-  if(TARGET tinyxml2::tinyxml2)
-    # Use system tinyxml2
-  else()
-    find_library(TINYXML2_LIB tinyxml2 REQUIRED)
-    find_path(TINYXML2_INC tinyxml2.h PATHS /usr/include NO_DEFAULT_PATH)
-    if(NOT TINYXML2_INC)
-      set(TINYXML2_INC "/usr/include")
-    endif()
-    add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
-    set_target_properties(tinyxml2::tinyxml2 PROPERTIES
-      IMPORTED_LOCATION "${TINYXML2_LIB}"
-      INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC}")
-  endif()
+  add_library(glfw::glfw SHARED IMPORTED)
+  set_target_properties(glfw::glfw PROPERTIES
+    IMPORTED_LOCATION "${GLFW_LIB}"
+    INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
 endif()
 
 # msdf-atlas-gen
@@ -188,6 +169,119 @@ endfunction()
 EOF
 	echo "${top_include}"
 }
+
+
+
+#_src_write_top_include() {
+#	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
+#	cat > "${top_include}" <<'EOF'
+## Provide system deps as imported targets and block FetchContent under sandbox.
+#if(POLICY CMP0111)
+#  cmake_policy(SET CMP0111 NEW)
+#endif()
+#
+## Prevent FetchContent from doing anything
+#set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
+#set(FETCHCONTENT_UPDATES_DISCONNECTED ON CACHE BOOL "" FORCE)
+#
+#function(_gentoo_import_lib _tgt _lib _inc)
+#  if(NOT TARGET "${_tgt}")
+#    if(EXISTS "${_lib}")
+#      add_library(${_tgt} SHARED IMPORTED GLOBAL)
+#      set_target_properties(${_tgt} PROPERTIES
+#        IMPORTED_LOCATION "${_lib}"
+#        INTERFACE_INCLUDE_DIRECTORIES "${_inc}")
+#    else()
+#      message(STATUS "Gentoo: library for target ${_tgt} not found at: ${_lib}")
+#    endif()
+#  endif()
+#endfunction()
+#
+## cglm
+#if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
+#  find_package(cglm QUIET CONFIG)
+#  if(TARGET cglm::cglm)
+#    # Use system cglm
+#  else()
+#    # Fallback to raw library
+#    find_library(CGLM_LIB cglm REQUIRED)
+#    find_path(CGLM_INC cglm/cglm.h PATHS /usr/include NO_DEFAULT_PATH)
+#    if(NOT CGLM_INC)
+#      set(CGLM_INC "/usr/include")
+#    endif()
+#    add_library(cglm::cglm SHARED IMPORTED)
+#    set_target_properties(cglm::cglm PROPERTIES
+#      IMPORTED_LOCATION "${CGLM_LIB}"
+#      INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}")
+#  endif()
+#endif()
+#
+## glfw
+#if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
+#  find_package(glfw3 QUIET CONFIG)
+#  if(TARGET glfw::glfw)
+#    # Use system glfw
+#  else()
+#    find_library(GLFW_LIB NAMES glfw glfw3 REQUIRED)
+#    find_path(GLFW_INC GLFW/glfw3.h PATHS /usr/include NO_DEFAULT_PATH)
+#    if(NOT GLFW_INC)
+#      set(GLFW_INC "/usr/include")
+#    endif()
+#    add_library(glfw::glfw SHARED IMPORTED)
+#    set_target_properties(glfw::glfw PROPERTIES
+#      IMPORTED_LOCATION "${GLFW_LIB}"
+#      INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
+#  endif()
+#endif()
+#
+## tinyxml2
+#if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
+#  find_package(TinyXML2 QUIET CONFIG)
+#  if(TARGET tinyxml2::tinyxml2)
+#    # Use system tinyxml2
+#  else()
+#    find_library(TINYXML2_LIB tinyxml2 REQUIRED)
+#    find_path(TINYXML2_INC tinyxml2.h PATHS /usr/include NO_DEFAULT_PATH)
+#    if(NOT TINYXML2_INC)
+#      set(TINYXML2_INC "/usr/include")
+#    endif()
+#    add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
+#    set_target_properties(tinyxml2::tinyxml2 PROPERTIES
+#      IMPORTED_LOCATION "${TINYXML2_LIB}"
+#      INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC}")
+#  endif()
+#endif()
+#
+## msdf-atlas-gen
+#if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
+#  find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen REQUIRED)
+#  find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core REQUIRED)
+#  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext REQUIRED)
+#  find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include NO_DEFAULT_PATH)
+#  if(NOT MSDF_ATLAS_GEN_INC)
+#    set(MSDF_ATLAS_GEN_INC "/usr/include")
+#  endif()
+#  add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED)
+#  set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
+#    IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
+#    INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}")
+#  set_property(TARGET msdf-atlas-gen::msdf-atlas-gen PROPERTY
+#    INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT_LIB};${MSDFGEN_CORE_LIB}")
+#endif()
+#
+## Block FetchContent from trying to clone anything
+#function(FetchContent_MakeAvailable)
+#  message(STATUS "Blocking FetchContent_MakeAvailable call")
+#endfunction()
+#function(FetchContent_Declare)
+#  message(STATUS "Blocking FetchContent_Declare call")
+#endfunction()
+#function(FetchContent_Populate)
+#  message(STATUS "Blocking FetchContent_Populate call")
+#endfunction()
+#EOF
+#	echo "${top_include}"
+#}
 
 
 #_src_write_top_include() {
