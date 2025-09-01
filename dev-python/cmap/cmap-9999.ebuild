@@ -5,7 +5,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 
 # Must be set before inheriting distutils-r1; upstream uses flit_core.buildapi
-DISTUTILS_USE_PEP517=flit
+DISTUTILS_USE_PEP517="hatchling"
 
 inherit distutils-r1 git-r3
 
