@@ -1,24 +1,19 @@
 # Copyright 2025
 # Distributed under the terms of the GNU General Public License v2
-
 EAPI=8
-
 PYTHON_COMPAT=( python3_12 python3_13 )
 
-inherit cmake git-r3 multilib python-r1
+# Must come before inherit
+DISTUTILS_USE_PEP517=no
+inherit cmake git-r3 multilib distutils-r1
 
 DESCRIPTION="Datoviz core + Python wrapper (ctypes) - live ebuild wired to system deps"
 HOMEPAGE="https://github.com/datoviz/datoviz"
-
 EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
-# Only fetch submodules that are actually used at build/runtime.
 EGIT_SUBMODULES=( data external/imgui )
-
 LICENSE="MIT"
 SLOT="0"
 IUSE="test python"
-
-# don't run tests unless USE=test is on
 RESTRICT="!test? ( test )"
 
 RDEPEND="
@@ -32,7 +27,6 @@ RDEPEND="
 	sys-libs/zlib:=
 	media-libs/vulkan-loader:=
 	>=dev-util/vulkan-headers-1.2:0
-	dev-libs/libb64:=
 	python? (
 		${PYTHON_DEPS}
 		dev-python/numpy[${PYTHON_USEDEP}]
@@ -51,28 +45,25 @@ BDEPEND="
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
+		sys-devel/just
 	)
 "
-
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
 S="${WORKDIR}/${PN}-${PV}"
 BUILD_DIR="${WORKDIR}/build-dvz"
+PYBIND_DIR="${S}/bindings/python"
 
 src_prepare() {
 	cmake_src_prepare
-
 	# Fix missing #include <cstdint> in earcut.hpp
 	sed -i '/#include <utility>/a #include <cstdint>' \
 		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
 
 	if use python; then
-		# Check if requirements-dev.txt exists and what it contains
 		if [[ -f "${S}/requirements-dev.txt" ]]; then
-			einfo "Found requirements-dev.txt, contents:"
-			cat "${S}/requirements-dev.txt"
-		else
-			einfo "No requirements-dev.txt found, will proceed without it"
+			einfo "Installing Python development requirements..."
+			"${PYTHON}" -m pip install -r "${S}/requirements-dev.txt" || \
+				die "Failed to install requirements-dev.txt"
 		fi
 	fi
 }
@@ -84,7 +75,6 @@ _src_write_top_include() {
 if(POLICY CMP0111)
   cmake_policy(SET CMP0111 NEW)
 endif()
-
 function(_gentoo_import_lib _tgt _lib _inc)
   if(NOT TARGET "${_tgt}")
     if(EXISTS "${_lib}")
@@ -97,7 +87,6 @@ function(_gentoo_import_lib _tgt _lib _inc)
     endif()
   endif()
 endfunction()
-
 # tinyxml2
 if(NOT TARGET tinyxml2)
   find_package(TinyXML2 QUIET)
@@ -127,7 +116,6 @@ if(NOT TARGET tinyxml2)
     message(FATAL_ERROR "System tinyxml2 not found. Please install dev-libs/tinyxml2.")
   endif()
 endif()
-
 # cglm
 if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
   find_package(cglm QUIET)
@@ -147,7 +135,6 @@ if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
     message(FATAL_ERROR "System cglm not found. Please install dev-libs/cglm.")
   endif()
 endif()
-
 # glfw
 if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
   find_package(PkgConfig QUIET)
@@ -172,10 +159,8 @@ if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
     message(FATAL_ERROR "System GLFW not found. Please install media-libs/glfw.")
   endif()
 endif()
-
 # msdf-atlas-gen with system msdfgen dependencies
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
-  # Find all required libraries
   find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen REQUIRED)
   find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core REQUIRED)
   find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext REQUIRED)
@@ -183,19 +168,13 @@ if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
   if(NOT MSDF_ATLAS_GEN_INC)
     set(MSDF_ATLAS_GEN_INC "/usr/include")
   endif()
-
-  # Create the main target
   add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED GLOBAL)
   set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
     IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
     INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}")
-
-  # Force all msdfgen libraries to be linked by any target that uses msdf-atlas-gen
   set_property(TARGET msdf-atlas-gen::msdf-atlas-gen PROPERTY
     INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT_LIB};${MSDFGEN_CORE_LIB}")
 endif()
-
-# Also create standalone msdfgen-ext target for good measure
 if(NOT TARGET msdfgen-ext)
   find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext)
   find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core)
@@ -209,17 +188,12 @@ if(NOT TARGET msdfgen-ext)
     endif()
   endif()
 endif()
-
 set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
 EOF
 	echo "${top_include}"
-
-  # CMake TOP_LEVEL_INCLUDES runs before project(); avoid find_package(tinyxml2) there.
-  # Replace it with a pre-project-safe imported target definition.
-  sed -i -e '/^[[:space:]]*find_package[[:space:]]*(\s*tinyxml2[^)]*)/Id' \
-    "${T}/gentoo_fetchcontent_overrides.cmake" || die
-
-  cat >> "${T}/gentoo_fetchcontent_overrides.cmake" <<'EOF'
+	sed -i -e '/^[[:space:]]*find_package[[:space:]]*(\s*tinyxml2[^)]*)/Id' \
+		"${T}/gentoo_fetchcontent_overrides.cmake" || die
+	cat >> "${T}/gentoo_fetchcontent_overrides.cmake" <<'EOF'
 # ---- tinyxml2 (pre-project safe) --------------------------------------------
 if(NOT TARGET tinyxml2::tinyxml2)
   find_library(TINYXML2_LIB NAMES tinyxml2 REQUIRED)
@@ -236,7 +210,6 @@ EOF
 src_configure() {
 	local top_include
 	top_include=$(_src_write_top_include) || die
-
 	local -a mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
 		-DBUILD_SHARED_LIBS=ON
@@ -245,122 +218,97 @@ src_configure() {
 		-DCMAKE_PREFIX_PATH="/usr/$(get_libdir)/cmake;/usr/$(get_libdir)"
 		-DBUILD_TESTING=$(usex test ON OFF)
 	)
-
 	cmake_src_configure \
 		-S "${S}" \
 		-B "${BUILD_DIR}" \
 		-G Ninja \
-        -DTINYXML2_INC_DIR=/usr/include \
-        -DTINYXML2_INCLUDE_DIR=/usr/include \
-        -DTINYXML2_LIBRARY="/usr/$(get_libdir)/libtinyxml2.so" \
-        -DTINYXML2_LIBRARIES="/usr/$(get_libdir)/libtinyxml2.so" \
+		-DTINYXML2_INC_DIR=/usr/include \
+		-DTINYXML2_INCLUDE_DIR=/usr/include \
+		-DTINYXML2_LIBRARY="/usr/$(get_libdir)/libtinyxml2.so" \
+		-DTINYXML2_LIBRARIES="/usr/$(get_libdir)/libtinyxml2.so" \
 		"${mycmakeargs[@]}"
 }
 
 src_compile() {
 	cmake_build -C "${BUILD_DIR}"
 
-	# Build Python bindings using just if requested
 	if use python; then
-		einfo "Attempting to build Python bindings using just build system..."
-
-		# Check if just is available
-		if ! command -v just >/dev/null 2>&1; then
-			ewarn "just build tool not found in PATH"
-			ewarn "Python bindings will not be built"
-			ewarn "Install sys-devel/just to enable Python bindings"
-			return
-		fi
-
-		# Set up environment for just build
-		export PATH="${HOME}/.cargo/bin:${PATH}"
+		einfo "Building Python bindings with 'just'..."
 		cd "${S}" || die
 
-		# Try the just build process
-		einfo "Running 'just build' (first attempt may fail as documented)..."
-		if ! just build; then
-			einfo "First build failed as expected, trying again..."
-			if ! just build; then
-				ewarn "Python bindings build failed with just"
-				ewarn "Continuing with C library only"
-			else
-				einfo "Python bindings built successfully on second attempt"
-			fi
-		else
-			einfo "Python bindings built successfully on first attempt"
+		if ! command -v just >/dev/null 2>&1; then
+			die "USE=python enabled but 'just' not found. Please install sys-devel/just."
 		fi
+
+		# First call often fails due to msdf-atlas-gen issue
+		if ! just build; then
+			einfo "First 'just build' failed, retrying..."
+			if ! just build; then
+				die "Failed to build Python bindings with 'just' after two attempts."
+			fi
+		fi
+
+		if [[ ! -d "${PYBIND_DIR}/datoviz" ]]; then
+			die "Python bindings built but module not found in ${PYBIND_DIR}/datoviz"
+		fi
+		einfo "Python bindings built successfully."
 	fi
 }
 
 src_test() {
-	# only run if enabled (RESTRICT covers the default-off case)
 	if use test; then
 		cmake_src_test -C "${BUILD_DIR}"
-
-		if use python; then
-			cd "${S}" || die
-			python -c "import datoviz; print('Python bindings working!')" || die "Python import test failed"
-		fi
+	fi
+	if use python; then
+		python_foreach_impl python_test
 	fi
 }
 
+python_test() {
+	cd "${S}" || die
+	"${PYTHON}" -c "import datoviz; datoviz.demo()" || \
+		die "Python module test failed for ${EPYTHON}"
+}
+
 src_install() {
-	# Manual installation since the project doesn't provide an install target
-
-	# Install the main library
+	# Install C library and headers
 	dolib.so "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so"
-
-	# Install the CLI binary if it exists
 	if [[ -x "${BUILD_DIR}/datoviz" ]]; then
-		dobin "${BUILD_DIR}/datoviz" || die "Failed to install datoviz binary"
+		dobin "${BUILD_DIR}/datoviz"
 	fi
-
-	# Install headers
 	insinto /usr/include/datoviz
 	doins -r "${S}/include/"* || die "Failed to install headers"
 
-	# Install Python bindings if built
+	einstalldocs
+
+	# Install Python bindings
 	if use python; then
 		python_foreach_impl python_install
 	fi
-
-	einstalldocs
 }
 
 python_install() {
 	local pydir
-	pydir="$(python_get_sitedir)" || die
+	pydir="$(python_get_sitedir)" || die "Failed to determine Python site-packages directory"
 
-	# Look for the built Python module in various locations
-	local python_src=""
-	for possible_src in "${S}/bindings/python" "${S}/python" "${S}/build/python" "${BUILD_DIR}/python"; do
-		if [[ -d "${possible_src}" && -n "$(find "${possible_src}" -name "*.py" 2>/dev/null)" ]]; then
-			python_src="${possible_src}"
-			break
-		fi
-	done
-
-	if [[ -n "${python_src}" ]]; then
-		einfo "Installing Python bindings from: ${python_src}"
-		insinto "${pydir}"
-		doins -r "${python_src}/"* || die "Failed to install Python files"
-
-		# Create symlink to library if needed
-		if [[ -d "${pydir}/datoviz" ]]; then
-			dodir "${pydir}/datoviz/build"
-			dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
-				"${pydir}/datoviz/build/libdatoviz.so" || die
-		fi
-	else
-		ewarn "Python bindings requested but not found after build"
+	if [[ ! -d "${PYBIND_DIR}/datoviz" ]]; then
+		die "Python bindings not found in ${PYBIND_DIR}/datoviz"
 	fi
-}
 
+	insinto "${pydir}"
+	doins -r "${PYBIND_DIR}/datoviz" || die "Failed to install Python module"
+
+	dodir "${pydir}/datoviz/build"
+	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
+		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
+}
 
 pkg_postinst() {
-	elog "Datoviz built against system libraries (glfw, cglm, tinyxml2, msdf-atlas-gen, freetype, png, zlib)."
+	elog "Datoviz C library installed. Headers in /usr/include/datoviz/"
+	elog "Shared library: /usr/$(get_libdir)/libdatoviz.so"
 	if use python; then
-		elog "Python bindings are installed. Test with: python -c 'import datoviz; datoviz.demo()'"
+		elog "Python bindings installed."
+		elog "Test with: python -c 'import datoviz; datoviz.demo()'"
 	fi
-	elog "For C/C++ development, headers are in /usr/include/datoviz/"
 }
+
