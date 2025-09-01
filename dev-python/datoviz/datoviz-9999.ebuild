@@ -40,6 +40,13 @@ BDEPEND="
 	dev-vcs/git-lfs
 	>=dev-build/cmake-3.24
 	>=dev-build/ninja-1.10
+	python? (
+		${PYTHON_DEPS}
+		dev-python/pip[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
+		sys-devel/just
+	)
 "
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${PN}-${PV}"
@@ -232,9 +239,34 @@ src_configure() {
 		"${mycmakeargs[@]}"
 }
 
+
 src_compile() {
 	cmake_build -C "${BUILD_DIR}"
+
+	if use python; then
+		einfo "Building Python bindings with 'just' (required for correct Vulkan linking)..."
+		cd "${S}" || die
+
+		if ! command -v just >/dev/null 2>&1; then
+			die "USE=python enabled but 'just' not found. Please install sys-devel/just."
+		fi
+
+		# First call often fails due to msdf-atlas-gen issue
+		if ! just build; then
+			einfo "First 'just build' failed, retrying..."
+			if ! just build; then
+				die "Failed to build Python bindings with 'just' after two attempts."
+			fi
+		fi
+		einfo "Python bindings built successfully."
+	fi
 }
+
+
+
+#src_compile() {
+#	cmake_build -C "${BUILD_DIR}"
+#}
 
 src_test() {
 	if use test; then
@@ -255,19 +287,38 @@ python_install() {
 	local pydir
 	pydir="$(python_get_sitedir)" || die "Failed to determine Python site-packages directory"
 
-	if [[ ! -d "${PYMOD_DIR}" ]]; then
-		die "Python module not found in ${PYMOD_DIR}"
+	local src_dir="${S}/bindings/python"
+	if [[ ! -d "${src_dir}/datoviz" ]]; then
+		die "Python bindings not found in ${src_dir}"
 	fi
 
-	# Install the Python module (pure Python files)
 	insinto "${pydir}"
-	doins -r "${PYMOD_DIR}" || die "Failed to install Python module"
+	doins -r "${src_dir}/datoviz" || die "Failed to install Python module"
 
-	# Create build/ directory and symlink to system libdatoviz.so
+	# Ensure the .so is findable
 	dodir "${pydir}/datoviz/build"
 	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
 		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
 }
+
+
+#python_install() {
+#	local pydir
+#	pydir="$(python_get_sitedir)" || die "Failed to determine Python site-packages directory"
+#
+#	if [[ ! -d "${PYMOD_DIR}" ]]; then
+#		die "Python module not found in ${PYMOD_DIR}"
+#	fi
+#
+#	# Install the Python module (pure Python files)
+#	insinto "${pydir}"
+#	doins -r "${PYMOD_DIR}" || die "Failed to install Python module"
+#
+#	# Create build/ directory and symlink to system libdatoviz.so
+#	dodir "${pydir}/datoviz/build"
+#	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
+#		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
+#}
 
 #python_install() {
 #	local pydir
