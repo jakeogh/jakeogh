@@ -3,7 +3,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_12 python3_13 )
 
-# Must come before inherit
+# Must be set before inherit
 DISTUTILS_USE_PEP517=no
 inherit cmake git-r3 multilib distutils-r1
 
@@ -58,14 +58,6 @@ src_prepare() {
 	# Fix missing #include <cstdint> in earcut.hpp
 	sed -i '/#include <utility>/a #include <cstdint>' \
 		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
-
-	if use python; then
-		if [[ -f "${S}/requirements-dev.txt" ]]; then
-			einfo "Installing Python development requirements..."
-			"${PYTHON}" -m pip install -r "${S}/requirements-dev.txt" || \
-				die "Failed to install requirements-dev.txt"
-		fi
-	fi
 }
 
 _src_write_top_include() {
