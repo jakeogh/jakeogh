@@ -49,6 +49,15 @@ src_prepare() {
 	# Fix missing #include <cstdint> in earcut.hpp
 	sed -i '/#include <utility>/a #include <cstdint>' \
 		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
+	# Patch _ctypes.py to use correct module-relative path for .so
+	sed -i \
+		"s|LIB_PATH = './build/libdatoviz.so'|LIB_PATH = __file__.replace('__init__.py', 'build/libdatoviz.so')|" \
+		"${PYMOD_DIR}/_ctypes.py" || die "Failed to patch _ctypes.py"
+
+	# Ensure os is imported
+	if ! grep -q "import os" "${PYMOD_DIR}/_ctypes.py"; then
+		sed -i '1iimport os' "${PYMOD_DIR}/_ctypes.py" || die "Failed to add import os"
+	fi
 }
 
 _src_write_top_include() {
@@ -221,4 +230,5 @@ pkg_postinst() {
 		elog "Test with: python -c 'import datoviz; datoviz.demo()'"
 	fi
 }
+
 
