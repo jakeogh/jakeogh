@@ -3,7 +3,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_12 python3_13 )
 
-# Must come before inherit
+# Must be set before inherit
 DISTUTILS_USE_PEP517=no
 inherit cmake git-r3 multilib distutils-r1
 
@@ -233,6 +233,24 @@ python_test() {
 		die "Python module test failed for ${EPYTHON}"
 }
 
+# Use distutils-r1 sub-phase
+python_install() {
+	local pydir
+	pydir="$(python_get_sitedir)" || die "Failed to get Python site-packages directory"
+
+	if [[ ! -d "${PYBIND_DIR}/datoviz" ]]; then
+		die "Python bindings not found in ${PYBIND_DIR}/datoviz"
+	fi
+
+	insinto "${pydir}"
+	doins -r "${PYBIND_DIR}/datoviz" || die "Failed to install Python module"
+
+	dodir "${pydir}/datoviz/build"
+	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
+		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
+}
+
+# distutils-r1 will call python_install for each impl
 src_install() {
 	# Install C library and headers
 	dolib.so "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so"
@@ -244,28 +262,8 @@ src_install() {
 
 	einstalldocs
 
-	# Install Python bindings
-	if use python; then
-		python_foreach_impl python_install
-	fi
-}
-
-python_install() {
-	local pydir
-	pydir="$(python_get_sitedir)" || die "Failed to determine Python site-packages directory"
-
-	# The Python module is just a ctypes wrapper — install it directly
-	if [[ ! -d "${PYBIND_DIR}/datoviz" ]]; then
-		die "Python bindings not found in ${PYBIND_DIR}/datoviz"
-	fi
-
-	insinto "${pydir}"
-	doins -r "${PYBIND_DIR}/datoviz" || die "Failed to install Python module"
-
-	# Symlink libdatoviz.so so ctypes can find it via './build/libdatoviz.so'
-	dodir "${pydir}/datoviz/build"
-	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
-		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
+	# Let distutils-r1 handle Python install via python_install()
+	use python && distutils-r1_src_install
 }
 
 pkg_postinst() {
