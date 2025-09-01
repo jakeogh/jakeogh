@@ -107,11 +107,30 @@ endfunction()
 if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
   find_library(TINYXML2_LIB NAMES tinyxml2 REQUIRED)
   find_path(TINYXML2_INC_DIR NAMES tinyxml2.h PATHS /usr/include /usr/include/tinyxml2 REQUIRED)
-  add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
-  set_target_properties(tinyxml2::tinyxml2 PROPERTIES
-    IMPORTED_LOCATION "${TINYXML2_LIB}"
-    INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
+  # Create both the plain and namespaced targets
+  if(NOT TARGET tinyxml2)
+    add_library(tinyxml2 SHARED IMPORTED)
+    set_target_properties(tinyxml2 PROPERTIES
+      IMPORTED_LOCATION "${TINYXML2_LIB}"
+      INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
+  endif()
+  if(NOT TARGET tinyxml2::tinyxml2)
+    add_library(tinyxml2::tinyxml2 SHARED IMPORTED)
+    set_target_properties(tinyxml2::tinyxml2 PROPERTIES
+      IMPORTED_LOCATION "${TINYXML2_LIB}"
+      INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
+  endif()
 endif()
+
+## tinyxml2
+#if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
+#  find_library(TINYXML2_LIB NAMES tinyxml2 REQUIRED)
+#  find_path(TINYXML2_INC_DIR NAMES tinyxml2.h PATHS /usr/include /usr/include/tinyxml2 REQUIRED)
+#  add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
+#  set_target_properties(tinyxml2::tinyxml2 PROPERTIES
+#    IMPORTED_LOCATION "${TINYXML2_LIB}"
+#    INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
+#endif()
 
 # cglm
 if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
