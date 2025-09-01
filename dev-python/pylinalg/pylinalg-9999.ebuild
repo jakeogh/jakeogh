@@ -4,8 +4,8 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{10..13} )
 
-# Must come before inherit
-DISTUTILS_USE_PEP517=hatchling
+# Must be set before inheriting distutils-r1; upstream uses flit_core.buildapi
+DISTUTILS_USE_PEP517=flit
 
 inherit distutils-r1 git-r3
 
@@ -24,10 +24,8 @@ RDEPEND="
 
 BDEPEND="
 	${RDEPEND}
-	dev-python/hatchling[${PYTHON_USEDEP}]
-	dev-python/hatch-vcs[${PYTHON_USEDEP}]
+	dev-python/flit-core[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
 distutils_enable_tests pytest
-
