@@ -209,7 +209,6 @@ endif()
 EOF
 }
 
-
 src_configure() {
 	local top_include
 	top_include=$(_src_write_top_include) || die
@@ -246,7 +245,7 @@ src_test() {
 }
 
 src_install() {
-	cmake_install -C "${BUILD_DIR}"
+	cmake_src_install
 
 	# Install Python ctypes wrapper and provide lib symlink it expects.
 	local psrc="${S}/python/datoviz"
@@ -255,6 +254,10 @@ src_install() {
 		psrc="${S}/bindings/python/datoviz"
 	fi
 	if [[ ! -d ${psrc} ]]; then
+		# Check what actually exists in the source tree
+		ewarn "Checking what Python sources are available:"
+		find "${S}" -name "*.py" -path "*/python*" | head -10
+		find "${S}" -type d -name "*python*" | head -5
 		die "Could not find Datoviz Python sources; please adjust ebuild."
 	fi
 
@@ -278,3 +281,4 @@ pkg_postinst() {
 	elog "If Python import fails with ctypes lookup errors, confirm the symlink:"
 	elog "  <site-packages>/datoviz/build/libdatoviz.so -> /usr/$(get_libdir)/libdatoviz.so"
 }
+
