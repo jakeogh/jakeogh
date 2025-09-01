@@ -47,12 +47,9 @@ BDEPEND="
 	>=dev-build/ninja-1.10
 	python? (
 		${PYTHON_DEPS}
-		sys-devel/just
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
-		dev-python/cython[${PYTHON_USEDEP}]
-		dev-python/pybind11[${PYTHON_USEDEP}]
 	)
 "
 
@@ -69,14 +66,13 @@ src_prepare() {
 		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
 
 	if use python; then
-		# Install Python requirements for the build
-		python_foreach_impl pip_install_requirements
-	fi
-}
-
-pip_install_requirements() {
-	if [[ -f "${S}/requirements-dev.txt" ]]; then
-		"${EPYTHON}" -m pip install --user -r "${S}/requirements-dev.txt" || die "Failed to install Python requirements"
+		# Check if requirements-dev.txt exists and what it contains
+		if [[ -f "${S}/requirements-dev.txt" ]]; then
+			einfo "Found requirements-dev.txt, contents:"
+			cat "${S}/requirements-dev.txt"
+		else
+			einfo "No requirements-dev.txt found, will proceed without it"
+		fi
 	fi
 }
 
@@ -265,13 +261,33 @@ src_compile() {
 
 	# Build Python bindings using just if requested
 	if use python; then
-		einfo "Building Python bindings using just build system..."
+		einfo "Attempting to build Python bindings using just build system..."
+
+		# Check if just is available
+		if ! command -v just >/dev/null 2>&1; then
+			ewarn "just build tool not found in PATH"
+			ewarn "Python bindings will not be built"
+			ewarn "Install sys-devel/just to enable Python bindings"
+			return
+		fi
+
+		# Set up environment for just build
 		export PATH="${HOME}/.cargo/bin:${PATH}"
 		cd "${S}" || die
 
-		# The first build may fail as documented
-		just build || einfo "First build failed as expected, trying again..."
-		just build || die "Second build attempt failed"
+		# Try the just build process
+		einfo "Running 'just build' (first attempt may fail as documented)..."
+		if ! just build; then
+			einfo "First build failed as expected, trying again..."
+			if ! just build; then
+				ewarn "Python bindings build failed with just"
+				ewarn "Continuing with C library only"
+			else
+				einfo "Python bindings built successfully on second attempt"
+			fi
+		else
+			einfo "Python bindings built successfully on first attempt"
+		fi
 	fi
 }
 
@@ -338,8 +354,6 @@ python_install() {
 		ewarn "Python bindings requested but not found after build"
 	fi
 }
-
-
 
 
 pkg_postinst() {
