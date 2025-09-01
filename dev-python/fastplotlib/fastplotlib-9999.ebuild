@@ -24,6 +24,7 @@ RDEPEND="
 	>=dev-python/numpy-1.20[${PYTHON_USEDEP}]
 	>=dev-python/pygfx-0.5[${PYTHON_USEDEP}]
 	>=dev-python/wgpu-0.16[${PYTHON_USEDEP}]
+	dev-python/rendercanvas[${PYTHON_USEDEP}]
 	dev-python/typing-extensions[${PYTHON_USEDEP}]
 	qt? ( dev-python/pyqt6[gui,widgets,${PYTHON_USEDEP}] )
 	pyside? ( dev-python/pyside6[gui,widgets,${PYTHON_USEDEP}] )
