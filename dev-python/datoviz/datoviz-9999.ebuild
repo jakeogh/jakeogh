@@ -247,13 +247,31 @@ python_install() {
 		die "Python module not found in ${PYMOD_DIR}"
 	fi
 
-	# Install the Python module
+	# Install the Python module (pure Python files)
 	insinto "${pydir}"
 	doins -r "${PYMOD_DIR}" || die "Failed to install Python module"
 
-	# Install libdatoviz.so directly into the Python module directory
-	dobin "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so into datoviz/"
+	# Create build/ directory and symlink to system libdatoviz.so
+	dodir "${pydir}/datoviz/build"
+	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
+		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
 }
+
+#python_install() {
+#	local pydir
+#	pydir="$(python_get_sitedir)" || die "Failed to determine Python site-packages directory"
+#
+#	if [[ ! -d "${PYMOD_DIR}" ]]; then
+#		die "Python module not found in ${PYMOD_DIR}"
+#	fi
+#
+#	# Install the Python module
+#	insinto "${pydir}"
+#	doins -r "${PYMOD_DIR}" || die "Failed to install Python module"
+#
+#	# Install libdatoviz.so directly into the Python module directory
+#	dobin "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so into datoviz/"
+#}
 
 #python_install() {
 #	local pydir
