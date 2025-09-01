@@ -3,7 +3,7 @@
 EAPI=8
 PYTHON_COMPAT=( python3_12 python3_13 )
 
-# Must be set before inherit
+# Must come before inherit
 DISTUTILS_USE_PEP517=no
 inherit cmake git-r3 multilib distutils-r1
 
@@ -40,11 +40,6 @@ BDEPEND="
 	dev-vcs/git-lfs
 	>=dev-build/cmake-3.24
 	>=dev-build/ninja-1.10
-	python? (
-		${PYTHON_DEPS}
-		dev-python/setuptools[${PYTHON_USEDEP}]
-		dev-python/wheel[${PYTHON_USEDEP}]
-	)
 "
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${PN}-${PV}"
@@ -259,6 +254,7 @@ python_install() {
 	local pydir
 	pydir="$(python_get_sitedir)" || die "Failed to determine Python site-packages directory"
 
+	# The Python module is just a ctypes wrapper — install it directly
 	if [[ ! -d "${PYBIND_DIR}/datoviz" ]]; then
 		die "Python bindings not found in ${PYBIND_DIR}/datoviz"
 	fi
@@ -266,7 +262,7 @@ python_install() {
 	insinto "${pydir}"
 	doins -r "${PYBIND_DIR}/datoviz" || die "Failed to install Python module"
 
-	# Symlink libdatoviz.so so ctypes can find it
+	# Symlink libdatoviz.so so ctypes can find it via './build/libdatoviz.so'
 	dodir "${pydir}/datoviz/build"
 	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
 		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
