@@ -59,34 +59,6 @@ src_prepare() {
 }
 
 
-#src_prepare() {
-#	cmake_src_prepare
-#	# Fix missing #include <cstdint> in earcut.hpp
-#	sed -i '/#include <utility>/a #include <cstdint>' \
-#		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
-#
-#	# Patch _ctypes.py to use correct module-relative path
-#	sed -i "s|LIB_PATH = './build/libdatoviz.so'|LIB_PATH = __file__.replace('__init__.py', 'datoviz/build/libdatoviz.so')|" \
-#		"${S}/datoviz/_ctypes.py" || die "Failed to patch _ctypes.py"
-#}
-
-#src_prepare() {
-#	cmake_src_prepare
-#	# Fix missing #include <cstdint> in earcut.hpp
-#	sed -i '/#include <utility>/a #include <cstdint>' \
-#		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
-#
-#	# Patch _ctypes.py to use correct module-relative path
-#	sed -i \
-#		"s|LIB_PATH = './build/libdatoviz.so'|LIB_PATH = os.path.join(os.path.dirname(__file__), 'build', 'libdatoviz.so')|" \
-#		"${S}/datoviz/_ctypes.py" || die "Failed to patch _ctypes.py"
-#
-#	# Ensure os is imported
-#	if ! grep -q "import os" "${S}/datoviz/_ctypes.py"; then
-#		sed -i '1iimport os' "${S}/datoviz/_ctypes.py" || die "Failed to add import os"
-#	fi
-#}
-
 _src_write_top_include() {
 	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
 	cat > "${top_include}" <<'EOF'
@@ -275,15 +247,32 @@ python_install() {
 		die "Python module not found in ${PYMOD_DIR}"
 	fi
 
-	# Install the module
+	# Install the Python module
 	insinto "${pydir}"
 	doins -r "${PYMOD_DIR}" || die "Failed to install Python module"
 
-	# Symlink libdatoviz.so so ctypes can find it via './build/libdatoviz.so'
-	dodir "${pydir}/datoviz/build"
-	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
-		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
+	# Install libdatoviz.so directly into the Python module directory
+	dobin "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so into datoviz/"
 }
+
+
+#python_install() {
+#	local pydir
+#	pydir="$(python_get_sitedir)" || die "Failed to determine Python site-packages directory"
+#
+#	if [[ ! -d "${PYMOD_DIR}" ]]; then
+#		die "Python module not found in ${PYMOD_DIR}"
+#	fi
+#
+#	# Install the module
+#	insinto "${pydir}"
+#	doins -r "${PYMOD_DIR}" || die "Failed to install Python module"
+#
+#	# Symlink libdatoviz.so so ctypes can find it via './build/libdatoviz.so'
+#	dodir "${pydir}/datoviz/build"
+#	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
+#		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
+#}
 
 src_install() {
 	# Install C library and headers
