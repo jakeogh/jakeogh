@@ -245,7 +245,19 @@ src_test() {
 }
 
 src_install() {
-	cmake_src_install
+	# Manual installation since the project doesn't provide an install target
+
+	# Install the main library
+	dolib.so "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so"
+
+	# Install the CLI binary if it exists
+	if [[ -x "${BUILD_DIR}/datoviz" ]]; then
+		dobin "${BUILD_DIR}/datoviz" || die "Failed to install datoviz binary"
+	fi
+
+	# Install headers
+	insinto /usr/include/datoviz
+	doins -r "${S}/include/"* || die "Failed to install headers"
 
 	# Install Python ctypes wrapper and provide lib symlink it expects.
 	local psrc="${S}/python/datoviz"
@@ -262,7 +274,10 @@ src_install() {
 	fi
 
 	python_foreach_impl python_install
+
+	einstalldocs
 }
+
 
 python_install() {
 	local pydir
@@ -281,4 +296,3 @@ pkg_postinst() {
 	elog "If Python import fails with ctypes lookup errors, confirm the symlink:"
 	elog "  <site-packages>/datoviz/build/libdatoviz.so -> /usr/$(get_libdir)/libdatoviz.so"
 }
-
