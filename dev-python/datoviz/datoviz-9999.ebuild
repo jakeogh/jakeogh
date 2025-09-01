@@ -44,7 +44,7 @@ BDEPEND="
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${PN}-${PV}"
 BUILD_DIR="${WORKDIR}/build-dvz"
-PYBIND_DIR="${S}/bindings/python"
+PYMOD_DIR="${S}/datoviz"  # The Python module is here
 
 src_prepare() {
 	cmake_src_prepare
@@ -233,24 +233,24 @@ python_test() {
 		die "Python module test failed for ${EPYTHON}"
 }
 
-# Use distutils-r1 sub-phase
 python_install() {
 	local pydir
-	pydir="$(python_get_sitedir)" || die "Failed to get Python site-packages directory"
+	pydir="$(python_get_sitedir)" || die "Failed to determine Python site-packages directory"
 
-	if [[ ! -d "${PYBIND_DIR}/datoviz" ]]; then
-		die "Python bindings not found in ${PYBIND_DIR}/datoviz"
+	if [[ ! -d "${PYMOD_DIR}" ]]; then
+		die "Python module not found in ${PYMOD_DIR}"
 	fi
 
+	# Install the module
 	insinto "${pydir}"
-	doins -r "${PYBIND_DIR}/datoviz" || die "Failed to install Python module"
+	doins -r "${PYMOD_DIR}" || die "Failed to install Python module"
 
+	# Symlink libdatoviz.so so ctypes can find it via './build/libdatoviz.so'
 	dodir "${pydir}/datoviz/build"
 	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
 		"${pydir}/datoviz/build/libdatoviz.so" || die "Failed to symlink libdatoviz.so"
 }
 
-# distutils-r1 will call python_install for each impl
 src_install() {
 	# Install C library and headers
 	dolib.so "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so"
@@ -262,8 +262,10 @@ src_install() {
 
 	einstalldocs
 
-	# Let distutils-r1 handle Python install via python_install()
-	use python && distutils-r1_src_install
+	# Install Python bindings
+	if use python; then
+		distutils-r1_src_install
+	fi
 }
 
 pkg_postinst() {
