@@ -259,37 +259,48 @@ src_install() {
 	insinto /usr/include/datoviz
 	doins -r "${S}/include/"* || die "Failed to install headers"
 
-	# Install Python ctypes wrapper and provide lib symlink it expects.
-	local psrc="${S}/python/datoviz"
-	if [[ ! -d ${psrc} ]]; then
-		ewarn "python/datoviz not found; attempting fallback to ${S}/bindings/python/datoviz"
+	# Check if Python bindings actually exist
+	local psrc=""
+	if [[ -d "${S}/python/datoviz" ]]; then
+		psrc="${S}/python/datoviz"
+	elif [[ -d "${S}/bindings/python/datoviz" ]]; then
 		psrc="${S}/bindings/python/datoviz"
-	fi
-	if [[ ! -d ${psrc} ]]; then
-		# Check what actually exists in the source tree
-		ewarn "Checking what Python sources are available:"
-		find "${S}" -name "*.py" -path "*/python*" | head -10
-		find "${S}" -type d -name "*python*" | head -5
-		die "Could not find Datoviz Python sources; please adjust ebuild."
+	elif [[ -d "${S}/python" && -n "$(find "${S}/python" -name "*.py" 2>/dev/null)" ]]; then
+		psrc="${S}/python"
+	elif [[ -d "${S}/bindings/python" && -n "$(find "${S}/bindings/python" -name "*.py" 2>/dev/null)" ]]; then
+		psrc="${S}/bindings/python"
 	fi
 
-	python_foreach_impl python_install
+	if [[ -n "${psrc}" ]]; then
+		einfo "Found Python sources at: ${psrc}"
+		python_foreach_impl python_install
+	else
+		ewarn "No Python bindings found in datoviz source tree."
+		ewarn "The library will be installed but Python bindings will not be available."
+		ewarn "You may need to create Python bindings manually or use a different approach."
+	fi
 
 	einstalldocs
 }
 
-
 python_install() {
 	local pydir
 	pydir="$(python_get_sitedir)" || die
-	insinto "${pydir}/datoviz"
-	doins -r "${S}/python/datoviz/"* || die
 
-	# ensure _ctypes loader finds libdatoviz.so at datoviz/build/libdatoviz.so
-	dodir "${pydir}/datoviz/build"
-	dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
-		"${pydir}/datoviz/build/libdatoviz.so" || die
+	# Install Python files if they exist
+	if [[ -n "${psrc}" && -d "${psrc}" ]]; then
+		insinto "${pydir}/datoviz"
+		doins -r "${psrc}/"* || die "Failed to install Python files"
+
+		# ensure _ctypes loader finds libdatoviz.so at datoviz/build/libdatoviz.so
+		dodir "${pydir}/datoviz/build"
+		dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
+			"${pydir}/datoviz/build/libdatoviz.so" || die
+	else
+		ewarn "Skipping Python installation for ${EPYTHON} - no Python sources found"
+	fi
 }
+
 
 pkg_postinst() {
 	elog "Datoviz built against system libraries (glfw, cglm, tinyxml2, msdf-atlas-gen, freetype, png, zlib)."
