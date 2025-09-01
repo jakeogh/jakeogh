@@ -149,62 +149,34 @@ if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
   endif()
 endif()
 
-
-
-
-# msdf-atlas-gen with system msdfgen dependencies
+# msdf-atlas-gen and msdfgen-ext
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
-  # First try to use the CMake config if available
-  find_package(msdf-atlas-gen QUIET)
-
-  if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
-    # Fallback to manual setup
-    find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen)
-    find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core)
-    find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext)
-    find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include /usr/include/msdf-atlas-gen)
-    if(NOT MSDF_ATLAS_GEN_INC)
-      set(MSDF_ATLAS_GEN_INC "/usr/include")
-    endif()
-
-    if(MSDF_ATLAS_GEN_LIB)
-      add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED GLOBAL)
-      set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
-        IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
-        INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}")
-
-      # Add msdfgen dependencies if found
-      set(_msdf_deps "")
-      if(MSDFGEN_CORE_LIB)
-        list(APPEND _msdf_deps "${MSDFGEN_CORE_LIB}")
-      endif()
-      if(MSDFGEN_EXT_LIB)
-        list(APPEND _msdf_deps "${MSDFGEN_EXT_LIB}")
-      endif()
-      if(_msdf_deps)
-        set_property(TARGET msdf-atlas-gen::msdf-atlas-gen PROPERTY
-          IMPORTED_LINK_INTERFACE_LIBRARIES "${_msdf_deps}")
-      endif()
-    else()
-      message(FATAL_ERROR "Could not find libmsdf-atlas-gen. Install media-libs/msdf-atlas-gen.")
-    endif()
+  find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen)
+  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext)
+  find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include /usr/include/msdf-atlas-gen)
+  if(NOT MSDF_ATLAS_GEN_INC)
+    set(MSDF_ATLAS_GEN_INC "/usr/include")
+  endif()
+  if(MSDF_ATLAS_GEN_LIB AND MSDFGEN_EXT_LIB)
+    add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED GLOBAL)
+    set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
+      IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
+      INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}"
+      IMPORTED_LINK_INTERFACE_LIBRARIES "${MSDFGEN_EXT_LIB}")
+  else()
+    message(FATAL_ERROR "Could not resolve library files for msdf-atlas-gen or msdfgen-ext. Install media-libs/msdf-atlas-gen and media-libs/msdfgen.")
   endif()
 endif()
 
 # Also create standalone msdfgen-ext target for good measure
 if(NOT TARGET msdfgen-ext)
   find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext)
-  find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core)
-  if(MSDFGEN_EXT_LIB AND MSDFGEN_CORE_LIB)
+  if(MSDFGEN_EXT_LIB)
     add_library(msdfgen-ext SHARED IMPORTED GLOBAL)
     set_target_properties(msdfgen-ext PROPERTIES
-      IMPORTED_LOCATION "${MSDFGEN_EXT_LIB}"
-      IMPORTED_LINK_INTERFACE_LIBRARIES "${MSDFGEN_CORE_LIB}")
+      IMPORTED_LOCATION "${MSDFGEN_EXT_LIB}")
   endif()
 endif()
-
-
-
 
 set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
 EOF
@@ -299,4 +271,5 @@ pkg_postinst() {
 	elog "If Python import fails with ctypes lookup errors, confirm the symlink:"
 	elog "  <site-packages>/datoviz/build/libdatoviz.so -> /usr/$(get_libdir)/libdatoviz.so"
 }
+
 
