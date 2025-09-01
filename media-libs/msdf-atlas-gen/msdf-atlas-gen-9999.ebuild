@@ -59,6 +59,7 @@ src_configure() {
         -DCMAKE_DISABLE_FIND_PACKAGE_unofficial-skia=ON
         -DCMAKE_DISABLE_FIND_PACKAGE_Skia=ON
 		-DCMAKE_SKIP_RPATH=ON
+		-DMSDF_ATLAS_GEN_USE_EXTERNAL_MSDFGEN=ON
     )
     cmake_src_configure "${mycmakeargs[@]}"
 }
