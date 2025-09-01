@@ -53,7 +53,7 @@ src_prepare() {
 		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
 
 	# Patch _ctypes.py to use correct module-relative path
-	sed -i "s|LIB_PATH = './build/libdatoviz.so'|LIB_PATH = __file__.replace('__init__.py', 'build/libdatoviz.so')|" \
+	sed -i "s|LIB_PATH = './build/libdatoviz.so'|LIB_PATH = __file__.replace('__init__.py', 'datoviz/build/libdatoviz.so')|" \
 		"${S}/datoviz/_ctypes.py" || die "Failed to patch _ctypes.py"
 }
 
