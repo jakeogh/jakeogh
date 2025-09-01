@@ -53,15 +53,26 @@ src_prepare() {
 		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
 
 	# Patch _ctypes.py to use correct module-relative path
-	sed -i \
-		"s|LIB_PATH = './build/libdatoviz.so'|LIB_PATH = os.path.join(os.path.dirname(__file__), 'build', 'libdatoviz.so')|" \
+	sed -i "s|LIB_PATH = './build/libdatoviz.so'|LIB_PATH = __file__.replace('__init__.py', 'build/libdatoviz.so')|" \
 		"${S}/datoviz/_ctypes.py" || die "Failed to patch _ctypes.py"
-
-	# Ensure os is imported
-	if ! grep -q "import os" "${S}/datoviz/_ctypes.py"; then
-		sed -i '1iimport os' "${S}/datoviz/_ctypes.py" || die "Failed to add import os"
-	fi
 }
+
+#src_prepare() {
+#	cmake_src_prepare
+#	# Fix missing #include <cstdint> in earcut.hpp
+#	sed -i '/#include <utility>/a #include <cstdint>' \
+#		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
+#
+#	# Patch _ctypes.py to use correct module-relative path
+#	sed -i \
+#		"s|LIB_PATH = './build/libdatoviz.so'|LIB_PATH = os.path.join(os.path.dirname(__file__), 'build', 'libdatoviz.so')|" \
+#		"${S}/datoviz/_ctypes.py" || die "Failed to patch _ctypes.py"
+#
+#	# Ensure os is imported
+#	if ! grep -q "import os" "${S}/datoviz/_ctypes.py"; then
+#		sed -i '1iimport os' "${S}/datoviz/_ctypes.py" || die "Failed to add import os"
+#	fi
+#}
 
 _src_write_top_include() {
 	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
