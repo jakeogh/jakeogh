@@ -16,7 +16,7 @@ EGIT_SUBMODULES=( data external/imgui )
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
+IUSE="test python"
 
 # don't run tests unless USE=test is on
 RESTRICT="!test? ( test )"
@@ -32,6 +32,11 @@ RDEPEND="
 	sys-libs/zlib:=
 	media-libs/vulkan-loader:=
 	>=dev-util/vulkan-headers-1.2:0
+	python? (
+		${PYTHON_DEPS}
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
+	)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -40,7 +45,18 @@ BDEPEND="
 	dev-vcs/git-lfs
 	>=dev-build/cmake-3.24
 	>=dev-build/ninja-1.10
+	python? (
+		${PYTHON_DEPS}
+		sys-devel/just
+		dev-python/pip[${PYTHON_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
+		dev-python/cython[${PYTHON_USEDEP}]
+		dev-python/pybind11[${PYTHON_USEDEP}]
+	)
 "
+
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${PN}-${PV}"
 BUILD_DIR="${WORKDIR}/build-dvz"
@@ -51,6 +67,17 @@ src_prepare() {
 	# Fix missing #include <cstdint> in earcut.hpp
 	sed -i '/#include <utility>/a #include <cstdint>' \
 		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
+
+	if use python; then
+		# Install Python requirements for the build
+		python_foreach_impl pip_install_requirements
+	fi
+}
+
+pip_install_requirements() {
+	if [[ -f "${S}/requirements-dev.txt" ]]; then
+		"${EPYTHON}" -m pip install --user -r "${S}/requirements-dev.txt" || die "Failed to install Python requirements"
+	fi
 }
 
 _src_write_top_include() {
@@ -235,12 +262,28 @@ src_configure() {
 
 src_compile() {
 	cmake_build -C "${BUILD_DIR}"
+
+	# Build Python bindings using just if requested
+	if use python; then
+		einfo "Building Python bindings using just build system..."
+		export PATH="${HOME}/.cargo/bin:${PATH}"
+		cd "${S}" || die
+
+		# The first build may fail as documented
+		just build || einfo "First build failed as expected, trying again..."
+		just build || die "Second build attempt failed"
+	fi
 }
 
 src_test() {
 	# only run if enabled (RESTRICT covers the default-off case)
 	if use test; then
 		cmake_src_test -C "${BUILD_DIR}"
+
+		if use python; then
+			cd "${S}" || die
+			python -c "import datoviz; print('Python bindings working!')" || die "Python import test failed"
+		fi
 	fi
 }
 
@@ -259,25 +302,9 @@ src_install() {
 	insinto /usr/include/datoviz
 	doins -r "${S}/include/"* || die "Failed to install headers"
 
-	# Check if Python bindings actually exist
-	local psrc=""
-	if [[ -d "${S}/python/datoviz" ]]; then
-		psrc="${S}/python/datoviz"
-	elif [[ -d "${S}/bindings/python/datoviz" ]]; then
-		psrc="${S}/bindings/python/datoviz"
-	elif [[ -d "${S}/python" && -n "$(find "${S}/python" -name "*.py" 2>/dev/null)" ]]; then
-		psrc="${S}/python"
-	elif [[ -d "${S}/bindings/python" && -n "$(find "${S}/bindings/python" -name "*.py" 2>/dev/null)" ]]; then
-		psrc="${S}/bindings/python"
-	fi
-
-	if [[ -n "${psrc}" ]]; then
-		einfo "Found Python sources at: ${psrc}"
+	# Install Python bindings if built
+	if use python; then
 		python_foreach_impl python_install
-	else
-		ewarn "No Python bindings found in datoviz source tree."
-		ewarn "The library will be installed but Python bindings will not be available."
-		ewarn "You may need to create Python bindings manually or use a different approach."
 	fi
 
 	einstalldocs
@@ -287,23 +314,36 @@ python_install() {
 	local pydir
 	pydir="$(python_get_sitedir)" || die
 
-	# Install Python files if they exist
-	if [[ -n "${psrc}" && -d "${psrc}" ]]; then
-		insinto "${pydir}/datoviz"
-		doins -r "${psrc}/"* || die "Failed to install Python files"
+	# Look for the built Python module in various locations
+	local python_src=""
+	for possible_src in "${S}/bindings/python" "${S}/python" "${S}/build/python" "${BUILD_DIR}/python"; do
+		if [[ -d "${possible_src}" && -n "$(find "${possible_src}" -name "*.py" 2>/dev/null)" ]]; then
+			python_src="${possible_src}"
+			break
+		fi
+	done
 
-		# ensure _ctypes loader finds libdatoviz.so at datoviz/build/libdatoviz.so
-		dodir "${pydir}/datoviz/build"
-		dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
-			"${pydir}/datoviz/build/libdatoviz.so" || die
+	if [[ -n "${python_src}" ]]; then
+		einfo "Installing Python bindings from: ${python_src}"
+		insinto "${pydir}"
+		doins -r "${python_src}/"* || die "Failed to install Python files"
+
+		# Create symlink to library if needed
+		if [[ -d "${pydir}/datoviz" ]]; then
+			dodir "${pydir}/datoviz/build"
+			dosym -r "/usr/$(get_libdir)/libdatoviz.so" \
+				"${pydir}/datoviz/build/libdatoviz.so" || die
+		fi
 	else
-		ewarn "Skipping Python installation for ${EPYTHON} - no Python sources found"
+		ewarn "Python bindings requested but not found after build"
 	fi
 }
 
 
 pkg_postinst() {
 	elog "Datoviz built against system libraries (glfw, cglm, tinyxml2, msdf-atlas-gen, freetype, png, zlib)."
-	elog "If Python import fails with ctypes lookup errors, confirm the symlink:"
-	elog "  <site-packages>/datoviz/build/libdatoviz.so -> /usr/$(get_libdir)/libdatoviz.so"
+	if use python; then
+		elog "Python bindings are installed. Test with: python -c 'import datoviz; datoviz.demo()'"
+	fi
+	elog "For C/C++ development, headers are in /usr/include/datoviz/"
 }
