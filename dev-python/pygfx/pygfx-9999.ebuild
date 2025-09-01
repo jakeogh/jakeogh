@@ -6,7 +6,7 @@ EAPI=8
 PYTHON_COMPAT=( python3_{10..13} )
 
 # PEP 517 backend
-DISTUTILS_USE_PEP517=hatchling
+DISTUTILS_USE_PEP517="flit"
 
 inherit git-r3 distutils-r1
 
