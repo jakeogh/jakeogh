@@ -85,6 +85,11 @@ _src_write_top_include() {
 if(POLICY CMP0111)
   cmake_policy(SET CMP0111 NEW)
 endif()
+
+# Prevent FetchContent from doing anything
+set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
+set(FETCHCONTENT_UPDATES_DISCONNECTED ON CACHE BOOL "" FORCE)
+
 function(_gentoo_import_lib _tgt _lib _inc)
   if(NOT TARGET "${_tgt}")
     if(EXISTS "${_lib}")
@@ -97,125 +102,232 @@ function(_gentoo_import_lib _tgt _lib _inc)
     endif()
   endif()
 endfunction()
-# tinyxml2
-if(NOT TARGET tinyxml2)
-  find_package(TinyXML2 QUIET)
-  if(TARGET TinyXML2::TinyXML2 AND NOT TARGET tinyxml2)
-    get_target_property(_loc TinyXML2::TinyXML2 IMPORTED_LOCATION)
-    if(NOT _loc)
-      get_target_property(_loc TinyXML2::TinyXML2 IMPORTED_LOCATION_RELEASE)
-    endif()
-    get_target_property(_inc TinyXML2::TinyXML2 INTERFACE_INCLUDE_DIRECTORIES)
-    if(NOT _inc)
-      set(_inc "/usr/include")
-    endif()
-    if(_loc)
-      _gentoo_import_lib(tinyxml2 "${_loc}" "${_inc}")
-    endif()
-  endif()
-endif()
-if(NOT TARGET tinyxml2)
-  find_library(TINYXML2_LIB tinyxml2)
-  find_path(TINYXML2_INC tinyxml2.h PATH_SUFFIXES tinyxml2)
-  if(NOT TINYXML2_INC)
-    set(TINYXML2_INC "/usr/include")
-  endif()
-  if(TINYXML2_LIB)
-    _gentoo_import_lib(tinyxml2 "${TINYXML2_LIB}" "${TINYXML2_INC}")
-  else()
-    message(FATAL_ERROR "System tinyxml2 not found. Please install dev-libs/tinyxml2.")
-  endif()
-endif()
+
 # cglm
 if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
-  find_package(cglm QUIET)
-endif()
-if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
-  find_library(CGLM_LIB cglm)
-  set(CGLM_INC "/usr/include")
-  if(CGLM_LIB)
-    _gentoo_import_lib(cglm "${CGLM_LIB}" "${CGLM_INC}")
-    if(NOT TARGET cglm::cglm)
-      add_library(cglm::cglm SHARED IMPORTED GLOBAL)
-      set_target_properties(cglm::cglm PROPERTIES
-        IMPORTED_LOCATION "${CGLM_LIB}"
-        INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}")
-    endif()
+  find_package(cglm QUIET CONFIG)
+  if(TARGET cglm::cglm)
+    # Use system cglm
   else()
-    message(FATAL_ERROR "System cglm not found. Please install dev-libs/cglm.")
+    # Fallback to raw library
+    find_library(CGLM_LIB cglm REQUIRED)
+    find_path(CGLM_INC cglm/cglm.h PATHS /usr/include NO_DEFAULT_PATH)
+    if(NOT CGLM_INC)
+      set(CGLM_INC "/usr/include")
+    endif()
+    add_library(cglm::cglm SHARED IMPORTED)
+    set_target_properties(cglm::cglm PROPERTIES
+      IMPORTED_LOCATION "${CGLM_LIB}"
+      INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}")
   endif()
 endif()
+
 # glfw
 if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
-  find_package(PkgConfig QUIET)
-  if(PKG_CONFIG_FOUND)
-    pkg_check_modules(GLFW3 QUIET glfw3)
-  endif()
-  find_path(GLFW_INC GLFW/glfw3.h PATHS ${GLFW3_INCLUDE_DIRS} /usr/include /usr/include/GLFW)
-  find_library(GLFW_LIB NAMES glfw glfw3 PATHS ${GLFW3_LIBRARY_DIRS})
-  if(GLFW_LIB)
+  find_package(glfw3 QUIET CONFIG)
+  if(TARGET glfw::glfw)
+    # Use system glfw
+  else()
+    find_library(GLFW_LIB NAMES glfw glfw3 REQUIRED)
+    find_path(GLFW_INC GLFW/glfw3.h PATHS /usr/include NO_DEFAULT_PATH)
     if(NOT GLFW_INC)
       set(GLFW_INC "/usr/include")
     endif()
-    if(NOT TARGET glfw)
-      add_library(glfw SHARED IMPORTED GLOBAL)
-      set_target_properties(glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB}" INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
-    endif()
-    if(NOT TARGET glfw::glfw)
-      add_library(glfw::glfw SHARED IMPORTED GLOBAL)
-      set_target_properties(glfw::glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB}" INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
-    endif()
-  else()
-    message(FATAL_ERROR "System GLFW not found. Please install media-libs/glfw.")
+    add_library(glfw::glfw SHARED IMPORTED)
+    set_target_properties(glfw::glfw PROPERTIES
+      IMPORTED_LOCATION "${GLFW_LIB}"
+      INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
   endif()
 endif()
-# msdf-atlas-gen with system msdfgen dependencies
+
+# tinyxml2
+if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
+  find_package(TinyXML2 QUIET CONFIG)
+  if(TARGET tinyxml2::tinyxml2)
+    # Use system tinyxml2
+  else()
+    find_library(TINYXML2_LIB tinyxml2 REQUIRED)
+    find_path(TINYXML2_INC tinyxml2.h PATHS /usr/include NO_DEFAULT_PATH)
+    if(NOT TINYXML2_INC)
+      set(TINYXML2_INC "/usr/include")
+    endif()
+    add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
+    set_target_properties(tinyxml2::tinyxml2 PROPERTIES
+      IMPORTED_LOCATION "${TINYXML2_LIB}"
+      INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC}")
+  endif()
+endif()
+
+# msdf-atlas-gen
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
   find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen REQUIRED)
   find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core REQUIRED)
   find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext REQUIRED)
-  find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include /usr/include/msdf-atlas-gen)
+  find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include NO_DEFAULT_PATH)
   if(NOT MSDF_ATLAS_GEN_INC)
     set(MSDF_ATLAS_GEN_INC "/usr/include")
   endif()
-  add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED GLOBAL)
+  add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED)
   set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
     IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
     INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}")
   set_property(TARGET msdf-atlas-gen::msdf-atlas-gen PROPERTY
     INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT_LIB};${MSDFGEN_CORE_LIB}")
 endif()
-if(NOT TARGET msdfgen-ext)
-  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext)
-  find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core)
-  if(MSDFGEN_EXT_LIB)
-    add_library(msdfgen-ext SHARED IMPORTED GLOBAL)
-    set_target_properties(msdfgen-ext PROPERTIES
-      IMPORTED_LOCATION "${MSDFGEN_EXT_LIB}")
-    if(MSDFGEN_CORE_LIB)
-      set_property(TARGET msdfgen-ext PROPERTY
-        IMPORTED_LINK_INTERFACE_LIBRARIES "${MSDFGEN_CORE_LIB}")
-    endif()
-  endif()
-endif()
-set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
+
+# Block FetchContent from trying to clone anything
+function(FetchContent_MakeAvailable)
+  message(STATUS "Blocking FetchContent_MakeAvailable call")
+endfunction()
+function(FetchContent_Declare)
+  message(STATUS "Blocking FetchContent_Declare call")
+endfunction()
+function(FetchContent_Populate)
+  message(STATUS "Blocking FetchContent_Populate call")
+endfunction()
 EOF
 	echo "${top_include}"
-	sed -i -e '/^[[:space:]]*find_package[[:space:]]*(\s*tinyxml2[^)]*)/Id' \
-		"${T}/gentoo_fetchcontent_overrides.cmake" || die
-	cat >> "${T}/gentoo_fetchcontent_overrides.cmake" <<'EOF'
-# ---- tinyxml2 (pre-project safe) --------------------------------------------
-if(NOT TARGET tinyxml2::tinyxml2)
-  find_library(TINYXML2_LIB NAMES tinyxml2 REQUIRED)
-  find_path(TINYXML2_INC_DIR NAMES tinyxml2.h PATHS /usr/include /usr/include/tinyxml2 REQUIRED)
-  add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
-  set_target_properties(tinyxml2::tinyxml2 PROPERTIES
-    IMPORTED_LOCATION "${TINYXML2_LIB}"
-    INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
-endif()
-# -----------------------------------------------------------------------------
-EOF
 }
+
+
+#_src_write_top_include() {
+#	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
+#	cat > "${top_include}" <<'EOF'
+## Provide system deps as imported targets and block FetchContent under sandbox.
+#if(POLICY CMP0111)
+#  cmake_policy(SET CMP0111 NEW)
+#endif()
+#function(_gentoo_import_lib _tgt _lib _inc)
+#  if(NOT TARGET "${_tgt}")
+#    if(EXISTS "${_lib}")
+#      add_library(${_tgt} SHARED IMPORTED GLOBAL)
+#      set_target_properties(${_tgt} PROPERTIES
+#        IMPORTED_LOCATION "${_lib}"
+#        INTERFACE_INCLUDE_DIRECTORIES "${_inc}")
+#    else()
+#      message(STATUS "Gentoo: library for target ${_tgt} not found at: ${_lib}")
+#    endif()
+#  endif()
+#endfunction()
+## tinyxml2
+#if(NOT TARGET tinyxml2)
+#  find_package(TinyXML2 QUIET)
+#  if(TARGET TinyXML2::TinyXML2 AND NOT TARGET tinyxml2)
+#    get_target_property(_loc TinyXML2::TinyXML2 IMPORTED_LOCATION)
+#    if(NOT _loc)
+#      get_target_property(_loc TinyXML2::TinyXML2 IMPORTED_LOCATION_RELEASE)
+#    endif()
+#    get_target_property(_inc TinyXML2::TinyXML2 INTERFACE_INCLUDE_DIRECTORIES)
+#    if(NOT _inc)
+#      set(_inc "/usr/include")
+#    endif()
+#    if(_loc)
+#      _gentoo_import_lib(tinyxml2 "${_loc}" "${_inc}")
+#    endif()
+#  endif()
+#endif()
+#if(NOT TARGET tinyxml2)
+#  find_library(TINYXML2_LIB tinyxml2)
+#  find_path(TINYXML2_INC tinyxml2.h PATH_SUFFIXES tinyxml2)
+#  if(NOT TINYXML2_INC)
+#    set(TINYXML2_INC "/usr/include")
+#  endif()
+#  if(TINYXML2_LIB)
+#    _gentoo_import_lib(tinyxml2 "${TINYXML2_LIB}" "${TINYXML2_INC}")
+#  else()
+#    message(FATAL_ERROR "System tinyxml2 not found. Please install dev-libs/tinyxml2.")
+#  endif()
+#endif()
+## cglm
+#if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
+#  find_package(cglm QUIET)
+#endif()
+#if(NOT TARGET cglm AND NOT TARGET cglm::cglm)
+#  find_library(CGLM_LIB cglm)
+#  set(CGLM_INC "/usr/include")
+#  if(CGLM_LIB)
+#    _gentoo_import_lib(cglm "${CGLM_LIB}" "${CGLM_INC}")
+#    if(NOT TARGET cglm::cglm)
+#      add_library(cglm::cglm SHARED IMPORTED GLOBAL)
+#      set_target_properties(cglm::cglm PROPERTIES
+#        IMPORTED_LOCATION "${CGLM_LIB}"
+#        INTERFACE_INCLUDE_DIRECTORIES "${CGLM_INC}")
+#    endif()
+#  else()
+#    message(FATAL_ERROR "System cglm not found. Please install dev-libs/cglm.")
+#  endif()
+#endif()
+## glfw
+#if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
+#  find_package(PkgConfig QUIET)
+#  if(PKG_CONFIG_FOUND)
+#    pkg_check_modules(GLFW3 QUIET glfw3)
+#  endif()
+#  find_path(GLFW_INC GLFW/glfw3.h PATHS ${GLFW3_INCLUDE_DIRS} /usr/include /usr/include/GLFW)
+#  find_library(GLFW_LIB NAMES glfw glfw3 PATHS ${GLFW3_LIBRARY_DIRS})
+#  if(GLFW_LIB)
+#    if(NOT GLFW_INC)
+#      set(GLFW_INC "/usr/include")
+#    endif()
+#    if(NOT TARGET glfw)
+#      add_library(glfw SHARED IMPORTED GLOBAL)
+#      set_target_properties(glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB}" INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
+#    endif()
+#    if(NOT TARGET glfw::glfw)
+#      add_library(glfw::glfw SHARED IMPORTED GLOBAL)
+#      set_target_properties(glfw::glfw PROPERTIES IMPORTED_LOCATION "${GLFW_LIB}" INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
+#    endif()
+#  else()
+#    message(FATAL_ERROR "System GLFW not found. Please install media-libs/glfw.")
+#  endif()
+#endif()
+## msdf-atlas-gen with system msdfgen dependencies
+#if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
+#  find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen REQUIRED)
+#  find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core REQUIRED)
+#  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext REQUIRED)
+#  find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include /usr/include/msdf-atlas-gen)
+#  if(NOT MSDF_ATLAS_GEN_INC)
+#    set(MSDF_ATLAS_GEN_INC "/usr/include")
+#  endif()
+#  add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED GLOBAL)
+#  set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
+#    IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
+#    INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}")
+#  set_property(TARGET msdf-atlas-gen::msdf-atlas-gen PROPERTY
+#    INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT_LIB};${MSDFGEN_CORE_LIB}")
+#endif()
+#if(NOT TARGET msdfgen-ext)
+#  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext)
+#  find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core)
+#  if(MSDFGEN_EXT_LIB)
+#    add_library(msdfgen-ext SHARED IMPORTED GLOBAL)
+#    set_target_properties(msdfgen-ext PROPERTIES
+#      IMPORTED_LOCATION "${MSDFGEN_EXT_LIB}")
+#    if(MSDFGEN_CORE_LIB)
+#      set_property(TARGET msdfgen-ext PROPERTY
+#        IMPORTED_LINK_INTERFACE_LIBRARIES "${MSDFGEN_CORE_LIB}")
+#    endif()
+#  endif()
+#endif()
+#set(FETCHCONTENT_FULLY_DISCONNECTED ON CACHE BOOL "" FORCE)
+#EOF
+#	echo "${top_include}"
+#	sed -i -e '/^[[:space:]]*find_package[[:space:]]*(\s*tinyxml2[^)]*)/Id' \
+#		"${T}/gentoo_fetchcontent_overrides.cmake" || die
+#	cat >> "${T}/gentoo_fetchcontent_overrides.cmake" <<'EOF'
+## ---- tinyxml2 (pre-project safe) --------------------------------------------
+#if(NOT TARGET tinyxml2::tinyxml2)
+#  find_library(TINYXML2_LIB NAMES tinyxml2 REQUIRED)
+#  find_path(TINYXML2_INC_DIR NAMES tinyxml2.h PATHS /usr/include /usr/include/tinyxml2 REQUIRED)
+#  add_library(tinyxml2::tinyxml2 UNKNOWN IMPORTED)
+#  set_target_properties(tinyxml2::tinyxml2 PROPERTIES
+#    IMPORTED_LOCATION "${TINYXML2_LIB}"
+#    INTERFACE_INCLUDE_DIRECTORIES "${TINYXML2_INC_DIR}")
+#endif()
+## -----------------------------------------------------------------------------
+#EOF
+#}
 
 src_configure() {
 	local top_include
@@ -244,7 +356,7 @@ src_compile() {
 	cmake_build -C "${BUILD_DIR}"
 
 	if use python; then
-		einfo "Building Python bindings with 'just' (required for correct Vulkan linking)..."
+		einfo "Building Python bindings with 'just'..."
 		cd "${S}" || die
 
 		if ! command -v just >/dev/null 2>&1; then
@@ -261,6 +373,28 @@ src_compile() {
 		einfo "Python bindings built successfully."
 	fi
 }
+
+#src_compile() {
+#	cmake_build -C "${BUILD_DIR}"
+#
+#	if use python; then
+#		einfo "Building Python bindings with 'just' (required for correct Vulkan linking)..."
+#		cd "${S}" || die
+#
+#		if ! command -v just >/dev/null 2>&1; then
+#			die "USE=python enabled but 'just' not found. Please install sys-devel/just."
+#		fi
+#
+#		# First call often fails due to msdf-atlas-gen issue
+#		if ! just build; then
+#			einfo "First 'just build' failed, retrying..."
+#			if ! just build; then
+#				die "Failed to build Python bindings with 'just' after two attempts."
+#			fi
+#		fi
+#		einfo "Python bindings built successfully."
+#	fi
+#}
 
 
 
