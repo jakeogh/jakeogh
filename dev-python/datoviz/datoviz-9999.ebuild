@@ -144,10 +144,14 @@ EOF
 }
 
 src_configure() {
+	tc-export CXX CC
+	export CXXFLAGS="-O1 -g ${CXXFLAGS}"
+	export CFLAGS="-O1 -g ${CFLAGS}"
+
 	local top_include
 	top_include=$(_src_write_top_include) || die
 	local -a mycmakeargs=(
-		-DCMAKE_BUILD_TYPE=Release
+		-DCMAKE_BUILD_TYPE=RelWithDebInfo
 		-DBUILD_SHARED_LIBS=ON
 		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
 		-DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="${top_include}"
@@ -164,6 +168,29 @@ src_configure() {
 		-DTINYXML2_LIBRARIES="/usr/$(get_libdir)/libtinyxml2.so" \
 		"${mycmakeargs[@]}"
 }
+
+
+#src_configure() {
+#	local top_include
+#	top_include=$(_src_write_top_include) || die
+#	local -a mycmakeargs=(
+#		-DCMAKE_BUILD_TYPE=Release
+#		-DBUILD_SHARED_LIBS=ON
+#		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
+#		-DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="${top_include}"
+#		-DCMAKE_PREFIX_PATH="/usr/$(get_libdir)/cmake;/usr/$(get_libdir)"
+#		-DBUILD_TESTING=$(usex test ON OFF)
+#	)
+#	cmake_src_configure \
+#		-S "${S}" \
+#		-B "${BUILD_DIR}" \
+#		-G Ninja \
+#		-DTINYXML2_INC_DIR=/usr/include \
+#		-DTINYXML2_INCLUDE_DIR=/usr/include \
+#		-DTINYXML2_LIBRARY="/usr/$(get_libdir)/libtinyxml2.so" \
+#		-DTINYXML2_LIBRARIES="/usr/$(get_libdir)/libtinyxml2.so" \
+#		"${mycmakeargs[@]}"
+#}
 
 src_compile() {
 	# Pass the same CFLAGS/CXXFLAGS used in the rest of the system
