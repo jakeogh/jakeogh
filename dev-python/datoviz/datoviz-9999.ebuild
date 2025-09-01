@@ -46,12 +46,25 @@ S="${WORKDIR}/${PN}-${PV}"
 BUILD_DIR="${WORKDIR}/build-dvz"
 PYMOD_DIR="${S}/datoviz"  # The Python module is here
 
+#src_prepare() {
+#	cmake_src_prepare
+#	# Fix missing #include <cstdint> in earcut.hpp
+#	sed -i '/#include <utility>/a #include <cstdint>' \
+#		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
+#}
+
 src_prepare() {
 	cmake_src_prepare
 	# Fix missing #include <cstdint> in earcut.hpp
 	sed -i '/#include <utility>/a #include <cstdint>' \
 		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
+
+	# Patch _ctypes.py to use correct library path
+	sed -i "/LIB_PATH = '\.\/build\/libdatoviz\.so'/c\\
+LIB_PATH = __file__.replace('__init__.py', 'build/libdatoviz.so')" \
+		"${PYMOD_DIR}/_ctypes.py" || die "Failed to patch _ctypes.py"
 }
+
 
 _src_write_top_include() {
 	local top_include="${T}/gentoo_fetchcontent_overrides.cmake"
