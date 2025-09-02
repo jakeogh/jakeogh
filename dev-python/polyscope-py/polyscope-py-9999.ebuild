@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12,13,14} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 git-r3 cmake
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Python bindings for Polyscope, a C++/Python library for visualizing 3D data"
 HOMEPAGE="https://polyscope.run"
@@ -32,55 +32,46 @@ DEPEND="
 "
 
 src_prepare() {
-	# Ensure pyproject.toml exists
-	cat > pyproject.toml << 'EOF'
-[build-system]
-requires = ["setuptools >= 61.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "polyscope"
-version = "9999"
-description = "A lightweight, cross-platform C++/Python library for visualizing 3D data"
-requires-python = ">=3.8"
-license = {text = "MIT"}
-dependencies = ["numpy", "pyglm", "PyQt6"]
-EOF
-
-	# Run cmake prepare
-	cmake_src_prepare
+	# Run default prepare
 	distutils-r1_src_prepare
 }
 
-src_configure() {
-	local mycmakeargs=(
-		-DCMAKE_BUILD_TYPE=Release
-		-DPYTHON_EXECUTABLE="${PYTHON}"
-		-DUSE_PYTHON=ON
-	)
-	cmake_src_configure
+python_configure() {
+	local BUILDDIR="${BUILD_DIR}"
+	mkdir -p "${BUILDDIR}"
+	cd "${BUILDDIR}" || die
+
+	# Run cmake directly with PYTHON_EXECUTABLE set
+	cmake "${S}" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX="/usr" \
+		-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
+		-DPYTHON_EXECUTABLE="${PYTHON}" \
+		-DUSE_PYTHON=ON \
+		|| die "cmake failed"
 }
 
 python_compile() {
-	cd "${BUILD_DIR}" || die
-	distutils-r1_python_compile
+	local BUILDDIR="${BUILD_DIR}"
+	cd "${BUILDDIR}" || die
+	cmake --build . --config Release || die "build failed"
 }
 
 python_install() {
-	cd "${BUILD_DIR}" || die
+	local BUILDDIR="${BUILD_DIR}"
+	cd "${BUILDDIR}" || die
 
-	# Find the compiled extension (e.g., polyscope.cpython-313-x86_64-linux-gnu.so)
+	# Find the compiled extension: polyscope*.so
 	local ext=$(find . -name "polyscope*.so" | head -n1)
 	if [[ -f "${ext}" ]]; then
 		insinto "${PYTHON_SITEDIR}"
 		doins "${ext}" || die "Failed to install ${ext}"
 	else
-		die "Python extension not found"
+		die "polyscope Python extension not found"
 	fi
 
-	# Ensure it's importable
-	echo "from pathlib import Path" > "${D}/${PYTHON_SITEDIR}/polyscope.py"
-	echo "__path__ = [str(Path(__file__).parent / '${ext##*/}')]" >> "${D}/${PYTHON_SITEDIR}/polyscope.py"
+	# Ensure the module is importable
+	touch "${D}/${PYTHON_SITEDIR}/polyscope.py" 2>/dev/null || true
 }
 
 pkg_postinst() {
