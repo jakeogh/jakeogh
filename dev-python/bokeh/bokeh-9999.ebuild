@@ -27,7 +27,7 @@ RDEPEND="
 	dev-python/tornado[${PYTHON_USEDEP}]
 "
 
-# Build dependencies — only non-PEP 517 tools
+# Build and test dependencies
 DEPEND="
 	${RDEPEND}
 	net-libs/nodejs
@@ -46,12 +46,7 @@ DEPEND="
 	)
 "
 
-# No manual PEP 517 deps — handled by eclass
-
-python_compile() {
-	# Let PEP 517 handle the build
-	:
-}
+# ✅ Removed: python_compile() — let distutils-r1 handle PEP 517 build
 
 python_test() {
 	if use test; then
