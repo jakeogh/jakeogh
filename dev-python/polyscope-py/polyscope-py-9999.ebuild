@@ -17,11 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 # Runtime dependencies
+	#dev-libs/polyscope
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pyglm[${PYTHON_USEDEP}]
 	dev-python/pyqt6[${PYTHON_USEDEP}]
-	dev-libs/polyscope
 "
 
 # Build-time
