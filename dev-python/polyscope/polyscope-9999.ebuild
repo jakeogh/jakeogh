@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-python/pybind11
-	>=dev-build/cmake-3.16
+	dev-build/cmake
 	net-libs/nodejs
 "
 
@@ -51,8 +51,26 @@ dependencies = [
 ]
 EOF
 
-	# Run default src_prepare to handle patches, etc.
+	# Run cmake prepare step
+	cmake_src_prepare
+
+	# Run distutils prepare (for Python)
 	distutils-r1_src_prepare
+}
+
+src_configure() {
+	# Configure CMake
+	local mycmakeargs=(
+		-DCMAKE_BUILD_TYPE=Release
+		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DUSE_PYTHON=ON
+		-DIMGUI_DIR="${S}/deps/imgui"
+		-DIMGLIB_DIR="${S}/deps/imghdr"
+		-DHAPPY_DIR="${S}/deps/happly"
+		-DGLM_DIR="${S}/deps/glm"
+		-DIMPlot_DIR="${S}/deps/imgui/implot"
+	)
+	cmake_src_configure
 }
 
 python_compile() {
