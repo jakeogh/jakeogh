@@ -17,12 +17,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 # Runtime dependencies
-
-#dev-libs/polyscope
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pyglm[${PYTHON_USEDEP}]
 	dev-python/pyqt6[${PYTHON_USEDEP}]
+	dev-libs/polyscope
 "
 
 # Build-time
@@ -40,13 +39,11 @@ src_prepare() {
 }
 
 src_configure() {
-	# Explicitly set PYTHON_EXECUTABLE
 	local mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
-		-DPYTHON_EXECUTABLE="${PYTHON:-python}"
+		-DPYTHON_EXECUTABLE="${PYTHON}"
 		-DPolyscope_DIR="/usr/include"
 	)
-	einfo "Using PYTHON_EXECUTABLE=${mycmakeargs[1]#*=}"
 	cmake_src_configure
 }
 
@@ -57,11 +54,22 @@ python_compile() {
 
 python_install() {
 	cd "${BUILD_DIR}" || die
-	distutils-r1_python_install
+
+	# Find the compiled extension (e.g., polyscope.cpython-313-x86_64-linux-gnu.so)
+	local ext=$(find . -name "polyscope*.so" | head -n1)
+	if [[ -f "${ext}" ]]; then
+		insinto "${PYTHON_SITEDIR}"
+		doins "${ext}" || die "Failed to install ${ext}"
+	else
+		die "Python extension not found"
+	fi
+
+	# Ensure the module is importable
+	touch "${D}/${PYTHON_SITEDIR}/polyscope.py" 2>/dev/null || true
 }
 
 pkg_postinst() {
-	elog "polyscope Python bindings successfully installed!"
+	elog "polyscope-py successfully installed!"
 	elog "Try it: python -c 'import polyscope as ps; ps.init(backend=\"PyQt6\"); ps.register_point_cloud(\"points\", [[0,0,0], [1,1,1]]); ps.show()'"
 	elog "Documentation: https://polyscope.run"
 }
