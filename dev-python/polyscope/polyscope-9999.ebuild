@@ -39,7 +39,7 @@ src_prepare() {
 }
 
 src_configure() {
-	# Ensure PYTHON is set
+	# Ensure PYTHON_EXECUTABLE is set
 	local mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
 		-DPYTHON_EXECUTABLE="${PYTHON}"
