@@ -4,21 +4,21 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12,13,14} )
-#DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 pypi
+inherit distutils-r1 git-r3
 
 DESCRIPTION="Easier Pythonic interface to VTK"
 HOMEPAGE="https://docs.pyvista.org"
+EGIT_REPO_URI="https://github.com/pyvista/pyvista.git"
+EGIT_BRANCH="main"
+
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
 SLOT="0"
-RESTRICT="mirror"
+KEYWORDS="~amd64 ~x86"
 IUSE="jupyter trame"
 
-# Direct dependencies (no python_gen_cond_dep!)
 RDEPEND="
-	sci-libs/vtk[python,imaging,rendering,views,${PYTHON_SINGLE_USEDEP}]
+	sci-libs/vtk[python,imaging,rendering,views,${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	>dev-python/matplotlib-3.0.1[${PYTHON_USEDEP}]
 	dev-python/pillow[${PYTHON_USEDEP}]
@@ -43,8 +43,21 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	dev-python/wheel[${PYTHON_USEDEP}]
 "
 
-distutils_enable_tests pytest
+RESTRICT="test"
 
+python_prepare_all() {
+	rm -rf src/pyvista.egg-info/ 2>/dev/null || true
+	distutils-r1_python_prepare_all
+}
+
+pkg_postinst() {
+	elog "pyvista successfully installed!"
+	elog "Try it: python -c 'from pyvista import examples; examples.download_st_helens().plot()'"
+	elog "Documentation: https://docs.pyvista.org"
+}
 
