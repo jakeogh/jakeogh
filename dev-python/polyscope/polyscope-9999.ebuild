@@ -17,10 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 # Runtime dependencies — now use dev-python/pyqt6
+#	dev-python/pyimgui[${PYTHON_USEDEP}]
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pyglm[${PYTHON_USEDEP}]
-	dev-python/pyimgui[${PYTHON_USEDEP}]
 	dev-python/pyqt6[${PYTHON_USEDEP}]
 "
 
