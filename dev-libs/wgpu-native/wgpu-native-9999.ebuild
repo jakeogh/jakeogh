@@ -3,13 +3,12 @@
 
 EAPI=8
 
-inherit cargo git-r3
+inherit git-r3
 
 DESCRIPTION="Native WebGPU implementation in Rust (C API over wgpu-core)"
 HOMEPAGE="https://github.com/gfx-rs/wgpu-native"
 EGIT_REPO_URI="https://github.com/gfx-rs/wgpu-native.git"
 EGIT_SUBMODULES=( '*' )
-CARGO_FEATURES="generate-headers"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
@@ -27,37 +26,42 @@ RDEPEND="
 	media-libs/vulkan-loader
 "
 
-# Use cargo vendor via manifest in repo root
+# ✅ No CRATES= or SRC_URI="$(cargo_crate_uris)" — forbidden!
+
+# ✅ Use CARGO_MANIFEST_DIR to trigger cargo vendor
 CARGO_MANIFEST_DIR="."
 
-# Ensure consistent build directory
+# ✅ Enable header generation
+CARGO_FEATURES="generate-headers"
+
+# Ensure consistent build dir
 CARGO_TARGET_DIR="${WORKDIR}/target"
 
 src_unpack() {
 	git-r3_src_unpack
-	cargo_live_src_unpack
+	cargo_live_src_unpack  # This will run `cargo vendor` and fetch crates
 }
 
 src_prepare() {
 	default
-	# Ensure target dir exists
 	mkdir -p "${CARGO_TARGET_DIR}"
 }
 
 src_compile() {
-    cargo_build --release --package wgpu-native
+	env \
+		CARGO_HOME="${WORKDIR}/cargo_home" \
+		CARGO_TARGET_DIR="${CARGO_TARGET_DIR}" \
+		cargo build --release --package wgpu-native --features "${CARGO_FEATURES}" \
+		|| die "cargo build failed"
 }
-
 
 src_test() {
-	# Skip unstable tests in live builds
-	elog "Skipping tests: upstream C API tests not stable in live ebuild"
+	: # disabled
 }
-
 
 src_install() {
 	local libdir="/usr/$(get_libdir)"
-	local target="${CARGO_TARGET_DIR:-target}/release"
+	local target="${CARGO_TARGET_DIR}/release"
 
 	# Install shared library
 	if [[ -f "${target}/libwgpu_native.so" ]]; then
@@ -72,13 +76,12 @@ src_install() {
 		doins "${target}/libwgpu_native.a" || die "Failed to install static lib"
 	fi
 
-	# ✅ Install generated header (only exists if generate-headers feature is enabled)
-	local include_src="${target}/include"
-	if [[ -f "${include_src}/webgpu.h" ]]; then
+	# Install generated header
+	if [[ -f "${target}/include/webgpu.h" ]]; then
 		insinto /usr/include/webgpu
-		doins "${include_src}/webgpu.h" || die "Failed to install generated webgpu.h"
+		doins "${target}/include/webgpu.h" || die "Failed to install webgpu.h"
 	else
-		die "Generated webgpu.h not found! Did you enable the 'generate-headers' feature? Expected: ${include_src}/webgpu.h"
+		die "webgpu.h not generated! Did you enable 'generate-headers' feature?"
 	fi
 
 	# Install pkg-config file
@@ -98,3 +101,4 @@ EOF
 
 	dodoc README.md
 }
+
