@@ -3,7 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12,13,14} )
+# Only support one Python version to match sci-libs/vtk
+PYTHON_COMPAT=( python3_13 )  # Change to match your system
+DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 git-r3
 
@@ -17,35 +19,37 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="jupyter trame"
 
+# DO NOT use ${PYTHON_USEDEP} in RDEPEND
+# Use raw USEDEP expansion via USE_PYTHON_SINGLE_IMPL=1
 RDEPEND="
-	sci-libs/vtk[python,imaging,rendering,views,${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	>dev-python/matplotlib-3.0.1[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pooch[${PYTHON_USEDEP}]
-	>=dev-python/scooby-0.5.1[${PYTHON_USEDEP}]
+	sci-libs/vtk[python,imaging,rendering,views,python_single_target_${PYTHON_SINGLE_TARGET}]
+	dev-python/numpy
+	>dev-python/matplotlib-3.0.1
+	dev-python/pillow
+	dev-python/pooch
+	>=dev-python/scooby-0.5.1
 	jupyter? (
-		dev-python/ipyvtklink[${PYTHON_USEDEP}]
-		dev-python/pythreejs[${PYTHON_USEDEP}]
-		dev-python/jupyterlab-ipywidgets[${PYTHON_USEDEP}]
-		dev-python/jupyter-server-proxy[${PYTHON_USEDEP}]
-		dev-python/nest_asyncio[${PYTHON_USEDEP}]
-		dev-python/panel[${PYTHON_USEDEP}]
+		dev-python/ipyvtklink
+		dev-python/pythreejs
+		dev-python/jupyterlab-ipywidgets
+		dev-python/jupyter-server-proxy
+		dev-python/nest_asyncio
+		dev-python/panel
 	)
 	trame? (
-		>=dev-python/trame-server-2.11.7[${PYTHON_USEDEP}]
-		>=dev-python/trame-client-2.10.0[${PYTHON_USEDEP}]
-		>=dev-python/trame-vtk-2.5.8[${PYTHON_USEDEP}]
-		>=dev-python/trame-2.5.2[${PYTHON_USEDEP}]
-		>=dev-python/trame-vuetify-2.3.1[${PYTHON_USEDEP}]
+		>=dev-python/trame-server-2.11.7
+		>=dev-python/trame-client-2.10.0
+		>=dev-python/trame-vtk-2.5.8
+		>=dev-python/trame-2.5.2
+		>=dev-python/trame-vuetify-2.3.1
 	)
 "
 
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/wheel[${PYTHON_USEDEP}]
+	dev-python/setuptools
+	dev-python/setuptools_scm
+	dev-python/wheel
 "
 
 RESTRICT="test"
