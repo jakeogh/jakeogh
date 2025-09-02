@@ -16,13 +16,21 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# Runtime dependencies
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
 
 # No manual DEPEND — handled by PEP 517
-# Build deps (setuptools, wheel) are automatic
+
+src_prepare() {
+	# Apply inline patch to avoid Cython SizeofTypeNode crash
+	sed -i 's/sz = sizeof(ImDrawIdx)/sz = 2 if sizeof(ImDrawIdx) == 2 else 4/g' \
+		"${S}/imgui/core.pyx" || die "Failed to patch core.pyx"
+
+	# Ensure no bytecode is cached
+	find "${S}" -name "*.pyc" -delete
+	distutils-r1_src_prepare
+}
 
 python_prepare_all() {
 	# Clean any leftover metadata
