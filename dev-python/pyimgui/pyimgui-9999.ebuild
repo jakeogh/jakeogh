@@ -20,21 +20,22 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
 
-# No manual DEPEND — handled by PEP 517
-
 src_prepare() {
-	# Apply inline patch to avoid Cython SizeofTypeNode crash
-	sed -i 's/sz = sizeof(ImDrawIdx)/sz = 2 if sizeof(ImDrawIdx) == 2 else 4/g' \
-		"${S}/imgui/core.pyx" || die "Failed to patch core.pyx"
+	# Patch 1: Fix SizeofTypeNode crash
+	sed -i 's/sizeof(ImDrawIdx)/2 if sizeof(ImDrawIdx) == 2 else 4/g' \
+		"${S}/imgui/core.pyx" || die "Failed to patch sizeof"
 
-	# Ensure no bytecode is cached
-	find "${S}" -name "*.pyc" -delete
+	# Patch 2: Ensure cimgui types are declared
+	if ! grep -q "cdef extern from" "${S}/imgui/core.pyx"; then
+		elog "Warning: cimgui extern declarations missing, consider updating cimgui"
+	fi
+
+	# Clean metadata
+	rm -rf src/imgui.egg-info/ 2>/dev/null || true
 	distutils-r1_src_prepare
 }
 
 python_prepare_all() {
-	# Clean any leftover metadata
-	rm -rf src/imgui.egg-info/ 2>/dev/null || true
 	distutils-r1_python_prepare_all
 }
 
@@ -43,4 +44,5 @@ pkg_postinst() {
 	elog "Try it: python -c 'import imgui; print(imgui.__version__)'"
 	elog "Documentation: https://pyimgui.readthedocs.io"
 }
+
 
