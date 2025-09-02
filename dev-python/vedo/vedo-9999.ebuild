@@ -3,8 +3,9 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{12,13,14} )
-# No DISTUTILS_SINGLE_IMPL=1
+# Match sci-libs/vtk: single Python target
+PYTHON_COMPAT=( python3_13 )
+DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 git-r3
 
@@ -17,29 +18,28 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+# DO NOT use ${PYTHON_USEDEP} or ${PYTHON_SINGLE_USEDEP}
+# Let distutils-r1 handle Python deps via PYTHON_COMPAT
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/trimesh[${PYTHON_USEDEP}]
-	dev-python/pyvista[${PYTHON_USEDEP}]
-	dev-python/tqdm[${PYTHON_USEDEP}]
-	dev-python/imageio[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/panel[${PYTHON_USEDEP}]
-	dev-python/param[${PYTHON_USEDEP}]
+	sci-libs/vtk[python,imaging,rendering,views]
+	dev-python/numpy
+	dev-python/colorama
+	dev-python/requests
+	dev-python/trimesh
+	dev-python/pyvista
+	dev-python/tqdm
+	dev-python/imageio
+	dev-python/pillow
+	dev-python/panel
+	dev-python/param
 "
 
-BDEPEND="
-	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	dev-python/wheel[${PYTHON_USEDEP}]
-"
+# DEPEND is omitted — handled by distutils-r1 + DISTUTILS_USE_PEP517
 
 RESTRICT="test"
 
 python_prepare_all() {
+	# Clean any leftover metadata
 	rm -rf src/vedo.egg-info/ 2>/dev/null || true
 	distutils-r1_python_prepare_all
 }
@@ -49,4 +49,3 @@ pkg_postinst() {
 	elog "Try it: python -c 'from vedo import Cube; Cube().show()'"
 	elog "Documentation: https://vedo.dev"
 }
-
