@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12,13,14} )
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517="hatchling"
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Parametric objects for Python, enabling parameters with type and range checking, documentation, and dynamic values"
