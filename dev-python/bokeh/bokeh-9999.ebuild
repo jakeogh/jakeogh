@@ -27,7 +27,7 @@ RDEPEND="
 	dev-python/tornado[${PYTHON_USEDEP}]
 "
 
-# Build and test dependencies
+# Test dependencies
 DEPEND="
 	${RDEPEND}
 	net-libs/nodejs
@@ -45,9 +45,6 @@ DEPEND="
 		sci-libs/scipy[${PYTHON_USEDEP}]
 	)
 "
-
-# ✅ No src_prepare, src_configure, or src_compile override
-# Let PEP 517 + setuptools handle the build, including BokehJS
 
 python_test() {
 	if use test; then
