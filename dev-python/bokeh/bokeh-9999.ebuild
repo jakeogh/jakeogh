@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	www-servers/tornado[${PYTHON_USEDEP}]
+	dev-python/tornado[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/jinja2[${PYTHON_USEDEP}]
