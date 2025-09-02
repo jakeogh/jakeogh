@@ -20,7 +20,6 @@ IUSE="doc test"
 # Runtime dependencies
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/paramz[${PYTHON_USEDEP}]
 "
 
 # Optional: docs and tests
