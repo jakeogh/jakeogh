@@ -1,38 +1,43 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{12..14} )
+
+PYTHON_COMPAT=( python3_{12,13,14} )
 DISTUTILS_USE_PEP517=setuptools
+inherit distutils-r1 git-r3
 
-inherit git-r3
-inherit distutils-r1
+DESCRIPTION="A Python wrapper for the GLM (OpenGL Mathematics) library"
+HOMEPAGE="https://github.com/Zuzu-Typ/PyGLM"
+EGIT_REPO_URI="https://github.com/Zuzu-Typ/PyGLM.git"
+EGIT_BRANCH="master"
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
-DESCRIPTION="Fast OpenGL Mathematics (GLM) for Python"
-HOMEPAGE="https://github.com/jakeogh/pyglm"
-EGIT_REPO_URI="/home/sysskel/myapps/pyglm https://github.com/jakeogh/pyglm.git"
-
-LICENSE="BSD"
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS=""
-#IUSE="test"
+KEYWORDS="~amd64 ~x86"
 
+# No runtime deps beyond Python
+RDEPEND=""
 
-RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
-"
+src_prepare() {
+	# Fix Python 3.12 compatibility: rvalue macros
+	sed -i 's/Py_ssize_t& nBytes = PyBytes_GET_SIZE(bytesObj)/Py_ssize_t nBytes = PyBytes_GET_SIZE(bytesObj)/' \
+		"${S}/PyGLM/type_methods/glmArray.h" || die "Failed to patch glmArray.h"
 
-DEPEND="${RDEPEND}"
+	sed -i 's/PyTypeObject*& firstElementType = Py_TYPE(firstElement)/PyTypeObject* firstElementType = Py_TYPE(firstElement)/' \
+		"${S}/PyGLM/type_methods/glmArray.h" || die "Failed to patch glmArray.h"
 
+	# Clean metadata
+	rm -rf src/pyglm.egg-info/ 2>/dev/null || true
+	distutils-r1_src_prepare
+}
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+}
+
+pkg_postinst() {
+	elog "pyglm successfully installed!"
+	elog "Try it: python -c 'import glm; print(glm.vec3(1, 2, 3))'"
+	elog "Documentation: https://pyglm.readthedocs.io"
+}
