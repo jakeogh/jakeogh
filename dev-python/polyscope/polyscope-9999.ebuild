@@ -39,12 +39,13 @@ src_prepare() {
 }
 
 src_configure() {
-	# Ensure PYTHON_EXECUTABLE is set
+	# Explicitly set PYTHON_EXECUTABLE
 	local mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
-		-DPYTHON_EXECUTABLE="${PYTHON}"
+		-DPYTHON_EXECUTABLE="${PYTHON:-python}"
 		-DPolyscope_DIR="/usr/include"
 	)
+	einfo "Using PYTHON_EXECUTABLE=${mycmakeargs[1]#*=}"
 	cmake_src_configure
 }
 
