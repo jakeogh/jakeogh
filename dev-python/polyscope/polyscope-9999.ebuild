@@ -5,7 +5,7 @@ EAPI=8
 
 PYTHON_COMPAT=( python3_{12,13,14} )
 DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 git-r3
+inherit distutils-r1 git-r3 cmake
 
 DESCRIPTION="A lightweight, cross-platform C++/Python library for visualizing 3D data"
 HOMEPAGE="https://polyscope.run"
@@ -23,8 +23,16 @@ RDEPEND="
 	dev-python/pyqt6[${PYTHON_USEDEP}]
 "
 
+# Build-time
+DEPEND="
+	${RDEPEND}
+	dev-cpp/pybind11
+	>=dev-util/cmake-3.16
+	net-libs/nodejs
+"
+
 src_prepare() {
-	# Create a complete pyproject.toml
+	# Ensure pyproject.toml exists
 	cat > pyproject.toml << 'EOF'
 [build-system]
 requires = ["setuptools >= 61.0", "wheel"]
@@ -34,7 +42,6 @@ build-backend = "setuptools.build_meta"
 name = "polyscope"
 version = "9999"
 description = "A lightweight, cross-platform C++/Python library for visualizing 3D data"
-readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "MIT"}
 dependencies = [
@@ -48,10 +55,18 @@ EOF
 	distutils-r1_src_prepare
 }
 
-python_prepare_all() {
-	# Clean any leftover metadata
-	rm -rf src/polyscope.egg-info/ 2>/dev/null || true
-	distutils-r1_python_prepare_all
+python_compile() {
+	cd "${S}/python" || die
+	python_setup build_ext --inplace || die "Failed to build polyscope Python bindings"
+}
+
+python_install() {
+	cd "${S}/python" || die
+	python_setup install --prefix="${D%/usr}" || die "Install failed"
+}
+
+python_test() {
+	:
 }
 
 pkg_postinst() {
