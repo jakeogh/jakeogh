@@ -33,16 +33,17 @@ DEPEND="
 "
 
 src_prepare() {
-	# Ensure the C++ core from dev-libs/polyscope is found
+	# Run cmake prepare step
 	cmake_src_prepare
 	distutils-r1_src_prepare
 }
 
 src_configure() {
+	# Ensure PYTHON is set
 	local mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
 		-DPYTHON_EXECUTABLE="${PYTHON}"
-		-DPolyscope_DIR="/usr/include"  # Headers from dev-libs/polyscope
+		-DPolyscope_DIR="/usr/include"
 	)
 	cmake_src_configure
 }
