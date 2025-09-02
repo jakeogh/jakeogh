@@ -16,17 +16,27 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-# Runtime dependencies — now use dev-python/pyqt6
-#	dev-python/pyimgui[${PYTHON_USEDEP}]
+# Runtime dependencies
 RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pyglm[${PYTHON_USEDEP}]
 	dev-python/pyqt6[${PYTHON_USEDEP}]
 "
 
-# No manual DEPEND — PEP 517 handles build deps
+# Build-time: PEP 517 will handle everything, but we need a valid pyproject.toml
+# No manual DEPEND needed
 
-RESTRICT="test"  # Upstream tests not suitable for live ebuild
+src_prepare() {
+	# Ensure pyproject.toml exists and has build-system
+	cat > pyproject.toml << 'EOF'
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+EOF
+
+	# Run default src_prepare to handle patches, etc.
+	distutils-r1_src_prepare
+}
 
 python_prepare_all() {
 	# Clean any leftover metadata
