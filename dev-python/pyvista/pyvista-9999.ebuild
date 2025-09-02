@@ -3,8 +3,7 @@
 
 EAPI=8
 
-# Only support one Python version to match sci-libs/vtk
-PYTHON_COMPAT=( python3_13 )  # Change to match your system
+PYTHON_COMPAT=( python3_13 )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_PEP517=setuptools
 inherit distutils-r1 git-r3
@@ -19,8 +18,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="jupyter trame"
 
-# DO NOT use ${PYTHON_USEDEP} in RDEPEND
-# Use raw USEDEP expansion via USE_PYTHON_SINGLE_IMPL=1
+# ✅ Correct: no ${PYTHON_USEDEP}, no python_gen_cond_dep
 RDEPEND="
 	sci-libs/vtk[python,imaging,rendering,views,python_single_target_${PYTHON_SINGLE_TARGET}]
 	dev-python/numpy
