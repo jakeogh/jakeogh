@@ -47,9 +47,6 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools
-	dev-python/setuptools_scm
-	dev-python/wheel
 "
 
 RESTRICT="test"
