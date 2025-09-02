@@ -32,34 +32,14 @@ DEPEND="
 "
 
 src_prepare() {
-	# Ensure pyproject.toml exists
-	cat > pyproject.toml << 'EOF'
-[build-system]
-requires = ["setuptools >= 61.0", "wheel"]
-build-backend = "setuptools.build_meta"
-
-[project]
-name = "polyscope"
-version = "9999"
-description = "A lightweight, cross-platform C++/Python library for visualizing 3D data"
-requires-python = ">=3.8"
-license = {text = "MIT"}
-dependencies = [
-    "numpy",
-    "pyglm",
-    "PyQt6"
-]
-EOF
-
-	# Run cmake prepare step
+	# Run cmake prepare
 	cmake_src_prepare
 
-	# Run distutils prepare (for Python)
+	# Run distutils prepare
 	distutils-r1_src_prepare
 }
 
 src_configure() {
-	# Configure CMake
 	local mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
 		-DPYTHON_EXECUTABLE="${PYTHON}"
@@ -73,6 +53,11 @@ src_configure() {
 	cmake_src_configure
 }
 
+python_prepare() {
+	cd "${S}/python" || die
+	distutils-r1_python_prepare
+}
+
 python_compile() {
 	cd "${S}/python" || die
 	python_setup build_ext --inplace || die "Failed to build polyscope Python bindings"
@@ -81,10 +66,6 @@ python_compile() {
 python_install() {
 	cd "${S}/python" || die
 	python_setup install --prefix="${D%/usr}" || die "Install failed"
-}
-
-python_test() {
-	:
 }
 
 pkg_postinst() {
