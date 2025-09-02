@@ -37,7 +37,7 @@ RDEPEND="
 	>=dev-python/requests-2.9.1[${PYTHON_USEDEP}]
 	>=dev-python/ruamel-yaml-0.15[${PYTHON_USEDEP}]
 	>=dev-python/sortedcontainers-1.5.4[${PYTHON_USEDEP}]
-	>=www-servers/tornado-4.3[${PYTHON_USEDEP}]
+	>=dev-python/tornado-4.3[${PYTHON_USEDEP}]
 	>=dev-python/urwid-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/wsproto-0.11.0[${PYTHON_USEDEP}]
 "
