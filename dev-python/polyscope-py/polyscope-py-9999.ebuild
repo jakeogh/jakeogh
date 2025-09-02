@@ -33,7 +33,8 @@ DEPEND="
 "
 
 src_prepare() {
-	git-r3_src_prepare
+	default
+	#git-r3_src_prepare
 }
 
 python_compile() {
