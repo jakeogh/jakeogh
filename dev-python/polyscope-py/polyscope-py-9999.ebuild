@@ -31,36 +31,45 @@ DEPEND="
 	net-libs/nodejs
 "
 
-# We'll do everything in python_prepare_all
 src_prepare() {
+	# Ensure pyproject.toml exists
+	cat > pyproject.toml << 'EOF'
+[build-system]
+requires = ["setuptools >= 61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "polyscope"
+version = "9999"
+description = "A lightweight, cross-platform C++/Python library for visualizing 3D data"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+dependencies = ["numpy", "pyglm", "PyQt6"]
+EOF
+
+	# Run cmake prepare
 	cmake_src_prepare
 	distutils-r1_src_prepare
 }
 
-python_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_BUILD_TYPE=Release
 		-DPYTHON_EXECUTABLE="${PYTHON}"
-		-DPolyscope_DIR="/usr/include"
+		-DUSE_PYTHON=ON
 	)
-	# Set build dir per Python impl
-	local BUILD_DIR="${WORKDIR}/${P}_build_${EPYTHON}"
-	mkdir -p "${BUILD_DIR}"
-	cd "${BUILD_DIR}" || die
-	cmake "${S}" "${mycmakeargs[@]}" || die "cmake failed"
+	cmake_src_configure
 }
 
 python_compile() {
-	local BUILD_DIR="${WORKDIR}/${P}_build_${EPYTHON}"
 	cd "${BUILD_DIR}" || die
-	cmake --build . --config Release || die "build failed"
+	distutils-r1_python_compile
 }
 
 python_install() {
-	local BUILD_DIR="${WORKDIR}/${P}_build_${EPYTHON}"
 	cd "${BUILD_DIR}" || die
 
-	# Find the compiled extension
+	# Find the compiled extension (e.g., polyscope.cpython-313-x86_64-linux-gnu.so)
 	local ext=$(find . -name "polyscope*.so" | head -n1)
 	if [[ -f "${ext}" ]]; then
 		insinto "${PYTHON_SITEDIR}"
@@ -70,11 +79,8 @@ python_install() {
 	fi
 
 	# Ensure it's importable
-	touch "${D}/${PYTHON_SITEDIR}/polyscope.py" 2>/dev/null || true
-}
-
-python_test() {
-	:
+	echo "from pathlib import Path" > "${D}/${PYTHON_SITEDIR}/polyscope.py"
+	echo "__path__ = [str(Path(__file__).parent / '${ext##*/}')]" >> "${D}/${PYTHON_SITEDIR}/polyscope.py"
 }
 
 pkg_postinst() {
