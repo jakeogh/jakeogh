@@ -9,6 +9,7 @@ DESCRIPTION="Native WebGPU implementation in Rust (C API over wgpu-core)"
 HOMEPAGE="https://github.com/gfx-rs/wgpu-native"
 EGIT_REPO_URI="https://github.com/gfx-rs/wgpu-native.git"
 EGIT_SUBMODULES=( '*' )
+CARGO_FEATURES="generate-headers"
 
 LICENSE="Apache-2.0 MIT"
 SLOT="0"
@@ -44,9 +45,9 @@ src_prepare() {
 }
 
 src_compile() {
-	env CARGO_TARGET_DIR="${CARGO_TARGET_DIR}" \
-		cargo build --release --package wgpu-native || die "cargo build failed"
+    cargo_build --release --package wgpu-native
 }
+
 
 src_test() {
 	# Skip unstable tests in live builds
@@ -71,13 +72,13 @@ src_install() {
 		doins "${target}/libwgpu_native.a" || die "Failed to install static lib"
 	fi
 
-	# ✅ Install generated header
+	# ✅ Install generated header (only exists if generate-headers feature is enabled)
 	local include_src="${target}/include"
-	if [[ -d "${include_src}" ]]; then
+	if [[ -f "${include_src}/webgpu.h" ]]; then
 		insinto /usr/include/webgpu
 		doins "${include_src}/webgpu.h" || die "Failed to install generated webgpu.h"
 	else
-		die "Generated include/ directory not found: ${include_src}"
+		die "Generated webgpu.h not found! Did you enable the 'generate-headers' feature? Expected: ${include_src}/webgpu.h"
 	fi
 
 	# Install pkg-config file
