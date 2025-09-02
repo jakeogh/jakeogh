@@ -23,15 +23,25 @@ RDEPEND="
 	dev-python/pyqt6[${PYTHON_USEDEP}]
 "
 
-# Build-time: PEP 517 will handle everything, but we need a valid pyproject.toml
-# No manual DEPEND needed
-
 src_prepare() {
-	# Ensure pyproject.toml exists and has build-system
+	# Create a complete pyproject.toml
 	cat > pyproject.toml << 'EOF'
 [build-system]
-requires = ["setuptools>=61.0", "wheel"]
+requires = ["setuptools >= 61.0", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "polyscope"
+version = "9999"
+description = "A lightweight, cross-platform C++/Python library for visualizing 3D data"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+dependencies = [
+    "numpy",
+    "pyglm",
+    "PyQt6"
+]
 EOF
 
 	# Run default src_prepare to handle patches, etc.
