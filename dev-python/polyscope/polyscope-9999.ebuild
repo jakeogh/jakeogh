@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 	dev-python/pybind11
-	>=dev-util/cmake-3.16
+	>=dev-build/cmake-3.16
 	net-libs/nodejs
 "
 
