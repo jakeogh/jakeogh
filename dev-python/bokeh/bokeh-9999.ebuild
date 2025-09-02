@@ -11,7 +11,7 @@ inherit git-r3
 
 DESCRIPTION="Statistical and interactive HTML plots for Python"
 HOMEPAGE="https://github.com/bokeh/bokeh"
-EGIT_REPO_URI="https://github.com/bokeh/bokeh.git"
+EGIT_REPO_URI="https://github.com/bokeh/bokeh"
 
 LICENSE="BSD"
 SLOT="0"
