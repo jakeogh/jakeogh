@@ -53,9 +53,10 @@ src_test() {
 	elog "Skipping tests: upstream C API tests not stable in live ebuild"
 }
 
+
 src_install() {
 	local libdir="/usr/$(get_libdir)"
-	local target="${CARGO_TARGET_DIR}/release"
+	local target="${CARGO_TARGET_DIR:-target}/release"
 
 	# Install shared library
 	if [[ -f "${target}/libwgpu_native.so" ]]; then
@@ -70,13 +71,14 @@ src_install() {
 		doins "${target}/libwgpu_native.a" || die "Failed to install static lib"
 	fi
 
-	# ✅ Install correct headers
-	# The main C API header
-	insinto /usr/include/webgpu
-	doins include/webgpu.h || die "Failed to install include/webgpu.h"
-
-	# The WebGPU spec header (from submodule)
-	doins ffi/webgpu-headers/webgpu.h || die "Failed to install ffi/webgpu-headers/webgpu.h"
+	# ✅ Install generated header
+	local include_src="${target}/include"
+	if [[ -d "${include_src}" ]]; then
+		insinto /usr/include/webgpu
+		doins "${include_src}/webgpu.h" || die "Failed to install generated webgpu.h"
+	else
+		die "Generated include/ directory not found: ${include_src}"
+	fi
 
 	# Install pkg-config file
 	insinto "${libdir}/pkgconfig"
@@ -95,5 +97,3 @@ EOF
 
 	dodoc README.md
 }
-
-
