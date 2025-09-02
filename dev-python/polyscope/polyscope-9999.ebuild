@@ -26,7 +26,7 @@ RDEPEND="
 # Build-time
 DEPEND="
 	${RDEPEND}
-	dev-cpp/pybind11
+	dev-python/pybind11
 	>=dev-util/cmake-3.16
 	net-libs/nodejs
 "
