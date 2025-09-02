@@ -46,7 +46,32 @@ DEPEND="
 	)
 "
 
-# ✅ Removed: python_compile() — let distutils-r1 handle PEP 517 build
+# Prevent npm from failing due to sandbox/tmp issues
+src_prepare() {
+	default
+
+	# Set npm config to avoid sandbox issues
+	echo 'cache = ${BUILD_DIR}/npm-cache' > .npmrc
+	echo 'tmp = ${BUILD_DIR}/npm-tmp' >> .npmrc
+}
+
+src_configure() {
+	# Ensure node is in PATH
+	if ! has_version net-libs/nodejs; then
+		eerror "nodejs is required to build bokeh"
+		die "nodejs not installed"
+	fi
+}
+
+src_compile() {
+	# 1. Build BokehJS first
+	cd "${S}" || die
+	LC_ALL=C npm install || die "npm install failed"
+	LC_ALL=C npm run build || die "npm run build failed"
+
+	# 2. Now let PEP 517 build the wheel
+	distutils-r1_src_compile
+}
 
 python_test() {
 	if use test; then
