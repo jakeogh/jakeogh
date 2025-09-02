@@ -17,11 +17,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples server"
 
-# Runtime dependencies
+# Runtime dependencies — no paramnb
 RDEPEND="
 	dev-python/param[${PYTHON_USEDEP}]
-	dev-python/paramnb[${PYTHON_USEDEP}]
-	dev-python/parambokeh[${PYTHON_USEDEP}]
 	dev-python/bokeh[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
