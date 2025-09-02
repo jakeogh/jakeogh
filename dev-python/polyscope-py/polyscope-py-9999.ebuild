@@ -21,7 +21,6 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 	dev-python/pyglm[${PYTHON_USEDEP}]
 	dev-python/pyqt6[${PYTHON_USEDEP}]
-	dev-libs/polyscope
 "
 
 # Build-time
