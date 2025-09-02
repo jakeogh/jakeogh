@@ -4,8 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12,13,14} )
-DISTUTILS_USE_PEP517=setuptools
-inherit distutils-r1 git-r3
+inherit python-single-r1 git-r3
 
 DESCRIPTION="Python bindings for Polyscope, a C++/Python library for visualizing 3D data"
 HOMEPAGE="https://polyscope.run"
@@ -18,9 +17,11 @@ KEYWORDS="~amd64 ~x86"
 
 # Runtime dependencies
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/pyglm[${PYTHON_USEDEP}]
-	dev-python/pyqt6[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pyglm[${PYTHON_USEDEP}]
+		dev-python/pyqt6[${PYTHON_USEDEP}]
+	')
 "
 
 # Build-time
@@ -32,16 +33,14 @@ DEPEND="
 "
 
 src_prepare() {
-	# Run default prepare
-	distutils-r1_src_prepare
+	git-r3_src_prepare
 }
 
-python_configure() {
-	local BUILDDIR="${BUILD_DIR}"
+python_compile() {
+	local BUILDDIR="${WORKDIR}/${P}_build_${EPYTHON}"
 	mkdir -p "${BUILDDIR}"
 	cd "${BUILDDIR}" || die
 
-	# Run cmake directly with PYTHON_EXECUTABLE set
 	cmake "${S}" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
@@ -49,19 +48,15 @@ python_configure() {
 		-DPYTHON_EXECUTABLE="${PYTHON}" \
 		-DUSE_PYTHON=ON \
 		|| die "cmake failed"
-}
 
-python_compile() {
-	local BUILDDIR="${BUILD_DIR}"
-	cd "${BUILDDIR}" || die
 	cmake --build . --config Release || die "build failed"
 }
 
 python_install() {
-	local BUILDDIR="${BUILD_DIR}"
+	local BUILDDIR="${WORKDIR}/${P}_build_${EPYTHON}"
 	cd "${BUILDDIR}" || die
 
-	# Find the compiled extension: polyscope*.so
+	# Find the compiled extension
 	local ext=$(find . -name "polyscope*.so" | head -n1)
 	if [[ -f "${ext}" ]]; then
 		insinto "${PYTHON_SITEDIR}"
