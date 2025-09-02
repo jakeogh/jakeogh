@@ -21,11 +21,13 @@ RDEPEND=""
 
 src_prepare() {
 	# Fix Python 3.12 compatibility: rvalue macros
-	sed -i 's/Py_ssize_t& nBytes = PyBytes_GET_SIZE(bytesObj)/Py_ssize_t nBytes = PyBytes_GET_SIZE(bytesObj)/' \
-		"${S}/PyGLM/type_methods/glmArray.h" || die "Failed to patch glmArray.h"
-
-	sed -i 's/PyTypeObject*& firstElementType = Py_TYPE(firstElement)/PyTypeObject* firstElementType = Py_TYPE(firstElement)/' \
-		"${S}/PyGLM/type_methods/glmArray.h" || die "Failed to patch glmArray.h"
+	local glmarray_h="${S}/PyGLM_lib/PyGLM/type_methods/glmArray.h"
+	if [[ -f "${glmarray_h}" ]]; then
+		sed -i 's/Py_ssize_t& nBytes = PyBytes_GET_SIZE(bytesObj)/Py_ssize_t nBytes = PyBytes_GET_SIZE(bytesObj)/' "${glmarray_h}" || die "Failed to patch glmArray.h"
+		sed -i 's/PyTypeObject*& firstElementType = Py_TYPE(firstElement)/PyTypeObject* firstElementType = Py_TYPE(firstElement)/' "${glmarray_h}" || die "Failed to patch glmArray.h"
+	else
+		die "glmArray.h not found at ${glmarray_h}"
+	fi
 
 	# Clean metadata
 	rm -rf src/pyglm.egg-info/ 2>/dev/null || true
@@ -41,3 +43,4 @@ pkg_postinst() {
 	elog "Try it: python -c 'import glm; print(glm.vec3(1, 2, 3))'"
 	elog "Documentation: https://pyglm.readthedocs.io"
 }
+
