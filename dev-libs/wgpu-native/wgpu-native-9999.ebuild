@@ -70,10 +70,13 @@ src_install() {
 		doins "${target}/libwgpu_native.a" || die "Failed to install static lib"
 	fi
 
-	# Install headers
+	# ✅ Install correct headers
+	# The main C API header
 	insinto /usr/include/webgpu
-	doins ffi/webgpu.h || die "Failed to install webgpu.h"
-	doins ffi/webgpu-headers/webgpu.h || die "Failed to install webgpu-headers/webgpu.h"
+	doins include/webgpu.h || die "Failed to install include/webgpu.h"
+
+	# The WebGPU spec header (from submodule)
+	doins ffi/webgpu-headers/webgpu.h || die "Failed to install ffi/webgpu-headers/webgpu.h"
 
 	# Install pkg-config file
 	insinto "${libdir}/pkgconfig"
@@ -92,4 +95,5 @@ EOF
 
 	dodoc README.md
 }
+
 
