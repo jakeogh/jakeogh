@@ -33,19 +33,23 @@ DEPEND="
 "
 
 src_prepare() {
+	einfo "=== src_prepare: Starting ==="
 	default
+	einfo "=== src_prepare: Finished ==="
 }
 
 src_configure() {
-	# This phase is now a no-op — we run cmake in python_compile
+	einfo "=== src_configure: Skipping (CMake run in python_compile) ==="
 	:
 }
 
 python_compile() {
+	einfo "=== python_compile: Running for ${EPYTHON} ==="
 	local BUILDDIR="${WORKDIR}/${P}_build_${EPYTHON}"
 	mkdir -p "${BUILDDIR}"
-	cd "${BUILDDIR}" || die
+	cd "${BUILDDIR}" || die "Failed to enter build dir"
 
+	einfo "Configuring CMake..."
 	cmake "${S}" \
 		-DCMAKE_BUILD_TYPE=Release \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
@@ -54,16 +58,20 @@ python_compile() {
 		-DUSE_PYTHON=ON \
 		|| die "cmake failed"
 
+	einfo "Building with CMake..."
 	cmake --build . --config Release || die "build failed"
+	einfo "=== python_compile: Success for ${EPYTHON} ==="
 }
 
 python_install() {
+	einfo "=== python_install: Running for ${EPYTHON} ==="
 	local BUILDDIR="${WORKDIR}/${P}_build_${EPYTHON}"
-	cd "${BUILDDIR}" || die
+	cd "${BUILDDIR}" || die "Failed to enter build dir"
 
 	# Find the compiled extension
 	local ext=$(find . -name "polyscope*.so" | head -n1)
 	if [[ -f "${ext}" ]]; then
+		einfo "Found extension: ${ext}"
 		insinto "${PYTHON_SITEDIR}"
 		doins "${ext}" || die "Failed to install ${ext}"
 	else
@@ -72,6 +80,20 @@ python_install() {
 
 	# Ensure the module is importable
 	touch "${D}/${PYTHON_SITEDIR}/polyscope.py" 2>/dev/null || true
+	einfo "Created polyscope.py stub"
+	einfo "=== python_install: Success for ${EPYTHON} ==="
+}
+
+src_compile() {
+	einfo "=== src_compile: Entering src_compile phase ==="
+	python_foreach_impl python_compile
+	einfo "=== src_compile: Finished python_compile calls ==="
+}
+
+src_install() {
+	einfo "=== src_install: Entering src_install phase ==="
+	python_foreach_impl python_install
+	einfo "=== src_install: Finished python_install calls ==="
 }
 
 pkg_postinst() {
