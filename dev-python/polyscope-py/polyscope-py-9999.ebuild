@@ -104,4 +104,3 @@ pkg_postinst() {
 	elog "Documentation: https://polyscope.run"
 }
 
-
