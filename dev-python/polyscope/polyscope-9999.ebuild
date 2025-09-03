@@ -28,7 +28,7 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
-	>=dev-build/cmake-3.15
+	>=dev-util/cmake-3.15
 	virtual/opengl
 	media-libs/glfw
 	test? (
@@ -60,7 +60,7 @@ src_prepare() {
 
 python_configure_all() {
 	# Ensure CMake can find pybind11
-	export CMAKE_PREFIX_PATH="${EPREFIX}/usr/$(get_libdir)/python$(python_get_version --major)/site-packages/pybind11/share/cmake:${CMAKE_PREFIX_PATH}"
+	export CMAKE_PREFIX_PATH="${EPREFIX}/usr/$(get_libdir)/python${EPYTHON##*/}/site-packages/pybind11/share/cmake:${CMAKE_PREFIX_PATH}"
 
 	# Configure build type for better performance
 	export CMAKE_BUILD_TYPE="Release"
