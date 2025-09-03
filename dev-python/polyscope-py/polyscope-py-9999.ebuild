@@ -4,9 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12,13,14} )
-PYTHON_SINGLE_TARGET="python3_13"
-PYTHON_TARGETS="${PYTHON_SINGLE_TARGET}"
-inherit python-single-r1 git-r3
+inherit python-single-r1 git-r3 multibuild
 
 DESCRIPTION="Python bindings for Polyscope, a C++/Python library for visualizing 3D data"
 HOMEPAGE="https://polyscope.run"
