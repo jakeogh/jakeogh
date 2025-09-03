@@ -28,7 +28,7 @@ BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/wheel[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]
-	>=dev-util/cmake-3.15
+	>=dev-bulid/cmake-3.15
 	virtual/opengl
 	media-libs/glfw
 	test? (
