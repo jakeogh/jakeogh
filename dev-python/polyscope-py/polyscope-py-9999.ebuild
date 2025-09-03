@@ -34,7 +34,11 @@ DEPEND="
 
 src_prepare() {
 	default
-	#git-r3_src_prepare
+}
+
+src_configure() {
+	# This phase is now a no-op — we run cmake in python_compile
+	:
 }
 
 python_compile() {
