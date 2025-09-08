@@ -8,12 +8,9 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="insert commas at the end of function defs or calls so black formats them consistently"
-HOMEPAGE="https://github.com/jakeogh/python-black-insert-magic-commma"
-EGIT_REPO_URI="https://github.com/jakeogh/python-black-insert-magic-commma.git"
+HOMEPAGE="https://github.com/jakeogh/python-black-insert-magic-comma"
+EGIT_REPO_URI="https://github.com/jakeogh/python-black-insert-magic-comma.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,8 +25,3 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
