@@ -1,0 +1,154 @@
+# Copyright 2025
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+# Keep your narrow Python set; expand only if/when you test others
+PYTHON_COMPAT=( python3_12 python3_13 )
+
+# Only small additive inherits: add pyproject-r1 for clean PEP517 handling
+inherit cmake git-r3 multilib python-r1 pyproject-r1
+
+DESCRIPTION="Datoviz core + Python wrapper (ctypes) - live ebuild wired to system deps"
+HOMEPAGE="https://github.com/datoviz/datoviz"
+
+EGIT_REPO_URI="https://github.com/datoviz/datoviz.git"
+# Only fetch submodules that are actually used at build/runtime.
+EGIT_SUBMODULES=( data external/imgui )
+
+LICENSE="MIT"
+SLOT="0"
+KEYWORDS=""
+IUSE="test python"
+
+# Keep runtime deps unchanged (your C/C++ flow); add only minimal Python deps.
+# We don't pull in numpy/matplotlib by default to stay minimal/surgical.
+# If you want them, add under python? ( ... ) in RDEPEND later.
+DEPEND="
+"
+RDEPEND="
+"
+BDEPEND="
+	${CMAKE_BDEPEND}
+	git-r3?
+	python? (
+		${PYTHON_DEPS}
+		# Only for building wheels if a pyproject is present
+		dev-python/scikit-build-core[${PYTHON_USEDEP}]
+		dev-python/build[${PYTHON_USEDEP}]
+		dev-python/installer[${PYTHON_USEDEP}]
+	)
+"
+
+RESTRICT="!test? ( test )"
+
+# Enforce interpreter selection only when +python
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+src_prepare() {
+	cmake_src_prepare
+}
+
+src_configure() {
+	local mycmakeargs=(
+		-DCMAKE_INSTALL_LIBDIR=$(get_libdir)
+		# Keep your current flags minimal; add as needed
+	)
+
+	cmake_src_configure
+}
+
+src_compile() {
+	# Build C/C++ targets
+	cmake_src_compile
+
+	# No Python build here; we do it post-install to link against the installed lib if needed.
+}
+
+src_install() {
+	# --- Your existing manual installation kept intact ---
+
+	# Install the main library
+	# Accept both libdatoviz.so and versioned symlinks
+	dolib.so "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so"
+
+	# Install the CLI binary if it exists
+	if [[ -x "${BUILD_DIR}/datoviz" ]]; then
+		dobin "${BUILD_DIR}/datoviz" || die "Failed to install datoviz binary"
+	fi
+
+	# Install headers
+	insinto /usr/include/datoviz
+	doins -r "${S}/include/"* || die "Failed to install headers"
+
+	# --- New: Python bindings (surgical, guarded by USE=python) ---
+	if use python; then
+		python_foreach_impl _dvz_python_install_impl
+	fi
+
+	# Docs if you ship them (keeping minimal to match your prior state)
+	dodoc README.md || die
+}
+
+# Minimal, robust Python installer:
+# - Prefers a pyproject build if detected (cleanest)
+# - Falls back to a simple module install for ctypes-only layouts
+_dvz_python_install_impl() {
+	local -a candidates=(
+		"${S}/python"
+		"${S}/bindings/python"
+		# allow future layouts without churn
+	)
+
+	local pkgroot=""
+	local c
+	for c in "${candidates[@]}"; do
+		if [[ -d "${c}" ]]; then
+			pkgroot="${c}"
+			break
+		fi
+	done
+
+	if [[ -z "${pkgroot}" ]]; then
+		ewarn "Python USE enabled but no python/ or bindings/python/ directory found; skipping Python install."
+		return 0
+	fi
+
+	einfo "Found Python package candidate at: ${pkgroot}"
+
+	# If there's a pyproject.toml, use a proper PEP517 install
+	if [[ -f "${pkgroot}/pyproject.toml" ]]; then
+		pushd "${pkgroot}" >/dev/null || die
+		# Build & install a wheel for the current PYTHON implementation
+		pyproject_wheel
+		pyproject_install
+		popd >/dev/null || die
+		einfo "Installed Python wheel from ${pkgroot}"
+		return 0
+	fi
+
+	# Fallback for pure-ctypes source trees without pyproject:
+	# We accept two common layouts:
+	#   pkgroot/datoviz/__init__.py
+	#   or a flat pkgroot with the top-level 'datoviz' package present
+	local modpath=""
+	if [[ -f "${pkgroot}/datoviz/__init__.py" ]]; then
+		modpath="${pkgroot}/datoviz"
+	elif [[ -d "${pkgroot}/datoviz" ]]; then
+		modpath="${pkgroot}/datoviz"
+	fi
+
+	if [[ -n "${modpath}" ]]; then
+		einfo "Installing pure-Python module from: ${modpath}"
+		python_domodule "${modpath}" || die "python_domodule failed"
+	else
+		ewarn "No pyproject.toml and no datoviz/ package found under ${pkgroot}; skipping Python install."
+	fi
+}
+
+pkg_postinst() {
+	elog "Datoviz built against system libraries; headers in /usr/include/datoviz/"
+	if use python; then
+		elog "Python bindings installed (if present in the repo). Try: python -c 'import datoviz; print(datoviz.__file__)'"
+	fi
+}

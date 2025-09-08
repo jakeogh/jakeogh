@@ -1,0 +1,553 @@
+
+class DvzRecorderCommand(ctypes.Structure):
+    _pack_ = 8
+    _fields_ = [
+        ("type", ctypes.c_int32),
+        ("canvas_id", DvzId),
+        ("object_type", ctypes.c_int32),
+        ("contents", DvzRecorderUnion),
+    ]
+
+
+--
+
+
+class DvzRequestContent(ctypes.Union):
+    _pack_ = 8
+    _fields_ = [
+        ("canvas", DvzRequestCanvas),
+        ("dat", DvzRequestDat),
+        ("tex", DvzRequestTex),
+        ("sampler", DvzRequestSampler),
+        ("shader", DvzRequestShader),
+        ("dat_upload", DvzRequestDatUpload),
+--
+
+Parameters
+----------
+server : DvzServer*
+    placeholder
+canvas_id : DvzId
+    placeholder
+width : int
+    placeholder
+height : int
+    placeholder
+"""
+server_resize.argtypes = [
+    ctypes.POINTER(DvzServer),  # DvzServer* server
+    DvzId,  # DvzId canvas_id
+    ctypes.c_uint32,  # uint32_t width
+    ctypes.c_uint32,  # uint32_t height
+]
+
+
+--
+
+Parameters
+----------
+server : DvzServer*
+    placeholder
+canvas_id : DvzId
+    placeholder
+flags : int
+    placeholder
+
+Returns
+-------
+result : uint8_t*
+"""
+server_grab.argtypes = [
+    ctypes.POINTER(DvzServer),  # DvzServer* server
+    DvzId,  # DvzId canvas_id
+    ctypes.c_int,  # int flags
+]
+server_grab.restype = ndpointer(dtype=np.uint8, ndim=1, ncol=1, flags="C_CONTIGUOUS")
+
+
+--
+
+Parameters
+----------
+app : DvzApp*
+    the app
+canvas_id : DvzId
+    the ID of the canvas
+is_fullscreen : bool
+    True for fullscreen, False for windowed.
+"""
+app_fullscreen.argtypes = [
+    ctypes.POINTER(DvzApp),  # DvzApp* app
+    DvzId,  # DvzId canvas_id
+    ctypes.c_bool,  # bool is_fullscreen
+]
+
+
+# -------------------------------------------------------------------------------------------------
+--
+----------
+arcball : DvzArcball*
+    the arcball
+app : DvzApp*
+    the app
+canvas_id : DvzId
+    the canvas (or figure) ID
+panel : DvzPanel*
+    the panel
+"""
+arcball_gui.argtypes = [
+    ctypes.POINTER(DvzArcball),  # DvzArcball* arcball
+    ctypes.POINTER(DvzApp),  # DvzApp* app
+    DvzId,  # DvzId canvas_id
+    ctypes.POINTER(DvzPanel),  # DvzPanel* panel
+]
+
+
+# -------------------------------------------------------------------------------------------------
+--
+
+Parameters
+----------
+app : DvzApp*
+    the app
+canvas_id : DvzId
+    the canvas ID
+callback : DvzAppGuiCallback
+    the GUI callback
+user_data : np.ndarray
+    the user data
+"""
+app_gui.argtypes = [
+    ctypes.POINTER(DvzApp),  # DvzApp* app
+    DvzId,  # DvzId canvas_id
+    DvzAppGuiCallback,  # DvzAppGuiCallback callback
+    ctypes.c_void_p,  # void* user_data
+]
+
+
+--
+
+
+# -------------------------------------------------------------------------------------------------
+app_screenshot = dvz.dvz_app_screenshot
+app_screenshot.__doc__ = """
+Make a screenshot of a canvas.
+
+Parameters
+----------
+app : DvzApp*
+    the app
+canvas_id : DvzId
+    the ID of the canvas
+filename : str
+    the path to the PNG file with the screenshot
+"""
+app_screenshot.argtypes = [
+    ctypes.POINTER(DvzApp),  # DvzApp* app
+    DvzId,  # DvzId canvas_id
+    CStringBuffer,  # char* filename
+]
+
+
+# -------------------------------------------------------------------------------------------------
+--
+
+Parameters
+----------
+app : DvzApp*
+    the app
+canvas_id : DvzId
+    the ID of the canvas
+count : int
+    number of frames
+seconds : Out[int] (out parameter)
+    (array) a buffer holding at least `count` uint64_t values (seconds)
+nanoseconds : Out[int] (out parameter)
+    (array) a buffer holding at least `count` uint64_t values (nanoseconds)
+"""
+app_timestamps.argtypes = [
+    ctypes.POINTER(DvzApp),  # DvzApp* app
+    DvzId,  # DvzId canvas_id
+    ctypes.c_uint32,  # uint32_t count
+    ndpointer(dtype=np.uint64, ndim=1, ncol=1, flags="C_CONTIGUOUS"),  # out uint64_t* seconds
+    ndpointer(dtype=np.uint64, ndim=1, ncol=1, flags="C_CONTIGUOUS"),  # out uint64_t* nanoseconds
+]
+
+--
+
+Parameters
+----------
+app : DvzApp*
+    the app
+canvas_id : DvzId
+    the canvas id
+x : Out[float] (out parameter)
+    a pointer to the mouse x position
+y : Out[float] (out parameter)
+    a pointer to the mouse y position
+button : Out[DvzMouseButton] (out parameter)
+    a pointer to the pressed button
+"""
+app_mouse.argtypes = [
+    ctypes.POINTER(DvzApp),  # DvzApp* app
+    DvzId,  # DvzId canvas_id
+    Out,  # out double* x
+    Out,  # out double* y
+    Out,  # out DvzMouseButton* button
+]
+
+--
+
+Parameters
+----------
+app : DvzApp*
+    the app
+canvas_id : DvzId
+    the canvas id
+key : Out[DvzKeyCode] (out parameter)
+    a pointer to the last pressed key
+"""
+app_keyboard.argtypes = [
+    ctypes.POINTER(DvzApp),  # DvzApp* app
+    DvzId,  # DvzId canvas_id
+    Out,  # out DvzKeyCode* key
+]
+
+
+# -------------------------------------------------------------------------------------------------
+--
+    ctypes.c_int,  # int flags
+]
+
+
+# -------------------------------------------------------------------------------------------------
+create_canvas = dvz.dvz_create_canvas
+create_canvas.__doc__ = """
+Create a request for canvas creation.
+A canvas is a live window on which to render.
+NOTE: background color not implemented yet
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+width : int
+    the canvas width (in screen pixels)
+height : int
+    the canvas height (in screen pixels)
+background : cvec4
+    the background color
+flags : int
+    the canvas creation flags
+
+Returns
+-------
+result : DvzRequest
+     the request, containing a newly-generated id for the canvas to be created
+"""
+create_canvas.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    ctypes.c_uint32,  # uint32_t width
+    ctypes.c_uint32,  # uint32_t height
+    cvec4,  # cvec4 background
+    ctypes.c_int,  # int flags
+]
+create_canvas.restype = DvzRequest
+
+
+# -------------------------------------------------------------------------------------------------
+set_background = dvz.dvz_set_background
+set_background.__doc__ = """
+Change the background color of the canvas.
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+id : DvzId
+    the canvas id
+background : cvec4
+    the background color
+
+Returns
+-------
+--
+]
+set_background.restype = DvzRequest
+
+
+# -------------------------------------------------------------------------------------------------
+update_canvas = dvz.dvz_update_canvas
+update_canvas.__doc__ = """
+Create a request for a canvas redraw (command buffer submission).
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+id : DvzId
+    the canvas id
+
+Returns
+-------
+result : DvzRequest
+     the request
+"""
+update_canvas.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId id
+]
+update_canvas.restype = DvzRequest
+
+
+# -------------------------------------------------------------------------------------------------
+resize_canvas = dvz.dvz_resize_canvas
+resize_canvas.__doc__ = """
+Create a request to resize an offscreen canvas (regular canvases are resized by the client).
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+canvas : DvzId
+    the canvas id
+width : int
+    the new canvas width
+height : int
+    the new canvas height
+
+Returns
+-------
+result : DvzRequest
+     the request
+"""
+resize_canvas.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId canvas
+    ctypes.c_uint32,  # uint32_t width
+    ctypes.c_uint32,  # uint32_t height
+]
+resize_canvas.restype = DvzRequest
+
+
+# -------------------------------------------------------------------------------------------------
+delete_canvas = dvz.dvz_delete_canvas
+delete_canvas.__doc__ = """
+Create a request for a canvas deletion.
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+id : DvzId
+    the canvas id
+
+Returns
+-------
+result : DvzRequest
+     the request
+"""
+delete_canvas.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId id
+]
+delete_canvas.restype = DvzRequest
+
+
+# -------------------------------------------------------------------------------------------------
+create_dat = dvz.dvz_create_dat
+create_dat.__doc__ = """
+--
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+canvas_id : DvzId
+    the id of the canvas
+
+Returns
+-------
+result : DvzRequest
+     the request
+"""
+record_begin.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId canvas_id
+]
+record_begin.restype = DvzRequest
+
+
+# -------------------------------------------------------------------------------------------------
+--
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+canvas_id : DvzId
+    the id of the canvas
+offset : Tuple[float, float]
+    the viewport offset, in framebuffer pixels
+shape : Tuple[float, float]
+    the viewport size, in framebuffer pixels
+
+--
+result : DvzRequest
+     the request
+"""
+record_viewport.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId canvas_id
+    vec2,  # vec2 offset
+    vec2,  # vec2 shape
+]
+record_viewport.restype = DvzRequest
+
+--
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+canvas_id : DvzId
+    the id of the canvas
+graphics : DvzId
+    the id of the graphics pipe to draw
+first_vertex : int
+    the index of the first vertex to draw
+vertex_count : int
+--
+result : DvzRequest
+     the request
+"""
+record_draw.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId canvas_id
+    DvzId,  # DvzId graphics
+    ctypes.c_uint32,  # uint32_t first_vertex
+    ctypes.c_uint32,  # uint32_t vertex_count
+    ctypes.c_uint32,  # uint32_t first_instance
+    ctypes.c_uint32,  # uint32_t instance_count
+--
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+canvas_id : DvzId
+    the id of the canvas
+graphics : DvzId
+    the id of the graphics pipe to draw
+first_index : int
+    the index of the first index to draw
+vertex_offset : int
+--
+result : DvzRequest
+     the request
+"""
+record_draw_indexed.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId canvas_id
+    DvzId,  # DvzId graphics
+    ctypes.c_uint32,  # uint32_t first_index
+    ctypes.c_uint32,  # uint32_t vertex_offset
+    ctypes.c_uint32,  # uint32_t index_count
+    ctypes.c_uint32,  # uint32_t first_instance
+--
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+canvas_id : DvzId
+    the id of the canvas
+graphics : DvzId
+    the id of the graphics pipe to draw
+indirect : DvzId
+    the id of the dat containing the indirect draw data
+draw_count : int
+--
+result : DvzRequest
+     the request
+"""
+record_draw_indirect.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId canvas_id
+    DvzId,  # DvzId graphics
+    DvzId,  # DvzId indirect
+    ctypes.c_uint32,  # uint32_t draw_count
+]
+record_draw_indirect.restype = DvzRequest
+--
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+canvas_id : DvzId
+    the id of the canvas
+graphics : DvzId
+    the id of the graphics pipe to draw
+indirect : DvzId
+    the id of the dat containing the indirect draw data
+draw_count : int
+--
+result : DvzRequest
+     the request
+"""
+record_draw_indexed_indirect.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId canvas_id
+    DvzId,  # DvzId graphics
+    DvzId,  # DvzId indirect
+    ctypes.c_uint32,  # uint32_t draw_count
+]
+record_draw_indexed_indirect.restype = DvzRequest
+--
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+canvas_id : DvzId
+    the id of the canvas
+graphics_id : DvzId
+    the id of the graphics pipeline
+shader_stages : DvzShaderStageFlags
+    the shader stages
+offset : DvzSize
+--
+result : DvzRequest
+     the request
+"""
+record_push.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId canvas_id
+    DvzId,  # DvzId graphics_id
+    DvzShaderStageFlags,  # DvzShaderStageFlags shader_stages
+    DvzSize,  # DvzSize offset
+    DvzSize,  # DvzSize size
+    ndpointer(dtype=None, ndim=None, flags="C_CONTIGUOUS"),  # void* data
+--
+
+Parameters
+----------
+batch : DvzBatch*
+    the batch
+canvas_id : DvzId
+    the id of the canvas
+
+Returns
+-------
+result : DvzRequest
+     the request
+"""
+record_end.argtypes = [
+    ctypes.POINTER(DvzBatch),  # DvzBatch* batch
+    DvzId,  # DvzId canvas_id
+]
+record_end.restype = DvzRequest
+
+
+# -------------------------------------------------------------------------------------------------
