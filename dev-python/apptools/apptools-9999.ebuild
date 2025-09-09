@@ -27,7 +27,6 @@ RDEPEND="
 	gui? (
 		>=dev-python/pyface-6.0.0[${PYTHON_USEDEP}]
 		>=dev-python/traitsui-6.0.0[${PYTHON_USEDEP}]
-		>=dev-python/envisage-4.0.0[${PYTHON_USEDEP}]
 	)
 	h5? (
 		>=dev-python/numpy-1.6[${PYTHON_USEDEP}]
