@@ -14,7 +14,6 @@ HOMEPAGE="
 	https://github.com/enthought/apptools/
 	https://pypi.org/project/apptools/
 "
-
 EGIT_REPO_URI="https://github.com/enthought/apptools.git"
 
 LICENSE="BSD"
@@ -61,14 +60,12 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 
-	# Install documentation
-	if use doc; then
-		dodoc -r docs/build/html
+	# Install examples if they exist
+	if [[ -d examples ]]; then
+		dodoc -r examples
 	fi
-
-	# Install examples
-	dodoc -r examples
 }
+
 
 pkg_postinst() {
 	elog "AppTools is a collection of Python packages from Enthought."
