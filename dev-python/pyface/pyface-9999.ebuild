@@ -21,7 +21,6 @@ KEYWORDS=""
 
 RDEPEND="
 	>=dev-python/traits-6.2[${PYTHON_USEDEP}]
-	>=dev-python/importlib-resources-1.1.0[${PYTHON_USEDEP}]
 "
 
 BDEPEND="
