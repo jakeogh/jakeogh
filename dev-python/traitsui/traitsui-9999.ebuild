@@ -39,7 +39,7 @@ RDEPEND="
 		dev-python/pygments[${PYTHON_USEDEP}]
 	)
 	pyqt6? (
-		dev-python/PyQt6[${PYTHON_USEDEP}]
+		dev-python/pyqt6[${PYTHON_USEDEP}]
 		dev-python/pygments[${PYTHON_USEDEP}]
 	)
 	wx? (
@@ -63,7 +63,7 @@ BDEPEND="
 			pyside2? ( dev-python/PySide2[${PYTHON_USEDEP}] )
 			pyside6? ( dev-python/PySide6[${PYTHON_USEDEP}] )
 			pyqt5? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
-			pyqt6? ( dev-python/PyQt6[${PYTHON_USEDEP}] )
+			pyqt6? ( dev-python/pyqt6[${PYTHON_USEDEP}] )
 			wx? ( dev-python/wxpython[${PYTHON_USEDEP}] )
 		)
 	)
@@ -124,7 +124,8 @@ pkg_postinst() {
 	elog "Also set QT_API for Qt toolkits:"
 	elog "  export QT_API=pyside6   # for PySide6"
 	elog "  export QT_API=pyside2   # for PySide2"
-	elog "  export QT_API=pyqt6     # for PyQt6"
+	elog "  export QT_API=pyqt6     # for pyqt6"
 	elog "  export QT_API=pyqt5     # for PyQt5"
 }
+
 

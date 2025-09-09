@@ -59,7 +59,7 @@ python_prepare_all() {
 	# pyqtgraph will automatically use any QT bindings it finds,
 	# patch the supported Qt versions to only include the ones we have enabled
 	# This can be simplified to:
-	# `sed 's/QT_LIB = os.getenv('PYQTGRAPH_QT_LIB')/'QT_LIB = "PyQt6"/' -i pyqtgraph/Qt/__init__.py`
+	# `sed 's/QT_LIB = os.getenv('PYQTGRAPH_QT_LIB')/'QT_LIB = "pyqt6"/' -i pyqtgraph/Qt/__init__.py`
 	# when we only need to support pyqt6.
 	local upstream_supported_qt=(
 		PySide{,2,6}
@@ -76,7 +76,7 @@ python_prepare_all() {
 			is_supported_impl=1
 			use_qt=${qt:2}
 			;;
-		PyQt6)
+		pyqt6)
 			is_supported_impl=1
 			use_qt=${qt:2}
 			;;

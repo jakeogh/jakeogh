@@ -135,7 +135,7 @@ python_install_all() {
 pkg_postinst() {
 	elog "VisPy requires at least one OpenGL backend to function properly."
 	elog "Supported backends include:"
-	elog "  - PyQt5/PyQt6 (recommended)"
+	elog "  - PyQt5/pyqt6 (recommended)"
 	elog "  - PySide2/PySide6"
 	elog "  - wxPython"
 	elog "  - pyglet"

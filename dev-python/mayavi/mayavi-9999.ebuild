@@ -33,7 +33,7 @@ RDEPEND="
 		>=dev-python/traitsui-7.0.0[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 		qt6? (
-			dev-python/PyQt6[${PYTHON_USEDEP}]
+			dev-python/pyqt6[${PYTHON_USEDEP}]
 			dev-qt/qtbase:6[gui,widgets]
 			dev-qt/qtsvg:6
 		)
@@ -74,13 +74,13 @@ python_prepare_all() {
 
 	# Ensure Qt6 is used when qt6 USE flag is enabled
 	if use qt6; then
-		sed -i -e "s/PyQt5/PyQt6/g" \
+		sed -i -e "s/PyQt5/pyqt6/g" \
 			   -e "s/PySide2/PySide6/g" \
 			   mayavi/preferences/api.py || die
-		sed -i -e "s/PyQt5/PyQt6/g" \
+		sed -i -e "s/PyQt5/pyqt6/g" \
 			   -e "s/PySide2/PySide6/g" \
 			   mayavi/core/common.py || die
-		# Set Qt API to PyQt6 in environment for build process
+		# Set Qt API to pyqt6 in environment for build process
 		export QT_API="pyqt6"
 	fi
 
@@ -147,7 +147,7 @@ python_install_all() {
 
 pkg_postinst() {
 	if use qt6; then
-		elog "Mayavi has been built with Qt6 support (PyQt6)."
+		elog "Mayavi has been built with Qt6 support (pyqt6)."
 		elog "Make sure to set QT_API=pyqt6 in your environment"
 		elog "or in your Python scripts before importing Mayavi."
 	elif use gui; then

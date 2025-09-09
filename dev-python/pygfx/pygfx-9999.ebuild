@@ -36,7 +36,7 @@ DOCS=( README.md )
 
 pkg_postinst() {
 	elog "pygfx renders to a windowing backend provided by wgpu-py."
-	elog "Install one as needed, e.g.: dev-python/glfw, dev-python/PyQt6,"
+	elog "Install one as needed, e.g.: dev-python/glfw, dev-python/pyqt6,"
 	elog "dev-python/PySide6, dev-python/wxpython, or dev-python/jupyter_rfb."
 }
 
