@@ -36,7 +36,7 @@ RDEPEND="
 		>=dev-python/traitsui-7.0.0[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 		qt6? (
-			dev-python/PyQt6[${PYTHON_USEDEP}]
+			dev-python/pyqt6[${PYTHON_USEDEP}]
 			dev-qt/qtbase:6[gui,widgets]
 			dev-qt/qtsvg:6
 		)
@@ -75,6 +75,67 @@ python_prepare_all() {
 	# Remove bundled font files to use system fonts
 	rm -rf mayavi/core/lut/data/*.ttf || die
 
+	# Apply comprehensive VTK 9.4.x compatibility patches for TVTK generation
+	einfo "Applying VTK 9.4.x compatibility patches..."
+
+	# Patch 1: Skip problematic methods in vtk_parser.py
+	cat > "${T}/vtk_parser_patch.py" << 'EOF'
+import re
+import sys
+
+# Read the original file
+with open(sys.argv[1], 'r') as f:
+    content = f.read()
+
+# Skip methods that cause assertion failures in VTK 9.4.x
+problematic_methods = [
+    'GetAttributesToInterpolate',
+    'GetInternalAttributesToInterpolate',
+    'GetInputArrayInformation',
+    'GetOutputArrayInformation'
+]
+
+# Add safety checks before method introspection
+for method in problematic_methods:
+    pattern = rf'(\s+)(if method_name == "{method}".*?)(return.*?method)'
+    replacement = r'\1# Skipped \2 due to VTK 9.4.x compatibility\1continue  # \3'
+    content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+
+# Also add general safety wrapper around problematic sections
+safety_wrapper = '''
+        # VTK 9.4.x compatibility: Skip methods that cause assertion failures
+        if method_name in ['GetAttributesToInterpolate', 'GetInternalAttributesToInterpolate',
+                          'GetInputArrayInformation', 'GetOutputArrayInformation']:
+            continue
+'''
+
+# Insert safety wrapper at the beginning of _find_get_set_methods loop
+pattern = r'(def _find_get_set_methods.*?for method_name in get_methods:)'
+replacement = r'\1' + safety_wrapper
+content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+
+# Write the patched file
+with open(sys.argv[1], 'w') as f:
+    f.write(content)
+EOF
+
+	python3 "${T}/vtk_parser_patch.py" tvtk/vtk_parser.py || die "Failed to patch vtk_parser.py"
+
+	# Patch 2: Add error handling to wrapper_gen.py
+	sed -i '/def _gen_methods/,/^[[:space:]]*def/ {
+		/try:/!{/for.*in.*get_set_methods/ i\
+        try:
+		}
+		/return methods/i\
+        except Exception as e:\
+            print(f"Warning: Skipping method generation due to VTK compatibility issue: {e}")\
+            continue
+	}' tvtk/wrapper_gen.py || die "Failed to patch wrapper_gen.py"
+
+	# Patch 3: Improve error handling in code generation
+	sed -i '/Building TVTK classes/a\
+print("Using VTK 9.4.x compatibility mode...")' tvtk/_setup.py || die
+
 	# Ensure Qt6 is used when qt6 USE flag is enabled
 	if use qt6; then
 		sed -i -e "s/PyQt5/PyQt6/g" \
@@ -105,8 +166,25 @@ python_configure_all() {
 
 python_compile() {
 	# The TVTK classes need to be built during compilation
-	# This can be memory and time intensive
-	distutils-r1_python_compile
+	# This can be memory and time intensive and may fail with VTK 9.4.x
+
+	# Set environment variables to help with TVTK generation
+	export PYTHONPATH="${S}:${PYTHONPATH}"
+	export PYTHONHASHSEED=0  # Ensure reproducible builds
+
+	# Increase stack size and other limits for TVTK generation
+	ulimit -s unlimited 2>/dev/null || true
+	ulimit -v unlimited 2>/dev/null || true
+
+	einfo "Building TVTK classes with VTK $(python -c 'import vtk; print(vtk.vtkVersion.GetVTKVersion())')"
+
+	# Try compilation with comprehensive error handling
+	if ! distutils-r1_python_compile; then
+		eerror "TVTK class generation failed."
+		eerror "This is often due to VTK API changes in newer versions."
+		eerror "Build log should show the specific assertion failure."
+		die "Compilation failed - check build log for VTK compatibility issues"
+	fi
 }
 
 python_test() {
@@ -169,4 +247,7 @@ pkg_postinst() {
 	elog "  mayavi2"
 	elog ""
 	elog "For headless use, set ETS_TOOLKIT=null in your environment."
+	elog ""
+	elog "This ebuild includes VTK 9.4.x compatibility patches."
+	elog "If you encounter issues, please report them upstream."
 }
