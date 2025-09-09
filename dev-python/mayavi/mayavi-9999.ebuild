@@ -4,16 +4,19 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
-PYTHON_COMPAT=( python3_{12..13} )
+PYTHON_COMPAT=( python3_{12..14} )
 
-inherit distutils-r1
-inherit git-r3
 
+inherit distutils-r1 git-r3
 
 DESCRIPTION="3D scientific data visualization library and application"
-HOMEPAGE="https://github.com/enthought/mayavi"
+HOMEPAGE="
+	https://docs.enthought.com/mayavi/mayavi/
+	https://github.com/enthought/mayavi/
+	https://pypi.org/project/mayavi/
+"
+
 EGIT_REPO_URI="https://github.com/enthought/mayavi.git"
-S="${WORKDIR}/${P}"
 
 LICENSE="BSD LGPL-2"
 SLOT="0"
@@ -28,18 +31,18 @@ RDEPEND="
 	>=dev-python/apptools-4.4.0[${PYTHON_USEDEP}]
 	>=dev-python/envisage-4.2.0[${PYTHON_USEDEP}]
 	>=dev-python/packaging-20.0[${PYTHON_USEDEP}]
-	>=sci-libs/vtk-8.2.0[python,${PYTHON_USEDEP}]
+	>=sci-libs/vtk-8.2.0[python]
 	gui? (
 		>=dev-python/traitsui-7.0.0[${PYTHON_USEDEP}]
 		>=dev-python/pygments-2.0[${PYTHON_USEDEP}]
 		qt6? (
-			dev-python/pyqt6[${PYTHON_USEDEP}]
+			dev-python/PyQt6[${PYTHON_USEDEP}]
 			dev-qt/qtbase:6[gui,widgets]
 			dev-qt/qtsvg:6
 		)
 		!qt6? (
 			|| (
-				dev-python/PyQt5[${PYTHON_USEDEP}]
+				dev-python/pyqt5[${PYTHON_USEDEP}]
 				dev-python/pyside2[${PYTHON_USEDEP}]
 				dev-python/pyside6[${PYTHON_USEDEP}]
 				dev-python/wxpython:4.0[${PYTHON_USEDEP}]
@@ -64,7 +67,7 @@ BDEPEND="
 "
 
 # Required to build the TVTK classes during installation
-BDEPEND+=" >=sci-libs/vtk-8.2.0[python,${PYTHON_USEDEP}]"
+BDEPEND+=" >=sci-libs/vtk-8.2.0[python]"
 
 DOCS=( "README.rst" "CHANGES.txt" "NEWS.txt" )
 
@@ -74,13 +77,13 @@ python_prepare_all() {
 
 	# Ensure Qt6 is used when qt6 USE flag is enabled
 	if use qt6; then
-		sed -i -e "s/PyQt5/pyqt6/g" \
+		sed -i -e "s/PyQt5/PyQt6/g" \
 			   -e "s/PySide2/PySide6/g" \
 			   mayavi/preferences/api.py || die
-		sed -i -e "s/PyQt5/pyqt6/g" \
+		sed -i -e "s/PyQt5/PyQt6/g" \
 			   -e "s/PySide2/PySide6/g" \
 			   mayavi/core/common.py || die
-		# Set Qt API to pyqt6 in environment for build process
+		# Set Qt API to PyQt6 in environment for build process
 		export QT_API="pyqt6"
 	fi
 
@@ -147,7 +150,7 @@ python_install_all() {
 
 pkg_postinst() {
 	if use qt6; then
-		elog "Mayavi has been built with Qt6 support (pyqt6)."
+		elog "Mayavi has been built with Qt6 support (PyQt6)."
 		elog "Make sure to set QT_API=pyqt6 in your environment"
 		elog "or in your Python scripts before importing Mayavi."
 	elif use gui; then
