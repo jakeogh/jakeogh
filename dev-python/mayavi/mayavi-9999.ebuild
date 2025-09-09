@@ -6,7 +6,6 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_13 )
 
-
 inherit distutils-r1 git-r3
 
 DESCRIPTION="3D scientific data visualization library and application"
@@ -131,10 +130,6 @@ EOF
             print(f"Warning: Skipping method generation due to VTK compatibility issue: {e}")\
             continue
 	}' tvtk/wrapper_gen.py || die "Failed to patch wrapper_gen.py"
-
-	# Patch 3: Improve error handling in code generation
-	sed -i '/Building TVTK classes/a\
-print("Using VTK 9.4.x compatibility mode...")' tvtk/_setup.py || die
 
 	# Ensure Qt6 is used when qt6 USE flag is enabled
 	if use qt6; then
