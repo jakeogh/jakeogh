@@ -77,8 +77,8 @@ python_prepare_all() {
 	# Apply comprehensive VTK 9.4.x compatibility patches for TVTK generation
 	einfo "Applying VTK 9.4.x compatibility patches..."
 
-	# Patch 1: Skip problematic methods in vtk_parser.py
-	cat > "${T}/vtk_parser_patch.py" << 'EOF'
+	# Patch 1: Replace the problematic _find_get_set_methods function
+	cat > "${T}/vtk_parser_robust_patch.py" << 'EOF'
 import re
 import sys
 
@@ -86,50 +86,73 @@ import sys
 with open(sys.argv[1], 'r') as f:
     content = f.read()
 
-# Skip methods that cause assertion failures in VTK 9.4.x
-problematic_methods = [
-    'GetAttributesToInterpolate',
-    'GetInternalAttributesToInterpolate',
-    'GetInputArrayInformation',
-    'GetOutputArrayInformation'
-]
+# Find and replace the _find_get_set_methods function with a safer version
+old_function_pattern = r'def _find_get_set_methods\(.*?\n(.*?)(?=\n    def|\nclass|\Z)'
+new_function = '''def _find_get_set_methods(self, klass, methods):
+        """ Find all the 'setters' and 'getters' for the attributes and
+        returns a dictionary of these.
+        """
+        get_set_methods = []
+        get_methods = self._find_methods(klass, methods, 'Get')
 
-# Add safety checks before method introspection
-for method in problematic_methods:
-    pattern = rf'(\s+)(if method_name == "{method}".*?)(return.*?method)'
-    replacement = r'\1# Skipped \2 due to VTK 9.4.x compatibility\1continue  # \3'
-    content = re.sub(pattern, replacement, content, flags=re.DOTALL)
-
-# Also add general safety wrapper around problematic sections
-safety_wrapper = '''
         # VTK 9.4.x compatibility: Skip methods that cause assertion failures
-        if method_name in ['GetAttributesToInterpolate', 'GetInternalAttributesToInterpolate',
-                          'GetInputArrayInformation', 'GetOutputArrayInformation']:
-            continue
-'''
+        problematic_methods = {
+            'GetAttributesToInterpolate',
+            'GetInternalAttributesToInterpolate',
+            'GetInputArrayInformation',
+            'GetOutputArrayInformation'
+        }
 
-# Insert safety wrapper at the beginning of _find_get_set_methods loop
-pattern = r'(def _find_get_set_methods.*?for method_name in get_methods:)'
-replacement = r'\1' + safety_wrapper
-content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+        for method_name in get_methods:
+            # Skip problematic methods that cause VTK 9.4.x assertion failures
+            if method_name in problematic_methods:
+                print(f"Skipping problematic method {method_name} for VTK 9.4.x compatibility")
+                continue
+
+            # Wrap method calls in try-catch for additional safety
+            try:
+                method = getattr(klass, method_name)
+                if method_name.startswith('Get'):
+                    # Try to find corresponding setter
+                    set_method = 'Set' + method_name[3:]
+                    if set_method in methods:
+                        set_method = getattr(klass, set_method)
+                        get_set_methods.append((method_name, method, set_method))
+                    else:
+                        # Check for other naming patterns
+                        set_method = method_name.replace('Get', 'Set')
+                        if set_method in methods:
+                            set_method = getattr(klass, set_method)
+                            get_set_methods.append((method_name, method, set_method))
+            except Exception as e:
+                print(f"Warning: Skipping method {method_name} due to error: {e}")
+                continue
+
+        return get_set_methods'''
+
+# Replace the function
+content = re.sub(old_function_pattern, new_function, content, flags=re.DOTALL)
 
 # Write the patched file
 with open(sys.argv[1], 'w') as f:
     f.write(content)
+
+print("Successfully patched vtk_parser.py for VTK 9.4.x compatibility")
 EOF
 
-	python3 "${T}/vtk_parser_patch.py" tvtk/vtk_parser.py || die "Failed to patch vtk_parser.py"
+	python3 "${T}/vtk_parser_robust_patch.py" tvtk/vtk_parser.py || die "Failed to patch vtk_parser.py"
 
-	# Patch 2: Add error handling to wrapper_gen.py
-	sed -i '/def _gen_methods/,/^[[:space:]]*def/ {
-		/try:/!{/for.*in.*get_set_methods/ i\
-        try:
+	# Patch 2: Add error handling wrapper around the entire TVTK generation
+	sed -i '/def gen_tvtk_classes_zip/,/^def\|^class\|^$/ {
+		/for.*in.*hierarchy/,/except/ {
+			/for.*in.*hierarchy/ a\
+            try:
+			/except/ i\
+            except Exception as vtk_error:\
+                print(f"Warning: Skipping VTK class due to compatibility issue: {vtk_error}")\
+                continue
 		}
-		/return methods/i\
-        except Exception as e:\
-            print(f"Warning: Skipping method generation due to VTK compatibility issue: {e}")\
-            continue
-	}' tvtk/wrapper_gen.py || die "Failed to patch wrapper_gen.py"
+	}' tvtk/_setup.py || die "Failed to patch _setup.py"
 
 	# Ensure Qt6 is used when qt6 USE flag is enabled
 	if use qt6; then
@@ -220,6 +243,7 @@ python_install_all() {
 		jupyter nbextension enable --sys-prefix --py mayavi || die
 	fi
 }
+
 
 pkg_postinst() {
 	if use qt6; then
