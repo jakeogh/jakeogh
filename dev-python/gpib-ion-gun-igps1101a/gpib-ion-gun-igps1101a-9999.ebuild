@@ -8,18 +8,14 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="read stats from the Kimball Physics igps-1101a ion gun power supply"
-HOMEPAGE="https://github.com/jakeogh/power-supply-igps1101a-tool"
-EGIT_REPO_URI="https://github.com/jakeogh/power-supply-igps1101a-tool.git"
+HOMEPAGE="https://github.com/jakeogh/gpib-ion-gun-igps1101a"
+EGIT_REPO_URI="https://github.com/jakeogh/gpib-ion-gun-igps1101a.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
@@ -29,7 +25,3 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
