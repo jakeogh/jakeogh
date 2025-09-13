@@ -3,7 +3,7 @@
 
 EAPI=8
 
-# llvmlite uses setuptools (PEP 517 backend) and builds a C++ core via CMake/ninja.
+# PEP 517 backend is setuptools; llvmlite builds a C++ core via cmake/ninja.
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 
@@ -16,44 +16,53 @@ EGIT_BRANCH="main"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS=""  # live
-IUSE="test"
+KEYWORDS=""
 
-# Upstream pins: as of 0.45+, requires LLVM 20.x.x.
-# We export LLVM_CONFIG pointing at slot 20.
-# Build pulls in cmake/ninja via ffi/build.py.
+# Pick exactly one LLVM slot. Default to 18 since that's what you have.
+IUSE="+llvm_slot_18 llvm_slot_20 test"
+REQUIRED_USE="^^ ( llvm_slot_18 llvm_slot_20 )"
+
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-build/cmake
 	dev-build/ninja
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
-# llvmlite links against LLVM; require slot 20 explicitly.
+# Conditionally depend on the slotted LLVM; no use() at global scope.
 DEPEND="
-	sys-devel/llvm:20
+	llvm_slot_18? ( sys-devel/llvm:18 )
+	llvm_slot_20? ( sys-devel/llvm:20 )
 "
-RDEPEND="
-	${DEPEND}
-"
+RDEPEND="${DEPEND}"
 
 RESTRICT="!test? ( test )"
 
-# If upstream adds/changes src layout, distutils-r1 will still handle it.
-
-# Helper to ensure we always use the right llvm-config for slot 20.
+# Pick the llvm-config path for the selected slot (phase-scope only).
 _llvmlite_set_llvm_config() {
-	export LLVM_CONFIG=${LLVM_CONFIG:-/usr/lib/llvm/20/bin/llvm-config}
-	if [[ ! -x ${LLVM_CONFIG} ]]; then
-		# Fallback to slotted binary name if path layout changes.
-		if type -P llvm-config-20 >/dev/null ; then
-			export LLVM_CONFIG=$(type -P llvm-config-20)
-		fi
+	local slot path
+	if use llvm_slot_20 ; then
+		slot=20
+	else
+		slot=18
 	fi
-	[[ -x ${LLVM_CONFIG} ]] || die "Could not find llvm-config for slot 20; is sys-devel/llvm:20 installed?"
+
+	path=/usr/lib/llvm/${slot}/bin/llvm-config
+	if [[ ! -x ${path} ]] && type -P llvm-config-${slot} >/dev/null ; then
+		path=$(type -P llvm-config-${slot})
+	fi
+	[[ -x ${path} ]] || die "Could not find llvm-config for slot ${slot}"
+	export LLVM_CONFIG=${path}
+	export LLVMLITE_SELECTED_SLOT=${slot}
 }
 
 pkg_pretend() {
-	# Make failures clearer before build.
-	has_version "sys-devel/llvm:20" || die "llvmlite-9999 requires sys-devel/llvm:20 per upstream compatibility."
+	if use llvm_slot_18 ; then
+		elog "Building against LLVM slot 18. Upstream 'main' may require LLVM 20 on some commits."
+		elog "If you hit version-check failures, install sys-devel/llvm:20 and enable USE=llvm_slot_20."
+	fi
+	if use llvm_slot_20 ; then
+		elog "Building against LLVM slot 20 (recommended by upstream main)."
+	fi
 }
 
 src_prepare() {
@@ -62,13 +71,12 @@ src_prepare() {
 
 python_compile() {
 	_llvmlite_set_llvm_config
+	# llvmlite's build system respects $LLVM_CONFIG
 	distutils-r1_python_compile
 }
 
 python_test() {
 	_llvmlite_set_llvm_config
-	# Upstream uses pytest; keep it simple for live builds.
-	# Disable slow/network tests if any appear.
 	epytest -k "not slow"
 }
 
@@ -78,6 +86,7 @@ python_install() {
 }
 
 pkg_postinst() {
-	elog "llvmlite was built against LLVM slot 20 using: ${LLVM_CONFIG:-/usr/lib/llvm/20/bin/llvm-config}"
-	elog "If you switch slots, rebuild llvmlite accordingly."
+	elog "llvmlite-9999 was built using: ${LLVM_CONFIG} (slot ${LLVMLITE_SELECTED_SLOT})"
+	elog "Switch slots by toggling USE flags: +llvm_slot_18 or +llvm_slot_20 (mutually exclusive)."
 }
+
