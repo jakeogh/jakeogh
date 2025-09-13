@@ -86,7 +86,7 @@ _llvmlite_set_llvm_config() {
 pkg_pretend() {
 	elog "llvmlite-9999 auto-selects newest installed LLVM slot (21→20→19→18)."
 	elog "Override with:  env LLVMLITE_LLVM_SLOT=21   or   env LLVM_CONFIG=/path/to/llvm-config"
-	elog "This ebuild tries shared LLVM linking first, falling back to static if needed."
+	elog "This ebuild forces shared LLVM linking to avoid static library complications."
 }
 
 src_prepare() {
@@ -153,8 +153,24 @@ python_compile() {
 	if [[ -f "$llvm_libdir/libLLVM.so" ]] || [[ -f "$llvm_libdir/libLLVM-$($LLVM_CONFIG --version | cut -d. -f1).so" ]]; then
 		einfo "Found shared LLVM library, using shared linking"
 	else
-		ewarn "No shared LLVM library found, build may fail without static-libs"
+		ewarn "No shared LLVM library found in $llvm_libdir"
+		ls -la "$llvm_libdir"/libLLVM* || true
 	fi
+
+	# CRITICAL: Force LLVMLITE_SHARED=ON to use shared LLVM library
+	export LLVMLITE_SHARED=1
+
+	# Set library path explicitly for CMake to find LLVM libs
+	export CMAKE_PREFIX_PATH="$($LLVM_CONFIG --prefix):${CMAKE_PREFIX_PATH}"
+	export LLVM_DIR="$($LLVM_CONFIG --cmakedir)"
+
+	# Force the library directory in case llvm-config reports wrong path
+	export LIBRARY_PATH="$llvm_libdir:${LIBRARY_PATH}"
+	export LD_LIBRARY_PATH="$llvm_libdir:${LD_LIBRARY_PATH}"
+
+	einfo "Set LLVMLITE_SHARED=1 to force shared linking"
+	einfo "Set LLVM_DIR=$LLVM_DIR"
+	einfo "Set CMAKE_PREFIX_PATH=$CMAKE_PREFIX_PATH"
 
 	distutils-r1_python_compile
 }
