@@ -92,19 +92,53 @@ pkg_pretend() {
 src_prepare() {
 	default
 
-	# Force shared library linking by modifying build.py to use --link-shared
+	# More aggressive shared library linking patches
 	if [[ -f ffi/build.py ]]; then
-		# Replace --libs with --link-shared --libs to force shared LLVM linking
-		sed -i "s/'--libs'/'--link-shared', '--libs'/g" ffi/build.py || die "Failed to patch ffi/build.py for shared linking"
-		sed -i 's/"--libs"/"--link-shared", "--libs"/g' ffi/build.py || die "Failed to patch ffi/build.py for shared linking"
+		einfo "Patching ffi/build.py for shared LLVM linking..."
 
-		# Also force shared libs in CMake if possible
-		if [[ -f ffi/CMakeLists.txt ]]; then
-			if ! grep -q 'LLVM_LINK_LLVM_DYLIB' ffi/CMakeLists.txt; then
-				sed -i '1i set(LLVM_LINK_LLVM_DYLIB ON)' ffi/CMakeLists.txt \
-					|| die "Failed to inject LLVM_LINK_LLVM_DYLIB into ffi/CMakeLists.txt"
-			fi
-		fi
+		# Show what we're patching
+		grep -n "libs" ffi/build.py || true
+
+		# Replace ALL occurrences of --libs with --link-shared --libs
+		sed -i "s/'--libs'/'--link-shared', '--libs'/g" ffi/build.py || die "Failed to patch ffi/build.py"
+		sed -i 's/"--libs"/"--link-shared", "--libs"/g' ffi/build.py || die "Failed to patch ffi/build.py"
+
+		# Also try to catch any other patterns
+		sed -i 's/\[.*--libs.*\]/["--link-shared", "--libs", "all"]/g' ffi/build.py || die "Failed to patch ffi/build.py patterns"
+
+		# Show what we changed
+		einfo "After patching:"
+		grep -n "libs" ffi/build.py || true
+	fi
+
+	# Force CMake to use shared libraries and correct library path
+	if [[ -f ffi/CMakeLists.txt ]]; then
+		einfo "Patching ffi/CMakeLists.txt for shared LLVM linking..."
+
+		# Create a completely new CMakeLists.txt that forces shared linking
+		cp ffi/CMakeLists.txt ffi/CMakeLists.txt.orig || die
+
+		cat > ffi/CMakeLists.txt.new <<-'EOF' || die
+			# Force shared LLVM linking
+			set(LLVM_LINK_LLVM_DYLIB ON)
+			set(LLVM_USE_SPLIT_DWARF OFF)
+
+			# Override library search to use monolithic LLVM
+			macro(llvm_expand_dependencies out_libs)
+			    set(${out_libs} LLVM)
+			endmacro()
+
+			# Force use of shared library
+			function(llvm_map_components_to_libnames out_libs)
+			    set(${out_libs} LLVM PARENT_SCOPE)
+			endfunction()
+
+		EOF
+		cat ffi/CMakeLists.txt.orig >> ffi/CMakeLists.txt.new || die
+		mv ffi/CMakeLists.txt.new ffi/CMakeLists.txt || die
+
+		# Also patch any direct library specifications
+		sed -i 's/\${LLVM_AVAILABLE_LIBS}/LLVM/g' ffi/CMakeLists.txt || true
 	fi
 }
 
@@ -124,4 +158,3 @@ python_compile() {
 
 	distutils-r1_python_compile
 }
-
