@@ -14,7 +14,7 @@ KEYWORDS=""
 PROPERTIES="live"
 
 # Default-on native tuning; optional static MUSL build
-IUSE="+native static-musl"
+IUSE="native static-musl"
 
 # Needs a recent Zig
 BDEPEND=">=dev-lang/zig-0.14.0"
