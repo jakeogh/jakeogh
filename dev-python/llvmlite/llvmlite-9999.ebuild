@@ -29,17 +29,17 @@ BDEPEND="
 "
 
 # Accept LLVM from either new (llvm-core/*) or old (sys-devel/*) categories; pick newest slot at build time.
-# CRITICAL: Add static-libs USE flag dependency
+# Try shared libraries first to avoid static-libs complications
 DEPEND="
 	|| (
-		llvm-core/llvm:21[static-libs]
-		llvm-core/llvm:20[static-libs]
-		llvm-core/llvm:19[static-libs]
-		llvm-core/llvm:18[static-libs]
-		sys-devel/llvm:21[static-libs]
-		sys-devel/llvm:20[static-libs]
-		sys-devel/llvm:19[static-libs]
-		sys-devel/llvm:18[static-libs]
+		llvm-core/llvm:21
+		llvm-core/llvm:20
+		llvm-core/llvm:19
+		llvm-core/llvm:18
+		sys-devel/llvm:21
+		sys-devel/llvm:20
+		sys-devel/llvm:19
+		sys-devel/llvm:18
 	)
 "
 RDEPEND="${DEPEND}"
@@ -67,7 +67,7 @@ _llvmlite_set_llvm_config() {
 
 	# Auto-pick newest installed slot (21 → 20 → 19 → 18)
 	for slot in 21 20 19 18; do
-		if has_version "llvm-core/llvm:${slot}[static-libs]" || has_version "sys-devel/llvm:${slot}[static-libs]"; then
+		if has_version "llvm-core/llvm:${slot}" || has_version "sys-devel/llvm:${slot}"; then
 			path=/usr/lib/llvm/${slot}/bin/llvm-config
 			if [[ ! -x ${path} ]] && type -P llvm-config-${slot} >/dev/null; then
 				path=$(type -P llvm-config-${slot})
@@ -80,20 +80,32 @@ _llvmlite_set_llvm_config() {
 		fi
 	done
 
-	die "Could not find a usable llvm-config with static-libs (tried slots 21,20,19,18). Install llvm-core/llvm[static-libs] or sys-devel/llvm[static-libs] in one of those slots."
+	die "Could not find a usable llvm-config (tried slots 21,20,19,18). Install llvm-core/llvm or sys-devel/llvm in one of those slots."
 }
 
 pkg_pretend() {
-	elog "llvmlite-9999 auto-selects newest installed LLVM slot (21→20→19→18) with static-libs."
+	elog "llvmlite-9999 auto-selects newest installed LLVM slot (21→20→19→18)."
 	elog "Override with:  env LLVMLITE_LLVM_SLOT=21   or   env LLVM_CONFIG=/path/to/llvm-config"
-	elog "This ebuild requires LLVM with static-libs USE flag for proper linking."
+	elog "This ebuild tries shared LLVM linking first, falling back to static if needed."
 }
 
 src_prepare() {
 	default
 
-	# Remove the shared linking modifications since we need static libs
-	# The original build system should work correctly with static libraries
+	# Force shared library linking by modifying build.py to use --link-shared
+	if [[ -f ffi/build.py ]]; then
+		# Replace --libs with --link-shared --libs to force shared LLVM linking
+		sed -i "s/'--libs'/'--link-shared', '--libs'/g" ffi/build.py || die "Failed to patch ffi/build.py for shared linking"
+		sed -i 's/"--libs"/"--link-shared", "--libs"/g' ffi/build.py || die "Failed to patch ffi/build.py for shared linking"
+
+		# Also force shared libs in CMake if possible
+		if [[ -f ffi/CMakeLists.txt ]]; then
+			if ! grep -q 'LLVM_LINK_LLVM_DYLIB' ffi/CMakeLists.txt; then
+				sed -i '1i set(LLVM_LINK_LLVM_DYLIB ON)' ffi/CMakeLists.txt \
+					|| die "Failed to inject LLVM_LINK_LLVM_DYLIB into ffi/CMakeLists.txt"
+			fi
+		fi
+	fi
 }
 
 python_compile() {
