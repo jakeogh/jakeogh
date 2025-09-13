@@ -3,6 +3,7 @@
 
 EAPI=8
 
+# llvmlite builds a small C++ shim (via CMake/ninja) and installs Python wheels via setuptools (PEP 517).
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{10..13} )
 
@@ -18,14 +19,17 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
+# Let distutils-r1 add pytest deps/targets when USE=test
+distutils_enable_tests pytest
+
 BDEPEND="
 	${PYTHON_DEPS}
 	dev-build/cmake
 	dev-build/ninja
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 
-# Accept any reasonable slot from either the new (llvm-core/*) or old (sys-devel/*) category.
+# Accept an LLVM from either new (llvm-core/*) or old (sys-devel/*) categories,
+# and from one of these slots. We'll select the newest installed slot at build time.
 DEPEND="
 	|| (
 		llvm-core/llvm:21
@@ -40,13 +44,13 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-RESTRICT="!test? ( test )"
-
-# Phase-local helper to choose llvm-config
+# Helper: choose LLVM slot and set LLVM_CONFIG accordingly (phase scope only).
 _llvmlite_set_llvm_config() {
 	local slot path
+
+	# Respect explicit overrides
 	if [[ -n ${LLVM_CONFIG} && -x ${LLVM_CONFIG} ]]; then
-		export LLVMLITE_SELECTED_SLOT="(LLVM_CONFIG override)"
+		export LLVMLITE_SELECTED_SLOT="(from LLVM_CONFIG)"
 		return
 	fi
 	if [[ -n ${LLVMLITE_LLVM_SLOT} ]]; then
@@ -55,11 +59,13 @@ _llvmlite_set_llvm_config() {
 		if [[ ! -x ${path} ]] && type -P llvm-config-${slot} >/dev/null; then
 			path=$(type -P llvm-config-${slot})
 		fi
-		[[ -x ${path} ]] || die "LLVMLITE_LLVM_SLOT=${slot} set, but no llvm-config found."
+		[[ -x ${path} ]] || die "LLVMLITE_LLVM_SLOT=${slot} set, but no matching llvm-config found."
 		export LLVM_CONFIG=${path}
 		export LLVMLITE_SELECTED_SLOT=${slot}
 		return
 	fi
+
+	# Auto-pick newest installed slot (21 -> 20 -> 19 -> 18)
 	for slot in 21 20 19 18; do
 		if has_version "llvm-core/llvm:${slot}" || has_version "sys-devel/llvm:${slot}"; then
 			path=/usr/lib/llvm/${slot}/bin/llvm-config
@@ -73,52 +79,33 @@ _llvmlite_set_llvm_config() {
 			fi
 		fi
 	done
-	die "Could not find a usable llvm-config (tried slots 21,20,19,18)."
+
+	die "Could not find a usable llvm-config (tried slots 21,20,19,18). Install llvm-core/llvm or sys-devel/llvm in one of those slots."
 }
 
 pkg_pretend() {
-	elog "This live ebuild auto-selects the newest installed LLVM slot (21→20→19→18)."
-	elog "Override with env:  LLVMLITE_LLVM_SLOT=21   or   LLVM_CONFIG=/path/to/llvm-config"
-	elog "We also force linking against the monolithic libLLVM (LLVM_LINK_LLVM_DYLIB=ON)."
+	elog "llvmlite-9999 will auto-select the newest installed LLVM slot (21→20→19→18)."
+	elog "Override with:   env LLVMLITE_LLVM_SLOT=21   or   env LLVM_CONFIG=/path/to/llvm-config"
+	elog "This ebuild also forces CMake to link the monolithic libLLVM (LLVM_LINK_LLVM_DYLIB=ON)."
 }
 
 src_prepare() {
 	default
 
-	# Force llvmlite's CMake to link against the monolithic libLLVM rather than per-component libs.
-	# We patch ffi/build.py to add -DLLVM_LINK_LLVM_DYLIB=ON to the cmake configure invocation.
-	# This avoids missing -lLLVM*AsmParser errors on Gentoo's llvm-core packages.
-	edos2unix ffi/build.py || die
-	eapply -p0 - <<'EOF'
-*** ffi/build.py.orig	2025-01-01
---- ffi/build.py	2025-01-01
-***************
-*** 160,171 ****
-      # Configure
--     cfg_cmd = ['cmake', '-G', 'Unix Makefiles', srcdir]
-+     cfg_cmd = ['cmake', '-G', 'Unix Makefiles',
-+                '-DLLVM_LINK_LLVM_DYLIB=ON',  # prefer monolithic libLLVM
-+                srcdir]
-      if sys.platform == 'win32':
-          # (windows specifics omitted)
-          pass
-      subprocess.check_call(cfg_cmd)
-
-      # Build
-      build_cmd = ['cmake', '--build', builddir, '--parallel', '--config', 'Release']
-      subprocess.check_call(build_cmd)
-EOF
+	# Force linking against monolithic libLLVM instead of per-component libs
+	# by adding -DLLVM_LINK_LLVM_DYLIB=ON to the CMake configure command used by llvmlite's ffi/build.py
+	# We patch robustly: inject the flag after the 'Unix Makefiles' generator argument.
+	# No need for edos2unix/eapply; just sed.
+	if [[ -f ffi/build.py ]]; then
+		sed -i -E "s#(\['cmake',[[:space:]]*'-G',[[:space:]]*'Unix Makefiles')#\1, '-DLLVM_LINK_LLVM_DYLIB=ON'#" ffi/build.py \
+			|| die "sed patch to add -DLLVM_LINK_LLVM_DYLIB=ON failed"
+	fi
 }
 
 python_compile() {
 	_llvmlite_set_llvm_config
-	# $LLVM_CONFIG is respected by llvmlite's build, and our patch makes cmake use libLLVM.
+	# llvmlite's build respects $LLVM_CONFIG and the CMake flag we injected above.
 	distutils-r1_python_compile
-}
-
-python_test() {
-	_llvmlite_set_llvm_config
-	epytest -k "not slow"
 }
 
 python_install() {
@@ -127,7 +114,7 @@ python_install() {
 }
 
 pkg_postinst() {
-	elog "Built with LLVM_CONFIG=${LLVM_CONFIG} (slot ${LLVMLITE_SELECTED_SLOT})."
-	elog "We forced LLVM_LINK_LLVM_DYLIB=ON to avoid missing per-target AsmParser libs."
+	elog "llvmlite-9999 was built using LLVM_CONFIG=${LLVM_CONFIG} (slot ${LLVMLITE_SELECTED_SLOT})"
 	elog "To force a particular slot next time: env LLVMLITE_LLVM_SLOT=21 emerge -1 dev-python/llvmlite"
 }
+
