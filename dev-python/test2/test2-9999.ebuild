@@ -8,12 +8,9 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
-DESCRIPTION="test1"
-HOMEPAGE="https://github.com/jakeogh/test1"
-EGIT_REPO_URI="https://github.com/jakeogh/test1.git"
+DESCRIPTION="test2"
+HOMEPAGE="https://github.com/jakeogh/test2"
+EGIT_REPO_URI="https://github.com/jakeogh/test2.git"
 
 LICENSE="BSD"
 SLOT="0"
