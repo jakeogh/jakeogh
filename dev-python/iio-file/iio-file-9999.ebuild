@@ -8,17 +8,14 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="parses binary fies with a fixed record size"
-HOMEPAGE="https://github.com/jakeogh/iio-bitstream-parser"
-EGIT_REPO_URI="https://github.com/jakeogh/iio-bitstream-parser.git"
+HOMEPAGE="https://github.com/jakeogh/iio-file"
+EGIT_REPO_URI="https://github.com/jakeogh/iio-file.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
@@ -28,8 +25,3 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
