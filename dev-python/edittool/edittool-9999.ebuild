@@ -43,6 +43,7 @@ RDEPEND="
 	dev-python/walkup-until-found[${PYTHON_USEDEP}]
 	dev-python/ipdb[${PYTHON_USEDEP}]
 	dev-vcs/git-filter-repo[${PYTHON_USEDEP}]
+	dev-python/pyupgrade[${PYTHON_USEDEP}]
 	dev-lua/luarocks
 	dev-util/splint
 	app-misc/commandlock
