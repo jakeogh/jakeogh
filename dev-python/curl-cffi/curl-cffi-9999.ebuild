@@ -18,7 +18,7 @@ KEYWORDS=""
 RDEPEND="
 	>=dev-python/cffi-1.12.0[${PYTHON_USEDEP}]
 	>=dev-python/certifi-2024.0.0[${PYTHON_USEDEP}]
-	net-misc/curl-impersonate-chrome
+	net-misc/curl-impersonate
 "
 
 DEPEND="
