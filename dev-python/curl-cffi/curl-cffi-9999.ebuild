@@ -20,7 +20,6 @@ RDEPEND="
 	>=dev-python/certifi-2024.0.0[${PYTHON_USEDEP}]
 	net-misc/curl-impersonate
 "
-
 DEPEND="
 	${RDEPEND}
 "
