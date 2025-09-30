@@ -5,7 +5,6 @@ EAPI=8
 
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
-
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python binding for curl-impersonate via cffi"
@@ -19,6 +18,7 @@ KEYWORDS=""
 RDEPEND="
 	>=dev-python/cffi-1.12.0[${PYTHON_USEDEP}]
 	>=dev-python/certifi-2024.0.0[${PYTHON_USEDEP}]
+	net-misc/curl-impersonate-chrome
 "
 
 DEPEND="
@@ -30,22 +30,29 @@ BDEPEND="
 	dev-python/wheel[${PYTHON_USEDEP}]
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-use-system-libs.patch"
+)
+
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# Remove bundled curl-impersonate libraries if present
-	rm -rf curl_cffi/.libs* 2>/dev/null || true
+	# Point to system libcurl-impersonate instead of downloading
+	export CURL_CFFI_USE_SYSTEM_LIBCURL=1
+	export CURL_CFFI_LIBCURL_DIR="/usr/$(get_libdir)"
 
 	distutils-r1_python_prepare_all
+}
+
+python_compile() {
+	# Use system libcurl-impersonate
+	export CURL_CFFI_USE_SYSTEM_LIBCURL=1
+	export CURL_CFFI_LIBCURL_DIR="/usr/$(get_libdir)"
+
+	distutils-r1_python_compile
 }
 
 python_test() {
 	# Skip tests that require network access
 	epytest -m "not online" || die "Tests failed with ${EPYTHON}"
-}
-
-pkg_postinst() {
-	elog "curl_cffi requires curl-impersonate libraries to function properly."
-	elog "You may need to install curl-impersonate separately or use the"
-	elog "bundled libraries that come with the Python package."
 }
