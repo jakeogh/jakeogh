@@ -23,6 +23,5 @@ RDEPEND=">=net-misc/curl-impersonate-0.6.0"
 BDEPEND="dev-python/cffi"
 
 PATCHES=(
-	"${FILESDIR}/no-download-0.7.patch"
 	"${FILESDIR}/no-download_setup-0.7.patch"
 )
