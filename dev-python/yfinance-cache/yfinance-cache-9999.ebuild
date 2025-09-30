@@ -17,4 +17,5 @@ KEYWORDS=""
 
 RDEPEND="
     dev-python/pulp[${PYTHON_USEDEP}]
+    dev-python/exchange-calendars[${PYTHON_USEDEP}]
 "
