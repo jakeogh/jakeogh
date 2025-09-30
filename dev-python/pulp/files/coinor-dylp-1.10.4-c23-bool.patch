@@ -1,0 +1,15 @@
+--- a/DyLP/src/DylpStdLib/dylib_std.h
++++ b/DyLP/src/DylpStdLib/dylib_std.h
+@@ -64,7 +64,11 @@
+ #   define FALSE 0
+ # endif
+ # ifndef bool
+-  typedef BOOL bool ;
++#   if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 202311L
++     /* C23 and later have bool as a keyword */
++#   else
++     typedef BOOL bool ;
++#   endif
+ # endif
+ # ifndef true
+ #   define true TRUE
