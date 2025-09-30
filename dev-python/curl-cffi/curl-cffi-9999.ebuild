@@ -21,6 +21,7 @@ RDEPEND="
 	net-misc/curl-impersonate
 "
 
+
 DEPEND="
 	${RDEPEND}
 "
