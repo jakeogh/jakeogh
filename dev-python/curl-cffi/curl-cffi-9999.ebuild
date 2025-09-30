@@ -167,13 +167,12 @@ python_prepare_all() {
 	    include_dirs=[
 	        str(root_dir / "include"),
 	        str(root_dir / "ffi"),
-	        str(Path(arch["libdir"]) / "include"),
 	    ],
 	    sources=[
 	        str(root_dir / "ffi/shim.c"),
 	    ],
 	    extra_compile_args=(
-	        ["-Wno-implicit-function-declaration"] if system == "Darwin" else []
+	        ["-Wno-implicit-function-declaration"]
 	    ),
 	    extra_link_args=(["-lstdc++"] if system != "Windows" else []),
 	)
