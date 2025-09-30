@@ -16,27 +16,12 @@ EGIT_REPO_URI="https://github.com/niksite/url-normalize.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
-BDEPEND="dev-python/pyproject2setuppy"
+BDEPEND=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
-	dev-python/colorama[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
-#	test? ( dev-python/nose[${PYTHON_USEDEP}]
-#		>=dev-python/toolz-0.8[${PYTHON_USEDEP}] )"
 
-#python_compile() {
-#	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-#	distutils-r1_python_compile
-#}
-
-#python_test() {
-#	pushd "${BUILD_DIR}"/lib/ > /dev/null || die
-#	PYTHONPATH=.:${PN} nosetests --with-doctest ${PN} || die "tests failed under ${EPYTHON}"
-#	popd > /dev/null || die
-#}
