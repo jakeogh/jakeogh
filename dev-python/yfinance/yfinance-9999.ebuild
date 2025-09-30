@@ -30,6 +30,7 @@ RDEPEND="
 	dev-python/requests-cache[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
 	dev-python/curl-cffi[${PYTHON_USEDEP}]
+	dev-python/websockets[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
