@@ -29,6 +29,7 @@ RDEPEND="
 	dev-python/peewee[${PYTHON_USEDEP}]
 	dev-python/requests-cache[${PYTHON_USEDEP}]
 	dev-python/scipy[${PYTHON_USEDEP}]
+	dev-python/curl-cffi[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
