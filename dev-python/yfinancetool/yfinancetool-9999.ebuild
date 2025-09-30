@@ -25,6 +25,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/yfinance[${PYTHON_USEDEP}]
 	dev-python/yfinance-cache[${PYTHON_USEDEP}]
+	dev-python/requests-ratelimiter[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
