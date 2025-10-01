@@ -8,12 +8,10 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="binary-recordset instance for iio files"
-HOMEPAGE="https://github.com/jakeogh/iiofile"
-EGIT_REPO_URI="https://github.com/jakeogh/iiofile.git"
+HOMEPAGE="https://github.com/jakeogh/iioparser"
+EGIT_REPO_URI="https://github.com/jakeogh/iioparser.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -24,12 +22,9 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
+	dev-python/binary-recordset[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
 
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
