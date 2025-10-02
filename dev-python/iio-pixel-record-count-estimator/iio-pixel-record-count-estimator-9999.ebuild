@@ -8,28 +8,13 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
-DESCRIPTION="estimates the number of records per pixel number"
+DESCRIPTION="Estimates the number of records per pixel number"
 HOMEPAGE="https://github.com/jakeogh/iio-pixel-record-count-estimator"
 EGIT_REPO_URI="https://github.com/jakeogh/iio-pixel-record-count-estimator.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
-
-RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-"
-
+RDEPEND="dev-lang/zig"
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
