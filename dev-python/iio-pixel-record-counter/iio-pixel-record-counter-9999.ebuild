@@ -8,28 +8,31 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="counts the number of records per pixel number"
 HOMEPAGE="https://github.com/jakeogh/iio-pixel-record-counter"
 EGIT_REPO_URI="https://github.com/jakeogh/iio-pixel-record-counter.git"
-
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
-
-RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-"
-
+RDEPEND="dev-lang/zig"
 DEPEND="${RDEPEND}"
 
+src_install() {
+	distutils-r1_src_install
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+	# Convert package name to Python module name (dash to underscore)
+	local module_name="${PN//-/_}"
+
+	# Find the CLI binary in any Python version's site-packages
+	local cli_path=$(find "${ED}" -path "*/${module_name}/bin/${PN}" -print -quit)
+
+	if [[ -n "${cli_path}" ]]; then
+		# Remove ${ED} prefix to get the installed path
+		local installed_path="${cli_path#${ED}}"
+		# Create relative symlink from /usr/bin
+		dosym "../${installed_path#/usr/}" "/usr/bin/${PN}"
+	else
+		die "CLI binary not found"
+	fi
+}
