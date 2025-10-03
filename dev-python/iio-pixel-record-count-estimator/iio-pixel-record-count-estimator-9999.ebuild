@@ -16,10 +16,3 @@ KEYWORDS=""
 RDEPEND="dev-lang/zig"
 DEPEND="${RDEPEND}"
 
-src_install() {
-	# Install Python package
-	distutils-r1_src_install
-
-	# Install CLI binary (built by setup.py in bin/ directory)
-	newbin bin/iio_pixel_record_count_estimator_cli iio-pixel-record-count-estimator
-}
