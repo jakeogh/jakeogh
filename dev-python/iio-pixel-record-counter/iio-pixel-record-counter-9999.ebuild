@@ -18,6 +18,7 @@ KEYWORDS=""
 RDEPEND="dev-lang/zig"
 DEPEND="${RDEPEND}"
 
+
 src_install() {
 	distutils-r1_src_install
 
