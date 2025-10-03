@@ -17,16 +17,29 @@ RDEPEND="dev-lang/zig"
 DEPEND="${RDEPEND}"
 
 src_compile() {
-	# Build the Python package first
+	# Build the Python package first (this builds the shared library)
 	distutils-r1_src_compile
 
-	# Build the CLI binary
-	zig build-exe iio_pixel_record_count_estimator_cli.zig \
-		-lc \
-		-dynamic \
-		-O ReleaseFast \
-		-femit-bin=iio-pixel-record-count-estimator \
-		|| die "Failed to build CLI"
+	# Find the built shared library
+	local lib_so=$(find "${BUILD_DIR}" -name "*.so" -path "*/lib/*" | head -n1)
+
+	if [[ -n "${lib_so}" ]]; then
+		local lib_dir=$(dirname "${lib_so}")
+		local lib_name=$(basename "${lib_so}" .so | sed 's/^lib//')
+
+		einfo "Building CLI binary linked against ${lib_so}"
+
+		zig build-exe src/iio_pixel_record_count_estimator_cli.zig \
+			-lc \
+			-L"${lib_dir}" \
+			-l"${lib_name}" \
+			-dynamic \
+			-O ReleaseFast \
+			-femit-bin=iio-pixel-record-count-estimator \
+			|| die "Failed to build CLI"
+	else
+		die "Could not find built shared library"
+	fi
 }
 
 src_install() {
@@ -36,3 +49,4 @@ src_install() {
 	# Install CLI binary
 	dobin iio-pixel-record-count-estimator
 }
+
