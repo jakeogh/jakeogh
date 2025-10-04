@@ -16,7 +16,7 @@ EGIT_REPO_URI="https://github.com/cdelker/schemdraw.git"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="matplotlib svgmath test"
+IUSE="matplotlib svgmath test doc"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
