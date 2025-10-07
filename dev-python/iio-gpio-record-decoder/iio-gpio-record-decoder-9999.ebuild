@@ -8,8 +8,6 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="decode the gpio field from an iio file"
 HOMEPAGE="https://github.com/jakeogh/iio-gpio-record-decoder"
@@ -18,18 +16,10 @@ EGIT_REPO_URI="https://github.com/jakeogh/iio-gpio-record-decoder.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
-RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-"
+RDEPEND=""
 
 DEPEND="${RDEPEND}"
 
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
