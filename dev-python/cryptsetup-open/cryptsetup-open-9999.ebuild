@@ -20,6 +20,7 @@ RDEPEND="
 	dev-python/clicktool[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
+	dev-python/pexpect[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
