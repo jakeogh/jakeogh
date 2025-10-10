@@ -22,6 +22,5 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/pexpect[${PYTHON_USEDEP}]
 "
-
 DEPEND="${RDEPEND}"
 
