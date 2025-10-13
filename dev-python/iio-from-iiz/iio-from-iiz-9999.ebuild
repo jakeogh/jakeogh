@@ -9,8 +9,8 @@ inherit git-r3
 inherit distutils-r1
 
 DESCRIPTION="converts iiz to iio format"
-HOMEPAGE="https://github.com/jakeogh/iio-conversion-from-iiz"
-EGIT_REPO_URI="https://github.com/jakeogh/iio-conversion-from-iiz.git"
+HOMEPAGE="https://github.com/jakeogh/iio-from-iiz"
+EGIT_REPO_URI="https://github.com/jakeogh/iio-from-iiz.git"
 
 LICENSE="BSD"
 SLOT="0"
