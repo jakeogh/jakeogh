@@ -9,8 +9,9 @@ inherit git-r3
 inherit distutils-r1
 
 DESCRIPTION="py class to control the DMOO49 FPGA stack"
-HOMEPAGE="https://github.com/jakeogh/dm49"
-EGIT_REPO_URI="https://github.com/jakeogh/dm49.git"
+HOMEPAGE="https://github.com/jakeogh/dm0049-client"
+EGIT_REPO_URI="https://github.com/jakeogh/dm0049-client.git"
+
 
 LICENSE="BSD"
 SLOT="0"
