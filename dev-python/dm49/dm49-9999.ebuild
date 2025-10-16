@@ -8,18 +8,13 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
 DESCRIPTION="py class to control the DMOO49 FPGA stack"
-HOMEPAGE="https://github.com/jakeogh/dm0049-client"
-EGIT_REPO_URI="https://github.com/jakeogh/dm0049-client.git"
+HOMEPAGE="https://github.com/jakeogh/dm49"
+EGIT_REPO_URI="https://github.com/jakeogh/dm49.git"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
@@ -27,9 +22,3 @@ RDEPEND="
 "
 
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
