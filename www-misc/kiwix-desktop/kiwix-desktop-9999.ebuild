@@ -5,6 +5,7 @@ EAPI=8
 
 inherit qmake-utils xdg-utils git-r3
 
+
 DESCRIPTION="Kiwix offline reader for Web content (Wikipedia and more)"
 HOMEPAGE="https://www.kiwix.org/ https://github.com/kiwix/kiwix-desktop"
 EGIT_REPO_URI="https://github.com/kiwix/kiwix-desktop.git"
