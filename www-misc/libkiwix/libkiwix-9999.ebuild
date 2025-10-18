@@ -19,7 +19,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=app-arch/libzim-9.0.0
+	>=app-arch/libzim-9.2.0
 	dev-libs/icu:=
 	dev-libs/pugixml
 	>=net-libs/libmicrohttpd-0.9.71
