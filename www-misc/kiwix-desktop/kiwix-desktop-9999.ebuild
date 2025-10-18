@@ -42,7 +42,6 @@ src_install() {
 	fperms +x /usr/bin/kiwix-desktop || die "Binary not found"
 }
 
-
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
