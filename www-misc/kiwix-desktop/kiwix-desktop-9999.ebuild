@@ -17,7 +17,7 @@ RDEPEND="
 	dev-qt/qtbase:6[gui,network,widgets]
 	dev-qt/qtwebengine:6
 	dev-qt/qtsvg:6
-	dev-libs/kiwix-lib
+	www-misc/libkiwix
 	net-misc/aria2
 "
 
