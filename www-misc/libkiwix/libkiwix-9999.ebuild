@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{12..14} )
 
 inherit meson python-any-r1 git-r3
@@ -40,13 +41,12 @@ BDEPEND="
 
 src_configure() {
 	local emesonargs=(
-		$(meson_use test)
 		-Dwerror=false
 	)
 	meson_src_configure
 }
 
-
 src_test() {
 	meson_src_test
 }
+
