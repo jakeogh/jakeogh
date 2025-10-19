@@ -19,7 +19,7 @@ IUSE="plot"
 
 DEPEND="
 	dev-python/pyfiglet[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 	dev-python/pandas[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]

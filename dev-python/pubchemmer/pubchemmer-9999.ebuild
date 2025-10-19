@@ -18,7 +18,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/pandas[${PYTHON_USEDEP}]
 	dev-python/structure-data-file-sdf-parser[${PYTHON_USEDEP}]
 	dev-python/sqlalchemytool[${PYTHON_USEDEP}]

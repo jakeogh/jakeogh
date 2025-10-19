@@ -19,7 +19,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/more-itertools[${PYTHON_USEDEP}]
 "
 

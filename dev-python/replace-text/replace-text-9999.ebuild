@@ -20,7 +20,7 @@ LICENSE="MIT"
 
 DEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/mptool[${PYTHON_USEDEP}]
 "

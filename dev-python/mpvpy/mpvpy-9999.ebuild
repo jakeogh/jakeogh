@@ -17,7 +17,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/python-mpv[${PYTHON_USEDEP}]
 	dev-python/hashfilter[${PYTHON_USEDEP}]
 	dev-python/clipboardtool[${PYTHON_USEDEP}]

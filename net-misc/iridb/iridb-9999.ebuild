@@ -35,7 +35,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/requeststool[${PYTHON_USEDEP}]
 	dev-python/tldextract[${PYTHON_USEDEP}]

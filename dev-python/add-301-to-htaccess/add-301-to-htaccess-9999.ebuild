@@ -21,7 +21,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/with-chdir[${PYTHON_USEDEP}]
 	dev-python/with-sshfs[${PYTHON_USEDEP}]
 "

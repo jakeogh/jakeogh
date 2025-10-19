@@ -17,7 +17,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/bitstring[${PYTHON_USEDEP}]
 	dev-python/phashtool[${PYTHON_USEDEP}]
 	dev-python/bitarray[${PYTHON_USEDEP}]

@@ -22,7 +22,7 @@ RDEPEND="
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/clicktool[${PYTHON_USEDEP}]
 	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/python-magic[${PYTHON_USEDEP}]
 	media-gfx/gifsicle
 "

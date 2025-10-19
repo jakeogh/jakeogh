@@ -34,7 +34,7 @@ DEPEND="
 	test? (
 		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
 		dev-python/boto[${PYTHON_USEDEP}]
-		dev-python/colorama[${PYTHON_USEDEP}]
+		
 		dev-python/flake8[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]

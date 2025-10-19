@@ -23,7 +23,6 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	sci-libs/vtk[python,imaging,rendering,views]
 	dev-python/numpy
-	dev-python/colorama
 	dev-python/requests
 	dev-python/trimesh
 	dev-python/pyvista

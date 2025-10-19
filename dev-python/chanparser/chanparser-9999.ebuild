@@ -21,7 +21,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/beeprint[${PYTHON_USEDEP}]
 "
 

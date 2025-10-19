@@ -20,7 +20,7 @@ KEYWORDS=""
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	
-	dev-python/colorama[${PYTHON_USEDEP}]
+	
 	dev-python/pyproject2setuppy[${PYTHON_USEDEP}]
 "
 
