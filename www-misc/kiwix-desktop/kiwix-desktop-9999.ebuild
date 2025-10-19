@@ -18,7 +18,7 @@ RDEPEND="
 	dev-qt/qtwebengine:6
 	dev-qt/qtsvg:6
 	www-misc/libkiwix
-	net-misc/aria2
+	net-misc/aria2[bittorrent,metalink,xmlrpc]
 "
 
 DEPEND="
