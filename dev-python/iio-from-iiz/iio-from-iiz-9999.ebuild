@@ -16,9 +16,9 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
 
-RDEPEND="dev-lang/zig"
+RDEPEND="dev-lang/zig
+	dev-python/numpy[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
-
 
 src_install() {
 	distutils-r1_src_install
@@ -33,6 +33,7 @@ src_install() {
 		# Remove ${ED} prefix to get the installed path
 		local installed_path="${cli_path#${ED}}"
 		# Create relative symlink from /usr/bin
+		# This preserves the rpath $ORIGIN/../lib so the binary can find the .so
 		dosym "../${installed_path#/usr/}" "/usr/bin/${PN}"
 	else
 		die "CLI binary not found"
