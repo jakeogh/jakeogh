@@ -8,12 +8,10 @@ PYTHON_COMPAT=( python3_{12..14} )
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 
 DESCRIPTION="Read-only, mmap-backed, fixed-size record access"
-HOMEPAGE="https://github.com/jakeogh/binary-recordset"
-EGIT_REPO_URI="https://github.com/jakeogh/binary-recordset.git"
+HOMEPAGE="https://github.com/DentonGroup/binary-recordset"
+EGIT_REPO_URI="https://github.com/DentonGroup/binary-recordset.git"
 
 LICENSE="BSD"
 SLOT="0"
@@ -28,8 +26,3 @@ RDEPEND="
 
 DEPEND="${RDEPEND}"
 
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
