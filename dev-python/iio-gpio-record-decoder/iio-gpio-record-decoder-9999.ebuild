@@ -10,8 +10,8 @@ inherit distutils-r1
 
 
 DESCRIPTION="decode the gpio field from an iio file"
-HOMEPAGE="https://github.com/jakeogh/iio-gpio-record-decoder"
-EGIT_REPO_URI="https://github.com/jakeogh/iio-gpio-record-decoder.git"
+HOMEPAGE="https://github.com/DentonGroup/iio-gpio-record-decoder"
+EGIT_REPO_URI="https://github.com/DentonGroup/iio-gpio-record-decoder.git"
 
 LICENSE="BSD"
 SLOT="0"
