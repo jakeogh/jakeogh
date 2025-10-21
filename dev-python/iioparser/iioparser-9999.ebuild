@@ -10,8 +10,8 @@ inherit distutils-r1
 
 
 DESCRIPTION="binary-recordset instance for iio files"
-HOMEPAGE="https://github.com/jakeogh/iioparser"
-EGIT_REPO_URI="https://github.com/jakeogh/iioparser.git"
+HOMEPAGE="https://github.com/DentonGroup/iioparser"
+EGIT_REPO_URI="https://github.com/DentonGroup/iioparser.git"
 
 LICENSE="BSD"
 SLOT="0"
