@@ -4,6 +4,7 @@
 EAPI=8
 DISTUTILS_USE_PEP517=standalone
 PYTHON_COMPAT=( python3_{12..14} )
+EGIT_SUBMODULES=()  # Don't fetch submodules, already in repo
 
 inherit git-r3
 inherit distutils-r1
