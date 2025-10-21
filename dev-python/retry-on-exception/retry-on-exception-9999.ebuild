@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{12..14} )
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=standalone
 
 inherit distutils-r1 git-r3
 
@@ -14,12 +14,9 @@ EGIT_REPO_URI="https://github.com/jakeogh/retry-on-exception.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
-	
 	dev-python/delay-timer[${PYTHON_USEDEP}]
 "
 
