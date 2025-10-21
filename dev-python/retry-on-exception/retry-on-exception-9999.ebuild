@@ -7,7 +7,7 @@ DISTUTILS_USE_PEP517=standalone
 
 inherit distutils-r1 git-r3
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Retries the decorated function on specified exceptions"
 HOMEPAGE="https://github.com/jakeogh/retry-on-exception"
 EGIT_REPO_URI="https://github.com/jakeogh/retry-on-exception.git"
 
