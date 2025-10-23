@@ -3,11 +3,10 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{12..14} )
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=standalone
 
 inherit git-r3
 inherit distutils-r1
-#inherit xdg
 
 DESCRIPTION="Short explination of what it does _here_"
 HOMEPAGE="https://github.com/jakeogh/nettool"
@@ -21,7 +20,7 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-	
+
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
 "
