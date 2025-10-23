@@ -3,12 +3,12 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{12..14} )
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=standalone
 
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Manages boot config MBR/bootloader etc"
 HOMEPAGE="https://github.com/jakeogh/boottool"
 EGIT_REPO_URI="https://github.com/jakeogh/boottool.git"
 
