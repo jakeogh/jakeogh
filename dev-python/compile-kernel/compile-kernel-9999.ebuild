@@ -3,7 +3,7 @@
 
 EAPI=8
 PYTHON_COMPAT=( python3_{12..14} )
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=standalone
 
 inherit distutils-r1 git-r3
 
@@ -20,7 +20,7 @@ RDEPEND="
 	dev-python/clicktool[${PYTHON_USEDEP}]
 	dev-python/asserttool[${PYTHON_USEDEP}]
 	dev-python/run-command[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
+	dev-python/hs[${PYTHON_USEDEP}]
 	dev-python/pathtool[${PYTHON_USEDEP}]
 	dev-python/with-chdir[${PYTHON_USEDEP}]
 	sys-apps/busybox
