@@ -1,35 +1,34 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( python3_{12..14} )
+DISTUTILS_USE_PEP517="poetry"
 
 inherit git-r3
 inherit distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
-
-DESCRIPTION="experimental sh fork without the sh.magic"
-HOMEPAGE="https://github.com/jakeogh/hs"
-EGIT_REPO_URI="https://github.com/jakeogh/hs.git"
+DESCRIPTION="Python3.8+ process launching (hs fork with mutating bake)"
+HOMEPAGE="https://github.com/jakeogh/sh"
+EGIT_REPO_URI="https://github.com/jakeogh/sh.git"
+EGIT_BRANCH="hs"  # or whatever your branch name is
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
+    !dev-python/sh:0/hs
 "
-
 DEPEND="${RDEPEND}"
 
+src_prepare() {
+    # Rename sh.py to hs.py so it installs as hs module
+    mv sh.py hs.py || die "Failed to rename sh.py to hs.py"
 
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
+    # Update pyproject.toml to reflect new name
+    sed -i 's/name = "sh"/name = "hs"/' pyproject.toml || die
+    sed -i 's/"sh.py"/"hs.py"/' pyproject.toml || die
+
+    distutils-r1_src_prepare
+}
