@@ -36,3 +36,12 @@ src_prepare() {
 
     distutils-r1_src_prepare
 }
+
+
+src_install() {
+    distutils-r1_src_install
+
+    # Install py.typed in site-packages for mypy
+    insinto $(python_get_sitedir)
+    doins py.typed
+}
