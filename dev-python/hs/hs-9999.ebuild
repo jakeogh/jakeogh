@@ -22,13 +22,17 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+
 src_prepare() {
     # Rename sh.py to hs.py so it installs as hs module
     mv sh.py hs.py || die "Failed to rename sh.py to hs.py"
 
-    # Update pyproject.toml to reflect new name
+    # Update pyproject.toml to reflect new name and include py.typed
     sed -i 's/name = "sh"/name = "hs"/' pyproject.toml || die
     sed -i 's/"sh.py"/"hs.py"/' pyproject.toml || die
+
+    # Ensure py.typed is included in the package (add to [tool.poetry] section)
+    sed -i '/^include = \[/a\    { path = "py.typed" },' pyproject.toml || die
 
     distutils-r1_src_prepare
 }
