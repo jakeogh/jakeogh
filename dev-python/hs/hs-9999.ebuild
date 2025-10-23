@@ -38,10 +38,11 @@ src_prepare() {
 }
 
 
+
+
 src_install() {
     distutils-r1_src_install
 
-    # Install py.typed in site-packages for mypy
-    insinto $(python_get_sitedir)
-    doins py.typed
+    # Install py.typed for type hint support
+    python_foreach_impl python_domodule py.typed
 }
