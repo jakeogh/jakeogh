@@ -43,6 +43,12 @@ src_prepare() {
 src_install() {
     distutils-r1_src_install
 
-    # Install py.typed for type hint support
-    python_foreach_impl python_domodule py.typed
+    # For single-file modules, mypy needs py.typed in dist-info
+    python_foreach_impl python_install_pytyped_distinfo
+}
+
+python_install_pytyped_distinfo() {
+    local sitedir=$(python_get_sitedir)
+    insinto "${sitedir}/hs-${PV}.dist-info"
+    doins "${S}/py.typed"
 }
