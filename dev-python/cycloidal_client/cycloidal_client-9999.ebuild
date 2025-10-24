@@ -17,7 +17,6 @@ KEYWORDS=""
 
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
-
 	dev-python/matplotlib[${PYTHON_USEDEP}]
 	dev-python/serialtool[${PYTHON_USEDEP}]
 	dev-python/netifaces[${PYTHON_USEDEP}]
