@@ -17,6 +17,6 @@ SLOT="0"
 KEYWORDS=""
 
 
-RDEPEND=""
+RDEPEND="dev-python/nltk"
 
 DEPEND="${RDEPEND}"
