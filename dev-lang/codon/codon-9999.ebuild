@@ -3,7 +3,7 @@
 # adapted by Claude from https://raw.githubusercontent.com/gentoo-mirror/Miezhiko/refs/heads/master/dev-lang/codon/codon-9999.ebuild
 EAPI=8
 CMAKE_MAKEFILE_GENERATOR=ninja
-inherit git-r3
+inherit git-r3 flag-o-matic
 
 DESCRIPTION="High-performance, zero-overhead, extensible Python compiler using LLVM"
 HOMEPAGE="https://github.com/exaloop/codon"
@@ -49,11 +49,9 @@ src_unpack() {
 	EGIT_CHECKOUT_DIR="${CODON_LLVM_DIR}"
 	git-r3_src_unpack
 
-	# Setup CPM cache with pre-downloaded deps
 	mkdir -p "${WORKDIR}/cpm-cache" || die
 	cd "${DISTDIR}" || die
 
-	# Extract each dependency to CPM cache
 	for archive in cpp-peglib-codon.tar.gz fmt-11.1.0.tar.gz tomlplusplus-3.2.0.tar.gz \
 		semver-0.3.0.tar.gz zlib-ng-2.0.5.tar.gz xz-5.2.5.tar.gz bzip2-1.0.8.tar.gz \
 		bdwgc-8.0.5.tar.gz libbacktrace-d0f5e95.tar.gz re2-2022-06-01.tar.gz \
@@ -63,6 +61,9 @@ src_unpack() {
 
 	export CPM_SOURCE_CACHE="${WORKDIR}/cpm-cache"
 	export CODON_SYSTEM_LIBRARIES="/usr/lib/gcc/x86_64-pc-linux-gnu/15/"
+
+	# Filter problematic flags for clang
+	filter-flags -mabm '--param=*'
 
 	einfo "Building LLVM with clang and OpenMP..."
 	cd "${WORKDIR}" || die
@@ -103,3 +104,4 @@ src_install() {
 	rm -rf "${ED}/usr/$(get_libdir)/cmake/fmt" || die
 	rm -f "${ED}/usr/$(get_libdir)/pkgconfig/fmt.pc" || die
 }
+
