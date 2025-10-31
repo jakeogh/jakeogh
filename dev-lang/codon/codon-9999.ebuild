@@ -1,9 +1,8 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# adapted by Claude from https://raw.githubusercontent.com/gentoo-mirror/Miezhiko/refs/heads/master/dev-lang/codon/codon-9999.ebuild
 EAPI=8
 CMAKE_MAKEFILE_GENERATOR=ninja
-inherit git-r3 flag-o-matic
+inherit git-r3 flag-o-matic fortran-2
 
 DESCRIPTION="High-performance, zero-overhead, extensible Python compiler using LLVM"
 HOMEPAGE="https://github.com/exaloop/codon"
@@ -12,7 +11,10 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-libs/libfmt"
+RDEPEND="
+	dev-libs/libfmt
+	virtual/fortran
+"
 DEPEND="${RDEPEND}"
 BDEPEND="dev-build/ninja"
 
@@ -62,8 +64,10 @@ src_unpack() {
 	export CPM_SOURCE_CACHE="${WORKDIR}/cpm-cache"
 	export CODON_SYSTEM_LIBRARIES="/usr/lib/gcc/x86_64-pc-linux-gnu/15/"
 
-	# Filter problematic flags for clang
 	filter-flags -mabm '--param=*'
+
+	# Add gfortran library to linker flags
+	append-ldflags "-L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -lgfortran"
 
 	einfo "Building LLVM with clang and OpenMP..."
 	cd "${WORKDIR}" || die
@@ -104,4 +108,3 @@ src_install() {
 	rm -rf "${ED}/usr/$(get_libdir)/cmake/fmt" || die
 	rm -f "${ED}/usr/$(get_libdir)/pkgconfig/fmt.pc" || die
 }
-
