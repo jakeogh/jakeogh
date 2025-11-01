@@ -66,9 +66,6 @@ src_unpack() {
 
 	filter-flags -mabm '--param=*'
 
-	# Add gfortran library to linker flags
-	append-ldflags "-L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -lgfortran"
-
 	einfo "Building LLVM with clang and OpenMP..."
 	cd "${WORKDIR}" || die
 	cmake -S "${CODON_LLVM_DIR}/llvm" -B "${CODON_LLVM_DIR}/build" -G Ninja \
@@ -91,7 +88,9 @@ src_unpack() {
 		-DLLVM_DIR="${CODON_LLVM_DIR}/install/lib/cmake/llvm" \
 		-DCMAKE_C_COMPILER=clang \
 		-DCMAKE_CXX_COMPILER=clang++ \
-		-DCPM_SOURCE_CACHE="${WORKDIR}/cpm-cache" || die
+		-DCPM_SOURCE_CACHE="${WORKDIR}/cpm-cache" \
+		-DCMAKE_SHARED_LINKER_FLAGS="-L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -lgfortran" \
+		-DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -lgfortran" || die
 
 	einfo "Building Codon..."
 	cmake --build build --config Release || die
