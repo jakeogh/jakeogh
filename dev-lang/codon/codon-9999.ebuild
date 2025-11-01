@@ -1,5 +1,6 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+#
 EAPI=8
 CMAKE_MAKEFILE_GENERATOR=ninja
 inherit git-r3 flag-o-matic fortran-2
@@ -21,8 +22,10 @@ BDEPEND="dev-build/ninja"
 RESTRICT="test"
 
 CODON_LLVM_DIR="${WORKDIR}/llvm-project"
+CPM_VERSION="0.40.8"
 
 SRC_URI="
+	https://github.com/cpm-cmake/CPM.cmake/releases/download/v${CPM_VERSION}/CPM.cmake -> CPM-${CPM_VERSION}.cmake
 	https://github.com/exaloop/cpp-peglib/archive/codon.tar.gz -> cpp-peglib-codon.tar.gz
 	https://github.com/fmtlib/fmt/archive/11.1.0.tar.gz -> fmt-11.1.0.tar.gz
 	https://github.com/marzer/tomlplusplus/archive/v3.2.0.tar.gz -> tomlplusplus-3.2.0.tar.gz
@@ -50,6 +53,10 @@ src_unpack() {
 	EGIT_SUBMODULES=()
 	EGIT_CHECKOUT_DIR="${CODON_LLVM_DIR}"
 	git-r3_src_unpack
+
+	# Setup CPM
+	mkdir -p "${S}/build/cmake" || die
+	cp "${DISTDIR}/CPM-${CPM_VERSION}.cmake" "${S}/build/cmake/CPM_${CPM_VERSION}.cmake" || die
 
 	mkdir -p "${WORKDIR}/cpm-cache" || die
 	cd "${DISTDIR}" || die
