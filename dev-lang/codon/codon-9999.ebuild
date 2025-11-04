@@ -94,8 +94,8 @@ src_unpack() {
 		-DCMAKE_C_COMPILER=clang \
 		-DCMAKE_CXX_COMPILER=clang++ \
 		-DCPM_SOURCE_CACHE="${WORKDIR}/cpm-cache" \
-		-DCMAKE_SHARED_LINKER_FLAGS="-L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -lgfortran" \
-		-DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -lgfortran" || die
+		-DCMAKE_SHARED_LINKER_FLAGS="-L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -lgfortran -L${CODON_LLVM_DIR}/install/lib/x86_64-unknown-linux-gnu -lomp -Wl,-rpath,/usr/lib/codon" \
+		-DCMAKE_EXE_LINKER_FLAGS="-L/usr/lib/gcc/x86_64-pc-linux-gnu/15 -lgfortran -L${CODON_LLVM_DIR}/install/lib/x86_64-unknown-linux-gnu -lomp -Wl,-rpath,/usr/lib/codon" || die
 
 	einfo "Building Codon..."
 	cmake --build build --config Release || die
@@ -108,9 +108,8 @@ src_install() {
 	cd "${S}" || die
 	DESTDIR="${D}" cmake --install build --prefix=/usr || die
 
-	# Install OpenMP runtime from custom LLVM build
-	insinto /usr/lib/codon
-	doins "${CODON_LLVM_DIR}/install/lib/x86_64-unknown-linux-gnu"/libomp*.so*
+	exeinto /usr/lib/codon
+	doexe "${CODON_LLVM_DIR}/install/lib/x86_64-unknown-linux-gnu"/libomp*.so*
 
 	rm -rf "${ED}/usr/include/fmt" || die
 	rm -rf "${ED}/usr/$(get_libdir)/cmake/fmt" || die
