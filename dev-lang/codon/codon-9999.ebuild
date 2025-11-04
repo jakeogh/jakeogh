@@ -1,6 +1,5 @@
 # Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-#
 EAPI=8
 CMAKE_MAKEFILE_GENERATOR=ninja
 inherit git-r3 flag-o-matic fortran-2
@@ -54,7 +53,6 @@ src_unpack() {
 	EGIT_CHECKOUT_DIR="${CODON_LLVM_DIR}"
 	git-r3_src_unpack
 
-	# Setup CPM
 	mkdir -p "${S}/build/cmake" || die
 	cp "${DISTDIR}/CPM-${CPM_VERSION}.cmake" "${S}/build/cmake/CPM_${CPM_VERSION}.cmake" || die
 
@@ -109,6 +107,10 @@ src_compile() { :; }
 src_install() {
 	cd "${S}" || die
 	DESTDIR="${D}" cmake --install build --prefix=/usr || die
+
+	# Install OpenMP runtime from custom LLVM build
+	insinto /usr/lib/codon
+	doins "${CODON_LLVM_DIR}/install/lib/x86_64-unknown-linux-gnu"/libomp*.so*
 
 	rm -rf "${ED}/usr/include/fmt" || die
 	rm -rf "${ED}/usr/$(get_libdir)/cmake/fmt" || die
