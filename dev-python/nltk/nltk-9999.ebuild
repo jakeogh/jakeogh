@@ -9,6 +9,7 @@ PYTHON_REQ_USE="sqlite,tk?,xml(+)"
 
 inherit distutils-r1 git-r3
 
+
 DESCRIPTION="Natural Language Toolkit"
 HOMEPAGE="https://github.com/nltk/nltk"
 EGIT_REPO_URI="https://github.com/nltk/${PN}.git"
