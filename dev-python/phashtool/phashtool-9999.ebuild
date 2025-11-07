@@ -27,6 +27,7 @@ RDEPEND="
 	media-libs/opencv[${PYTHON_USEDEP}]
 	dev-python/pdqhash-python[${PYTHON_USEDEP}]
 	dev-python/stdiotool[${PYTHON_USEDEP}]
+	media-libs/opencv[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
