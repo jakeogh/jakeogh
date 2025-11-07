@@ -35,7 +35,7 @@ RDEPEND="
 	dev-python/sh[${PYTHON_USEDEP}]
 	dev-python/werkzeug[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
-	
+	dev-python/nltktool[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/requeststool[${PYTHON_USEDEP}]
 	dev-python/tldextract[${PYTHON_USEDEP}]
@@ -70,17 +70,13 @@ RDEPEND="
 
 #	dev-python/pdfx[${PYTHON_USEDEP}]
 #	dev-python/yapsy[${PYTHON_USEDEP}]
-#	dev-python/lazy_import[${PYTHON_USEDEP}]
 #	dev-python/sqlalchemy[${PYTHON_USEDEP}]
-#	dev-python/youtube-dl-wrapper[${PYTHON_USEDEP}]
-#	sys-apps/file[python]
 #	dev-python/pydot[${PYTHON_USEDEP}]
 #	dev-db/sadisplay[${PYTHON_USEDEP}]
 #	dev-python/redis-py[${PYTHON_USEDEP}]
 #	dev-python/anormbookmarker[${PYTHON_USEDEP}]
 #	dev-python/psycopg[${PYTHON_USEDEP}]
 #	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
-#	dev-db/postgresql:*
 #	dev-python/amara3-iri[${PYTHON_USEDEP}]
 #	dev-python/rediskey[${PYTHON_USEDEP}]
 
