@@ -72,7 +72,6 @@ RDEPEND="
 #	dev-python/yapsy[${PYTHON_USEDEP}]
 #	dev-python/sqlalchemy[${PYTHON_USEDEP}]
 #	dev-python/pydot[${PYTHON_USEDEP}]
-#	dev-python/redis-py[${PYTHON_USEDEP}]
 #	dev-python/anormbookmarker[${PYTHON_USEDEP}]
 #	dev-python/psycopg[${PYTHON_USEDEP}]
 #	dev-python/sqlalchemy-utils[${PYTHON_USEDEP}]
