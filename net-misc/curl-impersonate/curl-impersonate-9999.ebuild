@@ -1,9 +1,7 @@
 # Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 EAPI=8
-inherit git-r3
-inherit autotools
-inherit toolchain-funcs
+inherit git-r3 cmake
 DESCRIPTION="An active fork of curl-impersonate with more versions and build targets"
 HOMEPAGE="https://github.com/lwthiker/curl-impersonate"
 EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate"
@@ -14,11 +12,13 @@ SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> bro
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT=""
 IUSE+=""
-RDEPEND=""
+RDEPEND="sys-libs/zlib
+        app-arch/zstd"
 DEPEND="${RDEPEND}"
-BDEPEND=""
+BDEPEND="dev-build/cmake
+        dev-build/ninja
+        dev-lang/go"
 S="${WORKDIR}/${P}"
 
 src_prepare() {
@@ -33,11 +33,11 @@ src_prepare() {
 src_configure() {
         mkdir -p build || die
         cd build || die
-        cp -v "${DISTDIR}"/brotli-1.1.0.tar.gz . || die
-        cp -v "${DISTDIR}"/boringssl-cd95210465496ac2337b313cf49f607762abe286.zip . || die
-        cp -v "${DISTDIR}"/nghttp2-1.63.0.tar.bz2 . || die
-        cp -v "${DISTDIR}"/curl-8_7_1.tar.gz . || die
-        ../configure || die
+        cp "${DISTDIR}"/brotli-1.1.0.tar.gz . || die
+        cp "${DISTDIR}"/boringssl-cd95210465496ac2337b313cf49f607762abe286.zip . || die
+        cp "${DISTDIR}"/nghttp2-1.63.0.tar.bz2 . || die
+        cp "${DISTDIR}"/curl-8_7_1.tar.gz . || die
+        LDFLAGS="" ../configure || die
 }
 
 src_compile() {
@@ -46,9 +46,8 @@ src_compile() {
 }
 
 src_install() {
-        cd chrome || die
-        dobin curl_chrome*
-        cd "${S}"/build/curl-8_7_1/lib/.libs || die
+        dobin chrome/curl_chrome*
+        cd build/curl-8_7_1/lib/.libs || die
         dolib.so libcurl-impersonate-chrome.so*
         cd "${S}"/build/curl-8_7_1/src/.libs || die
         dobin curl-impersonate-chrome
