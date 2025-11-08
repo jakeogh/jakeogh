@@ -123,6 +123,7 @@ if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
     INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
 endif()
 
+
 # msdf-atlas-gen
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
   find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen REQUIRED)
@@ -132,13 +133,12 @@ if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
   if(NOT MSDF_ATLAS_GEN_INC)
     set(MSDF_ATLAS_GEN_INC "/usr/include")
   endif()
-  add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED)
+  add_library(msdf-atlas-gen::msdf-atlas-gen INTERFACE IMPORTED)
   set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
-    IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
-    INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}")
-  set_property(TARGET msdf-atlas-gen::msdf-atlas-gen PROPERTY
-    INTERFACE_LINK_LIBRARIES "${MSDFGEN_EXT_LIB};${MSDFGEN_CORE_LIB}")
+    INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}"
+    INTERFACE_LINK_LIBRARIES "${MSDF_ATLAS_GEN_LIB};${MSDFGEN_EXT_LIB};${MSDFGEN_CORE_LIB}")
 endif()
+
 EOF
 	echo "${top_include}"
 }
