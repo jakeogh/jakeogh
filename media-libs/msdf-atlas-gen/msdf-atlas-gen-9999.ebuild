@@ -25,7 +25,7 @@ src_prepare() {
     cmake_src_prepare
 
     if [[ ! -d "${S}/msdfgen" ]]; then
-        die "msdfgen submodule not fetched - check EGIT_SUBMODULES"
+        die "msdfgen submodule not fetched"
     fi
 
     pushd msdfgen >/dev/null || die
@@ -36,7 +36,7 @@ src_prepare() {
         -e 's/^[[:space:]]*set\(\s*MSDFGEN_USE_SKIA\s+ON\s*\)/set(MSDFGEN_USE_SKIA OFF)/I' \
         -e 's/^[[:space:]]*if\(\s*MSDFGEN_USE_SKIA\s*\)/if(FALSE)/I' \
         -e 's/^[[:space:]]*elseif\(\s*MSDFGEN_USE_SKIA\s*\)/elseif(FALSE)/I' \
-        CMakeLists.txt || die "patch Skia off"
+        CMakeLists.txt || die
     popd >/dev/null || die
 }
 
@@ -68,11 +68,7 @@ src_install() {
 
   insinto /usr/include/msdf-atlas-gen
   doins "${S}"/msdf-atlas-gen/*.h || die
-
-  if [[ ! -f "${S}/msdf-atlas-gen/rectangle-packing.hpp" ]]; then
-    die "Missing required header file rectangle-packing.hpp"
-  fi
-
+  [[ -f "${S}/msdf-atlas-gen/rectangle-packing.hpp" ]] || die "Missing rectangle-packing.hpp"
   doins "${S}"/msdf-atlas-gen/*.hpp || die
 
   # Install bundled msdfgen headers
@@ -82,11 +78,11 @@ src_install() {
 
   insinto /usr/include/msdfgen/core
   doins "${S}"/msdfgen/core/*.h || die
-  doins "${S}"/msdfgen/core/*.hpp || die
+  doins "${S}"/msdfgen/core/Range.hpp || die
+  doins "${S}"/msdfgen/core/ShapeDistanceFinder.hpp || die
 
   insinto /usr/include/msdfgen/ext
   doins "${S}"/msdfgen/ext/*.h || die
-  doins "${S}"/msdfgen/ext/*.hpp || die
 
   if use cli && [[ -x ${BUILD_DIR}/bin/msdf-atlas-gen ]]; then
     dobin "${BUILD_DIR}/bin/msdf-atlas-gen" || die
