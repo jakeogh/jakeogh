@@ -24,7 +24,6 @@ RDEPEND="
 	dev-python/tabulate[${PYTHON_USEDEP}]
 	dev-python/mpvpy[${PYTHON_USEDEP}]
 	dev-python/hashfilter[${PYTHON_USEDEP}]
-	app-text/djview
 	www-client/elinks
 	app-text/docx2txt
 	app-text/antiword
@@ -35,5 +34,6 @@ RDEPEND="
 "
 #	kde-apps/okular  # depends on kde, and thus dbus
 #	app-misc/ranger
+#	app-text/djview
 
 DEPEND="${RDEPEND}"
