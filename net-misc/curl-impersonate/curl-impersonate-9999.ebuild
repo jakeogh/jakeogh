@@ -32,7 +32,7 @@ src_prepare() {
         fi
         sed -i -e 's/add_libs="-pthread -lc++";/add_libs="-pthread -lstdc++";/g' Makefile.in || die
         sed -i -e 's/LDFLAGS="-lc++"//g' Makefile.in || die
-        sed -i -e 's/--enable-tests/--disable-tests/g' Makefile.in || die
+        sed -i -e 's/config_flags="$$config_flags --disable-shared --enable-static";/config_flags="$$config_flags --disable-shared --enable-static --disable-tests";/g' Makefile.in || die
 }
 
 src_configure() {
