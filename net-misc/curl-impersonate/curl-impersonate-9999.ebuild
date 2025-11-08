@@ -44,7 +44,7 @@ src_configure() {
 
 src_compile() {
         cd build || die
-        emake build
+        emake -j1 build
 }
 
 src_install() {
