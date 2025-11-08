@@ -31,6 +31,7 @@ RDEPEND="
 	media-libs/exiftool
 	media-gfx/inkscape
 	media-gfx/feh
+	sys-fs/bindfs
 "
 #	kde-apps/okular  # depends on kde, and thus dbus
 #	app-misc/ranger
