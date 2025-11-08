@@ -24,12 +24,10 @@ BDEPEND="dev-build/cmake"
 src_prepare() {
     cmake_src_prepare
 
-    # Verify submodule was fetched
     if [[ ! -d "${S}/msdfgen" ]]; then
         die "msdfgen submodule not fetched - check EGIT_SUBMODULES"
     fi
 
-    # Turn off Skia in the embedded msdfgen cleanly
     pushd msdfgen >/dev/null || die
     sed -i -r \
         -e 's/find_package\(\s*unofficial-skia[^)]*\)/find_package(unofficial-skia QUIET)/Ig' \
@@ -64,14 +62,10 @@ src_configure() {
 src_install() {
   local libdir=$(get_libdir)
 
-  # Install msdf-atlas-gen library
   dolib.so "${BUILD_DIR}/libmsdf-atlas-gen.so" || die
-
-  # Install bundled msdfgen libraries (required for linking)
   dolib.so "${BUILD_DIR}/msdfgen/libmsdfgen-core.so" || die
   dolib.so "${BUILD_DIR}/msdfgen/libmsdfgen-ext.so" || die
 
-  # Install msdf-atlas-gen headers
   insinto /usr/include/msdf-atlas-gen
   doins "${S}"/msdf-atlas-gen/*.h || die
 
@@ -81,18 +75,23 @@ src_install() {
 
   doins "${S}"/msdf-atlas-gen/*.hpp || die
 
-  # Install bundled msdfgen headers (required for dependents)
+  # Install bundled msdfgen headers
   insinto /usr/include/msdfgen
-  doins -r "${S}"/msdfgen/msdfgen/*.h || die
-  doins -r "${S}"/msdfgen/msdfgen/core || die
-  doins -r "${S}"/msdfgen/msdfgen/ext || die
+  doins "${S}"/msdfgen/msdfgen.h || die
+  doins "${S}"/msdfgen/msdfgen-ext.h || die
 
-  # CLI binary
+  insinto /usr/include/msdfgen/core
+  doins "${S}"/msdfgen/core/*.h || die
+  doins "${S}"/msdfgen/core/*.hpp || die
+
+  insinto /usr/include/msdfgen/ext
+  doins "${S}"/msdfgen/ext/*.h || die
+  doins "${S}"/msdfgen/ext/*.hpp || die
+
   if use cli && [[ -x ${BUILD_DIR}/bin/msdf-atlas-gen ]]; then
     dobin "${BUILD_DIR}/bin/msdf-atlas-gen" || die
   fi
 
-  # CMake config
   local cmakedir="/usr/${libdir}/cmake/msdf-atlas-gen"
   insinto "${cmakedir}"
   cat > "${T}/msdf-atlas-genConfig.cmake" <<'EOF' || die
@@ -118,7 +117,6 @@ EOF
   sed -i "s|@LIBDIR@|${libdir}|g" "${T}/msdf-atlas-genConfig.cmake" || die
   doins "${T}/msdf-atlas-genConfig.cmake" || die
 
-  # Remove RPATHs
   if type -P patchelf >/dev/null ; then
     patchelf --remove-rpath "${ED}/usr/${libdir}/libmsdf-atlas-gen.so" || die
     patchelf --remove-rpath "${ED}/usr/${libdir}/libmsdfgen-core.so" 2>/dev/null
