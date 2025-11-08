@@ -6,8 +6,9 @@ DESCRIPTION="An active fork of curl-impersonate with more versions and build tar
 HOMEPAGE="https://github.com/lwthiker/curl-impersonate"
 EGIT_REPO_URI="https://github.com/lexiforest/curl-impersonate"
 SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> brotli-1.1.0.tar.gz
-                 https://github.com/google/boringssl/archive/cd95210465496ac2337b313cf49f607762abe286.zip -> boringssl-cd95210465496ac2337b313cf49f607762abe286.zip
+                 https://github.com/google/boringssl/archive/673e61fc215b178a90c0e67858bbf162c8158993.zip -> boringssl-673e61fc215b178a90c0e67858bbf162c8158993.zip
                  https://github.com/nghttp2/nghttp2/releases/download/v1.63.0/nghttp2-1.63.0.tar.bz2 -> nghttp2-1.63.0.tar.bz2
+                 https://github.com/ngtcp2/ngtcp2/releases/download/v1.11.0/ngtcp2-1.11.0.tar.bz2 -> ngtcp2-1.11.0.tar.bz2
                  https://github.com/curl/curl/archive/curl-8_7_1.tar.gz -> curl-8_7_1.tar.gz"
 LICENSE="MIT"
 SLOT="0"
@@ -34,8 +35,9 @@ src_configure() {
         mkdir -p build || die
         cd build || die
         cp "${DISTDIR}"/brotli-1.1.0.tar.gz . || die
-        cp "${DISTDIR}"/boringssl-cd95210465496ac2337b313cf49f607762abe286.zip . || die
+        cp "${DISTDIR}"/boringssl-673e61fc215b178a90c0e67858bbf162c8158993.zip . || die
         cp "${DISTDIR}"/nghttp2-1.63.0.tar.bz2 . || die
+        cp "${DISTDIR}"/ngtcp2-1.11.0.tar.bz2 . || die
         cp "${DISTDIR}"/curl-8_7_1.tar.gz . || die
         LDFLAGS="" ../configure || die
 }
@@ -52,3 +54,4 @@ src_install() {
         cd "${S}"/build/curl-8_7_1/src/.libs || die
         dobin curl-impersonate-chrome
 }
+
