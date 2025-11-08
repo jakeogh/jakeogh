@@ -11,7 +11,7 @@ inherit git-r3
 
 DESCRIPTION="Python library for arbitrary-precision floating-point arithmetic"
 HOMEPAGE="http://mptuplemath.org/"
-EGIT_REPO_URI="https://github.com/fredrik-johansson/mptuplemath.git"
+EGIT_REPO_URI="https://github.com/mpmath/mpmath"
 
 LICENSE="BSD"
 SLOT="0"
