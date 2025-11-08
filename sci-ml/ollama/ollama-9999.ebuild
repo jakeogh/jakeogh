@@ -121,13 +121,9 @@ src_prepare() {
 		-e "s#lib/ollama#$(get_libdir)/ollama#g" \
 		-i CMakeLists.txt || die sed
 
-	sed \
-		-e "s/\"..\", \"lib\"/\"..\", \"$(get_libdir)\"/" \
-		-e "s#\"lib/ollama\"#\"$(get_libdir)/ollama\"#" \
-		-i \
-			ml/backend/ggml/ggml/src/ggml.go \
-			discover/path.go \
-		|| die
+
+	sed -e "s/\"..\", \"lib\"/\"..\", \"$(get_libdir)\"/" -e "s#\"lib/ollama\"#\"$(get_libdir)/ollama\"#" -i ml/path.go || die;
+
 
 	if use amd64; then
 		if
