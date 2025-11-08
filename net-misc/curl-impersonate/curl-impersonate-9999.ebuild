@@ -58,9 +58,9 @@ src_compile() {
 
 src_install() {
         dobin chrome/curl_chrome*
-        cd build/curl-8_7_1/lib/.libs || die
+        cd build/curl-8_15_0/lib/.libs || die
         dolib.so libcurl-impersonate-chrome.so*
-        cd "${S}"/build/curl-8_7_1/src/.libs || die
+        cd "${S}"/build/curl-8_15_0/src/.libs || die
         dobin curl-impersonate-chrome
 }
 
