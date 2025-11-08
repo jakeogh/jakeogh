@@ -46,7 +46,7 @@ src_configure() {
         -DMSDF_ATLAS_BUILD_STANDALONE=$(usex cli ON OFF)
         -DMSDF_ATLAS_USE_VCPKG=OFF
         -DMSDF_ATLAS_USE_SKIA=OFF
-        -DMSDF_ATLAS_MSDFGEN_EXTERNAL=ON
+        -DMSDF_ATLAS_MSDFGEN_EXTERNAL=OFF  # Change this to OFF
         -DMSDF_ATLAS_INSTALL=ON
         -DMSDFGEN_BUILD_STANDALONE=OFF
         -DMSDFGEN_USE_VCPKG=OFF
@@ -57,6 +57,7 @@ src_configure() {
     )
     cmake_src_configure "${mycmakeargs[@]}"
 }
+
 
 src_install() {
   local libdir=$(get_libdir)
