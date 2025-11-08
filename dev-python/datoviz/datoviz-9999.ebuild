@@ -19,6 +19,7 @@ RDEPEND="
 	dev-libs/cglm:=
 	dev-libs/tinyxml2:=
 	media-libs/msdf-atlas-gen:=
+	media-libs/msdfgen:=
 	media-libs/libpng:=
 	media-libs/freetype:=
 	sys-libs/zlib:=
@@ -118,31 +119,43 @@ if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
     INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
 endif()
 
-# msdf-atlas-gen with bundled msdfgen
+# msdf-atlas-gen with both bundled and system msdfgen
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
   find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen REQUIRED)
-  find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core-bundled REQUIRED)
-  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext-bundled REQUIRED)
+  find_library(MSDFGEN_CORE_BUNDLED_LIB NAMES msdfgen-core-bundled REQUIRED)
+  find_library(MSDFGEN_EXT_BUNDLED_LIB NAMES msdfgen-ext-bundled REQUIRED)
+  find_library(MSDFGEN_CORE_SYSTEM_LIB NAMES msdfgen-core REQUIRED)
+  find_library(MSDFGEN_EXT_SYSTEM_LIB NAMES msdfgen-ext REQUIRED)
   find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include/msdf-atlas-gen NO_DEFAULT_PATH)
   if(NOT MSDF_ATLAS_GEN_INC)
     set(MSDF_ATLAS_GEN_INC "/usr/include")
   endif()
 
-  # Create imported targets for bundled msdfgen libraries
+  # Bundled msdfgen for atlas-gen compatibility
   add_library(msdfgen-core-bundled SHARED IMPORTED)
   set_target_properties(msdfgen-core-bundled PROPERTIES
-    IMPORTED_LOCATION "${MSDFGEN_CORE_LIB}")
+    IMPORTED_LOCATION "${MSDFGEN_CORE_BUNDLED_LIB}")
 
   add_library(msdfgen-ext-bundled SHARED IMPORTED)
   set_target_properties(msdfgen-ext-bundled PROPERTIES
-    IMPORTED_LOCATION "${MSDFGEN_EXT_LIB}"
+    IMPORTED_LOCATION "${MSDFGEN_EXT_BUNDLED_LIB}"
     INTERFACE_LINK_LIBRARIES "msdfgen-core-bundled")
+
+  # System msdfgen for SVG functions
+  add_library(msdfgen-core-system SHARED IMPORTED)
+  set_target_properties(msdfgen-core-system PROPERTIES
+    IMPORTED_LOCATION "${MSDFGEN_CORE_SYSTEM_LIB}")
+
+  add_library(msdfgen-ext-system SHARED IMPORTED)
+  set_target_properties(msdfgen-ext-system PROPERTIES
+    IMPORTED_LOCATION "${MSDFGEN_EXT_SYSTEM_LIB}"
+    INTERFACE_LINK_LIBRARIES "msdfgen-core-system")
 
   add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED)
   set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
     IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
     INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}"
-    INTERFACE_LINK_LIBRARIES "msdfgen-ext-bundled;msdfgen-core-bundled")
+    INTERFACE_LINK_LIBRARIES "msdfgen-ext-bundled;msdfgen-core-bundled;msdfgen-ext-system;msdfgen-core-system")
 endif()
 EOF
 	echo "${top_include}"
