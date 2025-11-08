@@ -43,9 +43,9 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-2.1-gentoo-webkit-4.1.patch"
-)
+#PATCHES=(
+#	"${FILESDIR}/${PN}-2.1-gentoo-webkit-4.1.patch"
+#)
 
 pkg_setup() {
 	if ! use savedconfig; then
