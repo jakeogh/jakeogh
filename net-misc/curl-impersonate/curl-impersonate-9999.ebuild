@@ -54,4 +54,3 @@ src_install() {
         cd "${S}"/build/curl-8_7_1/src/.libs || die
         dobin curl-impersonate-chrome
 }
-
