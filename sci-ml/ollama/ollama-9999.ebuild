@@ -72,9 +72,9 @@ RDEPEND="
 	>=acct-user/${PN}-3[cuda?]
 "
 
-PATCHES=(
-	"${FILESDIR}/${PN}-0.6.3-use-GNUInstallDirs.patch"
-)
+#PATCHES=(
+#	"${FILESDIR}/${PN}-0.6.3-use-GNUInstallDirs.patch"
+#)
 
 pkg_pretend() {
 	if use amd64; then
