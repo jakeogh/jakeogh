@@ -62,27 +62,18 @@ src_configure() {
 src_install() {
   local libdir=$(get_libdir)
 
+  # Only install msdf-atlas-gen library (statically link bundled msdfgen)
   dolib.so "${BUILD_DIR}/libmsdf-atlas-gen.so" || die
-  dolib.so "${BUILD_DIR}/msdfgen/libmsdfgen-core.so" || die
-  dolib.so "${BUILD_DIR}/msdfgen/libmsdfgen-ext.so" || die
 
+  # Also install bundled msdfgen libs with different names to avoid collision
+  newlib.so "${BUILD_DIR}/msdfgen/libmsdfgen-core.so" libmsdfgen-core-bundled.so
+  newlib.so "${BUILD_DIR}/msdfgen/libmsdfgen-ext.so" libmsdfgen-ext-bundled.so
+
+  # Only install msdf-atlas-gen headers
   insinto /usr/include/msdf-atlas-gen
   doins "${S}"/msdf-atlas-gen/*.h || die
   [[ -f "${S}/msdf-atlas-gen/rectangle-packing.hpp" ]] || die "Missing rectangle-packing.hpp"
   doins "${S}"/msdf-atlas-gen/*.hpp || die
-
-  # Install bundled msdfgen headers
-  insinto /usr/include/msdfgen
-  doins "${S}"/msdfgen/msdfgen.h || die
-  doins "${S}"/msdfgen/msdfgen-ext.h || die
-
-  insinto /usr/include/msdfgen/core
-  doins "${S}"/msdfgen/core/*.h || die
-  doins "${S}"/msdfgen/core/Range.hpp || die
-  doins "${S}"/msdfgen/core/ShapeDistanceFinder.hpp || die
-
-  insinto /usr/include/msdfgen/ext
-  doins "${S}"/msdfgen/ext/*.h || die
 
   if use cli && [[ -x ${BUILD_DIR}/bin/msdf-atlas-gen ]]; then
     dobin "${BUILD_DIR}/bin/msdf-atlas-gen" || die
@@ -92,22 +83,20 @@ src_install() {
   insinto "${cmakedir}"
   cat > "${T}/msdf-atlas-genConfig.cmake" <<'EOF' || die
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
-  add_library(msdfgen-core SHARED IMPORTED)
-  set_target_properties(msdfgen-core PROPERTIES
-    IMPORTED_LOCATION "/usr/@LIBDIR@/libmsdfgen-core.so"
-    INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdfgen")
+  add_library(msdfgen-core-bundled SHARED IMPORTED)
+  set_target_properties(msdfgen-core-bundled PROPERTIES
+    IMPORTED_LOCATION "/usr/@LIBDIR@/libmsdfgen-core-bundled.so")
 
-  add_library(msdfgen-ext SHARED IMPORTED)
-  set_target_properties(msdfgen-ext PROPERTIES
-    IMPORTED_LOCATION "/usr/@LIBDIR@/libmsdfgen-ext.so"
-    INTERFACE_LINK_LIBRARIES "msdfgen-core"
-    INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdfgen")
+  add_library(msdfgen-ext-bundled SHARED IMPORTED)
+  set_target_properties(msdfgen-ext-bundled PROPERTIES
+    IMPORTED_LOCATION "/usr/@LIBDIR@/libmsdfgen-ext-bundled.so"
+    INTERFACE_LINK_LIBRARIES "msdfgen-core-bundled")
 
   add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED)
   set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
     IMPORTED_LOCATION "/usr/@LIBDIR@/libmsdf-atlas-gen.so"
-    INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdf-atlas-gen;/usr/include/msdfgen"
-    INTERFACE_LINK_LIBRARIES "msdfgen-ext;msdfgen-core")
+    INTERFACE_INCLUDE_DIRECTORIES "/usr/include/msdf-atlas-gen"
+    INTERFACE_LINK_LIBRARIES "msdfgen-ext-bundled;msdfgen-core-bundled")
 endif()
 EOF
   sed -i "s|@LIBDIR@|${libdir}|g" "${T}/msdf-atlas-genConfig.cmake" || die
@@ -115,8 +104,8 @@ EOF
 
   if type -P patchelf >/dev/null ; then
     patchelf --remove-rpath "${ED}/usr/${libdir}/libmsdf-atlas-gen.so" || die
-    patchelf --remove-rpath "${ED}/usr/${libdir}/libmsdfgen-core.so" 2>/dev/null
-    patchelf --remove-rpath "${ED}/usr/${libdir}/libmsdfgen-ext.so" 2>/dev/null
+    patchelf --remove-rpath "${ED}/usr/${libdir}/libmsdfgen-core-bundled.so" 2>/dev/null
+    patchelf --remove-rpath "${ED}/usr/${libdir}/libmsdfgen-ext-bundled.so" 2>/dev/null
     if use cli && [[ -x ${ED}/usr/bin/msdf-atlas-gen ]]; then
       patchelf --remove-rpath "${ED}/usr/bin/msdf-atlas-gen" || die
     fi
