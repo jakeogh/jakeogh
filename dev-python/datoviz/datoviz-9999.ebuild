@@ -19,7 +19,6 @@ RDEPEND="
 	dev-libs/cglm:=
 	dev-libs/tinyxml2:=
 	media-libs/msdf-atlas-gen:=
-	media-libs/msdfgen:=
 	media-libs/libpng:=
 	media-libs/freetype:=
 	sys-libs/zlib:=
@@ -42,19 +41,16 @@ BDEPEND="
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 S="${WORKDIR}/${PN}-${PV}"
 BUILD_DIR="${WORKDIR}/build-dvz"
-PYMOD_DIR="${S}/datoviz"  # The Python module is here
+PYMOD_DIR="${S}/datoviz"
 
 src_prepare() {
 	cmake_src_prepare
-	# Fix missing #include <cstdint> in earcut.hpp
 	sed -i '/#include <utility>/a #include <cstdint>' \
 		"${S}/external/earcut.hpp" || die "Failed to fix earcut.hpp"
-	# Patch _ctypes.py to use correct module-relative path for .so
 	sed -i \
 		"s|LIB_PATH = './build/libdatoviz.so'|LIB_PATH = __file__.replace('__init__.py', 'build/libdatoviz.so')|" \
 		"${PYMOD_DIR}/_ctypes.py" || die "Failed to patch _ctypes.py"
 
-	# Ensure os is imported
 	if ! grep -q "import os" "${PYMOD_DIR}/_ctypes.py"; then
 		sed -i '1iimport os' "${PYMOD_DIR}/_ctypes.py" || die "Failed to add import os"
 	fi
@@ -82,7 +78,6 @@ endfunction()
 if(NOT TARGET tinyxml2 AND NOT TARGET tinyxml2::tinyxml2)
   find_library(TINYXML2_LIB NAMES tinyxml2 REQUIRED)
   find_path(TINYXML2_INC_DIR NAMES tinyxml2.h PATHS /usr/include /usr/include/tinyxml2 REQUIRED)
-  # Create both targets to satisfy set_target_properties(tinyxml2 ...)
   if(NOT TARGET tinyxml2)
     add_library(tinyxml2 SHARED IMPORTED)
     set_target_properties(tinyxml2 PROPERTIES
@@ -123,22 +118,32 @@ if(NOT TARGET glfw AND NOT TARGET glfw::glfw)
     INTERFACE_INCLUDE_DIRECTORIES "${GLFW_INC}")
 endif()
 
-
-# msdf-atlas-gen
+# msdf-atlas-gen with bundled msdfgen
 if(NOT TARGET msdf-atlas-gen::msdf-atlas-gen)
   find_library(MSDF_ATLAS_GEN_LIB NAMES msdf-atlas-gen REQUIRED)
-  find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core REQUIRED)
-  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext REQUIRED)
-  find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include NO_DEFAULT_PATH)
+  find_library(MSDFGEN_CORE_LIB NAMES msdfgen-core-bundled REQUIRED)
+  find_library(MSDFGEN_EXT_LIB NAMES msdfgen-ext-bundled REQUIRED)
+  find_path(MSDF_ATLAS_GEN_INC NAMES msdf-atlas-gen.h PATHS /usr/include/msdf-atlas-gen NO_DEFAULT_PATH)
   if(NOT MSDF_ATLAS_GEN_INC)
     set(MSDF_ATLAS_GEN_INC "/usr/include")
   endif()
-  add_library(msdf-atlas-gen::msdf-atlas-gen INTERFACE IMPORTED)
-  set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
-    INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}"
-    INTERFACE_LINK_LIBRARIES "${MSDF_ATLAS_GEN_LIB};${MSDFGEN_EXT_LIB};${MSDFGEN_CORE_LIB}")
-endif()
 
+  # Create imported targets for bundled msdfgen libraries
+  add_library(msdfgen-core-bundled SHARED IMPORTED)
+  set_target_properties(msdfgen-core-bundled PROPERTIES
+    IMPORTED_LOCATION "${MSDFGEN_CORE_LIB}")
+
+  add_library(msdfgen-ext-bundled SHARED IMPORTED)
+  set_target_properties(msdfgen-ext-bundled PROPERTIES
+    IMPORTED_LOCATION "${MSDFGEN_EXT_LIB}"
+    INTERFACE_LINK_LIBRARIES "msdfgen-core-bundled")
+
+  add_library(msdf-atlas-gen::msdf-atlas-gen SHARED IMPORTED)
+  set_target_properties(msdf-atlas-gen::msdf-atlas-gen PROPERTIES
+    IMPORTED_LOCATION "${MSDF_ATLAS_GEN_LIB}"
+    INTERFACE_INCLUDE_DIRECTORIES "${MSDF_ATLAS_GEN_INC}"
+    INTERFACE_LINK_LIBRARIES "msdfgen-ext-bundled;msdfgen-core-bundled")
+endif()
 EOF
 	echo "${top_include}"
 }
@@ -169,37 +174,10 @@ src_configure() {
 		"${mycmakeargs[@]}"
 }
 
-
-#src_configure() {
-#	local top_include
-#	top_include=$(_src_write_top_include) || die
-#	local -a mycmakeargs=(
-#		-DCMAKE_BUILD_TYPE=Release
-#		-DBUILD_SHARED_LIBS=ON
-#		-DFETCHCONTENT_FULLY_DISCONNECTED=ON
-#		-DCMAKE_PROJECT_TOP_LEVEL_INCLUDES="${top_include}"
-#		-DCMAKE_PREFIX_PATH="/usr/$(get_libdir)/cmake;/usr/$(get_libdir)"
-#		-DBUILD_TESTING=$(usex test ON OFF)
-#	)
-#	cmake_src_configure \
-#		-S "${S}" \
-#		-B "${BUILD_DIR}" \
-#		-G Ninja \
-#		-DTINYXML2_INC_DIR=/usr/include \
-#		-DTINYXML2_INCLUDE_DIR=/usr/include \
-#		-DTINYXML2_LIBRARY="/usr/$(get_libdir)/libtinyxml2.so" \
-#		-DTINYXML2_LIBRARIES="/usr/$(get_libdir)/libtinyxml2.so" \
-#		"${mycmakeargs[@]}"
-#}
-
 src_compile() {
-	# Pass the same CFLAGS/CXXFLAGS used in the rest of the system
 	tc-export CXX CC
 	cmake_build -C "${BUILD_DIR}"
-	# Do NOT run `just build` — it violates sandbox
-	# Python bindings are pure Python + ctypes — no build needed
 }
-
 
 src_test() {
 	if use test; then
@@ -233,7 +211,6 @@ python_install() {
 }
 
 src_install() {
-	# Install C library and headers
 	dolib.so "${BUILD_DIR}/libdatoviz.so"* || die "Failed to install libdatoviz.so"
 	if [[ -x "${BUILD_DIR}/datoviz" ]]; then
 		dobin "${BUILD_DIR}/datoviz"
@@ -243,7 +220,6 @@ src_install() {
 
 	einstalldocs
 
-	# Install Python bindings
 	if use python; then
 		distutils-r1_src_install
 	fi
@@ -257,5 +233,3 @@ pkg_postinst() {
 		elog "Test with: python -c 'import datoviz; datoviz.demo()'"
 	fi
 }
-
-
