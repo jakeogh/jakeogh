@@ -10,7 +10,7 @@ SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> bro
                  https://github.com/nghttp2/nghttp2/releases/download/v1.63.0/nghttp2-1.63.0.tar.bz2 -> nghttp2-1.63.0.tar.bz2
                  https://github.com/ngtcp2/ngtcp2/releases/download/v1.11.0/ngtcp2-1.11.0.tar.bz2 -> ngtcp2-1.11.0.tar.bz2
                  https://github.com/ngtcp2/nghttp3/releases/download/v1.9.0/nghttp3-1.9.0.tar.bz2 -> nghttp3-1.9.0.tar.bz2
-                 https://github.com/c-ares/c-ares/releases/download/v1.30.0/c-ares-1.30.0.tar.gz -> cares-1.30.0.tar.gz
+                 https://github.com/c-ares/c-ares/releases/download/v1.30.0/c-ares-1.30.0.tar.gz -> c-ares-1.30.0.tar.gz
                  https://github.com/curl/curl/archive/curl-8_7_1.tar.gz -> curl-8_7_1.tar.gz"
 LICENSE="MIT"
 SLOT="0"
@@ -41,7 +41,8 @@ src_configure() {
         cp "${DISTDIR}"/nghttp2-1.63.0.tar.bz2 . || die
         cp "${DISTDIR}"/ngtcp2-1.11.0.tar.bz2 . || die
         cp "${DISTDIR}"/nghttp3-1.9.0.tar.bz2 . || die
-        cp "${DISTDIR}"/cares-1.30.0.tar.gz . || die
+        cp "${DISTDIR}"/c-ares-1.30.0.tar.gz cares-1.30.0.tar.gz || die
+        cp "${DISTDIR}"/c-ares-1.30.0.tar.gz . || die
         cp "${DISTDIR}"/curl-8_7_1.tar.gz . || die
         LDFLAGS="" ../configure || die
 }
