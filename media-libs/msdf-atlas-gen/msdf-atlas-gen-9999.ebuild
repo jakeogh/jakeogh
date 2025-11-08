@@ -5,6 +5,7 @@ DESCRIPTION="Multi-channel signed distance field atlas generator (live git)"
 HOMEPAGE="https://github.com/Chlumsky/msdf-atlas-gen"
 EGIT_REPO_URI="https://github.com/Chlumsky/msdf-atlas-gen.git"
 EGIT_BRANCH="master"
+EGIT_SUBMODULES=( '*' )
 
 LICENSE="MIT"
 SLOT="0"
