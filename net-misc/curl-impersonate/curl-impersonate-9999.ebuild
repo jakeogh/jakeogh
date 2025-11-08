@@ -15,6 +15,7 @@ SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> bro
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+RESTRICT="test userpriv usersandbox sandbox"
 IUSE+=""
 RDEPEND="sys-libs/zlib
         app-arch/zstd"
@@ -31,6 +32,7 @@ src_prepare() {
         fi
         sed -i -e 's/add_libs="-pthread -lc++";/add_libs="-pthread -lstdc++";/g' Makefile.in || die
         sed -i -e 's/LDFLAGS="-lc++"//g' Makefile.in || die
+        sed -i -e 's/--enable-tests/--disable-tests/g' Makefile.in || die
 }
 
 src_configure() {
