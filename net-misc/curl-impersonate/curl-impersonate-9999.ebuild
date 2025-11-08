@@ -16,7 +16,7 @@ SRC_URI="https://github.com/google/brotli/archive/refs/tags/v1.1.0.tar.gz -> bro
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
-RESTRICT="test userpriv usersandbox sandbox"
+RESTRICT="test"
 IUSE+=""
 RDEPEND="sys-libs/zlib
         app-arch/zstd"
