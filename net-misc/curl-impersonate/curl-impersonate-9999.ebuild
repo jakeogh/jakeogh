@@ -23,7 +23,6 @@ S="${WORKDIR}/${P}"
 
 src_prepare() {
         default
-        # Patch files after they're checked out
         if [[ -f chrome/patches/boringssl.patch ]]; then
                 sed -i -e 's/    unsigned ext_index;/    unsigned ext_index = 0;/g' chrome/patches/boringssl.patch || die
         fi
@@ -43,7 +42,7 @@ src_configure() {
 
 src_compile() {
         cd build || die
-        emake chrome-build
+        emake build
 }
 
 src_install() {
