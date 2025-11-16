@@ -4,7 +4,6 @@
 EAPI=8
 
 inherit cmake
-
 DESCRIPTION="SoX Resampler library"
 HOMEPAGE="https://sourceforge.net/projects/soxr/"
 
