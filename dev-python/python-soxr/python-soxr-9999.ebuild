@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{12..14} )
-DISTUTILS_USE_PEP517=setuptools
+DISTUTILS_USE_PEP517=scikit-build-core
 DISTUTILS_EXT=1
 
 inherit distutils-r1 git-r3
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/scikit-build-core[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
