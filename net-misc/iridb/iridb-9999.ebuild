@@ -66,6 +66,7 @@ RDEPEND="
 	dev-python/iridb-list-tags-zset[${PYTHON_USEDEP}]
 	dev-python/numexpr[${PYTHON_USEDEP}]
 	app-text/tree
+	media-libs/exiftool
 "
 
 #	dev-python/pdfx[${PYTHON_USEDEP}]
