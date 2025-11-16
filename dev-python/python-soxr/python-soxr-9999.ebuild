@@ -26,6 +26,7 @@ RDEPEND="
 "
 BDEPEND="
 	dev-python/scikit-build-core[${PYTHON_USEDEP}]
+	dev-python/nanobind[${PYTHON_USEDEP}]
 	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
 "
