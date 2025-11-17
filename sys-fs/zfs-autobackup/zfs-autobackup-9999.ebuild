@@ -1,37 +1,22 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 PYTHON_COMPAT=( python3_{12..14} )
 DISTUTILS_USE_PEP517=setuptools
 
-inherit git-r3
-inherit distutils-r1
+inherit git-r3 distutils-r1
 
-#inherit xdg
-#DISTUTILS_USE_SETUPTOOLS=pyproject.toml
+DESCRIPTION="ZFS autobackup is used to periodically backup ZFS filesystems to other locations"
+HOMEPAGE="https://github.com/psy0rz/zfs_autobackup"
+EGIT_REPO_URI="https://github.com/psy0rz/zfs_autobackup.git"
 
-DESCRIPTION="zfs backup tool, replication tool or snapshot tool"
-HOMEPAGE="https://github.com/jakeogh/zfs-autobackup"
-EGIT_REPO_URI="/home/sysskel/myapps/zfs-autobackup https://github.com/jakeogh/zfs-autobackup.git"
-
-LICENSE="BSD"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
-
 
 RDEPEND="
-	dev-python/click[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/asserttool[${PYTHON_USEDEP}]
-	dev-python/pathtool[${PYTHON_USEDEP}]
+	dev-python/colorama[${PYTHON_USEDEP}]
+	sys-fs/zfs
 "
-
 DEPEND="${RDEPEND}"
-
-
-#src_prepare() {
-#	default
-#	xdg_src_prepare
-#}
