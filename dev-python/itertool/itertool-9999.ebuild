@@ -15,7 +15,6 @@ EGIT_REPO_URI="https://github.com/jakeogh/itertool.git"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS=""
-#IUSE="test"
 
 
 RDEPEND="
