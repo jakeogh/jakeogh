@@ -1,43 +1,48 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-PYTHON_COMPAT=( python3_{12..14} )
 
 inherit git-r3
-inherit toolchain-funcs
 inherit autotools
 
-DESCRIPTION="Ion beam simulator"
-HOMEPAGE="http://ibsimu.sourceforge.net/index.html"
+DESCRIPTION="Ion beam simulator library for ion optics and plasma extraction"
+HOMEPAGE="https://ibsimu.sourceforge.net/"
 EGIT_REPO_URI="git://ibsimu.git.sourceforge.net/gitroot/ibsimu/ibsimu"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS=""
+IUSE="opengl umfpack"
 
-RDEPEND='
-	x11-libs/gtkglext
-	sci-libs/suitesparse
-	media-gfx/opencsg
+RDEPEND="
+	x11-libs/gtk+:3
+	x11-libs/cairo
 	sci-libs/gsl
-'
+	media-libs/libpng:=
+	sys-libs/zlib
+	opengl? ( x11-libs/gtkglext )
+	umfpack? ( sci-libs/suitesparse:= )
+"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
 	default
 	touch src/ibsimu.cpp || die
-	echo -n "#define IBSIMU_GIT_ID \"" > src/id.hpp || die
-	git log -1 --pretty=format:"%h, %ad" >> src/id.hpp || die
-	echo "\"" >> src/id.hpp || die
-	sed '0,/suitesparse\//s///' -i m4/check_umfpack.m4 || die
-	sed '0,/suitesparse\//s///' -i m4/check_umfpack.m4 || die
+	cat > src/id.hpp <<-EOF || die
+		#define IBSIMU_GIT_ID "$(git log -1 --pretty=format:'%h, %ad')"
+	EOF
+	if use umfpack; then
+		sed -i 's|suitesparse/||' m4/check_umfpack.m4 || die
+	fi
 	eautoreconf
 }
 
 src_configure() {
-	econf --with-umfpack=/usr
-}
-
-src_install() {
-	default
+	local myconf=(
+		--without-csg
+		$(use_with opengl)
+		$(usex umfpack --with-umfpack=/usr --without-umfpack)
+	)
+	econf "${myconf[@]}"
 }
