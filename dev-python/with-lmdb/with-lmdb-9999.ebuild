@@ -8,7 +8,7 @@ DISTUTILS_USE_PEP517=standalone
 inherit git-r3
 inherit distutils-r1
 
-DESCRIPTION="Short explination of what it does _here_"
+DESCRIPTION="Context manager for LMDB"
 HOMEPAGE="https://github.com/jakeogh/with-lmdb"
 EGIT_REPO_URI="https://github.com/jakeogh/with-lmdb.git"
 
