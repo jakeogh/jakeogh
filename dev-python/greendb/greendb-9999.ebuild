@@ -24,7 +24,6 @@ RDEPEND="
 	dev-python/lmdb[${PYTHON_USEDEP}]
 	dev-python/gevent[${PYTHON_USEDEP}]
 	dev-python/msgpack[${PYTHON_USEDEP}]
-	dev-python/setproctitle[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}"
