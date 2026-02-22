@@ -1,0 +1,255 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -96,7 +96,7 @@
+ )
+ AM_CONDITIONAL([GTK3], [test x$USEGTK3 = xyes])
+ 
+-dnl OpenGL/GtkGLExt
++dnl OpenGL (using GtkGLArea, built into GTK+ >= 3.16)
+ dnl Check by default, can be disabled
+ dnl ---------------------------------
+ AC_ARG_WITH([opengl],
+@@ -105,15 +105,14 @@
+                   [],
+                   [with_opengl=check])
+ AS_IF([test "x$with_opengl" != "xno"],
+-      [PKG_CHECK_MODULES([GTKGLEXT], [gtkglext-3.0], [], [echo "Using software rendering"])
+-       if $PKG_CONFIG --exists gtkglext-3.0 ; then
++      [AC_CHECK_LIB([GL], [glBegin], [have_gl=yes], [have_gl=no])
++       if test "x$have_gl" = "xyes" ; then
+          USEOPENGL="yes"
+-         AC_DEFINE([OPENGL], [1], [Define to 1 if GtkGLExt/OpenGL dependent code is to be compiled.])
+-         LIBS="$LIBS $GTKGLEXT_LIBS"
+-         CPPFLAGS="$CPPFLAGS $GTKGLEXT_CFLAGS"
+-         AC_SUBST(OPENGL_COND,[gtkglext-3.0])
++         AC_DEFINE([OPENGL], [1], [Define to 1 if OpenGL dependent code is to be compiled.])
++         LIBS="$LIBS -lGL"
++         AC_SUBST(OPENGL_COND,"")
+        elif test "x$with_opengl" != "xcheck" ; then
+-         AC_MSG_ERROR([--with-opengl was given, but pkgconfig check for gtkglext-3.0 library failed])
++         AC_MSG_ERROR([--with-opengl was given, but libGL was not found])
+        else
+          AC_SUBST(OPENGL_COND,"")
+        fi]
+--- a/src/glrenderer.hpp
++++ b/src/glrenderer.hpp
+@@ -45,18 +45,16 @@
+ #define GLRENDERER_HPP 1
+ 
+ 
+-#include <gtk/gtkgl.h>
++#include <gtk/gtk.h>
++#include <GL/gl.h>
+ #include "renderer.hpp"
+-#include "error.hpp"
+ 
+ 
+-/*! \brief OpenGL 3D renderer.
++/*! \brief OpenGL 3D renderer using GtkGLArea.
+  */
+ class GLRenderer : public Renderer {
+ 
+-    GtkWidget      *_darea;
+-    GdkGLContext   *_glcontext;
+-    GdkGLDrawable  *_gldrawable;
++    GtkWidget      *_darea; // GtkGLArea widget
+ 
+     Vec3D            _material_diffuse_color;
+     Vec3D            _material_ambient_color;
+@@ -64,16 +62,6 @@
+ 
+ public:
+ 
+-    /*! \brief Class for OpenGL initialization error.
+-     */
+-    class ErrorGLInit : public Error {	
+-    public:
+-
+-	/*! \brief Error constructor.
+-	 */
+-	ErrorGLInit() {}
+-    };
+-
+     GLRenderer( GtkWidget *darea );
+     virtual ~GLRenderer();
+ 
+--- a/src/glrenderer.cpp
++++ b/src/glrenderer.cpp
+@@ -52,18 +52,7 @@
+       _material_ambient_color(0.2,0.0,0.0),
+       _color(0.0,0.0,0.0)
+ {
+-    GdkGLConfigMode mode = (GdkGLConfigMode)( GDK_GL_MODE_RGBA |
+-					      GDK_GL_MODE_DEPTH |
+-					      GDK_GL_MODE_DOUBLE );
+-    GdkGLConfig *gl_config = gdk_gl_config_new_by_mode( mode );
+-    if( !gl_config )
+-        throw( ErrorGLInit() );
+-
+-    if( !gtk_widget_set_gl_capability( darea, gl_config, NULL, TRUE,
+-				       GDK_GL_RGBA_TYPE ) )
+-        throw( ErrorGLInit() );
+-
+-    ibsimu.message( 1 ) << "Using GLRenderer\n";
++    ibsimu.message( 1 ) << "Using GLRenderer (GtkGLArea)\n";
+     ibsimu.flush();
+ }
+ 
+@@ -76,13 +65,7 @@
+ 
+ void GLRenderer::start_rendering( void )
+ {
+-    // Initialize OpenGL context
+-    _glcontext = gtk_widget_get_gl_context( _darea );
+-    _gldrawable = gtk_widget_get_gl_drawable( _darea );
+-    if( !gdk_gl_drawable_gl_begin( _gldrawable, _glcontext ) )
+-	g_assert_not_reached();
+-
+-    // Set OpenGL viewport
++    // GL context is already current via GtkGLArea "render" signal
+     GtkAllocation alloc;
+     gtk_widget_get_allocation( _darea, &alloc );
+     glViewport( 0, 0, alloc.width, alloc.height );
+@@ -100,12 +83,8 @@
+ 
+ void GLRenderer::end_rendering( cairo_t *cairo )
+ {
+-    // Finish draw and close OpenGL context
+-    if( gdk_gl_drawable_is_double_buffered( _gldrawable) )
+-        gdk_gl_drawable_swap_buffers( _gldrawable ); 
+-    else
+-        glFlush();
+-    gdk_gl_drawable_gl_end( _gldrawable );
++    // GtkGLArea handles buffer swap after render signal returns
++    glFlush();
+ }
+ 
+ 
+--- a/src/gtkgeom3dwindow.hpp
++++ b/src/gtkgeom3dwindow.hpp
+@@ -77,6 +77,7 @@
+     double                  _endy;
+ 
+     class Renderer         *_renderer;
++    bool                    _use_gl;
+ 
+     void init_window( void );
+     void init_renderer( void );
+@@ -127,6 +128,9 @@
+     static gboolean darea_draw_signal( GtkWidget *widget, 
+ 				       cairo_t *cairo,
+ 				       gpointer object );
++    static gboolean darea_render_signal( GtkGLArea *area,
++					 GdkGLContext *context,
++					 gpointer object );
+     /*
+     static gboolean darea_expose_signal( GtkWidget *widget, 
+ 					 GdkEventExpose *event, 
+--- a/src/gtkgeom3dwindow.cpp
++++ b/src/gtkgeom3dwindow.cpp
+@@ -81,12 +81,15 @@
+     g_signal_connect( G_OBJECT(_darea), "configure_event",
+ 		      G_CALLBACK(darea_configure_signal), 
+ 		      (gpointer)this );
+-    //g_signal_connect( G_OBJECT(_darea), "expose_event",
+-    //G_CALLBACK(darea_expose_signal), 
+-    //(gpointer)this );
+-    g_signal_connect( G_OBJECT(_darea), "draw",
+-		      G_CALLBACK(darea_draw_signal), 
+-		      (gpointer)this );
++    if( _use_gl ) {
++	g_signal_connect( G_OBJECT(_darea), "render",
++			  G_CALLBACK(darea_render_signal),
++			  (gpointer)this );
++    } else {
++	g_signal_connect( G_OBJECT(_darea), "draw",
++			  G_CALLBACK(darea_draw_signal), 
++			  (gpointer)this );
++    }
+ 
+     gtk_widget_show_all( _window );
+ }
+@@ -95,20 +98,12 @@
+ void GTKGeom3DWindow::init_renderer( void )
+ {
+ #ifdef OPENGL
+-    if( _plotter.opengl() ) {
+-	try {
+-	    // Try initializing OpenGL renderer
+-	    _renderer = new GLRenderer( _darea );
+-	} catch( GLRenderer::ErrorGLInit e ) {
+-	    // Fallback to software renderer
+-	    _renderer = new SoftwareRenderer( _darea );
+-	}
++    if( _use_gl ) {
++	_renderer = new GLRenderer( _darea );
+     } else {
+-	// No GdkGLExt initialized
+ 	_renderer = new SoftwareRenderer( _darea );
+     }
+ #else
+-    // Only software renderer available
+     _renderer = new SoftwareRenderer( _darea );
+ #endif
+ }
+@@ -262,7 +257,19 @@
+ 
+ 
+     // Drawing area
++#ifdef OPENGL
++    _use_gl = _plotter.opengl();
++    if( _use_gl ) {
++	_darea = gtk_gl_area_new();
++	gtk_gl_area_set_has_depth_buffer( GTK_GL_AREA(_darea), TRUE );
++	gtk_gl_area_set_required_version( GTK_GL_AREA(_darea), 2, 1 );
++    } else {
++	_darea = gtk_drawing_area_new();
++    }
++#else
++    _use_gl = false;
+     _darea = gtk_drawing_area_new();
++#endif
+     gtk_widget_set_size_request( _darea, _width, _height );
+     gtk_widget_add_events( _darea, GDK_EXPOSURE_MASK |
+ 			   GDK_LEAVE_NOTIFY_MASK |
+@@ -752,6 +759,16 @@
+ }
+ 
+ 
++gboolean GTKGeom3DWindow::darea_render_signal( GtkGLArea *area,
++					       GdkGLContext *context,
++					       gpointer object )
++{
++    GTKGeom3DWindow *window = (GTKGeom3DWindow *)object;
++    window->draw( NULL );
++    return( TRUE );
++}
++
++
+ gboolean GTKGeom3DWindow::darea_motion_signal( GtkWidget *widget, 
+ 					       GdkEventMotion *event,
+ 					       gpointer object )
+--- a/src/gtkplotter.cpp
++++ b/src/gtkplotter.cpp
+@@ -43,10 +43,6 @@
+ 
+ #include "config.h"
+ 
+-#ifdef OPENGL
+-#include <gtk/gtkgl.h>
+-#endif
+-
+ #include "gtkplotter.hpp"
+ #include "gtkgeomwindow.hpp"
+ #include "gtkgeom3dwindow.hpp"
+@@ -74,10 +70,6 @@
+ 
+ #ifdef OPENGL
+ 	_opengl = true;
+-	// Initialize OpenGL
+-	if( gtk_gl_init_check( argc, argv ) == FALSE ||
+-	    gdk_gl_query_extension() == FALSE )
+-	    _opengl = false;
+ #endif
+     }
+ }
