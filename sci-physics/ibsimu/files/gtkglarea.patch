@@ -34,10 +34,22 @@ index 31336fd..57b99e0 100644
           AC_SUBST(OPENGL_COND,"")
         fi]
 diff --git a/src/glrenderer.cpp b/src/glrenderer.cpp
-index 98ff7b4..bd8c724 100644
+index 98ff7b4..cfcb919 100644
 --- a/src/glrenderer.cpp
 +++ b/src/glrenderer.cpp
-@@ -48,41 +48,156 @@
+@@ -42,47 +42,170 @@
+ 
+ 
+ #include <GL/gl.h>
++#include <GL/glx.h>
++#include <gdk/gdkx.h>
+ #include "glrenderer.hpp"
+ #include "ibsimu.hpp"
+ 
++// Cast helpers for opaque types stored in header
++#define XDISPLAY  ((Display *)_xdisplay)
++#define XWINDOW   ((Window)_xwindow)
++
  
  GLRenderer::GLRenderer( GtkWidget *darea )
      : _darea(darea),
@@ -69,8 +81,8 @@ index 98ff7b4..bd8c724 100644
  GLRenderer::~GLRenderer()
  {
 +    if( _glx_context ) {
-+	glXMakeCurrent( _xdisplay, None, NULL );
-+	glXDestroyContext( _xdisplay, _glx_context );
++	glXMakeCurrent( XDISPLAY, None, NULL );
++	glXDestroyContext( XDISPLAY, _glx_context );
 +    }
 +}
 +
@@ -90,13 +102,15 @@ index 98ff7b4..bd8c724 100644
 +    if( !gdk_win )
 +	return;
 +
-+    _xdisplay = gdk_x11_display_get_xdisplay( gdk_display_get_default() );
-+    _xwindow = gdk_x11_window_get_xid( gdk_win );
-+    int screen = DefaultScreen( _xdisplay );
++    _xdisplay = (void *)gdk_x11_display_get_xdisplay( gdk_display_get_default() );
++    _xwindow = (unsigned long)gdk_x11_window_get_xid( gdk_win );
++    Display *dpy = XDISPLAY;
++    Window xwin = XWINDOW;
++    int screen = DefaultScreen( dpy );
 +
 +    // Get visual of existing window
 +    XWindowAttributes xwa;
-+    XGetWindowAttributes( _xdisplay, _xwindow, &xwa );
++    XGetWindowAttributes( dpy, xwin, &xwa );
 +    VisualID target_vid = XVisualIDFromVisual( xwa.visual );
 +
 +    // Find FBConfig matching window visual with depth buffer
@@ -108,12 +122,12 @@ index 98ff7b4..bd8c724 100644
 +	None
 +    };
 +    int nfb = 0;
-+    GLXFBConfig *fbcs = glXChooseFBConfig( _xdisplay, screen, fb_attribs, &nfb );
++    GLXFBConfig *fbcs = glXChooseFBConfig( dpy, screen, fb_attribs, &nfb );
 +    GLXFBConfig matching_fbc = NULL;
 +
 +    if( fbcs ) {
 +	for( int i = 0; i < nfb; i++ ) {
-+	    XVisualInfo *vi = glXGetVisualFromFBConfig( _xdisplay, fbcs[i] );
++	    XVisualInfo *vi = glXGetVisualFromFBConfig( dpy, fbcs[i] );
 +	    if( vi && vi->visualid == target_vid ) {
 +		matching_fbc = fbcs[i];
 +		XFree( vi );
@@ -131,10 +145,10 @@ index 98ff7b4..bd8c724 100644
 +		None
 +	    };
 +	    int nfb2 = 0;
-+	    GLXFBConfig *fbcs2 = glXChooseFBConfig( _xdisplay, screen, fb_attribs2, &nfb2 );
++	    GLXFBConfig *fbcs2 = glXChooseFBConfig( dpy, screen, fb_attribs2, &nfb2 );
 +	    if( fbcs2 ) {
 +		for( int i = 0; i < nfb2; i++ ) {
-+		    XVisualInfo *vi = glXGetVisualFromFBConfig( _xdisplay, fbcs2[i] );
++		    XVisualInfo *vi = glXGetVisualFromFBConfig( dpy, fbcs2[i] );
 +		    if( vi && vi->visualid == target_vid ) {
 +			matching_fbc = fbcs2[i];
 +			XFree( vi );
@@ -160,7 +174,7 @@ index 98ff7b4..bd8c724 100644
 +	    GLX_CONTEXT_PROFILE_MASK_ARB, GLX_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB,
 +	    None
 +	};
-+	_glx_context = glXCreateContextAttribsARB( _xdisplay, matching_fbc,
++	_glx_context = glXCreateContextAttribsARB( dpy, matching_fbc,
 +						   NULL, True, ctx_attribs );
 +    }
 +
@@ -169,9 +183,9 @@ index 98ff7b4..bd8c724 100644
 +	XVisualInfo tmpl;
 +	tmpl.visualid = target_vid;
 +	int nitems;
-+	XVisualInfo *vi = XGetVisualInfo( _xdisplay, VisualIDMask, &tmpl, &nitems );
++	XVisualInfo *vi = XGetVisualInfo( dpy, VisualIDMask, &tmpl, &nitems );
 +	if( vi ) {
-+	    _glx_context = glXCreateContext( _xdisplay, vi, NULL, True );
++	    _glx_context = glXCreateContext( dpy, vi, NULL, True );
 +	    XFree( vi );
 +	}
 +    }
@@ -182,7 +196,7 @@ index 98ff7b4..bd8c724 100644
 +	return;
 +    }
 +
-+    glXMakeCurrent( _xdisplay, _xwindow, _glx_context );
++    glXMakeCurrent( dpy, xwin, _glx_context );
 +
 +    const char *version = (const char *)glGetString( GL_VERSION );
 +    const char *renderer = (const char *)glGetString( GL_RENDERER );
@@ -206,13 +220,13 @@ index 98ff7b4..bd8c724 100644
 +    if( !_gl_ready )
 +	return;
 +
-+    glXMakeCurrent( _xdisplay, _xwindow, _glx_context );
++    glXMakeCurrent( XDISPLAY, XWINDOW, _glx_context );
  
 -    // Set OpenGL viewport
      GtkAllocation alloc;
      gtk_widget_get_allocation( _darea, &alloc );
      glViewport( 0, 0, alloc.width, alloc.height );
-@@ -100,12 +215,9 @@ void GLRenderer::start_rendering( void )
+@@ -100,12 +223,9 @@ void GLRenderer::start_rendering( void )
  
  void GLRenderer::end_rendering( cairo_t *cairo )
  {
@@ -224,28 +238,30 @@ index 98ff7b4..bd8c724 100644
 -    gdk_gl_drawable_gl_end( _gldrawable );
 +    if( !_gl_ready )
 +	return;
-+    glXSwapBuffers( _xdisplay, _xwindow );
++    glXSwapBuffers( XDISPLAY, XWINDOW );
  }
  
  
 diff --git a/src/glrenderer.hpp b/src/glrenderer.hpp
-index 5064b35..545e5cf 100644
+index 5064b35..18294cc 100644
 --- a/src/glrenderer.hpp
 +++ b/src/glrenderer.hpp
-@@ -45,34 +45,30 @@
+@@ -45,34 +45,32 @@
  #define GLRENDERER_HPP 1
  
  
 -#include <gtk/gtkgl.h>
 +#include <gtk/gtk.h>
 +#include <GL/gl.h>
-+#include <GL/glx.h>
-+#include <gdk/gdkx.h>
  #include "renderer.hpp"
 -#include "error.hpp"
  
  
 -/*! \brief OpenGL 3D renderer.
++// Opaque GLX types to avoid X11 header pollution (Colormap typedef conflict)
++typedef struct __GLXcontextRec *GLXContext;
++
++
 +/*! \brief OpenGL 3D renderer using GLX compatibility profile.
   */
  class GLRenderer : public Renderer {
@@ -253,9 +269,9 @@ index 5064b35..545e5cf 100644
      GtkWidget      *_darea;
 -    GdkGLContext   *_glcontext;
 -    GdkGLDrawable  *_gldrawable;
-+    Display        *_xdisplay;
++    void           *_xdisplay;    // Display*
 +    GLXContext      _glx_context;
-+    Window          _xwindow;
++    unsigned long   _xwindow;     // Window (XID)
 +    bool            _gl_ready;
  
      Vec3D            _material_diffuse_color;
@@ -263,13 +279,13 @@ index 5064b35..545e5cf 100644
      Vec3D            _color;
  
 -public:
--
++    void init_gl( void );
+ 
 -    /*! \brief Class for OpenGL initialization error.
 -     */
 -    class ErrorGLInit : public Error {	
 -    public:
-+    void init_gl( void );
- 
+-
 -	/*! \brief Error constructor.
 -	 */
 -	ErrorGLInit() {}
