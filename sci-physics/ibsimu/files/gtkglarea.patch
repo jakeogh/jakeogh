@@ -132,7 +132,7 @@ index 5064b35..14ca34c 100644
      virtual ~GLRenderer();
  
 diff --git a/src/gtkgeom3dwindow.cpp b/src/gtkgeom3dwindow.cpp
-index a678ebe..cf37e87 100644
+index a678ebe..9620fd4 100644
 --- a/src/gtkgeom3dwindow.cpp
 +++ b/src/gtkgeom3dwindow.cpp
 @@ -81,12 +81,15 @@ GTKGeom3DWindow::GTKGeom3DWindow( GTKPlotter &plotter,
@@ -202,7 +202,7 @@ index a678ebe..cf37e87 100644
      gtk_widget_set_size_request( _darea, _width, _height );
      gtk_widget_add_events( _darea, GDK_EXPOSURE_MASK |
  			   GDK_LEAVE_NOTIFY_MASK |
-@@ -752,6 +761,55 @@ gboolean GTKGeom3DWindow::darea_draw_signal( GtkWidget *widget,
+@@ -752,6 +761,63 @@ gboolean GTKGeom3DWindow::darea_draw_signal( GtkWidget *widget,
  }
  
  
@@ -210,6 +210,24 @@ index a678ebe..cf37e87 100644
 +					       GdkGLContext *context,
 +					       gpointer object )
 +{
++    static bool first_render = true;
++    if( first_render ) {
++	first_render = false;
++	const char *version = (const char *)glGetString( GL_VERSION );
++	const char *renderer = (const char *)glGetString( GL_RENDERER );
++	ibsimu.message( 1 ) << "GL render: version=\"" << (version ? version : "NULL")
++			     << "\" renderer=\"" << (renderer ? renderer : "NULL") << "\"\n";
++	int major, minor;
++	gdk_gl_context_get_version( context, &major, &minor );
++	ibsimu.message( 1 ) << "GDK context: " << major << "." << minor
++			     << (gdk_gl_context_get_forward_compatible( context ) ? " core" : " compat")
++			     << "\n";
++	GError *err = gtk_gl_area_get_error( area );
++	if( err )
++	    ibsimu.message( 1 ) << "GtkGLArea error: " << err->message << "\n";
++	ibsimu.flush();
++    }
++
 +    GTKGeom3DWindow *window = (GTKGeom3DWindow *)object;
 +    window->draw( NULL );
 +    return( TRUE );
@@ -220,8 +238,10 @@ index a678ebe..cf37e87 100644
 +							       gpointer object )
 +{
 +    GdkWindow *gdk_window = gtk_widget_get_window( GTK_WIDGET(area) );
-+    if( !gdk_window )
++    if( !gdk_window ) {
++	ibsimu.message( 1 ) << "create-context: no GdkWindow yet\n";
 +	return( NULL );
++    }
 +
 +    GError *error = NULL;
 +    GdkGLContext *context = gdk_window_create_gl_context( gdk_window, &error );
@@ -233,22 +253,10 @@ index a678ebe..cf37e87 100644
 +
 +    // Request compatibility profile for immediate-mode GL (glBegin/glEnd)
 +    gdk_gl_context_set_forward_compatible( context, FALSE );
-+    gdk_gl_context_set_required_version( context, 3, 2 );
++    gdk_gl_context_set_use_es( context, FALSE );
 +
-+    gdk_gl_context_realize( context, &error );
-+    if( error ) {
-+	ibsimu.message( 1 ) << "GL context realize failed: " << error->message << "\n";
-+	gtk_gl_area_set_error( area, error );
-+	g_object_unref( context );
-+	return( NULL );
-+    }
-+
-+    // Report what we actually got
-+    int major, minor;
-+    gdk_gl_context_get_version( context, &major, &minor );
-+    ibsimu.message( 1 ) << "GL context: " << major << "." << minor
-+			 << (gdk_gl_context_get_forward_compatible( context ) ? " core" : " compat")
-+			 << "\n";
++    // Do NOT call gdk_gl_context_realize() here — GtkGLArea does it after this signal
++    ibsimu.message( 1 ) << "create-context: created, forward_compatible=FALSE\n";
 +    ibsimu.flush();
 +
 +    return( context );
