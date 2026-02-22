@@ -295,7 +295,7 @@ index 5064b35..18294cc 100644
      GLRenderer( GtkWidget *darea );
      virtual ~GLRenderer();
 diff --git a/src/gtkgeom3dwindow.cpp b/src/gtkgeom3dwindow.cpp
-index a678ebe..5bb2daf 100644
+index a678ebe..e3f2c36 100644
 --- a/src/gtkgeom3dwindow.cpp
 +++ b/src/gtkgeom3dwindow.cpp
 @@ -96,19 +96,11 @@ void GTKGeom3DWindow::init_renderer( void )
@@ -319,6 +319,50 @@ index a678ebe..5bb2daf 100644
      _renderer = new SoftwareRenderer( _darea );
  #endif
  }
+@@ -280,6 +272,9 @@ void GTKGeom3DWindow::init_window( void )
+     g_signal_connect( G_OBJECT(_darea), "button_release_event",
+ 		      G_CALLBACK(darea_button_signal),
+ 		      (gpointer)this );
++    g_signal_connect( G_OBJECT(_darea), "scroll_event",
++		      G_CALLBACK(darea_scroll_signal),
++		      (gpointer)this );
+     g_signal_connect( G_OBJECT(_darea), "motion_notify_event",
+ 		      G_CALLBACK(darea_motion_signal),
+ 		      (gpointer)this );
+@@ -792,6 +787,19 @@ gboolean GTKGeom3DWindow::darea_button_signal( GtkWidget *widget,
+ }
+ 
+ 
++gboolean GTKGeom3DWindow::darea_scroll_signal( GtkWidget *widget,
++					       GdkEventScroll *event,
++					       gpointer object )
++{
++    GTKGeom3DWindow *window = (GTKGeom3DWindow *)object;
++    if( event->direction == GDK_SCROLL_UP )
++	window->zoom_in( event->x, event->y );
++    else if( event->direction == GDK_SCROLL_DOWN )
++	window->zoom_out( event->x, event->y );
++    return( TRUE );
++}
++
++
+ gboolean GTKGeom3DWindow::window_delete_signal( GtkWidget *widget, 
+ 						GdkEventExpose *event, 
+ 						gpointer object )
+diff --git a/src/gtkgeom3dwindow.hpp b/src/gtkgeom3dwindow.hpp
+index 82f9d41..83cfe9c 100644
+--- a/src/gtkgeom3dwindow.hpp
++++ b/src/gtkgeom3dwindow.hpp
+@@ -135,6 +135,9 @@ class GTKGeom3DWindow : public GTKWindow {
+     static gboolean darea_button_signal( GtkWidget *widget, 
+ 					 GdkEventButton *event,
+ 					 gpointer object );
++    static gboolean darea_scroll_signal( GtkWidget *widget,
++					 GdkEventScroll *event,
++					 gpointer object );
+     static gboolean darea_motion_signal( GtkWidget *widget, 
+ 					 GdkEventMotion *event,
+ 					 gpointer object );
 diff --git a/src/gtkplotter.cpp b/src/gtkplotter.cpp
 index 6a975a2..fcc694e 100644
 --- a/src/gtkplotter.cpp
