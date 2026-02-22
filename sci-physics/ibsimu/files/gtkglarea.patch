@@ -1,5 +1,5 @@
 diff --git a/configure.ac b/configure.ac
-index 31336fd..4641b11 100644
+index 31336fd..57b99e0 100644
 --- a/configure.ac
 +++ b/configure.ac
 @@ -96,7 +96,7 @@ AS_IF([test "x$with_gtk3" != "xno"],
@@ -7,7 +7,7 @@ index 31336fd..4641b11 100644
  AM_CONDITIONAL([GTK3], [test x$USEGTK3 = xyes])
  
 -dnl OpenGL/GtkGLExt
-+dnl OpenGL (using GtkGLArea, built into GTK+ >= 3.16)
++dnl OpenGL (using GLX, requires libGL and X11)
  dnl Check by default, can be disabled
  dnl ---------------------------------
  AC_ARG_WITH([opengl],
@@ -17,7 +17,7 @@ index 31336fd..4641b11 100644
  AS_IF([test "x$with_opengl" != "xno"],
 -      [PKG_CHECK_MODULES([GTKGLEXT], [gtkglext-3.0], [], [echo "Using software rendering"])
 -       if $PKG_CONFIG --exists gtkglext-3.0 ; then
-+      [AC_CHECK_LIB([GL], [glBegin], [have_gl=yes], [have_gl=no])
++      [AC_CHECK_LIB([GL], [glXCreateContext], [have_gl=yes], [have_gl=no])
 +       if test "x$have_gl" = "xyes" ; then
           USEOPENGL="yes"
 -         AC_DEFINE([OPENGL], [1], [Define to 1 if GtkGLExt/OpenGL dependent code is to be compiled.])
@@ -34,10 +34,18 @@ index 31336fd..4641b11 100644
           AC_SUBST(OPENGL_COND,"")
         fi]
 diff --git a/src/glrenderer.cpp b/src/glrenderer.cpp
-index 98ff7b4..4f8098a 100644
+index 98ff7b4..bd8c724 100644
 --- a/src/glrenderer.cpp
 +++ b/src/glrenderer.cpp
-@@ -52,18 +52,7 @@ GLRenderer::GLRenderer( GtkWidget *darea )
+@@ -48,41 +48,156 @@
+ 
+ GLRenderer::GLRenderer( GtkWidget *darea )
+     : _darea(darea),
++      _xdisplay(NULL),
++      _glx_context(NULL),
++      _xwindow(0),
++      _gl_ready(false),
+       _material_diffuse_color(0.8,0.0,0.0), 
        _material_ambient_color(0.2,0.0,0.0),
        _color(0.0,0.0,0.0)
  {
@@ -53,11 +61,138 @@ index 98ff7b4..4f8098a 100644
 -        throw( ErrorGLInit() );
 -
 -    ibsimu.message( 1 ) << "Using GLRenderer\n";
-+    ibsimu.message( 1 ) << "Using GLRenderer (GtkGLArea)\n";
++    ibsimu.message( 1 ) << "Using GLRenderer (GLX compat)\n";
      ibsimu.flush();
  }
  
-@@ -76,13 +65,7 @@ GLRenderer::~GLRenderer()
+ 
+ GLRenderer::~GLRenderer()
+ {
++    if( _glx_context ) {
++	glXMakeCurrent( _xdisplay, None, NULL );
++	glXDestroyContext( _xdisplay, _glx_context );
++    }
++}
++
++
++#ifndef GLX_CONTEXT_MAJOR_VERSION_ARB
++#define GLX_CONTEXT_MAJOR_VERSION_ARB      0x2091
++#define GLX_CONTEXT_MINOR_VERSION_ARB      0x2092
++#define GLX_CONTEXT_PROFILE_MASK_ARB       0x9126
++#define GLX_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB 0x00000002
++#endif
++
++typedef GLXContext (*glXCreateContextAttribsARBProc)(Display*, GLXFBConfig, GLXContext, Bool, const int*);
+ 
++void GLRenderer::init_gl( void )
++{
++    GdkWindow *gdk_win = gtk_widget_get_window( _darea );
++    if( !gdk_win )
++	return;
++
++    _xdisplay = gdk_x11_display_get_xdisplay( gdk_display_get_default() );
++    _xwindow = gdk_x11_window_get_xid( gdk_win );
++    int screen = DefaultScreen( _xdisplay );
++
++    // Get visual of existing window
++    XWindowAttributes xwa;
++    XGetWindowAttributes( _xdisplay, _xwindow, &xwa );
++    VisualID target_vid = XVisualIDFromVisual( xwa.visual );
++
++    // Find FBConfig matching window visual with depth buffer
++    int fb_attribs[] = {
++	GLX_RENDER_TYPE, GLX_RGBA_BIT,
++	GLX_DRAWABLE_TYPE, GLX_WINDOW_BIT,
++	GLX_DOUBLEBUFFER, True,
++	GLX_DEPTH_SIZE, 16,
++	None
++    };
++    int nfb = 0;
++    GLXFBConfig *fbcs = glXChooseFBConfig( _xdisplay, screen, fb_attribs, &nfb );
++    GLXFBConfig matching_fbc = NULL;
++
++    if( fbcs ) {
++	for( int i = 0; i < nfb; i++ ) {
++	    XVisualInfo *vi = glXGetVisualFromFBConfig( _xdisplay, fbcs[i] );
++	    if( vi && vi->visualid == target_vid ) {
++		matching_fbc = fbcs[i];
++		XFree( vi );
++		break;
++	    }
++	    if( vi ) XFree( vi );
++	}
++
++	// Fallback: if no depth-capable FBConfig matches, try without depth
++	if( !matching_fbc ) {
++	    int fb_attribs2[] = {
++		GLX_RENDER_TYPE, GLX_RGBA_BIT,
++		GLX_DRAWABLE_TYPE, GLX_WINDOW_BIT,
++		GLX_DOUBLEBUFFER, True,
++		None
++	    };
++	    int nfb2 = 0;
++	    GLXFBConfig *fbcs2 = glXChooseFBConfig( _xdisplay, screen, fb_attribs2, &nfb2 );
++	    if( fbcs2 ) {
++		for( int i = 0; i < nfb2; i++ ) {
++		    XVisualInfo *vi = glXGetVisualFromFBConfig( _xdisplay, fbcs2[i] );
++		    if( vi && vi->visualid == target_vid ) {
++			matching_fbc = fbcs2[i];
++			XFree( vi );
++			break;
++		    }
++		    if( vi ) XFree( vi );
++		}
++		XFree( fbcs2 );
++	    }
++	}
++	XFree( fbcs );
++    }
++
++    // Try glXCreateContextAttribsARB for explicit compat profile
++    glXCreateContextAttribsARBProc glXCreateContextAttribsARB =
++	(glXCreateContextAttribsARBProc)glXGetProcAddressARB(
++	    (const GLubyte *)"glXCreateContextAttribsARB" );
++
++    if( matching_fbc && glXCreateContextAttribsARB ) {
++	int ctx_attribs[] = {
++	    GLX_CONTEXT_MAJOR_VERSION_ARB, 3,
++	    GLX_CONTEXT_MINOR_VERSION_ARB, 0,
++	    GLX_CONTEXT_PROFILE_MASK_ARB, GLX_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB,
++	    None
++	};
++	_glx_context = glXCreateContextAttribsARB( _xdisplay, matching_fbc,
++						   NULL, True, ctx_attribs );
++    }
++
++    // Fallback: old-style glXCreateContext (compat by default)
++    if( !_glx_context ) {
++	XVisualInfo tmpl;
++	tmpl.visualid = target_vid;
++	int nitems;
++	XVisualInfo *vi = XGetVisualInfo( _xdisplay, VisualIDMask, &tmpl, &nitems );
++	if( vi ) {
++	    _glx_context = glXCreateContext( _xdisplay, vi, NULL, True );
++	    XFree( vi );
++	}
++    }
++
++    if( !_glx_context ) {
++	ibsimu.message( 1 ) << "Failed to create GLX context\n";
++	ibsimu.flush();
++	return;
++    }
++
++    glXMakeCurrent( _xdisplay, _xwindow, _glx_context );
++
++    const char *version = (const char *)glGetString( GL_VERSION );
++    const char *renderer = (const char *)glGetString( GL_RENDERER );
++    ibsimu.message( 1 ) << "GLX context: " << (version ? version : "NULL")
++			 << " renderer=" << (renderer ? renderer : "NULL") << "\n";
++    ibsimu.flush();
++
++    _gl_ready = true;
+ }
+ 
  
  void GLRenderer::start_rendering( void )
  {
@@ -66,13 +201,18 @@ index 98ff7b4..4f8098a 100644
 -    _gldrawable = gtk_widget_get_gl_drawable( _darea );
 -    if( !gdk_gl_drawable_gl_begin( _gldrawable, _glcontext ) )
 -	g_assert_not_reached();
--
++    if( !_gl_ready )
++	init_gl();
++    if( !_gl_ready )
++	return;
++
++    glXMakeCurrent( _xdisplay, _xwindow, _glx_context );
+ 
 -    // Set OpenGL viewport
-+    // GL context is already current via GtkGLArea "render" signal
      GtkAllocation alloc;
      gtk_widget_get_allocation( _darea, &alloc );
      glViewport( 0, 0, alloc.width, alloc.height );
-@@ -100,12 +83,8 @@ void GLRenderer::start_rendering( void )
+@@ -100,12 +215,9 @@ void GLRenderer::start_rendering( void )
  
  void GLRenderer::end_rendering( cairo_t *cairo )
  {
@@ -82,86 +222,70 @@ index 98ff7b4..4f8098a 100644
 -    else
 -        glFlush();
 -    gdk_gl_drawable_gl_end( _gldrawable );
-+    // GtkGLArea handles buffer swap after render signal returns
-+    glFlush();
++    if( !_gl_ready )
++	return;
++    glXSwapBuffers( _xdisplay, _xwindow );
  }
  
  
 diff --git a/src/glrenderer.hpp b/src/glrenderer.hpp
-index 5064b35..14ca34c 100644
+index 5064b35..545e5cf 100644
 --- a/src/glrenderer.hpp
 +++ b/src/glrenderer.hpp
-@@ -45,18 +45,16 @@
+@@ -45,34 +45,30 @@
  #define GLRENDERER_HPP 1
  
  
 -#include <gtk/gtkgl.h>
 +#include <gtk/gtk.h>
 +#include <GL/gl.h>
++#include <GL/glx.h>
++#include <gdk/gdkx.h>
  #include "renderer.hpp"
 -#include "error.hpp"
  
  
 -/*! \brief OpenGL 3D renderer.
-+/*! \brief OpenGL 3D renderer using GtkGLArea.
++/*! \brief OpenGL 3D renderer using GLX compatibility profile.
   */
  class GLRenderer : public Renderer {
  
--    GtkWidget      *_darea;
+     GtkWidget      *_darea;
 -    GdkGLContext   *_glcontext;
 -    GdkGLDrawable  *_gldrawable;
-+    GtkWidget      *_darea; // GtkGLArea widget
++    Display        *_xdisplay;
++    GLXContext      _glx_context;
++    Window          _xwindow;
++    bool            _gl_ready;
  
      Vec3D            _material_diffuse_color;
      Vec3D            _material_ambient_color;
-@@ -64,16 +62,6 @@ class GLRenderer : public Renderer {
+     Vec3D            _color;
  
- public:
- 
+-public:
+-
 -    /*! \brief Class for OpenGL initialization error.
 -     */
 -    class ErrorGLInit : public Error {	
 -    public:
--
++    void init_gl( void );
+ 
 -	/*! \brief Error constructor.
 -	 */
 -	ErrorGLInit() {}
 -    };
--
++public:
+ 
      GLRenderer( GtkWidget *darea );
      virtual ~GLRenderer();
- 
 diff --git a/src/gtkgeom3dwindow.cpp b/src/gtkgeom3dwindow.cpp
-index a678ebe..9620fd4 100644
+index a678ebe..5bb2daf 100644
 --- a/src/gtkgeom3dwindow.cpp
 +++ b/src/gtkgeom3dwindow.cpp
-@@ -81,12 +81,15 @@ GTKGeom3DWindow::GTKGeom3DWindow( GTKPlotter &plotter,
-     g_signal_connect( G_OBJECT(_darea), "configure_event",
- 		      G_CALLBACK(darea_configure_signal), 
- 		      (gpointer)this );
--    //g_signal_connect( G_OBJECT(_darea), "expose_event",
--    //G_CALLBACK(darea_expose_signal), 
--    //(gpointer)this );
--    g_signal_connect( G_OBJECT(_darea), "draw",
--		      G_CALLBACK(darea_draw_signal), 
--		      (gpointer)this );
-+    if( _use_gl ) {
-+	g_signal_connect( G_OBJECT(_darea), "render",
-+			  G_CALLBACK(darea_render_signal),
-+			  (gpointer)this );
-+    } else {
-+	g_signal_connect( G_OBJECT(_darea), "draw",
-+			  G_CALLBACK(darea_draw_signal), 
-+			  (gpointer)this );
-+    }
- 
-     gtk_widget_show_all( _window );
- }
-@@ -95,20 +98,12 @@ GTKGeom3DWindow::GTKGeom3DWindow( GTKPlotter &plotter,
- void GTKGeom3DWindow::init_renderer( void )
+@@ -96,19 +96,11 @@ void GTKGeom3DWindow::init_renderer( void )
  {
  #ifdef OPENGL
--    if( _plotter.opengl() ) {
+     if( _plotter.opengl() ) {
 -	try {
 -	    // Try initializing OpenGL renderer
 -	    _renderer = new GLRenderer( _darea );
@@ -169,7 +293,6 @@ index a678ebe..9620fd4 100644
 -	    // Fallback to software renderer
 -	    _renderer = new SoftwareRenderer( _darea );
 -	}
-+    if( _use_gl ) {
 +	_renderer = new GLRenderer( _darea );
      } else {
 -	// No GdkGLExt initialized
@@ -180,116 +303,6 @@ index a678ebe..9620fd4 100644
      _renderer = new SoftwareRenderer( _darea );
  #endif
  }
-@@ -262,7 +257,21 @@ void GTKGeom3DWindow::init_window( void )
- 
- 
-     // Drawing area
-+#ifdef OPENGL
-+    _use_gl = _plotter.opengl();
-+    if( _use_gl ) {
-+	_darea = gtk_gl_area_new();
-+	gtk_gl_area_set_has_depth_buffer( GTK_GL_AREA(_darea), TRUE );
-+	g_signal_connect( G_OBJECT(_darea), "create-context",
-+			  G_CALLBACK(darea_create_gl_context_signal),
-+			  (gpointer)this );
-+    } else {
-+	_darea = gtk_drawing_area_new();
-+    }
-+#else
-+    _use_gl = false;
-     _darea = gtk_drawing_area_new();
-+#endif
-     gtk_widget_set_size_request( _darea, _width, _height );
-     gtk_widget_add_events( _darea, GDK_EXPOSURE_MASK |
- 			   GDK_LEAVE_NOTIFY_MASK |
-@@ -752,6 +761,63 @@ gboolean GTKGeom3DWindow::darea_draw_signal( GtkWidget *widget,
- }
- 
- 
-+gboolean GTKGeom3DWindow::darea_render_signal( GtkGLArea *area,
-+					       GdkGLContext *context,
-+					       gpointer object )
-+{
-+    static bool first_render = true;
-+    if( first_render ) {
-+	first_render = false;
-+	const char *version = (const char *)glGetString( GL_VERSION );
-+	const char *renderer = (const char *)glGetString( GL_RENDERER );
-+	ibsimu.message( 1 ) << "GL render: version=\"" << (version ? version : "NULL")
-+			     << "\" renderer=\"" << (renderer ? renderer : "NULL") << "\"\n";
-+	int major, minor;
-+	gdk_gl_context_get_version( context, &major, &minor );
-+	ibsimu.message( 1 ) << "GDK context: " << major << "." << minor
-+			     << (gdk_gl_context_get_forward_compatible( context ) ? " core" : " compat")
-+			     << "\n";
-+	GError *err = gtk_gl_area_get_error( area );
-+	if( err )
-+	    ibsimu.message( 1 ) << "GtkGLArea error: " << err->message << "\n";
-+	ibsimu.flush();
-+    }
-+
-+    GTKGeom3DWindow *window = (GTKGeom3DWindow *)object;
-+    window->draw( NULL );
-+    return( TRUE );
-+}
-+
-+
-+GdkGLContext *GTKGeom3DWindow::darea_create_gl_context_signal( GtkGLArea *area,
-+							       gpointer object )
-+{
-+    GdkWindow *gdk_window = gtk_widget_get_window( GTK_WIDGET(area) );
-+    if( !gdk_window ) {
-+	ibsimu.message( 1 ) << "create-context: no GdkWindow yet\n";
-+	return( NULL );
-+    }
-+
-+    GError *error = NULL;
-+    GdkGLContext *context = gdk_window_create_gl_context( gdk_window, &error );
-+    if( error ) {
-+	ibsimu.message( 1 ) << "GL context creation failed: " << error->message << "\n";
-+	gtk_gl_area_set_error( area, error );
-+	return( NULL );
-+    }
-+
-+    // Request compatibility profile for immediate-mode GL (glBegin/glEnd)
-+    gdk_gl_context_set_forward_compatible( context, FALSE );
-+    gdk_gl_context_set_use_es( context, FALSE );
-+
-+    // Do NOT call gdk_gl_context_realize() here — GtkGLArea does it after this signal
-+    ibsimu.message( 1 ) << "create-context: created, forward_compatible=FALSE\n";
-+    ibsimu.flush();
-+
-+    return( context );
-+}
-+
-+
- gboolean GTKGeom3DWindow::darea_motion_signal( GtkWidget *widget, 
- 					       GdkEventMotion *event,
- 					       gpointer object )
-diff --git a/src/gtkgeom3dwindow.hpp b/src/gtkgeom3dwindow.hpp
-index 82f9d41..76802ce 100644
---- a/src/gtkgeom3dwindow.hpp
-+++ b/src/gtkgeom3dwindow.hpp
-@@ -77,6 +77,7 @@ class GTKGeom3DWindow : public GTKWindow {
-     double                  _endy;
- 
-     class Renderer         *_renderer;
-+    bool                    _use_gl;
- 
-     void init_window( void );
-     void init_renderer( void );
-@@ -127,6 +128,11 @@ class GTKGeom3DWindow : public GTKWindow {
-     static gboolean darea_draw_signal( GtkWidget *widget, 
- 				       cairo_t *cairo,
- 				       gpointer object );
-+    static gboolean darea_render_signal( GtkGLArea *area,
-+					 GdkGLContext *context,
-+					 gpointer object );
-+    static GdkGLContext *darea_create_gl_context_signal( GtkGLArea *area,
-+							 gpointer object );
-     /*
-     static gboolean darea_expose_signal( GtkWidget *widget, 
- 					 GdkEventExpose *event, 
 diff --git a/src/gtkplotter.cpp b/src/gtkplotter.cpp
 index 6a975a2..fcc694e 100644
 --- a/src/gtkplotter.cpp
