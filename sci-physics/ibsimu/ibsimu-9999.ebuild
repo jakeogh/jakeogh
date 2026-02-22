@@ -20,12 +20,12 @@ RDEPEND="
 	sci-libs/gsl
 	media-libs/libpng:=
 	sys-libs/zlib
-	opengl? ( x11-libs/gtkglext )
+	opengl? ( virtual/opengl )
 	umfpack? ( sci-libs/suitesparse:= )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
+PATCHES=( "${FILESDIR}/gtkglarea.patch" )
 src_prepare() {
 	default
 	touch src/ibsimu.cpp || die
