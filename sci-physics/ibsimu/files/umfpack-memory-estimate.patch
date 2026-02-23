@@ -1,5 +1,5 @@
---- a/ibsimu/src/epot_umfpacksolver.cpp
-+++ b/ibsimu/src/epot_umfpacksolver.cpp
+--- a/src/epot_umfpacksolver.cpp
++++ b/src/epot_umfpacksolver.cpp
 @@ -156,6 +156,7 @@
  {
      int   status;
