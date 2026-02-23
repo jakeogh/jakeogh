@@ -25,7 +25,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-PATCHES=( "${FILESDIR}/gtkglarea.patch" "${FILESDIR}/umfpack-memory-estimate.patch" )
+PATCHES=(
+	"${FILESDIR}/gtkglarea.patch"
+	"${FILESDIR}/umfpack-memory-estimate.patch"
+)
 src_prepare() {
 	default
 	touch src/ibsimu.cpp || die
