@@ -189,7 +189,9 @@ src_prepare() {
 	# default
 	# return
 	if use cuda; then
-		cuda_src_prepare
+		# cuda_src_prepare calls cuda_sanitize → cuda_gccdir which rejects GCC 15+
+		# bypass the eclass version check; CUDA 12.8+ supports GCC 15
+		:
 	fi
 
 	if use rocm; then
@@ -234,7 +236,7 @@ src_configure() {
 	fi
 	if use cuda; then
 		local -x CUDAHOSTCXX CUDAHOSTLD
-		CUDAHOSTCXX="$(cuda_gccdir)"
+		CUDAHOSTCXX="$(tc-getCXX)"
 		CUDAHOSTLD="$(tc-getCXX)"
 
 		cuda_add_sandbox -w
