@@ -9,7 +9,6 @@ inherit linux-mod-r1 python-single-r1
 DESCRIPTION="Content-addressable hash store backed by ZFS ZAP objects"
 HOMEPAGE="https://github.com/FIXME/zaphash"
 
-# zaphash_crypto.c is GPL-2 (kernel crypto shim), rest is CDDL
 LICENSE="CDDL GPL-2"
 SLOT="0"
 KEYWORDS=""
@@ -32,6 +31,11 @@ RDEPEND="
 
 CONFIG_CHECK="CRYPTO"
 
+pkg_setup() {
+	linux-mod-r1_pkg_setup
+	python-single-r1_pkg_setup
+}
+
 src_compile() {
 	local modlist=(
 		zaphash_crypto=extra:${S}
@@ -44,20 +48,16 @@ src_compile() {
 src_install() {
 	linux-mod-r1_src_install
 
-	# python bindings
 	python_domodule zaphash.py
 
-	# userspace header
 	insinto /usr/include
 	doins zaphash.h
 
-	# udev: /dev/zaphash owned by wheel
 	insinto /lib/udev/rules.d
 	newins - 90-zaphash.rules <<-EOF
 		KERNEL=="zaphash", MODE="0660", GROUP="wheel"
 	EOF
 
-	## auto-load on boot
 	#insinto /etc/modules-load.d
 	#newins - zaphash.conf <<-EOF
 	#	zaphash_crypto
