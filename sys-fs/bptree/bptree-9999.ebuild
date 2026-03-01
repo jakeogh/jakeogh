@@ -32,5 +32,5 @@ src_install() {
 		LIBDIR="${EPREFIX}/usr/$(get_libdir)" \
 		install
 
-	dodoc README.md
+	#dodoc README.md
 }
