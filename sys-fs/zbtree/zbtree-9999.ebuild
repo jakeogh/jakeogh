@@ -3,8 +3,9 @@
 # SPDX-License-Identifier: CDDL-1.0
 
 EAPI=8
+PYTHON_COMPAT=( python3_{12..13} )
 
-inherit git-r3 linux-mod-r1
+inherit git-r3 linux-mod-r1 python-single-r1
 
 DESCRIPTION="Sorted edge store backed by B+ tree on ZFS DMU objects"
 HOMEPAGE="https://github.com/FIXME/zbtree"
@@ -12,12 +13,16 @@ EGIT_REPO_URI="/home/sysskel/myapps/zbtree"
 
 LICENSE="CDDL"
 SLOT="0"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	dev-libs/bptree
 	sys-fs/zfs
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	${PYTHON_DEPS}
+"
 
 src_compile() {
 	local modlist=( zbtree=extra )
@@ -32,6 +37,5 @@ src_install() {
 	linux-mod-r1_src_install
 	insinto /usr/include/zbtree
 	doins zbtree.h
-	insinto /usr/lib/python3.12/site-packages
-	doins zbtree.py
+	python_domodule zbtree.py
 }
