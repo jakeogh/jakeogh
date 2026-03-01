@@ -3,7 +3,6 @@
 # SPDX-License-Identifier: CDDL-1.0
 
 EAPI=8
-
 inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Portable B+ tree library with pluggable block I/O"
