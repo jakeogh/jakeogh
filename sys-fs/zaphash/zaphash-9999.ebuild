@@ -21,7 +21,7 @@ fi
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	sys-fs/zfs-kmod
+	sys-fs/zfs
 	${PYTHON_DEPS}
 "
 RDEPEND="
