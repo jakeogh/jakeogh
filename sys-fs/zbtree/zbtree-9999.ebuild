@@ -24,6 +24,11 @@ RDEPEND="
 	${PYTHON_DEPS}
 "
 
+pkg_setup() {
+	python-single-r1_pkg_setup
+	linux-mod-r1_pkg_setup
+}
+
 src_compile() {
 	local modlist=( zbtree=extra )
 	local modargs=(
