@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
+
 PYTHON_COMPAT=( python3_{12..13} )
 inherit python-single-r1
 
@@ -26,6 +27,7 @@ RDEPEND="
 	sys-fs/zbtree
 	$(python_gen_cond_dep '
 		dev-python/msgpack[${PYTHON_USEDEP}]
+		dev-python/tldextract[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="${PYTHON_DEPS}"
@@ -38,6 +40,7 @@ src_install() {
 	python_domodule urltag_derive.py
 	python_domodule urltag_import_mp.py
 	python_domodule urltag_hist.py
+	python_domodule derivations
 
 	# CLI entry points
 	python_newscript urltag.py urltag
