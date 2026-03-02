@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="
 	sys-fs/zfs
 	${PYTHON_DEPS}
-	sys-fs/bptree
+	dev-libs/bptree
 "
 RDEPEND="
 	sys-fs/zfs
