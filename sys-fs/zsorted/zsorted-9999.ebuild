@@ -33,6 +33,11 @@ BDEPEND="
 	virtual/linux-sources
 "
 
+pkg_setup() {
+	linux-mod-r1_pkg_setup
+	python-single-r1_pkg_setup
+}
+
 src_compile() {
 	local modlist=( zsorted=extra )
 	local modargs=(
