@@ -63,7 +63,7 @@ RDEPEND="
 	app-accessibility/espeak-ng
 	media-video/ffmpeg
 	media-sound/sox
-	sys-libs/libgomp
+	sys-devel/gcc[openmp]
 	openblas? ( sci-libs/openblas )
 	cuda? (
 		dev-util/nvidia-cuda-toolkit
