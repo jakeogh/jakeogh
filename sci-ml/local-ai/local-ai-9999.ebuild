@@ -67,7 +67,7 @@ RDEPEND="
 	openblas? ( sci-libs/openblas )
 	cuda? (
 		dev-util/nvidia-cuda-toolkit
-		x11-drivers/nvidia-drivers[utils]
+		x11-drivers/nvidia-drivers[tools]
 	)
 	rocm? (
 		sci-libs/hipBLAS
