@@ -30,7 +30,7 @@ KEYWORDS=""
 #   (none)  → pure CPU / BLAS fallback
 #
 # Only one GPU backend can be active at build time.
-IUSE="cpu cuda rocm opencl vulkan openblas"
+IUSE="cpu cuda rocm opencl vulkan openblas tts"
 REQUIRED_USE="
 	?? ( cuda rocm opencl vulkan )
 	openblas? ( !cuda !rocm )
@@ -60,7 +60,7 @@ BDEPEND="
 # Gentoo tree as of 2026-03; the ebuild installs it via `go install` at build time.
 
 RDEPEND="
-	app-accessibility/espeak-ng
+	tts? ( app-accessibility/espeak-ng )
 	media-video/ffmpeg
 	media-sound/sox
 	sys-devel/gcc[openmp]
