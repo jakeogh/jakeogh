@@ -25,7 +25,7 @@ IUSE="benchmark"
 # linux-mod-r1 fills in RDEPEND/DEPEND for kernel headers automatically.
 # ZFS dev headers + Module.symvers are needed at build time; zfs at runtime.
 DEPEND="
-	sys-fs/zfs-kmod
+	sys-fs/zfs
 "
 RDEPEND="
 	sys-fs/zfs
