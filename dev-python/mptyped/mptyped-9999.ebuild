@@ -4,13 +4,11 @@ EAPI=8
 PYTHON_COMPAT=( python3_{12,13} )
 DISTUTILS_USE_PEP517=flit
 
-inherit distutils-r1
+inherit distutils-r1 git-r3
 
 DESCRIPTION="msgpack-typed domain objects with tty-aware output"
 HOMEPAGE=""
-SRC_URI=""
-
-S="${WORKDIR}"
+EGIT_REPO_URI="file:///home/sysskel/myapps/mptyped"
 
 LICENSE="CDDL-1.0"
 SLOT="0"
@@ -24,9 +22,3 @@ BDEPEND="
 	${PYTHON_DEPS}
 	dev-python/flit-core[${PYTHON_USEDEP}]
 "
-
-src_unpack() {
-	mkdir -p "${S}"
-	cp "${FILESDIR}/mptyped.py" "${S}/"
-	cp "${FILESDIR}/pyproject.toml" "${S}/"
-}
