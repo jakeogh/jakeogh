@@ -18,7 +18,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="CDDL-1.0"
+LICENSE="CDDL GPL-2"
 SLOT="0"
 IUSE="benchmark"
 
